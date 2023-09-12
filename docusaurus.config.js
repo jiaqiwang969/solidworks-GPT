@@ -7,12 +7,18 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   title: 'solidworks-GPT',
   tagline: 'Dinosaurs are cool',
   url: 'https://jiaqiwang969.github.io',
-  baseUrl: '/',
+  baseUrl: '/solidworks-GPT/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'jiaqiwang969', // Usually your GitHub org/user name.
   projectName: 'solidworks-GPT', // Usually your repo name.
+
+  i18n: {
+	defaultLocale: 'en',
+	locales: ['en','zh-Hans'],
+  },
+
 
   presets: [
     [
@@ -47,6 +53,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           src: 'img/logo.svg',
         },
         items: [
+	  {
+		type: 'localeDropdown'
+	  },
           {
             type: 'doc',
             docId: 'intro',
