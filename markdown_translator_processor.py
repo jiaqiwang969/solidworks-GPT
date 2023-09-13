@@ -6,7 +6,7 @@ import argparse
 class MarkdownProcessor:
     def __init__(self):
         self.args = self.parse_arguments()
-        
+
         # Depending on the command, execute the corresponding method
         if self.args.command == "forward_process":
             self.forward_process(self.args.input_dir, self.args.output_dir)
@@ -16,13 +16,14 @@ class MarkdownProcessor:
             self.main_complete(self.args.input_dir, self.args.output_dir)
         elif self.args.command == "merge":
             self.merge_pulls()
+        elif self.args.command == "help":
+            self.display_help_message()
 
-
-    def display_help_message():
-        help_message = """
+    def display_help_message(self):
+        print("""
         Markdown Processor Tool
         =======================
-    
+
         Commands:
         ---------
         forward_process: Process the markdown/mdx files and save the modified content and backup files.
@@ -30,13 +31,13 @@ class MarkdownProcessor:
         translate: use gpt-translate action to translate.
         merge: merge to main branch
         help: Display this help message.
-    
+
         Arguments:
         ----------
         --input_md_dir: Directory containing the markdown/mdx files. (default: "i18n/zh-Hans/docusaurus-plugin-content-docs/current")
         --input_bak_dir: Directory containing the backup files. (default: "i18n/zh-Hans/docusaurus-plugin-content-docs/current")
         --output_dir: Directory where the processed files will be saved. (default: "i18n/zh-Hans/docusaurus-plugin-content-docs/current")
-    
+
         Usage:
         ------
         python markdown_translator_processor.py [command] [--input_md_dir PATH] [--input_bak_dir PATH] [--output_dir PATH]
@@ -50,8 +51,7 @@ class MarkdownProcessor:
         6. merge
         7. pull
         8. push
-        """
-    print(help_message)
+        """)
 
     # Methods from markdown_processor-1.py
     def extract_header(self, original_md):
@@ -189,14 +189,13 @@ class MarkdownProcessor:
     def parse_arguments(self):
         parser = argparse.ArgumentParser(description='Process markdown files and translations.')
         parser.add_argument("command", help="Command to be executed (forward_process, reverse_process, translate, merge)")
-        
+
         # Arguments for markdown processing
         parser.add_argument("--input_dir", default="i18n/zh-Hans/docusaurus-plugin-content-docs/current", help="Directory containing the markdown/mdx files.")
-parser.add_argument("--input_bak_dir", default="i18n/zh-Hans/docusaurus-plugin-content-docs/current", help="Directory containing the backup files.")
-parser.add_argument("--output_dir", default="i18n/zh-Hans/docusaurus-plugin-content-docs/current", help="Directory where the processed files will be saved.")
+        parser.add_argument("--input_bak_dir", default="i18n/zh-Hans/docusaurus-plugin-content-docs/current", help="Directory containing the backup files.")
+        parser.add_argument("--output_dir", default="i18n/zh-Hans/docusaurus-plugin-content-docs/current", help="Directory where the processed files will be saved.")
 
         return parser.parse_args()
-
 
 # Instantiate the class to execute the desired command
 MarkdownProcessor()
