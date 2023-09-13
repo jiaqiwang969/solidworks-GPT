@@ -17,6 +17,42 @@ class MarkdownProcessor:
         elif self.args.command == "merge":
             self.merge_pulls()
 
+
+    def display_help_message():
+        help_message = """
+        Markdown Processor Tool
+        =======================
+    
+        Commands:
+        ---------
+        forward_process: Process the markdown/mdx files and save the modified content and backup files.
+        reverse_process: Restore the original content of the markdown/mdx files using the backup files.
+        translate: use gpt-translate action to translate.
+        merge: merge to main branch
+        help: Display this help message.
+    
+        Arguments:
+        ----------
+        --input_md_dir: Directory containing the markdown/mdx files. (default: "i18n/zh-Hans/docusaurus-plugin-content-docs/current")
+        --input_bak_dir: Directory containing the backup files. (default: "i18n/zh-Hans/docusaurus-plugin-content-docs/current")
+        --output_dir: Directory where the processed files will be saved. (default: "i18n/zh-Hans/docusaurus-plugin-content-docs/current")
+    
+        Usage:
+        ------
+        python markdown_translator_processor.py [command] [--input_md_dir PATH] [--input_bak_dir PATH] [--output_dir PATH]
+
+        Step:
+        1. Copy the files to i18n/zh-Hans/docusaurus-plugin-content-docs/current/
+        2. push to github
+        3. forward_process
+        4. translate
+        5. reverse_process
+        6. merge
+        7. pull
+        8. push
+        """
+    print(help_message)
+
     # Methods from markdown_processor-1.py
     def extract_header(self, original_md):
         header_match = re.match(r'^---\n(.*?)\n---', original_md, re.DOTALL)
