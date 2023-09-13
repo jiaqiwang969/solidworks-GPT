@@ -3,6 +3,7 @@ import os
 import subprocess
 import argparse
 import shutil
+import time
 
 class MarkdownProcessor:
     def __init__(self):
@@ -11,14 +12,19 @@ class MarkdownProcessor:
         # Depending on the command, execute the corresponding method
         if self.args.command == "forward_process":
             self.forward_process(self.args.input_dir, self.args.output_dir)
+            print("Step-02:forward_process finished!")
         elif self.args.command == "reverse_process":
             self.reverse_process(self.args.input_dir, self.args.input_bak_dir, self.args.output_dir)
+            print("Step-05:reverse_process finished!")
         elif self.args.command == "translate":
-            self.main_complete(self.args.input_dir, self.args.output_dir)
+            self.translate(self.args.input_dir, self.args.output_dir)
+            print("Step-03:translate finished!")
         elif self.args.command == "merge":
             self.merge_pulls()
+            print("Step-04:merge finished!")
         elif self.args.command == "copy":
             self.copy(self.args.input_dir, self.args.output_dir)
+            print("Step-01:Copy finished!")
         elif self.args.command == "help":
             self.display_help_message()
 
@@ -73,12 +79,9 @@ class MarkdownProcessor:
         for filename in os.listdir(output_dir):
             if filename.endswith(('.md', '.mdx')) and not filename.startswith('.'):
                 original_path = os.path.join(output_dir, filename)
-                new_filename = "." + filename
+                new_filename = "." + filename + '-temp'
                 new_output_path = os.path.join(output_dir, new_filename)
                 os.rename(original_path, new_output_path)
-
-
-
 
 
 
@@ -103,8 +106,8 @@ class MarkdownProcessor:
 
     def forward_process(self, input_dir, output_dir):
         # Get all markdown files in the input directory
-        md_files = [os.path.join(root, file) for root, _, files in os.walk(input_dir) for file in files if file.endswith(('.md', '.mdx'))]
- 
+        md_files = [os.path.join(root, file) for root, _, files in os.walk(input_dir) for file in files if file.endswith(('.md-temp', '.mdx-temp'))]
+        
         for md_file in md_files:
             # Calculate the relative path to keep the same directory structure
             relative_path = os.path.relpath(md_file, input_dir)
@@ -150,7 +153,7 @@ class MarkdownProcessor:
 
     def reverse_process(self, input_dir, input_bak_dir, output_dir):
         # Get all markdown files in the input_dir
-        md_files = [os.path.join(root, file) for root, _, files in os.walk(input_dir) for file in files if file.endswith(('.md', '.mdx'))]
+        md_files = [os.path.join(root, file) for root, _, files in os.walk(input_dir) for file in files if file.endswith(('.md-temp', '.mdx-temp'))]
 
         for md_file in md_files:
             # Calculate the relative path to keep the same directory structure
@@ -176,7 +179,7 @@ class MarkdownProcessor:
 
 
     # Methods from mdTranslator.py
-    def execute_command(self, command):
+    def command(self, command):
         process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         out, err = process.communicate()
         print(out)
@@ -184,16 +187,15 @@ class MarkdownProcessor:
             print(f"Error executing command: {command}\nError: {err.decode('utf-8')}")
         return out.decode('utf-8')
 
-    def main_complete(self, input_dir, output_dir):
+    def translate(self, input_dir, output_dir):
         md_files = []
         for root, _, files in os.walk(input_dir):
             for file in files:
-                if file.endswith('.md'):
+                if file.endswith(('.md-temp', '.mdx-temp')):
                     md_files.append(os.path.join(root, file))
-        print(md_files)
 
         create_command = f'gh issue create --title "GPT-TRANSLATOR" --body "GPT_TRANSLATOR"'
-        output = self.execute_command(create_command)
+        output = self.command(create_command)
 
         issue_number = re.search(r'issues/(\d+)', output)
         if issue_number:
@@ -207,13 +209,14 @@ class MarkdownProcessor:
             relative_path = os.path.relpath(md_file, input_dir)
             input_file = os.path.join(input_dir, relative_path)
             output_file = os.path.join(output_dir, relative_path)
-            cmd = f'gh issue comment {found_number_str} --body "/gt {input_file} {output_file} simplified-chinese"'
+            cmd = f'gh issue comment {found_number_str} --body "/gt {input_file} {output_file}-zh simplified-chinese"'
             print(f"Translate {i}: {cmd}")
-            self.execute_command(cmd)
+            self.command(cmd)
+            time.sleep(1)
 
     def merge_pulls(self):
         merge_cmd = 'for pr in $(gh pr list -L 30000 --json number --jq ".[].number" | head -n 30); do gh pr merge $pr -d -m; done'
-        self.execute_command(merge_cmd)
+        self.command(merge_cmd)
 
     # Command line argument parsing method
     def parse_arguments(self):
