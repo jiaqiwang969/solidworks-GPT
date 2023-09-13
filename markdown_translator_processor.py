@@ -61,7 +61,7 @@ class MarkdownProcessor:
         7. push
         """)
 
-    def copy(self, input_dir, output_dir):
+    def copy(self, input_dir="docs", output_dir="temp"):
         # Copy all files from input_dir to output_dir
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
@@ -77,11 +77,10 @@ class MarkdownProcessor:
     
         # Rename .md and .mdx files in the output_dir by prefixing with a dot
         for filename in os.listdir(output_dir):
-            if filename.endswith(('.md', '.mdx')) and not filename.startswith('.'):
+            if filename.endswith(('.md', '.mdx')) :
                 original_path = os.path.join(output_dir, filename)
-                new_filename = "." + filename 
-                new_output_path = os.path.join(output_dir, new_filename)
-                os.rename(original_path, new_output_path)
+                output_path = os.path.join(output_dir, filename)
+                os.rename(original_path, output_path)
 
 
 
@@ -104,7 +103,7 @@ class MarkdownProcessor:
                 first_line, remaining_content = match.split("\n", 1)
                 bak_file.write(f'[{chr(35)}{idx}]{first_line}\n{remaining_content}\n')
 
-    def forward_process(self, input_dir, output_dir):
+    def forward_process(self, input_dir="temp", output_dir="temp"):
         # Get all markdown files in the input directory
         md_files = [os.path.join(root, file) for root, _, files in os.walk(input_dir) for file in files if file.endswith(('.md', '.mdx'))]
         
@@ -151,7 +150,7 @@ class MarkdownProcessor:
         return original_md
 
 
-    def reverse_process(self, input_dir, input_bak_dir, output_dir):
+    def reverse_process(self, input_dir="temp", input_bak_dir="temp", output_dir="i18n/zh-Hans/docusaurus-plugin-content-docs/current"):
         # Get all markdown files in the input_dir
         md_files = [os.path.join(root, file) for root, _, files in os.walk(input_dir) for file in files if file.endswith(('.md', '.mdx'))]
 
@@ -209,7 +208,7 @@ class MarkdownProcessor:
             relative_path = os.path.relpath(md_file, input_dir)
             input_file = os.path.join(input_dir, relative_path)
             output_file = os.path.join(output_dir, relative_path)
-            cmd = f'gh issue comment {found_number_str} --body "/gt {input_file} {output_file}-zh simplified-chinese"'
+            cmd = f'gh issue comment {found_number_str} --body "/gt {input_file} {output_file} simplified-chinese"'
             print(f"Translate {i}: {cmd}")
             self.command(cmd)
             time.sleep(1)
@@ -224,9 +223,9 @@ class MarkdownProcessor:
         parser.add_argument("command", help="Command to be executed (forward_process, reverse_process, translate, merge)")
 
         # Arguments for markdown processing
-        parser.add_argument("--input_dir", default="i18n/zh-Hans/docusaurus-plugin-content-docs/current", help="Directory containing the markdown/mdx files.")
-        parser.add_argument("--input_bak_dir", default="i18n/zh-Hans/docusaurus-plugin-content-docs/current", help="Directory containing the backup files.")
-        parser.add_argument("--output_dir", default="i18n/zh-Hans/docusaurus-plugin-content-docs/current", help="Directory where the processed files will be saved.")
+        parser.add_argument("--input_dir", help="Directory containing the markdown/mdx files.")
+        parser.add_argument("--input_bak_dir",  help="Directory containing the backup files.")
+        parser.add_argument("--output_dir", help="Directory where the processed files will be saved.")
 
         return parser.parse_args()
 
