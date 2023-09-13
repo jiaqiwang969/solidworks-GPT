@@ -1,6 +1,4 @@
----
-sidebar_position: 1
----
+[#0]
 
 # Create a Page
 
@@ -14,19 +12,7 @@ Add **Markdown or React** files to `src/pages` to create a **standalone page**:
 
 Create a file at `src/pages/my-react-page.js`:
 
-```jsx title="src/pages/my-react-page.js"
-import React from 'react';
-import Layout from '@theme/Layout';
-
-export default function MyReactPage() {
-  return (
-    <Layout>
-      <h1>My React page</h1>
-      <p>This is a React page</p>
-    </Layout>
-  );
-}
-```
+[#1]
 
 A new page is now available at `http://localhost:3000/my-react-page`.
 
@@ -34,10 +20,6 @@ A new page is now available at `http://localhost:3000/my-react-page`.
 
 Create a file at `src/pages/my-markdown-page.md`:
 
-```mdx title="src/pages/my-markdown-page.md"
-# My Markdown page
-
-This is a Markdown page
-```
+[#2]
 
 A new page is now available at `http://localhost:3000/my-markdown-page`.

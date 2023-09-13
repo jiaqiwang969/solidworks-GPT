@@ -1,0 +1,38 @@
+[#0]sidebar_position: 2
+[#1]js title="docusaurus.config.js"
+module.exports = {
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'fr'],
+  },
+};
+
+[#2]bash
+mkdir -p i18n/fr/docusaurus-plugin-content-docs/current/
+
+cp docs/intro.md i18n/fr/docusaurus-plugin-content-docs/current/intro.md
+
+[#3]bash
+npm run start -- --locale fr
+
+[#4]js title="docusaurus.config.js"
+module.exports = {
+  themeConfig: {
+    navbar: {
+      items: [
+        // highlight-start
+        {
+          type: 'localeDropdown',
+        },
+        // highlight-end
+      ],
+    },
+  },
+};
+
+[#5]bash
+npm run build -- --locale fr
+
+[#6]bash
+npm run build
+

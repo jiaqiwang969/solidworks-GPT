@@ -79,7 +79,7 @@ class MarkdownProcessor:
         for filename in os.listdir(output_dir):
             if filename.endswith(('.md', '.mdx')) and not filename.startswith('.'):
                 original_path = os.path.join(output_dir, filename)
-                new_filename = "." + filename + '-temp'
+                new_filename = "." + filename 
                 new_output_path = os.path.join(output_dir, new_filename)
                 os.rename(original_path, new_output_path)
 
