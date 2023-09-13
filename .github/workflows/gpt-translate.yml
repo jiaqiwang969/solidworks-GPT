@@ -15,7 +15,7 @@ jobs:
       - name: Run GPT Translate
         if: |
           contains(github.event.comment.body, '/gt')
-        uses: jiaqiwang969/solidworks-GPT@main
+        uses: jiaqiwang969/gpt-translate@master
         with:
           apikey: ${{ secrets.OPENAI_API_KEY }}
           model: "gpt-3.5-turbo-16k"
