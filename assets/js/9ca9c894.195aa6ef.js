@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksolidworks_gpt=self.webpackChunksolidworks_gpt||[]).push([[81698],{50934:s=>{s.exports=JSON.parse('{"label":"docusaurus","permalink":"/solidworks-GPT/blog/tags/docusaurus","allTagsPath":"/solidworks-GPT/blog/tags","count":4}')}}]);

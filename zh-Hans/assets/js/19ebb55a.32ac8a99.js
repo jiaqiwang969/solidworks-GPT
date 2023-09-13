@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksolidworks_gpt=self.webpackChunksolidworks_gpt||[]).push([[4692],{65644:s=>{s.exports=JSON.parse('{"permalink":"/solidworks-GPT/zh-Hans/blog/tags/hola","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

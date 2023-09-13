@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksolidworks_gpt=self.webpackChunksolidworks_gpt||[]).push([[35357],{30572:o=>{o.exports=JSON.parse('{"permalink":"/solidworks-GPT/blog/tags/facebook","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

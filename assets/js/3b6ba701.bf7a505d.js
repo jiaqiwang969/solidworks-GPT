@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksolidworks_gpt=self.webpackChunksolidworks_gpt||[]).push([[611],{6349:s=>{s.exports=JSON.parse('{"permalink":"/solidworks-GPT/blog/tags/docusaurus","page":1,"postsPerPage":10,"totalPages":1,"totalCount":4,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);
