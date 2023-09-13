@@ -1,27 +1,27 @@
 [#0]
 
-# Tutorial Intro
+# 教程介绍
 
-Let's discover **Docusaurus in less than 5 minutes**.
+让我们在不到5分钟的时间内了解**Docusaurus**。
 
-## Getting Started
+## 入门指南
 
-Get started by **creating a new site**.
+通过**创建一个新站点**来开始。
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+或者通过**[docusaurus.new](https://docusaurus.new)**立即尝试Docusaurus。
 
-## Generate a new site
+## 生成新站点
 
-Generate a new Docusaurus site using the **classic template**:
+使用**经典模板**生成一个新的Docusaurus站点：
 
 [#1]
 
-## Start your site
+## 启动你的站点
 
-Run the development server:
+运行开发服务器：
 
 [#2]
 
-Your site starts at `http://localhost:3000`.
+你的站点将在`http://localhost:3000`上启动。
 
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and display your changes.
+打开`docs/intro.md`并编辑一些内容：站点将**自动重新加载**并显示你的更改。
