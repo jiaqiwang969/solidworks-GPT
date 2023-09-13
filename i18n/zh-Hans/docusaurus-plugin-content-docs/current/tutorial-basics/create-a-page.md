@@ -1,7 +1,9 @@
 <<<<<<< HEAD
 # 创建页面
 =======
-[#0]
+---
+sidebar_position: 1
+---
 >>>>>>> bb8c383 (-)
 
 将**Markdown或React**文件添加到`src/pages`以创建**独立页面**：
@@ -29,7 +31,20 @@ export default function MyReactPage() {
 }
 ```
 =======
-[#1]
+```jsx title="src/pages/my-react-page.js"
+import React from 'react';
+import Layout from '@theme/Layout';
+
+export default function MyReactPage() {
+  return (
+    <Layout>
+      <h1>My React page</h1>
+      <p>This is a React page</p>
+    </Layout>
+  );
+}
+
+```
 >>>>>>> bb8c383 (-)
 
 现在可以在`http://localhost:3000/my-react-page`上找到一个新页面。
@@ -45,7 +60,13 @@ export default function MyReactPage() {
 这是一个Markdown页面
 ```
 =======
-[#2]
+```mdx title="src/pages/my-markdown-page.md"
+# My Markdown page
+
+This is a Markdown page
+
+
+```
 >>>>>>> bb8c383 (-)
 
 现在可以在`http://localhost:3000/my-markdown-page`上找到一个新页面。

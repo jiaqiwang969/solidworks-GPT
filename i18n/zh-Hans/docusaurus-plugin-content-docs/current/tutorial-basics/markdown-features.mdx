@@ -1,4 +1,6 @@
-[#0]
+---
+sidebar_position: 4
+---
 
 # Markdown Features
 
@@ -8,15 +10,35 @@ Docusaurus supports **[Markdown](https://daringfireball.net/projects/markdown/sy
 
 Markdown documents have metadata at the top called [Front Matter](https://jekyllrb.com/docs/front-matter/):
 
-[#1]
+```text title="my-doc.md"
+// highlight-start
+---
+id: my-doc-id
+title: My document title
+description: My document description
+slug: /my-custom-url
+---
+// highlight-end
+
+## Markdown heading
+
+Markdown text with [links](./hello.md)
+
+```
 
 ## Links
 
 Regular Markdown links are supported, using url paths or relative file paths.
 
-[#2]
+```md
+Let's see how to [Create a page](/create-a-page).
 
-[#3]
+```
+
+```md
+Let's see how to [Create a page](./create-a-page.md).
+
+```
 
 **Result:** Let's see how to [Create a page](./create-a-page.md).
 
@@ -26,7 +48,10 @@ Regular Markdown images are supported.
 
 Add an image at `static/img/docusaurus.png` and display it in Markdown:
 
-[#4]
+```md
+![Docusaurus logo](/img/docusaurus.png)
+
+```
 
 ![Docusaurus logo](/img/docusaurus.png)
 
@@ -34,9 +59,21 @@ Add an image at `static/img/docusaurus.png` and display it in Markdown:
 
 Markdown code blocks are supported with Syntax highlighting.
 
-    [#5]
+    ```jsx title="src/components/HelloDocusaurus.js"
+    function HelloDocusaurus() {
+        return (
+            <h1>Hello, Docusaurus!</h1>
+        )
+    }
+    
+```
 
-[#6]
+```jsx title="src/components/HelloDocusaurus.js"
+function HelloDocusaurus() {
+  return <h1>Hello, Docusaurus!</h1>;
+}
+
+```
 
 ## Admonitions
 
@@ -70,7 +107,29 @@ This action is dangerous
 
 [MDX](https://mdxjs.com/) can make your documentation more **interactive** and allows using any **React components inside Markdown**:
 
-[#7]
+```jsx
+export const Highlight = ({children, color}) => (
+  <span
+    style={{
+      backgroundColor: color,
+      borderRadius: '20px',
+      color: '#fff',
+      padding: '10px',
+      cursor: 'pointer',
+    }}
+    onClick={() => {
+      alert(`You clicked the color ${color} with label ${children}`)
+    }}>
+    {children}
+  </span>
+);
+
+This is <Highlight color="#25c2a0">Docusaurus green</Highlight> !
+
+This is <Highlight color="#1877F2">Facebook blue</Highlight> !
+
+
+```
 
 export const Highlight = ({children, color}) => (
   <span

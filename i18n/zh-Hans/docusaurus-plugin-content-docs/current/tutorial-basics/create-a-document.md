@@ -1,7 +1,9 @@
 <<<<<<< HEAD
 # 创建文档
 =======
-[#0]
+---
+sidebar_position: 2
+---
 >>>>>>> bb8c383 (-)
 
 文档是通过以下方式连接的**页面组**：
@@ -21,7 +23,12 @@
 这是我的**第一个Docusaurus文档**！
 ```
 =======
-[#1]
+```md title="docs/hello.md"
+# Hello
+
+This is my **first Docusaurus document**!
+
+```
 >>>>>>> bb8c383 (-)
 
 现在在`http://localhost:3000/docs/hello`上有一个新的文档可用。
@@ -44,7 +51,17 @@ sidebar_position: 3
 这是我的**第一个Docusaurus文档**！
 ```
 =======
-[#2]
+```md title="docs/hello.md" {1-4}
+---
+sidebar_label: 'Hi!'
+sidebar_position: 3
+---
+
+# Hello
+
+This is my **first Docusaurus document**!
+
+```
 >>>>>>> bb8c383 (-)
 
 也可以在`sidebars.js`中显式地创建你的侧边栏：
@@ -63,5 +80,18 @@ module.exports = {
 };
 ```
 =======
-[#3]
+```diff title="sidebars.js"
+module.exports = {
+  tutorialSidebar: [
+    {
+      type: 'category',
+      label: 'Tutorial',
+-     items: [...],
++     items: ['hello'],
+    },
+  ],
+};
+
+
+```
 >>>>>>> bb8c383 (-)
