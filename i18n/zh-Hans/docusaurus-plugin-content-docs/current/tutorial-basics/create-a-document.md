@@ -2,51 +2,51 @@
 sidebar_position: 2
 ---
 
-# Create a Document
+# ドキュメントの作成
 
-Documents are **groups of pages** connected through:
+ドキュメントは、以下の要素で**ページのグループ**として構成されます:
 
-- a **sidebar**
-- **previous/next navigation**
-- **versioning**
+- **サイドバー**
+- **前後のナビゲーション**
+- **バージョニング**
 
-## Create your first Doc
+## 最初のドキュメントを作成する
 
-Create a markdown file at `docs/hello.md`:
+`docs/hello.md`にマークダウンファイルを作成します:
 
 ```md title="docs/hello.md"
-# Hello
+# こんにちは
 
-This is my **first Docusaurus document**!
+これは私の**最初のDocusaurusドキュメント**です！
 ```
 
-A new document is now available at `http://localhost:3000/docs/hello`.
+新しいドキュメントは、`http://localhost:3000/docs/hello`で利用できるようになります。
 
-## Configure the Sidebar
+## サイドバーの設定
 
-Docusaurus automatically **creates a sidebar** from the `docs` folder.
+Docusaurusは、`docs`フォルダから自動的に**サイドバー**を作成します。
 
-Add metadatas to customize the sidebar label and position:
+サイドバーのラベルと位置をカスタマイズするために、メタデータを追加します:
 
 ```md title="docs/hello.md" {1-4}
 ---
-sidebar_label: 'Hi!'
+sidebar_label: 'こんにちは！'
 sidebar_position: 3
 ---
 
-# Hello
+# こんにちは
 
-This is my **first Docusaurus document**!
+これは私の**最初のDocusaurusドキュメント**です！
 ```
 
-It is also possible to create your sidebar explicitly in `sidebars.js`:
+また、`sidebars.js`で明示的にサイドバーを作成することも可能です:
 
 ```diff title="sidebars.js"
 module.exports = {
   tutorialSidebar: [
     {
       type: 'category',
-      label: 'Tutorial',
+      label: 'チュートリアル',
 -     items: [...],
 +     items: ['hello'],
     },
