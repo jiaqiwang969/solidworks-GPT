@@ -2,13 +2,13 @@
 sidebar_position: 2
 ---
 
-# Traduisez votre site
+# Translate your site
 
-Traduisons `docs/intro.md` en français.
+Let's translate `docs/intro.md` to French.
 
-## Configurez i18n
+## Configure i18n
 
-Modifiez `docusaurus.config.js` pour ajouter la prise en charge de la locale `fr` :
+Modify `docusaurus.config.js` to add support for the `fr` locale:
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -19,9 +19,9 @@ module.exports = {
 };
 ```
 
-## Traduisez une documentation
+## Translate a doc
 
-Copiez le fichier `docs/intro.md` dans le dossier `i18n/fr` :
+Copy the `docs/intro.md` file to the `i18n/fr` folder:
 
 ```bash
 mkdir -p i18n/fr/docusaurus-plugin-content-docs/current/
@@ -29,29 +29,29 @@ mkdir -p i18n/fr/docusaurus-plugin-content-docs/current/
 cp docs/intro.md i18n/fr/docusaurus-plugin-content-docs/current/intro.md
 ```
 
-Traduisez `i18n/fr/docusaurus-plugin-content-docs/current/intro.md` en français.
+Translate `i18n/fr/docusaurus-plugin-content-docs/current/intro.md` in French.
 
-## Démarrez votre site localisé
+## Start your localized site
 
-Démarrez votre site en utilisant la locale française :
+Start your site on the French locale:
 
 ```bash
 npm run start -- --locale fr
 ```
 
-Votre site localisé est accessible à l'adresse `http://localhost:3000/fr/` et la page `Getting Started` est traduite.
+Your localized site is accessible at `http://localhost:3000/fr/` and the `Getting Started` page is translated.
 
 :::caution
 
-En développement, vous ne pouvez utiliser qu'une seule locale à la fois.
+In development, you can only use one locale at a same time.
 
 :::
 
-## Ajoutez un menu déroulant de locale
+## Add a Locale Dropdown
 
-Pour naviguer facilement entre les langues, ajoutez un menu déroulant de locale.
+To navigate seamlessly across languages, add a locale dropdown.
 
-Modifiez le fichier `docusaurus.config.js` :
+Modify the `docusaurus.config.js` file:
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -69,19 +69,19 @@ module.exports = {
 };
 ```
 
-Le menu déroulant de locale apparaît maintenant dans votre barre de navigation :
+The locale dropdown now appears in your navbar:
 
-![Menu déroulant de locale](/img/tutorial/localeDropdown.png)
+![Locale Dropdown](/img/tutorial/localeDropdown.png)
 
-## Générez votre site localisé
+## Build your localized site
 
-Générez votre site pour une locale spécifique :
+Build your site for a specific locale:
 
 ```bash
 npm run build -- --locale fr
 ```
 
-Ou générez votre site en incluant toutes les locales en une seule fois :
+Or build your site to include all the locales at once:
 
 ```bash
 npm run build
