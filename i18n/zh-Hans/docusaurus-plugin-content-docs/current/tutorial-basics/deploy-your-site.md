@@ -14,6 +14,7 @@ Docusaurus 是一个**静态网站生成器**（也称为**[Jamstack](https://ja
 
 ```bash
 npm run build
+
 ```
 
 静态文件将生成在 `build` 文件夹中。
@@ -24,6 +25,8 @@ npm run build
 
 ```bash
 npm run serve
+
+
 ```
 
 `build` 文件夹现在在 `http://localhost:3000/` 上提供服务。

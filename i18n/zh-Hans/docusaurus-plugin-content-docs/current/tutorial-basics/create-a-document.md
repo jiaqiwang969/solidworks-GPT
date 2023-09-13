@@ -13,7 +13,12 @@
 ```md title="docs/hello.md"
 # 你好
 
+<<<<<<< HEAD
 这是我的**第一个Docusaurus文档**！
+=======
+This is my **first Docusaurus document**!
+
+>>>>>>> f0c174f (-)
 ```
 
 现在在`http://localhost:3000/docs/hello`上有一个新的文档可用。
@@ -32,7 +37,12 @@ sidebar_position: 3
 
 # 你好
 
+<<<<<<< HEAD
 这是我的**第一个Docusaurus文档**！
+=======
+This is my **first Docusaurus document**!
+
+>>>>>>> f0c174f (-)
 ```
 
 也可以在`sidebars.js`中显式地创建你的侧边栏：
@@ -48,4 +58,10 @@ module.exports = {
     },
   ],
 };
+<<<<<<< HEAD
 ```
+=======
+
+
+```
+>>>>>>> f0c174f (-)

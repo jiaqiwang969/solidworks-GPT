@@ -24,7 +24,13 @@ tags: [greetings]
 
 恭喜，你已经发布了你的第一篇文章！
 
+<<<<<<< HEAD
 随意修改和编辑这篇文章，尽情发挥吧。
+=======
+Feel free to play around and edit this post as much you like.
+
+
+>>>>>>> f0c174f (-)
 ```
 
 现在可以在`http://localhost:3000/blog/greetings`上找到一篇新的博客文章。

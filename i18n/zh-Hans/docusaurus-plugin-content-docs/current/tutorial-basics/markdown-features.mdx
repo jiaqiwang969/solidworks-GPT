@@ -23,6 +23,7 @@ slug: /my-custom-url
 ## Markdown heading
 
 Markdown text with [links](./hello.md)
+
 ```
 
 ## Links
@@ -31,10 +32,12 @@ Regular Markdown links are supported, using url paths or relative file paths.
 
 ```md
 Let's see how to [Create a page](/create-a-page).
+
 ```
 
 ```md
 Let's see how to [Create a page](./create-a-page.md).
+
 ```
 
 **Result:** Let's see how to [Create a page](./create-a-page.md).
@@ -47,6 +50,7 @@ Add an image at `static/img/docusaurus.png` and display it in Markdown:
 
 ```md
 ![Docusaurus logo](/img/docusaurus.png)
+
 ```
 
 ![Docusaurus logo](/img/docusaurus.png)
@@ -61,12 +65,14 @@ Markdown code blocks are supported with Syntax highlighting.
             <h1>Hello, Docusaurus!</h1>
         )
     }
-    ```
+    
+```
 
 ```jsx title="src/components/HelloDocusaurus.js"
 function HelloDocusaurus() {
   return <h1>Hello, Docusaurus!</h1>;
 }
+
 ```
 
 ## Admonitions
@@ -121,6 +127,8 @@ export const Highlight = ({children, color}) => (
 This is <Highlight color="#25c2a0">Docusaurus green</Highlight> !
 
 This is <Highlight color="#1877F2">Facebook blue</Highlight> !
+
+
 ```
 
 export const Highlight = ({children, color}) => (

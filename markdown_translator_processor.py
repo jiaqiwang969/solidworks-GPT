@@ -47,8 +47,8 @@ class MarkdownProcessor:
         2. push to github
         3. forward_process
         4. translate
-        5. reverse_process
-        6. merge
+        5. merge
+        6. reverse_process
         7. pull
         8. push
         """)
@@ -71,17 +71,18 @@ class MarkdownProcessor:
             for idx, match in enumerate(matches, start=1):
                 first_line, remaining_content = match.split("\n", 1)
                 bak_file.write(f'[{chr(35)}{idx}]{first_line}\n{remaining_content}\n')
+
     def forward_process(self, input_dir, output_dir):
         # Get all markdown files in the input directory
-        md_files = [os.path.join(root, file) for root, _, files in os.walk(input_dir) for file in files if file.endswith('.md','mdx')]
-        
+        md_files = [os.path.join(root, file) for root, _, files in os.walk(input_dir) for file in files if file.endswith(('.md', '.mdx'))]
+ 
         for md_file in md_files:
             # Calculate the relative path to keep the same directory structure
             relative_path = os.path.relpath(md_file, input_dir)
 
             # Construct the output paths for the .md and .bak files
             output_md_filepath = os.path.join(output_dir, relative_path)
-            output_bak_filepath = os.path.join(output_bak_dir, relative_path.rsplit('.', 1)[0] + '.bak')
+            output_bak_filepath = os.path.join(output_dir, relative_path.rsplit('.', 1)[0] + '.bak')
             
             # Create necessary directories for the output files
             os.makedirs(os.path.dirname(output_md_filepath), exist_ok=True)
@@ -120,7 +121,7 @@ class MarkdownProcessor:
 
     def reverse_process(self, input_dir, input_bak_dir, output_dir):
         # Get all markdown files in the input_dir
-        md_files = [os.path.join(root, file) for root, _, files in os.walk(input_dir) for file in files if file.endswith('.md','.mdx')]
+        md_files = [os.path.join(root, file) for root, _, files in os.walk(input_dir) for file in files if file.endswith(('.md', '.mdx'))]
 
         for md_file in md_files:
             # Calculate the relative path to keep the same directory structure

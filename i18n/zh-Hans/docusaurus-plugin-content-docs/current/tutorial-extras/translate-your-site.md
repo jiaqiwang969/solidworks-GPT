@@ -13,6 +13,7 @@ module.exports = {
     locales: ['en', 'fr'],
   },
 };
+
 ```
 
 ## 翻译文档
@@ -23,6 +24,7 @@ module.exports = {
 mkdir -p i18n/fr/docusaurus-plugin-content-docs/current/
 
 cp docs/intro.md i18n/fr/docusaurus-plugin-content-docs/current/intro.md
+
 ```
 
 将 `i18n/fr/docusaurus-plugin-content-docs/current/intro.md` 文件翻译成法语。
@@ -33,6 +35,7 @@ cp docs/intro.md i18n/fr/docusaurus-plugin-content-docs/current/intro.md
 
 ```bash
 npm run start -- --locale fr
+
 ```
 
 您的本地化站点可通过 `http://localhost:3000/fr/` 访问，并且 `Getting Started` 页面已被翻译。
@@ -63,6 +66,7 @@ module.exports = {
     },
   },
 };
+
 ```
 
 现在，您的导航栏中会出现区域设置下拉菜单：
@@ -75,10 +79,17 @@ module.exports = {
 
 ```bash
 npm run build -- --locale fr
+
 ```
 
 或者一次性构建包含所有区域设置的站点：
 
 ```bash
 npm run build
+<<<<<<< HEAD
 ```
+=======
+
+
+```
+>>>>>>> f0c174f (-)

@@ -18,6 +18,7 @@ sidebar_position: 1
 
 ```shell
 npx @docusaurus/init@latest init my-website classic
+
 ```
 
 ## 启动站点
@@ -28,6 +29,8 @@ npx @docusaurus/init@latest init my-website classic
 cd my-website
 
 npx docusaurus start
+
+
 ```
 
 你的站点将在`http://localhost:3000`上启动。

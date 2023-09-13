@@ -22,6 +22,7 @@ export default function MyReactPage() {
     </Layout>
   );
 }
+
 ```
 
 现在可以在`http://localhost:3000/my-react-page`上找到一个新页面。
@@ -33,7 +34,13 @@ export default function MyReactPage() {
 ```mdx title="src/pages/my-markdown-page.md"
 # 我的Markdown页面
 
+<<<<<<< HEAD
 这是一个Markdown页面
+=======
+This is a Markdown page
+
+
+>>>>>>> f0c174f (-)
 ```
 
 现在可以在`http://localhost:3000/my-markdown-page`上找到一个新页面。

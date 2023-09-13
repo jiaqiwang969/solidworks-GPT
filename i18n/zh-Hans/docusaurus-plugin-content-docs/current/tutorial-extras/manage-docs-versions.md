@@ -12,6 +12,7 @@ Docusaurus可以管理多个版本的文档。
 
 ```bash
 npm run docusaurus docs:version 1.0
+
 ```
 
 `docs`文件夹将被复制到`versioned_docs/version-1.0`，并创建`versions.json`文件。
@@ -41,6 +42,8 @@ module.exports = {
     },
   },
 };
+
+
 ```
 
 文档版本下拉菜单将出现在导航栏中：
