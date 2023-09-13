@@ -1,4 +1,6 @@
-[#0]
+---
+sidebar_position: 5
+---
 
 # Deploy your site
 
@@ -10,7 +12,9 @@ It builds your site as simple **static HTML, JavaScript and CSS files**.
 
 Build your site **for production**:
 
-[#1]
+```bash
+npm run build
+```
 
 The static files are generated in the `build` folder.
 
@@ -18,7 +22,9 @@ The static files are generated in the `build` folder.
 
 Test your production build locally:
 
-[#2]
+```bash
+npm run serve
+```
 
 The `build` folder is now served at `http://localhost:3000/`.
 

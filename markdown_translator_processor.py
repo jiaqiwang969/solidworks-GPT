@@ -106,7 +106,7 @@ class MarkdownProcessor:
 
     def forward_process(self, input_dir, output_dir):
         # Get all markdown files in the input directory
-        md_files = [os.path.join(root, file) for root, _, files in os.walk(input_dir) for file in files if file.endswith(('.md-temp', '.mdx-temp'))]
+        md_files = [os.path.join(root, file) for root, _, files in os.walk(input_dir) for file in files if file.endswith(('.md', '.mdx'))]
         
         for md_file in md_files:
             # Calculate the relative path to keep the same directory structure
@@ -153,7 +153,7 @@ class MarkdownProcessor:
 
     def reverse_process(self, input_dir, input_bak_dir, output_dir):
         # Get all markdown files in the input_dir
-        md_files = [os.path.join(root, file) for root, _, files in os.walk(input_dir) for file in files if file.endswith(('.md-temp', '.mdx-temp'))]
+        md_files = [os.path.join(root, file) for root, _, files in os.walk(input_dir) for file in files if file.endswith(('.md', '.mdx'))]
 
         for md_file in md_files:
             # Calculate the relative path to keep the same directory structure
@@ -191,7 +191,7 @@ class MarkdownProcessor:
         md_files = []
         for root, _, files in os.walk(input_dir):
             for file in files:
-                if file.endswith(('.md-temp', '.mdx-temp')):
+                if file.endswith(('.md', '.mdx')):
                     md_files.append(os.path.join(root, file))
 
         create_command = f'gh issue create --title "GPT-TRANSLATOR" --body "GPT_TRANSLATOR"'
