@@ -1,67 +1,55 @@
-# 创建文档
+---
+sidebar_position: 2
+---
 
-文档是通过以下方式连接的**页面组**：
+# Create a Document
 
-- 一个**侧边栏**
-- **上一页/下一页导航**
-- **版本控制**
+Documents are **groups of pages** connected through:
 
-## 创建你的第一个文档
+- a **sidebar**
+- **previous/next navigation**
+- **versioning**
 
-在`docs/hello.md`中创建一个markdown文件：
+## Create your first Doc
+
+Create a markdown file at `docs/hello.md`:
 
 ```md title="docs/hello.md"
-# 你好
+# Hello
 
-<<<<<<< HEAD
-这是我的**第一个Docusaurus文档**！
-=======
 This is my **first Docusaurus document**!
-
->>>>>>> f0c174f (-)
 ```
 
-现在在`http://localhost:3000/docs/hello`上有一个新的文档可用。
+A new document is now available at `http://localhost:3000/docs/hello`.
 
-## 配置侧边栏
+## Configure the Sidebar
 
-Docusaurus会自动从`docs`文件夹中**创建一个侧边栏**。
+Docusaurus automatically **creates a sidebar** from the `docs` folder.
 
-添加元数据来自定义侧边栏的标签和位置：
+Add metadatas to customize the sidebar label and position:
 
 ```md title="docs/hello.md" {1-4}
 ---
-sidebar_label: '嗨！'
+sidebar_label: 'Hi!'
 sidebar_position: 3
 ---
 
-# 你好
+# Hello
 
-<<<<<<< HEAD
-这是我的**第一个Docusaurus文档**！
-=======
 This is my **first Docusaurus document**!
-
->>>>>>> f0c174f (-)
 ```
 
-也可以在`sidebars.js`中显式地创建你的侧边栏：
+It is also possible to create your sidebar explicitly in `sidebars.js`:
 
 ```diff title="sidebars.js"
 module.exports = {
   tutorialSidebar: [
     {
       type: 'category',
-      label: '教程',
+      label: 'Tutorial',
 -     items: [...],
 +     items: ['hello'],
     },
   ],
 };
-<<<<<<< HEAD
 ```
-=======
-
-
-```
->>>>>>> f0c174f (-)

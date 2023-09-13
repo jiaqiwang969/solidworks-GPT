@@ -1,10 +1,14 @@
-# 翻译您的网站
+---
+sidebar_position: 2
+---
 
-让我们将 `docs/intro.md` 翻译成法语。
+# Translate your site
 
-## 配置 i18n
+Let's translate `docs/intro.md` to French.
 
-修改 `docusaurus.config.js` 文件以添加对 `fr` 区域设置的支持：
+## Configure i18n
+
+Modify `docusaurus.config.js` to add support for the `fr` locale:
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -13,44 +17,41 @@ module.exports = {
     locales: ['en', 'fr'],
   },
 };
-
 ```
 
-## 翻译文档
+## Translate a doc
 
-将 `docs/intro.md` 文件复制到 `i18n/fr` 文件夹中：
+Copy the `docs/intro.md` file to the `i18n/fr` folder:
 
 ```bash
 mkdir -p i18n/fr/docusaurus-plugin-content-docs/current/
 
 cp docs/intro.md i18n/fr/docusaurus-plugin-content-docs/current/intro.md
-
 ```
 
-将 `i18n/fr/docusaurus-plugin-content-docs/current/intro.md` 文件翻译成法语。
+Translate `i18n/fr/docusaurus-plugin-content-docs/current/intro.md` in French.
 
-## 启动本地化站点
+## Start your localized site
 
-在法语区域设置上启动您的站点：
+Start your site on the French locale:
 
 ```bash
 npm run start -- --locale fr
-
 ```
 
-您的本地化站点可通过 `http://localhost:3000/fr/` 访问，并且 `Getting Started` 页面已被翻译。
+Your localized site is accessible at `http://localhost:3000/fr/` and the `Getting Started` page is translated.
 
 :::caution
 
-在开发中，您一次只能使用一个区域设置。
+In development, you can only use one locale at a same time.
 
 :::
 
-## 添加区域设置下拉菜单
+## Add a Locale Dropdown
 
-为了在不同语言之间无缝切换，添加一个区域设置下拉菜单。
+To navigate seamlessly across languages, add a locale dropdown.
 
-修改 `docusaurus.config.js` 文件：
+Modify the `docusaurus.config.js` file:
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -66,30 +67,22 @@ module.exports = {
     },
   },
 };
-
 ```
 
-现在，您的导航栏中会出现区域设置下拉菜单：
+The locale dropdown now appears in your navbar:
 
 ![Locale Dropdown](/img/tutorial/localeDropdown.png)
 
-## 构建本地化站点
+## Build your localized site
 
-为特定区域设置构建您的站点：
+Build your site for a specific locale:
 
 ```bash
 npm run build -- --locale fr
-
 ```
 
-或者一次性构建包含所有区域设置的站点：
+Or build your site to include all the locales at once:
 
 ```bash
 npm run build
-<<<<<<< HEAD
 ```
-=======
-
-
-```
->>>>>>> f0c174f (-)
