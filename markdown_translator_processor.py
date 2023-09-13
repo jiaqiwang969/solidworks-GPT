@@ -2,6 +2,7 @@ import re
 import os
 import subprocess
 import argparse
+import shutil
 
 class MarkdownProcessor:
     def __init__(self):
@@ -16,6 +17,8 @@ class MarkdownProcessor:
             self.main_complete(self.args.input_dir, self.args.output_dir)
         elif self.args.command == "merge":
             self.merge_pulls()
+        elif self.args.command == "copy":
+            self.copy(self.args.input_dir, self.args.output_dir)
         elif self.args.command == "help":
             self.display_help_message()
 
@@ -51,6 +54,33 @@ class MarkdownProcessor:
         6. pull
         7. push
         """)
+
+    def copy(self, input_dir, output_dir):
+        # Copy all files from input_dir to output_dir
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+        for item in os.listdir(input_dir):
+            input_item_path = os.path.join(input_dir, item)
+            output_item_path = os.path.join(output_dir, item)
+        
+            if os.path.isdir(input_item_path):
+                shutil.copytree(input_item_path, output_item_path)
+                self.copy(input_item_path, output_item_path)  # Recursively copy the sub-directory
+            else:
+                shutil.copy2(input_item_path, output_item_path)
+    
+        # Rename .md and .mdx files in the output_dir by prefixing with a dot
+        for filename in os.listdir(output_dir):
+            if filename.endswith(('.md', '.mdx')) and not filename.startswith('.'):
+                original_path = os.path.join(output_dir, filename)
+                new_filename = "." + filename
+                new_output_path = os.path.join(output_dir, new_filename)
+                os.rename(original_path, new_output_path)
+
+
+
+
+
 
     # Methods from markdown_processor-1.py
     def extract_header(self, original_md):
