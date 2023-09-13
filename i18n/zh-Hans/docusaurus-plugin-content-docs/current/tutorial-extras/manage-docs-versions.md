@@ -1,6 +1,4 @@
----
-sidebar_position: 1
----
+[#0]
 
 # 管理文档版本
 
@@ -10,9 +8,7 @@ Docusaurus可以管理多个版本的文档。
 
 发布项目的1.0版本：
 
-```bash
-npm run docusaurus docs:version 1.0
-```
+[#1]
 
 `docs`文件夹将被复制到`versioned_docs/version-1.0`，并创建`versions.json`文件。
 
@@ -27,21 +23,7 @@ npm run docusaurus docs:version 1.0
 
 修改`docusaurus.config.js`文件：
 
-```js title="docusaurus.config.js"
-module.exports = {
-  themeConfig: {
-    navbar: {
-      items: [
-        // highlight-start
-        {
-          type: 'docsVersionDropdown',
-        },
-        // highlight-end
-      ],
-    },
-  },
-};
-```
+[#2]
 
 文档版本下拉菜单将出现在导航栏中：
 

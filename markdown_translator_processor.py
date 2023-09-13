@@ -43,14 +43,13 @@ class MarkdownProcessor:
         python markdown_translator_processor.py [command] [--input_md_dir PATH] [--input_bak_dir PATH] [--output_dir PATH]
 
         Step:
-        1. Copy the files to i18n/zh-Hans/docusaurus-plugin-content-docs/current/
-        2. push to github
-        3. forward_process
-        4. translate
-        5. merge
-        6. reverse_process
-        7. pull
-        8. push
+        1. Copy the files to i18n/zh-Hans/docusaurus-plugin-content-docs/current/, and push
+        2. forward_process
+        3. translate
+        4. merge
+        5. reverse_process
+        6. pull
+        7. push
         """)
 
     # Methods from markdown_processor-1.py
