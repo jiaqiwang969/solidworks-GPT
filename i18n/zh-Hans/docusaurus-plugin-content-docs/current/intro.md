@@ -2,27 +2,27 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# 튜토리얼 소개
 
-Let's discover **Docusaurus in less than 5 minutes**.
+5분 이내로 **Docusaurus를 알아보세요**.
 
-## Getting Started
+## 시작하기
 
-Get started by **creating a new site**.
+**새로운 사이트를 생성**하여 시작하세요.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+또는 **[docusaurus.new](https://docusaurus.new)**를 사용하여 **즉시 Docusaurus를 시도**해보세요.
 
-## Generate a new site
+## 새로운 사이트 생성
 
-Generate a new Docusaurus site using the **classic template**:
+**클래식 템플릿**을 사용하여 새로운 Docusaurus 사이트를 생성하세요:
 
 ```shell
 npx @docusaurus/init@latest init my-website classic
 ```
 
-## Start your site
+## 사이트 시작하기
 
-Run the development server:
+개발 서버를 실행하세요:
 
 ```shell
 cd my-website
@@ -30,6 +30,6 @@ cd my-website
 npx docusaurus start
 ```
 
-Your site starts at `http://localhost:3000`.
+사이트는 `http://localhost:3000`에서 시작됩니다.
 
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and display your changes.
+`docs/intro.md`를 열고 몇 줄을 편집하세요: 사이트는 **자동으로 다시 로드**되며 변경 사항이 표시됩니다.
