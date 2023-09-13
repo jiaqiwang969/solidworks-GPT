@@ -1,19 +1,19 @@
 [#0]
 
-# Congratulations!
+# 恭喜！
 
-You have just learned the **basics of Docusaurus** and made some changes to the **initial template**.
+您刚刚学习了**Docusaurus的基础知识**，并对**初始模板**进行了一些更改。
 
-Docusaurus has **much more to offer**!
+Docusaurus还有**更多功能**等待您去探索！
 
-Have **5 more minutes**? Take a look at **[versioning](../tutorial-extras/manage-docs-versions.md)** and **[i18n](../tutorial-extras/translate-your-site.md)**.
+有**5分钟的时间**吗？看看**[版本控制](../tutorial-extras/manage-docs-versions.md)**和**[国际化](../tutorial-extras/translate-your-site.md)**。
 
-Anything **unclear** or **buggy** in this tutorial? [Please report it!](https://github.com/facebook/docusaurus/discussions/4610)
+本教程中有任何**不清楚**或**有问题**的地方？[请报告！](https://github.com/facebook/docusaurus/discussions/4610)
 
-## What's next?
+## 下一步是什么？
 
-- Read the [official documentation](https://docusaurus.io/).
-- Add a custom [Design and Layout](https://docusaurus.io/docs/styling-layout)
-- Add a [search bar](https://docusaurus.io/docs/search)
-- Find inspirations in the [Docusaurus showcase](https://docusaurus.io/showcase)
-- Get involved in the [Docusaurus Community](https://docusaurus.io/community/support)
+- 阅读[官方文档](https://docusaurus.io/)。
+- 添加自定义的[设计和布局](https://docusaurus.io/docs/styling-layout)。
+- 添加一个[搜索栏](https://docusaurus.io/docs/search)。
+- 在[Docusaurus展示](https://docusaurus.io/showcase)中寻找灵感。
+- 参与[Docusaurus社区](https://docusaurus.io/community/support)。
