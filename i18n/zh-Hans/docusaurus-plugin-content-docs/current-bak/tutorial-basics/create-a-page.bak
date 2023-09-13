@@ -1,0 +1,19 @@
+[#0]sidebar_position: 1
+[#1]jsx title="src/pages/my-react-page.js"
+import React from 'react';
+import Layout from '@theme/Layout';
+
+export default function MyReactPage() {
+  return (
+    <Layout>
+      <h1>My React page</h1>
+      <p>This is a React page</p>
+    </Layout>
+  );
+}
+
+[#2]mdx title="src/pages/my-markdown-page.md"
+# My Markdown page
+
+This is a Markdown page
+

@@ -1,6 +1,4 @@
----
-sidebar_position: 2
----
+[#0]
 
 # 创建文档
 
@@ -14,12 +12,7 @@ sidebar_position: 2
 
 在`docs/hello.md`中创建一个Markdown文件：
 
-```md title="docs/hello.md"
-# Hello
-
-This is my **first Docusaurus document**!
-
-```
+[#1]
 
 现在可以在`http://localhost:3000/docs/hello`上找到一个新的文档。
 
@@ -29,31 +22,8 @@ Docusaurus会自动从`docs`文件夹中**创建一个侧边栏**。
 
 添加元数据以自定义侧边栏的标签和位置：
 
-```md title="docs/hello.md" {1-4}
----
-sidebar_label: 'Hi!'
-sidebar_position: 3
----
-
-# Hello
-
-This is my **first Docusaurus document**!
-
-```
+[#2]
 
 也可以在`sidebars.js`中显式地创建侧边栏：
 
-```diff title="sidebars.js"
-module.exports = {
-  tutorialSidebar: [
-    {
-      type: 'category',
-      label: 'Tutorial',
--     items: [...],
-+     items: ['hello'],
-    },
-  ],
-};
-
-
-```
+[#3]

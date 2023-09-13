@@ -64,19 +64,28 @@ class MarkdownProcessor:
             with open(output_md_filepath, "w", encoding="utf-8") as output_file:
                 output_file.write(modified_md)
 
+
     def restore_code_blocks_from_bak(self, output_md, bak_txt):
-        code_blocks = re.split(r'\n?\[#{0,1}\d+\]', bak_txt)[1:]
-        for idx, code_block in enumerate(code_blocks, start=0):
+        # Split using the pattern [#number]
+        code_blocks = re.split(r'\n?\[\#{0,1}\d+\]', bak_txt)
+        code_blocks = [block for block in code_blocks if block]
+
+        original_md = output_md
+        for idx, block in enumerate(code_blocks, start=0):  # Start from 0 for header
             placeholder = f'[{chr(35)}{idx}]'
-            first_line, remaining_content = code_block.split("\n", 1)
-            output_md = output_md.replace(placeholder, f'```{first_line}\n{remaining_content}\n```', 1)
-        return output_md
+            if idx == 0:  # for header
+                original_md = original_md.replace(placeholder, f'---\n{block}\n---', 1)
+            else:
+                first_line, remaining_content = block.split("\n", 1)
+                original_md = original_md.replace(placeholder, f'```{first_line}\n{remaining_content}\n```', 1)
+        
+        return original_md
 
 
     def reverse_process(self, input_md_dir, input_bak_dir, output_dir):
         # Get all markdown files in the input_md_dir
         md_files = [os.path.join(root, file) for root, _, files in os.walk(input_md_dir) for file in files if file.endswith('.md')]
-        
+
         for md_file in md_files:
             # Calculate the relative path to keep the same directory structure
             relative_path = os.path.relpath(md_file, input_md_dir)
@@ -84,7 +93,7 @@ class MarkdownProcessor:
             # Construct the paths for the corresponding .bak files and output .md files
             input_bak_filepath = os.path.join(input_bak_dir, relative_path.replace('.md', '.bak'))
             output_md_filepath = os.path.join(output_dir, relative_path)
-            
+
             # Create necessary directories for the output files
             os.makedirs(os.path.dirname(output_md_filepath), exist_ok=True)
 
@@ -93,9 +102,10 @@ class MarkdownProcessor:
                 bak_txt = bak_f.read()
 
             original_md = self.restore_code_blocks_from_bak(output_md, bak_txt)
-            
+
             with open(output_md_filepath, "w", encoding="utf-8") as output_file:
                 output_file.write(original_md)
+
 
 
 

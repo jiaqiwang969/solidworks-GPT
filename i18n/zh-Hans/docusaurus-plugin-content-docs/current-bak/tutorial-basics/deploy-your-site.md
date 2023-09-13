@@ -1,6 +1,4 @@
----
-sidebar_position: 5
----
+[#0]
 
 # 部署您的网站
 
@@ -12,10 +10,7 @@ Docusaurus是一个静态网站生成器（也称为Jamstack）。
 
 为生产环境构建您的网站：
 
-```bash
-npm run build
-
-```
+[#1]
 
 静态文件将生成在`build`文件夹中。
 
@@ -23,11 +18,7 @@ npm run build
 
 在本地测试您的生产构建：
 
-```bash
-npm run serve
-
-
-```
+[#2]
 
 `build`文件夹现在在`http://localhost:3000/`上提供服务。
 

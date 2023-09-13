@@ -1,6 +1,4 @@
----
-sidebar_position: 1
----
+[#0]
 
 # 教程介绍
 
@@ -16,22 +14,13 @@ sidebar_position: 1
 
 使用**经典模板**生成一个新的Docusaurus站点：
 
-```shell
-npx @docusaurus/init@latest init my-website classic
-
-```
+[#1]
 
 ## 启动你的站点
 
 运行开发服务器：
 
-```shell
-cd my-website
-
-npx docusaurus start
-
-
-```
+[#2]
 
 你的站点将在`http://localhost:3000`上启动。
 

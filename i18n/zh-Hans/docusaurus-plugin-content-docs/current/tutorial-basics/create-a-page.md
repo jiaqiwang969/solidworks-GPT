@@ -1,4 +1,6 @@
-[#0]
+---
+sidebar_position: 1
+---
 
 # 创建页面
 
@@ -12,7 +14,20 @@
 
 在`src/pages`中创建一个文件`my-react-page.js`：
 
-[#1]
+```jsx title="src/pages/my-react-page.js"
+import React from 'react';
+import Layout from '@theme/Layout';
+
+export default function MyReactPage() {
+  return (
+    <Layout>
+      <h1>My React page</h1>
+      <p>This is a React page</p>
+    </Layout>
+  );
+}
+
+```
 
 现在可以在`http://localhost:3000/my-react-page`找到一个新页面。
 
@@ -20,6 +35,12 @@
 
 在`src/pages`中创建一个文件`my-markdown-page.md`：
 
-[#2]
+```mdx title="src/pages/my-markdown-page.md"
+# My Markdown page
+
+This is a Markdown page
+
+
+```
 
 现在可以在`http://localhost:3000/my-markdown-page`找到一个新页面。
