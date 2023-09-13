@@ -2,27 +2,27 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# チュートリアルイントロ
 
-Let's discover **Docusaurus in less than 5 minutes**.
+5分以内で**Docusaurusを発見**しましょう。
 
-## Getting Started
+## はじめに
 
-Get started by **creating a new site**.
+**新しいサイトを作成**して始めましょう。
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+または、**[docusaurus.new](https://docusaurus.new)**で**すぐにDocusaurusを試してみて**ください。
 
-## Generate a new site
+## 新しいサイトを生成
 
-Generate a new Docusaurus site using the **classic template**:
+**クラシックテンプレート**を使用して新しいDocusaurusサイトを生成します：
 
 ```shell
 npx @docusaurus/init@latest init my-website classic
 ```
 
-## Start your site
+## サイトを開始
 
-Run the development server:
+開発サーバーを実行します：
 
 ```shell
 cd my-website
@@ -30,6 +30,6 @@ cd my-website
 npx docusaurus start
 ```
 
-Your site starts at `http://localhost:3000`.
+サイトは`http://localhost:3000`で開始されます。
 
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and display your changes.
+`docs/intro.md`を開き、いくつかの行を編集します：サイトは**自動的にリロード**され、変更内容が表示されます。
