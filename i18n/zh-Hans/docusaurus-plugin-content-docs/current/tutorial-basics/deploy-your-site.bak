@@ -1,7 +1,0 @@
-[#0]sidebar_position: 5
-[#1]bash
-npm run build
-
-[#2]bash
-npm run serve
-

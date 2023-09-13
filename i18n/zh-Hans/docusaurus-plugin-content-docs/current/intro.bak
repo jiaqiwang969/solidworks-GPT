@@ -1,9 +1,0 @@
-[#0]sidebar_position: 1
-[#1]shell
-npx @docusaurus/init@latest init my-website classic
-
-[#2]shell
-cd my-website
-
-npx docusaurus start
-

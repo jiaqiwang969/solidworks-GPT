@@ -11,7 +11,7 @@ class MarkdownProcessor:
         if self.args.command == "forward_process":
             self.forward_process(self.args.input_dir, self.args.output_dir)
         elif self.args.command == "reverse_process":
-            self.reverse_process(self.args.input_md_dir, self.args.input_bak_dir, self.args.output_dir)
+            self.reverse_process(self.args.input_dir, self.args.input_bak_dir, self.args.output_dir)
         elif self.args.command == "translate":
             self.main_complete(self.args.input_dir, self.args.output_dir)
         elif self.args.command == "merge":
@@ -37,7 +37,7 @@ class MarkdownProcessor:
                 bak_file.write(f'[{chr(35)}{idx}]{first_line}\n{remaining_content}\n')
     def forward_process(self, input_dir, output_dir):
         # Get all markdown files in the input directory
-        md_files = [os.path.join(root, file) for root, _, files in os.walk(input_dir) for file in files if file.endswith('.md')]
+        md_files = [os.path.join(root, file) for root, _, files in os.walk(input_dir) for file in files if file.endswith('.md','mdx')]
         
         for md_file in md_files:
             # Calculate the relative path to keep the same directory structure
@@ -45,7 +45,7 @@ class MarkdownProcessor:
 
             # Construct the output paths for the .md and .bak files
             output_md_filepath = os.path.join(output_dir, relative_path)
-            output_bak_filepath = os.path.join(output_dir, relative_path.replace('.md', '.bak'))
+            output_bak_filepath = os.path.join(output_bak_dir, relative_path.rsplit('.', 1)[0] + '.bak')
             
             # Create necessary directories for the output files
             os.makedirs(os.path.dirname(output_md_filepath), exist_ok=True)
@@ -82,16 +82,16 @@ class MarkdownProcessor:
         return original_md
 
 
-    def reverse_process(self, input_md_dir, input_bak_dir, output_dir):
-        # Get all markdown files in the input_md_dir
-        md_files = [os.path.join(root, file) for root, _, files in os.walk(input_md_dir) for file in files if file.endswith('.md')]
+    def reverse_process(self, input_dir, input_bak_dir, output_dir):
+        # Get all markdown files in the input_dir
+        md_files = [os.path.join(root, file) for root, _, files in os.walk(input_dir) for file in files if file.endswith('.md','.mdx')]
 
         for md_file in md_files:
             # Calculate the relative path to keep the same directory structure
-            relative_path = os.path.relpath(md_file, input_md_dir)
+            relative_path = os.path.relpath(md_file, input_dir)
 
-            # Construct the paths for the corresponding .bak files and output .md files
-            input_bak_filepath = os.path.join(input_bak_dir, relative_path.replace('.md', '.bak'))
+            # Construct the paths for the corresponding .bak files and output .md or .mdx files
+            input_bak_filepath = os.path.join(input_bak_dir, relative_path.rsplit('.', 1)[0] + '.bak')
             output_md_filepath = os.path.join(output_dir, relative_path)
 
             # Create necessary directories for the output files
@@ -155,11 +155,10 @@ class MarkdownProcessor:
         parser.add_argument("command", help="Command to be executed (forward_process, reverse_process, translate, merge)")
         
         # Arguments for markdown processing
-        parser.add_argument('--input_dir', help='Input directory for forward_process or translate command')
-        parser.add_argument('--input_md_dir', help='Input markdown directory for reverse_process command')
-        parser.add_argument('--input_bak_dir', help='Input bak directory for reverse_process command')
-        parser.add_argument('--output_dir', help='Output directory for any processing or translation command')
-        
+        parser.add_argument("--input_dir", default="i18n/zh-Hans/docusaurus-plugin-content-docs/current", help="Directory containing the markdown/mdx files.")
+parser.add_argument("--input_bak_dir", default="i18n/zh-Hans/docusaurus-plugin-content-docs/current", help="Directory containing the backup files.")
+parser.add_argument("--output_dir", default="i18n/zh-Hans/docusaurus-plugin-content-docs/current", help="Directory where the processed files will be saved.")
+
         return parser.parse_args()
 
 
