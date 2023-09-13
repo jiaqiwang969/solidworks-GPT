@@ -1,4 +1,6 @@
-[#0]
+---
+sidebar_position: 2
+---
 
 # Translate your site
 
@@ -8,13 +10,24 @@ Let's translate `docs/intro.md` to French.
 
 Modify `docusaurus.config.js` to add support for the `fr` locale:
 
-[#1]
+```js title="docusaurus.config.js"
+module.exports = {
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'fr'],
+  },
+};
+```
 
 ## Translate a doc
 
 Copy the `docs/intro.md` file to the `i18n/fr` folder:
 
-[#2]
+```bash
+mkdir -p i18n/fr/docusaurus-plugin-content-docs/current/
+
+cp docs/intro.md i18n/fr/docusaurus-plugin-content-docs/current/intro.md
+```
 
 Translate `i18n/fr/docusaurus-plugin-content-docs/current/intro.md` in French.
 
@@ -22,7 +35,9 @@ Translate `i18n/fr/docusaurus-plugin-content-docs/current/intro.md` in French.
 
 Start your site on the French locale:
 
-[#3]
+```bash
+npm run start -- --locale fr
+```
 
 Your localized site is accessible at `http://localhost:3000/fr/` and the `Getting Started` page is translated.
 
@@ -38,7 +53,21 @@ To navigate seamlessly across languages, add a locale dropdown.
 
 Modify the `docusaurus.config.js` file:
 
-[#4]
+```js title="docusaurus.config.js"
+module.exports = {
+  themeConfig: {
+    navbar: {
+      items: [
+        // highlight-start
+        {
+          type: 'localeDropdown',
+        },
+        // highlight-end
+      ],
+    },
+  },
+};
+```
 
 The locale dropdown now appears in your navbar:
 
@@ -48,8 +77,12 @@ The locale dropdown now appears in your navbar:
 
 Build your site for a specific locale:
 
-[#5]
+```bash
+npm run build -- --locale fr
+```
 
 Or build your site to include all the locales at once:
 
-[#6]
+```bash
+npm run build
+```

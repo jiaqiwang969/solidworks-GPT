@@ -1,4 +1,6 @@
-[#0]
+---
+sidebar_position: 2
+---
 
 # Create a Document
 
@@ -12,7 +14,11 @@ Documents are **groups of pages** connected through:
 
 Create a markdown file at `docs/hello.md`:
 
-[#1]
+```md title="docs/hello.md"
+# Hello
+
+This is my **first Docusaurus document**!
+```
 
 A new document is now available at `http://localhost:3000/docs/hello`.
 
@@ -22,8 +28,28 @@ Docusaurus automatically **creates a sidebar** from the `docs` folder.
 
 Add metadatas to customize the sidebar label and position:
 
-[#2]
+```md title="docs/hello.md" {1-4}
+---
+sidebar_label: 'Hi!'
+sidebar_position: 3
+---
+
+# Hello
+
+This is my **first Docusaurus document**!
+```
 
 It is also possible to create your sidebar explicitly in `sidebars.js`:
 
-[#3]
+```diff title="sidebars.js"
+module.exports = {
+  tutorialSidebar: [
+    {
+      type: 'category',
+      label: 'Tutorial',
+-     items: [...],
++     items: ['hello'],
+    },
+  ],
+};
+```
