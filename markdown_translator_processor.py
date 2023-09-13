@@ -35,18 +35,21 @@ class MarkdownProcessor:
             for idx, match in enumerate(matches, start=1):
                 first_line, remaining_content = match.split("\n", 1)
                 bak_file.write(f'[{chr(35)}{idx}]{first_line}\n{remaining_content}\n')
-
-
-
     def forward_process(self, input_dir, output_dir):
-        # Ensure the output directory exists
-        if not os.path.exists(output_dir):
-            os.makedirs(output_dir)
-
         # Get all markdown files in the input directory
         md_files = [os.path.join(root, file) for root, _, files in os.walk(input_dir) for file in files if file.endswith('.md')]
         
         for md_file in md_files:
+            # Calculate the relative path to keep the same directory structure
+            relative_path = os.path.relpath(md_file, input_dir)
+
+            # Construct the output paths for the .md and .bak files
+            output_md_filepath = os.path.join(output_dir, relative_path)
+            output_bak_filepath = os.path.join(output_dir, relative_path.replace('.md', '.bak'))
+            
+            # Create necessary directories for the output files
+            os.makedirs(os.path.dirname(output_md_filepath), exist_ok=True)
+
             with open(md_file, 'r', encoding="utf-8") as file:
                 original_md = file.read()
 
@@ -56,13 +59,10 @@ class MarkdownProcessor:
             
             matches = re.findall(r'```(.*?\n.*?[^`])```', original_md, re.DOTALL)
             modified_md = self.replace_code_blocks_with_placeholders(original_md)
-            bak_filepath = os.path.join(output_dir, os.path.basename(md_file).replace('.md', '.bak'))
-            self.write_code_blocks_to_bak(matches, bak_filepath, header_content)
+            self.write_code_blocks_to_bak(matches, output_bak_filepath, header_content)
             
-            output_filepath = os.path.join(output_dir, os.path.basename(md_file))
-            with open(output_filepath, "w", encoding="utf-8") as output_file:
+            with open(output_md_filepath, "w", encoding="utf-8") as output_file:
                 output_file.write(modified_md)
-
 
     def restore_code_blocks_from_bak(self, output_md, bak_txt):
         code_blocks = re.split(r'\n?\[#{0,1}\d+\]', bak_txt)[1:]
@@ -74,24 +74,29 @@ class MarkdownProcessor:
 
 
     def reverse_process(self, input_md_dir, input_bak_dir, output_dir):
-        # Ensure the output directory exists
-        if not os.path.exists(output_dir):
-            os.makedirs(output_dir)
-
-        # Get all markdown files in the input directory
+        # Get all markdown files in the input_md_dir
         md_files = [os.path.join(root, file) for root, _, files in os.walk(input_md_dir) for file in files if file.endswith('.md')]
         
         for md_file in md_files:
-            filename = os.path.basename(md_file)
-            bak_filepath = os.path.join(input_bak_dir, filename.replace('.md', '.bak'))
-            with open(md_file, 'r', encoding="utf-8") as md_f, open(bak_filepath, 'r', encoding="utf-8") as bak_f:
+            # Calculate the relative path to keep the same directory structure
+            relative_path = os.path.relpath(md_file, input_md_dir)
+
+            # Construct the paths for the corresponding .bak files and output .md files
+            input_bak_filepath = os.path.join(input_bak_dir, relative_path.replace('.md', '.bak'))
+            output_md_filepath = os.path.join(output_dir, relative_path)
+            
+            # Create necessary directories for the output files
+            os.makedirs(os.path.dirname(output_md_filepath), exist_ok=True)
+
+            with open(md_file, 'r', encoding="utf-8") as md_f, open(input_bak_filepath, 'r', encoding="utf-8") as bak_f:
                 output_md = md_f.read()
                 bak_txt = bak_f.read()
 
             original_md = self.restore_code_blocks_from_bak(output_md, bak_txt)
-            output_filepath = os.path.join(output_dir, filename)
-            with open(output_filepath, "w", encoding="utf-8") as output_file:
+            
+            with open(output_md_filepath, "w", encoding="utf-8") as output_file:
                 output_file.write(original_md)
+
 
 
     # Methods from mdTranslator.py

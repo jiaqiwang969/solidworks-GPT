@@ -1,6 +1,4 @@
----
-sidebar_position: 1
----
+[#0]
 
 # Manage Docs Versions
 
@@ -10,9 +8,7 @@ Docusaurus can manage multiple versions of your docs.
 
 Release a version 1.0 of your project:
 
-```bash
-npm run docusaurus docs:version 1.0
-```
+[#1]
 
 The `docs` folder is copied into `versioned_docs/version-1.0` and `versions.json` is created.
 
@@ -27,21 +23,7 @@ To navigate seamlessly across versions, add a version dropdown.
 
 Modify the `docusaurus.config.js` file:
 
-```js title="docusaurus.config.js"
-module.exports = {
-  themeConfig: {
-    navbar: {
-      items: [
-        // highlight-start
-        {
-          type: 'docsVersionDropdown',
-        },
-        // highlight-end
-      ],
-    },
-  },
-};
-```
+[#2]
 
 The docs version dropdown appears in your navbar:
 
