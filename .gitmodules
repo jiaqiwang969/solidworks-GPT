@@ -1,3 +1,6 @@
 [submodule "docs/codestack"]
 	path = docs/codestack
 	url = https://github.com/jiaqiwang969/codestack
+[submodule "docs/--force"]
+	path = docs/--force
+	url = git@github.com:jiaqiwang969/codestack.git
