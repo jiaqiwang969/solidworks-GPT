@@ -2,20 +2,20 @@
 sidebar_position: 6
 ---
 
-# Congratulations!
+# おめでとうございます！
 
-You have just learned the **basics of Docusaurus** and made some changes to the **initial template**.
+**Docusaurusの基礎**を学び、**初期テンプレート**に変更を加えました。
 
-Docusaurus has **much more to offer**!
+Docusaurusには**さらに多くの機能**があります！
 
-Have **5 more minutes**? Take a look at **[versioning](../tutorial-extras/manage-docs-versions.md)** and **[i18n](../tutorial-extras/translate-your-site.md)**.
+**5分**お時間ありますか？ **[バージョニング](../tutorial-extras/manage-docs-versions.md)**と**[i18n](../tutorial-extras/translate-your-site.md)**をご覧ください。
 
-Anything **unclear** or **buggy** in this tutorial? [Please report it!](https://github.com/facebook/docusaurus/discussions/4610)
+このチュートリアルについて**不明な点**や**バグ**がありましたら、[報告してください！](https://github.com/facebook/docusaurus/discussions/4610)
 
-## What's next?
+## 次は何をすればいいですか？
 
-- Read the [official documentation](https://docusaurus.io/).
-- Add a custom [Design and Layout](https://docusaurus.io/docs/styling-layout)
-- Add a [search bar](https://docusaurus.io/docs/search)
-- Find inspirations in the [Docusaurus showcase](https://docusaurus.io/showcase)
-- Get involved in the [Docusaurus Community](https://docusaurus.io/community/support)
+- [公式ドキュメント](https://docusaurus.io/)を読む。
+- カスタムの[デザインとレイアウト](https://docusaurus.io/docs/styling-layout)を追加する。
+- [検索バー](https://docusaurus.io/docs/search)を追加する。
+- [Docusaurusのショーケース](https://docusaurus.io/showcase)でインスピレーションを見つける。
+- [Docusaurusコミュニティ](https://docusaurus.io/community/support)に参加する。
