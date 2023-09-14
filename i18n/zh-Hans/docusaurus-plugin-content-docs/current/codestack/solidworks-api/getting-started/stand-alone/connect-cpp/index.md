@@ -1,45 +1,45 @@
 ---
-title: Create C++ Stand-Alone (exe) application for SOLIDWORKS
-caption: Create C++ Stand-Alone Application for SOLIDWORKS
-description: Guide for how to connect to SOLIDWORKS application from out-of-process (a.k.a Stand-Alone) application (e.g. MFC, Win32 Console Application) using C++ and Microsoft Visual Studio
+title: 创建C++独立应用程序（exe）用于SOLIDWORKS
+caption: 创建C++独立应用程序用于SOLIDWORKS
+description: 使用C++和Microsoft Visual Studio从外部进程（即独立应用程序，如MFC、Win32控制台应用程序）连接到SOLIDWORKS应用程序的指南
 sidebar_position: 3
 image: proj-templ.png
 labels: [c++, CoCreateInstance, create instance, example, getobject, rot, sdk, solidworks api, tlb, type library]
 redirect-from:
   - /2018/03/create-c-stand-alone-application-for_5.html
 ---
-In this tutorial I will demonstrate how to connect to SOLIDWORKS application from out-of-process (a.k.a Stand-Alone) application (e.g. MFC, Win32 Console Application) using C++ and Microsoft Visual Studio.
+在本教程中，我将演示如何使用C++和Microsoft Visual Studio从外部进程（即独立应用程序，如MFC、Win32控制台应用程序）连接到SOLIDWORKS应用程序。
 
-For more detailed explanation of the approaches discussed in this article refer the [Connect To SOLIDWORKS From Stand-Alone Application](/docs/codestack/solidworks-api/getting-started/stand-alone/) article.
+有关本文讨论的方法的更详细说明，请参阅[从独立应用程序连接到SOLIDWORKS](/docs/codestack/solidworks-api/getting-started/stand-alone/)文章。
 
-## Creating new project
+## 创建新项目
 
-I will be using Microsoft Visual Studio development environment. You can use any edition of Visual Studio.
-The same code will work in Professional, Express or Community editions. Follow this link to download [Visual Studio](https://www.visualstudio.com/vs/community/)
+我将使用Microsoft Visual Studio开发环境。您可以使用任何版本的Visual Studio。
+相同的代码将适用于专业版、Express版或Community版。请点击此链接下载[Visual Studio](https://www.visualstudio.com/vs/community/)
 
-* Open Visual Studio
-* Start new project:
+* 打开Visual Studio
+* 开始新项目：
 
-![Creating new project in Visual Studio](new-project.png){ width=400 }
+![在Visual Studio中创建新项目](new-project.png){ width=400 }
 
-* Select the project template. I would recommend to start with Win32 Console Application project template as it contains the minimum pregenerated code:
+* 选择项目模板。我建议使用Win32控制台应用程序项目模板，因为它包含最少的预生成代码：
 
-![Selecting the Win32 Console Application C++ project template](proj-templ.png){ width=640 }
+![选择Win32控制台应用程序C++项目模板](proj-templ.png){ width=640 }
 
-* Check the ATL option in the project wizard
+* 在项目向导中选中ATL选项
 
-![Win32 Console Application template settings](apps-settings.png){ width=640 }
+![Win32控制台应用程序模板设置](apps-settings.png){ width=640 }
 
-* Link directory where SOLIDWORKS type libraries are located.
-This is an installation directory of SOLIDWORKS (Go to Project Properties, select C/C++ and browse the path in the *Additional Include Directories* field):
+* 链接SOLIDWORKS类型库所在的目录。
+这是SOLIDWORKS的安装目录（转到项目属性，选择C/C++，在“附加包含目录”字段中浏览路径）：
 
-![Additional Include Directories option in C++ project](add-incl-dir.png){ width=640 }
+![C++项目中的附加包含目录选项](add-incl-dir.png){ width=640 }
 
-Now we can add the code to connect to SOLIDWORKS instance.  
+现在我们可以添加连接到SOLIDWORKS实例的代码。
 
-## Creating or connecting to instance
+## 创建或连接实例
 
-Probably the most common and quick way to connect to COM server is using the [CoCreateInstance](https://msdn.microsoft.com/en-us/library/windows/desktop/ms686615(v=vs.85).aspx) function.  
+连接到COM服务器的最常见和快速的方法是使用[CoCreateInstance](https://msdn.microsoft.com/en-us/library/windows/desktop/ms686615(v=vs.85).aspx)函数。
 
 ~~~ cpp
 #include "stdafx.h"
@@ -63,7 +63,7 @@ int main()
     pSwApp = NULL;
     ::CoUninitialize();
 
-    //wait for input (do not close console to see results)
+    //等待输入（不要关闭控制台以查看结果）
     std::cin.get();
 
     return 0;
@@ -71,12 +71,10 @@ int main()
 
 ~~~
 
+## 通过ROT获取运行实例
 
-
-## Getting the running instance via ROT
-
-In order to connect to already running specific session of SOLIDWORKS or to be able to create multiple sessions you can use Running Object Table APIs.
-Please read the [Connect To SOLIDWORKS From Stand-Alone Application](/docs/codestack/solidworks-api/getting-started/stand-alone#method-b---running-object-table-rot) article for more details about this approach.
+为了连接到已经运行的特定SOLIDWORKS会话或能够创建多个会话，您可以使用Running Object Table（ROT）API。
+有关此方法的更多详细信息，请阅读[从独立应用程序连接到SOLIDWORKS](/docs/codestack/solidworks-api/getting-started/stand-alone#method-b---running-object-table-rot)文章。
 
 ~~~ cpp
 #include "stdafx.h"
@@ -216,7 +214,7 @@ int main()
     
     ::CoUninitialize();
 
-    //wait for input (do not close console to see results)
+    //等待输入（不要关闭控制台以查看结果）
     std::cin.get();
     
     return 0;
@@ -225,8 +223,6 @@ int main()
 
 ~~~
 
-
-
-In the above example new session of SOLIDWORKS is launched by starting new process from SOLIDWORKS application installation path.
-*ConnectToSwApp* function requires the full path to **sldworks.exe** as first parameter and timeout in seconds as second parameter.
-Timeout will ensure that the application won't be locked in case process failed to start.
+在上面的示例中，通过从SOLIDWORKS应用程序安装路径启动新进程来启动SOLIDWORKS的新会话。
+*ConnectToSwApp*函数需要第一个参数为**sldworks.exe**的完整路径，第二个参数为超时时间（以秒为单位）。
+超时时间将确保应用程序在进程启动失败的情况下不会被锁定。
