@@ -1,21 +1,21 @@
 ---
 layout: sw-tool
-title: Export part to Parasolid via Document Manager API (without SOLIDWORKS)
-caption: Export Part File To Parasolid
-description: Power Shell script to export part file to parasolid format (.xmp_bin) from command line via Document Manager API (without SOLIDWORKS)
+title: 通过文档管理器 API（无需 SOLIDWORKS）将零件导出为 Parasolid
+caption: 导出零件文件到 Parasolid
+description: 使用 SOLIDWORKS 文档管理器 API 通过命令行将零件文件导出为 Parasolid 格式（.xmp_bin）的 PowerShell 脚本
 image: export-parasolid.svg
 labels: [export,parasolid]
 group: Import/Export
 ---
-This PowerShell script allows exporting the SOLIDWORKS part file into the parasolid format (.xmp_bin) from the command line using SOLIDWORKS Document Manager API
+此 PowerShell 脚本允许使用 SOLIDWORKS 文档管理器 API 从命令行将 SOLIDWORKS 零件文件导出为 Parasolid 格式（.xmp_bin）。
 
-This file can be opened in any compatible CAD application (SOLIDWORKS, Solid Edge, etc.)
+该文件可以在任何兼容的 CAD 应用程序（如 SOLIDWORKS、Solid Edge 等）中打开。
 
-This script doesn't require SOLIDWORKS to be installed and doesn't consume SOLIDWORKS license.
+此脚本不需要安装 SOLIDWORKS，也不会消耗 SOLIDWORKS 许可证。
 
-## Configuration and usage instructions
+## 配置和使用说明
 
-* Create two files and paste the code from the below snippets
+* 创建两个文件，并将下面片段中的代码粘贴到这两个文件中。
 
 ### export-parasolid.ps1
 
@@ -165,22 +165,22 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -File "%~dp0export-parasolid.ps1" 
 
 
 
-* Copy the *SolidWorks.Interop.swdocumentmgr.dll* into the folder where the above scripts are created. PowerShell script is based on .NET Framework 2.0 so the SOLIDWORKS Document Manager interop must target this framework. The dll can be found at: **SOLIDWORKS Installation Folder**\api\redist\CLR2\SolidWorks.Interop.swdocumentmgr.dll
+* 将 *SolidWorks.Interop.swdocumentmgr.dll* 复制到创建上述脚本的文件夹中。PowerShell 脚本基于 .NET Framework 2.0，因此 SOLIDWORKS 文档管理器互操作必须针对此框架。该 dll 可在以下位置找到：**SOLIDWORKS 安装文件夹**\api\redist\CLR2\SolidWorks.Interop.swdocumentmgr.dll
 
-Alternatively full path to interop can be specified as shown below. In this case it is not required to copy this dll into the folder with script files.
+或者，可以指定互操作的完整路径，如下所示。在这种情况下，不需要将此 dll 复制到脚本文件夹中。
 
 ~~~ ps1
 $Assem = ( 
-   "Full path to SolidWorks.Interop.swdocumentmgr.dll"
+   "SolidWorks.Interop.swdocumentmgr.dll 的完整路径"
     ) 
 ~~~
 
-* Start the command line and execute the following command
+* 启动命令行并执行以下命令
 
 ~~~ bat
-> [Full Path To export-parasolid.cmd] [Full Path To Input SOLIDWORKS file] [Full Path to output directory]
+> [export-parasolid.cmd 的完整路径] [输入 SOLIDWORKS 文件的完整路径] [输出目录的完整路径]
 ~~~
 
-As the result all bodies from all configurations of the file are exported to the specified directory (directory is automatically created if not exist). Output files are named as following: *[original file name]_[configuration name].xmp_bin* The process log is displayed directly in the console:
+结果是将文件的所有配置的所有实体导出到指定目录（如果目录不存在，则会自动创建）。输出文件的命名方式如下：*[原始文件名]_[配置名].xmp_bin*。进程日志直接显示在控制台中：
 
-![Parasolid export console output](export-parasolid-console-output.png)
+![Parasolid 导出控制台输出](export-parasolid-console-output.png)
