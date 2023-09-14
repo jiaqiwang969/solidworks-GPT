@@ -1,16 +1,12 @@
 ---
-title: Usage of IEdmVault5 interface in SOLIDWORKS PDM API
+title: SOLIDWORKS PDM API 中 IEdmVault5 接口的用法
 caption: Vault
-description: Collection of code examples and tutorials for usage of IEdmVault5 interface in SOLIDWORKS PDM API
-sidebar_position: 2
----
-[IEdmVault5](https://help.solidworks.com/2018/english/api/epdmapi/epdm.interop.epdm~epdm.interop.epdm.iedmvault5.html) interface is a root object in the SOLIDWORKS PDM API object model. It provides an access to the base services of the system, such as:
+description: IEdmVault5 接口在 SOLIDWORKS PDM API 对象模型中是一个根对象。它提供了对系统的基本服务的访问，包括：
+* 用户管理
+* 批量操作
+* 数据卡管理
+* 工作流管理
 
-* User Management
-* Batch operations
-* Data card management
-* Workflow management
+在独立应用程序中，可以通过构造函数创建指向 vault 的指针。要初始化变量，需要调用 [IEdmVault5::Login](https://help.solidworks.com/2018/english/api/epdmapi/EPDM.Interop.epdm~EPDM.Interop.epdm.IEdmVault5~Login.html) 或 [IEdmVault5::LoginAuto](https://help.solidworks.com/2018/english/api/epdmapi/EPDM.Interop.epdm~EPDM.Interop.epdm.IEdmVault5~LoginAuto.html)。第一种方法需要输入所有凭据，而第二种方法提供了集成登录，即显示默认的 SOLIDWORKS PDM 登录页面或自动登录用户。
 
-In the stand-alone application pointer to the vault can be created via constructor. To initialize the variable it is required to call the [IEdmVault5::Login](https://help.solidworks.com/2018/english/api/epdmapi/EPDM.Interop.epdm~EPDM.Interop.epdm.IEdmVault5~Login.html) or [IEdmVault5::LoginAuto](https://help.solidworks.com/2018/english/api/epdmapi/EPDM.Interop.epdm~EPDM.Interop.epdm.IEdmVault5~LoginAuto.html). The first method requires to enter all credentials while second one provides the integrated login, i.e. default SOLIDWORKS PDM login page is displayed or user can be automatically logged in.
-
-Pointer to the initialized instance of [IEdmVault5](https://help.solidworks.com/2018/english/api/epdmapi/epdm.interop.epdm~epdm.interop.epdm.iedmvault5.html) is passed to the [IEdmAddIn5:OnCmd](https://help.solidworks.com/2018/english/api/epdmapi/epdm.interop.epdm~epdm.interop.epdm.iedmaddin5~oncmd.html) overload when creating the SOLIDWORKS PDM add-in so it is not required to perform the login operation on that object in this case.
+在创建 SOLIDWORKS PDM 插件时，将初始化的 [IEdmVault5](https://help.solidworks.com/2018/english/api/epdmapi/epdm.interop.epdm~epdm.interop.epdm.iedmvault5.html) 实例的指针传递给 [IEdmAddIn5:OnCmd](https://help.solidworks.com/2018/english/api/epdmapi/epdm.interop.epdm~epdm.interop.epdm.iedmaddin5~oncmd.html) 重载，因此在这种情况下不需要对该对象执行登录操作。
