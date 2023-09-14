@@ -1,17 +1,17 @@
 ---
-title: Read configuration specific cut-list property from the selected component using SOLIDWORKS API
-caption: Read Component Cut-List Properties
-description: VBA macro to read all properties from the cut-list of the selected component in the assembly with respect to the component configuration using SOLIDWORKS API
+title: 使用SOLIDWORKS API从所选组件中读取配置特定的切割列表属性
+caption: 读取组件切割列表属性
+description: 使用SOLIDWORKS API从装配体中所选组件的切割列表中读取所有属性的VBA宏示例
 image: cut-list-properties.png
-labels: [cut-list property,component]
+labels: [切割列表属性,组件]
 ---
-![Cut list properties](cut-list-properties.png){ width=550 }
+![切割列表属性](cut-list-properties.png){ width=550 }
 
-This VBA macro example demonstrates how to read and print all custom properties from all cut-list elements of the selected component in assembly using SOLIDWORKS API.
+此VBA宏示例演示了如何使用SOLIDWORKS API从装配体中所选组件的切割列表中读取并打印所有自定义属性。
 
-Cut-lists are read from the respective referenced configuration of the component.
+切割列表是从组件的相应引用配置中读取的。
 
-Result is output to the immediate window of VBA editor in the following format.
+结果以以下格式输出到VBA编辑器的即时窗口中。
 
 ~~~
 CS-02-1 (A)
@@ -58,14 +58,14 @@ Sub main()
             If Not swComp Is Nothing Then
                 PrintComponentCutListProperties swComp
             Else
-                MsgBox "Please select component"
+                MsgBox "请选择组件"
             End If
             
         Else
-            MsgBox "Active document is not an assembly"
+            MsgBox "活动文档不是装配体"
         End If
     Else
-        MsgBox "Please open assembly"
+        MsgBox "请打开装配体"
     End If
     
 End Sub
@@ -110,7 +110,7 @@ Sub PrintComponentCutListProperties(comp As SldWorks.Component2)
             
         Next
     Else
-        Debug.Print "    -No Cut Lists-"
+        Debug.Print "    -没有切割列表-"
     End If
     
 End Sub
@@ -153,5 +153,3 @@ Function GetCutLists(comp As SldWorks.Component2) As Variant
 
 End Function
 ~~~
-
-
