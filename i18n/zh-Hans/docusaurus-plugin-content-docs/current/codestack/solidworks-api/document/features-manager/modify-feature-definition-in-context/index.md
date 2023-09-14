@@ -1,32 +1,32 @@
 ---
-title: Edit feature in the context of the assembly using SOLIDWORKS API
-caption: Edit Feature In The Context Of The Assembly
-description: Example demonstrates how to modify feature definition in the context of the assembly
+title: 在装配上下文中使用SOLIDWORKS API编辑特征
+caption: 在装配上下文中编辑特征
+description: 该示例演示了如何使用SOLIDWORKS API在装配上下文中修改特征定义
 image: edit-extrude-feature-in-context.png
-labels: [edit, feature, context]
+labels: [编辑, 特征, 上下文]
 ---
-![Boss-Extrude feature is editing in the context of the assembly](edit-extrude-feature-in-context.png){ width=450 }
+![在装配上下文中编辑Boss-拉伸特征](edit-extrude-feature-in-context.png){ width=450 }
 
-This example demonstrates how to modify feature definition in the context of the assembly using SOLIDWORKS API.
+该示例演示了如何使用SOLIDWORKS API在装配上下文中修改特征定义。
 
-The steps performed in the macro are equivalent of the following steps in SOLIDWORKS User Interface
+宏中执行的步骤相当于在SOLIDWORKS用户界面中执行以下步骤：
 
-* Select component of the part which contains extrusion
-* Select 'Edit Part' menu in the context menu of the component
-* Select extrusion feature and click 'Edit' command from the context menu
-* Modify the value of the extrusion in the forward direction
-* Click green tick
-* Exit the edit part mode
+* 选择包含拉伸特征的零件组件
+* 在组件的上下文菜单中选择“编辑零件”菜单
+* 选择拉伸特征并点击“编辑”命令
+* 修改拉伸方向上的值
+* 点击绿色勾号
+* 退出编辑零件模式
 
-When editing feature in the assembly it is important to follow the correct [Assembly Context](/docs/codestack/solidworks-api/document/assembly/context/).
+在装配中编辑特征时，重要的是要遵循正确的[装配上下文](/docs/codestack/solidworks-api/document/assembly/context/)。
 
-* Example below is implemented as VSTA3 macro
-* Select component of the part in the assembly
-* Specify the name of the extrude feature as the value of the *EXTRUDE_FEAT_NAME* variable
+* 下面的示例是使用VSTA3宏实现的
+* 在装配中选择零件组件
+* 将拉伸特征的名称指定为*EXTRUDE_FEAT_NAME*变量的值
 ~~~ cs
 const string EXTRUDE_FEAT_NAME = "Boss-Extrude1";
 ~~~
-* Run macro. As the result the value of the extrusion is changed to the value of *EXTRUDE_DEPTH* variable (in meters)
+* 运行宏。结果是将拉伸的值更改为*EXTRUDE_DEPTH*变量的值（以米为单位）
 ~~~ cs
 const double EXTRUDE_DEPTH = 0.02;
 ~~~
@@ -98,7 +98,7 @@ namespace ModifyFeatureInContextOfAssembly
                                 if (feat.ModifyDefinition(featData, assy, comp))
                                 {
                                     (assy as IModelDoc2).ClearSelection2(true);
-                                    assy.EditAssembly();//Exit edit part mode
+                                    assy.EditAssembly();//退出编辑零件模式
                                 }
                                 else
                                 {
@@ -135,4 +135,3 @@ namespace ModifyFeatureInContextOfAssembly
     }
 }
 ~~~
-
