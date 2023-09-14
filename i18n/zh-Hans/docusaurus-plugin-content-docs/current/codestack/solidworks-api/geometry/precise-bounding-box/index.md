@@ -1,41 +1,41 @@
 ---
-title: Macro create precise part bounding box using SOLIDWORKS API
-caption: Create Precise Bounding Box
-description: Macro creates a precise bounding box in the part document using SOLIDWORKS API
+title: 使用SOLIDWORKS API创建精确的零件边界框的宏
+caption: 创建精确边界框
+description: 使用SOLIDWORKS API在零件文档中创建精确的边界框的宏
 image: precise-bounding-box.png
-labels: [bonding box, extreme points]
+labels: [边界框, 极值点]
 ---
-![Precise bounding box in the part document](precise-bounding-box.png){ width=250 }
+![零件文档中的精确边界框](precise-bounding-box.png){ width=250 }
 
-As per *Remarks* section of [IPartDoc::GetPartBox](https://help.solidworks.com/2016/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ipartdoc~getpartbox.html) method (or other BoundingBox APIs) in SOLIDWORKS API Help Documentation
+根据[SOLIDWORKS API帮助文档](https://help.solidworks.com/2016/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ipartdoc~getpartbox.html)中[IPartDoc::GetPartBox](https://help.solidworks.com/2016/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ipartdoc~getpartbox.html)方法（或其他边界框API）的*备注*部分：
 
-> The values returned are approximate and should not be used for comparison or calculation purposes. Furthermore, the bounding box may vary after rebuilding the model
+> 返回的值是近似值，不应用于比较或计算目的。此外，在重建模型后，边界框可能会发生变化。
 
-To calculate the precise bounding box it is required to find the extreme points of each body in XYZ directions via [IBody2::GetExtremePoint](https://help.solidworks.com/2016/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ibody2~getextremepoint.html)
+要计算精确的边界框，需要通过[IBody2::GetExtremePoint](https://help.solidworks.com/2016/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ibody2~getextremepoint.html)在XYZ方向上找到每个实体的极值点。
 
-The following macros will calculate the bounding box, width, height and length of the active part document using both approaches of SOLIDWORKS API.
+以下宏将使用SOLIDWORKS API计算活动零件文档的边界框、宽度、高度和长度，使用两种方法。
 
-As the result 3D Sketch with bounding box is created.
+结果是创建了带有边界框的3D草图。
 
-### Precision
+### 精度
 
-Bounding boxes calculated approximately might be more than 10% inaccurate. For the following [example part](bbox-precision.SLDPRT) the difference between the bounding boxes volumes equal to 14%. The following images show the differences (green box is a precise calculation and red box is an approximate calculation):
+近似计算的边界框可能会有超过10%的误差。对于以下[示例零件](bbox-precision.SLDPRT)，边界框体积之间的差异为14%。以下图像显示了差异（绿色框是精确计算，红色框是近似计算）：
 
-![Front View](bbox-front-view.png){ width=250 }
+![前视图](bbox-front-view.png){ width=250 }
 
-![Top View](bbox-top-view.png){ width=250 }
+![顶视图](bbox-top-view.png){ width=250 }
 
-![Right View](bbox-right-view.png){ width=250 }
+![右视图](bbox-right-view.png){ width=250 }
 
-> The precise bounding box calculated by extreme points is exactly equal to the bounding box created by [bounding box feature](https://help.solidworks.com/2018/English/WhatsNew/t_bounding_box_for_part_assem.htm) added in SOLIDWORKS 2018
+> 通过极值点计算的精确边界框与SOLIDWORKS 2018中添加的[边界框特征](https://help.solidworks.com/2018/English/WhatsNew/t_bounding_box_for_part_assem.htm)创建的边界框完全相等。
 
-### Performance
+### 性能
 
-Extraction of approximate box is more than 300 times quicker. For a single body part approximate calculation of bounding box took 0.016ms, while it took 5.57 ms for precise calculation of the same part. For multi-body part of 63 bodies it took 0.018ms for approximate calculations and 16.68 ms for precise calculations.
+提取近似框的速度比精确计算快300多倍。对于单个实体零件，近似计算边界框花费了0.016毫秒，而精确计算相同零件花费了5.57毫秒。对于包含63个实体的多实体零件，近似计算花费了0.018毫秒，而精确计算花费了16.68毫秒。
 
-As a summary on avarage it would be possible to calculate more than 60000 approximate bounding boxes per second and only about 50 precise bounding boxes per second (more than 1000 times difference)
+总结起来，平均每秒可以计算超过60000个近似边界框，而只能计算约50个精确边界框（超过1000倍的差异）。
 
-### Calculating precise bounding box via extreme points
+### 通过极值点计算精确边界框
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -55,13 +55,13 @@ Sub main()
      
         DrawBox swPart, CDbl(vBBox(0)), CDbl(vBBox(1)), CDbl(vBBox(2)), CDbl(vBBox(3)), CDbl(vBBox(4)), CDbl(vBBox(5))
         
-        Debug.Print "Width: " & CDbl(vBBox(3)) - CDbl(vBBox(0))
-        Debug.Print "Length: " & CDbl(vBBox(5)) - CDbl(vBBox(2))
-        Debug.Print "Height: " & CDbl(vBBox(4)) - CDbl(vBBox(1))
+        Debug.Print "宽度: " & CDbl(vBBox(3)) - CDbl(vBBox(0))
+        Debug.Print "长度: " & CDbl(vBBox(5)) - CDbl(vBBox(2))
+        Debug.Print "高度: " & CDbl(vBBox(4)) - CDbl(vBBox(1))
         
     Else
         
-        MsgBox "Please open part"
+        MsgBox "请打开零件"
         
     End If
     
@@ -174,7 +174,7 @@ End Sub
 
 
 
-### Calculating approximate bounding box
+### 计算近似边界框
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -195,13 +195,13 @@ Sub main()
          
         DrawBox swPart, CDbl(vBBox(0)), CDbl(vBBox(1)), CDbl(vBBox(2)), CDbl(vBBox(3)), CDbl(vBBox(4)), CDbl(vBBox(5))
         
-        Debug.Print "Width: " & vBBox(3) - vBBox(0)
-        Debug.Print "Length: " & vBBox(5) - vBBox(2)
-        Debug.Print "Height: " & vBBox(4) - vBBox(1)
+        Debug.Print "宽度: " & vBBox(3) - vBBox(0)
+        Debug.Print "长度: " & vBBox(5) - vBBox(2)
+        Debug.Print "高度: " & vBBox(4) - vBBox(1)
         
     Else
         
-        MsgBox "Please open part"
+        MsgBox "请打开零件"
         
     End If
     
@@ -237,5 +237,3 @@ End Sub
 
 
 ~~~
-
-
