@@ -1,28 +1,27 @@
 ---
-title: Stock Master - SOLIDWORKS add-in for managing geometry stocks
+title: Stock Master - SOLIDWORKS几何库存管理插件
 caption: Stock Master
-description: SOLIDWORKS add-in to generate round stock feature around the input solid body
+description: SOLIDWORKS插件，用于在输入的实体周围生成圆形库存特征
 image: round-stock-icon.png
 categories: sw-labs
 group: Geometry
 toc-group-name: labs-solidworks-stock-master
 type: sw-lab
 ---
-![Property page for Round Stock feature](round-stock-feature-property-page.png){ width=350 }
+![圆形库存特征的属性页面](round-stock-feature-property-page.png){ width=350 }
 
-This add-in allows generating round stock feature around the selected solid body.
+该插件允许在选定的实体周围生成圆形库存特征。
 
-User can select either circular face or plane to specify the direction of the stock.
+用户可以选择圆形面或平面来指定库存的方向。
 
-If circular face is selected than its axis is used as direction. It is also possible to specify the option to make the round stock concentric to the selected circular face.
+如果选择了圆形面，则使用其轴作为方向。还可以指定使圆形库存与所选圆形面同心的选项。
 
-Feature can optionally generate the body to represent the round stock.
+特征可以选择生成表示圆形库存的实体。
 
-Feature is fully parametric and will update automatically once the reference geometry is changed.
+特征是完全参数化的，一旦参考几何体发生变化，它将自动更新。
 
-Feature writes the values to the configuration specific custom properties.
+特征将值写入配置特定的自定义属性。
 
-Add-in can be downloaded from [this link v. 0.5.0 (beta 1)](https://github.com/codestackdev/stock-fit-geometry/releases/tag/beta1).
+可以从[此链接下载插件 v. 0.5.0 (beta 1)](https://github.com/codestackdev/stock-fit-geometry/releases/tag/beta1)。
 
-Source code is available at [GitHub](https://github.com/codestackdev/stock-fit-geometry)
-
+源代码可在[GitHub](https://github.com/codestackdev/stock-fit-geometry)上获取。
