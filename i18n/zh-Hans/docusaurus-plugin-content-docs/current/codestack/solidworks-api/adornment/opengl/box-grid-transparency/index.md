@@ -1,17 +1,17 @@
 ---
-title: Render box grid with transparency using OpenGL and SOLIDWORKS API
-caption: Render Box Grid With Transparency
-description: Rendering grid of cubes with transparency using OpenGL and SOLIDWORKS API
+title: 使用OpenGL和SOLIDWORKS API渲染具有透明度的盒子网格
+caption: 使用透明度渲染盒子网格
+description: 使用OpenGL和SOLIDWORKS API渲染具有透明度的盒子网格
 image: opengl-cubes.png
 labels: [opengl,render,transparency]
 ---
-![Transparent cubes rendered with OpenGL](opengl-cubes.png){ width=250 }
+![使用OpenGL渲染的透明盒子](opengl-cubes.png){ width=250 }
 
-This example demonstrates how to render cubes in the predefined grid with transparency using OpenGL and SOLIDWORKS API.
+此示例演示了如何使用OpenGL和SOLIDWORKS API在预定义网格中渲染具有透明度的盒子。
 
-Cubes are rendered automatically on all opened 3D models (parts or assemblies).
+盒子会自动渲染在所有打开的3D模型（零件或装配）上。
 
-Parameters can be configured by changing the constants declared in the add-in:
+可以通过更改插件中声明的常量来配置参数：
 
 ~~~ cs
 private const int INST_COUNT = 27;
@@ -24,13 +24,13 @@ private const double LENGTH = 0.1;
 private readonly Color COLOR = Color.FromArgb(200, Color.Blue);
 ~~~
 
-Note, this approach is a simple method of rendering OpenGL objects, but it doesn't provide the best performance benefits. Refer the [Import XAML File And Render Using VBO](/docs/codestack/solidworks-api/adornment/opengl/vbo-xaml-importer/) for a code example of rendering high performance graphics using Open GL Vertex Buffer Object (VBO).
+注意，这种方法是渲染OpenGL对象的简单方法，但它不能提供最佳性能优势。请参考[导入XAML文件并使用VBO进行渲染](/docs/codestack/solidworks-api/adornment/opengl/vbo-xaml-importer/)，了解使用OpenGL顶点缓冲对象（VBO）进行高性能图形渲染的代码示例。
 
-Source code can be downloaded from [GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/swex/add-in/opengl/OpenGlBoxGrid)
+源代码可以从[GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/swex/add-in/opengl/OpenGlBoxGrid)下载。
 
 ## AddIn.cs
 
-This the add-in entry point. [SwEx.AddIn](/docs/codestack/labs/solidworks/swex/add-in/) framework is used to manage documents lifecycle by providing the wrapper class.
+这是插件的入口点。使用[SwEx.AddIn](/docs/codestack/labs/solidworks/swex/add-in/)框架通过提供包装类来管理文档的生命周期。
 
 ~~~ cs
 using CodeStack.SwEx.AddIn;
@@ -58,7 +58,7 @@ namespace CodeStack.OpenGlBoxGrid
 
 ## OpenGlDocumentHandler.cs
 
-This is a handler class for each model document which subscribes to the OpenGL Buffer Swap notification provided by SOLIDWORKS and performs the calculation of coordinates of cubes based on the input parameters and renders in the model's graphics view.
+这是每个模型文档的处理程序类，它订阅SOLIDWORKS提供的OpenGL缓冲区交换通知，并根据输入参数计算盒子的坐标并在模型的图形视图中进行渲染。
 
 ~~~ cs
 using CodeStack.SwEx.AddIn.Base;
@@ -190,7 +190,7 @@ namespace CodeStack.OpenGlBoxGrid
 
 ## OpenGL.cs
 
-List of imports for OpenGL functions.
+OpenGL函数的导入列表。
 
 ~~~ cs
 using System.Runtime.InteropServices;
@@ -229,5 +229,3 @@ namespace CodeStack.OpenGlBoxGrid
 }
 
 ~~~
-
-
