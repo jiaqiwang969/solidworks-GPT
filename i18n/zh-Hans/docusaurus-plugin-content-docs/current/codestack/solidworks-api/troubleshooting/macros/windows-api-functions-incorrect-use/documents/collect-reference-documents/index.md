@@ -1,31 +1,31 @@
 ---
 layout: sw-tool
-caption: Collect Reference Documents
-title: Macro to collect all reference documents of assembly into a folder
-description: VBA macro to collect all reference output files (e.g. DXF, PDF) from all folders into a single folder
+caption: 收集参考文档
+title: 将所有装配体的参考文档收集到一个文件夹中的宏
+description: VBA宏，将所有引用的零件和子装配体文档的输出文件（例如DXF、PDF）从所有文件夹中复制到一个指定的文件夹中
 image: collect-reference-documents.svg
 group: Assembly
 ---
-This VBA macro allows to collect all output files such as DXF, DWG, PDF etc. from all referenced parts and sub-assembly documents on all levels and copy to a specified folder.
+这个VBA宏允许将所有输出文件（如DXF、DWG、PDF等）从所有引用的零件和子装配体文档的所有级别中收集，并复制到指定的文件夹中。
 
-Referenced parts and sub-assemblies can be located in any directory. It is not required those to be in the same folder or drive of a main assembly.
+引用的零件和子装配体可以位于任何目录中。不要求它们与主装配体在同一个文件夹或驱动器中。
 
-For example the main assembly **TopAssm1.sldasm** is saved in **C:\Assms** folder and it refers 2 part files located in **D:\Parts\A\Part1.sldprt** and **D:\Parts\B\Part2.sldprt**. DXF and PDF files were created for Part1 and Part2 and saved in the same folder, i.e. **D:\Parts\A\Part1.dxf**, **D:\Parts\A\Part1.pdf**, **D:\Parts\B\Part2.dxf**, **D:\Parts\B\Part2.pdf**. As the result of running this macro all those 4 files will be copied to the specified output folder.
+例如，主装配体**TopAssm1.sldasm**保存在**C:\Assms**文件夹中，它引用了位于**D:\Parts\A\Part1.sldprt**和**D:\Parts\B\Part2.sldprt**的两个零件文件。为Part1和Part2创建了DXF和PDF文件，并保存在同一个文件夹中，即**D:\Parts\A\Part1.dxf**、**D:\Parts\A\Part1.pdf**、**D:\Parts\B\Part2.dxf**、**D:\Parts\B\Part2.pdf**。运行此宏后，所有这4个文件将被复制到指定的输出文件夹中。
 
-## Notes
+## 注意事项
 
-* Reference documents must have the same name as the file they derived from, i.e. **Part1.pdf** is derived from **Part1.sldprt**
-* Reference documents of the main assembly will also be included
-* Macro will open the folder browse dialog to select the output folder
-* All file paths which are copied are output to the *Immediate* window of VBA editor
-* Suppressed components will not be included into the collection
-* Assembly opened in Large Design Review mode is not supported
+* 参考文档必须与其派生文件具有相同的名称，即**Part1.pdf**派生自**Part1.sldprt**
+* 主装配体的参考文档也将被包括在内
+* 宏将打开文件夹浏览对话框以选择输出文件夹
+* 所有复制的文件路径将输出到VBA编辑器的*Immediate*窗口中
+* 被抑制的组件将不会包括在收集中
+* 不支持在大型设计审查模式下打开的装配体
 
-![Output log](log-output.png)
+![输出日志](log-output.png)
 
-## Configuration
+## 配置
 
-Macro can be configured by changing the constants at the beginning of the macro
+可以通过更改宏开头的常量来配置宏
 
 ~~~ vb
 Const SEARCH_SUB_FOLDERS As Boolean = False
@@ -33,11 +33,11 @@ Const EXTENSIONS As String = "dxf,pdf"
 Const ALLOW_OVERWRITE As Boolean = False
 ~~~
 
-**SEARCH_SUB_FOLDERS** indicates if macro should recursively search referenced documents. If this option is set to **False** only files next to the source files will be collected (e.g. Part1.dxf must be in the same folder as Part1.sldprt). In some cases output files can be placed into sub-folders (e.g. DXFs\Part1.dxf of Part1.sldprt) to collect such files set the **SEARCH_SUB_FOLDERS** to **True**. Note, if any child folder contains another file with the same name it will also be collected (e.g. A\B\C\Part1.pdf).
+**SEARCH_SUB_FOLDERS**指示宏是否应递归搜索引用的文档。如果将此选项设置为**False**，则只会收集源文件旁边的文件（例如，Part1.dxf必须与Part1.sldprt在同一个文件夹中）。在某些情况下，输出文件可以放置在子文件夹中（例如，Part1.sldprt的DXFs\Part1.dxf），要收集此类文件，请将**SEARCH_SUB_FOLDERS**设置为**True**。注意，如果任何子文件夹包含另一个具有相同名称的文件，它也将被收集（例如，A\B\C\Part1.pdf）。
 
-**EXTENSIONS** is a comma-separated list of file extension to collect.
+**EXTENSIONS**是一个逗号分隔的文件扩展名列表，用于收集文件。
 
-**ALLOW_OVERWRITE** option indicates if the files in the destination directory need to be overwritten if exist. It is recommended to set this option to **False** and manually clean the target directory. This would reduce the risk of overwriting the files and catching the potential errors.
+**ALLOW_OVERWRITE**选项指示是否需要覆盖目标目录中的文件。建议将此选项设置为**False**，并手动清理目标目录。这将减少覆盖文件和捕获潜在错误的风险。
 
 ~~~ vb
 Const SEARCH_SUB_FOLDERS As Boolean = False
@@ -57,7 +57,7 @@ try_:
     Set swAssy = swApp.ActiveDoc
     
     If False <> swAssy.IsOpenedViewOnly() Then
-        Err.Raise vbError, "", "Assembly opened in Large Design Review mode is not supported"
+        Err.Raise vbError, "", "不支持在大型设计审查模式下打开的装配体"
     End If
     
     Dim exts As Variant
@@ -70,7 +70,7 @@ try_:
     Next
     
     Dim destDir As String
-    destDir = BrowseForFolder("Select folder to copy documents to")
+    destDir = BrowseForFolder("选择要复制文档的文件夹")
     
     If destDir = "" Then
         Exit Sub
@@ -82,7 +82,7 @@ try_:
     If Not IsEmpty(vRefDocs) Then
         CopyRefDocs vRefDocs, destDir
     Else
-        Err.Raise vbError, "", "There are no referenced documents"
+        Err.Raise vbError, "", "没有引用的文档"
     End If
     
     GoTo finally_
@@ -108,7 +108,7 @@ Sub CopyRefDocs(refDocs As Variant, destFolder As String)
         Dim srcFilePath As String
         srcFilePath = CStr(refDocs(i))
         
-        Debug.Print "Copying " & srcFilePath & " to " & destFolder
+        Debug.Print "正在复制 " & srcFilePath & " 到 " & destFolder
         
         fso.CopyFile srcFilePath, destFolder, ALLOW_OVERWRITE
     Next
@@ -251,7 +251,7 @@ Sub CollectFilesFromFolder(folder As Object, includeSubFolders As Boolean, exts 
     
 End Sub
 
-Function BrowseForFolder(Optional title As String = "Select Folder") As String
+Function BrowseForFolder(Optional title As String = "选择文件夹") As String
     
     Dim shellApp As Object
     
@@ -281,4 +281,3 @@ Function Contains(arr As Variant, item As String) As Boolean
     
 End Function
 ~~~
-
