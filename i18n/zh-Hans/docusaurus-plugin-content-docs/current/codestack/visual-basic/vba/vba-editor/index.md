@@ -1,19 +1,19 @@
 ---
-title: VBA Editor
-description: Walkthrough of user interface and functionality for VBA Editor
+title: VBA编辑器
+description: VBA编辑器的用户界面和功能介绍
 sitemap: false
 ---
-*Coming soon...*
+*即将推出...*
 
-### Macros
+### 宏
 
-#### Starting and editing macro
-#### Recording the macro
+#### 启动和编辑宏
+#### 录制宏
 
-### Toolbar customization
-### References management
+### 工具栏自定义
+### 引用管理
 
-### Adding new items to the project
-#### Modules
-#### Classes
-#### User Forms
+### 向项目添加新项
+#### 模块
+#### 类
+#### 用户窗体
