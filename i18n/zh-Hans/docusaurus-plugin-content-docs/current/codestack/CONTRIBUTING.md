@@ -1,1 +1,1 @@
-Visit [this blog post](https://blog.xarial.com/codestack-opensource/) for contributing guidelines.
+请访问[此博客文章](https://blog.xarial.com/codestack-opensource/)获取贡献指南。
