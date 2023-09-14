@@ -1,12 +1,12 @@
 ---
-title: Writing the binary content into the file using Visual Basic (VBA)
-caption: Write Binary File
-description: Function to write the binary content of byte array into a file using Visual Basic (VBA)
+title: 使用Visual Basic（VBA）将二进制内容写入文件
+caption: 写入二进制文件
+description: 使用Visual Basic（VBA）将字节数组的二进制内容写入文件的函数
 labels: [write,text,output]
 ---
-This code snippet demonstrates how to write binary data from the variable of type *Byte()* into the specified file using Visual Basic (VBA).
+这段代码演示了如何使用Visual Basic（VBA）将类型为*Byte()*的变量中的二进制数据写入指定的文件。
 
-The below snippet will overwrite the data in the destination binary file
+下面的代码段将覆盖目标二进制文件中的数据。
 
 ~~~ vb
 Dim arr(5237) As Byte
@@ -15,9 +15,9 @@ arr(0) = 12: arr(1) = 1: arr(2) = 0
 WriteByteArrToFile("C:\MyFolder\MyFile.dat")
 ~~~
 
-Code will automatically create new file if it doesn't exist.
+如果文件不存在，代码将自动创建新文件。
 
-Exception will be thrown in case of any error (for example file cannot be accessed for writing).
+如果出现任何错误（例如无法访问文件进行写入），将抛出异常。
 
 ~~~ vb
 Function WriteByteArrToFile(filePath As String, buffer() As Byte)
@@ -31,4 +31,3 @@ Function WriteByteArrToFile(filePath As String, buffer() As Byte)
     
 End Function
 ~~~
-
