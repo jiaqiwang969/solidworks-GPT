@@ -1,19 +1,19 @@
 ---
-title: Automation of SOLIDWORKS using SOLIDWORKS API in vbScript
+title: 使用vbScript自动化SOLIDWORKS的SOLIDWORKS API
 caption: vbScript
-description: Introduction to automation of SOLIDWORKS using API with vbScript
+description: 介绍使用vbScript和SOLIDWORKS API进行SOLIDWORKS自动化
 ---
-vbScript is a popular scripting language based on Visual Basic. It is lightweight and natively supported by Windows. The code can be edited in any text editor (e.g. Notepad).
+vbScript是一种基于Visual Basic的流行脚本语言。它轻量且在Windows系统中原生支持。代码可以在任何文本编辑器（例如记事本）中进行编辑。
 
-Script can be run by executing it directly (i.e. double click) or from command line. Command line option also supports input arguments.
+脚本可以通过直接执行（即双击）或从命令行运行。命令行选项还支持输入参数。
 
-vbScript is late bound and doesn't require the explicit declaration of variable type using the *As* keyword.
+vbScript是后期绑定的，不需要使用*As*关键字显式声明变量类型。
 
-vbScript supports creation or connection to COM objects via ::CreateObject and ::GetObject methods which means that it can use SOLIDWORKS API for automation.
+vbScript支持通过::CreateObject和::GetObject方法创建或连接到COM对象，这意味着它可以使用SOLIDWORKS API进行自动化。
 
-Use the following line to connect to the instance of SOLIDWORKS
+使用以下代码连接到SOLIDWORKS实例：
 
-~~~ vb
+``` vb
 Dim swApp
 Set swApp = CreateObject("SldWorks.Application")
-~~~
+```
