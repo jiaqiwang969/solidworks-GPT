@@ -1,21 +1,22 @@
 ---
-title: Using of recursion techniques in Visual Basic
-caption: Recursion
-description: Explanation of recursion and usage in Visual Basic to output the structure of the Bill Of Materials (BOM)
+title: 在Visual Basic中使用递归技术
+caption: 递归
+description: 解释递归并在Visual Basic中使用它来输出物料清单（BOM）的结构
 ---
-In some cases it might be required to parse the hierarchical data. This is a tree-structured data which has a collection of nodes while each node may contain the collection of children, and each child can have a collection of its own children and so on. Example of hierarchical data is an XML file which contains the nodes which might have sub-nodes.
 
-This data can be parsed using [loops](/docs/codestack/visual-basic/loops/), however this task would be complicated and code readability will be compromised. Much easier solution would be an employment of recursion technique.
+在某些情况下，可能需要解析分层数据。这是一种树形结构的数据，其中包含一组节点，每个节点可能包含子节点的集合，每个子节点又可以有自己的子节点集合，依此类推。分层数据的示例是包含可能具有子节点的节点的XML文件。
 
-This function will parse the single node (or node on a single level) and then call itself recursively to process all children nodes.
+可以使用[循环](/docs/codestack/visual-basic/loops/)来解析这些数据，但这个任务会变得复杂，并且代码的可读性会受到影响。更简单的解决方案是使用递归技术。
 
-For example the following Bill Of Materials (BOM) structure represents a product.
+这个函数将解析单个节点（或单个层级上的节点），然后递归调用自身来处理所有子节点。
 
-![BOM Structure example](bom.svg){ width=350 }
+例如，以下物料清单（BOM）结构表示一个产品。
 
-This structure is described with the following class in the Visual Basic, where **Children** variable may contain children of the sub-assembly node.
+![BOM结构示例](bom.svg){ width=350 }
 
-## BomItem Class
+在Visual Basic中，可以使用以下类来描述这个结构，其中**Children**变量可能包含子装配节点。
+
+## BomItem类
 
 ~~~ vb
 Public Name As String
@@ -23,11 +24,9 @@ Public Qty As Integer
 Public Children As Variant
 ~~~
 
+为了输出结构，可以编写以下函数
 
-
-In order to output the structure the following function can be written
-
-~~~
+```vb
 Sub main()
     
     Dim bom As New BomItem
@@ -83,16 +82,15 @@ Sub PrintBom(bom As BomItem, Optional level As Integer = 0)
     End If
     
 End Sub
-~~~
+```
 
+结果将输出以下信息到VBA编辑器的即时窗口。
 
-As the result the following information will be output to the Immediate Window of VBA Editor.
-
-~~~
+```
 A (1)
 -B (2)
 --D (1)
 --E (5)
 --F (1)
 -C (3)
-~~~
+```
