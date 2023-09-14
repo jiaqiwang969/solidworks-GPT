@@ -1,24 +1,24 @@
 ---
 layout: sw-tool
-title: Excel macro to manage custom properties in SOLIDWORKS files
-caption: Manage Properties In Excel
-description: Excel macro which allows very fast way to manage (read and write) SOLIDWORKS custom properties in a batch directly from Excel spreadsheet
+title: 用于管理SOLIDWORKS文件中自定义属性的Excel宏
+caption: 在Excel中管理属性
+description: 这个Excel VBA宏为Excel调色板添加了额外的功能，允许从SOLIDWORKS文件中读取和写入自定义属性。
 image: excel-custom-properties.svg
 labels: [dm, excel, custom properties]
 group: Custom Properties
 ---
-![SOLIDWORKS Custom Properties In Excel](excel-custom-properties.svg){ width=250 }
+![在Excel中管理SOLIDWORKS自定义属性](excel-custom-properties.svg){ width=250 }
 
-This Excel VBA macro adds additional functions to Excel palette allowing to read and write custom properties from SOLIDWORKS files.
+这个Excel VBA宏为Excel调色板添加了额外的功能，允许从SOLIDWORKS文件中读取和写入自定义属性。
 
-This macro utilizes Document Manager which makes the process of reading and writing properties much faster (x10-x100+ times) than regular SOLIDWORKS API. 
+这个宏利用了Document Manager，使得读取和写入属性的过程比常规的SOLIDWORKS API快得多（10倍到100倍以上）。
 
-Furthermore SOLIDWORKS installation is not required to use this macro.
+此外，使用此宏不需要安装SOLIDWORKS。
 
-## Preparation
+## 准备工作
 
-* If you do not have Document Manager License key, follow [Activating Document Manager](/docs/codestack/solidworks-document-manager-api/getting-started/create-connection#activating-document-manager) article for the steps required to retrieve the Document Manager license. This key is free for SOLIDWORKS customers under subscription.
-* Create new excel document and create new macro. Paste the macro code below
+* 如果您没有Document Manager许可证密钥，请按照[激活Document Manager](/docs/codestack/solidworks-document-manager-api/getting-started/create-connection#activating-document-manager)文章中的步骤获取Document Manager许可证。这个密钥对于订阅SOLIDWORKS的客户是免费的。
+* 创建一个新的Excel文档并创建一个新的宏。将下面的宏代码粘贴到宏中。
 
 ~~~ vb
 Const SW_DM_KEY As String = "Your License Key"
@@ -225,78 +225,76 @@ Private Function RangeToArray(vRange As Variant) As Variant
 End Function
 ~~~
 
-
-
-* Modify the macro and enter the license key instead of the *Your License Key* placeholder, retrieved in the first step. Note, depending on the size of the key you may see *Compile error: Invalid outside procedure error* error. Follow [this article](/docs/codestack/solidworks-api/troubleshooting/macros/too-long-vba-macro-line/) for a solution.
+* 修改宏并在*Your License Key*占位符处输入许可证密钥，该密钥在第一步中获取。注意，根据密钥的大小，您可能会看到*Compile error: Invalid outside procedure error*错误。请参考[此文章](/docs/codestack/solidworks-api/troubleshooting/macros/too-long-vba-macro-line/)以解决此问题。
 
 ~~~ vb jagged-bottom
 Const SW_DM_KEY As String = "Your License Key"
 ~~~
 
-* Add the *SwDocumentMgr YEAR Type Library* reference to the macro.
+* 将*SwDocumentMgr YEAR Type Library*引用添加到宏中。
 
-![Document Manager Reference added to the macro](sw-document-manager-reference.png)
+![向宏添加Document Manager引用](sw-document-manager-reference.png)
 
-## Usage
+## 用法
 
 {% youtube id: a068ht0rDQQ %}
 
-Macro will add 2 functions into the Excel functions scope which can be used as any other function in Excel
+宏将在Excel函数范围内添加2个函数，可以像其他函数一样使用。
 
-![Excel function added to the list](excel-function.png)
+![将Excel函数添加到列表中](excel-function.png)
 
-As standard functions user can pass the parameter as reference to other cells.
+用户可以将参数作为对其他单元格的引用传递。
 
-![Setting the value of the Product Id property](setting-single-property.png)
+![设置产品ID属性的值](setting-single-property.png)
 
-Or can use free text
+或者可以使用自由文本。
 
-![Reading description property from the Default configuration of the file](reading-description-config-property.png)
+![从文件的默认配置中读取描述属性](reading-description-config-property.png)
 
-When multiple properties need to be written or read, use Excel ranges to maximize the performance of the operation
+当需要写入或读取多个属性时，使用Excel范围来最大化操作的性能。
 
-![Batch updating 3 properties for multiple files](batch-set-properties.png)
+![批量更新多个文件的3个属性](batch-set-properties.png)
 
 ### GETSWPRP
 
-This function allows to extract the values of specified property from file or a given configuration. Error is thrown attempting to read the property which not exists.
+此函数允许从文件或给定配置中提取指定属性的值。尝试读取不存在的属性时会引发错误。
 
-#### Parameters
+#### 参数
 
-* File Name - full path to SOLIDWORKS part, assembly or drawing
-* Property Names - property or range of properties to read values from
-* (Optional) Configuration Name - name of the configuration to read values from, if not specified properties are read from the general tab
+* 文件名 - SOLIDWORKS零件、装配体或图纸的完整路径
+* 属性名称 - 要从中读取值的属性或属性范围
+* （可选）配置名称 - 要从中读取值的配置的名称，如果未指定，则从常规选项卡中读取属性
 
 ### SETSWPRP
 
-Writes properties to the specified SOLIDWORKS file into the specified configuration. This function will either update existing property or create new if not exists.
+将属性写入指定的SOLIDWORKS文件中的指定配置。此函数将更新现有属性或在不存在时创建新属性。
 
-#### Parameters
+#### 参数
 
-* File Name - full path to SOLIDWORKS part, assembly or drawing
-* Property Names - property or range of properties to write values to
-* Property Values - value or range of values of properties
-* (Optional) Configuration Name - name of the configuration to write values to, if not specified properties are written to the general tab
+* 文件名 - SOLIDWORKS零件、装配体或图纸的完整路径
+* 属性名称 - 要将值写入的属性或属性范围
+* 属性值 - 属性的值或值范围
+* （可选）配置名称 - 要将值写入的配置的名称，如果未指定，则写入属性到常规选项卡
 
-## Troubleshooting
+## 故障排除
 
-In case of an error the corresponding cell will indicate this:
+如果发生错误，相应的单元格将指示此错误：
 
-![Calculation error in cell](cell-error.png)
+![单元格中的计算错误](cell-error.png)
 
-To find more about the error. Open the macro and inspect immediate window output
+要了解更多关于错误的信息，请打开宏并检查即时窗口输出。
 
-![Error displayed in VBA Immediate Window](immediate-window-error.png)
+![在VBA即时窗口中显示的错误](immediate-window-error.png)
 
-Descriptions of open error code can be found [here](https://help.solidworks.com/2015/English/api/swdocmgrapi/SolidWorks.Interop.swdocumentmgr~SolidWorks.Interop.swdocumentmgr.SwDmDocumentOpenError.html)
+打开错误代码的描述可以在[这里](https://help.solidworks.com/2015/English/api/swdocmgrapi/SolidWorks.Interop.swdocumentmgr~SolidWorks.Interop.swdocumentmgr.SwDmDocumentOpenError.html)找到。
 
-> It is strongly recommended to test this macro on sample data before using on production file. And also it is strongly recommended to backup the data before using this macro.
+> 强烈建议在生产文件上使用此宏之前，在样本数据上测试此宏。并且在使用此宏之前强烈建议备份数据。
 
-## Notes
+## 注意事项
 
-This macro will extract formulas (instead of resolved values) for properties with equations such as mass or material.
+此宏将提取具有公式（而不是解析值）的属性，例如质量或材料。
 
-To define the formula use "" to protect the " symbol. For example
+要定义公式，请使用""来保护"符号。例如
 
 ~~~
 =SETSWPRP(A2, "Mass", """SW-Mass@Part1.SLDPRT""")
