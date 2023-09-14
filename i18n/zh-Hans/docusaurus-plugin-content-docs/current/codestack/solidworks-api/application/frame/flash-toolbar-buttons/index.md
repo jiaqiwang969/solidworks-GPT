@@ -1,18 +1,18 @@
 ---
-caption: Flash Toolbar Buttons
-title: Macro to highlight/flash specific buttons in SOLIDWORKS toolbar
-description: VBA macro demonstrates how to highlight/flash specific toolbar button by id in SOLIDWORKS toolbar
+caption: 闪烁工具栏按钮
+title: 在SOLIDWORKS工具栏中突出显示/闪烁特定按钮的宏
+description: VBA宏演示了如何在SOLIDWORKS工具栏中通过id突出显示/闪烁特定的工具栏按钮
 image: flash-buttons.gif
 ---
-This VBA macro demonstrates how to flash standard toolbar buttons in SOLIDWORKS toolbars similarly to SOLIDWORKS tutorials files.
+这个VBA宏演示了如何在SOLIDWORKS工具栏中闪烁标准工具栏按钮，类似于SOLIDWORKS教程文件。
 
-![Flashing sketch line command](flash-buttons.gif)
+![闪烁草图线命令](flash-buttons.gif)
 
-In order to flash toolbar it is required to find its id. Follow the [Calling Windows Commands](https://blog.codestack.net/missing-solidworks-api-command#calling-windows-command) section of the blog post for the instruction of how retrieve this id.
+要闪烁工具栏，需要找到它的id。请参考博客文章中的[调用Windows命令](https://blog.codestack.net/missing-solidworks-api-command#calling-windows-command)部分，了解如何获取此id的说明。
 
-> Note, the id of command is persistent across SOLIDWORKS sessions and releases.
+> 注意，命令的id在SOLIDWORKS会话和版本之间是持久的。
 
-Unlike standard commands, custom commands added with [SOLIDWORKS add-ins](/docs/codestack/solidworks-api/getting-started/add-ins/) are not persistent across different installations. In order to dynamically retrieve the id of the custom command, use [ISldWorks::GetCommandID](https://help.solidworks.com/2017/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ISldWorks~GetCommandID.html) API and pass persistent **command user id** and guid of the add-in.
+与标准命令不同，使用[SOLIDWORKS插件](/docs/codestack/solidworks-api/getting-started/add-ins/)添加的自定义命令在不同的安装中是不持久的。为了动态获取自定义命令的id，请使用[ISldWorks::GetCommandID](https://help.solidworks.com/2017/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ISldWorks~GetCommandID.html) API，并传递持久的**命令用户id**和插件的guid。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -21,10 +21,10 @@ Sub main()
 
     Set swApp = Application.SldWorks
     
-    'flash line button and show tooltip
+    '闪烁线按钮并显示工具提示
     FlashToolbarButton 32873
     
-    'only show tooltip for a new file button
+    '只显示新文件按钮的工具提示
     FlashToolbarButton 57600, True
     
 End Sub
@@ -35,4 +35,3 @@ Sub FlashToolbarButton(buttonId As Long, Optional tooltipOnly As Boolean = False
     
 End Sub
 ~~~
-
