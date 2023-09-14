@@ -1,18 +1,18 @@
 ---
-title: Browse for folder in VBA macro
-caption: Browse For Folder
-description: Code snippet to select the folder path in VBA macro
+title: 在VBA宏中浏览文件夹
+caption: 浏览文件夹
+description: 用于在VBA宏中选择文件夹路径的代码片段
 ---
-The following code snippet demonstrates how to browse for the folder path within VBA macro. The same function can also be used within VBScript.
+以下代码片段演示了如何在VBA宏中浏览文件夹路径。同样的函数也可以在VBScript中使用。
 
-~~~ vb
+```vb
 Sub main()
 
-    Debug.Print BrowseForFolder("Browse for folder")
+    Debug.Print BrowseForFolder("浏览文件夹")
         
 End Sub
 
-Function BrowseForFolder(Optional title As String = "Select Folder") As String
+Function BrowseForFolder(Optional title As String = "选择文件夹") As String
     
     Dim shellApp As Object
     
@@ -26,5 +26,4 @@ Function BrowseForFolder(Optional title As String = "Select Folder") As String
     End If
     
 End Function
-~~~
-
+```
