@@ -1,6 +1,6 @@
 ---
-title: Standard Functions
-description: Overview of standard functions available in Visual Basic
+title: 标准函数
+description: Visual Basic 中可用的标准函数概述
 sitemap: false
 ---
-*Coming soon...*
+*即将推出...*
