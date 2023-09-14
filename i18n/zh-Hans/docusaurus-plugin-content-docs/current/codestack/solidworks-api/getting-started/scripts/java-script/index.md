@@ -1,11 +1,12 @@
 ---
-title: Utilizing SOLIDWORKS API methods in Java Script
-caption: Java Script
-description: Examples demonstrating how to call SOLIDWORKS API from JavaScript in internet browser via ActiveXObject
+title: 在 JavaScript 中使用 SOLIDWORKS API 方法
+caption: JavaScript
+description: 示例演示如何通过 ActiveXObject 在互联网浏览器中从 JavaScript 调用 SOLIDWORKS API
 labels: [JavaScript, ActiveX]
 ---
-[JavaScript](https://en.wikipedia.org/wiki/JavaScript) is a high level programming language which is mainly used in web application.
 
-Java script running in web browser doesn't allow accessing desktop objects due to the security reasons. However JavaScript run in Internet Explorer browser allows accessing the COM objects via ActiveXObject object.
+[JavaScript](https://en.wikipedia.org/wiki/JavaScript) 是一种高级编程语言，主要用于 Web 应用程序。
 
-Examples in this section demonstrate how to use this technology to call SOLIDWORKS API from JavaScript in web browser.
+由于安全原因，Web 浏览器中运行的 JavaScript 无法访问桌面对象。然而，在 Internet Explorer 浏览器中运行的 JavaScript 可以通过 ActiveXObject 对象访问 COM 对象。
+
+本节中的示例演示了如何使用这项技术在 Web 浏览器中从 JavaScript 调用 SOLIDWORKS API。
