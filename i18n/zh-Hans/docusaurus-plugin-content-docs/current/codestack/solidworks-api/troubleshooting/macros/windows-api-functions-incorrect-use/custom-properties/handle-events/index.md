@@ -1,23 +1,24 @@
 ---
-title: Handle custom properties modification events (add, delete, change) using SOLIDWORKS API
-caption: Handle Modification Events
-description: Handling all events related to the modification of general or configuration specific custom properties from the SOLIDWORKS API. Workaround for the issue when AddCustomPropertyNotify, DeleteCustomPropertyNotify, ChangeCustomPropertyNotify events are not raised
+title: 使用SOLIDWORKS API处理自定义属性修改事件（添加、删除、更改）
+caption: 处理修改事件
+description: 使用SOLIDWORKS API处理与修改通用或配置特定自定义属性相关的所有事件。当不会引发AddCustomPropertyNotify、DeleteCustomPropertyNotify、ChangeCustomPropertyNotify事件时的问题的解决方法
 image: custom-properties-events-console.png
-labels: [custom property,notification]
+labels: [自定义属性,通知]
 ---
-SOLIDWORKS API provides notifications to handle the custom properties modifications (such as add, delete or change). These events (AddCustomPropertyNotify, DeleteCustomPropertyNotify, ChangeCustomPropertyNotify) are raised for parts, assemblies and drawings and support general and configuration specific custom properties. However since SOLIDWORKS 2018 these events are no longer raised for the custom properties modified by the user in the user interface and only support custom properties modified from SOLIDWORKS API.
 
-The code example below provides a workaround for this issue and enables handling of the notifications regardless of the way custom properties were modified.
+SOLIDWORKS API提供了通知来处理自定义属性的修改（如添加、删除或更改）。这些事件（AddCustomPropertyNotify、DeleteCustomPropertyNotify、ChangeCustomPropertyNotify）适用于零件、装配体和图纸，并支持通用和配置特定的自定义属性。然而，自SOLIDWORKS 2018以来，这些事件不再针对用户在用户界面中修改的自定义属性引发，而只支持从SOLIDWORKS API中修改的自定义属性。
 
-* Create console application and add the code below
-* Run the console
-* Modify custom properties. The modification results are output to the console window:
+下面的代码示例提供了此问题的解决方法，并且可以处理无论以何种方式修改自定义属性。
 
-![Properties modification information output to the console](custom-properties-events-console.png)
+* 创建控制台应用程序并添加下面的代码
+* 运行控制台
+* 修改自定义属性。修改结果将输出到控制台窗口：
+
+![将属性修改信息输出到控制台](custom-properties-events-console.png)
 
 ## Program.cs
 
-Entry point of the program
+程序的入口点
 
 ~~~ cs
 using SolidWorks.Interop.sldworks;
@@ -44,7 +45,7 @@ namespace HandlePrpsEvents
                 model = app.IActiveDoc2;
                 if (model == null)
                 {
-                    Console.WriteLine("Open the model and press any key to continue");
+                    Console.WriteLine("打开模型并按任意键继续");
                     Console.ReadLine();
                 }
             } while (model == null);
@@ -61,7 +62,7 @@ namespace HandlePrpsEvents
 
         private static void OnPropertyChanged(PropertyChangeAction_e type, string name, string conf, string value)
         {
-            Console.WriteLine($"Property {name}; Action: {type}; Configuration: {conf}; Value: {value}");
+            Console.WriteLine($"属性 {name}；操作：{type}；配置：{conf}；值：{value}");
         }
     }
 }
@@ -85,9 +86,9 @@ namespace HandlePrpsEvents
 {
     public enum PropertyChangeAction_e
     {
-        Added,
-        Deleted,
-        Modified
+        添加,
+        删除,
+        修改
     }
 
     public class CustomPropertiesEventsHandler : IDisposable
@@ -223,14 +224,14 @@ namespace HandlePrpsEvents
 
                 foreach (var newPrpName in addedPrpNames)
                 {
-                    PropertyChanged?.Invoke(PropertyChangeAction_e.Added, newPrpName, conf, newPrsList[newPrpName]);
+                    PropertyChanged?.Invoke(PropertyChangeAction_e.添加, newPrpName, conf, newPrsList[newPrpName]);
                 }
 
                 var removedPrpNames = oldPrsList.Keys.Except(newPrsList.Keys);
 
                 foreach (var deletedPrpName in removedPrpNames)
                 {
-                    PropertyChanged?.Invoke(PropertyChangeAction_e.Deleted, deletedPrpName, conf, oldPrsList[deletedPrpName]);
+                    PropertyChanged?.Invoke(PropertyChangeAction_e.删除, deletedPrpName, conf, oldPrsList[deletedPrpName]);
                 }
 
                 var commonPrpNames = oldPrsList.Keys.Intersect(newPrsList.Keys);
@@ -239,7 +240,7 @@ namespace HandlePrpsEvents
                 {
                     if (newPrsList[prpName] != oldPrsList[prpName])
                     {
-                        PropertyChanged?.Invoke(PropertyChangeAction_e.Modified, prpName, conf, newPrsList[prpName]);
+                        PropertyChanged?.Invoke(PropertyChangeAction_e.修改, prpName, conf, newPrsList[prpName]);
                     }
                 }
             }
@@ -247,19 +248,19 @@ namespace HandlePrpsEvents
 
         private int OnAddCustomPropertyNotify(string propName, string Configuration, string Value, int valueType)
         {
-            PropertyChanged?.Invoke(PropertyChangeAction_e.Added, propName, Configuration, Value);
+            PropertyChanged?.Invoke(PropertyChangeAction_e.添加, propName, Configuration, Value);
             return 0;
         }
 
         private int OnDeleteCustomPropertyNotify(string propName, string Configuration, string Value, int valueType)
         {
-            PropertyChanged?.Invoke(PropertyChangeAction_e.Deleted, propName, Configuration, Value);
+            PropertyChanged?.Invoke(PropertyChangeAction_e.删除, propName, Configuration, Value);
             return 0;
         }
 
         private int OnChangeCustomPropertyNotify(string propName, string Configuration, string oldValue, string NewValue, int valueType)
         {
-            PropertyChanged?.Invoke(PropertyChangeAction_e.Modified, propName, Configuration, NewValue);
+            PropertyChanged?.Invoke(PropertyChangeAction_e.修改, propName, Configuration, NewValue);
             return 0;
         }
 
@@ -271,7 +272,7 @@ namespace HandlePrpsEvents
             {
                 if (!CaptureCurrentProperties())
                 {
-                    throw new Exception("Failed to find the summary information dialog");
+                    throw new Exception("无法找到摘要信息对话框");
                 }
             }
 
@@ -338,5 +339,3 @@ namespace HandlePrpsEvents
 }
 
 ~~~
-
-
