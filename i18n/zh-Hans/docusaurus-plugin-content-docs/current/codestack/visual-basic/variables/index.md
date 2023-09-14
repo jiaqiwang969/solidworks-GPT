@@ -1,15 +1,15 @@
 ---
-title: Variables, Constants and Data Types in Visual Basic
-caption: Variables, Constants and Data Types
-description: Explanation of variables and variable types in Visual Basic
+title: 变量、常量和数据类型在Visual Basic中的使用
+caption: 变量、常量和数据类型
+description: 解释了在Visual Basic中开发代码时变量和变量类型的使用方法
 sidebar_position: 0
 ---
-This section explains the usage of variables and constants when developing code in Visual Basic. 
+本节将解释在Visual Basic中开发代码时使用变量和常量的方法。
 
-Variables are used to store the information of different types (e.g. numeric, text, date etc.). Value of the variable can be assigned and changed at run-time.
+变量用于存储不同类型的信息（例如数字、文本、日期等）。变量的值可以在运行时分配和更改。
 
-Unlike variables, constants cannot be changed during the runtime and will always have the value assigned to the constant at declaration. Constant is a good way to store the data which will never change within the application.
+与变量不同，常量在运行时不能更改，并且始终具有在声明时分配给常量的值。常量是存储在应用程序中永远不会更改的数据的好方法。
 
-There are different types of data which variables and constants can hold. The data types can be classified into two main groups: value types (variable holds the actual value in its own memory allocation) and reference types (variable holds the reference to the object which is stored in different memory allocation). The reference is assigned using **Set** keyword.
+变量和常量可以保存不同类型的数据。数据类型可以分为两个主要组：值类型（变量在自己的内存分配中保存实际值）和引用类型（变量保存对存储在不同内存分配中的对象的引用）。使用**Set**关键字分配引用。
 
-> Note. Assigning the reference from one variable to another doesn't copy the value of the object and those variables will point to the same object in memory.
+> 注意：将一个变量的引用分配给另一个变量不会复制对象的值，这些变量将指向内存中的同一个对象。
