@@ -1,19 +1,20 @@
 ---
-title: Extract PNG preview image from active configuration using SOLIDWORKS Document Manager API
-caption: Extract PNG Preview Image From The Active Configuration
-description: Example demonstrates how to extract PNG preview image from the active configuration of SOLIDWORKS assembly or part using the document manager API.
+title: 使用 SOLIDWORKS Document Manager API 从活动配置中提取 PNG 预览图像
+caption: 从活动配置中提取 PNG 预览图像
+description: 该示例演示了如何使用 SOLIDWORKS Document Manager API 从 SOLIDWORKS 组件或零件的活动配置中提取 PNG 预览图像。
 ---
-Example demonstrates how to extract PNG preview image from the active configuration of SOLIDWORKS assembly or part using the document manager API.
 
-This approach would work for both in-process and out-of-process application.
+该示例演示了如何使用 SOLIDWORKS Document Manager API 从 SOLIDWORKS 组件或零件的活动配置中提取 PNG 预览图像。
 
-* Create C# Console application
-* Paste the code
-* Run the application with 2 arguments: full path to the input SOLIDWORKS part or assembly and full path to output PNG image
+这种方法适用于内部进程和外部进程应用程序。
 
-This example is using the [ISwDMConfiguration9::GetPreviewPNGBitmapBytes](https://help.solidworks.com/2018/english/api/swdocmgrapi/solidworks.interop.swdocumentmgr~solidworks.interop.swdocumentmgr.iswdmconfiguration9~getpreviewpngbitmapbytes.html) SOLIDWORKS Document Manager API to extract byte buffer of preview and convert it to an [Image](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.image?view=netframework-4.7.2) object.
+* 创建 C# 控制台应用程序
+* 粘贴代码
+* 使用两个参数运行应用程序：输入 SOLIDWORKS 零件或组件的完整路径和输出 PNG 图像的完整路径
 
-~~~ cs
+此示例使用 [ISwDMConfiguration9::GetPreviewPNGBitmapBytes](https://help.solidworks.com/2018/english/api/swdocmgrapi/solidworks.interop.swdocumentmgr~solidworks.interop.swdocumentmgr.iswdmconfiguration9~getpreviewpngbitmapbytes.html) SOLIDWORKS Document Manager API 提取预览的字节缓冲区，并将其转换为 [Image](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.image?view=netframework-4.7.2) 对象。
+
+``` cs
 using SwDocumentMgr;
 using System;
 using System.Drawing;
@@ -74,16 +75,14 @@ namespace CodeStackExample
                 }
                 else
                 {
-                    Console.WriteLine($"Failed to extract preview from the document: {previewErr}");
+                    Console.WriteLine($"从文档中提取预览失败：{previewErr}");
                 }
             }
             else
             {
-                Console.WriteLine($"Failed to open the document: {err}");
+                Console.WriteLine($"打开文档失败：{err}");
             }
         }
     }
 }
-~~~
-
-
+```
