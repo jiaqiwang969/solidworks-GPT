@@ -1,26 +1,26 @@
 ---
-title: Modules in Visual Basic
-caption: Modules
-description: Article explain the usage of modules for storing the shareable functions and variables in Visual Basic
+title: Visual Basic 中的模块
+caption: 模块
+description: 本文介绍了在 Visual Basic 中使用模块来存储可共享的函数和变量的用法。
 image: add-new-module.png
 sidebar_position: 0
 ---
-Modules are containers to define custom functions, procedures or variables to group code in Visual Basic.
+模块是用于在 Visual Basic 中组织代码的容器，用于定义自定义函数、过程或变量。
 
-Module containing an entry point subroutine (main) is an entry module. It is always at least one module defined in the Visual Basic macro.
+包含入口点子程序（main）的模块是一个入口模块。在 Visual Basic 宏中至少定义了一个模块。
 
-In order to add new module it is required to RMB (right mouse button click) the **Modules** folder and select *Inset->Module* command
+要添加新模块，需要右键单击“模块”文件夹，然后选择“插入->模块”命令。
 
-![Adding new module to the macro](add-new-module.png){ width=250 }
+![将新模块添加到宏中](add-new-module.png){ width=250 }
 
-Module must have an unique name which can be defined by the developer.
+模块必须具有开发人员定义的唯一名称。
 
-![Module properties](module-properties.png)
+![模块属性](module-properties.png)
 
-Functions defined in module are public. Members (variables) declared with **Dim** keyword are only visible within this module scope and not visible for another modules, while members declared with **Public** keyword are visible for this and other modules. Refer [Variables Scope](/docs/codestack/visual-basic/variables/scope) article for more information.
+在模块中定义的函数是公共的。使用 **Dim** 关键字声明的成员（变量）仅在此模块范围内可见，对于其他模块不可见，而使用 **Public** 关键字声明的成员对于此模块和其他模块可见。有关更多信息，请参阅[变量作用域](/docs/codestack/visual-basic/variables/scope)文章。
 
-![Module members](module-members.png)
+![模块成员](module-members.png)
 
-Module members are available in IntelliSense after typing the name of the module followed by . symbol.
+在键入模块名称后，模块成员在 IntelliSense 中可用。
 
-![IntelliSense for members defined in the module](module-members-intellisense.png)
+![在模块中定义的成员的 IntelliSense](module-members-intellisense.png)
