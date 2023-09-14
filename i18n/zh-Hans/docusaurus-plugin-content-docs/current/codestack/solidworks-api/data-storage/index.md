@@ -1,24 +1,24 @@
 ---
-title: Storing data in SOLIDWORKS models using API
-caption: Data Storage
-description: Collection of articles and code examples which demonstrate how to store different type of data within the SOLIDWORKS models (3rd party storage, attributes, custom properties)
+title: 使用SOLIDWORKS API在模型中存储数据
+caption: 数据存储
+description: 一系列文章和代码示例，演示如何使用SOLIDWORKS API在SOLIDWORKS模型中存储不同类型的数据（第三方存储、属性、自定义属性）
 image: solidworks-model-data-storage.png
 sidebar_position: 0
 ---
-![Storing the user data in the model via API](solidworks-model-data-storage.png){ width=250 }
+![通过API在模型中存储用户数据](solidworks-model-data-storage.png){ width=250 }
 
-SOLIDWORKS provides multiple ways to store the custom user data (i.e. text, numbers or more complex types like images or videos) within the SOLIDWORKS models using API. The most common ways are:
+SOLIDWORKS提供了多种使用API在SOLIDWORKS模型中存储自定义用户数据（如文本、数字或更复杂的类型，如图像或视频）的方法。最常见的方法有：
 
-## Custom Properties
+## 自定义属性
 
-Allows to add custom key-value pairs into the model or a configuration. Type of the key is case-insensitive string which must be unique within the scope (i.e. document level or configuration). Type of the value can be: text, number, date and boolean (Yes or No). Custom properties can be edited by the user.
+允许在模型或配置中添加自定义键值对。键的类型是不区分大小写的字符串，必须在作用域内（即文档级别或配置级别）是唯一的。值的类型可以是文本、数字、日期和布尔值（是或否）。用户可以编辑自定义属性。
 
-## Attributes
+## 属性
 
-Attributes are custom features added to the feature tree which might hold the parameters with values (string or numeric). Attributes can be also associated with the selectable objects (face, vertex, edge and component). Attributes cannot be associated with sketch segments. Attributes can be hidden in the features tree. Attributes cannot be changed from the User Interface.
+属性是添加到特征树中的自定义特征，可以保存带有值（字符串或数字）的参数。属性还可以与可选择的对象（面、顶点、边和组件）关联。属性不能与草图段关联。属性可以在特征树中隐藏。属性不能从用户界面更改。
 
-## 3rd Party Storage
+## 第三方存储
 
-SOLIDWORKS allows creating custom COM storage within the main model's stream. It is possible to serialize/deserialize any custom data in this stream.
+SOLIDWORKS允许在主模型流中创建自定义COM存储。可以在此流中序列化/反序列化任何自定义数据。
 
-This section contains macros and code examples which demonstrates usage of above techniques to save data in the model using SOLIDWORKS API.
+本节包含了使用上述技术在模型中保存数据的宏和代码示例，使用SOLIDWORKS API。
