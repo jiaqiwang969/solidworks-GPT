@@ -1,82 +1,82 @@
 ---
-title: Arrays in Visual Basic
-caption: Array
-description: Article explaining arrays in Visual Basic - set of elements which stored in the single variable and can be accessed by index
+title: Visual Basic 中的数组
+caption: 数组
+description: 解释了 Visual Basic 中的数组 - 一组存储在单个变量中并可以通过索引访问的元素
 image: two-dimensional-array.png
 sidebar_position: 0
 ---
-Visual Basic array is a set of elements which is stored in the single variable and can be accessed by index.
+Visual Basic 数组是一组存储在单个变量中并可以通过索引访问的元素。
 
-In order to declare array it is required to append the variable name with parenthesis () symbol;
+要声明数组，需要在变量名后面添加括号 () 符号；
 
-~~~ vb
-Dim arr() As Double 'declaring the array of doubles
-~~~
+``` vb
+Dim arr() As Double '声明双精度数组
+```
 
-Array elements can be accessed by the index
+可以通过索引访问数组元素
 
-~~~ vb
+``` vb
 Dim arr(2) As String
 Dim elem As String
-elem = arr(0) 'getting first element
-~~~
+elem = arr(0) '获取第一个元素
+```
 
-## Initializing arrays in Visual Basic
+## 在 Visual Basic 中初始化数组
 
-Arrays is a set of the fixed size. Size can be assigned while declaration.
+数组是一组固定大小的元素。可以在声明时分配大小。
 
-~~~ vb
-Dim arr(2) As Double 'declaring the array of 3 doubles (from 0 to 1)
-~~~
+``` vb
+Dim arr(2) As Double '声明 3 个双精度数组（从 0 到 1）
+```
 
-> The single number between the parenthesis represents the upper boundary of the array. By default arrays are 0-based. So specifying (5) as array size means that there will be 6 elements in the array.
+> 括号中的单个数字表示数组的上界。默认情况下，数组是基于 0 的。因此，指定 (5) 作为数组大小意味着数组中将有 6 个元素。
 
-It is possible to explicitly specify the upper and inner boundaries of the array
+可以显式指定数组的上界和下界
 
-~~~ vb
-Dim arr(1 To 5) As Double 'declaring the array of 5 doubles (from 1 to 5)
-~~~
+``` vb
+Dim arr(1 To 5) As Double '声明 5 个双精度数组（从 1 到 5）
+```
 
-> It is recommended to use 0-based array as it is a common practice across different programming languages.
+> 建议使用基于 0 的数组，因为这是不同编程语言中的常见做法。
 
-Array elements can be accessed and changed by their index. If specified index is outside of the boundaries of the array, run-time error is raised.
+可以通过索引访问和更改数组元素。如果指定的索引超出了数组的边界，则会引发运行时错误。
 
-In some cases size of the array cannot be known at the compile time and it will be identified during the run-time. In this case array can be declared without the size (i.e. not initialized). Such array can be then resized dynamically using the **ReDim** keyword.
+在某些情况下，数组的大小在编译时无法确定，并且将在运行时确定。在这种情况下，可以在不指定大小（即未初始化）的情况下声明数组。然后可以使用 **ReDim** 关键字动态调整数组的大小。
 
-~~~ vb
+``` vb
 Dim arr() As Double
-ReDim arr(2) 'initializing the size of the array
-~~~
+ReDim arr(2) '初始化数组的大小
+```
 
-In order to retrieve the upper and lower boundaries of the array **UBound** and **LBound** can be used respectively.
+要检索数组的上界和下界，可以分别使用 **UBound** 和 **LBound**。
 
-> UBound function cannot be used to identify if the array is initialized as it will throw an exception when used on not initialized array. Use the **IsArrayInitialized** function from the example below to safely identify the state of the array.
+> 不能使用 UBound 函数来确定数组是否已初始化，因为在未初始化的数组上使用它会引发异常。请使用下面示例中的 **IsArrayInitialized** 函数来安全地确定数组的状态。
 
-![Run-time error 9: subscript out of range while reading the upper boundary of uninitialized array](subscript-out-of-range.png){ width=350 }
+![读取未初始化数组的上界时出现运行时错误 9：下标超出范围](subscript-out-of-range.png){ width=350 }
 
-~~~ vb
+``` vb
 Sub InitializeArray()
     
-    Dim doubleArr() As Double 'not initialized array
+    Dim doubleArr() As Double '未初始化的数组
     
     'Array is initialized = False
     Debug.Print "Array is initialized = " & IsArrayInitialized(doubleArr)
     
-    ReDim doubleArr(2) 'resizing array to hold 3 doubles
+    ReDim doubleArr(2) '调整数组大小以容纳 3 个双精度数
     
     'Array is initialized = True of size 3
     Debug.Print "Array is initialized = " & IsArrayInitialized(doubleArr) & " of size " & GetArraySize(doubleArr)
     
-    Dim textArr(4) As String 'initialized at declaration
+    Dim textArr(4) As String '在声明时初始化
     'Array is initialized = True of size 5
     Debug.Print "Array is initialized = " & IsArrayInitialized(textArr) & " of size " & GetArraySize(textArr)
     
-    'initializing with custom boundaries
+    '使用自定义边界进行初始化
     Dim intArr(1 To 5) As Integer
     'Array is initialized = True of size 5 (1 to 5)
     Debug.Print "Array is initialized = " & IsArrayInitialized(intArr) & " of size " & GetArraySize(intArr) & " (" & LBound(intArr) & " to " & UBound(intArr) & ")"
     
-    'Debug.Print intArr(0) 'Run-time error 9: subscript out of range
+    'Debug.Print intArr(0) '运行时错误 9：下标超出范围
     
 End Sub
 
@@ -108,24 +108,24 @@ Function GetArraySize(vArr As Variant) As Integer
     End If
     
 End Function
-~~~
+```
 
 
 
-## Filling array with data
+## 用数据填充数组
 
-Array elements can be treated as individual variables and the same rules of reading and editing the data applies to array elements as any other variable. Refer [Variables](/docs/codestack/visual-basic/variables) article for more information.
+数组元素可以被视为单独的变量，读取和编辑数据的规则与任何其他变量的规则相同。有关更多信息，请参阅 [变量](/docs/codestack/visual-basic/variables) 文章。
 
-~~~ vb
+``` vb
 Dim arr(2) As Double
-arr(<INDEX>) = 10 'changing the value of the variable at <INDEX>
-Debug.Print arr(<INDEX>) 'reading the value of the variable at <INDEX>
-~~~
+arr(<INDEX>) = 10 '更改 <INDEX> 处变量的值
+Debug.Print arr(<INDEX>) '读取 <INDEX> 处变量的值
+```
 
-~~~ vb
+``` vb
 Sub FillArray()
     
-    Dim doubleArr(2) As Double 'array initialized from the declaration
+    Dim doubleArr(2) As Double '从声明中初始化的数组
     Dim i As Integer
     
     For i = 0 To UBound(doubleArr)
@@ -138,7 +138,7 @@ Sub FillArray()
     Next
 
     Dim vArr As Variant
-    vArr = Array("A", "B", "C", "D") 'filling the variant array on initialization
+    vArr = Array("A", "B", "C", "D") '在初始化时填充变体数组
     
     'A B C D
     For i = 0 To UBound(vArr)
@@ -146,28 +146,28 @@ Sub FillArray()
     Next
     
 End Sub
-~~~
+```
 
 
 
-## Resizing array
+## 调整数组大小
 
-Array size can be changed at run-time. But that can only be done for the array whose size was not explicitly specified on declaration
+数组大小可以在运行时更改。但只能对在声明时未显式指定大小的数组进行更改。
 
-~~~ vb
-Dim arrCanResize() As Integer 'size of this array can be resized
-Dim arrCannotResize(3) As Integer 'size of this array cannot be resized
-~~~
+``` vb
+Dim arrCanResize() As Integer '可以调整大小的数组
+Dim arrCannotResize(3) As Integer '无法调整大小的数组
+```
 
-Attempt of resizing the already dimensioned array will result in the compile error:
+尝试调整已经定义维度的数组将导致编译错误：
 
-![Compile error: Array already dimensioned](array-already-dimensioned.png){ width=350 }
+![编译错误：数组已经定义维度](array-already-dimensioned.png){ width=350 }
 
-### Clearing the existing values
+### 清除现有值
 
-**ReDim** keyword allows to resize the array. In this case all existing values will be cleared.
+**ReDim** 关键字允许调整数组的大小。在这种情况下，所有现有值都将被清除。
 
-~~~ vb
+``` vb
 Sub ResizeAndClearArray()
     
     Dim doubleArr() As Double
@@ -179,7 +179,7 @@ Sub ResizeAndClearArray()
         doubleArr(i) = i + 1
     Next
     
-    'resizing and clearing the array
+    '调整大小并清除数组
     ReDim doubleArr(3)
     doubleArr(3) = 4
     
@@ -189,18 +189,18 @@ Sub ResizeAndClearArray()
     Next
 
 End Sub
-~~~
+```
 
 
 
-### Preserving existing values
+### 保留现有值
 
-In order to keep the existing values of the array it is required to use **ReDim Preserve** keyword.
+为了保留数组的现有值，需要使用 **ReDim Preserve** 关键字。
 
-~~~ vb
+``` vb
 Sub ResizeAndPreserveArray()
 
-    Dim doubleArr() As Double 'array initialized from the declaration
+    Dim doubleArr() As Double '从声明中初始化的数组
     Dim i As Integer
 
     ReDim doubleArr(3)
@@ -209,7 +209,7 @@ Sub ResizeAndPreserveArray()
         doubleArr(i) = i + 1
     Next
     
-    'resizing the array and preserving the values
+    '调整数组大小并保留值
     ReDim Preserve doubleArr(4)
     doubleArr(4) = 5
     
@@ -219,17 +219,17 @@ Sub ResizeAndPreserveArray()
     Next
 
 End Sub
-~~~
+```
 
 
 
-### Resizing arrays dynamically
+### 动态调整数组大小
 
-In some cases it might be unknown in advance the size of the array or when the first item (if any) will be added.
+在某些情况下，事先不知道数组的大小或第一个项目（如果有的话）何时添加。
 
-In this cases it is beneficial to only init array when needed. It is possible to use the following statement to identify if the array is not initialized `(Not array) = -1` and init with a first item or dynamically resize preserving the existing values.
+在这种情况下，只有在需要时才初始化数组是有益的。可以使用以下语句来确定数组是否未初始化 `(Not array) = -1`，并在需要时初始化第一个项目或动态调整大小以保留现有值。
 
-~~~ vb
+``` vb
 Dim evenNumbersArr() As Integer
 
 Dim i As Integer
@@ -246,24 +246,24 @@ For i = 0 To 100
         evenNumbersArr(UBound(evenNumbersArr)) = i
     End If
 Next
-~~~
+```
 
 
 
-## Two dimensional array
+## 二维数组
 
-Two-dimensional array allows to store the table data and can be declared in the following format
+二维数组允许存储表格数据，并可以使用以下格式声明
 
-~~~ vb
-Dim table(<ROWS COUNT>, <COLUMNS COUNT>) As String
-~~~
+``` vb
+Dim table(<行数>, <列数>) As String
+```
 
-> 2-dimensional array can be resized, but if it is required to preserve the values only second (column) dimension can be resized.
+> 二维数组可以调整大小，但如果需要保留值，则只能调整第二个（列）维度的大小。
 
-~~~ vb
+``` vb
 Sub TwoDimensionalArrays()
     
-    '3 rows and 4 columns
+    '3 行 4 列
     Dim matrixArr() As String
     ReDim matrixArr(2, 3)
         
@@ -276,17 +276,17 @@ Sub TwoDimensionalArrays()
         Next
     Next
     
-    'first dimension cannot be resized
-    'ReDim Preserve matrixArr(5, 5) 'Run-time error 9: subscript out of range
+    '第一维无法调整大小
+    'ReDim Preserve matrixArr(5, 5) '运行时错误 9：下标超出范围
     
-    'second dimension can be resized preserving the data
+    '第二维可以调整大小并保留数据
     ReDim Preserve matrixArr(2, 4)
     
-    ReDim matrixArr(5, 5) 'dimensions of the array can be changed when cleared
+    ReDim matrixArr(5, 5) '清除时可以更改数组的维度
     
 End Sub
-~~~
+```
 
 
 
-![Values of two-dimensional array (matrixArr) in the Watch window from the code above](two-dimensional-array.png)
+![来自上面代码的 Watch 窗口中二维数组（matrixArr）的值](two-dimensional-array.png)
