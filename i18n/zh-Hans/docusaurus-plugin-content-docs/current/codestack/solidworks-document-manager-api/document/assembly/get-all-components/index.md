@@ -1,25 +1,25 @@
 ---
-title: Get all assembly components using SOLIDWORKS Document Manager API
-caption: Get All Components
-description: Example demonstrates how to get all components on all levels from the document using the Document Manager API
+title: 使用SOLIDWORKS文档管理器API获取所有装配件组件
+caption: 获取所有组件
+description: 该示例演示了如何使用SOLIDWORKS文档管理器API从文档中获取所有层级的组件。
 image: components-tree.png
 ---
-![SOLIDWORKS assembly tree](components-tree.png){ width=200 }
+![SOLIDWORKS装配树](components-tree.png){ width=200 }
 
-This example demonstrates how to get all components on all levels from the document using the Document Manager API.
+该示例演示了如何使用SOLIDWORKS文档管理器API从文档中获取所有层级的组件。
 
-* Open the macro in SOLIDWORKS
-* Specify the document manager key
-* Specify the path to top assembly
-* Run the macro. All components data is output to Immediate window of VBA editor
+* 在SOLIDWORKS中打开宏
+* 指定文档管理器密钥
+* 指定顶层装配的路径
+* 运行宏。所有组件数据将输出到VBA编辑器的立即窗口中
 
-To get top level components only modify the function as follows
+要仅获取顶层组件，请将函数修改如下：
 
 ~~~ vb
 Call GetAllComponents(swDmDoc, "", True, comps)
 ~~~
 
-> Do not store the pointer to [ISwDMComponent](https://help.solidworks.com/2015/english/api/swdocmgrapi/solidworks.interop.swdocumentmgr~solidworks.interop.swdocumentmgr.iswdmcomponent.html) while traversing the levels of assembly as it will be destroyed once the document is closed or pointer is released
+> 在遍历装配层级时，不要存储指向[ISwDMComponent](https://help.solidworks.com/2015/english/api/swdocmgrapi/solidworks.interop.swdocumentmgr~solidworks.interop.swdocumentmgr.iswdmcomponent.html)的指针，因为一旦文档关闭或释放指针，它将被销毁。
 
 ~~~ vb
 Type CompData
@@ -28,9 +28,9 @@ Type CompData
     ConfName As String
 End Type
 
-Const FILE_PATH As String = "Full path to assembly file"
+Const FILE_PATH As String = "装配文件的完整路径"
 
-Const LIC_KEY As String = "Document Manager License Key"
+Const LIC_KEY As String = "文档管理器许可证密钥"
 
 Dim swDmApp As SwDocumentMgr.SwDMApplication4
 
@@ -63,7 +63,7 @@ Sub main()
             Next
             
         Else
-            MsgBox "Failed to open the document"
+            MsgBox "无法打开文档"
         End If
         
     End If
@@ -132,4 +132,3 @@ Sub GetComponents(conf As SwDMConfiguration2, coll() As CompData, recursive As B
     
 End Sub
 ~~~
-
