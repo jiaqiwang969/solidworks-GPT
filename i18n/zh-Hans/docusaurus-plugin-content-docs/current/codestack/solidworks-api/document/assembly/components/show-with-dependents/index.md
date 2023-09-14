@@ -1,15 +1,15 @@
 ---
-title: VBA Macro calls Show All Components command from SOLIDWORKS API
-caption: Show All Components (Show With Dependents)
-description: Example demonstrates how to call the Show With Dependents command for components or assembly using SOLIDWORKS API
+title: VBA宏调用SOLIDWORKS API中的显示所有组件命令
+caption: 显示所有组件（显示依赖项）
+description: 该示例演示了如何使用SOLIDWORKS API调用显示依赖项命令来一次性显示所有组件或装配体。
 image: assembly-show-with-dependents.png
-labels: [assembly, components, show]
+labels: [装配体, 组件, 显示]
 ---
-![Show With Dependents command in assembly](assembly-show-with-dependents.png){ width=250 }
+![装配体中的显示依赖项命令](assembly-show-with-dependents.png){ width=250 }
 
-This example demonstrates how to call the 'Show With Dependents' command for components or assembly to show all components at once using SOLIDWORKS API and Windows API.
+该示例演示了如何使用SOLIDWORKS API和Windows API调用“显示依赖项”命令来一次性显示所有组件或装配体。
 
-Macro will call the command for the selected component or for the assembly (if no components selected).
+宏将为所选组件或装配体调用该命令（如果没有选择组件）。
 
 ~~~ vb
 #If VBA7 Then
@@ -39,7 +39,7 @@ Sub main()
         ShowWithDependents swComp
         
      Else
-        MsgBox "Please open assembly"
+        MsgBox "请打开装配体"
      End If
      
  End Sub
@@ -59,4 +59,3 @@ Sub ShowWithDependents(comp As SldWorks.Component2)
      
 End Sub
 ~~~
-
