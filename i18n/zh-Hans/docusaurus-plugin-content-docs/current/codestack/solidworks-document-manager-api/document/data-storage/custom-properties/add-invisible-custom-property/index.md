@@ -1,17 +1,17 @@
 ---
-title: Add invisible custom property to the model using SOLIDWORKS Document Manager API
-caption: Add Invisible Custom Property
-description: VBA macro to add invisible custom property to the model using SOLIDWORKS Document Manager API
-labels: [invisible, custom property]
+title: 使用SOLIDWORKS Document Manager API向模型添加不可见的自定义属性
+caption: 添加不可见的自定义属性
+description: 使用SOLIDWORKS Document Manager API向模型添加不可见的自定义属性的VBA宏
+labels: [不可见, 自定义属性]
 ---
-SOLIDWORKS models contain several invisible custom properties, such as $PRP:"SW-File Name", $PRP:"SW-Title". Those are read-only and cannot be modified from the user interface. It is however possible to add new custom property using Document Manager API. This property is not available in the custom property manager page and cannot be modified by the user or SOLIDWORKS API.
+SOLIDWORKS模型包含多个不可见的自定义属性，例如$PRP:"SW-File Name"，$PRP:"SW-Title"。这些属性是只读的，无法从用户界面进行修改。但是，可以使用Document Manager API添加新的自定义属性。此属性在自定义属性管理器页面中不可用，用户或SOLIDWORKS API无法修改。
 
-This VBA example shows how to add the invisible custom property for the specified model. Configure the macro as follows:
+此VBA示例演示了如何为指定的模型添加不可见的自定义属性。请按照以下配置宏：
 
 ~~~ vb
-Const FILE_PATH As String = "C:\SampleModel.SLDPRT" 'Full path to file to add invisible property to
-Const PRP_NAME As String = "MyProperty" 'Property name to add
-Const PRP_VAL As String = "MyValue" 'Property value to assign
+Const FILE_PATH As String = "C:\SampleModel.SLDPRT" '要添加不可见属性的文件的完整路径
+Const PRP_NAME As String = "MyProperty" '要添加的属性名称
+Const PRP_VAL As String = "MyValue" '要分配的属性值
 ~~~
 
 ~~~ vb
@@ -41,7 +41,7 @@ Sub main()
         swDmDoc.CloseDoc
         
     Else
-        MsgBox "Document Manager SDK is not installed"
+        MsgBox "未安装Document Manager SDK"
     End If
     
 End Sub
@@ -69,11 +69,10 @@ Function OpenDocument(filePath As String, readOnly As Boolean) As SwDocumentMgr.
     Set swDmDoc = swDmApp.GetDocument(filePath, docType, readOnly, openErr)
     
     If swDmDoc Is Nothing Then
-        Err.Raise vbError, "", "Failed to open document: " & openErr
+        Err.Raise vbError, "", "无法打开文档: " & openErr
     End If
     
     Set OpenDocument = swDmDoc
     
 End Function
 ~~~
-
