@@ -1,13 +1,13 @@
 ---
-title: Convert arc to circle by merging end points using SOLIDWORKS API
-caption: Convert Arc To Circle
-description: VBA macro to convert sketch arc to a sketch circle by adding the merge relation between start and end points using SOLIDWORKS API
+title: 使用SOLIDWORKS API将弧线转换为圆
+caption: 将弧线转换为圆
+description: 使用SOLIDWORKS API在选择的草图弧线的起点和终点之间添加合并关系，将其转换为草图圆的VBA宏示例
 image: sketch-arc.png
-labels: [sketch,arc,circle,merge,relation]
+labels: [草图,弧线,圆,合并,关系]
 ---
-![Sketch arc](sketch-arc.png){ width=350 }
+![草图弧线](sketch-arc.png){ width=350 }
 
-This VBA macro example demonstrates how to apply the merge sketch relation between start and end points of the selected sketch arc to convert it to sketch circle. This is the analogue of dragging the point manually until it is merged or adding the merge sketch relation in relation manager.
+这个VBA宏示例演示了如何在选择的草图弧线的起点和终点之间应用合并草图关系，将其转换为草图圆。这相当于手动拖动点直到合并或在关系管理器中添加合并草图关系。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -31,13 +31,12 @@ Sub main()
             Set swEndPts(1) = swSkArc.GetEndPoint2()
             swModel.SketchManager.ActiveSketch.RelationManager.AddRelation swEndPts, swConstraintType_e.swConstraintType_MERGEPOINTS
         Else
-            MsgBox "Please select sketch arc"
+            MsgBox "请选择草图弧线"
         End If
         
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
 ~~~
-
