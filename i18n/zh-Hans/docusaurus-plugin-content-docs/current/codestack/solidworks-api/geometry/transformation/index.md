@@ -1,13 +1,13 @@
 ---
-title: Using transformations in SOLIDWORKS API
-caption: Transformation
-description: Applying and reading transformation (components, bodies, sketches etc.) using SOLIDWORKS API
+title: 在SOLIDWORKS API中使用变换
+caption: 变换
+description: 使用SOLIDWORKS API应用和读取变换（组件、实体、草图等）
 sidebar_position: 2
 labels: [transform,math]
 ---
-Transformation in SOLIDWORKS API is represented in the [IMathTransform](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imathtransform.html) interface. This is a 4x4 transformation matrix holding the information about transform, scale and translation.
+在SOLIDWORKS API中，变换使用[IMathTransform](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imathtransform.html)接口表示。这是一个4x4的变换矩阵，保存了变换、缩放和平移的信息。
 
-Matrix array is represented with 16 doubles (0 to 15) which are aligned in the following order
+矩阵数组由16个双精度数（0到15）表示，按照以下顺序排列：
 
 |||||
 |-|-|-|-|
@@ -16,28 +16,28 @@ Matrix array is represented with 16 doubles (0 to 15) which are aligned in the f
 |6|7|8|15|
 |9|10|11|12|
 
-0-8 - rotational part of the matrix
+0-8 - 矩阵的旋转部分
 
-9-11 - translation part of matrix (x, y, z)
+9-11 - 矩阵的平移部分（x、y、z）
 
-12 - scale factor
+12 - 缩放因子
 
-13-15 - not used
+13-15 - 未使用
 
-Matrix describe the orientation and translation of various elements in SOLIDWORKS, such as
+矩阵描述了SOLIDWORKS中各种元素的方向和平移，例如：
 
-* Components positions in the assembly
-* Bodies relative movements
-* Relation between sketch coordinate system and model coordinate system
-* Camera orientation and model view rotation
+* 组件在装配体中的位置
+* 实体的相对移动
+* 草图坐标系与模型坐标系之间的关系
+* 相机方向和模型视图旋转
 
-In a very simplistic representation you can consider transforms as a value you need to apply to original location (position, rotation) to get to the destination location.
+在一个非常简单的表示中，您可以将变换视为您需要应用于原始位置（位置、旋转）以到达目标位置的值。
 
 ![transform.svg](transform.svg){ width=250 }
 
-## Identity Matrix
+## 单位矩阵
 
-Identity matrix which represents no rotation, scale or transform will be equal to
+表示无旋转、缩放或变换的单位矩阵等于
 
 ### Visual Basic
 
@@ -61,11 +61,11 @@ var matrix = new double[]
 };
 ~~~
 
-[IMathUtility](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imathutility.html) is a SOLIDWORKS API utility interface providing the access to operations related to composing the transformation based on input parameters (such as rotation angles, translation, raw data).
+[IMathUtility](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imathutility.html)是一个SOLIDWORKS API实用程序接口，提供基于输入参数（如旋转角度、平移、原始数据）的变换组合操作的访问。
 
-The following interfaces are usually used while calculation of transformations and translations:
+在计算变换和平移时，通常使用以下接口：
 
 * [IMathVector](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imathvector.html)
 * [IMathPoint](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imathpoint.html)
 
-This example contains articles and tutorials explaining the use of transformation matrices.
+本示例包含了解使用变换矩阵的文章和教程。
