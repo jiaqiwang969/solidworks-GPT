@@ -1,19 +1,14 @@
----
-title: Create temp spherical sheet body using SOLIDWORKS modeler API
-caption: Create Temp Spherical Sheet Body
-description: Example demonstrates how to create temp body of a spherical sheet
-image: spherical-surface.png
-labels: [topology, geometry, sheet, modeler, sphere]
----
-![Spherical sheet body](spherical-surface.png)
+# 使用SOLIDWORKS模型API创建临时球面片体
 
-This example demonstrates how to create a sheet body from the spherical surface using SOLIDWORKS API.
+![球面片体](spherical-surface.png)
 
-Geometry is created using the [IModeler::CreateSphericalSurface2](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeler~createsphericalsurface2.html) SOLIDWORKS API method.
+本示例演示了如何使用SOLIDWORKS API从球面创建一个片体。
 
-Run the macro and temp body is displayed. Body can be rotated and selected but it is not presented in the feature tree. Continue the macro execution to destroy the body.
+几何图形是使用[SOLIDWORKS API方法IModeler::CreateSphericalSurface2](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeler~createsphericalsurface2.html)创建的。
 
-~~~ vb
+运行宏，将显示临时片体。可以旋转和选择该片体，但它不会出现在特征树中。继续执行宏以销毁该片体。
+
+```vb
 Const RADIUS As Double = 0.01
 
 Dim swApp As SldWorks.SldWorks
@@ -59,6 +54,5 @@ Sub main()
     End If
 	
 End Sub
-~~~
-
+```
 
