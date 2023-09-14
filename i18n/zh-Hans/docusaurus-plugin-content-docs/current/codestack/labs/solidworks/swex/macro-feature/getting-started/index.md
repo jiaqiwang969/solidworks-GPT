@@ -1,16 +1,16 @@
 ---
-title: Getting Started with SwEx.MacroFeature framework for SOLIDWORKS macro features
-caption: Getting Started
-description: Instructions on getting started with SwEx.MacroFeature framework for developing SOLIDWORKS macro features in add-ins in C# and VB.NET
+title: 使用SwEx.MacroFeature框架开始开发SOLIDWORKS宏特征
+caption: 入门指南
+description: 使用SwEx.MacroFeature框架在C#和VB.NET中开发SOLIDWORKS宏特征的入门指南
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 redirect-from:
   - /labs/solidworks/swex/macro-feature/getting-started/whats-new
 ---
-Framework is supported by .NET language (i.e. C# and VB.NET) targeting .NET Framework 4.0 or newer.
+该框架支持.NET语言（即C#和VB.NET），目标为.NET Framework 4.0或更新版本。
 
-Framework is published on [NuGet](https://www.nuget.org/packages/CodeStack.SwEx.MacroFeature) and can be installed as the package.
+该框架已发布在[NuGet](https://www.nuget.org/packages/CodeStack.SwEx.MacroFeature)，可以作为包进行安装。
 
-## What's New
+## 新特性
 
-Visit the [Version History](https://docs.codestack.net/swex/macro-feature/html/version-history.htm) page for the information about the what's new in the new releases.
+请访问[版本历史](https://docs.codestack.net/swex/macro-feature/html/version-history.htm)页面获取新版本的新特性信息。
