@@ -1,7 +1,7 @@
 ---
-title: Windows API Function
-description: Article explains how to import and use Windows API functions
+title: Windows API函数
+description: 本文介绍如何导入和使用Windows API函数
 sidebar_position: 0
 sitemap: false
 ---
-*Coming soon...*
+*即将推出...*
