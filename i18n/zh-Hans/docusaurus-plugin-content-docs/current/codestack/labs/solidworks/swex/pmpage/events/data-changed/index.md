@@ -1,18 +1,12 @@
----
-title: SOLIDWORKS Property Manager Page data changed events handling
-caption: Data Change
-description: Overview of events associated with data change of SOLIDWORKS property manager page handled in SwEx.PMPage framework
-toc-group-name: labs-solidworks-swex
-sidebar_position: 0
----
-SwEx framework provides event handlers for the data changes in the controls. Use this handlers to update preview or any other state which depends on the values in the controls.
+# SOLIDWORKS Property Manager Page数据更改事件处理
 
-## Post data changed event
+SwEx框架提供了用于控件数据更改的事件处理程序。使用这些处理程序来更新预览或任何其他依赖于控件值的状态。
 
-[PropertyManagerPageHandlerEx::DataChanged](https://docs.codestack.net/swex/pmpage/html/E_CodeStack_SwEx_PMPage_PropertyManagerPageHandlerEx_DataChanged.htm) event is raised after the user changed the value in the control which has updated the data model. Refer the bound data model for new values.
+## 发布数据更改事件
 
+[PropertyManagerPageHandlerEx::DataChanged](https://docs.codestack.net/swex/pmpage/html/E_CodeStack_SwEx_PMPage_PropertyManagerPageHandlerEx_DataChanged.htm)事件在用户更改了更新数据模型的控件中的值后触发。请参考绑定的数据模型获取新值。
 
-~~~vb
+```vb
 Public Class DataModel
     Public Property Text As String
 End Class
@@ -30,12 +24,11 @@ End Function
 
 Private Sub OnDataChanged()
     Dim text = m_Data.Text
-    'TODO: handle the data changing, e.g. update preview
+    'TODO: 处理数据更改，例如更新预览
 End Sub
-~~~
+```
 
-
-~~~cs
+```cs
 public class DataModel
 {
     public string Text { get; set; }
@@ -58,6 +51,6 @@ public override bool OnConnect()
 private void OnDataChanged()
 {
     var text = m_Data.Text;
-    //TODO: handle the data changing, e.g. update preview
+    //TODO: 处理数据更改，例如更新预览
 }
-~~~
+```
