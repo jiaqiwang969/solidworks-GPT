@@ -1,23 +1,24 @@
 ---
-title: Generate box geometry (solid, sheet, wire) Macro Feature using SOLIDWORKS API
-caption: Generate Box Geometry
-description: Example of creating VBA macro feature which generates different types of box geometry (solid, sheet, wire) using SOLIDWORKS API
+title: 使用SOLIDWORKS API生成盒子几何体（实体、面、线）宏特征
+caption: 生成盒子几何体
+description: 使用SOLIDWORKS API创建生成不同类型盒子几何体（实体、面、线）的VBA宏特征的示例
 image: solid-body.png
-labels: [macro feature,geometry,box,solid,sheet,wire]
+labels: [宏特征,几何体,盒子,实体,面,线]
 ---
-This VBA example demonstrates how to create macro feature which generates custom geometry.
 
-Open part document and run the macro. New feature is inserted in the Feature Manager tree and box geometry is generated either as solid, sheet or wire body.
+这个VBA示例演示了如何创建生成自定义几何体的宏特征。
 
-## Configuration
+打开零件文档并运行宏。新的特征将插入到特征管理器树中，并且将生成盒子几何体，可以是实体、面或线体。
 
-### Embedding
+## 配置
 
-Set the value of *EMBED_MACRO_FEATURE* constant to specify if macro feature should be embedded to file or not. If this option set to *True* then part document can be opened on any other computer and the geometry will be present without the need to copy the macro.
+### 嵌入
 
-### Box Size
+将*EMBED_MACRO_FEATURE*常量的值设置为指定是否将宏特征嵌入到文件中。如果将此选项设置为*True*，则可以在任何其他计算机上打开零件文档，而无需复制宏即可查看几何体。
 
-Size of the box can be configured by changing the *WIDTH*, *LENGTH* and *HEIGHT* constants:
+### 盒子尺寸
+
+可以通过更改*WIDTH*、*LENGTH*和*HEIGHT*常量来配置盒子的尺寸：
 
 ~~~ vb
 Const WIDTH As Double = 0.01
@@ -25,27 +26,27 @@ Const LENGTH As Double = 0.01
 Const HEIGHT As Double = 0.01
 ~~~
 
-### Body Type
+### 几何体类型
 
-Generated body type can be set by assigning the value to *BODY_TYPE* constant
+可以通过将值分配给*BODY_TYPE*常量来设置生成的几何体类型。
 
 #### swBodyType_e.swSolidBody
 
-Creates a box as a solid body geometry.
+创建一个实体几何体的盒子。
 
-![Macro feature generates solid body](solid-body.png){ width=350 }
+![宏特征生成实体几何体](solid-body.png){ width=350 }
 
 #### swBodyType_e.swSheetBody
 
-Creates a single surface body by sewing the faces of the box.
+通过缝合盒子的面创建一个单个面体。
 
-![Macro feature generates surface (sheet) body](surface-body.png){ width=350 }
+![宏特征生成面（面）体](surface-body.png){ width=350 }
 
 #### swBodyType_e.swWireBody
 
-Creates wire bodies from all edges of the box geometry. Wire bodies are edges and not presented in the bodies folders. Example of wire bodies used in standard feature tree are curves (composite, through XYZ, projected etc.)
+从盒子几何体的所有边创建线体。线体是边缘，不在体文件夹中显示。标准特征树中使用的线体示例是曲线（复合、通过XYZ、投影等）。
 
-![Macro feature generates wire body](wire-body.png){ width=350 }
+![宏特征生成线体](wire-body.png){ width=350 }
 
 ~~~ vb
 Const BODY_TYPE As Integer = swBodyType_e.swSolidBody
@@ -196,7 +197,7 @@ Function swmRebuild(varApp As Variant, varDoc As Variant, varFeat As Variant) As
         swmRebuild = swBoxBody
         
     Else
-        swmRebuild = "Invalid body type. Only solid, sheet and wire body is supported"
+        swmRebuild = "无效的几何体类型。仅支持实体、面和线体"
     End If
     
 End Function
@@ -235,5 +236,3 @@ Function swmSecurity(varApp As Variant, varDoc As Variant, varFeat As Variant) A
     swmSecurity = SwConst.swMacroFeatureSecurityOptions_e.swMacroFeatureSecurityByDefault
 End Function
 ~~~
-
-
