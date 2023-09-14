@@ -1,23 +1,24 @@
 ---
-title: Replace references in components or drawing views using SOLIDWORKS Document Manager API
-caption: Replace References
-description: Example demonstrates how to replace references (components or drawing views) in SOLIDWORKS files using Document Manager API
+title: 使用SOLIDWORKS文档管理器API替换组件或绘图视图中的引用
+caption: 替换引用
+description: 本示例演示了如何使用SOLIDWORKS文档管理器API在SOLIDWORKS文件（装配体或绘图）中替换引用（组件或绘图视图）。
 labels: [document manager, references, replace, components, drawing views]
 ---
-This example demonstrates how to replace references (components or drawing views) in SOLIDWORKS files (assemblies or drawings) using Document Manager API.
 
-* Specify the full path to the parent file (e.g. assembly)
-* Specify the full path to the document to replace
-* Specify the full path to the new document
+本示例演示了如何使用SOLIDWORKS文档管理器API在SOLIDWORKS文件（装配体或绘图）中替换引用（组件或绘图视图）。
 
-[ISwDMDocument::ReplaceReference](https://help.solidworks.com/2018/english/api/swdocmgrapi/solidworks.interop.swdocumentmgr~solidworks.interop.swdocumentmgr.iswdmdocument~replacereference.html) SOLIDWORKS Document Manager API method is used to replace the old reference with new one.
+* 指定父文件（例如装配体）的完整路径
+* 指定要替换的文档的完整路径
+* 指定新文档的完整路径
 
-~~~ vb
-Const FILE_PATH As String = "Full path to replace reference in"
-Const ORIGINAL_REFERENCE As String = "Full path to reference to be replaced"
-Const NEW_REFERENCE As String = "Full path to the new reference"
+使用[SOLIDWORKS文档管理器API的ISwDMDocument::ReplaceReference](https://help.solidworks.com/2018/english/api/swdocmgrapi/solidworks.interop.swdocumentmgr~solidworks.interop.swdocumentmgr.iswdmdocument~replacereference.html)方法来替换旧的引用为新的引用。
 
-Const LIC_KEY As String = "Your license key"
+```vb
+Const FILE_PATH As String = "要替换引用的完整路径"
+Const ORIGINAL_REFERENCE As String = "要替换的引用的完整路径"
+Const NEW_REFERENCE As String = "新引用的完整路径"
+
+Const LIC_KEY As String = "您的许可证密钥"
 
 Dim swDmApp As SwDocumentMgr.SwDMApplication4
 
@@ -37,7 +38,7 @@ Sub main()
     Set searchOpts = swDmApp.GetSearchOptionObject
     searchOpts.SearchFilters = SwDmSearchFilters.SwDmSearchExternalReference + SwDmSearchFilters.SwDmSearchRootAssemblyFolder + SwDmSearchFilters.SwDmSearchSubfolders + SwDmSearchFilters.SwDmSearchInContextReference
     
-    'this method must be called otherwise replacement will fail
+    '必须调用此方法，否则替换将失败
     swDmDoc.GetAllExternalReferences4 searchOpts, Empty, Empty, Empty
             
     swDmDoc.ReplaceReference ORIGINAL_REFERENCE, NEW_REFERENCE
@@ -71,7 +72,5 @@ Function OpenDocument(filePath As String) As SwDocumentMgr.SwDMDocument19
     Set OpenDocument = swDmDoc
     
 End Function
-
-
-~~~
+```
 
