@@ -1,32 +1,32 @@
 ---
-title: Localizing SOLIDWORKS add-ins using SwEx framework
-caption: Localization
-description: How to support multi language SOLIDWORKS add-ins by using of localized resources in SwEx framework
+title: 使用SwEx框架本地化SOLIDWORKS插件
+caption: 本地化
+description: 如何通过使用SwEx框架中的本地化资源来支持多语言的SOLIDWORKS插件
 image: menu-localized.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
-SwEx frameworks supports [resources in .NET applications](https://docs.microsoft.com/en-us/dotnet/framework/resources/index) to enable localization of the add-in, e.g. supporting multiple languages.
+SwEx框架支持[.NET应用程序中的资源](https://docs.microsoft.com/en-us/dotnet/framework/resources/index)，以实现插件的本地化，例如支持多种语言。
 
-This technique allows to load localized string at runtime based on the Windows settings in the control panel.
+这种技术允许根据控制面板中的Windows设置在运行时加载本地化字符串。
 
-![Region and language page in Control Panel](region-format.png){ width=450 }
+![控制面板中的区域和语言页面](region-format.png){ width=450 }
 
-Resources should be added to the corresponding localized .resx file (e.g. Resources.resx for default, Resources.ru.resx for Russian, Resources.fr.resx for French, etc.)
+资源应添加到相应的本地化.resx文件中（例如默认情况下的Resources.resx，俄语的Resources.ru.resx，法语的Resources.fr.resx等）。
 
-![Resource files in the solutions](resource-files.png)
+![解决方案中的资源文件](resource-files.png)
 
-In order to reference the string from the resource, use the overloads of the constructors for the [TitleAttribute](https://docs.codestack.net/swex/common/html/M_CodeStack_SwEx_Common_Attributes_TitleAttribute__ctor_1.htm) and [SummaryAttribute](https://docs.codestack.net/swex/common/html/M_CodeStack_SwEx_Common_Attributes_SummaryAttribute__ctor_1.htm) which allows to define title, tooltips, hint string for all elements across SwEx framework (i.e. [menu commands](#menu), [property page controls](#property-manager-page), [macro feature](#macro-feature), etc.)
+为了从资源中引用字符串，可以使用[TitleAttribute](https://docs.codestack.net/swex/common/html/M_CodeStack_SwEx_Common_Attributes_TitleAttribute__ctor_1.htm)和[SummaryAttribute](https://docs.codestack.net/swex/common/html/M_CodeStack_SwEx_Common_Attributes_SummaryAttribute__ctor_1.htm)的构造函数重载，这些构造函数允许为SwEx框架中的所有元素（例如[菜单命令](#menu)、[属性页控件](#property-manager-page)、[宏特征](#macro-feature)等）定义标题、工具提示和提示字符串。
 
-Below is an example which demonstrates this technique. Text is localized as per resources below:
+下面是一个示例，演示了这种技术。文本根据以下资源进行本地化：
 
-![Localized resource files in the Visual Studio](visual-studio-resources.png)
+![Visual Studio中的本地化资源文件](visual-studio-resources.png)
 
-## Menu
+## 菜单
 
-Two commands in menu are localized for Russian and English versions of the add-in.
+菜单中的两个命令针对俄语和英语版本的插件进行了本地化。
 
-![Localized menu commands](menu-localized.png)
+![本地化的菜单命令](menu-localized.png)
 
 ~~~vb
 <Title(GetType(Resources), NameOf(Resources.ToolbarTitle))>
@@ -59,11 +59,11 @@ public enum Commands_e
 }
 ~~~
 
-## Property Manager Page
+## 属性管理器页
 
-Property Manager page title and tooltips for the controls are localized for Russian and English versions of the add-in.
+属性管理器页的标题和控件的工具提示针对俄语和英语版本的插件进行了本地化。
 
-![Localized Property Manager Page](property-page-localized.png)
+![本地化的属性管理器页](property-page-localized.png)
 
 ~~~vb
 <Title(GetType(Resources), NameOf(Resources.LocalizedPmPageTitle))>
@@ -96,17 +96,17 @@ public class LocalizedPmPage
 ~~~
 
 
-## Macro Feature
+## 宏特征
 
-Macro feature base name is localized to Russian and English versions of the add-in.
+宏特征的基本名称针对俄语和英语版本的插件进行了本地化。
 
-> Note. Base name is only assigned while feature creation, feature won't be renamed after locale has changed.
+> 注意：基本名称仅在创建特征时分配，语言环境更改后特征不会被重命名。
 
-![Localized Macro Feature base name](macro-feature-localized.png)
+![本地化的宏特征基本名称](macro-feature-localized.png)
 
-In a similar way it is possible to use strings from the resources to return another data, e.g. text of the error for macro feature.
+类似地，可以使用资源中的字符串返回其他数据，例如宏特征的错误文本。
 
-![Localized macro feature error](macro-feature-error-localized.png)
+![本地化的宏特征错误](macro-feature-error-localized.png)
 
 ~~~vb
 <Title(GetType(Resources), NameOf(Resources.MacroFeatureBaseName))>
