@@ -1,23 +1,24 @@
 ---
 layout: sw-tool
-title: Macro to export selected bodies to foreign format
-caption: Export Selected Bodies
-description: VBA macro to export only selected bodies to foreign format (e.g. 3D xml, xaml, amf, 3mf)
+title: 将选定的实体导出为外部格式的宏
+caption: 导出选定的实体
+description: VBA宏，仅将选定的实体导出为外部格式（例如3D xml、xaml、amf、3mf）
 image: export-bodies.svg
-labels: [export, bodies]
-group: Import/Export
+labels: [导出, 实体]
+group: 导入/导出
 ---
-When exporting part file to most of the foreign format supported by SOLIDWORKS it is possible to select the scope bodies of export, allowing to only process selected bodies.
 
-![Export bodies dialog](export-dialog.png)
+在将零件文件导出为SOLIDWORKS支持的大多数外部格式时，可以选择导出的实体范围，从而只处理选定的实体。
 
-However this feature is not supported by all formats. For example the formats such as 3D xml, xaml, amf, 3mf will always export all bodies, regardless of the selection.
+![导出实体对话框](export-dialog.png)
 
-This VBA macro allows to export only selected bodies to any format supported by SOLIDWORKS.
+然而，并非所有格式都支持此功能。例如，3D xml、xaml、amf、3mf等格式将始终导出所有实体，而不考虑选择。
 
-Select the bodies, faces, edges or vertices and run the macro and specify the name of export to produce a result.
+此VBA宏允许仅将选定的实体导出为SOLIDWORKS支持的任何格式。
 
-~~~ vb
+选择实体、面、边或顶点，运行宏并指定导出的名称以生成结果。
+
+``` vb
 Private Declare PtrSafe Function GetSaveFileName Lib "comdlg32.dll" Alias "GetSaveFileNameA" (pOpenfilename As OPENFILENAME) As LongPtr
 
 Private Type OPENFILENAME
@@ -43,7 +44,7 @@ Private Type OPENFILENAME
   lpTemplateName As String
 End Type
 
-Const FILTER As String = "3D Manufacturing Format (*.3mf)|*.3mf|3D XML (*.3dxml)|*.3dxml|Additive Manufacturing File (*.amf)|*.amf|Microsoft XAML (*.xaml)|*.xaml|All Files (*.*)|*.*"
+Const FILTER As String = "3D制造格式 (*.3mf)|*.3mf|3D XML (*.3dxml)|*.3dxml|增材制造文件 (*.amf)|*.amf|Microsoft XAML (*.xaml)|*.xaml|所有文件 (*.*)|*.*"
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -58,7 +59,7 @@ try_:
     Set swModel = swApp.ActiveDoc
     
     If swModel Is Nothing Then
-        Err.Raise vbError, "", "Please open model"
+        Err.Raise vbError, "", "请打开模型"
     End If
     
     Dim vBodies As Variant
@@ -66,13 +67,13 @@ try_:
     
     If Not IsEmpty(vBodies) Then
         Dim filePath As String
-        filePath = BrowseForFileSave("Select file path to save", FILTER)
+        filePath = BrowseForFileSave("选择要保存的文件路径", FILTER)
         
         If filePath <> "" Then
             ExportBodies filePath, vBodies
         End If
     Else
-        Err.Raise vbError, "", "Select bodies to export"
+        Err.Raise vbError, "", "请选择要导出的实体"
     End If
     
     GoTo finally_
@@ -159,7 +160,7 @@ Function CollectSelectedBodies(model As SldWorks.ModelDoc2) As Variant
             Set swVertEdge = swVertex.GetEdges()(0)
             Set swBody = swVertEdge.GetBody
         Else
-            Err.Raise vbError, "", "Cannot find body of the selected object " & i
+            Err.Raise vbError, "", "无法找到所选对象的实体 " & i
         End If
         
         If Not Contains(swBodies, swBody) Then
@@ -185,7 +186,7 @@ Sub ExportBodies(filePath As String, vBodies As Variant)
     swPartTemplate = swApp.GetUserPreferenceStringValue(swUserPreferenceStringValue_e.swDefaultTemplatePart)
     
     If swPartTemplate = "" Then
-        Err.Raise vbError, "", "No default part template found"
+        Err.Raise vbError, "", "未找到默认零件模板"
     End If
     
     Dim curErr As ErrObject
@@ -208,7 +209,7 @@ try_:
         Set swFeat = swTempPart.CreateFeatureFromBody3(swBody, False, swCreateFeatureBodyOpts_e.swCreateFeatureBodySimplify)
         
         If swFeat Is Nothing Then
-            Err.Raise vbError, "", "Failed to create feature from body"
+            Err.Raise vbError, "", "无法从实体创建特征"
         End If
         
     Next
@@ -217,7 +218,7 @@ try_:
     Dim warns As Long
     
     If False = swTempPart.Extension.SaveAs(filePath, swSaveAsVersion_e.swSaveAsCurrentVersion, swSaveAsOptions_e.swSaveAsOptions_Silent, Nothing, errs, warns) Then
-        Err.Raise vbError, "", "Failed to export file. Error code:" & errs
+        Err.Raise vbError, "", "导出文件失败。错误代码：" & errs
     End If
     
     GoTo finally_
@@ -254,6 +255,4 @@ Function Contains(vArr As Variant, item As Object) As Boolean
     Contains = False
     
 End Function
-~~~
-
-
+```
