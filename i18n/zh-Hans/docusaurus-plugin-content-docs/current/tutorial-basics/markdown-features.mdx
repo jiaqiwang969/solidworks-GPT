@@ -2,58 +2,58 @@
 sidebar_position: 4
 ---
 
-# Markdown特性
+# Markdown Features
 
-Docusaurus支持**[Markdown](https://daringfireball.net/projects/markdown/syntax)**和一些**额外的特性**。
+Docusaurus supports **[Markdown](https://daringfireball.net/projects/markdown/syntax)** and a few **additional features**.
 
-## 前置元数据
+## Front Matter
 
-Markdown文档在顶部有称为[前置元数据](https://jekyllrb.com/docs/front-matter/)的元数据：
+Markdown documents have metadata at the top called [Front Matter](https://jekyllrb.com/docs/front-matter/):
 
 ```text title="my-doc.md"
 // highlight-start
 ---
 id: my-doc-id
-title: 我的文档标题
-description: 我的文档描述
+title: My document title
+description: My document description
 slug: /my-custom-url
 ---
 // highlight-end
 
-## Markdown标题
+## Markdown heading
 
-Markdown文本中的[链接](./hello.md)
+Markdown text with [links](./hello.md)
 ```
 
-## 链接
+## Links
 
-支持常规的Markdown链接，使用URL路径或相对文件路径。
+Regular Markdown links are supported, using url paths or relative file paths.
 
 ```md
-让我们看看如何[创建页面](/create-a-page)。
+Let's see how to [Create a page](/create-a-page).
 ```
 
 ```md
-让我们看看如何[创建页面](./create-a-page.md)。
+Let's see how to [Create a page](./create-a-page.md).
 ```
 
-**结果：** 让我们看看如何[创建页面](./create-a-page.md)。
+**Result:** Let's see how to [Create a page](../tutorial-extras/translate-your-site.md).
 
-## 图片
+## Images
 
-支持常规的Markdown图片。
+Regular Markdown images are supported.
 
-在`static/img/docusaurus.png`中添加一张图片并在Markdown中显示：
+Add an image at `static/img/docusaurus.png` and display it in Markdown:
 
 ```md
-![Docusaurus标志](/img/docusaurus.png)
+![Docusaurus logo](/img/docusaurus.png)
 ```
 
-![Docusaurus标志](/img/docusaurus.png)
+![Docusaurus logo](/img/docusaurus.png)
 
-## 代码块
+## Code Blocks
 
-支持带有语法高亮的Markdown代码块。
+Markdown code blocks are supported with Syntax highlighting.
 
     ```jsx title="src/components/HelloDocusaurus.js"
     function HelloDocusaurus() {
@@ -69,37 +69,37 @@ function HelloDocusaurus() {
 }
 ```
 
-## 提示
+## Admonitions
 
-Docusaurus有一种特殊的语法来创建提示和警告：
+Docusaurus has a special syntax to create admonitions and callouts:
 
-    :::tip 我的提示
+    :::tip My tip
 
-    使用这个很棒的功能选项
-
-    :::
-
-    :::danger 小心
-
-    这个操作很危险
+    Use this awesome feature option
 
     :::
 
-:::tip 我的提示
+    :::danger Take care
 
-使用这个很棒的功能选项
+    This action is dangerous
+
+    :::
+
+:::tip My tip
+
+Use this awesome feature option
 
 :::
 
-:::danger 小心
+:::danger Take care
 
-这个操作很危险
+This action is dangerous
 
 :::
 
-## MDX和React组件
+## MDX and React Components
 
-[MDX](https://mdxjs.com/)可以使您的文档更加**交互**，并允许在Markdown中使用任何**React组件**：
+[MDX](https://mdxjs.com/) can make your documentation more **interactive** and allows using any **React components inside Markdown**:
 
 ```jsx
 export const Highlight = ({children, color}) => (
@@ -112,15 +112,15 @@ export const Highlight = ({children, color}) => (
       cursor: 'pointer',
     }}
     onClick={() => {
-      alert(`您点击了颜色为${color}，标签为${children}的内容`)
+      alert(`You clicked the color ${color} with label ${children}`)
     }}>
     {children}
   </span>
 );
 
-这是<Docusaurus color="#25c2a0">Docusaurus绿色</Docusaurus>！
+This is <Highlight color="#25c2a0">Docusaurus green</Highlight> !
 
-这是<Highlight color="#1877F2">Facebook蓝色</Highlight>！
+This is <Highlight color="#1877F2">Facebook blue</Highlight> !
 ```
 
 export const Highlight = ({children, color}) => (
@@ -133,12 +133,12 @@ export const Highlight = ({children, color}) => (
       cursor: 'pointer',
     }}
     onClick={() => {
-      alert(`您点击了颜色为${color}，标签为${children}的内容`);
+      alert(`You clicked the color ${color} with label ${children}`);
     }}>
     {children}
   </span>
 );
 
-这是<Docusaurus color="#25c2a0">Docusaurus绿色</Docusaurus>！
+This is <Highlight color="#25c2a0">Docusaurus green</Highlight> !
 
-这是<Highlight color="#1877F2">Facebook蓝色</Highlight>！
+This is <Highlight color="#1877F2">Facebook blue</Highlight> !

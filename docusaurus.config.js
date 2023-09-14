@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   tagline: 'Dinosaurs are cool',
   url: 'https://jiaqiwang969.github.io',
   baseUrl: '/solidworks-GPT/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'jiaqiwang969', // Usually your GitHub org/user name.

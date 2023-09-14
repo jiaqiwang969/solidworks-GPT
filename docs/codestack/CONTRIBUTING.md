@@ -1,0 +1,1 @@
+Visit [this blog post](https://blog.xarial.com/codestack-opensource/) for contributing guidelines.
