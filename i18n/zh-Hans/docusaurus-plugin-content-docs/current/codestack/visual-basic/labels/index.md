@@ -1,7 +1,7 @@
 ---
-title: Labels and GoTo Operator
-description: Explanation of labels and GoTo operators
+title: 标签和GoTo运算符
+description: 标签和GoTo运算符的解释
 sidebar_position: 0
 sitemap: false
 ---
-*Coming soon...*
+*即将推出...*
