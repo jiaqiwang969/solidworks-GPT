@@ -1,19 +1,20 @@
 ---
-title: Reading the content of text file using Visual Basic (VBA)
-caption: Read Text File
-description: Reading the content of text file into the variable using Visual Basic (VBA)
+title: 使用Visual Basic（VBA）读取文本文件内容
+caption: 读取文本文件
+description: 使用Visual Basic（VBA）将文本文件的内容读取到变量中
 labels: [read,input]
 ---
-The below code snippet demonstrates how to read the text content from the specified file.
 
-~~~ vb
+以下代码片段演示了如何从指定的文件中读取文本内容。
+
+```vb
 Dim content As String
 content = ReadText("C:\MyFolder\MyFile.txt")
-~~~
+```
 
-Code will generate an exception if file doesn't exist or cannot be read.
+如果文件不存在或无法读取，代码将生成异常。
 
-~~~ vb
+```vb
 Function ReadText(filePath As String) As String
     
     Dim fileNo As Integer
@@ -43,5 +44,4 @@ Function ReadText(filePath As String) As String
     ReadText = content
     
 End Function
-~~~
-
+```
