@@ -1,8 +1,8 @@
 ---
-title: Troubleshooting SOLIDWORKS PDM Professional API and add-ins
-caption: Troubleshooting
-description: Symptoms and resolutions for the most common errors with SOLIDWORKS PDM professional API and add-ins development, debugging and registering.
-labels: [troubleshooting]
+title: SOLIDWORKS PDM Professional API和插件故障排除
+caption: 故障排除
+description: SOLIDWORKS PDM Professional API和插件开发、调试和注册中最常见错误的症状和解决方法。
+labels: [故障排除]
 sidebar_position: 0
 ---
-This section contains the list of the most common issues and errors related to SOLIDWORKS PDM API and SOLIDWORKS PDM add-ins.
+本节包含与SOLIDWORKS PDM API和SOLIDWORKS PDM插件相关的最常见问题和错误列表。
