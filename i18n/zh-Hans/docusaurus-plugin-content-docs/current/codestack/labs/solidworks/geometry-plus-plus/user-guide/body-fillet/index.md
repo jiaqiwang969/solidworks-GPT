@@ -1,34 +1,34 @@
 ---
-title: Bodies fillet feature in Geometry++
-caption: Bodies Fillet
-description: Feature allows adding the fillet to bodies, faces and edges and supports multi-bodies in SOLIDWORKS model
+title: 在Geometry++中添加实体倒角特征
+caption: 实体倒角
+description: 该特征允许在SOLIDWORKS模型中对实体、面和边进行倒角，并支持多实体
 image: icon.png
 toc-group-name: labs-solidworks-geometry-plus-plus
 ---
-This commands allows adding the simple fillet to bodies, faces and edges. This command supports multi-bodies which means that single feature can be used to add fillets to different bodies.
+该命令允许对实体、面和边添加简单的倒角。该命令支持多实体，这意味着可以使用单个特征对不同的实体添加倒角。
 
-![Bodies fillet property manager page](solid-bodies-fillet.png){ width=250 }
+![实体倒角属性管理器页面](solid-bodies-fillet.png){ width=250 }
 
-## Adding fillet to bodies
+## 对实体添加倒角
 
-![Fillet added to a solid body](full-body-fillet.png){ width=250 }
+![实体添加倒角](full-body-fillet.png){ width=250 }
 
-Select the entire body from either from the feature tree or using the selection filter. Fillet will be added to each edge of the body.
+从特征树或使用选择过滤器选择整个实体。倒角将添加到实体的每个边。
 
-## Adding fillet to faces
+## 对面添加倒角
 
-![Fillet added to face](face-fillet.png){ width=250 }
+![面添加倒角](face-fillet.png){ width=250 }
 
-Select face or faces to add fillet to. Fillet is added to all edges of this face
+选择要添加倒角的面。倒角将添加到该面的所有边。
 
-## Adding fillet to edges
+## 对边添加倒角
 
-![Fillet added to edge](edge-fillet.png){ width=250 }
+![边添加倒角](edge-fillet.png){ width=250 }
 
-Select edge or edges to add fillet to.
+选择要添加倒角的边。
 
-## Adding fillet to vertices
+## 对顶点添加倒角
 
-![Fillet added to edges of vertex](vertex-fillet.png){ width=250 }
+![顶点边添加倒角](vertex-fillet.png){ width=250 }
 
-Select vertex or vertices to add fillet to. Fillet is added to all connected edges of this vertex.
+选择要添加倒角的顶点。倒角将添加到该顶点的所有连接边。
