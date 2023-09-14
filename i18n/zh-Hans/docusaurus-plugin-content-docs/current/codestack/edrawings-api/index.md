@@ -1,21 +1,21 @@
 ---
-title: Tutorials and code examples of SOLIDWORKS eDrawings API
+title: SOLIDWORKS eDrawings API的教程和代码示例
 caption: eDrawings API
-description: Overview of SOLIDWORKS eDrawings API, examples, tutorials and code snippets
+description: SOLIDWORKS eDrawings API的概述，示例，教程和代码片段
 image: edrawings-api.svg
 labels: [edrawings]
 sidebar_position: 0
 ---
 ![eDrawings API](edrawings-api.svg){ width=350 }
 
-eDrawings is a stand-alone application developed by SOLIDWORKS which allows to view and markup SOLIDWORKS files, some foreign files and lightweight eDrawings format. Free version is available along with Professional version.
+eDrawings是由SOLIDWORKS开发的独立应用程序，允许查看和标记SOLIDWORKS文件，一些外部文件和轻量级eDrawings格式。免费版本可与专业版本一起使用。
 
-In addition to specific eDrawings files format (*.eprt, *.easm, *.edrw), eDrawings can import files from several popular CAD systems, such as SOLIDWORKS (*.sldprt, *.sldasm, *.slddrw), Autodesk Inventor (*.ipt, *.iam), CATIA (*.catpart, .catproduct), Solid Edge (*.par, *.psm, *.asm), Pro/Engineer (*.asm, *.prt), NX (*.prt) etc. as well as neutral CAD formats, such as STEP, IGES, SAT, etc.
+除了特定的eDrawings文件格式（*.eprt，*.easm，*.edrw）外，eDrawings还可以导入来自几种流行的CAD系统的文件，例如SOLIDWORKS（*.sldprt，*.sldasm，*.slddrw），Autodesk Inventor（*.ipt，*.iam），CATIA（*.catpart，.catproduct），Solid Edge（*.par，*.psm，*.asm），Pro/Engineer（*.asm，*.prt），NX（*.prt）等，以及中性CAD格式，例如STEP，IGES，SAT等。
 
-eDrawings can export files to Web Html Files (*.html), Stereolithography Files (*.stl), Image Files (*.bmp, *.tif, *.jpg, *.png, *.gif) etc.
+eDrawings可以将文件导出为Web Html文件（*.html），立体光刻文件（*.stl），图像文件（*.bmp，*.tif，*.jpg，*.png，*.gif）等。
 
-eDrawings also supports printing from drawing documents. 
+eDrawings还支持从绘图文档打印。
 
-eDrawings viewer is lightweight and doesn't require to have SOLIDWORKS installed to view files. Download eDrawings from the [eDrawings Viewer](https://www.edrawingsviewer.com) web-site.
+eDrawings查看器轻巧，无需安装SOLIDWORKS即可查看文件。从[eDrawings Viewer](https://www.edrawingsviewer.com)网站下载eDrawings。
 
-[API help](https://help.solidworks.com/2016/english/api/SWHelp_List.html?id=910f478a27674aea9e7869b31a3f9252) is available online.
+[API帮助](https://help.solidworks.com/2016/english/api/SWHelp_List.html?id=910f478a27674aea9e7869b31a3f9252)可在线获取。
