@@ -1,42 +1,42 @@
 ---
 layout: sw-tool
-title: Copy custom properties from the drawing view to SOLIDWORKS drawing file
-caption: Copy Drawing View Properties
-description: VBA macro to copy specified custom properties from the selected or default drawing view into the drawing properties
+title: 将绘图视图的自定义属性复制到SOLIDWORKS绘图文件
+caption: 复制绘图视图属性
+description: VBA宏，将选定或默认绘图视图中指定的自定义属性复制到绘图属性中
 image: drawing-custom-properties.png
-labels: [drawing,view,custom properties]
-group: Drawing
+labels: [绘图,视图,自定义属性]
+group: 绘图
 ---
-![Custom properties in SOLIDWORKS drawing](drawing-custom-properties.png){ width=500 }
+![SOLIDWORKS绘图中的自定义属性](drawing-custom-properties.png){ width=500 }
 
-This macro copies the specified custom properties from the SOLIDWORKS part or assembly referenced in the drawing view to the drawing view itself.
+该宏将指定的自定义属性从绘图视图引用的SOLIDWORKS零件或装配复制到绘图视图本身。
 
-Custom properties can be specified in the *PRP_NAMES* constant in the macro. Use comma to specify multiple properties to copy.
+可以在宏中的*PRP_NAMES*常量中指定自定义属性。使用逗号来指定要复制的多个属性。
 
 ~~~ vb
 Const PRP_NAMES As String = "PartNo,Description,Title"
 ~~~
 
-In order to select the properties to copy at runtime, specify an empty string as the value of *PRP_NAMES*
+为了在运行时选择要复制的属性，请将*PRP_NAMES*的值指定为空字符串。
 
 ~~~ vb
 Const PRP_NAMES As String = ""
 ~~~
 
-In this case the following input box will be displayed.
+在这种情况下，将显示以下输入框。
 
-![Input box for properties to be copied to drawing](properties-input-box.png)
+![用于复制到绘图的属性的输入框](properties-input-box.png)
 
-User can specify either single property or multiple properties, separated by comma.
+用户可以指定单个属性或多个属性，用逗号分隔。
 
-If drawing view is selected when running the macro, properties will be copied from this drawing view. Otherwise, the default properties view will be used as specified in the sheet properties (this is usually the first view in the drawing):
+如果在运行宏时选择了绘图视图，则将从该绘图视图复制属性。否则，将使用工作表属性中指定的默认属性视图（通常是绘图中的第一个视图）：
 
-![Drawing View for custom properties](properties-view.png){ width=500 }
+![自定义属性的绘图视图](properties-view.png){ width=500 }
 
-At first, custom property value will be extracted from the configuration of the model which corresponds to the referenced configuration of the drawing view. If the property doesn't exist or empty, file specific custom property will be extracted.
+首先，将从与绘图视图引用的配置相对应的模型的配置中提取自定义属性值。如果属性不存在或为空，则将提取文件特定的自定义属性。
 
 ~~~ vb
-Const PRP_NAMES As String = "Description" 'comma separated, empty string for popup select
+Const PRP_NAMES As String = "Description" '逗号分隔，留空以弹出选择
 
 Dim swApp As SldWorks.SldWorks
 
@@ -53,7 +53,7 @@ try:
     Set swDraw = swApp.ActiveDoc
     
     If swDraw Is Nothing Then
-        Err.Raise vbError, , "Please open the drawing"
+        Err.Raise vbError, , "请打开绘图"
     End If
     
     Dim vPrpNames As Variant
@@ -63,7 +63,7 @@ try:
     Set swPrpsView = GetPropertiesView(swDraw)
     
     If swPrpsView Is Nothing Then
-        Err.Raise vbError, , "Failed to find the drawing view with properties"
+        Err.Raise vbError, , "无法找到具有属性的绘图视图"
     End If
     
     Dim i As Integer
@@ -98,7 +98,7 @@ Function GetPropertyValue(view As SldWorks.view, prpName As String)
     Set swViewDoc = view.ReferencedDocument
     
     If swViewDoc Is Nothing Then
-        Err.Raise vbError, , "Cannot get document from the view. Make sure view is not empty and document is not lightweigh"
+        Err.Raise vbError, , "无法从视图获取文档。确保视图不为空且文档不是轻量级的"
     End If
 
     Dim prpVal As String
@@ -124,7 +124,7 @@ Function GetPropertyNames() As Variant
     prpNames = PRP_NAMES
     
     If prpNames = "" Then
-        prpNames = InputBox("Please specify comma separated custom property names to transfer to drawing")
+        prpNames = InputBox("请指定要传输到绘图的逗号分隔的自定义属性名称")
     End If
     
     If prpNames = "" Then
@@ -197,5 +197,3 @@ Function GetPropertiesView(draw As SldWorks.DrawingDoc) As SldWorks.view
     
 End Function
 ~~~
-
-
