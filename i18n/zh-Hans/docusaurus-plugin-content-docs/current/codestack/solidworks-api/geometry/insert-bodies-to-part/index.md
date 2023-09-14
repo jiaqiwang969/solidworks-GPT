@@ -1,32 +1,32 @@
 ---
 layout: sw-tool
-caption: Save Bodies To Parts
-title: Macro to save bodies into individual SOLIDWORKS part documents
-description: VBA macro to save all bodies (or selected bodies) in the SOLIDWORKS part document to individual files
+caption: 将实体保存为零件
+title: 将实体保存为单独的SOLIDWORKS零件文档的宏
+description: VBA宏，将SOLIDWORKS零件文档中的所有实体（或选定的实体）保存为单独的文件
 image: insert-into-new-part-pmpage.png
-group: Import/Export
+group: 导入/导出
 ---
-![Insert Into New Part Property Manager Page](insert-into-new-part-pmpage.png){ width=250 }
+![插入到新零件属性管理器页面](insert-into-new-part-pmpage.png){ width=250 }
 
-This macro saves all selected bodies bodies (or all bodies if none selected) from the active part document into individual part documents.
+此宏将活动零件文档中的所有选定实体（如果没有选定实体，则为所有实体）保存到单独的零件文档中。
 
-## Configuration
+## 配置
 
-Specify the option to handle the transfer of custom properties by modifying the **CUT_LIST_PRPS_TRANSFER** constant
+通过修改**CUT_LIST_PRPS_TRANSFER**常量来指定处理自定义属性传输的选项
 
-Specify the output directory in the **OUT_DIR**. If this variable is empty then bodies will be saved in the same directory as source part document.
+在**OUT_DIR**中指定输出目录。如果此变量为空，则实体将保存在与源零件文档相同的目录中。
 
 ~~~ vb
-Const CUT_LIST_PRPS_TRANSFER As Long = swCutListTransferOptions_e.swCutListTransferOptions_CutListProperties 'move properties to cut-lists
-Const OUT_DIR As String = "D:\Parts" 'Export bodies to the Parts directory
+Const CUT_LIST_PRPS_TRANSFER As Long = swCutListTransferOptions_e.swCutListTransferOptions_CutListProperties '将属性移动到切割列表
+Const OUT_DIR As String = "D:\Parts" '将实体导出到Parts目录
 ~~~
 
-## Notes
+## 注意事项
 
-* Bodies remain linked to the original part
-* Output files will be named after the bodies
-* Special symbols which cannot be used in the file name (e.g. ?, \*, : etc) will be replaced with _
-* Macro will not create an output folder if it does not exist and will fail
+* 实体仍与原始零件保持链接
+* 输出文件将以实体的名称命名
+* 文件名中不能使用的特殊符号（例如？，*，：等）将被替换为_
+* 如果输出文件夹不存在，宏将不会创建输出文件夹并且会失败
 
 ~~~ vb
 Const CUT_LIST_PRPS_TRANSFER As Long = swCutListTransferOptions_e.swCutListTransferOptions_FileProperties
@@ -67,11 +67,11 @@ Sub main()
             If False <> swPart.SaveToFile3(outFilePath, swSaveAsOptions_e.swSaveAsOptions_Silent, CUT_LIST_PRPS_TRANSFER, False, "", errs, warns) Then
                 swApp.CloseDoc outFilePath
             Else
-                Err.Raise vbError, "", "Failed to save body " & swBody.Name & " to file " & outFilePath & ". Error code: " & errs
+                Err.Raise vbError, "", "无法将实体 " & swBody.Name & " 保存到文件 " & outFilePath & "。错误代码: " & errs
             End If
             
         Else
-            Err.Raise vbError, "", "Failed to select body " & swBody.Name
+            Err.Raise vbError, "", "无法选择实体 " & swBody.Name
         End If
     Next
     
@@ -166,7 +166,7 @@ Function GetOutFilePath(model As SldWorks.ModelDoc2, body As SldWorks.Body2, out
     If outDir = "" Then
         outDir = model.GetPathName()
         If outDir = "" Then
-            Err.Raise vbError, "", "Output directory cannot be composed as file was never saved"
+            Err.Raise vbError, "", "由于文件从未保存，无法组成输出目录"
         End If
         
         outDir = Left(outDir, InStrRev(outDir, "\") - 1)
@@ -204,4 +204,3 @@ Function ReplaceInvalidPathSymbols(path As String) As String
     
 End Function
 ~~~
-
