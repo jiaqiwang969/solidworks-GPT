@@ -1,26 +1,26 @@
 ---
-title: Power Shell script to set folder permissions using SOLIDWORKS PDM API
-caption: Set Folder Permissions
-description: Vb.NET Power Shell script to set permissions to specified folder for specified user using SOLIDWORKS PDM API
+title: 使用 SOLIDWORKS PDM API 设置文件夹权限的 Power Shell 脚本
+caption: 设置文件夹权限
+description: 使用 SOLIDWORKS PDM API 为指定用户设置指定文件夹的权限的 Vb.NET Power Shell 脚本
 image: folder-permissions.png
 labels: [permissions,folder]
 ---
-![Folder permissions in SOLIDWORKS PDM Administration panel](folder-permissions.png){ width=450 }
+![SOLIDWORKS PDM 管理面板中的文件夹权限](folder-permissions.png){ width=450 }
 
-This Power shell script allows to set the specified folder permissions for the specified user using SOLIDWORKS PDM API.
+此 Power Shell 脚本允许使用 SOLIDWORKS PDM API 为指定用户设置指定文件夹的权限。
 
-To use script create PowerShell file and command line file as shown below.
+要使用脚本，请创建 PowerShell 文件和命令行文件，如下所示。
 
-It is required to place the SOLIDWORKS PDM interop into the same folder as script files. Refer [Interops in .NET for Framework 2.0](/docs/codestack/solidworks-pdm-api/getting-started#framework-20-or-older) article for more information about generating the interop.
+需要将 SOLIDWORKS PDM 互操作文件放置在与脚本文件相同的文件夹中。有关生成互操作文件的更多信息，请参阅[.NET Framework 2.0 中的互操作](/docs/codestack/solidworks-pdm-api/getting-started#framework-20-or-older)文章。
 
-Scrip arguments:
+脚本参数：
 
-1. *vaultName* - name of the vault to perform the operation
-1. *userName* - user name who performs the operation (should have a permission to assign permissions)
-1. *password* - password for the user name above
-1. *folderName* - full path to folder to change permission for
-1. *targetUserName* - user name to change permissions for
-1. *permissions* - permissions to assign. Integer number which represents a single permissions or a group of permissions. Permissions numbers defined in [EdmRightFlags](https://help.solidworks.com/2018/english/api/epdmapi/EPDM.Interop.epdm~EPDM.Interop.epdm.EdmRightFlags.html). Sum the values of required permissions to assign multiple values (e.g. set 1 for read files permission and 15 for read, check out, delete and add files [1 + 2 + 4 + 8])
+1. *vaultName* - 执行操作的库的名称
+1. *userName* - 执行操作的用户名（应具有分配权限的权限）
+1. *password* - 上述用户名的密码
+1. *folderName* - 要更改权限的文件夹的完整路径
+1. *targetUserName* - 要更改权限的用户名
+1. *permissions* - 要分配的权限。整数值，表示单个权限或一组权限。权限数字在[EdmRightFlags](https://help.solidworks.com/2018/english/api/epdmapi/EPDM.Interop.epdm~EPDM.Interop.epdm.EdmRightFlags.html)中定义。将所需权限的值相加以分配多个值（例如，为读取文件权限设置 1，为读取、签出、删除和添加文件设置 15 [1 + 2 + 4 + 8]）
 
 ~~~
 > set-permissions.cmd MyVault admin pwd "D:\My Vaults\Vault1\Folder1" user1 15
@@ -140,5 +140,3 @@ SET permissions=%6
 
 PowerShell -NoProfile -ExecutionPolicy Bypass -File "%~dp0set-permissions.ps1" %vaultName% %userName% %password% %folderName% %targetUserName% %permissions%
 ~~~
-
-
