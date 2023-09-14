@@ -1,6 +1,6 @@
 ---
-title: VBA Editor Options
-description: Description of available options in VBA editor
+title: VBA编辑器选项
+description: VBA编辑器中可用选项的描述
 sitemap: false
 ---
-*Coming soon...*
+*即将推出...*
