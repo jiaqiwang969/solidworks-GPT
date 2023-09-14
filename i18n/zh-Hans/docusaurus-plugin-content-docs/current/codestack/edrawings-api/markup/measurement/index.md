@@ -1,20 +1,20 @@
 ---
-title: Capture measurement of SOLIDWORKS entities using eDrawings markup API
-caption: Capturing Measurements
-description: Performing measurements capturing of the entities in the SOLIDWORKS model into a text box using eDrawings markup API
+title: 使用 eDrawings 标记 API 捕获 SOLIDWORKS 实体的测量
+caption: 捕获测量
+description: 使用 eDrawings 标记 API 将 SOLIDWORKS 模型中的实体测量结果捕获到文本框中
 image: surveying-form.png
-labels: [edrawings,markup,mesurement]
+labels: [edrawings,markup,measurement]
 ---
-![Measurement captured in the text box](surveying-form.png){ width=450 }
+![测量结果捕获在文本框中](surveying-form.png){ width=450 }
 
-This example demonstrate how to use eDrawings markup API to capture the measurements of selected entities into a text box.
+本示例演示了如何使用 eDrawings 标记 API 将所选实体的测量结果捕获到文本框中。
 
-This example is based on [Hosting eDrawings control in Windows Forms](/docs/codestack/edrawings-api/gettings-started/winforms/)
+本示例基于[在 Windows Forms 中托管 eDrawings 控件](/docs/codestack/edrawings-api/gettings-started/winforms/)
 
-* Run the form
-* Open any SOLIDWORKS or eDrawings file by specifying the full path to a file and clicking *Open* button
-* Measurement is automatically enabled
-* Select any entity or entities and click *Capture Measurement*. The measurement value is appended into a text box
+* 运行窗体
+* 通过指定文件的完整路径并单击“打开”按钮来打开任何 SOLIDWORKS 或 eDrawings 文件
+* 测量功能会自动启用
+* 选择任何实体并单击“捕获测量”。测量值将追加到文本框中
 
 ~~~ cs
 using eDrawings.Interop.EModelMarkupControl;
@@ -54,12 +54,12 @@ namespace CodeStack.Examples.eDrawingsApi
 
         private void OnFailedLoadingDocument(string fileName, int errorCode, string errorString)
         {
-            Trace.WriteLine($"{fileName} failed to loaded: {errorString}");
+            Trace.WriteLine($"{fileName} 加载失败: {errorString}");
         }
 
         private void OnFinishedLoadingDocument(string fileName)
         {
-            Trace.WriteLine($"{fileName} loaded");
+            Trace.WriteLine($"{fileName} 加载成功");
             
             m_EDrawingsMarkupCtrl.ViewOperator = EMVMarkupOperators.eMVOperatorMeasure;
         }
@@ -72,7 +72,7 @@ namespace CodeStack.Examples.eDrawingsApi
             {
                 if (m_EDrawingsCtrl == null)
                 {
-                    throw new NullReferenceException("eDrawings control is not loaded");
+                    throw new NullReferenceException("未加载 eDrawings 控件");
                 }
 
                 txtMeasurements.Clear();
@@ -93,4 +93,4 @@ namespace CodeStack.Examples.eDrawingsApi
 
 
 
-Source code is available on [GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/edrawings-api/MeasurementSurveying).
+源代码可在 [GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/edrawings-api/MeasurementSurveying) 上获取。
