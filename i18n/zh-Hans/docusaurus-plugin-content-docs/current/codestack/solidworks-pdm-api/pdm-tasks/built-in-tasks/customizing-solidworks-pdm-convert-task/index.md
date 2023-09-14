@@ -1,81 +1,79 @@
 ---
-title: Customizing SOLIDWORKS PDM convert task using API
-caption: Customizing SOLIDWORKS PDM Convert Task
-description: Guide of changing the script for the standard task. Custom utility to simplify the debugging of the PDM tasks
+title: 使用API自定义SOLIDWORKS PDM转换任务
+caption: 自定义SOLIDWORKS PDM转换任务
+description: 更改标准任务的脚本指南。自定义实用程序简化PDM任务的调试
 image: pdm-convert-task-script.png
-labels: [convert task, debugging.dpi, solidworks pd, task]
+labels: [转换任务, 调试, solidworks pd, 任务]
 redirect-from:
   - /2018/03/customizing-solidworks-pdm-convert-task.html
 ---
-SOLIDWORKS PDM Task is a powerful built-in feature which allows to run custom functionality directly from the context menu in PDM vault or from the workflow state change trigger. The actual work can be performed either on the local machine or on the delegated remote task server.  
+SOLIDWORKS PDM任务是一个强大的内置功能，允许直接从PDM库的上下文菜单或工作流状态更改触发器中运行自定义功能。实际工作可以在本地计算机上或委派的远程任务服务器上执行。
 
-There are several out-of-the-box tasks provided by SOLIDWORKS PDM
+SOLIDWORKS PDM提供了几个开箱即用的任务
 
-![List of standard tasks in the Administration Panel](standard-sw-pdm-tasks.png){ width=203 height=320 }
+![管理面板中的标准任务列表](standard-sw-pdm-tasks.png){ width=203 height=320 }
 
-Those tasks are highly customizable via task settings. For example it is possible to change the conversion settings for [Convert task](https://help.solidworks.com/2017/english/enterprisepdm/admin/t_configure_convert.htm) from the Settings Page.
+这些任务可以通过任务设置进行高度自定义。例如，可以从设置页面更改[转换任务](https://help.solidworks.com/2017/english/enterprisepdm/admin/t_configure_convert.htm)的转换设置。
 
-![Convert task conversion settings](convert-task-conversion-settings.png){ width=320 height=308 }
+![转换任务的转换设置](convert-task-conversion-settings.png){ width=320 height=308 }
 
-As well as specify output name and folder with an ability to use placeholders (such as file name, file folder, variable value, configuration name etc.)
+还可以指定输出名称和文件夹，并能够使用占位符（例如文件名、文件夹、变量值、配置名称等）。
 
-![Convert task output settings](convert-task-output-settings.png){ width=320 height=168 }
+![转换任务的输出设置](convert-task-output-settings.png){ width=320 height=168 }
 
-Tasks provide open source editable scripts which enable API developers and PDM administrators to further customize the logic of the task.
+任务提供了开源可编辑的脚本，使API开发人员和PDM管理员能够进一步自定义任务的逻辑。
 
-![Convert task advanced scripting options](pdm-convert-task-script.png){ width=320 height=241 }
+![转换任务的高级脚本选项](pdm-convert-task-script.png){ width=320 height=241 }
 
-Script is utilizing SOLIDWORKS APIs and is written in Visual Basic (the same language which is used in .swp macros). The main responsibilities of the script are:
+脚本利用SOLIDWORKS API编写，使用Visual Basic语言（与.swp宏中使用的语言相同）。脚本的主要职责包括：
 
-* Validate if the processing file extension is supported
-* Open SOLIDWORKS file (this will work with both native or foreign file formats)
-* Compose an output file name by replacing all of the placeholders
-* Process the specified output options (such as quality and format)
-* Traverse configurations or drawing sheets (as specified in the options)
-* Log any errors
-* Save the file to the specified output folder
-* Close the file
+* 验证处理文件扩展名是否受支持
+* 打开SOLIDWORKS文件（适用于本地或外部文件格式）
+* 通过替换所有占位符来组成输出文件名
+* 处理指定的输出选项（如质量和格式）
+* 遍历配置或图纸页（根据选项指定）
+* 记录任何错误
+* 将文件保存到指定的输出文件夹
+* 关闭文件
 
-As an example, in order to set the DPI settings for the PDF output is it required to add the following lines into the *SetConversionOptions* function as shown below:
+例如，要为输出文件设置PDF输出的DPI设置，需要将以下行添加到*SetConversionOptions*函数中，如下所示：
 
 ~~~ vb
 swApp.SetUserPreferenceIntegerValue swUserPreferenceIntegerValue_e.swPDFExportShadedDraftDPI, 600
 swApp.SetUserPreferenceIntegerValue swUserPreferenceIntegerValue_e.swPDFExportOleDPI, 600
 ~~~
 
+![设置输出文件DPI的代码块](set-dpi-output.png){ width=640 height=210 }
 
+请注意，SOLIDWORKS的启动和关闭以及输出文件的签入和[粘贴为引用](https://help.solidworks.com/2012/english/enterprisepdm/fileexplorer/t_Creating_a_Topic_Reference.htm)（如果指定）是在脚本范围之外执行的。
 
-![Code block to set DPI for the output file](set-dpi-output.png){ width=640 height=210 }
+为了拦截任务执行以进行调试，需要在代码中的任何位置添加*Debug.Assert False*语句，并确保将专用任务主机设置为本地计算机。
 
-Please note that starting and closing of SOLIDWORKS as well as check-in of the output file and [paste-as-reference](https://help.solidworks.com/2012/english/enterprisepdm/fileexplorer/t_Creating_a_Topic_Reference.htm) (if specified) are performed outside of the script scope.
+![选择运行任务的主机](pdm-task-host.png){ width=320 height=113 }
 
-In order to intercept the task execution for debug purposes it is required to add the *Debug.Assert False* statement anywhere in the code and make sure that the dedicated task host is set to the local machine.
+一旦启动任务，该宏将在VBA编辑器中可用于调试。这种方法有一些限制：
 
-![Selection of the host to run the task](pdm-task-host.png){ width=320 height=113 }
+* 一些调试功能被锁定。只能逐步调试。
+* 如果宏包含编译错误，则调试将无法工作。
+为了解决这个限制，我开发了一个控制台实用程序，用于拦截调试宏并将其复制到指定位置以供后续故障排除。
 
-The macro will then be available for debugging in the VBA editor once the task is launched. There are several limitations with this approach:
+当启动任务时，SOLIDWORKS将执行以下步骤：
 
-* Some of the debugging features are locked. It is only possible to debug step-by-step.
-* The debug will not be working if the macro contains the compile error
-In order to workaround this limitation I have developed a console utility which intercepts the debug macro and copies it to the nominated location for later troubleshooting.
+1. 启动SOLIDWORKS
+1. 在临时位置创建新的文本文件
+1. 将脚本内容复制到文件中
+1. 替换所有占位符（例如文件名、变量值等）
+1. 将文件重命名为*.swb
+1. 运行宏
+1. 删除宏
 
-When task is started SOLIDWORKS will perform the following steps:
+如果步骤5中的宏包含编译错误，则步骤6将失败，宏将无法启动调试。无论步骤6是否失败，步骤7都将执行。因此，在这种情况下，无法检查宏是否存在编译错误。
 
-1. Start SOLIDWORKS
-1. Create new text file in temp location
-1. Copy script content to the file
-1. Replace all placeholders (i.e. file name, variable value, etc.)
-1. Rename file to *.swb
-1. Run macro
-1. Delete the macro
+*CopyTaskScript*实用程序将拦截步骤6，并在删除之前将文件复制到指定的文件夹，以便在SOLIDWORKS中打开并进行故障排除。
 
-If macro in step 5 contains compile errors then step 6 will fail and the macro won't be able to start debugging. Step 7 will be executed regardless of step 6 failed or not. So in this case it is not possible to inspect the macro for compile errors.
+我已将该实用程序发布到[GitHub](https://github.com/codestackdev/pdm-copy-task-script)。
 
-*CopyTaskScript* utility will intercept step 6 and copy the file to the nominated folder before deletion so it could be opened in SOLIDWORKS and troubleshooted.
-
-I have published the utility to [GitHub](https://github.com/codestackdev/pdm-copy-task-script).
-
-Please take a look at the video demonstration:  
+请观看以下视频演示：
 
 <center>
   <iframe allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0"
