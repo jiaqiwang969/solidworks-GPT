@@ -1,19 +1,19 @@
 ---
-title: Storing data in the 3rd party storage store via SwEx.AddIn framework
-caption: Storage
-description: Serializing custom structures into the 3rd party storage store using SwEx.AddIn framework
+title: 通过SwEx.AddIn框架将数据存储在第三方存储中
+caption: 存储
+description: 使用SwEx.AddIn框架将自定义结构序列化到第三方存储中
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
-Call [IModelDoc2::Access3rdPartyStorageStore ](https://docs.codestack.net/swex/add-in/html/M_SolidWorks_Interop_sldworks_ModelDocExtension_Access3rdPartyStorageStore.htm) extension method to access the 3rd storage store. Pass the boolean parameter to read or write storage.
+调用[IModelDoc2::Access3rdPartyStorageStore](https://docs.codestack.net/swex/add-in/html/M_SolidWorks_Interop_sldworks_ModelDocExtension_Access3rdPartyStorageStore.htm)扩展方法来访问第三方存储。传递布尔参数以读取或写入存储。
 
-Use this approach when it is required to store multiple data structures which need to be accessed and managed independently. Prefer this instead of creating multiple [streams](/docs/codestack/labs/solidworks/swex/add-in/third-party-data-storage/stream/)
+当需要存储多个需要独立访问和管理的数据结构时，请使用此方法。与创建多个[流](/docs/codestack/labs/solidworks/swex/add-in/third-party-data-storage/stream/)相比，更推荐使用此方法。
 
-## Storage Access Handler
+## 存储访问处理程序
 
-To simplify the handling of the storage lifecycle, use the Documents Manager API from the SwEx.AddIn framework:
+为了简化存储生命周期的处理，使用SwEx.AddIn框架的Documents Manager API：
 
-~~~vb
+```vb
 Imports CodeStack.SwEx.AddIn
 Imports CodeStack.SwEx.AddIn.Attributes
 Imports CodeStack.SwEx.AddIn.Base
@@ -52,9 +52,9 @@ Namespace CodeStack.SwEx
         End Sub
     End Class
 End Namespace
-~~~
+```
 
-~~~cs
+```cs
 using CodeStack.SwEx.AddIn;
 using CodeStack.SwEx.AddIn.Attributes;
 using CodeStack.SwEx.AddIn.Base;
@@ -101,15 +101,15 @@ namespace CodeStack.SwEx
         }
     }
 }
-~~~
+```
 
 
 
-## Reading data
+## 读取数据
 
-[IThirdPartyStoreHandler::Storage](https://docs.codestack.net/swex/add-in/html/P_CodeStack_SwEx_AddIn_Base_IThirdPartyStoreHandler_Storage.htm) property returns null for the storage which not exists on reading.
+[IThirdPartyStoreHandler::Storage](https://docs.codestack.net/swex/add-in/html/P_CodeStack_SwEx_AddIn_Base_IThirdPartyStoreHandler_Storage.htm)属性在读取不存在的存储时返回null。
 
-~~~vb
+```vb
 Private Const STORAGE_NAME As String = "CodeStackStorage"
 Private Const STREAM1_NAME As String = "CodeStackStream1"
 Private Const STREAM2_NAME As String = "CodeStackStream2"
@@ -152,9 +152,9 @@ Private Sub LoadFromStorageStore(ByVal model As IModelDoc2)
         End If
     End Using
 End Sub
-~~~
+```
 
-~~~cs
+```cs
 private const string STORAGE_NAME = "CodeStackStorage";
 private const string STREAM1_NAME = "CodeStackStream1";
 private const string STREAM2_NAME = "CodeStackStream2";
@@ -202,14 +202,13 @@ private void LoadFromStorageStore(IModelDoc2 model)
         }
     }
 }
-~~~
+```
 
-## Writing data
+## 写入数据
 
-[IThirdPartyStoreHandler::Storage](https://docs.codestack.net/swex/add-in/html/P_CodeStack_SwEx_AddIn_Base_IThirdPartyStoreHandler_Storage.htm) will always return the pointer to the storage (stream is automatically created if it doesn't exist).
+[IThirdPartyStoreHandler::Storage](https://docs.codestack.net/swex/add-in/html/P_CodeStack_SwEx_AddIn_Base_IThirdPartyStoreHandler_Storage.htm)将始终返回存储的指针（如果不存在流，则会自动创建流）。
 
-
-~~~vb
+```vb
 Private Const STORAGE_NAME As String = "CodeStackStorage"
 Private Const STREAM1_NAME As String = "CodeStackStream1"
 Private Const STREAM2_NAME As String = "CodeStackStream2"
@@ -238,9 +237,9 @@ Private Sub SaveToStorageStore(ByVal model As IModelDoc2)
         End Using
     End Using
 End Sub
-~~~
+```
 
-~~~cs
+```cs
 private const string STORAGE_NAME = "CodeStackStorage";
 private const string STREAM1_NAME = "CodeStackStream1";
 private const string STREAM2_NAME = "CodeStackStream2";
@@ -275,6 +274,6 @@ private void SaveToStorageStore(IModelDoc2 model)
         }
     }
 }
-~~~
+```
 
-Explore the methods of [IComStorage](https://docs.codestack.net/swex/add-in/html/T_CodeStack_SwEx_AddIn_Base_IComStorage.htm) for information of how to create sub streams or sub storages and enumerate the existing elements.
+请参阅[IComStorage](https://docs.codestack.net/swex/add-in/html/T_CodeStack_SwEx_AddIn_Base_IComStorage.htm)的方法以了解如何创建子流或子存储并枚举现有元素的信息。
