@@ -1,11 +1,11 @@
 ---
-title: Inter-Process communication between SOLIDWORKS applications
-caption: Inter-Process Communication
-description: Ways for Inter-Process communication between SOLIDWORKS applications (macros, add-ins, stand-alone application)
-labels: [communication,parameters]
+title: SOLIDWORKS应用程序之间的进程间通信
+caption: 进程间通信
+description: SOLIDWORKS应用程序（宏、插件、独立应用程序）之间进行进程间通信的方法
+labels: [通信,参数]
 ---
-This section describes ways to perform inter-process communication between applications developed for SOLIDWORKS. Communication involves passing of custom parameters or signals between different modules (i.e. macros, add-ins and stand-alone applications).
+本节介绍了在为SOLIDWORKS开发的应用程序之间执行进程间通信的方法。通信涉及在不同模块（即宏、插件和独立应用程序）之间传递自定义参数或信号。
 
-This could allows to introduce additional level of automation for the applications developed for SOLIDWORKS. As an example the following techniques can be used for the inter-process communication: COM, named pipes, Windows Communication Foundation (WCF), shared memory, buffer, file exchange etc.
+这可以为为SOLIDWORKS开发的应用程序引入额外的自动化级别。例如，可以使用以下技术进行进程间通信：COM、命名管道、Windows Communication Foundation（WCF）、共享内存、缓冲区、文件交换等。
 
-Explore this section for detailed guides and examples for establishing the communication between software developed for SOLIDWORKS.
+请浏览本节以获取建立SOLIDWORKS开发软件之间通信的详细指南和示例。
