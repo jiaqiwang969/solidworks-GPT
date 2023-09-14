@@ -1,11 +1,11 @@
 ---
-title: Application frame customization using SOLIDWORKS API
-caption: Frame
-description: Automating SOLIDWORKS frame (menu, toolbars, command manager) using API
-labels: [frame,menu,toolbar,commands]
+title: 使用SOLIDWORKS API自定义应用程序框架
+caption: 框架
+description: 使用API自动化SOLIDWORKS框架（菜单、工具栏、命令管理器）
+labels: [框架,菜单,工具栏,命令]
 ---
-Elements displayed in the SOLIDWORKS application frame, such as menu, command manager and tabs, toolbars can be customized using [IFrame](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IFrame.html) and [ISldWorks](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ISldWorks.html) SOLIDWORKS API Interfaces.
+可以使用[IFrame](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IFrame.html)和[ISldWorks](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ISldWorks.html) SOLIDWORKS API接口自定义SOLIDWORKS应用程序框架中显示的元素，如菜单、命令管理器、选项卡和工具栏。
 
-In addition frame object provides the access to SOLIDWORKS windows handler via [IFrame::GetHWnd](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iframe~gethwnd.html) method which enables the usage of [Windows API to invoke SOLIDWORKS commands](https://blog.codestack.net/2019/03/solidworks-api-command-doesnt-exist.html).
+此外，框架对象通过[IFrame::GetHWnd](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iframe~gethwnd.html)方法提供对SOLIDWORKS窗口句柄的访问，从而可以使用[Windows API来调用SOLIDWORKS命令](https://blog.codestack.net/2019/03/solidworks-api-command-doesnt-exist.html)。
 
-This section contains examples of using SOLIDWORKS API and Windows API to automate application frame.
+本节包含使用SOLIDWORKS API和Windows API自动化应用程序框架的示例。
