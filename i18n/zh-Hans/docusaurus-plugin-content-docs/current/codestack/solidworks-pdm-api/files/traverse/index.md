@@ -1,21 +1,21 @@
 ---
-title: Recursively Traverse Files And Folders In Vault Using SOLIDWORKS PDM API
-caption: Traverse Folder Recursively
-description: VBA example to traverse and list all files and folders from the selected folder in SOLIDWORKS PDM vault using SOLIDWORKS PDM API
+title: 使用SOLIDWORKS PDM API递归遍历文件和文件夹
+caption: 递归遍历文件夹
+description: 使用SOLIDWORKS PDM API在SOLIDWORKS PDM vault中遍历并列出所选文件夹中的所有文件和文件夹的VBA示例
 image: pdm-folder-structure-output.png
-labels: [traverse,vault,browse folder]
+labels: [遍历, vault, 浏览文件夹]
 ---
-This VBA example demonstrates how to traverse files and folders in the SOLIDWORKS PDM vault using SOLIDWORKS PDM API.
+这个VBA示例演示了如何使用SOLIDWORKS PDM API在SOLIDWORKS PDM vault中遍历文件和文件夹。
 
-Macro displays the built-in folder browse dialog for the folder to traverse:
+宏显示内置的文件夹浏览对话框以选择要遍历的文件夹：
 
-![Built-in PDM Folder Browse dialog](browse-folder.png){ width=250 }
+![内置的PDM文件夹浏览对话框](browse-folder.png){ width=250 }
 
-Macro recursively traverses files and sub folders and outputs the file or folder name, id, level to the VBA Editor immediate window.
+宏递归地遍历文件和子文件夹，并将文件或文件夹的名称、ID和级别输出到VBA编辑器的即时窗口。
 
-![Folders and files structure output to immediate window of VBA Editor](pdm-folder-structure-output.png){ width=350 }
+![文件夹和文件结构输出到VBA编辑器的即时窗口](pdm-folder-structure-output.png){ width=350 }
 
-This macro can traverse the tree even if it is not [cached locally](/docs/codestack/solidworks-pdm-api/files/local-cache/)
+即使树没有被[本地缓存](/docs/codestack/solidworks-pdm-api/files/local-cache/)，这个宏也可以遍历树。
 
 ~~~ vb
 Const VAULT_NAME As String = "MyVault"
@@ -31,14 +31,14 @@ Sub main()
         
         Dim pdmFolder As IEdmFolder5
         
-        Set pdmFolder = pdmVault.BrowseForFolder(0, "Select folder to traverse")
+        Set pdmFolder = pdmVault.BrowseForFolder(0, "选择要遍历的文件夹")
         
         If Not pdmFolder Is Nothing Then
             TraverseFolder pdmFolder
         End If
         
     Else
-        Err.Raise vbError, "User is not logged in to the vault"
+        Err.Raise vbError, "用户未登录到vault"
     End If
     
 End Sub
@@ -70,5 +70,3 @@ Sub TraverseFolder(folder As IEdmFolder5, Optional parentLevel As String = "")
 
 End Sub
 ~~~
-
-
