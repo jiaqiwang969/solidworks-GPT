@@ -1,37 +1,37 @@
 ---
 layout: sw-tool
-title: Run macro on new document creation using SOLIDWORKS API
-caption: Run Macro On New Document Creation
-description: VBA macro to run other macros or code on every new document creation using SOLIDWORKS API
+title: 使用SOLIDWORKS API在新文档创建时运行宏
+caption: 在新文档创建时运行宏
+description: 使用SOLIDWORKS API在每次新文档创建时运行其他宏或代码的VBA宏
 image: new-document.png
-labels: [new document]
-group: Model
+labels: [新文档]
+group: 模型
 ---
-![Creating new document in SOLIDWORKS](new-document.png){ width=350 }
+![在SOLIDWORKS中创建新文档](new-document.png){ width=350 }
 
-This VBA macro handles the creation of new document in SOLIDWORKS (part, assembly or drawing) using SOLIDWORKS API and allows to automatically run custom code or another macro when this event happens. This macro will also handle creation of new virtual document in SOLIDWORKS assembly.
+这个VBA宏处理在SOLIDWORKS中创建新文档（零件、装配或图纸）的事件，并允许在此事件发生时自动运行自定义代码或其他宏。此宏还处理在SOLIDWORKS装配中创建新虚拟文档的情况。
 
-## Configuration
+## 配置
 
-* Create new macro (e.g. *RunOnNewDocCreated.swp*)
-* Copy the code into corresponding modules of the macro. The VBA macro tree should look similar to the image below:
+* 创建新的宏（例如*RunOnNewDocCreated.swp*）
+* 将代码复制到宏的相应模块中。VBA宏树应该类似于下面的图片：
 
-![Macro files tree](macro-tree.png){ width=250 }
+![宏文件树](macro-tree.png){ width=250 }
 
-* Place your code into the *main* sub of the *HandlerModule* module. The pointer to [IModelDoc2](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDoc2.html) document is passed as the parameter. Use this pointer instead of [ISldWorks::ActiveDoc](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~activedoc.html) as new document might not be set to active when this event arrives.
+* 将代码放入*HandlerModule*模块的*main*子程序中。将[IModelDoc2](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDoc2.html)文档的指针作为参数传递。在此事件到达时，使用此指针而不是[ISldWorks::ActiveDoc](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~activedoc.html)，因为新文档可能还没有设置为活动文档。
 
 ~~~ vb
 Sub main(model As SldWorks.ModelDoc2)
-    'TODO: add your routine here
+    'TODO: 在这里添加你的代码
 End Sub
 ~~~
 
-* It might be useful to automatically run this macro with each session of SOLIDWORKS. Follow the [Run SOLIDWORKS macro automatically on application start](/docs/codestack/solidworks-api/getting-started/macros/run-macro-on-solidworks-start/) link for more information.
-* To learn how to run another macro or group of macros refer [Run Group Of Macros](/docs/codestack/solidworks-api/application/frame/run-macros-group/) article
+* 可以将此宏与每个SOLIDWORKS会话自动运行。请参考[在SOLIDWORKS启动时自动运行宏](/docs/codestack/solidworks-api/getting-started/macros/run-macro-on-solidworks-start/)了解更多信息。
+* 要了解如何运行另一个宏或一组宏，请参考[运行一组宏](/docs/codestack/solidworks-api/application/frame/run-macros-group/)文章。
 
-## Macro Module
+## 宏模块
 
-Entry point which starts new document creation events monitoring
+启动新文档创建事件监视的入口点
 
 ~~~ vb
 Dim swFileNewWatcher As FileNewWatcher
@@ -49,9 +49,9 @@ End Sub
 
 
 
-## FileNewWatcher Class module
+## FileNewWatcher 类模块
 
-Class which handles SOLIDWORKS new document API notifications
+处理SOLIDWORKS新文档API通知的类
 
 ~~~ vb
 Dim WithEvents swApp As SldWorks.SldWorks
@@ -67,15 +67,13 @@ End Function
 
 
 
-## HandlerModule module
+## HandlerModule 模块
 
-Custom VBA code which needs to be run for each newly created document
+需要为每个新创建的文档运行的自定义VBA代码
 
 ~~~ vb
 Sub main(model As SldWorks.ModelDoc2)
-    'TODO:implement the procedure
-    MsgBox "File create: " & model.GetTitle()
+    'TODO: 实现过程
+    MsgBox "创建文件: " & model.GetTitle()
 End Sub
 ~~~
-
-
