@@ -1,19 +1,19 @@
 ---
-title: Macro to reconstruct spherical surface using SOLIDWORKS modeler API
-caption: Reconstruct Spherical Surface
-description: Example demonstrates how to create spherical surface from the selected spherical face using SOLIDWORKS API in C#
+title: 使用 SOLIDWORKS 模型 API 重建球面的宏
+caption: 重建球面
+description: 该示例演示了如何使用 SOLIDWORKS API 在 C# 中从选择的球面创建球面（360度）。
 image: reconstructed-sphere.png
 labels: [curve, sphere, c#]
 ---
-![Reconstructed spherical surface from the half-sphere](reconstructed-sphere.png)
+![从半球面重建的球面](reconstructed-sphere.png)
 
-This example demonstrates how to create spherical surface (360 degress) from the selected spherical face (could be less than 360 degrees) using SOLIDWORKS API.
+该示例演示了如何使用 SOLIDWORKS API 从选择的球面（可能小于360度）创建球面（360度）。
 
-* Select any spherical surface and run the macro
-* Reconstructed spherical surface is created as temp body and displayed in the graphics area
-* Clear the selection to clear the preview
+* 选择任何球面并运行宏
+* 重建的球面将作为临时实体创建并显示在图形区域中
+* 清除选择以清除预览
 
-Spherical surface is created using the [IModeler::CreateSphericalSurface2](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeler~createsphericalsurface2.html) SOLIDWORKS API method which is trimmed using the [ISurface::CreateTrimmedSheet4](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isurface~createtrimmedsheet4.html)
+球面是使用 [IModeler::CreateSphericalSurface2](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeler~createsphericalsurface2.html) SOLIDWORKS API 方法创建的，该方法使用 [ISurface::CreateTrimmedSheet4](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isurface~createtrimmedsheet4.html) 进行修剪。
 
 ~~~ cs
 using SolidWorks.Interop.sldworks;
@@ -54,12 +54,12 @@ namespace CodeStackExample
                 }
                 else 
                 {
-                    swApp.SendMsgToUser("Please select spherical surface");
+                    swApp.SendMsgToUser("请选择球面");
                 }
             }
             else 
             {
-                swApp.SendMsgToUser("Please open part document");
+                swApp.SendMsgToUser("请打开零件文档");
             }
         }
 
@@ -79,5 +79,3 @@ namespace CodeStackExample
     }
 }
 ~~~
-
-
