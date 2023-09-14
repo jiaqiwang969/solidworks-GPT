@@ -1,14 +1,14 @@
 ---
-title: Text Box control in SOLIDWORKS Property Manager Page
-caption: Text Box
-description: Overview of options applied to Text Box control
+title: SOLIDWORKS Property Manager 页面中的文本框控件
+caption: 文本框
+description: 介绍应用于文本框控件的选项
 image: text-box.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
-![Text Box control](text-box.png)
+![文本框控件](text-box.png)
 
-Text box control will be automatically generated for all properties of type *string*.
+对于所有类型为 *string* 的属性，将自动生成文本框控件。
 
 ~~~vb
 Public Class TextBoxDataModel
@@ -25,4 +25,4 @@ public class TextBoxDataModel
 ~~~
 
 
-Additional options can be specified via [TextBoxOptionsAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_TextBoxOptionsAttribute.htm)
+可以通过 [TextBoxOptionsAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_TextBoxOptionsAttribute.htm) 指定其他选项。
