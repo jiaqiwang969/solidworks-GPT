@@ -1,23 +1,23 @@
 ---
-title: Copy documents tree using SOLIDWORKS Document Manager API
-caption: Copy Documents Tree
-description: Example demonstrates how to copy documents (assembly or drawing) tree to a new location by adding the suffix to each file preserving the references using SOLIDWORKS Document Manager API
+title: 使用SOLIDWORKS文档管理器API复制文档树
+caption: 复制文档树
+description: 该示例演示了如何使用SOLIDWORKS文档管理器API将装配体或图纸树复制到新位置，并通过为每个文件添加后缀来保留引用。
 image: copy-tree.png
-labels: [copy tree, copy documents]
+labels: [复制树, 复制文档]
 ---
-![SOLIDWORKS Assembly tree copied and suffix is added for each file](copy-tree.png){ width=350 }
+![SOLIDWORKS装配体树已复制，并为每个文件添加了后缀](copy-tree.png){ width=350 }
 
-This example demonstrates how to copy the assembly or drawing tree to a new location using SOLIDWORKS Document Manager API. Macro allows to add suffix to each file in the tree. Macro will preserve and replace all the required references on all levels of the assembly.
+该示例演示了如何使用SOLIDWORKS文档管理器API将装配体或图纸树复制到新位置。宏允许为树中的每个文件添加后缀。宏将在装配体的所有层级上保留并替换所有必需的引用。
 
-Specify the input file to move, destination folder and suffix in the constants at the beginning of the macro
+在宏的开头的常量中指定要移动的输入文件、目标文件夹和后缀。
 
 ~~~ vb
-Const FILE_PATH As String = "D:\Input\Assm1.SLDASM" 'full path to an input assembly or drawing
-Const DEST_FOLDER As String = "D:\Output" 'Destination location. Do not add the backslash '\' at the end of the folder path
-Const SUFFIX As String = "_CodeStack" 'Suffix to add to each file in the tree
+Const FILE_PATH As String = "D:\Input\Assm1.SLDASM" '输入装配体或图纸的完整路径
+Const DEST_FOLDER As String = "D:\Output" '目标位置。不要在文件夹路径的末尾添加反斜杠'\'
+Const SUFFIX As String = "_CodeStack" '要添加到树中每个文件的后缀
 ~~~
 
-[ISwDMApplication::CopyDocument](https://help.solidworks.com/2018/english/api/swdocmgrapi/solidworks.interop.swdocumentmgr~solidworks.interop.swdocumentmgr.iswdmapplication~copydocument.html) Document Manager API is used to perform copying of files and all references.
+使用[ISwDMApplication::CopyDocument](https://help.solidworks.com/2018/english/api/swdocmgrapi/solidworks.interop.swdocumentmgr~solidworks.interop.swdocumentmgr.iswdmapplication~copydocument.html)文档管理器API执行文件和所有引用的复制。
 
 ~~~ vb
 Const FILE_PATH As String = "D:\Input\Assm1.SLDASM"
@@ -189,5 +189,3 @@ Function Contains(arr As Variant, item As String) As Boolean
     
 End Function
 ~~~
-
-
