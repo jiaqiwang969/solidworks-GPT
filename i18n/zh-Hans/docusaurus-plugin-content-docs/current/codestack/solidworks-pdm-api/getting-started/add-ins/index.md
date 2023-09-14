@@ -1,13 +1,13 @@
 ---
-title: Developing add-ins using SOLIDWORKS PDM API
-caption: Developing Add-Ins
-description: Instructions and code examples for developing add-ins for SOLIDWORKS PDM
-labels: [add-in,pdm]
+title: 使用SOLIDWORKS PDM API开发插件
+caption: 开发插件
+description: 使用SOLIDWORKS PDM API开发插件的说明和代码示例
+labels: [插件, pdm]
 ---
-Add-ins in SOLIDWORKS PDM are applications which are integrated into the systems. Add-ins are installed into the SOLIDWORKS PDM Administration Console and redistributed among all clients which are connected to the vault.
+SOLIDWORKS PDM中的插件是集成到系统中的应用程序。插件安装到SOLIDWORKS PDM管理控制台，并在连接到存储库的所有客户端之间重新分发。
 
-Add-in enables an access to all available SOLIDWORKS API interfaces and methods.
+插件可以访问所有可用的SOLIDWORKS API接口和方法。
 
-In order to create an add-in it is required to implement the [IEdmAddIn5](https://help.solidworks.com/2018/english/api/epdmapi/epdm.interop.epdm~epdm.interop.epdm.iedmaddin5.html) interface.
+要创建插件，需要实现[IEdmAddIn5](https://help.solidworks.com/2018/english/api/epdmapi/epdm.interop.epdm~epdm.interop.epdm.iedmaddin5.html)接口。
 
-This section provides guidelines of creating and troubleshooting add-ins using SOLIDWORKS PDM API.
+本节提供了使用SOLIDWORKS PDM API创建和排除故障的插件的指南。
