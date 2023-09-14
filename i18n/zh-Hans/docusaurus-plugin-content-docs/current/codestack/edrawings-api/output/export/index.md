@@ -1,68 +1,69 @@
 ---
 layout: sw-tool
-title: Batch export files to foreign format via eDrawings API (without SOLIDWORKS)
-caption: Batch Export To Foreign Formats
-description: Console application which exports all files from the specified folder to specified foreign format (e.g. eDrawings, html, stl, jpeg, etc.) using eDrawings API, without the need to have SOLIDWORKS installed or SOLIDWORKS license
+title: 通过 eDrawings API 批量将文件导出为外部格式（无需 SOLIDWORKS）
+caption: 批量导出为外部格式
+description: 此控制台应用程序使用 eDrawings API 将 SOLIDWORKS、DXF、DWG 和 eDrawings 文件导出为外部格式（例如 eDrawings、html、stl、jpeg 等），无需安装 SOLIDWORKS 或使用 SOLIDWORKS 许可证。
 image: export-edrawings.svg
-labels: [export,batch,edrawings]
+labels: [导出, 批量, eDrawings]
 
-group: Import/Export
+group: 导入/导出
 ---
-This console application developed in C# allows to export SOLIDWORKS, DXF, DWG, eDrawings files to foreign format (.jpg, .tif, .bmp, .stl, .exe, .htm, .zip, .edrw, .eprt, and .easm) using free version of SOLIDWORKS eDrawings via its API. It is not required to have SOLIDWORKS installed or use its license to use this tool.
 
-This functionality has been integrated into the [xPort](https://cadplus.xarial.com/xport/) utility.
+此 C# 控制台应用程序允许使用 SOLIDWORKS eDrawings 的免费版本通过其 API 将 SOLIDWORKS、DXF、DWG 和 eDrawings 文件导出为外部格式（.jpg、.tif、.bmp、.stl、.exe、.htm、.zip、.edrw、.eprt 和 .easm）。无需安装 SOLIDWORKS 或使用其许可证即可使用此工具。
 
-## Running the tool
+此功能已集成到 [xPort](https://cadplus.xarial.com/xport/) 实用程序中。
 
-This application can be run from the command line and with the following parameters:
+## 运行工具
 
-* **-input** list of input directories or file paths to process. These are files which can be opened by eDrawings (e.g. SOLIDWORKS files, CATIA, STEP, DXF/DWG, etc.). Please see the complete list below:
+此应用程序可以从命令行运行，并具有以下参数：
 
-![Supported input files](supported-formats.png){ width=250 }
+* **-input**：要处理的输入目录或文件路径列表。这些文件可以由 eDrawings 打开（例如 SOLIDWORKS 文件、CATIA、STEP、DXF/DWG 等）。请参阅下面的完整列表：
 
-* **-filter** filter to extract input files, if **-input** parameter contains directories
-* **-outdir** - path to the directory to export results to. Tool will automatically create directory if it doesn't exist. If this parameter is not specified, files will be exported to the same folder as the input file.
-* **-format** - list of formats to export the files to. Supported formats: .jpg, .tif, .bmp, .png, .stl, .exe, .htm, .zip, .edrw, .eprt, and .easm. Specify .e to export to the corresponding format of eDrawings (e.g. .sldprt is exported to .eprt, .sldasm to .easm, .slddrw to .edrw). If this parameter is not specified than file will be exported to eDrawings.
+![支持的输入文件](supported-formats.png){ width=250 }
 
-Tool should be called with the following format:
+* **-filter**：用于提取输入文件的过滤器（如果 **-input** 参数包含目录）
+* **-outdir**：导出结果的目录路径。如果不存在该目录，工具将自动创建。如果未指定此参数，则文件将导出到与输入文件相同的文件夹中。
+* **-format**：要将文件导出到的格式列表。支持的格式有：.jpg、.tif、.bmp、.png、.stl、.exe、.htm、.zip、.edrw、.eprt 和 .easm。指定 .e 以将文件导出为 eDrawings 的相应格式（例如，.sldprt 导出为 .eprt，.sldasm 导出为 .easm，.slddrw 导出为 .edrw）。如果未指定此参数，则文件将导出为 eDrawings 格式。
 
-~~~
-[parameter name] parameterValue1, parameterValue2 ... parameterValueN
-~~~
+工具应按照以下格式调用：
 
-Please see below example of parameters
+```plaintext
+[参数名称] 参数值1, 参数值2, ..., 参数值N
+```
 
-## Example commands
+请参阅下面的参数示例。
 
-* Export all SOLIDWORKS files (matching the filter *.sld*, i.e. extension starts with .sld) from the *SW Drawings* and *SW Models* folders in drive C (including sub folders) to the *C:\EDRW* folder in eDrawings format (.eprt for parts, .easm for assemblies, .edrw for drawing) and html format.
+## 示例命令
 
-~~~
+* 从驱动器 C 中的 *SW Drawings* 和 *SW Models* 文件夹（包括子文件夹）中导出所有 SOLIDWORKS 文件（与过滤器 *.sld* 匹配，即扩展名以 .sld 开头）到 *C:\EDRW* 文件夹中的 eDrawings 格式（.eprt 用于零件，.easm 用于装配，.edrw 用于绘图）和 html 格式。
+
+```plaintext
 > export.exe -input "C:\SW Drawings" "C:\SW Models" -output C:\EDRW -filter *.sld* -format .e .html
-~~~
+```
 
-* Export *C:\Models\Part.sldprt* into *C:\Models\Part.eprt*
+* 将 *C:\Models\Part.sldprt* 导出为 *C:\Models\Part.eprt*
 
-~~~
+```plaintext
 > export.exe -input "C:\Models\Part.sldprt"
-~~~
+```
 
-* Export all files in the *C:\Models* folder into the executable eDrawings format. Each file will be saved into the same folder as original input file.
+* 将 *C:\Models* 文件夹中的所有文件导出为可执行的 eDrawings 格式。每个文件将保存在与原始输入文件相同的文件夹中。
 
-~~~
+```plaintext
 > export.exe -input C:\Models -format .exe
-~~~
+```
 
-## Results
+## 结果
 
-Operation progress is displayed in the console window
+操作进度将显示在控制台窗口中。
 
-![Exporting process console output](console-output.png)
+![导出过程的控制台输出](console-output.png)
 
-Output files are created as per settings.
+根据设置创建输出文件。
 
 ## EDrawingsHost.cs
 
-~~~ cs
+```cs
 using System;
 using System.Windows.Forms;
 using eDrawings.Interop.EModelViewControl;
@@ -93,13 +94,13 @@ namespace Export
     }
 }
 
-~~~
+```
 
 
 
 ## Program.cs
 
-~~~ cs
+```cs
 using eDrawings.Interop.EModelViewControl;
 using System;
 using System.Collections.Generic;
@@ -365,8 +366,8 @@ namespace Export
     }
 }
 
-~~~
+```
 
 
 
-Source code is available on [GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/edrawings-api/Export)
+源代码可在 [GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/edrawings-api/Export) 上获取。
