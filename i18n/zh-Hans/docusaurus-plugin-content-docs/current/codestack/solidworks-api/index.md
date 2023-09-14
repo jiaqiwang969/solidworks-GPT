@@ -1,32 +1,32 @@
 ---
-title: SOLIDWORKS API Code Exampels for Macros and Add-ins
-caption: API & Macros
-description: Collection of tutorials and examples on automating SOLIDWORKS using the SOLIDWORKS API in VBA and VSTA macros, add-ins and stand-alone applications
+title: SOLIDWORKS API宏和插件的代码示例
+caption: API和宏
+description: 收集了使用VBA和VSTA宏、插件和独立应用程序自动化SOLIDWORKS的教程和示例
 image: solidworks-api-automation.png
 redirect-from:
   - /p/solidworks-api.html
 sidebar_position: 0
 ---
-![SOLIDWORKS API Automation](solidworks-api-automation.png)
+![SOLIDWORKS API自动化](solidworks-api-automation.png)
 
-SOLIDWORKS Application Programming Interface (API) is a set of libraries which are exposing the public functions to be used by 3rd party software for invoking the SOLIDWORKS native commands programmatically.
+SOLIDWORKS应用程序编程接口（API）是一组库，用于向第三方软件公开调用SOLIDWORKS本机命令的公共函数。
 
-Software developers can emulate the user interaction with SOLIDWORKS to implement the automation routines or compliment the SOLIDWORKS functionality by adding new commands to the application.
+软件开发人员可以模拟与SOLIDWORKS的用户交互，以实现自动化例程或通过向应用程序添加新命令来补充SOLIDWORKS功能。
 
-SOLIDWORKS API covers almost all functionality of SOLIDWORKS with the minor exceptions (in this case the API implementation is usually planned for future releases). So it is possible to say that everything user can do with SOLIDWORKS from the interface can be emulated in the code.
+SOLIDWORKS API几乎涵盖了SOLIDWORKS的所有功能，只有少数例外情况（在这种情况下，API实现通常计划在未来版本中）。因此，可以说用户在界面上可以做的一切都可以在代码中模拟。
 
-SOLIDWORKS API is used by SOLIDWORKS partners to develop bespoke solutions (add-ins). Follow [SOLIDWORKS Partner Products](https://www.solidworks.com/engineering-software-partners-products) link for the list of registered solutions.
+SOLIDWORKS API被SOLIDWORKS合作伙伴用于开发定制解决方案（插件）。请访问[SOLIDWORKS合作伙伴产品](https://www.solidworks.com/engineering-software-partners-products)链接以获取注册解决方案列表。
 
-## Application
+## 应用
 
-* Automation software to reduce repetitive tasks (e.g. batch processing, commands grouping)
-* Specialized software (e.g. rendering, CAM, animation, steel fabrication, wood fabrication, etc.)
-* Additional commands
+* 自动化软件以减少重复任务（例如批处理、命令分组）
+* 专业软件（例如渲染、CAM、动画、钢结构制造、木材制造等）
+* 附加命令
 
-## Notes
+## 注意事项
 
-* SOLIDWORKS API included in all packages of SOLIDWORKS (i.e. Standard, Professional and Premium).
-* SOLIDWORKS API Help is available [online](https://help.solidworks.com/2017/english/api/sldworksapiprogguide/welcome.htm)
-* Same as SOLIDWORKS itself its API is backward compatible but not forward compatible. I.e. older versions of macros and add-ins are compatible with future versions of SOLIDWORKS but not vice versa.
+* SOLIDWORKS API包含在SOLIDWORKS的所有软件包中（即标准版、专业版和高级版）。
+* SOLIDWORKS API帮助文档可在[在线文档](https://help.solidworks.com/2017/english/api/sldworksapiprogguide/welcome.htm)中找到。
+* 与SOLIDWORKS本身一样，其API向后兼容但不向前兼容。即，旧版本的宏和插件与未来版本的SOLIDWORKS兼容，但反之则不行。
 
-Please explore the Table of Content for more detailed guides and examples of SOLIDWORKS API.
+请浏览目录以获取更详细的SOLIDWORKS API指南和示例。
