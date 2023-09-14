@@ -1,13 +1,7 @@
----
-title: Data Sets (Arrays, Collections, Dictionaries) in Visual Basic
-caption: Data Sets
-description: Article explaining the usage of arrays (one- and two-dimensional), collections (dynamic arrays), dictionaries in Visual Basic
-sidebar_position: 0
----
-Data set is a list of elements stored within one variable. Data sets are used to hold family of values which are related to each other in certain way. For example data set may contain list of property names used in the document or a list of numbers of the average daily temperature within the year. Set may contain strongly typed data (i.e. set of String or set of Double) or it can contain set of variants.
+数据集是存储在一个变量中的元素列表。数据集用于保存彼此相关的一组值。例如，数据集可以包含文档中使用的属性名称列表，或者一年中每天平均温度的数字列表。数据集可以包含强类型数据（例如字符串集或双精度数集），也可以包含变体集。
 
-Data sets of a fixed size are called arrays. The size is usually defined on the declaration, but arrays might also be resized. This is the most commonly used option to store the multiple data entries in Visual Basic.
+固定大小的数据集称为数组。大小通常在声明时定义，但数组也可以调整大小。这是在Visual Basic中存储多个数据条目的最常用选项。
 
-Dynamic arrays with an ability to add new item on a fly without explicitly resizing it called Collections in Visual Basic or Lists (usually used in other programming languages). Collection usually exposes the property with a total number of elements and allows adding or removing elements from it as well as accessing specific item by index.
+具有在不显式调整大小的情况下能够动态添加新项的动态数组称为Visual Basic中的集合或列表（通常在其他编程语言中使用）。集合通常公开具有元素总数的属性，并允许添加或删除元素，以及通过索引访问特定项。
 
-Array might contain the collection of Key-Value pairs and be indexed by Key. This enables several performance benefits when accessing element by key. These arrays are called Dictionary and usually only allow unique key in the collection.
+数组可以包含键值对的集合，并通过键进行索引。这在通过键访问元素时提供了几个性能优势。这些数组称为字典，通常只允许集合中的唯一键。
