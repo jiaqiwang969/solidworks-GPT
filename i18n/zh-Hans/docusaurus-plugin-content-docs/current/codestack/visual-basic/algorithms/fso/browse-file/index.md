@@ -1,14 +1,15 @@
 ---
-title: Show file browse for save or open in Visual Basic 6 (VBA)
-caption: Browse File For Save Or Open
-description: Displaying file browse dialog to select the save file path or open file path in Visual Basic 6 (VBA)
-labels: [files,browse,save]
+title: 在Visual Basic 6 (VBA)中显示文件浏览对话框以保存或打开文件
+caption: 浏览文件以保存或打开
+description: 在Visual Basic 6 (VBA)中显示文件浏览对话框以选择保存文件路径或打开文件路径
+labels: [文件,浏览,保存]
 ---
-Excel VBA macro provides a helper function to browse the name of the file to save **Application.GetSaveAsFilename** or open **Application.GetOpenAsFilename**. These functions however only available in Excel VBA macros and is not available in other environments.
 
-This example demonstrates how create a generic functions to browse for save or open file.
+Excel VBA宏提供了一个辅助函数来浏览文件的名称以保存**Application.GetSaveAsFilename**或打开**Application.GetOpenAsFilename**。然而，这些函数仅在Excel VBA宏中可用，而在其他环境中不可用。
 
-~~~ vb
+此示例演示了如何创建一个通用函数来浏览保存或打开文件。
+
+```vb
 Private Declare PtrSafe Function GetSaveFileName Lib "comdlg32.dll" Alias "GetSaveFileNameA" (pOpenfilename As OPENFILENAME) As Boolean
 Private Declare PtrSafe Function GetOpenFileName Lib "comdlg32.dll" Alias "GetOpenFileNameA" (pOpenfilename As OPENFILENAME) As Boolean
 
@@ -35,25 +36,25 @@ Private Type OPENFILENAME
   lpTemplateName As String
 End Type
 
-Const FILTER As String = "Text Files (*.txt)|*.txt|PNG Image Files (*.png)|*.png|All Files (*.*)|*.*"
+Const FILTER As String = "文本文件 (*.txt)|*.txt|PNG 图像文件 (*.png)|*.png|所有文件 (*.*)|*.*"
 
 Sub main()
 
     Dim filePath As String
-    filePath = BrowseForFileSave("Select file path to save", FILTER)
+    filePath = BrowseForFileSave("选择保存文件路径", FILTER)
     
     If filePath <> "" Then
-        Debug.Print "Selected save file path: " & filePath
+        Debug.Print "选择的保存文件路径: " & filePath
     Else
-        Debug.Print "No save file selected"
+        Debug.Print "未选择保存文件"
     End If
     
-    filePath = BrowseForFileOpen("Select file path to open", FILTER)
+    filePath = BrowseForFileOpen("选择打开文件路径", FILTER)
     
     If filePath <> "" Then
-        Debug.Print "Selected open file path: " & filePath
+        Debug.Print "选择的打开文件路径: " & filePath
     Else
-        Debug.Print "No open file selected"
+        Debug.Print "未选择打开文件"
     End If
 
 End Sub
@@ -110,5 +111,4 @@ Function BrowseForFile(title As String, filters As String, save As Boolean) As S
     End If
     
 End Function
-~~~
-
+```
