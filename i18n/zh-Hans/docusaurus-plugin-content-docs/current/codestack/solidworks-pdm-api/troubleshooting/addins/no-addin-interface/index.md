@@ -1,26 +1,26 @@
 ---
 layout: sw-pdm-addin-fix
-title: Fix 'Please select at least one DLL implementing the IEdmAddIn5 interface' error
-caption: Please select at least one DLL implementing the IEdmAddIn5 interface
-description: Troubleshooting the 'Please select at least one DLL implementing the IEdmAddIn5 interface' error when registering SOLIDWORKS PDM add-in
+title: 修复“请选择至少一个实现IEdmAddIn5接口的DLL”错误
+caption: 请选择至少一个实现IEdmAddIn5接口的DLL
+description: 当注册SOLIDWORKS PDM插件时出现“请选择至少一个实现IEdmAddIn5接口的DLL”错误的故障排除方法
 image: no-addin-dll.png
-labels: [pdm add-in, error]
+labels: [pdm插件, 错误]
 ---
-## Symptoms
+## 症状
 
-The following error is shown when adding the add-in with SOLIDWORKS PDM administration tool: *Please select at least one DLL implementing the IEdmAddIn5 interface*
+在使用SOLIDWORKS PDM管理工具添加插件时，会显示以下错误信息：*请选择至少一个实现IEdmAddIn5接口的DLL*
 
-![Error when adding the add-in](no-addin-dll.png){ width=450 }
+![添加插件时出现的错误](no-addin-dll.png){ width=450 }
 
-## Cause
+## 原因
 
-Error happens when SOLIDWORKS PDM cannot find the class which implements the [IEdmAddIn5](https://help.solidworks.com/2019/English/api/epdmapi/EPDM.Interop.epdm~EPDM.Interop.epdm.IEdmAddIn5.html) which corresponds to the add-in.
+当SOLIDWORKS PDM无法找到实现[IEdmAddIn5](https://help.solidworks.com/2019/English/api/epdmapi/EPDM.Interop.epdm~EPDM.Interop.epdm.IEdmAddIn5.html)接口的类时，就会发生错误。
 
-In order for the add-in class to be visible to SOLIDWORKS PDM, it must be public and com visible.
+为了使SOLIDWORKS PDM能够看到插件类，该类必须是公共的并且可用于COM。
 
-Examples of incorrect declaration of add-in
+以下是插件声明不正确的示例：
 
-### Class is not marked as COM Visible
+### 类没有标记为COM可见
 
 ~~~cs
 public class PdmAddIn : IEdmAddIn5
@@ -28,7 +28,7 @@ public class PdmAddIn : IEdmAddIn5
 }
 ~~~
 
-### Class doesn't have access modifiers (private by default)
+### 类没有访问修饰符（默认为私有）
 
 ~~~cs
 [ComVisible(true)]
@@ -37,7 +37,7 @@ class PdmAddIn : IEdmAddIn5
 }
 ~~~
 
-### Class marked as internal
+### 类标记为internal
 
 ~~~cs
 [ComVisible(true)]
@@ -46,9 +46,9 @@ internal class PdmAddIn : IEdmAddIn5
 }
 ~~~
 
-## Resolution
+## 解决方法
 
-Make sure that add-in class is public and decorated with [ComVisible](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.comvisibleattribute) attribute with value set to *True*
+确保插件类是公共的，并且使用[ComVisible](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.comvisibleattribute)属性进行修饰，值设置为*True*
 
 ~~~cs
 [ComVisible(true)]
@@ -56,4 +56,3 @@ public class PdmAddIn : IEdmAddIn5
 {
 }
 ~~~
-
