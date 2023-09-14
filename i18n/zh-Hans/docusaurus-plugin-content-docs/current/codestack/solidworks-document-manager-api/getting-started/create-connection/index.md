@@ -1,75 +1,75 @@
 ---
-title: Connect to SOLIDWORKS Document Manager Application from API
-caption: Connect To Document Manager Application
-description: Detailed instructions for initializing the connection to SOLIDWORKS Document Manager library
+title: 从API连接到SOLIDWORKS文档管理器应用程序
+caption: 连接到文档管理器应用程序
+description: 初始化与SOLIDWORKS文档管理器库的连接的详细说明
 image: dm-functionality.png
 labels: [dm key, document manager, getting started, license]
 ---
-## Activating Document Manager
+## 激活文档管理器
 
-Document manager requires the developer license which can be requested via [SOLIDWORKS customer portal](https://customerportal.solidworks.com/)  
+文档管理器需要开发者许可证，可以通过[SOLIDWORKS客户门户](https://customerportal.solidworks.com/)申请。
 
-Follow the steps below:
+按照以下步骤操作：
 
-* Login to customer portal
-* Click *API Support* link under *My Support* section
+* 登录到客户门户
+* 在“我的支持”部分下点击“API支持”链接
 
-![Customer Portal Dashboard](custom-portal-dashboard.png){ width=400 height=207 }
+![客户门户仪表板](custom-portal-dashboard.png){ width=400 height=207 }
 
-* Select *Document Manager Key Request* link
+* 选择“文档管理器密钥请求”链接
 
-![Document Manager Key Request link](doc-mgr-key-request.png){ width=400 height=243 }
+![文档管理器密钥请求链接](doc-mgr-key-request.png){ width=400 height=243 }
 
-* Select the option either to resend existing key or generate new one
+* 选择重新发送现有密钥或生成新密钥的选项
 
-![Options for Document Manager Key](doc-mgr-key-options.png){ width=320 height=95 }
+![文档管理器密钥选项](doc-mgr-key-options.png){ width=320 height=95 }
 
-* Fill the request form and select the functionality required for your software (refer [Supported Functionality](/docs/codestack/solidworks-document-manager-api/#supported-functionality) section to select the right functions)
+* 填写请求表单，并选择所需的软件功能（参考[支持的功能](/docs/codestack/solidworks-document-manager-api/#supported-functionality)部分选择正确的功能）
 
-![Document Manager supported functionality](dm-functionality.png){ width=320 height=246 }
+![文档管理器支持的功能](dm-functionality.png){ width=320 height=246 }
 
-It usually takes several business days for key to be generated. Once generated it will be sent via e-mail.
-The key is generated in the following format:
+通常需要几个工作日才能生成密钥。生成后，将通过电子邮件发送。
+密钥的生成格式如下：
 
 > **CompanyName**:swdocmgr_general-00000-{31 times},swdocmgr_previews-00000-{31 times},swdocmgr_dimxpert-00000-{31 times},swdocmgr_geometry-00000-{31 times},swdocmgr_xml-00000-{31 times},swdocmgr_tessellation-00000-{31 times}  
 
-Exception below will be thrown if API is called which doesn't belong to a group for which licenses were generated.  
+如果调用不属于为其生成许可证的组的API，则会引发以下异常。
 
 > Class is not licensed for use (Exception from HRESULT: 0x80040112)
 
-## Registering Document Manager
+## 注册文档管理器
 
-Document Manager is automatically registered with the following applications
+文档管理器会自动注册到以下应用程序中：
   * SOLIDWORKS
   * eDrawings
-  * SOLIDWORKS Files Explorer
+  * SOLIDWORKS文件资源管理器
   * SOLIDWORKS PDM
-  * SOLIDWORKS Document Manager SDK
+  * SOLIDWORKS文档管理器SDK
 
-To manually register the Document Manager run [regsvr32](https://en.wikipedia.org/wiki/Regsvr32) utility and pass the path to *swdocumentmanager.dll* (usually installed to *C:\Program Files\Common Files\SOLIDWORKS Shared\swdocumentmgr.dll* with Document Manager SDK).
+要手动注册文档管理器，请运行[regsvr32](https://en.wikipedia.org/wiki/Regsvr32)实用程序，并传递路径到*swdocumentmanager.dll*（通常安装到* C：\ Program Files \ Common Files \ SOLIDWORKS Shared \ swdocumentmgr.dll *与文档管理器SDK）。
 
-Run Windows Command line with administrative right with the following command
+以管理员权限运行Windows命令行，使用以下命令
 
 > regsvr32 "C:\Program Files\Common Files\SOLIDWORKS Shared\swdocumentmgr.dll"
 
-## Notes
+## 注意事项
  
-* Document Manager key *must not* be shared outside of the organization
-* Software developed using Document Manager key can only be redistributed in the binary format
-	* That means that the customers of your software do not need to get the license key from SOLIDWORKS
-    * That also means that this key cannot be used in VBA macros outside of the organization, but can be used in VSTA macros (if source code is not redistributed)
-	* Document Manager is backward compatible until the SOLIDWORKS 2015 but it is not forward compatible.
-	For example it is possible to read/write legacy data with newer version of Document Manager key for SOLIDWORKS 2015 onwards.
-	* Document Manager key generated before SOLIDWORKS 2015 is both backward and forward compatible with older versions of SOLIDWORKS
-	* Document Manager license key should be updated with every new release of SOLIDWORKS to support newer versions
-* **Important for .NET developers:** the *swDocumentManager.dll* is not the same as *SolidWorks.Interop.SwDocumentMgr.dll* which is added as the reference to the project.
-	The later one doesn't contain any implementation - this is just an interop to access COM objects implemented in *swDocumentManager.dll*
+* 文档管理器密钥**不得**在组织外共享
+* 使用文档管理器密钥开发的软件只能以二进制格式重新分发
+	* 这意味着您的软件的客户不需要从SOLIDWORKS获取许可证密钥
+    * 这也意味着此密钥不能在组织外的VBA宏中使用，但可以在VSTA宏中使用（如果源代码未重新分发）
+	* 文档管理器向后兼容到SOLIDWORKS 2015，但不向前兼容。
+	例如，可以使用SOLIDWORKS 2015及更高版本的文档管理器密钥读取/写入旧版数据。
+	* 在SOLIDWORKS 2015之前生成的文档管理器密钥向后和向前兼容旧版本的SOLIDWORKS
+	* 每次发布新版本的SOLIDWORKS时，都应更新文档管理器许可证密钥以支持新版本
+* **对于.NET开发人员很重要：** *swDocumentManager.dll*与添加到项目的引用的*SolidWorks.Interop.SwDocumentMgr.dll*不同。
+	后者不包含任何实现 - 这只是一个访问在*swDocumentManager.dll*中实现的COM对象的互操作性
 
-## Code Examples
+## 代码示例
 
 ### VBA
 
-Add the reference to swdocumentmgr.dll. The dll can be usually found at C:\Program Files\Common Files\SOLIDWORKS Shared. Document manager license key might be too long so VBA editor will not be able to compile the macro. Refer the [Too Long VBA Macro Line](/docs/codestack/solidworks-api/troubleshooting/macros/too-long-vba-macro-line/) troubleshooting article for the solution of this issue.
+添加对swdocumentmgr.dll的引用。该dll通常可以在C：\ Program Files \ Common Files \ SOLIDWORKS Shared中找到。文档管理器许可证密钥可能太长，因此VBA编辑器将无法编译宏。有关此问题的解决方案，请参阅[过长的VBA宏行](/docs/codestack/solidworks-api/troubleshooting/macros/too-long-vba-macro-line/)故障排除文章。
 
 ~~~ vb
 Const SW_DM_KEY As String = "[CompanyName]:swdocmgr_general-00000-{31 times},swdocmgr_previews-00000-{31 times},swdocmgr_dimxpert-00000-{31 times},swdocmgr_geometry-00000-{31 times},swdocmgr_xml-00000-{31 times},swdocmgr_tessellation-00000-{31 times}"
@@ -85,7 +85,7 @@ Sub main()
         Set swDmApp = swDmClassFactory.GetApplication(SW_DM_KEY)
         Debug.Print swDmApp.GetLatestSupportedFileVersion()
     Else
-        MsgBox "Document Manager SDK is not installed"
+        MsgBox "未安装文档管理器SDK"
     End If
     
 End Sub
@@ -95,8 +95,8 @@ End Sub
 
 ### C#
 
-Add the reference to SolidWorks.Interop.swdocumentmgr.dll. The dll can be usually found at C:\Program Files\Common Files\SOLIDWORKS Shared.
-Uncheck the Embed Interop Types option in the reference properties.
+添加对SolidWorks.Interop.swdocumentmgr.dll的引用。该dll通常可以在C：\ Program Files \ Common Files \ SOLIDWORKS Shared中找到。
+在引用属性中取消选中嵌入互操作类型选项。
 
 ~~~ cs
 using SolidWorks.Interop.swdocumentmgr;
@@ -120,7 +120,7 @@ namespace CodeStack
             }
             else
             {
-                throw new NullReferenceException("Document Manager SDK is not installed");
+                throw new NullReferenceException("未安装文档管理器SDK");
             }
         }
     }
@@ -131,8 +131,8 @@ namespace CodeStack
 
 ### VB.NET
 
-Add the reference to SolidWorks.Interop.swdocumentmgr.dll. The dll can be usually found at C:\Program Files\Common Files\SOLIDWORKS Shared.
-Uncheck the Embed Interop Types option in the reference properties.
+添加对SolidWorks.Interop.swdocumentmgr.dll的引用。该dll通常可以在C：\ Program Files \ Common Files \ SOLIDWORKS Shared中找到。
+在引用属性中取消选中嵌入互操作类型选项。
 
 ~~~ vb
 Imports SolidWorks.Interop.swdocumentmgr
@@ -151,7 +151,7 @@ Module CodeStack
             Dim dmApp As SwDMApplication = classFactory.GetApplication(SW_DM_KEY)
             Console.WriteLine(dmApp.GetLatestSupportedFileVersion())
         Else
-            Throw New NullReferenceException("Document Manager SDK is not installed")
+            Throw New NullReferenceException("未安装文档管理器SDK")
         End If
 
     End Sub
@@ -163,7 +163,7 @@ End Module
 
 ### C++
 
-Add the path to swdocumentmgr.dll (usually C:\Program Files\Common Files\SOLIDWORKS Shared) into the Project Properties->C/C++->General->Additional Include Directories
+将swdocumentmgr.dll的路径（通常为C：\ Program Files \ Common Files \ SOLIDWORKS Shared）添加到项目属性-> C / C ++->常规->附加包含目录
 
 ~~~ cpp
 #include "stdafx.h"
@@ -195,7 +195,7 @@ int main()
             }
             else
             {
-                std::cout << "Failed to get version";
+                std::cout << "获取版本失败";
             }
         }
 
@@ -205,7 +205,7 @@ int main()
     }
     else
     {
-        std::cout << "Document Manager SDK is not installed";
+        std::cout << "未安装文档管理器SDK";
     }
     
     std::cin.get();
@@ -216,6 +216,6 @@ int main()
 
 
 
-## References
+## 参考资料
 
-* Online [Document Manager API Help Documentation](https://help.solidworks.com/2017/English/api/SWHelp_List.html?id=69d4ac3ff991425e980510fe49f75719#Pg0&ProductType=&ProductName=)
+* 在线[文档管理器API帮助文档](https://help.solidworks.com/2017/English/api/SWHelp_List.html?id=69d4ac3ff991425e980510fe49f75719#Pg0&ProductType=&ProductName=)
