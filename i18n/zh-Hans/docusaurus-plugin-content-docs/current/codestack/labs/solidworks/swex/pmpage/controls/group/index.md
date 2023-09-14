@@ -1,14 +1,14 @@
 ---
-title: Group Box in SOLIDWORKS Property Manager Page
-caption: Group Box
-description: Overview of functionality to groups the controls
+title: SOLIDWORKS 属性管理器页面中的分组框
+caption: 分组框
+description: 对分组控件功能的概述
 image: group-box.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
-![Group box created from the complex type](group-box.png)
+![从复杂类型创建的分组框](group-box.png)
 
-Group box will be automatically created for all complex types in the data model
+分组框将自动为数据模型中的所有复杂类型创建
 
 ~~~vb
 Public Class GroupDataModel
@@ -34,4 +34,4 @@ public class GroupDataModel
 }
 ~~~
 
-> SOLIDWORKS doesn't support groups nested into other groups, so all the nested complex types will be added as the groups to the main property manager page.
+> SOLIDWORKS 不支持将分组嵌套到其他分组中，因此所有嵌套的复杂类型将作为主属性管理器页面的分组添加。
