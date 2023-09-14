@@ -1,17 +1,18 @@
 ---
 layout: sw-tool
-title: Export SOLIDWORKS files using SOLIDWORKS API in shell script
-caption: Export Files
-description: Script allows exporting of the SOLIDWORKS file into the foreign format using command line
+title: 使用SOLIDWORKS API在shell脚本中导出SOLIDWORKS文件
+caption: 导出文件
+description: 该脚本允许使用命令行使用SOLIDWORKS API将SOLIDWORKS文件导出为指定的外部格式
 image: power-shell-export.svg
-labels: [export, script]
-group: Import/Export
+labels: [导出, 脚本]
+group: 导入/导出
 ---
-This PowerShell script allows exporting the SOLIDWORKS file into the specified foreign format from the command line using SOLIDWORKS API
 
-## Configuration and usage instructions
+这个PowerShell脚本允许使用SOLIDWORKS API从命令行将SOLIDWORKS文件导出为指定的外部格式。
 
-* Create two files and paste the code from the below snippets
+## 配置和使用说明
+
+* 创建两个文件，并将下面代码段中的代码粘贴到文件中。
 
 ### export-file.ps1
 ~~~ ps1
@@ -119,8 +120,6 @@ Add-Type -TypeDefinition $Source -ReferencedAssemblies $Assem -Language CSharp
 [CodeStack.Exporter]::ExportFile($inputFilePath, $outFilePath)
 ~~~
 
-
-
 ### export-file.cmd
 ~~~ cmd
 SET inputFilePath=%1
@@ -129,26 +128,24 @@ SET outFilePath=%2
 PowerShell -NoProfile -ExecutionPolicy Bypass -File "%~dp0export-file.ps1" %inputFilePath% %outFilePath%
 ~~~
 
+* 将*SOLIDWORKS.Interop.sldworks.dll*复制到创建上述脚本的文件夹中。PowerShell脚本基于.NET Framework 2.0，因此SOLIDWORKS interop必须针对此框架。该dll可以在以下位置找到：**SOLIDWORKS安装文件夹**\api\redist\CLR2\SolidWorks.Interop.sldworks.dll
 
+![文件夹中的脚本数据文件](script-folder.png){ width=450 }
 
-* Copy the *SolidWorks.Interop.sldworks.dll* into the folder where the above scripts are created. PowerShell script is based on .NET Framework 2.0 so the SOLIDWORKS interop must target this framework. The dll can be found at: **SOLIDWORKS Installation Folder**\api\redist\CLR2\SolidWorks.Interop.sldworks.dll
-
-![Script data files in the folder](script-folder.png){ width=450 }
-
-Alternatively full path to SOLIDWORKS interop can be specified as shown below. In this case it is not required to copy this dll into the folder with script files.
+或者可以指定SOLIDWORKS interop的完整路径，如下所示。在这种情况下，不需要将此dll复制到脚本文件所在的文件夹中。
 
 ~~~ ps1
 $Assem = ( 
-   "Full path to SolidWorks.Interop.sldworks.dll"
+   "SolidWorks.Interop.sldworks.dll的完整路径"
     ) 
 ~~~
 
-* Start the command line and execute the following command
+* 启动命令行并执行以下命令：
 
 ~~~ bat
-[Full Path To export-file.cmd] [Full Path To Input SOLIDWORKS file] [Full Path to output file and extension]
+[export-file.cmd的完整路径] [输入SOLIDWORKS文件的完整路径] [输出文件的完整路径和扩展名]
 ~~~
 
-As the result the file is exported and the process log is displayed directly in the console:
+结果将导出文件，并将进程日志直接显示在控制台中：
 
-![Messages in console reporting the progress and the result of exporting](export-file-result-console.png){ width=450 }
+![在控制台中报告导出进度和结果的消息](export-file-result-console.png){ width=450 }
