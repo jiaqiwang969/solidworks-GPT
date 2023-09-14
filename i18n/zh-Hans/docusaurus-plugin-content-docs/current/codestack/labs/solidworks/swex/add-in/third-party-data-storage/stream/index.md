@@ -1,19 +1,19 @@
 ---
-title: Storing data in the 3rd party storage (stream) via SwEx.AddIn framework
-caption: Stream
-description: Serializing custom structures into the 3rd party storage (stream) using SwEx.AddIn framework
+title: 通过SwEx.AddIn框架将数据存储在第三方存储（流）中
+caption: 流
+description: 使用SwEx.AddIn框架将自定义结构序列化到第三方存储（流）中
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
-Call [IModelDoc2::Access3rdPartyStream](https://docs.codestack.net/swex/add-in/html/M_SolidWorks_Interop_sldworks_ModelDocExtension_Access3rdPartyStream.htm) extension method to access the 3rd party stream. Pass the boolean parameter to read or write stream.
+调用[IModelDoc2::Access3rdPartyStream](https://docs.codestack.net/swex/add-in/html/M_SolidWorks_Interop_sldworks_ModelDocExtension_Access3rdPartyStream.htm)扩展方法来访问第三方流。传递布尔参数以读取或写入流。
 
-use this approach when it is required to store a single structure at the model.
+在需要在模型中存储单个结构时使用此方法。
 
-## Stream Access Handler
+## 流访问处理程序
 
-To simplify the handling of the stream lifecycle, use the Documents Manager API from the SwEx.AddIn framework:
+为了简化流生命周期的处理，使用SwEx.AddIn框架的Documents Manager API：
 
-~~~vb
+```vb
 Private Const STREAM_NAME As String = "CodeStackStream"
 
 Public Class StreamData
@@ -35,9 +35,9 @@ Private Sub LoadFromStream(ByVal model As IModelDoc2)
         End If
     End Using
 End Sub
-~~~
+```
 
-~~~cs
+```cs
 private const string STREAM_NAME = "CodeStackStream";
 
 public class StreamData
@@ -62,14 +62,13 @@ private void LoadFromStream(IModelDoc2 model)
         }
     }
 }
-~~~
+```
 
-## Reading data
+## 读取数据
 
-[IThirdPartyStreamHandler::Stream](https://docs.codestack.net/swex/add-in/html/P_CodeStack_SwEx_AddIn_Base_IThirdPartyStreamHandler_Stream.htm) property returns null for the stream which not exists on reading.
+[IThirdPartyStreamHandler::Stream](https://docs.codestack.net/swex/add-in/html/P_CodeStack_SwEx_AddIn_Base_IThirdPartyStreamHandler_Stream.htm)属性在读取不存在的流时返回null。
 
-
-~~~vb
+```vb
 Private Const STREAM_NAME As String = "CodeStackStream"
 
 Public Class StreamData
@@ -91,10 +90,9 @@ Private Sub LoadFromStream(ByVal model As IModelDoc2)
         End If
     End Using
 End Sub
-~~~
+```
 
-
-~~~cs
+```cs
 private const string STREAM_NAME = "CodeStackStream";
 
 public class StreamData
@@ -119,13 +117,13 @@ private void LoadFromStream(IModelDoc2 model)
         }
     }
 }
-~~~
+```
 
-## Writing data
+## 写入数据
 
-[IThirdPartyStreamHandler::Stream](https://docs.codestack.net/swex/add-in/html/P_CodeStack_SwEx_AddIn_Base_IThirdPartyStreamHandler_Stream.htm) will always return the pointer to the stream (stream is automatically created if it doesn't exist).
+[IThirdPartyStreamHandler::Stream](https://docs.codestack.net/swex/add-in/html/P_CodeStack_SwEx_AddIn_Base_IThirdPartyStreamHandler_Stream.htm)属性将始终返回指向流的指针（如果流不存在，则自动创建流）。
 
-~~~vb
+```vb
 Private Const STREAM_NAME As String = "CodeStackStream"
 
 Public Class StreamData
@@ -144,9 +142,9 @@ Private Sub SaveToStream(ByVal model As IModelDoc2)
         End Using
     End Using
 End Sub
-~~~
+```
 
-~~~cs
+```cs
 private const string STREAM_NAME = "CodeStackStream";
 
 public class StreamData
@@ -169,4 +167,4 @@ private void SaveToStream(IModelDoc2 model)
         }
     }
 }
-~~~
+```
