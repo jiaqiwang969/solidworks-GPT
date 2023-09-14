@@ -1,62 +1,62 @@
 ---
 layout: sw-tool
-title: VBA macro to rename features based on type names using SOLIDWORKS API
-caption: Rename Features Based On Type Names
-description: VBA macro renames (translates) the features in the part feature tree using SOLIDWORKS API
+title: 使用SOLIDWORKS API基于类型名称重命名特征的VBA宏
+caption: 基于类型名称重命名特征
+description: 使用SOLIDWORKS API的VBA宏重命名（翻译）零件特征树
 image: renaming-feature.svg
-labels: [rename, translate, feature]
-group: Part
+labels: [重命名, 翻译, 特征]
+group: 零件
 ---
-This VBA macro allows to rename the feature manager tree in the part document using SOLIDWORKS API based on specified rules and feature type names.
+这个VBA宏允许使用SOLIDWORKS API根据指定的规则和特征类型名称重命名零件文档中的特征管理树。
 
-This macro can be used as a translator macro to rename feature tree form one language to another.
+这个宏可以用作一个翻译宏，将特征树从一种语言重命名为另一种语言。
 
-For example this feature tree is in Russian language:
+例如，这个特征树是用俄语编写的：
 
-![Feature tree in Russian language](feature-tree-rus.png){ width=150 }
+![俄语特征树](feature-tree-rus.png){ width=150 }
 
-It can be renamed to English language equivalent:
+它可以被重命名为英语版本：
 
-![Feature tree in English version](feature-tree-eng.png){ width=150 }
+![英语特征树](feature-tree-eng.png){ width=150 }
 
-## Configuration
+## 配置
 
-Macro is using the data specified in 2 files which must be stored in the same folder as the macro:
+宏使用两个文件中指定的数据，这两个文件必须与宏存储在同一个文件夹中：
 
 ~~~ vb
 Const NO_INCREMENT_FILE As String = "noincrement.csv"
 Const CUSTOM_MAP_FILE As String = "custommap.csv"
 ~~~
 
-These files can be edited in Excel or any text editor (like Notepad).
+这些文件可以在Excel或任何文本编辑器（如记事本）中进行编辑。
 
-### No Increment CSV File
+### 不递增的CSV文件
 
-This file contains the feature type names whose names should not be increment (i.e. they present once in a tree), for example *Origin* feature or *Documents Folder*.
+这个文件包含特征类型名称，它们的名称不应该递增（即它们在树中只出现一次），例如*原点*特征或*文档文件夹*。
 
-This is a single column CSV file. [Download](noincrement.csv)
+这是一个单列的CSV文件。[下载](noincrement.csv)
 
-### Custom Map CSV File
+### 自定义映射CSV文件
 
-This file contains the special names for the feature types. By default the feature will be named after its type, but this behavior can be overridden in this file. For example type name for the *Sketch* feature is *OriginProfileFeature*, so by default all sketches will be renamed to *OriginProfileFeature1*, *OriginProfileFeature2*, *OriginProfileFeature3* etc., unless the following line is added to *custommap.csv* file
+这个文件包含特征类型的特殊名称。默认情况下，特征将以其类型命名，但是可以在这个文件中覆盖此行为。例如，*草图*特征的类型名称是*OriginProfileFeature*，所以默认情况下所有草图将被重命名为*OriginProfileFeature1*、*OriginProfileFeature2*、*OriginProfileFeature3*等，除非在*custommap.csv*文件中添加以下行：
 
 ~~~
 OriginProfileFeature,Sketch
 ~~~
 
-In this case the sketches will be renamed to *Sketch1*, *Sketch2*, *Sketch3*
+在这种情况下，草图将被重命名为*Sketch1*、*Sketch2*、*Sketch3*。
 
-This is a 2 column CSV file
+这是一个两列的CSV文件。
 
-[Download](custommap.csv)
+[下载](custommap.csv)
 
-## Feature Types
+## 特征类型
 
-Feature types are language independent identifiers of feature kind. Use [Get Features Type Name](/docs/codestack/solidworks-api/document/features-manager/get-feature-type-name/) VBA macro to extract type names. Use *Type Name 2* unless it is equal to *ICE* (in this case use *Type Name 1*)
+特征类型是特征种类的与语言无关的标识符。使用[获取特征类型名称](/docs/codestack/solidworks-api/document/features-manager/get-feature-type-name/) VBA宏提取类型名称。使用*Type Name 2*，除非它等于*ICE*（在这种情况下使用*Type Name 1*）。
 
-### Special Feature Types
+### 特殊特征类型
 
-There are several special types of feature which can be used for renaming
+有几种特殊类型的特征可用于重命名
 
 * _FrontPlane
 * _RightPlane
@@ -171,7 +171,7 @@ Sub main()
         Next
         
     Else
-        Err.Raise vbError, "", "Open the model"
+        Err.Raise vbError, "", "打开模型"
     End If
     
 End Sub
@@ -340,5 +340,3 @@ Function ReadCsvFile(filePath As String, firstRowHeader As Boolean) As Variant
     
 End Function
 ~~~
-
-
