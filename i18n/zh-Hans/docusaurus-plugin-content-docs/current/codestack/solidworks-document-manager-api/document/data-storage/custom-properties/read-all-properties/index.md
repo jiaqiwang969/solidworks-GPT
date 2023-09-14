@@ -1,56 +1,56 @@
 ---
-title: Read All Custom Properties using SOLIDWORKS Document Manager API
-caption: Read All Properties
-description: VBA macro which reads all custom properties from all sources (file, configuration, cut-list) using SOLIDWORKS Document Manager API
+title: 使用SOLIDWORKS文档管理器API读取所有自定义属性
+caption: 读取所有属性
+description: 使用SOLIDWORKS文档管理器API从所有来源（文件、配置、切割列表）读取所有自定义属性的VBA宏
 image: properties-list.png
-labels: [read properties,custom properties]
+labels: [读取属性,自定义属性]
 ---
-![SOLIDWORKS custom properties](properties-list.png){ width=550 }
+![SOLIDWORKS自定义属性](properties-list.png){ width=550 }
 
-This VBA macro demonstrates how to read all custom properties from all sources (general file properties, configuration specific and cut-list item properties) using SOLIDWORKS Document Manager API.
+这个VBA宏演示了如何使用SOLIDWORKS文档管理器API从所有来源（通用文件属性、配置特定属性和切割列表项属性）读取所有自定义属性。
 
-All the results output to the immediate window of VBA editor in the following format.
+所有的结果以以下格式输出到VBA编辑器的即时窗口中。
 
 ~~~
-General Custom Properties
-    Property: ApprovedDate
-    Value/Text Expression: 12/09/2019
-    Evaluated Value: 12/09/2019
-    Type: Date
+通用自定义属性
+    属性：ApprovedDate
+    值/文本表达式：12/09/2019
+    评估值：12/09/2019
+    类型：日期
 
-Configuration Specific Properties
+配置特定属性
     B
-        Property: ApprovedDate
-        Value/Text Expression: 12/09/2019
-        Evaluated Value: 12/09/2019
-        Type: Date
+        属性：ApprovedDate
+        值/文本表达式：12/09/2019
+        评估值：12/09/2019
+        类型：日期
 
     A
-        Property: ApprovedDate
-        Value/Text Expression: 12/09/2019
-        Evaluated Value: 12/09/2019
-        Type: Date
+        属性：ApprovedDate
+        值/文本表达式：12/09/2019
+        评估值：12/09/2019
+        类型：日期
 
-Cut List Properties
+切割列表属性
     B
-            Property: Bounding Box Length
-            Value/Text Expression: "SW-Bounding Box Length@@@Sheet<1>@Part3.SLDPRT"
-            Evaluated Value: 100
-            Type: Text
+            属性：Bounding Box Length
+            值/文本表达式："SW-Bounding Box Length@@@Sheet<1>@Part3.SLDPRT"
+            评估值：100
+            类型：文本
 ...
 
     A
-            Property: Bounding Box Length
-            Value/Text Expression: "SW-Bounding Box Length@@@Sheet<1>@CS-02.SLDPRT"
-            Evaluated Value: 150
-            Type: Text
+            属性：Bounding Box Length
+            值/文本表达式："SW-Bounding Box Length@@@Sheet<1>@CS-02.SLDPRT"
+            评估值：150
+            类型：文本
 ...
 ~~~
 
-Specify the full path of the file in the *FILE_PATH* constant.
+在*FILE_PATH*常量中指定文件的完整路径。
 
 ~~~ vb
-Const SW_DM_KEY As String = "Your license key"
+Const SW_DM_KEY As String = "您的许可证密钥"
 
 Const FILE_PATH As String = "C:\SampleModel.SLDPRT"
 
@@ -72,7 +72,7 @@ Sub main()
         PrintCutListProperties swDmDoc
         
     Else
-        MsgBox "Document Manager SDK is not installed"
+        MsgBox "未安装文档管理器SDK"
     End If
     
 End Sub
@@ -86,7 +86,7 @@ Sub PrintGeneralProperties(dmDoc As SwDocumentMgr.SwDMDocument19)
     
     dmDoc.GetAllCustomPropertyNamesAndValues vNames, vTypes, vLinkedTo, vValues
     
-    Debug.Print "General Custom Properties"
+    Debug.Print "通用自定义属性"
     
     PrintProperties vNames, vTypes, vLinkedTo, vValues, "    "
     
@@ -99,7 +99,7 @@ Sub PrintConfigurationSpecificProperties(dmDoc As SwDocumentMgr.SwDMDocument19)
     
     Dim i As Integer
     
-    Debug.Print "Configuration Specific Properties"
+    Debug.Print "配置特定属性"
     
     For i = 0 To UBound(vConfNames)
         
@@ -114,7 +114,7 @@ Sub PrintConfigurationSpecificProperties(dmDoc As SwDocumentMgr.SwDMDocument19)
         Dim vLinkedTo As Variant
         Dim vValues As Variant
         
-        'NOTE: order of resolved and expressions is not correct for configurations in SW DM API, so reversing the variables
+        '注意：配置在SW DM API中解析和表达式的顺序不正确，所以反转变量
         swDmConf.GetAllCustomPropertyNamesAndValues vNames, vTypes, vValues, vLinkedTo
                 
         Debug.Print "    " & confName
@@ -132,7 +132,7 @@ Sub PrintCutListProperties(dmDoc As SwDocumentMgr.SwDMDocument19)
     
     Dim i As Integer
     
-    Debug.Print "Cut List Properties"
+    Debug.Print "切割列表属性"
     
     For i = 0 To UBound(vConfNames)
         
@@ -182,7 +182,7 @@ Sub PrintCutListProperties(dmDoc As SwDocumentMgr.SwDMDocument19)
             Next
         
         Else
-            Debug.Print "        -No Cut Lists-"
+            Debug.Print "        -没有切割列表-"
         End If
         
     Next
@@ -214,25 +214,25 @@ Sub PrintProperties(vPrpNames As Variant, vTypes As Variant, vLinkedTo As Varian
             
             Select Case vTypes(i)
                 Case SwDmCustomInfoType.swDmCustomInfoDate
-                    prpType = "Date"
+                    prpType = "日期"
                 Case SwDmCustomInfoType.swDmCustomInfoNumber
-                    prpType = "Number"
+                    prpType = "数字"
                 Case SwDmCustomInfoType.swDmCustomInfoText
-                    prpType = "Text"
+                    prpType = "文本"
                 Case SwDmCustomInfoType.swDmCustomInfoYesOrNo
-                    prpType = "YesNo"
+                    prpType = "是/否"
                 Case SwDmCustomInfoType.swDmCustomInfoUnknown
-                    prpType = "Unknown"
+                    prpType = "未知"
             End Select
             
-            Debug.Print indent & "Property: " & prpName
-            Debug.Print indent & "Value/Text Expression: " & prpVal
-            Debug.Print indent & "Evaluated Value: " & prpResVal
-            Debug.Print indent & "Type: " & prpType
+            Debug.Print indent & "属性：" & prpName
+            Debug.Print indent & "值/文本表达式：" & prpVal
+            Debug.Print indent & "评估值：" & prpResVal
+            Debug.Print indent & "类型：" & prpType
             Debug.Print ""
         Next
     Else
-        Debug.Print indent & "-No Properties-"
+        Debug.Print indent & "-没有属性-"
     End If
     
 End Sub
@@ -260,12 +260,10 @@ Function OpenDocument(filePath As String, readOnly As Boolean) As SwDocumentMgr.
     Set swDmDoc = swDmApp.GetDocument(filePath, docType, readOnly, openErr)
     
     If swDmDoc Is Nothing Then
-        err.Raise vbError, "", "Failed to open document: " & openErr
+        err.Raise vbError, "", "无法打开文档：" & openErr
     End If
     
     Set OpenDocument = swDmDoc
     
 End Function
 ~~~
-
-
