@@ -1,14 +1,14 @@
 ---
-title: Number Box in SOLIDWORKS Property Manager Page
-caption: Number Box
-description: Overview of options applied to Number Box control
+title: SOLIDWORKS 属性管理器页面中的数字框
+caption: 数字框
+description: 应用于数字框控件的选项概述
 image: number-box-units-wheel.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
-![Simple number box](number-box.png)
+![简单的数字框](number-box.png)
 
-Number box will be automatically created for the properties of *int* and *double* types.
+数字框将自动为 *int* 和 *double* 类型的属性创建。
 
 ~~~vb
 Imports CodeStack.SwEx.PMPage.Attributes
@@ -35,9 +35,9 @@ public class NumberBoxDataModel
 }
 ~~~
 
-Style of the number box can be customized via the [NumberBoxOptionsAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_NumberBoxOptionsAttribute.htm)
+可以通过 [NumberBoxOptionsAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_NumberBoxOptionsAttribute.htm) 自定义数字框的样式。
 
-![Number boxes with additional styles allowing specifying the units and displaying thumbwheel for changing the value](number-box-units-wheel.png)
+![具有附加样式的数字框，允许指定单位并显示拇指轮以更改值](number-box-units-wheel.png)
 
 ~~~vb
 Imports CodeStack.SwEx.PMPage.Attributes
@@ -65,4 +65,3 @@ public class NumberBoxDataModel
     public double Length { get; set; }
 }
 ~~~
-
