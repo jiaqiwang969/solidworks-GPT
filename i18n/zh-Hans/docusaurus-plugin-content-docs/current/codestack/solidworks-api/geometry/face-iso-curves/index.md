@@ -1,36 +1,36 @@
 ---
-title: Macro to create ISO curves for face using SOLIDWORKS API
-caption: Create ISO Curves For Face
-description: Example demonstrates how to find specified number of iso-curves in the u and v bounds of the selected face using SOLIDWORKS API
+title: 使用SOLIDWORKS API创建面的ISO曲线的宏
+caption: 创建面的ISO曲线
+description: 该示例演示了如何使用SOLIDWORKS API在所选面的u和v边界中找到指定数量的ISO曲线。
 image: iso-curves-wire-body.png
 labels: [curve, evaluate, geometry, macro, iso, uv, trimmed curve, vba]
 ---
-![Preview of iso curves of the face](iso-curves-wire-body.png){ width=300 }
+![面的ISO曲线预览](iso-curves-wire-body.png){ width=300 }
 
-This example demonstrates how to find specified number of iso-curves in the u and v bounds of the selected face using SOLIDWORKS API.
+该示例演示了如何使用SOLIDWORKS API在所选面的u和v边界中找到指定数量的ISO曲线。
 
-* Select the face and run the macro
-* Iso curves are previewed and macro execution stops
-* Continue the macro to clear the preview
+* 选择面并运行宏
+* ISO曲线将被预览，宏执行停止
+* 继续执行宏以清除预览
 
-Number of iso curves in u and v direction can be changed in the following snippet
+可以在以下代码段中更改u和v方向上的ISO曲线数量：
 
 ~~~ vb
 Dim vCurves As Variant
-vCurves = GetIsoCurves(swFace, <Number of curves in u direction>, <Number of curves in v direction>)
+vCurves = GetIsoCurves(swFace, <u方向上的曲线数量>, <v方向上的曲线数量>)
 ~~~
 
-Optionally macro allows to create curves in the 3D Sketch.
+该宏还可选择在3D草图中创建曲线。
 
-![Sketch created for iso curves of the face](iso-curves-sketch.png){ width=300 }
+![为面的ISO曲线创建的草图](iso-curves-sketch.png){ width=300 }
 
-This option can be enabled by setting *CREATE_SKETCH* constant to *True* at the beginning of the macro:
+可以通过在宏的开头将*CREATE_SKETCH*常量设置为*True*来启用此选项：
 
 ~~~ vb
 Const CREATE_SKETCH As Boolean = True
 ~~~
 
-**Macro:**
+**宏：**
 
 ~~~ vb
 Const CREATE_SKETCH As Boolean = False
@@ -66,11 +66,11 @@ Sub main()
             End If
             
         Else
-            MsgBox "Please select face"
+            MsgBox "请选择面"
         End If
     
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -195,7 +195,7 @@ Sub PreviewCurves(model As SldWorks.ModelDoc2, curves As Variant)
     
     Stop
     
-    'clear preview
+    '清除预览
     For i = 0 To UBound(swCurvesBody)
         Set swCurvesBody(i) = Nothing
     Next
@@ -246,5 +246,3 @@ Sub DrawCurve(curve As SldWorks.curve, model As SldWorks.ModelDoc2, chordTol As 
 
 End Sub
 ~~~
-
-
