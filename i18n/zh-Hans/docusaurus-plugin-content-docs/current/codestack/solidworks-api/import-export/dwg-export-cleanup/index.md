@@ -1,28 +1,28 @@
 ---
-title: Export Flat Pattern to DXF/DWG with Cleanup page using SOLIDWORKS API
-caption: Export Flat Pattern With Cleanup
-description: VBA example which demonstrates how to export specified flat pattern to DXF/DWG with Cleanup dialog
+title: 使用SOLIDWORKS API将展开图案导出为DXF/DWG并清理页面
+caption: 导出带清理的展开图案
+description: 这是一个演示如何使用VBA导出指定的展开图案到DXF/DWG格式并显示清理对话框的示例
 image: cleanup-page.png
 labels: [dxf,dwg,cleanup,flat pattern,export]
 ---
-[IPartDoc::ExportToDwg2](https://help.solidworks.com/2014/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IPartDoc~ExportToDWG2.html) SOLIDWORKS API method allows to export selected flat pattern to DXF/DWG format. But this API doesn't allow to show the built in Cleanup dialog to modify the DXF/DWG before exporting.
+[SOLIDWORKS API方法IPartDoc::ExportToDwg2](https://help.solidworks.com/2014/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IPartDoc~ExportToDWG2.html)允许将选择的展开图案导出为DXF/DWG格式。但是该API不允许在导出之前显示内置的清理对话框以修改DXF/DWG。
 
-![DXF/DWG Cleanup](cleanup-page.png){ width=350 }
+![DXF/DWG清理](cleanup-page.png){ width=350 }
 
-The code below provides a workaround for this issue.
+下面的代码提供了解决此问题的方法。
 
-> Not this code doesn't allow to set the settings of the export (default options are used). It is required to use Windows API to modify the options and check boxes.
+> 注意：此代码不允许设置导出的设置（使用默认选项）。需要使用Windows API来修改选项和复选框。
 
-## Configuration
+## 配置
 
-Specify the macro parameters as shown below:
+请按照以下示例指定宏参数：
 
 ~~~vb
-Const FLAT_PATTERN_FEAT_NAME As String = "Flat-Pattern1" 'name of flat pattern feature to export
-Const OUT_FILE_NAME As String = "D:\sample.dxf" 'output file name for the export
+Const FLAT_PATTERN_FEAT_NAME As String = "Flat-Pattern1" '要导出的展开图案特征的名称
+Const OUT_FILE_NAME As String = "D:\sample.dxf" '导出文件的输出文件名
 ~~~
 
-## Macro Module
+## 宏模块
 
 ~~~ vb
 #If VBA7 Then
@@ -51,11 +51,11 @@ Sub main()
         If Not swFeat Is Nothing Then
             ExportFlatPattern swPart, swFeat, OUT_FILE_NAME
         Else
-            MsgBox "Failed to find the flat pattern feature"
+            MsgBox "无法找到展开图案特征"
         End If
         
     Else
-        MsgBox "Please open part document"
+        MsgBox "请打开零件文档"
     End If
         
 End Sub
@@ -65,18 +65,18 @@ Sub ExportFlatPattern(Part As SldWorks.PartDoc, feat As SldWorks.Feature, fileNa
     Dim swEvListener As ExportEventsListener
     Set swEvListener = New ExportEventsListener
     
-    'Set the file name for the exported DXF/DWG file
+    '设置导出的DXF/DWG文件的文件名
     Set swEvListener.Part = Part
     swEvListener.FilePath = fileName
     
     feat.Select2 False, 0
     
-    'Call the Export command
+    '调用导出命令
     Const WM_COMMAND As Long = &H111
     Const CMD_ExportFlatPattern As Long = 54244
     SendMessage swApp.Frame().GetHWnd(), WM_COMMAND, CMD_ExportFlatPattern, 0
     
-    'wait for property page to be displayed
+    '等待属性页面显示
     Dim isActive As Boolean
     
     Do
@@ -86,9 +86,9 @@ Sub ExportFlatPattern(Part As SldWorks.PartDoc, feat As SldWorks.Feature, fileNa
     
     Set swEvListener.Part = Nothing
 
-    'TODO: call Windows API to set the required options in the property page
+    'TODO: 调用Windows API来设置属性页面中所需的选项
     
-    'close property page
+    '关闭属性页面
     Const swCommands_PmOK As Long = -2
     swApp.RunCommand swCommands_PmOK, ""
     
@@ -97,9 +97,9 @@ End Sub
 
 
 
-## ExportEventsListener Class module
+## ExportEventsListener 类模块
 
-Create new [class module](/docs/codestack/visual-basic/classes/) with name **ExportEventsListener** and add the code below
+创建一个名为**ExportEventsListener**的新[类模块](/docs/codestack/visual-basic/classes/)，并添加以下代码
 
 ~~~ vb
 Public WithEvents Part As SldWorks.PartDoc
@@ -115,5 +115,3 @@ Private Function Part_FileSaveAsNotify2(ByVal fileName As String) As Long
     
 End Function
 ~~~
-
-
