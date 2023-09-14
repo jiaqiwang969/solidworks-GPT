@@ -1,55 +1,55 @@
 ---
 layout: sw-addin-fix
-title: Fix missing Visual Studio SOLIDWORKS API SDK project templates
-caption: Project templates are not shown in Visual Studio after the installation of SDK
-description: Fixing the installation of SOLIDWORKS API SDK when add-in templates are not shown in Visual Studio C# and VB.NET projects
+title: 修复缺失的Visual Studio SOLIDWORKS API SDK项目模板
+caption: 在SDK安装后，Visual Studio中没有显示项目模板
+description: 当在Visual Studio C#和VB.NET项目中没有显示插件模板时，修复SOLIDWORKS API SDK的安装问题
 image: solidworks-api-sdk-installation.png
-labels: [add-in, troubleshooting]
+labels: [插件, 故障排除]
 ---
-## Symptoms
-![SOLIDWORKS API SDK installation process](solidworks-api-sdk-installation.png){ width=250 }
+## 症状
+![SOLIDWORKS API SDK安装过程](solidworks-api-sdk-installation.png){ width=250 }
 
-After installation of SOLIDWORKS API SDK no project templates are shown in Visual Studio New Project dialog for C# and VB.NET
+在安装SOLIDWORKS API SDK后，无法在Visual Studio的新建项目对话框中找到C#和VB.NET的项目模板。
 
-## Cause
-System error happened while installing the templates and registering the Wizard assembly in the Global Assembly Cache (GAC). This might be caused by permission issues.
+## 原因
+在安装模板和在全局程序集缓存（GAC）中注册向导程序集时发生系统错误。这可能是由于权限问题引起的。
 
-## Resolution
+## 解决方法
 
-* Locate _SOLIDWORKS API SDK.msi_ file. Usually found in _apisdk_ folder of installation DVD or SOLIDWORKS download package.
+* 找到_SOLIDWORKS API SDK.msi_文件。通常可以在安装DVD或SOLIDWORKS下载包的_apisdk_文件夹中找到。
 
-* The MSI package is a zip storage. Extract (unzip) the file using any Archive tools which support zip format (such as WinRar, WinZip or 7-Zip)
+* MSI包是一个zip存储。使用任何支持zip格式的存档工具（如WinRar、WinZip或7-Zip）解压（unzip）该文件。
 
-![Unzipping .msi package](extract-solidworks-api-sdk-files.png){ width=500 }
+![解压.msi包](extract-solidworks-api-sdk-files.png){ width=500 }
 
-* Find _swvbaddin.zip_ for VB.NET template and _swcsharpaddin.zip_ for C# template in the files of the unzipped folder.
+* 在解压后的文件夹中找到VB.NET模板的_swvbaddin.zip_和C#模板的_swcsharpaddin.zip_。
 
-* Open Visual Studio and select _Tools->Options..._ menu command. Navigate to _Projects and Solutions_ group.
+* 打开Visual Studio，选择_工具->选项..._菜单命令。导航到_项目和解决方案_组。
 
-![Projects and Solutions options in Visual Studio](visual-studio-projects-and-solutions-options.png){ width=400 }
+![Visual Studio中的项目和解决方案选项](visual-studio-projects-and-solutions-options.png){ width=400 }
 
-* Copy the path of the _User project templates location_ field value and open this folder in the explorer
+* 复制_User project templates location_字段值的路径，并在资源管理器中打开此文件夹。
 
-* Copy the _swvbaddin.zip_ file into the _Visual Basic_ folder and _swcsharpaddin.zip_ into the _Visual C#_ folder. It is not needed to unzip these files.
+* 将_swvbaddin.zip_文件复制到_Visual Basic_文件夹中，将_swcsharpaddin.zip_复制到_Visual C#_文件夹中。不需要解压这些文件。
 
-![Project templates folder](project-templates-folder.png)
+![项目模板文件夹](project-templates-folder.png)
 
-* Start Visual Studio and create new project. Now C# and VB.NET project templates are available for selection.
+* 启动Visual Studio并创建新项目。现在可以选择C#和VB.NET项目模板。
 
-![VB.NET project template for SOLIDWORKS add-in](vbnet-addin-template.png){ width=500 }
+![SOLIDWORKS插件的VB.NET项目模板](vbnet-addin-template.png){ width=500 }
 
-If the following error is displayed when creating the project:
+如果在创建项目时显示以下错误：
 
-![SolidWorksToolsWizard component load error](solidworkstoolswizard-component-load-error.png)
+![SolidWorksToolsWizard组件加载错误](solidworkstoolswizard-component-load-error.png)
 
-* Navigate to the folder unzipped from the _SOLIDWORKS API SDK.msi_ file and find the _SolidWorksToolsWizard.dll_
+* 导航到从_SOLIDWORKS API SDK.msi_文件解压的文件夹中，找到_SolidWorksToolsWizard.dll_
 
-![SolidworksToolsWizard.dll](solidworkstoolswizard-dll.png)
+![SolidWorksToolsWizard.dll](solidworkstoolswizard-dll.png)
 
-* This dll needs to be registered in the Global Assembly Cache (GAC). Navigate to _%windir%\assembly_ folder in explorer and drag-n-drop the dll file into the folder
+* 这个dll需要在全局程序集缓存（GAC）中注册。在资源管理器中导航到_%windir%\assembly_文件夹，并将dll文件拖放到该文件夹中
 
-![SolidWorksToolsWizard dll registered in GAC](solidworkstoolswizard-gac.png)
+![SolidWorksToolsWizard dll在GAC中注册](solidworkstoolswizard-gac.png)
 
-> If **Access Denied** error is displayed while registering the assembly in the GAC, you can use gacutil from Windows SDK and run it from the **Command Prompt** run as administrator **gacutil.exe" /i "{FULL PATH TO solidworkstoolswizard.dll}"**
+> 如果在将程序集注册到GAC时显示**访问被拒绝**错误，您可以使用Windows SDK中的gacutil，并从以管理员身份运行的**命令提示符**中运行它**gacutil.exe" /i "{solidworkstoolswizard.dll的完整路径}"**
 
-Alternatively follow the [How to: Install an Assembly into the Global Assembly Cache](https://docs.microsoft.com/en-us/dotnet/framework/app-domains/how-to-install-an-assembly-into-the-gac) article on the guide of registering assembly in GAC.
+或者按照[如何：将程序集安装到全局程序集缓存](https://docs.microsoft.com/zh-cn/dotnet/framework/app-domains/how-to-install-an-assembly-into-the-gac)文章中的指南注册程序集到GAC。
