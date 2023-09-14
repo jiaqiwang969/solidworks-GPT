@@ -1,29 +1,29 @@
 ---
-title: How to create SOLIDWORKS PDM Professional (EPDM) add-in
-caption: How To Create SOLIDWORKS PDM Professional Add-In
-description: Detailed guide for creating add-in to SOLIDWORKS PDM Professional (formerly EPDM)
+title: 如何创建SOLIDWORKS PDM Professional (EPDM)插件
+caption: 如何创建SOLIDWORKS PDM Professional插件
+description: 创建SOLIDWORKS PDM Professional（以前称为EPDM）的插件的详细指南
 image: new-addin.png
 labels: [article, com, epdm, example, IEdmAddIn5, pdm add-in, solidworks pdm api]
 redirect-from:
   - /2018/03/how-to-create-solidworks-pdm.html
 ---
-SOLIDWORKS PDM Professional (formerly SOLIDWORKS Enterprise PDM) exposes rich API libraries which enable 3rd parties to develop custom extensions for the system. The maximum level of integration can be achieved by developing the application as SOLIDWORKS PDM add-in. The detailed step-by-step instruction below will guide you through the process of creation an add-in from scratch.  
+SOLIDWORKS PDM Professional（以前称为SOLIDWORKS Enterprise PDM）提供了丰富的API库，使第三方能够为系统开发自定义扩展。通过开发应用程序作为SOLIDWORKS PDM插件，可以实现最高级别的集成。下面的详细逐步说明将指导您从头开始创建插件。
 
-In this article I will be creating the add-in in .NET (C# and VB.NET) in Microsoft Visual Studio.  
+在本文中，我将在Microsoft Visual Studio中使用.NET（C#和VB.NET）创建插件。
 
-1. Start Visual Studio and create new project
-1. Select Class Library from the projects templates
-1. Specify the name of your add-in
-1. It is required to add the reference to PDM Interop Library (*EdmInterface.dll* for projects targeting Framework 3.5 and 2.0 and *EPDM.Interop.epdm.dll* for projects targeting Framework 4.0 or higher). Library can be found at the SOLIDWORKS PDM installation folder (usually *C:\Program Files\SOLIDWORKS PDM\EPDM.Interop.epdm.dll* for Framework 4.0 and newer and *C:\Program Files\SOLIDWORKS PDM\EdmInterface.dll* for older versions)
-1. If your project is targeting .NET Framework 4.0 onwards it is required to set the *Embed Interop Types* option to *False* otherwise the add-in may misbehave.
+1. 启动Visual Studio并创建新项目
+2. 从项目模板中选择类库
+3. 指定插件的名称
+4. 必须添加对PDM Interop库的引用（针对Framework 3.5和2.0的项目使用*EdmInterface.dll*，针对Framework 4.0或更高版本的项目使用*EPDM.Interop.epdm.dll*）。库可以在SOLIDWORKS PDM安装文件夹中找到（通常是*C:\Program Files\SOLIDWORKS PDM\EPDM.Interop.epdm.dll*（针对Framework 4.0及更高版本）和*C:\Program Files\SOLIDWORKS PDM\EdmInterface.dll*（针对旧版本））。
+5. 如果项目针对.NET Framework 4.0及更高版本，则需要将*Embed Interop Types*选项设置为*False*，否则插件可能会出现问题。
 
-![Option to embed interop assemblies](embed-interops.png){ width=320 height=291 }
+![嵌入互操作程序集选项](embed-interops.png){ width=320 height=291 }
 
-It is required to do 3 mandatory steps to make the class for PDM add-in:
+为了创建PDM插件的类，需要执行3个强制步骤：
 
-1. Implement [IEdmAddIn5 ](https://help.solidworks.com/2014/english/api/epdmapi/epdm.interop.epdm~epdm.interop.epdm.iedmaddin5.html)interface.
-1. Mark the class as Com Visible
-1. Specify the minimum major version supported by the add-in within the [GetAddInInfo](https://help.solidworks.com/2014/english/api/epdmapi/EPDM.Interop.epdm~EPDM.Interop.epdm.IEdmAddIn5~GetAddInInfo.html) by setting the [EdmAddInInfo.mlRequiredVersionMajor](https://help.solidworks.com/2014/english/api/epdmapi/epdm.interop.epdm~epdm.interop.epdm.edmaddininfo~mlrequiredversionmajor.html) property.
+1. 实现[IEdmAddIn5](https://help.solidworks.com/2014/english/api/epdmapi/epdm.interop.epdm~epdm.interop.epdm.iedmaddin5.html)接口。
+2. 将类标记为Com Visible。
+3. 在[GetAddInInfo](https://help.solidworks.com/2014/english/api/epdmapi/EPDM.Interop.epdm~EPDM.Interop.epdm.IEdmAddIn5~GetAddInInfo.html)中通过设置[EdmAddInInfo.mlRequiredVersionMajor](https://help.solidworks.com/2014/english/api/epdmapi/epdm.interop.epdm~epdm.interop.epdm.edmaddininfo~mlrequiredversionmajor.html)属性来指定插件支持的最低主要版本。
 
 ~~~cs
 using EdmLib;
@@ -60,44 +60,43 @@ namespace CodeStack
 }
 ~~~
 
+## 注意事项
 
-## Notes
+* 建议**不要**勾选“使程序集COM可见”选项，而是对所有需要COM可见的类（例如插件的主类）使用[ComVisible](https://msdn.microsoft.com/zh-cn/library/system.runtime.interopservices.comvisibleattribute(v=vs.110).aspx)属性。否则，这可能会显著增加插件的加载时间。
 
-* It is recommended **not to check** the 'Make assembly COM-Visible' option rather use [ComVisible ](https://msdn.microsoft.com/en-us/library/system.runtime.interopservices.comvisibleattribute(v=vs.110).aspx)attribute for all classes which are required to be COM visible (e.g. add-in main class). Otherwise this may significantly increase the loading time of your add-in.
+![在项目设置中使程序集COM可见选项](make-assm-com-vis.png){ width=320 height=269 }
 
-![Make assembly COM Visible option in project settings](make-assm-com-vis.png){ width=320 height=269 }
+* 与注册SOLIDWORKS插件不同，**不需要**实际注册PDM插件DLL作为COM对象（即运行RegAsm实用程序或在项目属性中选中“为COM互操作注册程序集”选项）。
+* 建议使用[Guid](https://msdn.microsoft.com/zh-cn/library/system.runtime.interopservices.guidattribute(v=vs.110).aspx)属性装饰插件的类，因为这将允许更好地跟踪客户端机器上的插件（例如调试或清除插件缓存）。
 
-* Unlike registering SOLIDWORKS add-in it is **not required** to actually register the PDM add-in DLL as COM object (i.e. run RegAsm utility or check the 'Register Assembly for COM Interops' option in Project Properties).
-* It is recommended to decorate the add-in's class with [Guid](https://msdn.microsoft.com/en-us/library/system.runtime.interopservices.guidattribute(v=vs.110).aspx) attribute as this will allow to better track the add-in on client machines (e.g. debug or clear the add-ins cache).
+为了将PDM插件加载到库中，请按照以下步骤操作：
 
-In order to load the PDM add-in into the vault please follow the steps below:
+* 启动*SOLIDWORKS PDM Administration*控制台（可以在Windows开始菜单中找到）
+* 导航到PDM库
+* 选择*Add-Ins*节点，然后选择*New Add-In...*命令
 
-* Start *SOLIDWORKS PDM Administration* console (can be found in the Windows Start Menu)
-* Navigate to the PDM vault
-* Select *Add-Ins* node and select *New Add-In...* command
+![在管理面板中添加新插件](new-addin.png){ width=320 height=250 }
 
-![Adding new add-in in the Administration panel](new-addin.png){ width=320 height=250 }
-    
-* Select all files from the *bin* directory of the project. You do not need to add temp files like (*.pdb* or *.xml*)
-* Once add-in is loaded its summary is displayed
+* 从项目的*bin*目录中选择所有文件。您不需要添加像(*.pdb*或*.xml*)这样的临时文件。
+* 一旦插件加载完成，其摘要将显示
 
-![Add-in summary page](addin-summary.png){ width=320 height=263 }
+![插件摘要页面](addin-summary.png){ width=320 height=263 }
 
-Navigate to vault view and select the *Test Menu Command* from the context menu.  
+导航到库视图，并从上下文菜单中选择*Test Menu Command*。
 
-![Add-in command in the context menu in the vault explorer](menu-cmd.png){ width=320 height=318 }
+![库资源管理器中的插件命令](menu-cmd.png){ width=320 height=318 }
 
-Message box is displayed:  
+将显示消息框：
 
-![Hello World message box](hello-world.png){ width=198 height=200 }
+![Hello World消息框](hello-world.png){ width=198 height=200 }
 
-SOLIDWORKS PDM is a client-server architecture system which means that whenever add-in is loaded into the vault it will be distributed to all clients. When client logins to vault PDM will download add-in dlls locally to *%localappdata%\SolidWorks\SOLIDWORKS PDM\Plugins\**VaultName**\**AddIn Guid**Index* folder.
+SOLIDWORKS PDM是一个客户端-服务器架构系统，这意味着每当插件加载到库中时，它将分发到所有客户端。当客户端登录到库时，PDM将本地下载插件DLL到*%localappdata%\SolidWorks\SOLIDWORKS PDM\Plugins\**VaultName**\**AddIn Guid**Index*文件夹中。
 
-Add-in dlls will be loaded into several processes (including *explorer.exe*) on first login to PDM vault. Due to the limitation of .NET Framework, .NET libraries cannot be unloaded from the app domain. That's why PDM displayed the *'You have chosen to load a .NET add-in. SOLIDWORKS PDM cannot force a reload of .NET add-ins' when adding the add-in to the vault.
+插件DLL将在首次登录到PDM库时加载到多个进程中（包括*explorer.exe*）。由于.NET Framework的限制，无法从应用程序域中卸载.NET库。这就是为什么PDM在添加插件到库时显示“'You have chosen to load a .NET add-in. SOLIDWORKS PDM cannot force a reload of .NET add-ins'”的原因。
 
-![Warning displayed when adding .NET add-in](net-addin-replace-warning.png){ width=320 height=169 }
+![添加.NET插件时显示的警告](net-addin-replace-warning.png){ width=320 height=169 }
 
-This message means that cached (previous) version of PDM add-in will be in use until the dlls are unlocked. Instead of restarting the machine it is possible to kill all processes which are locking the dlls. You can use the following command line script to release add-in with a single command:
+这个消息意味着缓存（之前的）版本的PDM插件将在使用中，直到DLL被解锁。不需要重新启动机器，可以使用以下命令行脚本一次性释放插件：
 
 ~~~ cmd
 TASKKILL /F /IM explorer.exe
@@ -109,11 +108,8 @@ START explorer.exe
 
 ~~~
 
+SOLIDWORKS PDM提供了方便的功能，简化了PDM插件的调试。请阅读以下文章：[调试SOLIDWORKS PDM插件 - 最佳实践](../debugging-best-practices)
 
-
-SOLIDWORKS PDM provides handy functionality which simplifies the debugging of PDM add-in.
-Please read the following article: [Debugging SOLIDWORKS PDM Add-In - Best Practices](../debugging-best-practices)  
-
-Below is a video demonstration of creating SOLIDWORKS PDM Add-in from scratch:
+下面是从头开始创建SOLIDWORKS PDM插件的视频演示：
 
 {% youtube { id: GsTWneNoIW4 } %}
