@@ -1,26 +1,26 @@
 ---
-title: Custom enable command state for SOLIDWORKS commands
-caption: Custom Enable Command State
-description: Explanation on using the custom enable states for the SOLIDWORKS commands using SwEx framework
+title: SOLIDWORKS命令的自定义启用状态
+caption: 自定义启用命令状态
+description: 使用SwEx框架解释了如何使用SOLIDWORKS命令的自定义启用状态
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
-There are 4 command states supported by SOLIDWORKS:
+SOLIDWORKS支持4种命令状态：
 
-1. Deselected and enabled. This is default option when button can be clicked
-1. Deselected and disabled. This option is used when the command is not supported in certain framework. For example mate command will be disabled in parts and drawings as it is only supported in the assemblies.
-1. Selected and disabled. This represents the disabled checked button
-1. Selected and enabled. This represents checked button
+1. 未选择且启用。这是按钮可以点击的默认选项。
+2. 未选择且禁用。当命令在某些框架中不受支持时使用此选项。例如，配对命令在零件和图纸中将被禁用，因为它仅在装配中受支持。
+3. 已选择且禁用。表示禁用的选中按钮。
+4. 已选择且启用。表示选中的按钮。
 
-![Supported command states](command-states.png)
+![支持的命令状态](command-states.png)
 
-SwEx framework will assign the appropriate state (enabled or disabled) for the commands based on their supported workspaces if defined in the [CommandItemInfoAttribute](https://docs.codestack.net/swex/add-in/html/T_CodeStack_SwEx_AddIn_Attributes_CommandItemInfoAttribute.htm). However user can alter the state to provide more advanced management (for example it might be required to enable command if certain object is selected or if any bodies or components are present in the model). To do this it is required to specify the enable method handler as the last parameter of [AddCommandGroup](https://docs.codestack.net/swex/add-in/html/M_CodeStack_SwEx_AddIn_SwAddInEx_AddCommandGroup__1.htm) or [AddContextMenu](https://docs.codestack.net/swex/add-in/html/M_CodeStack_SwEx_AddIn_SwAddInEx_AddContextMenu__1.htm) methods.
+如果在[CommandItemInfoAttribute](https://docs.codestack.net/swex/add-in/html/T_CodeStack_SwEx_AddIn_Attributes_CommandItemInfoAttribute.htm)中定义了支持的工作区，SwEx框架将根据其支持的工作区为命令分配适当的状态（启用或禁用）。但是，用户可以更改状态以提供更高级的管理（例如，如果选择了某个对象或模型中存在任何实体或组件，则可能需要启用命令）。为此，需要在[AddCommandGroup](https://docs.codestack.net/swex/add-in/html/M_CodeStack_SwEx_AddIn_SwAddInEx_AddCommandGroup__1.htm)或[AddContextMenu](https://docs.codestack.net/swex/add-in/html/M_CodeStack_SwEx_AddIn_SwAddInEx_AddContextMenu__1.htm)方法的最后一个参数中指定启用方法处理程序。
 
-The method is defined as [EnableMethodDelegate](https://docs.codestack.net/swex/add-in/html/T_CodeStack_SwEx_AddIn_EnableMethodDelegate_1.htm) delegate and provides the command id as first parameter and state passed by reference as second parameter.
+该方法被定义为[EnableMethodDelegate](https://docs.codestack.net/swex/add-in/html/T_CodeStack_SwEx_AddIn_EnableMethodDelegate_1.htm)委托，并将命令ID作为第一个参数和通过引用传递的状态作为第二个参数。
 
-The value of state will be preassigned based on the workspace and can be changed by the user within the method.
+状态的值将根据工作区预先分配，并可以在方法内由用户更改。
 
-> This method allows to implement the toggle button in toolbar and menu. To set the checked state assign the *SelectEnable* or *SelectDisable* values of [CommandItemEnableState_e](https://docs.codestack.net/swex/add-in/html/T_CodeStack_SwEx_AddIn_Enums_CommandItemEnableState_e.htm) enumeration.
+> 此方法允许在工具栏和菜单中实现切换按钮。要设置选中状态，请分配[CommandItemEnableState_e](https://docs.codestack.net/swex/add-in/html/T_CodeStack_SwEx_AddIn_Enums_CommandItemEnableState_e.htm)枚举的*SelectEnable*或*SelectDisable*值。
 
 ~~~vb
 Public Enum Commands_e
@@ -67,8 +67,3 @@ private void OnButtonEnable(Commands_e cmd, ref CommandItemEnableState_e state)
     }
 }
 ~~~
-
-
-
-
-
