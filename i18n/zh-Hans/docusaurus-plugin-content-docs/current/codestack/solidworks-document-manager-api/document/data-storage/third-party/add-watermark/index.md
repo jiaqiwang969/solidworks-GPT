@@ -1,44 +1,45 @@
 ---
-title: Add watermark to model using 3rd party storage via SOLIDWORKS Document Manager API
-caption: Add Watermark To Model
-description: Add digital watermark into model using 3rd party storage via SOLIDWORKS Document Manager API
+title: 使用SOLIDWORKS文档管理器API将水印添加到模型的第三方存储
+caption: 添加水印到模型
+description: 使用SOLIDWORKS文档管理器API将数字水印添加到第三方存储（流）中的SOLIDWORKS模型（零件、装配或绘图）。
 image: add-watermark-console-output.png
-labels: [watermark, storage]
+labels: [水印, 存储]
 ---
-This example demonstrates how to add digital watermark into SOLIDWORKS model (part, assembly or drawing) into 3rd party storage (stream) using SOLIDWORKS Document Manager API.
 
-This application implemented as the command line program and has the following arguments
+本示例演示了如何使用SOLIDWORKS文档管理器API将数字水印添加到SOLIDWORKS模型（零件、装配或绘图）中的第三方存储（流）。
 
-## Adding watermark
+此应用程序实现为命令行程序，具有以下参数。
 
-* Full path to SOLIDWORKS file
-* -w - Flag to indicate that watermark needs to be added
-* Company Name - name of the company to add to waternark
+## 添加水印
 
-~~~
+* SOLIDWORKS文件的完整路径
+* -w - 表示需要添加水印的标志
+* 公司名称 - 要添加到水印中的公司名称
+
+```plaintext
 AddWatermark.exe C:\MyPart.sldprt -w MyCompanyName
-~~~
+```
 
-Watermark will include company name, current user name and time stamp
+水印将包括公司名称、当前用户名和时间戳。
 
-## Reading watermark
+## 读取水印
 
-* Full path to SOLIDWORKS file
-* -r - Flag to indicate that watermark needs to be read
+* SOLIDWORKS文件的完整路径
+* -r - 表示需要读取水印的标志
 
-~~~
+```plaintext
 AddWatermark.exe C:\MyPart.sldprt -r MyCompanyName
-~~~
+```
 
-As the result the stored watermark is displayed in the console application
+结果将在控制台应用程序中显示存储的水印。
 
-![Output results in the console](add-watermark-console-output.png){ width=450 }
+![控制台中的输出结果](add-watermark-console-output.png){ width=450 }
 
 ### Program.cs
 
-Console application containing the routing for reading and adding watermark
+包含用于读取和添加水印的控制台应用程序的路由。
 
-~~~ cs
+```cs
 using SolidWorks.Interop.swdocumentmgr;
 using System;
 using System.IO;
@@ -181,15 +182,15 @@ namespace CodeStack
     }
 }
 
-~~~
+```
 
 
 
 ### ComStream.cs
 
-Wrapper around [IStream](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istream) interface which simplifies the access from .NET language
+封装了[IStream](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istream)接口，简化了从.NET语言访问的过程。
 
-~~~ cs
+```cs
 using System;
 using System.IO;
 using System.Runtime.InteropServices.ComTypes;
@@ -339,6 +340,4 @@ namespace ThirdPartyStorage
     }
 }
 
-~~~
-
-
+```
