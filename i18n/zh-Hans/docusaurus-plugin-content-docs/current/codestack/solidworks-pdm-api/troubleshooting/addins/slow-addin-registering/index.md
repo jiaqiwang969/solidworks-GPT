@@ -1,34 +1,34 @@
 ---
 layout: sw-pdm-addin-fix
-title: Registering add-in using SOLIDWORKS PDM Administration takes long time
-caption: Registering the add-in is too slow
-description: Troubleshooting the performance issue while registering add-in in SOLIDWORKS PDM administration utility.
+title: 使用SOLIDWORKS PDM Administration注册插件时间过长
+caption: 注册插件太慢
+description: 解决在SOLIDWORKS PDM管理工具中注册插件时的性能问题。
 image: server-busy.png
-labels: [pdm add-in, error]
+labels: [pdm插件, 错误]
 ---
-## Symptoms
+## 症状
 
-It takes very long time to register the add-in in SOLIDWORKS PDM vault using the SOLIDWORKS PDM administration utility. Sometimes the *This action cannot be completed because the '' program is not responding. Choose "Switch To" and correct the problem* message is displayed multiple times while adding the add-in.
+使用SOLIDWORKS PDM管理工具在SOLIDWORKS PDM vault中注册插件需要很长时间。有时，在添加插件时会多次显示“无法完成此操作，因为''程序未响应。选择“切换到”并解决问题”消息。
 
-![Program is not responding error](server-busy.png)
+![程序未响应错误](server-busy.png)
 
-In some cases unexpected code is executed or random errors appear.
+在某些情况下，会执行意外的代码或出现随机错误。
 
-## Cause
+## 原因
 
-Too many COM visible classes present in the add-in dll.
+插件dll中存在太多的COM可见类。
 
-When add-in is added to the vault via SOLIDWORKS PDM Administration tool, all public COM visible classes from all dlls will be probed by SOLIDWORKS PDM. It means that instances of all classes will be created regardless the class is add-in or not or is it used or not.
+当通过SOLIDWORKS PDM Administration工具将插件添加到vault时，SOLIDWORKS PDM将对所有dll中的所有公共COM可见类进行探测。这意味着将创建所有类的实例，而不管该类是否是插件，是否被使用。
 
-In most cases this issue is caused if **Make assembly COM-visible** option is checked in the project properties.
+在大多数情况下，如果在项目属性中选中了**使程序集对COM可见**选项，则会出现此问题。
 
-![COM Visible assembly](assembly-com-visible.png){ width=450 }
+![COM可见程序集](assembly-com-visible.png){ width=450 }
 
-This will make all the public classes automatically visible for COM.
+这将使所有公共类自动对COM可见。
 
-### Example
+### 示例
 
-* Create new PDM add-in and add new class (e.g. MyComClass) and display the message box from within its constructor
+* 创建新的PDM插件并添加新的类（例如MyComClass），并在其构造函数中显示消息框
 
 ~~~cs
 public class MyComClass
@@ -45,18 +45,18 @@ public class PdmAddIn : IEdmAddIn5
 }
 ~~~
 
-* Check **Make assembly COM-visible** option in the project settings
-* Compile the add-in and add this to the vault using the SOLIDWORKS PDM Administration tool.
+* 在项目设置中选中**使程序集对COM可见**选项
+* 编译插件并使用SOLIDWORKS PDM Administration工具将其添加到vault中。
 
-As the result it would take more time and the following message will be shown which indicates that an instance of **MyComClass** was created while adding the add-in to the vault.
+结果会花费更多时间，并显示以下消息，表示在将插件添加到vault时创建了**MyComClass**的实例。
 
-![Message box in the COM visible class displayed while registering the add-in](message-box.png){ width=450 }
+![在注册插件时显示COM可见类中的消息框](message-box.png){ width=450 }
 
-## Resolution
+## 解决方法
 
-Do not use the **Make assembly COM-visible** option unless explicitly required.
+除非明确需要，否则不要使用**使程序集对COM可见**选项。
 
-Only mark the main add-in class with [ComVisible](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.comvisibleattribute) attribute with value set to *True*
+只需将主要的插件类标记为[ComVisible](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.comvisibleattribute)属性，值设置为*True*
 
 ~~~cs
 [ComVisible(true)]
