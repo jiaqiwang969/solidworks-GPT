@@ -1,22 +1,23 @@
 ---
-title: SOLIDWORKS macro finds intersection points between surface and curve
-caption: Find Intersection Points Between Surface And Curve
-description: Example demonstrates how to find the intersection points between selected plane or face with edge or sketch segment
+title: SOLIDWORKS宏查找曲面和曲线之间的交点
+caption: 查找曲面和曲线之间的交点
+description: 该示例演示了如何使用SOLIDWORKS API查找所选曲面（平面或面）与曲线（边缘或草图段）之间的交点。
 image: surface-curve-intersection.png
-labels: [curve, evaluate, geometry, macro, points, solidworks api, spline, intersection, trimmed curve, vba]
+labels: [曲线, 评估, 几何, 宏, 点, solidworks api, 样条, 交点, 修剪曲线, vba]
 ---
-![Intersection point between plane and sketch spline](surface-curve-intersection.png){ width=300 }
 
-This example demonstrates how to find the intersection points between selected surface (plane or face) with curve (edge or sketch segment) using SOLIDWORKS API.
+![平面和草图样条之间的交点](surface-curve-intersection.png){ width=300 }
 
-* Open Part document
-* Select plane or any face as first selection object
-* Select sketch segment (line, spline or arc) as second selection object
-* Run the macro. As the result the 3D Sketch is created with points of intersection between selected objects
+该示例演示了如何使用SOLIDWORKS API查找所选曲面（平面或面）与曲线（边缘或草图段）之间的交点。
 
-[ISurface::IntersectCurve2](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isurface~intersectcurve2.html) SOLIDWORKS API method is used to find the intersection points within the specified boundaries of curve and surface.
+* 打开零件文档
+* 选择平面或任何面作为第一个选择对象
+* 选择曲线（线、样条或弧）作为第二个选择对象
+* 运行宏。结果是创建了一个包含所选对象之间交点的3D草图
 
-~~~ vb
+使用[SOLIDWORKS API方法ISurface::IntersectCurve2](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isurface~intersectcurve2.html)来查找曲线和曲面之间指定边界内的交点。
+
+```vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -57,11 +58,11 @@ Sub main()
             DrawPoints swModel, vPoints
             
         Else
-            MsgBox "Please select surface (plane or face) and curve (edge or sketch segment) to find intersection"
+            MsgBox "请先选择曲面（平面或面）和曲线（边缘或草图段）以查找交点"
         End If
         
     Else
-        MsgBox "Please opent the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -238,6 +239,4 @@ Function DrawPoints(model As SldWorks.ModelDoc2, points As Variant)
     model.SketchManager.Insert3DSketch True
     
 End Function
-~~~
-
-
+```
