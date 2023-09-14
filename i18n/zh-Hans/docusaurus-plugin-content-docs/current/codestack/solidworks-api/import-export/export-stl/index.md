@@ -1,31 +1,31 @@
 ---
 layout: sw-tool
-title: Export part or selected component to STL using SOLIDWORKS API
-caption: Export Part Or Component To STL
-description: Macro exports selected assembly component or part to stl format without the need of activating the document. Macro can optionally apply transformation to the exported STL to reorient the output
+title: 使用SOLIDWORKS API将零件或选定的组件导出为STL
+caption: 导出零件或组件为STL
+description: 该宏使用SOLIDWORKS API将活动零件或选定的组件导出为STL格式。该宏还适用于加载轻量级组件。
 image: stl-component.svg
-labels: [component, export, stl]
-group: Import/Export
+labels: [组件, 导出, stl]
+group: 导入/导出
 redirect-from:
   - /solidworks-api/import-export/export-component-stl/
 ---
-![Selected component exported to STL](component-stl.png){ width=250 }
+![导出为STL的选定组件](component-stl.png){ width=250 }
 
-This C# VSTA macro exports active part or selected component in assembly to STL format using SOLIDWORKS API. Macro will also work with the components loaded lightweight.
+这个C# VSTA宏使用SOLIDWORKS API将活动零件或选定的组件导出为STL格式。该宏还适用于加载轻量级组件。
 
-This macro is not using the default exporter and overcomes the limitation when the model needs to be loaded in its own window, i.e. [IModelDocExtension::SaveAs](https://help.solidworks.com/2017/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeldocextension~saveas.html) SOLIDWORKS API function is not used. Macro will create stl from the tessellation triangles of the model.
+该宏不使用默认的导出器，并克服了模型需要在自己的窗口中加载的限制，即不使用[IModelDocExtension::SaveAs](https://help.solidworks.com/2017/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeldocextension~saveas.html) SOLIDWORKS API函数。该宏将从模型的镶嵌三角形创建STL。
 
-Macro can optionally apply the transform to rotate or move the STL file. It is not required to create a coordinate system for this to happen.
+该宏可以选择应用变换来旋转或移动STL文件。不需要为此创建坐标系。
 
-For more information about the STL specification follow [this link](https://en.wikipedia.org/wiki/STL_(file_format)).
+有关STL规范的更多信息，请参阅[此链接](https://en.wikipedia.org/wiki/STL_(file_format))。
 
-## Configuring the orientation
+## 配置方向
 
-In order to configure the orientation of the output file it is required to change the values of 4x4 orientation matrix defined in the *m_Transform* at the beginning of the macro.
+为了配置输出文件的方向，需要在宏的开头更改*m_Transform*中定义的4x4方向矩阵的值。
 
-Use the [Get Coordinate System Transform](/docs/codestack/solidworks-api/geometry/transformation/get-coordinate-system-transform/) macro to retrieve the transformation from any selected coordinate system.
+使用[获取坐标系变换](/docs/codestack/solidworks-api/geometry/transformation/get-coordinate-system-transform/)宏从任何选定的坐标系中检索变换。
 
-For example to set the 90 degrees rotation around X axis in clockwise direction it is required to change the values of the *m_Transform* array to the ones below:
+例如，要设置绕X轴顺时针方向旋转90度，需要将*m_Transform*数组的值更改为以下值：
 
 ~~~ cs
 private double[] m_Transform = new double[]
@@ -37,16 +37,16 @@ private double[] m_Transform = new double[]
 };
 ~~~
 
-## Running instructions
+## 运行说明
 
-* Open part
+* 打开零件
 
-or
+或者
 
-* Open assembly (can be opened lightweight)
-* Select part component
-* Browse the location of the output STL file
-* File is exported
+* 打开装配体（可以以轻量级方式打开）
+* 选择零件组件
+* 浏览输出STL文件的位置
+* 文件被导出
 
 ~~~ cs
 using SolidWorks.Interop.sldworks;
@@ -241,5 +241,3 @@ namespace ExportToStl.csproj
     }
 }
 ~~~
-
-
