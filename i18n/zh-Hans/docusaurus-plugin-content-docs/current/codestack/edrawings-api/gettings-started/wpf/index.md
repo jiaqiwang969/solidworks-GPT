@@ -1,23 +1,23 @@
 ---
-title: Hosting SOLIDWORKS eDrawings control in Windows Presentation Foundation (WPF)
-caption: Hosting Control in WPF
-description: Detailed guide on hosting SOLIDWORKS eDrawings control as WPF User Control in Windows Presentation Foundation (WPF)
+title: 在Windows Presentation Foundation (WPF)中托管SOLIDWORKS eDrawings控件
+caption: 在WPF中托管控件
+description: 详细指南，介绍如何在Windows Presentation Foundation (WPF)中将SOLIDWORKS eDrawings控件托管为WPF用户控件
 image: edrawings-wpf-window.png
 labels: [edrawings,host,wpf]
 ---
-eDrawings API doesn't provide a native WPF control to be used in WPF. It is however possible to use the [WindowsFormsIntegration](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.integration) framework to host Windows Forms Control in the Windows Presentation Foundation (WPF) environment. Follow [Hosting eDrawings control in Windows Forms](/docs/codestack/edrawings-api/gettings-started/winforms/) guide of creating the eDrawings control for Windows Forms.
+eDrawings API没有提供用于WPF的原生控件。但是可以使用[WindowsFormsIntegration](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.integration)框架在Windows Presentation Foundation (WPF)环境中托管Windows Forms控件。请按照[在Windows Forms中托管eDrawings控件](/docs/codestack/edrawings-api/gettings-started/winforms/)指南创建用于Windows Forms的eDrawings控件。
 
-## Creating new project
+## 创建新项目
 
-* Start Visual Studio
-* Create new project and select *WPF Application* in the *Visual C#* templates section
-![Creating WPF application](visual-studio-new-wpf-project.png){ width=550 }
-* Follow the [Hosting eDrawings control in Windows Forms](/docs/codestack/edrawings-api/gettings-started/winforms/) guide for steps of adding eDrawings interop
-* Add reference to *WindowsFormsIntegration*
+* 启动Visual Studio
+* 创建新项目，并在*Visual C#*模板部分选择*WPF应用程序*
+![创建WPF应用程序](visual-studio-new-wpf-project.png){ width=550 }
+* 按照[在Windows Forms中托管eDrawings控件](/docs/codestack/edrawings-api/gettings-started/winforms/)指南的步骤添加eDrawings互操作
+* 添加对*WindowsFormsIntegration*的引用
 
-## Creating the eDrawings WPF control
+## 创建eDrawings WPF控件
 
-Create a wrapper for the eDrawings host Windows Forms control
+为eDrawings托管的Windows Forms控件创建一个包装器
 
 ### eDrawingHost.cs
 
@@ -57,15 +57,15 @@ namespace CodeStack.Examples.eDrawings
 
 
 
-Create new WPF User Control which will host eDrawings and can be placed on other WPF controls or WPF windows
+创建一个新的WPF用户控件，用于托管eDrawings，并可以放置在其他WPF控件或WPF窗口上
 
-The solution tree will be similar to the one below.
+解决方案树将类似于下面的结构。
 
-![eDrawings WPF solution tree](visual-studio-solution-tree.png){ width=350 }
+![eDrawings WPF解决方案树](visual-studio-solution-tree.png){ width=350 }
 
 ### eDrawingsHostControl.xaml
 
-There will be no logic or additional markup in the XAML of the control and all will be implemented in the code behind
+XAML中不会有逻辑或其他额外的标记，所有的实现都将在代码后台中完成
 
 ~~~ xaml
 <UserControl x:Class="CodeStack.Examples.eDrawings.eDrawingsHostControl"
@@ -129,7 +129,7 @@ namespace CodeStack.Examples.eDrawings
         {
             if (m_Ctrl == null)
             {
-                throw new NullReferenceException("eDrawings control is not loaded");
+                throw new NullReferenceException("eDrawings控件未加载");
             }
 
             if (string.IsNullOrEmpty(filePath) || !File.Exists(filePath))
@@ -151,12 +151,12 @@ namespace CodeStack.Examples.eDrawings
 
         private void OnFailedLoadingDocument(string fileName, int errorCode, string errorString)
         {
-            Trace.WriteLine($"{fileName} failed to loaded: {errorString}");
+            Trace.WriteLine($"{fileName}加载失败: {errorString}");
         }
 
         private void OnFinishedLoadingDocument(string fileName)
         {
-            Trace.WriteLine($"{fileName} loaded");
+            Trace.WriteLine($"{fileName}已加载");
         }
     }
 }
@@ -165,11 +165,11 @@ namespace CodeStack.Examples.eDrawings
 
 
 
-In this example the control defines the dependency property *FilePath* which can be bound and represent the path to the SOLIDWORKS file to be opened in the eDrawings
+在此示例中，该控件定义了依赖属性*FilePath*，可以进行绑定，并表示要在eDrawings中打开的SOLIDWORKS文件的路径
 
 ### MainWindow.xaml
 
-Add the following markup to the MainWindow. It defines the text box control whose *Text* property is bound to *FilePath* dependency property of WPF eDrawing control. Which means that the file will be loaded immediately once the value in the text box is changed.
+将以下标记添加到MainWindow。它定义了文本框控件，其*Text*属性绑定到WPF eDrawing控件的*FilePath*依赖属性。这意味着一旦文本框中的值更改，文件将立即加载。
 
 ~~~ xaml
 <Window x:Class="CodeStack.Examples.eDrawings.MainWindow"
@@ -194,8 +194,8 @@ Add the following markup to the MainWindow. It defines the text box control whos
 
 
 
-Change the path to file in the text box to see the file loaded into the WPF form.
+更改文本框中的文件路径，即可将文件加载到WPF窗体中。
 
-![SOLIDWORKS file is loaded into the WPF eDrawings control](edrawings-wpf-window.png){ width=350 }
+![SOLIDWORKS文件已加载到WPF eDrawings控件中](edrawings-wpf-window.png){ width=350 }
 
-Source code is available on [GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/edrawings-api/eDrawingsWpfHost)
+源代码可在[GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/edrawings-api/eDrawingsWpfHost)上找到
