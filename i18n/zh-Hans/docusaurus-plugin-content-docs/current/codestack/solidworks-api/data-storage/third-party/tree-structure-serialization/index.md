@@ -1,32 +1,32 @@
 ---
-title: Tree structure serialization in model 3rd party storage using SOLIDWORKS API
-caption: Third Party Store Tree Serialization
-description: Example of usage of 3rd Party Storage (stream) to serialize and deserialize tree structure using SOLIDWORKS API and XmlSerializers within the model document
+title: 使用SOLIDWORKS API在模型的第三方存储中进行树结构序列化
+caption: 第三方存储树结构序列化
+description: 使用SOLIDWORKS API和模型文档中的XmlSerializers来序列化和反序列化树结构的示例
 image: read-data-result.png
-labels: [serialization,third party store]
+labels: [序列化,第三方存储]
 ---
-This example demonstrates how to use 3rd Party Storage in SOLIDWORKS API to read and write custom structure directly within the model.
+本示例演示了如何使用SOLIDWORKS API中的第三方存储来直接读取和写入自定义结构。
 
-Example SOLIDWORKS add-in is built using the [SwEx.AddIn](/docs/codestack/labs/solidworks/swex/add-in/) framework but it could work with any other methods of creating the add-ins.
+示例SOLIDWORKS插件使用[SwEx.AddIn](/docs/codestack/labs/solidworks/swex/add-in/)框架构建，但也可以与其他创建插件的方法一起使用。
 
-Add-in adds two buttons in the menu and toolbar and provides two handlers correspondingly: 
+插件在菜单和工具栏中添加了两个按钮，并相应地提供了两个处理程序：
 
-* SaveTree - asynchronous method to store the data in the stream. This method bumps the revision of the structure after each save.
-* LoadTree - loads the data from the stream and displays the name of the root element and the version
+* SaveTree - 用于将数据存储到流中的异步方法。每次保存后，此方法会增加结构的版本。
+* LoadTree - 从流中加载数据并显示根元素的名称和版本
 
-![Result displayed from the data read from the stream](read-data-result.png){ width=250 }
+![从流中读取的数据显示的结果](read-data-result.png){ width=250 }
 
-## Usage Instructions
+## 使用说明
 
-* Open any model
-* Click "Save Data" button. First version of the structure is saved with the model
-* You can close the model and SOLIDWORKS
-* Reopen the model and click "Load Data". Information about saved structure is displayed in the message box
-* Click "Save Data" button again. Data version is updated
+* 打开任何模型
+* 单击“保存数据”按钮。将使用模型保存结构的第一个版本
+* 您可以关闭模型和SOLIDWORKS
+* 重新打开模型并单击“加载数据”。将在消息框中显示有关保存的结构的信息
+* 再次单击“保存数据”按钮。数据版本将更新
 
-It is required to set the 'Allow unsafe code' option in the Visual Studio Project settings:
+在Visual Studio项目设置中，需要设置“允许不安全代码”选项：
 
-![Allow unsafe code option in C# project](vs-setting-allow-unsafe-code.png){ width=450 }
+![C#项目中的允许不安全代码选项](vs-setting-allow-unsafe-code.png){ width=450 }
 
 **TreeSerializerAddIn.cs**
 
@@ -87,7 +87,7 @@ namespace TreeSerializer
                 }
                 catch (ThirdPartyStreamNotFoundException)
                 {
-                    //create new tree only if stream was never created, show an error otherwise
+                    //如果流从未创建过，则仅创建新树，否则显示错误
                     tree = new ElementsTree(1,
                         new Element(1, "Root",
                             new Element(2, "Level1-A",
@@ -96,7 +96,7 @@ namespace TreeSerializer
                 }
 
                 await SaveDataToDocument(App.IActiveDoc2, tree);
-                App.SendMsgToUser2("Data saved",
+                App.SendMsgToUser2("数据已保存",
                     (int)swMessageBoxIcon_e.swMbInformation,
                     (int)swMessageBoxBtn_e.swMbOk);
             }
@@ -113,7 +113,7 @@ namespace TreeSerializer
             try
             {
                 var readTree = ReadDataFromDocument(App.IActiveDoc2);
-                App.SendMsgToUser2($"Data Read for '{readTree.Root.Name}' ({readTree.Version})",
+                App.SendMsgToUser2($"读取的数据为 '{readTree.Root.Name}' ({readTree.Version})",
                     (int)swMessageBoxIcon_e.swMbInformation,
                     (int)swMessageBoxBtn_e.swMbOk);
             }
@@ -131,7 +131,7 @@ namespace TreeSerializer
 
 
 
-Structure used in this example represents the simple hierarchical data
+此示例中使用的结构表示简单的分层数据
 
 **ElementsTree.cs**
 
@@ -183,7 +183,7 @@ namespace TreeSerializer
 
 
 
-For simplicity [IStream](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istream) com stream is wrapped into the [System.IO.Stream](https://docs.microsoft.com/en-us/dotnet/api/system.io.stream?view=netframework-4.7.2) type.
+为了简化操作，将[IStream](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istream) com流包装到[System.IO.Stream](https://docs.microsoft.com/en-us/dotnet/api/system.io.stream?view=netframework-4.7.2)类型中。
 
 **ComStream.cs**
 
@@ -277,7 +277,7 @@ namespace ThirdPartyStorage
         {
             if (offset != 0)
             {
-                throw new NotSupportedException("Offset is not supported");
+                throw new NotSupportedException("不支持偏移量");
             }
 
             int bytesRead;
@@ -309,7 +309,7 @@ namespace ThirdPartyStorage
         {
             if (offset != 0)
             {
-                throw new NotSupportedException("Offset is not supported");
+                throw new NotSupportedException("不支持偏移量");
             }
 
             m_ComStream.Write(buffer, count, IntPtr.Zero);
@@ -341,7 +341,7 @@ namespace ThirdPartyStorage
 
 
 
-Serialization and deserialization routine utilizing the [XmlSerializer](https://docs.microsoft.com/en-us/dotnet/api/system.xml.serialization.xmlserializer?view=netframework-4.7.2) class, but any other serialization methods could be used.
+序列化和反序列化例程使用[XmlSerializer](https://docs.microsoft.com/en-us/dotnet/api/system.xml.serialization.xmlserializer?view=netframework-4.7.2)类，但也可以使用其他序列化方法。
 
 **TreeSerializer.cs**
 
@@ -415,7 +415,7 @@ namespace TreeSerializer
 
             if (!model.Save3((int)swSaveAsOptions_e.swSaveAsOptions_Silent, ref err, ref warn))
             {
-                throw new InvalidOperationException($"Failed to save the model: {(swFileSaveError_e)err}");
+                throw new InvalidOperationException($"无法保存模型：{(swFileSaveError_e)err}");
             }
 
             await Task.Run(() =>
@@ -447,7 +447,7 @@ namespace TreeSerializer
 
             if (!result.Value)
             {
-                throw new Exception("Failed to store the data");
+                throw new Exception("无法存储数据");
             }
         }
 
@@ -512,5 +512,3 @@ namespace TreeSerializer
 }
 
 ~~~
-
-
