@@ -1,12 +1,13 @@
 ---
-title: Save the selected body into external file using SOLIDWORKS API
-caption: Save Body To File
-description: VBA example to serialize the selected body as binary file using SOLIDWORKS API
-labels: [serialize,com stream,save body]
+title: 使用SOLIDWORKS API将选定的实体保存到外部文件
+caption: 保存实体到文件
+description: 使用SOLIDWORKS API将选定的实体（曲面或实体）序列化为COM流，并将其存储在外部二进制文件中的VBA示例
+labels: [序列化, COM流, 保存实体]
 ---
-This VBA example demonstrates how to serialize the selected body (surface or solid) into the COM Stream using SOLIDWORKS API and store that in the external binary file.
 
-~~~vb
+这个VBA示例演示了如何使用SOLIDWORKS API将选定的实体（曲面或实体）序列化为COM流，并将其存储在外部二进制文件中。
+
+```vb
 Imports SolidWorks.Interop.sldworks
 Imports System.IO
 Imports System.Runtime.InteropServices
@@ -33,11 +34,11 @@ Module Module1
             If Not body Is Nothing Then
                 SaveBodyToFile(body, FILE_PATH)
             Else
-                Throw New Exception("Please select body to export")
+                Throw New Exception("请先选择要导出的实体")
             End If
 
         Else
-            Throw New Exception("Please open the model")
+            Throw New Exception("请先打开模型")
         End If
 
     End Sub
@@ -206,9 +207,9 @@ Public Class ComStream
     End Sub
 
 End Class
-~~~
+```
 
-~~~vba
+```vba
 Const FILE_PATH As String = "D:\body.dat"
 
 Private Declare PtrSafe Function CreateStreamOnHGlobal Lib "ole32" (ByVal hGlobal As LongPtr, ByVal fDeleteOnRelease As Long, ByRef ppstm As Any) As Long
@@ -235,11 +236,11 @@ Sub main()
         If Not swBody Is Nothing Then
             SaveBodyToFile swBody, FILE_PATH
         Else
-            MsgBox "Please select body to export"
+            MsgBox "请先选择要导出的实体"
         End If
     
     Else
-        MsgBox "Please open the model"
+        MsgBox "请先打开模型"
     End If
     
 End Sub
@@ -249,7 +250,7 @@ Sub SaveBodyToFile(body As SldWorks.Body2, filePath As String)
     Dim comStream As IUnknown
             
     If CreateStreamOnHGlobal(0, 0, comStream) Then
-        Err.Raise vbError, "", "Failed to create new stream"
+        Err.Raise vbError, "", "无法创建新的流"
     End If
     
     body.Save comStream
@@ -286,16 +287,16 @@ Private Function GetArrayFromComStream(comStream As IUnknown) As Byte()
                     GlobalUnlock hMem
                     GetArrayFromComStream = buffer
                 Else
-                    Err.Raise vbError, "", "Failed to lock memory"
+                    Err.Raise vbError, "", "无法锁定内存"
                 End If
             Else
-                Err.Raise vbError, "", "Stream is empty"
+                Err.Raise vbError, "", "流为空"
             End If
         Else
-            Err.Raise vbError, "", "Failed to get handler from stream"
+            Err.Raise vbError, "", "无法从流中获取句柄"
         End If
     Else
-        Err.Raise vbError, "", "Stream is null"
+        Err.Raise vbError, "", "流为空"
     End If
      
 End Function
@@ -310,4 +311,4 @@ Function WriteByteArrToFile(filePath As String, buffer() As Byte)
     Close #fileNmb
     
 End Function
-~~~
+```
