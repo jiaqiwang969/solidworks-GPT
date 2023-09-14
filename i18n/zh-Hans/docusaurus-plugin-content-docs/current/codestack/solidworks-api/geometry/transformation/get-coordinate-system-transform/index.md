@@ -1,17 +1,17 @@
 ---
-title: Get the transformation matrix of coordinate system using SOLIDWORKS API
-caption: Get Coordinate System Transformation
-description: VBA macro to get the 4x4 transformation matrix from the selected coordinate systems and output the result in the immediate window
+title: 使用SOLIDWORKS API获取坐标系的变换矩阵
+caption: 获取坐标系变换
+description: 使用VBA宏从选择的坐标系中提取4x4变换矩阵，并将结果输出到即时窗口中
 image: coordinate-system.png
-labels: [transform,coordinate system]
+labels: [变换,坐标系]
 ---
-![Coordinate system in the feature manager tree](coordinate-system.png){ width=450 }
+![特征管理器树中的坐标系](coordinate-system.png){ width=450 }
 
-This VBA macro extract the 4x4 [transformation matrix](/docs/codestack/solidworks-api/geometry/transformation/) from the selected coordinate system in the feature manager tree.
+这个VBA宏从特征管理器树中选择的坐标系中提取4x4的[变换矩阵](/docs/codestack/solidworks-api/geometry/transformation/)。
 
-The comma separated results are output to the immediate (ctrl+G) window of VBA editor.
+逗号分隔的结果将输出到VBA编辑器的即时窗口（Ctrl+G）中。
 
-![Matrix output to the immediate window of VBA editor](maxtrix-output-immediate.png){ width=350 }
+![矩阵输出到VBA编辑器的即时窗口](maxtrix-output-immediate.png){ width=350 }
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -48,17 +48,15 @@ Sub main()
                 Debug.Print vMatrix(12) & "," & vMatrix(13) & "," & vMatrix(14) & "," & vMatrix(15)
                 
             Else
-                MsgBox "Selected feature is not a coordinate system"
+                MsgBox "选择的特征不是坐标系"
             End If
         Else
-            MsgBox "Please select coordinate system feature"
+            MsgBox "请选择坐标系特征"
         End If
         
     Else
-        MsgBox "Please open model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
 ~~~
-
-
