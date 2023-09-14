@@ -1,12 +1,12 @@
 ---
-title: Encoding and decoding data in Base64 string format in Visual Basic 6 (VBA)
-caption: Base64 String
-description: Encoding and decoding byte array into Base64 string format in Visual Basic 6 (VBA)
-labels: [base64,encoding,decoding]
+title: 在Visual Basic 6 (VBA)中将数据编码和解码为Base64字符串格式
+caption: Base64字符串
+description: 在Visual Basic 6 (VBA)中将字节数组编码和解码为Base64字符串格式
+labels: [base64,编码,解码]
 ---
-Base64 string allow to hold the byte array data in the string format
+Base64字符串允许以字符串格式保存字节数组数据。
 
-## Encode
+## 编码
 
 ~~~vb
 Dim arr(5) As Byte
@@ -37,14 +37,14 @@ End Function
 
 
 
-## Decode
+## 解码
 
 ~~~vb
 Dim base64Str As String
 base64Str = "AQUCFWUz"
 
 dim vArr As Variant
-vArr = Base64ToArray(base64Str) 'Byte array: 1, 5, 2, 21, 101, 51
+vArr = Base64ToArray(base64Str) '字节数组: 1, 5, 2, 21, 101, 51
 ~~~
 
 ~~~ vb
@@ -63,4 +63,3 @@ Private Function Base64ToArray(base64 As String) As Variant
   
 End Function
 ~~~
-
