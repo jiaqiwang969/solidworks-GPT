@@ -1,22 +1,22 @@
 ---
-title: Rendering custom 3D graphics with Open GL in SOLIDWORKS API
+title: 在SOLIDWORKS API中使用OpenGL渲染自定义3D图形
 caption: OpenGL
-description: Section contains examples and code snippets for rendering 3D graphics in the model view using SOLIDWORKS API with OpenGL methods
+description: 本节包含使用SOLIDWORKS API和OpenGL方法在模型视图中渲染3D图形的示例和代码片段。
 sidebar_position: 3
 labels: [graphics, opengl, render]
 redirect-from:
   - /solidworks-api/adornment/open-gl/
 ---
-SOLIDWORKS model is utilizing 3D rendering engines (such as DirectX and OpenGL) to draw the geometry in the graphics area.
+SOLIDWORKS模型利用3D渲染引擎（如DirectX和OpenGL）在图形区域绘制几何图形。
 
-SOLIDWORKS API enables 3rd party add-ins and macros to inject 3D graphical objects directly into the model layer using [OpenGL](https://en.wikipedia.org/wiki/OpenGL) functions.
+SOLIDWORKS API允许第三方插件和宏使用[OpenGL](https://en.wikipedia.org/wiki/OpenGL)函数直接将3D图形对象注入到模型层中。
 
-In this case geometry is embedded into the graphics view and transformed together with the model itself. It means that is is not required to calculate the transformation matrix.
+在这种情况下，几何图形嵌入到图形视图中，并与模型本身一起进行变换。这意味着不需要计算变换矩阵。
 
-OpenGL is the most popular cross-platform library for high performance rendering which is used in gaming, virtual reality, CAD, etc.. Explore the [Documentation](https://www.opengl.org/documentation/) for more information about this library.
+OpenGL是最流行的跨平台高性能渲染库，广泛应用于游戏、虚拟现实、CAD等领域。请查阅[文档](https://www.opengl.org/documentation/)以获取有关该库的更多信息。
 
-OpenGL graphics should be rendered within the [BufferSwapNotify](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dmodelviewevents_bufferswapnotifyeventhandler.html) event of [IModelView](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelView.html) interface.
+OpenGL图形应该在[IModelView](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelView.html)接口的[BufferSwapNotify](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dmodelviewevents_bufferswapnotifyeventhandler.html)事件中进行渲染。
 
-Such technique of rendering can be useful when it is required to display complex graphics or animation, but creating temp or permanent geometry can be performance consuming or impossible due to the other constraints.
+当需要显示复杂的图形或动画时，使用此渲染技术非常有用，但由于其他限制，创建临时或永久几何图形可能会消耗性能或不可行。
 
-Explore this section for code examples and macros which demonstrate the usage of OpenGL to render objects in views using SOLIDWORKS API.
+请浏览本节中的代码示例和宏，了解使用SOLIDWORKS API中的OpenGL渲染对象的用法。
