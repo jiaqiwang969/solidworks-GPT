@@ -1,18 +1,18 @@
 ---
-title: Installing Geometry++ SOLIDWORKS add-in
-caption: Installation Guide
-description: Instructions of installing of Geometry++ add-in
+title: 安装 Geometry++ SOLIDWORKS 插件
+caption: 安装指南
+description: Geometry++ 插件的安装说明
 toc-group-name: labs-solidworks-geometry-plus-plus
 sidebar_position: 0
 ---
-To install add-in download the latest msi-installer (*geometry_plus_plus.msi*) at [this link v. 0.4.0 (alpha 3)](https://github.com/codestackdev/geometry-plus-plus/releases/tag/alpha3).
+要安装插件，请在[此链接 v. 0.4.0 (alpha 3)](https://github.com/codestackdev/geometry-plus-plus/releases/tag/alpha3)下载最新的 msi 安装程序（*geometry_plus_plus.msi*）。
 
-![msi-installer at GitHub release page](github-release-msi.png){ width=550 }
+![GitHub 发布页面上的 msi 安装程序](github-release-msi.png){ width=550 }
 
-Once installer restart SOLIDWORKS (if it was already started). New *Geometry++* group is added to SOLIDWORKS menu, toolbar and command manager box.
+安装程序完成后，重新启动 SOLIDWORKS（如果已经启动）。SOLIDWORKS 菜单、工具栏和命令管理器框中会添加一个新的 *Geometry++* 组。
 
-![Command tab box of Geometry++](geometry-plus-plus-toolbar.png)
+![Geometry++ 的命令选项卡框](geometry-plus-plus-toolbar.png)
 
-Add-in checks for the update on startup. If new update is available popup message with download link is displayed.
+插件在启动时会检查更新。如果有新的更新可用，将显示带有下载链接的弹出消息。
 
-Add-in can be uninstalled from the Add or Remove Programs group in Control Panel.
+插件可以从控制面板的“添加或删除程序”组中卸载。
