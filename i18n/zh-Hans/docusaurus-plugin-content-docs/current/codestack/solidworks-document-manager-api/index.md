@@ -1,7 +1,7 @@
 ---
-title: Introduction to SOLIDWORKS Document Manager API
+title: SOLIDWORKS Document Manager API简介
 caption: Document Manager API
-description: Collection of examples and articles utilizing SOLIDWORKS Document Manager library
+description: 包含使用SOLIDWORKS Document Manager库的示例和文章的集合
 image: document-manager-api.svg
 labels: [document manager]
 redirect-from:
@@ -10,55 +10,55 @@ sidebar_position: 0
 ---
 ![SOLIDWORKS Document Manager API](document-manager-api.svg){ width=150 }
 
-This section introduces you to SOLIDWORKS Document Manager - powerful stand-alone library supplied by SOLIDWORKS which exposes API and allows to read and write metadata directly from SOLIDWORKS files stream.
+本节介绍了SOLIDWORKS Document Manager API，这是由SOLIDWORKS提供的功能强大的独立库，可以公开API并允许直接从SOLIDWORKS文件流中读取和写入元数据。
 
-## Benefits
+## 优势
 
-* Free for customers or SOLIDWORKS partners (research, solution or gold) on subscription
-* Lightweight - library is about 13 MB in size
-* Stand-alone - doesn't require SOLIDWORKS to be installed in order to access the files
-* Quick - data is accessed directly from the stream without the need to load the full file into the memory
+* 对于订阅的客户或SOLIDWORKS合作伙伴（研究、解决方案或黄金），免费提供
+* 轻量级 - 库的大小约为13 MB
+* 独立 - 不需要安装SOLIDWORKS即可访问文件
+* 快速 - 直接从流中访问数据，无需将完整文件加载到内存中
 
-## Supported Functionality
+## 支持的功能
 
-Document Manager has a limited functionality compared to full SOLIDWORKS API. The following list are the main modules supported by Document Manager library.
+与完整的SOLIDWORKS API相比，Document Manager的功能有限。以下是Document Manager库支持的主要模块列表。
 
-* Basic
-	* Reading/Writing Custom Properties (including configuration specific and summary information)
-    * Reading file relationships (assembly Bill of Materials and drawings)
-    * Replacing file relationships (components and drawing view references)
-    * Reading components transformations in the assembly
-    * Reading tables data in models and drawings
-    * Reading [3rd party storage data](https://help.solidworks.com/2015/english/api/sldworksapiprogguide/overview/third-party_data_in_solidworks_files.htm)
-    * Getting the information about the configurations, drawing views and their properties
+* 基本功能
+	* 读取/写入自定义属性（包括配置特定和摘要信息）
+    * 读取文件关系（装配件清单和图纸）
+    * 替换文件关系（组件和图纸视图引用）
+    * 读取装配件中的组件变换
+    * 读取模型和图纸中的表格数据
+    * 读取[第三方存储数据](https://help.solidworks.com/2015/english/api/sldworksapiprogguide/overview/third-party_data_in_solidworks_files.htm)
+    * 获取有关配置、图纸视图及其属性的信息
 	
-* Previews
-	* Getting 2D image previews from files and configurations
+* 预览功能
+	* 从文件和配置获取2D图像预览
 	
-* DimXpert
-	* Accessing DimXpert dimensions
-    * Accessing DimXpert features
+* DimXpert功能
+	* 访问DimXpert尺寸
+    * 访问DimXpert特征
 	
-* Geometry Streams
-	* Getting Parasolid geometry
+* 几何流功能
+	* 获取Parasolid几何体
 
-* XML Streams
-	* Reading embedded assembly XML data
-    * Reading 3D Content Central data
+* XML流功能
+	* 读取嵌入式装配XML数据
+    * 读取3D Content Central数据
 	
-* Tesselation
-	* Getting the tessellation (triangulation) data (if stored in the model)
+* 曲面细分功能
+	* 获取曲面细分（三角化）数据（如果存储在模型中）
 
-## Application
+## 应用场景
 
-List of possible applications which could be developed with SOLIDWORKS Document Manager API includes but not limited to the following types of software:
+使用SOLIDWORKS Document Manager API可以开发的可能应用程序列表包括但不限于以下类型的软件：
 
-* Product Data Management (PDM) or Product Life cycle Management (PLM) application
-	* Bill Of Materials
-    * Preview
-    * Properties
-* 3D Viewers for SOLIDWORKS files
-* CAD systems with the requirement of importing the SOLIDWORKS files
-* Inspection software with requirements to access DimXpert data
+* 产品数据管理（PDM）或产品生命周期管理（PLM）应用程序
+	* 物料清单
+    * 预览
+    * 属性
+* SOLIDWORKS文件的3D查看器
+* 具有导入SOLIDWORKS文件要求的CAD系统
+* 具有访问DimXpert数据要求的检测软件
 
-Refer the [Getting Started](getting-started) article for an overview of steps required to start development with Document Manager.
+请参阅[入门指南](getting-started)文章，了解使用Document Manager进行开发所需的步骤概述。
