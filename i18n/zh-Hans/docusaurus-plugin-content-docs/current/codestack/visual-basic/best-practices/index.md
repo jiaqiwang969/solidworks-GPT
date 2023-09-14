@@ -1,42 +1,42 @@
 ---
-title: Best Practices for developing VBA applications
-caption: Best Practices
-description: Explanation of best practices for making VBA applications reliable, maintainable and stable
+title: 开发VBA应用的最佳实践
+caption: 最佳实践
+description: 解释了使VBA应用程序可靠、可维护和稳定的最佳实践方法
 sidebar_position: 0
 image: git-extensions-vba-macro.png
 ---
-In nowadays Visual Basic is mainly used in VBA macros format with a minor exception of several legacy applications.
+如今，Visual Basic主要以VBA宏的格式使用，只有少数遗留应用程序例外。
 
-Although VBA macros are usually small applications, those are still playing a major role in millions of organizations worldwide. As macros are applications, they should be considered as such and all the practices for writing reliable, maintainable and stable application should still be applied when developing macros.
+尽管VBA宏通常是小型应用程序，但它们仍然在全球数百万个组织中发挥着重要作用。由于宏是应用程序，因此在开发宏时，仍然应遵循编写可靠、可维护和稳定应用程序的所有实践方法。
 
-Below is the list of guidelines for improving the quality of the macro. These guidelines applies to any type of the macro, e.g. MS Word, MS Excel, SOLIDWORKS, Autodesk Inventor etc.
+以下是改进宏质量的准则列表。这些准则适用于任何类型的宏，例如MS Word、MS Excel、SOLIDWORKS、Autodesk Inventor等。
 
-Visit [5 best practices to make your VBA macro great](https://blog.xarial.com/vba-macro-best-practices/) blog article for the video demonstration of the practical application of the below guidelines.
+访问[5个使您的VBA宏变得出色的最佳实践](https://blog.xarial.com/vba-macro-best-practices/)博客文章，了解下面准则的实际应用的视频演示。
 
-## Descriptive Names
+## 描述性名称
 
-When developing any application (VBA is not an exception) try to use as descriptive as possible names for variables, functions, procedures, modules, classes and events. 
+在开发任何应用程序（VBA也不例外）时，尽量使用尽可能描述性的变量、函数、过程、模块、类和事件名称。
 
-Prefer to use descriptive names instead of comment
+优先使用描述性名称而不是注释
 
-Use
+使用
 
-~~~ vb jagged
+``` vb
 Dim dayOfTheWeek As String
 dayOfTheWeek = "Monday"
-~~~
+```
 
-instead of
+而不是
 
-~~~ vb jagged
+``` vb
 'day of the week
 Dim x As String
 x = "Monday"
-~~~
+```
 
-Do not overload code with comments for the obvious snippets. Comment in the snippet below is redundant
+不要用注释过多地堆砌代码。下面的代码片段中的注释是多余的
 
-~~~ vb jagged
+``` vb
 Function GetCircleArea(radius As Double)
     const PI As Double = 3.14
 
@@ -45,48 +45,48 @@ Function GetCircleArea(radius As Double)
     area = PI * radius ^ 2
     GetCircleArea = area
 End Function
-~~~
+```
 
-## Avoid Magic String And Numbers
+## 避免使用魔法字符串和数字
 
-Avoid using unnamed string and numbers ([magic numbers](https://en.wikipedia.org/wiki/Magic_number_(programming))), instead declare the constants with a [descriptive name](#descriptive-names)
+避免使用未命名的字符串和数字（[魔法数字](https://en.wikipedia.org/wiki/Magic_number_(programming))），而是使用具有[描述性名称](#描述性名称)的常量声明。
 
-~~~ vb jagged
+``` vb
 Const PI As Double = 3.14
 Dim circArea As Double
 cirArea = PI * rad ^ 2
-~~~
+```
 
-~~~ vb jagged
+``` vb
 Const OUT_FOLDER_PATH As String = "D:\out"
 Export OUT_FOLDER_PATH
-~~~
+```
 
-## Error Handling
+## 错误处理
 
-When developing code, avoid 'hiding the problem' as this may potentially cause more damage than crash of the application.
+在开发代码时，避免“隐藏问题”，因为这可能会导致比应用程序崩溃更严重的问题。
 
-For example, the following snippet checks if the *swModel* object is not nothing and performs important operation. However, having the *swModel* equal to Nothing is possible scenario and skipping the export without notifying the user, will keep the problem unnoticed and user will not be able to understand why *DoSomeImportantWorkWithModel* was not performed on this model.
+例如，下面的代码片段检查*swModel*对象是否不为空，并执行重要操作。但是，*swModel*等于Nothing是可能的情况，如果在此模型上跳过导出而不通知用户，问题将不会被注意到，用户将无法理解为什么在此模型上未执行*DoSomeImportantWorkWithModel*。
 
-~~~ vb jagged
+``` vb
 Dim swModel As SldWorks.ModelDoc2
 Set swModel = swComp.GetModelDoc2()
 If Not swModel Is Nothing Then
     DoSomeImportantWorkWithModel swModel
 End If
-~~~
+```
 
-### Errors Processing
+### 错误处理
 
-*On Error Resume Next* directive should be used with caution. Aim to process all exceptions in your code. I would recommend to handle all errors in the centralized (usually the entry function).
+应谨慎使用“On Error Resume Next”指令。努力处理代码中的所有异常。我建议在集中处理所有错误的地方（通常是入口函数）处理所有错误。
 
-The below format is not a regular VBA format for handling an error and it is trying to emulate try-catch-finally syntax from other languages, such as C#, VB.NET, C++, JavaScript etc., but it allows to make code more readable and easy to understand:
+下面的格式不是处理错误的常规VBA格式，它试图模拟其他语言（如C＃、VB.NET、C ++、JavaScript等）中的try-catch-finally语法，但它可以使代码更易读和易于理解：
 
-* DoWork() is a main function performing all the operations
-* If at any point exception is thrown, code will be redirected to *catch_* block, where error can be processed (e.g. logged or message box is displayed)
-* Otherwise, code will be redirected to *finally_* block and exit the macro once the *DoWork* routine is completed
+* DoWork()是执行所有操作的主要函数
+* 如果在任何时候引发异常，代码将被重定向到*catch_*块，在该块中可以处理错误（例如记录或显示消息框）
+* 否则，代码将被重定向到*finally_*块，并在完成*DoWork*例程后退出宏
 
-~~~ vb
+``` vb
 Sub main()
 
 try_:
@@ -100,33 +100,33 @@ catch_:
 finally_:
 
 End Sub
-~~~
+```
 
-### 'Fail Fast' Approach
+### “快速失败”方法
 
-To fix the above issue we can go with 'Fail Fast' approach, i.e. terminate the execution immediately, notifying the caller that something went wrong:
+为了解决上述问题，我们可以采用“快速失败”方法，即立即终止执行，并通知调用者出现了问题：
 
-~~~ vb jagged
+``` vb
 If Not swModel Is Nothing Then
     DoSomeImportantWorkWithModel swModel
 Else
     Err.Raise vbError, "", "Model of the component is null. Execution terminated"
 End If
-~~~
+```
 
-And it is up to the calling function to decide what to do with this case. Depending on the requirement application can proceed and consider this as safe error or it can log the error or display the message to the user.
+由调用函数决定如何处理此情况。根据要求，应用程序可以继续并将其视为安全错误，或者可以记录错误或向用户显示消息。
 
-## Entry Point
+## 入口点
 
-Most of the VBA macro enabled applications, such as MS Word, MS Excel, SOLIDWORKS, Autodesk Inventor would consider any parameterless function as a potential entry point of the macro.
+大多数支持VBA宏的应用程序，例如MS Word、MS Excel、SOLIDWORKS、Autodesk Inventor，将任何无参数函数视为宏的潜在入口点。
 
-The code below has 3 parameterless functions
+下面的代码有3个无参数函数
 
-* main - Actual expected entry function. Running this function will result into expected outcome
-* Init - Function which initialized data, required to do work. This function itself doesn't perform the work. Running this as an entry point will not cause errors, but it will not produce any results
-* DoWork - Function which performs the work, however, it requires InitData to be initialized. Running this function directly will most likely result into the 'Run time error 91: Object variable block variable set'
+* main - 实际预期的入口函数。运行此函数将产生预期的结果
+* Init - 初始化要进行工作所需的数据的函数。此函数本身不执行工作。直接运行此函数不会导致错误，但也不会产生任何结果
+* DoWork - 执行工作的函数，但它需要初始化InitData。直接运行此函数很可能会导致“运行时错误91：对象变量或With块变量未设置”
 
-~~~ vb
+``` vb
 Dim InitData As Object
 
 Sub main()
@@ -135,21 +135,21 @@ Sub main()
 End Sub
 
 Sub Init()
-    'Initializes InitData
+    '初始化InitData
 End Sub
 
 Sub DoWork()
-    'Consumes InitData to perform the work
+    '使用InitData执行工作
 End Sub
-~~~
+```
 
-All the above 3 functions can be selected when running the macro
+在运行宏时，可以选择上述3个函数中的任何一个作为入口点。
 
-![3 potential entry points of the macro](run-macro-entry-points.png)
+![宏的3个潜在入口点](run-macro-entry-points.png)
 
-To prevent the potential issues, keep parameterless functions only for entry points. To make the function with parameter, without compromising an existing code, use optional parameter:
+为了防止潜在问题，只将无参数函数用作入口点。为了使函数具有参数，而不影响现有代码，可以使用可选参数：
 
-~~~ vb
+``` vb
 Dim InitData As Object
 
 Sub main()
@@ -158,27 +158,27 @@ Sub main()
 End Sub
 
 Sub Init(Optional dummy As Variant = Empty)
-    'Initializes InitData
+    '初始化InitData
 End Sub
 
 Sub DoWork(Optional dummy As Variant = Empty)
-    'Consumes InitData to perform the work
+    '使用InitData执行工作
 End Sub
-~~~
+```
 
-With the setup above, only one function will be available for running:
+使用上述设置，只有一个函数可供运行：
 
-![Single entry point in the macro](single-entry-point.png)
+![宏中的单个入口点](single-entry-point.png)
 
-## Independent Functions And Modules
+## 独立的函数和模块
 
-Try to keep functions and modules as independent as possible from another functions, module level variables and environment. This would make a consumption of the function more predictable and function can be reused.
+尽量使函数和模块尽可能独立于其他函数、模块级变量和环境。这将使函数的使用更可预测，并且函数可以重复使用。
 
-### Dependency On Members
+### 对成员的依赖
 
-In the below code snippet the *swModel* variable is declared at the module level which makes it accessible from within the *ProcessDocument* function. Variable is initialized in the *main* function. It means that *ProcessDocument* is dependent on the *swModel* and will be only able to work with active document (or the one assigned to *swModel*). This function cannot be reused for another purpose, e.g. processing the model of the component in the assembly.
+在下面的代码片段中，*swModel*变量在模块级别声明，这使得它可以从*ProcessDocument*函数内部访问。变量在*main*函数中初始化。这意味着*ProcessDocument*依赖于*swModel*，并且只能处理活动文档（或分配给*swModel*的文档）。此函数无法用于其他目的，例如处理装配中组件的模型。
 
-~~~ vb
+``` vb
 Dim swModel As SldWorks.ModelDoc2
 
 Sub main()
@@ -187,49 +187,49 @@ Sub main()
 End Sub
 
 Sub ProcessDocument()
-    'Do work with swModel
+    '使用swModel进行工作
 End Sub
-~~~
+```
 
-Instead the above code could be rewritten to the following code. Instead of declaring the model level variable, it can be defined as the parameter of the function, thus removing the dependency. Now *ProcessDocument* function can be used with any pointer to *SldWorks.ModelDoc2*
+相反，可以将上述代码重写为以下代码。可以将模型级变量定义为函数的参数，从而消除依赖关系。现在，*ProcessDocument*函数可以与任何指向*SldWorks.ModelDoc2*的指针一起使用。
 
-~~~ vb
+``` vb
 Sub main()
     ProcessDocument ActiveDoc
 End Sub
 
 Sub ProcessDocument(model As SldWorks.ModelDoc2)
-    'Do work with model
+    '使用model进行工作
 End Sub
-~~~
+```
 
-### Dependency On Environment
+### 对环境的依赖
 
-Another example is dependency on environment. Function below saves the value from the Excel cell into the text file. It takes 2 parameters for cell and the file path. However, this function doesn't perform any Excel specific functionality rather than calling the *Value* property on the cell to extract the text. But because of this, *CreateTextFile* function is dependant on the Excel environment and cannot be reused in other scenarios and applications (such as MS Word or Autodesk Inventor).
+另一个例子是对环境的依赖。下面的函数将Excel单元格中的值保存到文本文件中。它接受单元格和文件路径的2个参数。但是，此函数除了调用单元格上的*Value*属性提取文本之外，不执行任何特定于Excel的功能。但是，由于这个原因，*CreateTextFile*函数依赖于Excel环境，无法在其他场景和应用程序（如MS Word或Autodesk Inventor）中重复使用。
 
-~~~ vb
+``` vb
 Sub CreateTextFile(cell As Excel.Range, fileName As String)
     Dim text As String
     text = cell.Value
-    'write text to fileName
+    '将文本写入fileName
 End Sub
-~~~
+```
 
-Instead the function can be changed to the following code, where the caller is responsible for preparing the text for writing. This function can then be copied to another macros to perform similar functionality if required.
+相反，可以将函数更改为以下代码，其中调用方负责准备要写入的文本。然后，如果需要，可以将此函数复制到其他宏中以执行类似的功能。
 
-~~~ vb
+``` vb
 Sub CreateTextFile(text As String, fileName As String)
-    'write text to fileName
+    '将文本写入fileName
 End Sub
-~~~
+```
 
-## Documentation
+## 文档
 
-Documentation the functionality of your application could be very useful for the users of your software and for other collaborators of your project. The documentation can be as simple as text file, Word or PDF document or complete multi page technical site. 
+为您的应用程序编写文档的功能对于软件的用户和项目的其他协作者非常有用。文档可以是简单的文本文件、Word或PDF文档，也可以是完整的多页技术站点。
 
-For VBA macros simple header at the top of the macro can be sufficient. Specify the author of the macro, license, contact details and brief description
+对于VBA宏，简单的标题在宏的顶部可能就足够了。指定宏的作者、许可证、联系方式和简要描述。
 
-~~~ vb jagged-bottom
+``` vb jagged-bottom
 ' -------------------------------------------------
 ' Created By Artem Taturevych (info@codestack.net)
 ' License: https://www.codestack.net/license/
@@ -237,74 +237,74 @@ For VBA macros simple header at the top of the macro can be sufficient. Specify 
 ' -------------------------------------------------
 
 Sub main()
-~~~
+```
 
-## Referencing 3rd Party Type Libraries
+## 引用第三方类型库
 
-When just few objects or functions from the 3rd party type library are used (e.g. Microsoft Scripting Runtime, Microsoft Excel, etc.) and this is not a primary target of automation, consider using them with [Late Binding](/docs/codestack/visual-basic/variables/declaration#late-binding) instead of an [Early Binding](/docs/codestack/visual-basic/variables/declaration#early-binding)
+当只使用第三方类型库的少数对象或函数（例如Microsoft Scripting Runtime、Microsoft Excel等）且这不是自动化的主要目标时，考虑使用[后期绑定](/docs/codestack/visual-basic/variables/declaration#late-binding)而不是[早期绑定](/docs/codestack/visual-basic/variables/declaration#early-binding)。
 
-For example Excel VBA macro needs to create a [dictionary](/docs/codestack/visual-basic/data-sets/dictionary/) object to hold key-value pairs. Instead of referring the *Microsoft Scripting Runtime* reference and using the following code
+例如，Excel VBA宏需要创建一个[字典](/docs/codestack/visual-basic/data-sets/dictionary/)对象来保存键值对。而不是引用*Microsoft Scripting Runtime*引用并使用以下代码
 
-~~~ vb
+``` vb
 Dim dict As Scripting.Dictionary
 Set dict = New Scripting.Dictionary
-~~~
+```
 
-It is possible to avoid adding the *Microsoft Scripting Runtime* reference and instead use
+可以避免添加*Microsoft Scripting Runtime*引用，而使用
 
-~~~ vb
+``` vb
 Dim dict As Object
 Set dict = CreateObject("Scripting.Dictionary")
-~~~
+```
 
-Another example is SOLIDWORKS VBA macro, which primarily automates SOLIDWORKS, while some Excel API invocation might be required. In this case Excel can be created as late bound object and no references to Excel library need to be added to the macro.
+另一个例子是SOLIDWORKS VBA宏，它主要自动化SOLIDWORKS，但可能需要一些Excel API调用。在这种情况下，可以将Excel作为后期绑定对象创建，而不需要向宏添加对Excel库的引用。
 
-This approach allows to simplify the compatibility between different versions of library and avoid [missing references issue](/docs/codestack/solidworks-api/troubleshooting/macros/missing-solidworks-type-library-references/)
+这种方法可以简化不同版本库之间的兼容性，并避免[缺少引用问题](/docs/codestack/solidworks-api/troubleshooting/macros/missing-solidworks-type-library-references/)
 
-> Late binding has a limitation and some of the methods cannot be invoked with late binding, in this case early binding is an only option
+> 后期绑定有局限性，某些方法无法使用后期绑定调用，此时早期绑定是唯一的选择
 
-## Use Asserts
+## 使用断言
 
-*Debug.Assert* is a mechanism of displaying an assert when the condition is not met. Asserts are developer (not user) facing messages and intended to be used to validate conditions which are not the part of the use or misuse of the application. Assert should indicate the error in the code logic, but not the error in the use of the software.
+*Debug.Assert*是一种在条件不满足时显示断言的机制。断言是面向开发人员（而不是用户）的消息，旨在用于验证与应用程序的使用或误用无关的条件。断言应指示代码逻辑错误，而不是软件使用错误。
 
-For example the following SOLIDWORKS macro suppose to perform an operation on the active document. However it is a valid scenario where ActiveDoc can return *Nothing*. If macro runs when no document open (and user can do this), this would result in Nothing. So assert would not be an appropriate here to indicate the error, rather an exception would fit here better.
+例如，下面的SOLIDWORKS宏应该对活动文档执行操作。但是，当没有打开文档时（用户可以这样做），这是一个有效的场景，ActiveDoc可能返回*Nothing*。因此，断言在此处不适用于指示错误，而是异常更适合。
 
-~~~ vb
+``` vb
 Dim swModel As SldWorks.ModelDoc2
 Set swModel = swApp.ActiveDoc
 If Not swModel Is Nothing Then
-    'do work
+    '执行工作
 Else
     Err.Raise vbError, "", "No active document found"
 End If
-~~~
+```
 
-On the other hand *GetTitle* function below, runs a custom code to find the title of the document. It is assumed that regardless of the circumstances, title can never be an empty string, so empty string returned from *GetTitle* indicates the logic error. Assert would be thrown if its condition is False (title  "").
+另一方面，下面的*GetTitle*函数运行自定义代码以查找文档的标题。假设无论在任何情况下，标题都不可能是空字符串，因此从*GetTitle*返回的空字符串表示逻辑错误。如果条件为假（标题为""），则会引发断言。
 
-~~~ vb
+``` vb
 Dim title As String
 title = GetTitle(model);
 Debug.Assert title <> ""
-~~~
+```
 
-## Use Unit Tests
+## 使用单元测试
 
-Visual Basic is not designed for unit tests, there are several 3rd party solutions available for unit tests implementation.
+Visual Basic不是为单元测试而设计的，但是有几个第三方解决方案可用于实现单元测试。
 
-As a workaround, simple validation function can be implemented in the macro to emulate unit testing. This testing function should be run manually.
+作为解决方法，可以在宏中实现一个简单的验证函数来模拟单元测试。此测试函数应手动运行。
 
-In the below code there are 2 functions which are the part of the macro logic:
+下面的代码中有两个函数，它们是宏逻辑的一部分：
 
-* SortArray - sorts input array in ascending or descending order and returns result
-* CountWords - counts the number of words in the specified test
+* SortArray - 对输入数组按升序或降序排序并返回结果
+* CountWords - 计算指定文本中的单词数
 
-Those functions can be tested independently as units (unit tests)
+这些函数可以作为单元（单元测试）独立测试。
 
-*UnitTests* functions defines and validates several test cases. 
+*UnitTests*函数定义和验证了几个测试用例。
 
-~~~ vb
+``` vb
 Sub main()
-    'main logic of the application which utilizes SortArray and CountWords
+    '应用程序的主要逻辑，利用SortArray和CountWords
 End Sub
 
 Sub UnitTests(Optional dummy As Variant = Empty)
@@ -325,32 +325,32 @@ Sub UnitTests(Optional dummy As Variant = Empty)
 End Sub
 
 Function SortArray(arr As Variant, asc As Boolean) As Variant
-    'sorts an array and returns the result
+    '对数组进行排序并返回结果
 End Function
 
 Function CountWords(text As String) As Integer
-    'counts the words in the text
+    '计算文本中的单词数
 End Function
-~~~
+```
 
-For example, *test1* runs the *SortArray* functions and supplies an array of [C, B, A] requesting the sorting in ascending order. The expected outcome is an array [A, B, C] which is a validated in the *Debug.Assert* call. If the condition is false, assert will be thrown indicating the failure of the test.
+例如，*test1*运行*SortArray*函数并提供一个数组[C, B, A]，请求按升序排序。预期结果是数组[A, B, C]，在*Debug.Assert*调用中进行了验证。如果条件为假，将引发断言，指示测试失败。
 
-~~~ vb jagged
+``` vb jagged
 'test1
 res1 = SortArray(Array("C", "B", "A"), True)
 Debug.Assert res1(0) = "A" And res1(1) = "B" And res1(2) = "C"
-~~~
+```
 
-## Version Control
+## 版本控制
 
-Control Version Systems (CVS) for source code provide a centralized management of the code in the plain text formats. Such systems include, but not limited to Git, SVN, Mercurial.
+源代码的版本控制系统（CVS）提供了对纯文本格式的代码的集中管理。这些系统包括但不限于Git、SVN、Mercurial。
 
-Most of VBA macro engine implementations in various applications such as MS Word, MS Excel, SOLIDWORKS, Autodesk Inventor store macro files either as embeded into a file or in the binary format which makes it unpractical to use with Control Version Services.
+各种应用程序（如MS Word、MS Excel、SOLIDWORKS、Autodesk Inventor）中的大多数VBA宏引擎实现将宏文件存储为嵌入到文件中或以二进制格式存储，这使得它们无法与版本控制服务一起使用。
 
-It is however still beneficial and recommended to extract a text copy of the macro code and add this under the revision control.
+然而，仍然有益且建议提取宏代码的文本副本并将其添加到版本控制中。
 
-![VBA macro in the GIT repository browsed using the GIT Extensions client](git-extensions-vba-macro.png)
+![使用GIT Extensions客户端浏览的GIT存储库中的VBA宏](git-extensions-vba-macro.png)
 
-## Stay Within The Scope
+## 保持在范围内
 
-Try to keep your applications within the capacity of the technology and programming language. For a simple applications, scripts and VBA macros can be sufficient, but for more complicated functionalities where database connection, web service calls, data processing and analyzing etc. is required consider switching to more sophisticated environments (add-ins, stand-alone applications, web services) and OOP languages, such as VB.NET, C#, C++, Java etc.
+尽量使您的应用程序在技术和编程语言的能力范围内。对于简单的应用程序，脚本和VBA宏可能足够，但对于需要数据库连接、Web服务调用、数据处理和分析等更复杂功能的情况，请考虑切换到更复杂的环境（插件、独立应用程序、Web服务）和面向对象的语言，如VB.NET、C#、C++、Java等。
