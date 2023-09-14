@@ -1,23 +1,24 @@
 ---
-title: Untrim face or surface with temporary geometry using SOLIDWORKS API
-caption: Create Untrimmed Surface
-description: VBA example to create an untrimmed (restored) surface from the selected face with temporary geometry using SOLIDWORKS API
+title: 使用SOLIDWORKS API使用临时几何图形取消修剪面或曲面
+caption: 创建未修剪的曲面
+description: 使用SOLIDWORKS API使用临时几何图形从选定的面创建未修剪（恢复）曲面的VBA示例
 image: untrimmed-surface.png
 labels: [trim,curve,untrim]
 ---
-This VBA example restores the surface of the selected face by performing the untrim operation.
 
-This command is similar to the *Untrim Surface* feature in the Feature Manager, but it performs the operation using temporary bodies instead of features.
+此VBA示例通过执行取消修剪操作来恢复选定面的曲面。
 
-Copied surface used in operations is infinite and needs to be trimmed in order to form a face. Required boundary is calculated by evaluating the maximum and minimum values of the UV of the input face.
+此命令类似于特征管理器中的*取消修剪曲面*功能，但它使用临时实体而不是特征来执行操作。
 
-![UV bounds of face](face-uv.svg){ width=450 }
+在操作中使用的复制曲面是无限的，需要修剪才能形成面。通过计算输入面的UV的最大和最小值来计算所需边界。
 
-Iso curves are used to extract the curve at the specified boundary UV of the face. The calculated curve is infinite and needs to be trimmed in the corners to form the closed loop before the surface can be trimmed and converted into the body.
+![面的UV边界](face-uv.svg){ width=450 }
 
-Select any face and run the macro. The resulting surface is displayed in the graphics area and macro stops execution. Once continued - the preview is hidden.
+使用等值曲线提取面的指定边界UV处的曲线。计算得到的曲线是无限的，需要在角落修剪成闭合环路，然后才能修剪曲面并转换为实体。
 
-![Input surface and untrimmed result](untrimmed-surface.png){ width=450 }
+选择任何面并运行宏。结果曲面将显示在图形区域中，并停止执行宏。继续后，预览将被隐藏。
+
+![输入曲面和未修剪结果](untrimmed-surface.png){ width=450 }
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -94,15 +95,13 @@ Sub main()
             Set swUntimSurfBody = Nothing
             
         Else
-            Err.Raise vbError, , "Select face"
+            Err.Raise vbError, , "选择面"
         End If
         
     Else
-        Err.Raise vbError, , "Open the model"
+        Err.Raise vbError, , "打开模型"
     End If
     
 End Sub
 
 ~~~
-
-
