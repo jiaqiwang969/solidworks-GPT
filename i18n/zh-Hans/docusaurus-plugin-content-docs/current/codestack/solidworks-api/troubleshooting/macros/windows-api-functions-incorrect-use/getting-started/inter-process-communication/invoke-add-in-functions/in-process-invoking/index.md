@@ -1,41 +1,41 @@
 ---
-title: In-Process invoking of SOLIDWORKS add-in API from out-of-process applications
-caption: In-Process Invoking From Out-Of-Process Applications
-description: Framework for calling the add-in API in-process form stand-alone applications or macros to gain maximum performance
+title: 从外部进程调用SOLIDWORKS插件API的内部调用
+caption: 从外部进程调用的内部调用
+description: 通过从独立应用程序或宏中调用插件API来实现最大性能的内部调用框架
 image: macro-solution-tree.png
-labels: [add-in api,async,performance,in-process]
+labels: [插件API,异步,性能,内部调用]
 sidebar_position: 4
 ---
-One of the main limitations of the stand-alone automation of COM based application automation (including SOLIDWORKS) is performance.
+独立自动化COM基于应用程序自动化（包括SOLIDWORKS）的主要限制之一是性能。
 
-When hundreds of API calls need to be called from out-of-process applications, the performance may be dropped in hundreds or even thousands of times compared to in-process invocation.
+当需要从外部进程调用数百个API调用时，性能可能下降数百甚至数千倍，与内部调用相比。
 
-The exact same limitation would apply when invoking add-in API in any of the following approaches: [via add-in object](/docs/codestack/solidworks-api/getting-started/inter-process-communication/invoke-add-in-functions/via-add-in-object/), [via Running Object Table](/docs/codestack/solidworks-api/getting-started/inter-process-communication/invoke-add-in-functions/via-rot/), etc.
+在以下任何一种方法中调用插件API时，都会出现完全相同的限制：[通过插件对象](/docs/codestack/solidworks-api/getting-started/inter-process-communication/invoke-add-in-functions/via-add-in-object/)，[通过运行对象表](/docs/codestack/solidworks-api/getting-started/inter-process-communication/invoke-add-in-functions/via-rot/)等。
 
-It can be mistakenly assumed that all of the SOLIDWORKS API calls inside the add-in are invoked in-process as only single API function is called form stand-alone. But in fact all of the SOLIDWORKS API calls within the SOLIDWORKS add-in are invoked as out-of-process calls. This means that calling the add-in API would result in the same performance loses as calling the stand-alone application.
+人们可能错误地认为，由于只从独立应用程序调用了单个API函数，因此插件内部的所有SOLIDWORKS API调用都是在进程内调用的。但实际上，SOLIDWORKS插件中的所有SOLIDWORKS API调用都是作为外部进程调用的。这意味着调用插件API将导致与调用独立应用程序相同的性能损失。
 
-There is however a way to maximize this performance and gain the same results as in-process calls by calling this from out-of-process application.
+然而，通过从外部进程应用程序调用此API，可以最大限度地提高性能，并获得与内部调用相同的结果。
 
-The following add-in example implements a function to index all faces of the active assembly documents.
+以下插件示例实现了一个函数，用于索引活动装配文档的所有面。
 
-Add-in is developed using the [SwEx.AddIn Framework](/docs/codestack/labs/solidworks/swex/add-in/), but the same technique can apply to add-in built with different methods.
+插件使用[SwEx.AddIn Framework](/docs/codestack/labs/solidworks/swex/add-in/)开发，但是相同的技术也适用于使用不同方法构建的插件。
 
-It traverses all components, all bodies and all faces and outputs some information about the face in the trace window.
+它遍历所有组件、所有实体和所有面，并在跟踪窗口中输出有关面的一些信息。
 
-Add-in has a menu command allowing to invoke its function in-process.
+插件具有一个菜单命令，允许在进程中调用其函数。
 
-![Add-in menu to index faces](face-indexer-menu.png){ width=350 }
+![调用插件函数的插件菜单](face-indexer-menu.png){ width=350 }
 
-Once completed the message box with the result is displayed.
+完成后，将显示带有结果的消息框。
 
-![Result from calling the add-in command](add-in-result.png){ width=300 }
+![调用插件命令的结果](add-in-result.png){ width=300 }
 
-## FaceIndexer Add-In
-This is a main project which implements SOLIDWORKS add-in and API object interface.
+## FaceIndexer插件
+这是一个实现SOLIDWORKS插件和API对象接口的主要项目。
 
 ### FaceIndexerAddIn.cs
 
-Add-in class
+插件类
 
 ~~~ cs
 using CodeStack.SwEx.AddIn;
@@ -153,7 +153,7 @@ namespace CodeStack.FaceIndexer
 
 ### FaceIndexerAddInApi.cs
 
-API object definition.
+API对象定义。
 
 ~~~ cs
 using SolidWorks.Interop.sldworks;
@@ -179,18 +179,18 @@ namespace CodeStack.FaceIndexer
 
 
 
-This add-in exposes the API for 3rd parties. *IndexFaces* method is an out-of-process API call and can be used with the following snippet:
+此插件向第三方公开API。*IndexFaces*方法是一个外部进程的API调用，可以使用以下代码片段：
 
 ~~~ cs
 var count = addIn.IndexFaces(assm);
 Console.WriteLine($"Indexed {count} face(s)");
 ~~~
 
-As the result the performance dropped in almost hundred times:
+结果性能几乎下降了百倍：
 
-![Result from calling the add-in API from stand-alone application](stand-alone-result.png){ width=300 }
+![从独立应用程序调用插件API的结果](stand-alone-result.png){ width=300 }
 
-Using [ISldWorks::CommandInProgress](https://help.solidworks.com/2016/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ISldWorks~CommandInProgress.html) SOLIDWORKS API property improves things a little bit, but still performance is dropped more than 10 times compared to the baseline results.
+使用[SolidWorks.Interop.sldworks.ISldWorks.CommandInProgress](https://help.solidworks.com/2016/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ISldWorks~CommandInProgress.html) SOLIDWORKS API属性可以稍微改善性能，但与基准结果相比，性能仍然下降了10倍以上。
 
 ~~~ cs
 app.CommandInProgress = true;
@@ -199,30 +199,30 @@ app.CommandInProgress = false;
 Console.WriteLine($"Indexed {count} face(s)");
 ~~~
 
-Below is a comparison table of results. Results may vary depending on the size of the assembly and API calls being used.
+下面是结果的比较表。结果可能因装配的大小和使用的API调用而异。
 
-| Environment                     | Result, seconds | Ratio, % |
+| 环境                           | 结果（秒） | 比率（%） |
 |---------------------------------|-----------------|----------|
-| Add-In In-Process               | 2.63            | 1        |
-| Stand-Alone                     | 241.95          | 92       |
-| Stand-Alone Command In Progress | 36.14           | 13.74    |
-| VBA Macro                       | 2.57            | 0.98     |
-| VBA Macro In-Process Invoking   | 2.20            | 0.84     |
-| Stand-Alone In-Process Invoking | 1.77            | 0.67     |
+| 插件内部调用               | 2.63            | 1        |
+| 独立应用程序                     | 241.95          | 92       |
+| 独立应用程序命令进行中 | 36.14           | 13.74    |
+| VBA宏                       | 2.57            | 0.98     |
+| VBA宏内部调用   | 2.20            | 0.84     |
+| 独立应用程序内部调用 | 1.77            | 0.67     |
 
-The best performance is gained when add-in API is invoked as in-process call from stand-alone application. This functionality can be achieved by providing deferred call to index faces. This call would put the request into the queue and return the control immediately. The request then will be processed in add-in. [OnIdle](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dsldworksevents_onidlenotifyeventhandler.html) SOLIDWORKS API notification can be used to process the queue. As this event is handled in-process, the actual API calls will be handled in process as well.
+当从独立应用程序以内部调用的方式调用插件API时，可以获得最佳性能。通过提供延迟调用来索引面，可以实现此功能。此调用将将请求放入队列并立即返回控制权。然后，请求将在插件中处理。可以使用[SOLIDWORKS API通知OnIdle](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dsldworksevents_onidlenotifyeventhandler.html)来处理队列。由于此事件在进程内处理，实际的API调用也将在进程内处理。
 
-It is also important to register the callback which can be called by the add-in to notify the stand-alone application that operation is completed.
+注册回调函数也很重要，插件可以调用该回调函数通知独立应用程序操作已完成。
 
-Below is an example of the stand-alone application invoking the add-in API in-process.
+以下是在独立应用程序中以内部调用方式调用插件API的示例。
 
-## Stand-Alone Application
+## 独立应用程序
 
-C# application calling the add-in function.
+调用插件函数的C#应用程序。
 
 ### FaceIndexerCallback.cs
 
-Callback function which notifies the stand-alone application when in-process call is completed. This must be registered as COM object.
+在内部调用完成时通知独立应用程序的回调函数。这必须注册为COM对象。
 
 ~~~ cs
 using CodeStack.FaceIndexer;
@@ -248,7 +248,7 @@ namespace StandAlone
 
 ### Program.cs
 
-Console application invoking the in-process call to add-in API and awaiting result in the callback.
+调用内部调用插件API并在回调中等待结果的控制台应用程序。
 
 ~~~ cs
 using CodeStack.FaceIndexer;
@@ -349,17 +349,17 @@ namespace StandAlone
 
 
 
-It can also be invoked from the macro or any other type of applications.
+它也可以从宏或任何其他类型的应用程序中调用。
 
-## VBA Macro
+## VBA宏
 
-VBA macro to call the add-in API. In this example User Form is used to keep macro running until the callback function is called.
+调用插件API的VBA宏。在此示例中，使用用户窗体使宏保持运行，直到调用回调函数。
 
-![Project tree in VBA macro](macro-solution-tree.png){ width=250 }
+![VBA宏中的项目树](macro-solution-tree.png){ width=250 }
 
-### Macro Module
+### 宏模块
 
-Main module which is starting the user form
+启动用户窗体的主模块
 
 ~~~ vb
 Sub main()
@@ -372,9 +372,9 @@ End Sub
 
 
 
-### FaceIndexerCallback Class Module
+### FaceIndexerCallback类模块
 
-Implementation of callback class to receive the notification of completion
+实现回调类以接收完成的通知
 
 ~~~ vb
 Implements IFaceIndexerCallback
@@ -386,9 +386,9 @@ End Sub
 
 
 
-### Form1 Form
+### Form1窗体
 
-User form to connect to add-in and call its API
+连接到插件并调用其API的用户窗体
 
 ~~~ vb
 Dim swFaceIndexer As IFaceIndexerAddIn
@@ -410,4 +410,4 @@ End Sub
 
 
 
-Source code can be downloaded from [GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/swex/add-in/face-indexer)
+源代码可从[GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/swex/add-in/face-indexer)下载
