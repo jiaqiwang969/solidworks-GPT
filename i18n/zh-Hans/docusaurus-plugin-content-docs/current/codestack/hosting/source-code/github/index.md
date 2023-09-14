@@ -1,41 +1,41 @@
 ---
-caption: Creating Project In GitHub
-title: Creating project in GitHub and inviting collaborators
-description: Step-by-step instructions of creating new project in GitHub and invite collaborators
+caption: 在GitHub上创建项目
+title: 在GitHub上创建项目并邀请协作者
+description: 逐步说明在GitHub上创建新项目并邀请协作者的步骤
 image: github-new-repository.png
 ---
-Below are the steps to setup a repository on [GitHub](https://github.com/) and provide an access to the 3rd party developers:
+以下是在[GitHub](https://github.com/)上设置存储库并向第三方开发人员提供访问权限的步骤：
 
-## Creating New Account
+## 创建新账户
 
-* Navigate to [https://github.com/](https://github.com/) and click **Sign up**
+* 转到[https://github.com/](https://github.com/)并点击**Sign up**
 
-![Signup to GitHub](github-signup.png)
+![在GitHub上注册](github-signup.png)
 
-* Enter the registration details
+* 输入注册详细信息
 
-* Select plan. Check the features of **Free** plan as this might be sufficient for the scope of your project, but you can also explore other options if necessarily.
+* 选择计划。检查**Free**计划的功能，因为这可能足够满足您项目的范围，但如果有必要，您也可以探索其他选项。
 
-* Verify the account as required
+* 根据需要验证账户
 
-* Create new repository:
+* 创建新存储库：
 
-![New repository in GitHub](github-new-repository.png)
+![在GitHub上创建新存储库](github-new-repository.png)
 
-* Specify the name of the repository. Select **Private** option for repository visibility to make it only visible for the owner, otherwise it will be visible for everyone:
+* 指定存储库的名称。选择**Private**选项以使存储库仅对所有者可见，否则它将对所有人可见：
 
-![GitHub repository details](github-repository-details.png)
+![GitHub存储库详细信息](github-repository-details.png)
 
-## Add Collaborators To The Project:
+## 向项目添加协作者：
 
-* Click on repository
-* Go to **Settings** tab
-* Select **Manage access** from the list on the left hand side
-* Click **Invite a collaborator** button
-* Search for user id to provide access to the repository
+* 点击存储库
+* 转到**Settings**选项卡
+* 从左侧列表中选择**Manage access**
+* 点击**Invite a collaborator**按钮
+* 搜索用户ID以提供对存储库的访问权限
 
-![Manage GitHub access](github-manage-access.png)
+![管理GitHub访问权限](github-manage-access.png)
 
-* You can remove collaborator once the project is completed:
+* 项目完成后，您可以删除协作者：
 
-![Remove GitHub collaborator](github-remove-collaborator.png)
+![移除GitHub协作者](github-remove-collaborator.png)
