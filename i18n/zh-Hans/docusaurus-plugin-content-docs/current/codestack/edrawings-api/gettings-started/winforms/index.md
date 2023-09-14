@@ -1,33 +1,33 @@
 ---
-title: Hosting eDrawings control in Windows Forms
-caption: Hosting Control in WinForms
-description: Guide of hosting eDrawings control in C# Widndows Forms
+title: 在Windows Forms中托管eDrawings控件
+caption: 在WinForms中托管控件
+description: 使用C#在Windows Forms中托管eDrawings控件的指南
 image: edrawings-winform.png
 labels: [edrawings,host,winforms]
 ---
-This tutorial is a step-by-step guide of hosting the eDrawings control in the Windows Forms using C#.
 
-## Creating new Windows Form project
+本教程是使用C#在Windows Forms中托管eDrawings控件的逐步指南。
 
-* Open Visual Studio
-* Create new project and select *Windows Forms Application* in the *Visual C#* templates section
+## 创建新的Windows Forms项目
 
-![New Windows Forms project](visualstudio-new-project.png){ width=550 }
+* 打开Visual Studio
+* 创建新项目，并在*Visual C#*模板部分选择*Windows Forms应用程序*
 
-## Adding eDrawings interop
+![新的Windows Forms项目](visualstudio-new-project.png){ width=550 }
 
-It is required to add interop for eDrawings control. Note that interop only contains the signature of the methods and classes (it doesn't contain implementation). eDrawings stil needs to be installed to use its API. However SOLIDWORKS application doesn't need to be installed.
+## 添加eDrawings互操作
 
-Locate the eDrawings interop library by searching for *eDrawings.Interop.EModelViewControl.dll* file in the installation folder of eDrawings. Usually the path will be equal to 
-*C:\Program Files\Common Files\eDrawings[Version]\eDrawings.Interop.EModelViewControl.dll*
+需要添加eDrawings控件的互操作。请注意，互操作只包含方法和类的签名（不包含实现）。仍然需要安装eDrawings才能使用其API。但是，不需要安装SOLIDWORKS应用程序。
 
-I would recommend to disable the embedding of the interop to avoid potential cast errors:
+通过在eDrawings的安装文件夹中搜索*eDrawings.Interop.EModelViewControl.dll*文件来定位eDrawings互操作库。通常路径将等于*C:\Program Files\Common Files\eDrawings[Version]\eDrawings.Interop.EModelViewControl.dll*
 
-![Disable the embedding of interop files](embed-edrawings-interops.png){ width=350 }
+我建议禁用嵌入互操作以避免潜在的转换错误：
 
-## Creating eDrawings control wrapper
+![禁用嵌入互操作文件](embed-edrawings-interops.png){ width=350 }
 
-By default eDrawings API doesn't provide the .NET control to be hosted on the Windows Forms. So it is required to create the corresponding wrapper by implementing the [AxHost](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.axhost) control and providing eDrawings GUID in the constructor. In the below implementation the version independent (*22945A69-1191-4DCF-9E6F-409BDE94D101*) guid is used which means that you application is backward compatible and will work with newer versions of eDrawings. Find the version dependent guids for eDrawing controls in the Registry if required.
+## 创建eDrawings控件包装器
+
+默认情况下，eDrawings API不提供在Windows Forms上托管的.NET控件。因此，需要通过实现[AxHost](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.axhost)控件并在构造函数中提供eDrawings GUID来创建相应的包装器。在下面的实现中，使用了版本无关的(*22945A69-1191-4DCF-9E6F-409BDE94D101*) GUID，这意味着您的应用程序向后兼容，并且将与较新版本的eDrawings一起工作。如果需要，可以在注册表中找到eDrawing控件的版本相关GUID。
 
 ### eDrawingHost.cs
 
@@ -67,19 +67,19 @@ namespace CodeStack.Examples.eDrawings
 
 
 
-> eDrawings control is not loaded immediately and calling the [AxHost::GetOcx](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.axhost.getocx) directly after the constructor will result in null reference. Calling this method when control is not fully loaded might result into the deadlock.
+> eDrawings控件不会立即加载，直接在构造函数之后调用[AxHost::GetOcx](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.axhost.getocx)将导致空引用。在控件完全加载之前调用此方法可能会导致死锁。
 
-## Adding control to Windows Form
+## 将控件添加到Windows Form
 
-Add new form to the project and name it *MainForm*.
+向项目中添加新的窗体，并将其命名为*MainForm*。
 
-The solution tree will look similar to the one below:
+解决方案树将类似于下面的示例：
 
-![Project solution tree](solution-explorer.png){ width=350 }
+![项目解决方案树](solution-explorer.png){ width=350 }
 
-Add the following code to the form code behind. Set the path to the SOLIDWORKS file as the *FILE_PATH* constant. The code will wait until eDrawings control is fully loaded and open the specified file automatically.
+将以下代码添加到窗体代码后面。将SOLIDWORKS文件的路径设置为*FILE_PATH*常量。该代码将等待eDrawings控件完全加载，并自动打开指定的文件。
 
-![File opened in the eDrawing control hosted in Windows Form](edrawings-winform.png){ width=350 }
+![在托管于Windows Form中的eDrawing控件中打开的文件](edrawings-winform.png){ width=350 }
 
 ### MainForm.cs
 
@@ -128,4 +128,4 @@ namespace CodeStack.Examples.eDrawings
 
 
 
-Source code is available on [GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/edrawings-api/eDrawingsWinFormsHost)
+源代码可在[GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/edrawings-api/eDrawingsWinFormsHost)上找到。
