@@ -1,19 +1,20 @@
 ---
 layout: sw-tool
-title: Copy SOLIDWORKS file specific custom properties to configuration
-caption: Copy File Specific Custom Properties To Configuration Properties
-description: Macro copies all the file specific properties into the properties of the active configuration
+title: 将SOLIDWORKS文件特定的自定义属性复制到配置
+caption: 将文件特定的自定义属性复制到活动配置的属性中
+description: 该宏使用SOLIDWORKS API将所有文件特定的自定义属性复制到活动配置的属性中。
 image: file-specific-custom-properties.png
-labels: [configuration, copy, custom properties, utility]
-group: Custom Properties
+labels: [配置, 复制, 自定义属性, 实用工具]
+group: 自定义属性
 redirect-from:
   - /2018/03/copy-file-specific-custom-properties-to.html
 ---
-This macro copies all the file specific properties into the properties of the active configuration using SOLIDWORKS API.
 
-![Properties in the Custom tab of the file](file-specific-custom-properties.png){ width=640 }
+该宏使用SOLIDWORKS API将所有文件特定的自定义属性复制到活动配置的属性中。
 
-~~~ vb
+![文件的自定义选项卡中的属性](file-specific-custom-properties.png){ width=640 }
+
+```vb
 Dim swApp As SldWorks.SldWorks
 Dim swModel As SldWorks.ModelDoc2
 Dim swCustPrpMgr As SldWorks.CustomPropertyManager
@@ -48,12 +49,10 @@ Sub main()
 
     Else
 
-        MsgBox "Please open part or assembly"
+        MsgBox "请打开零件或装配体"
 
     End If
    
 End Sub
-
-~~~
-
+```
 
