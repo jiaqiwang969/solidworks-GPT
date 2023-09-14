@@ -1,18 +1,18 @@
 ---
-title: Managing Custom Properties using SOLIDWORKS API
-caption: Custom Properties
-description: Managing model, configuration and feature specific custom properties using SOLIDWORKS API
-labels: [custom properties, configuration properties]
+title: 使用SOLIDWORKS API管理自定义属性
+caption: 自定义属性
+description: 使用SOLIDWORKS API管理模型、配置和特定特征的自定义属性
+labels: [自定义属性, 配置属性]
 ---
-This section contains macros and code examples for utilizing the custom properties in SOLIDWORKS API.
+本节包含了使用SOLIDWORKS API利用自定义属性的宏和代码示例。
 
-Custom properties is a collection of key value pairs used in SOLIDWORKS to store the metadata. Custom properties can be associated with the model itself, its configurations or cut-list features (such as weldment or sheet metal).
+自定义属性是SOLIDWORKS中用于存储元数据的键值对集合。自定义属性可以与模型本身、其配置或切割列表特征（如焊接或钣金）相关联。
 
-Custom properties are managed via [ICustomPropertyManager](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ICustomPropertyManager.html) SOLIDWORKS API interface.
+自定义属性通过[SOLIDWORKS API接口ICustomPropertyManager](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ICustomPropertyManager.html)进行管理。
 
-In many cases when it is required to read the value of the custom property (e.g. for using in the file name, for exporting, etc.) property will be firstly read from the referenced configuration and if missing from the file property. This is similar to the way properties are used to populate Bill Of Materials table.
+在许多情况下，当需要读取自定义属性的值（例如用于文件名、导出等）时，属性首先将从引用的配置中读取，如果在文件属性中找不到，则会读取。这类似于属性用于填充物料清单表的方式。
 
-Code below demonstrates how to implement this practice in the code.
+下面的代码演示了如何在代码中实现这种做法。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -49,4 +49,3 @@ Function GetPropertyValue(model As SldWorks.ModelDoc2, prpName As String) As Str
     
 End Function
 ~~~
-
