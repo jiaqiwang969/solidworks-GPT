@@ -1,28 +1,29 @@
 ---
 layout: sw-pdm-addin-fix
-title: Fix 'Class ID could not be found in the registry' PDM add-in error
-caption: Class ID could not be fond in the registry
-description: Troubleshooting the '...the add-in registration succeeded but the add-in's class ID could not be found in the registry' error when registering SOLIDWORKS PDM add-in
+title: 修复“在注册表中找不到类ID” PDM插件错误
+caption: 在注册表中找不到类ID
+description: 当注册SOLIDWORKS PDM插件时出现“...插件注册成功，但在注册表中找不到插件的类ID”错误的故障排除方法
 image: class-id-not-found-in-registry.png
-labels: [pdm add-in, error]
+labels: [pdm插件, 错误]
 ---
-## Symptoms
 
-The following error is displayed when .NET add-in is added to the vault via PDM Administration tool: *Error creating the add-in COM object from the dll 'name.dll'. Cause: the add-in registration succeeded but the add-in's class ID could not be found in the registry*
+## 症状
 
-![Error when adding add-in to the PDM vault](class-id-not-found-in-registry.png){ width=450 }
+通过PDM管理工具将.NET插件添加到保险库时，会显示以下错误：*从dll 'name.dll'创建插件COM对象时出错。原因：插件注册成功，但在注册表中找不到插件的类ID*
 
-Add-in works correctly while [debugging](/docs/codestack/solidworks-pdm-api/getting-started/add-ins/debugging-best-practices/)
+![将插件添加到PDM保险库时出现的错误](class-id-not-found-in-registry.png){ width=450 }
 
-## Cause
+在[调试](/docs/codestack/solidworks-pdm-api/getting-started/add-ins/debugging-best-practices/)时，插件可以正常工作。
 
-This error happens if project is using the libraries which are not compatible with SOLIDWORKS PDM. For example the [System.Threading.Tasks.Extensions](https://www.nuget.org/packages/System.Threading.Tasks.Extensions/) will cause this issue. The issue will be reproducible even if dll is not used in the project but just present in the folder.
+## 原因
 
-![References tree of the add-in project](tasks-extension-reference.png){ width=450 }
+如果项目使用与SOLIDWORKS PDM不兼容的库，就会出现此错误。例如，[System.Threading.Tasks.Extensions](https://www.nuget.org/packages/System.Threading.Tasks.Extensions/)会导致此问题。即使在项目中未使用该dll，但只要它存在于文件夹中，问题就会重现。
 
-## Resolution
+![插件项目的引用树](tasks-extension-reference.png){ width=450 }
 
-* Find the problematic dll. Note, it is recommended to clear the bin (output) folder as the dll might no longer be used in the project, but still present in the output folder.
-    * It might be required to comment out the code and remove the references one-by-one to find the dll which is causing the problem
-* Once found, inspect how to avoid using this dll. This library may be a part of another package which is not necessarily to be in the add-in project. For example [System.Threading.Tasks.Extensions](https://www.nuget.org/packages/System.Threading.Tasks.Extensions/) could be added to the project as a part of [Moq](https://www.nuget.org/packages/Moq/) framework for Unit Testing. Unit Testing binaries should not be compiled into the target add-in output folder.
-* If it is not possible to avoid using the dll, alternative way could be to add dll as the resource file and dynamically copy the dll on add-in load and use the [AppDomain::AssemblyResolve](https://docs.microsoft.com/en-us/dotnet/api/system.appdomain.assemblyresolve?view=netframework-4.8) notification to properly resolve references at runtime.
+## 解决方法
+
+* 找到有问题的dll。注意，建议清除bin（输出）文件夹，因为该dll可能不再在项目中使用，但仍然存在于输出文件夹中。
+    * 可能需要逐个注释代码并逐个删除引用，以找到导致问题的dll
+* 找到后，检查如何避免使用此dll。该库可能是另一个包的一部分，不一定需要在插件项目中。例如，[System.Threading.Tasks.Extensions](https://www.nuget.org/packages/System.Threading.Tasks.Extensions/)可以作为单元测试的一部分添加到项目中的[Moq](https://www.nuget.org/packages/Moq/)框架中。单元测试二进制文件不应编译到目标插件输出文件夹中。
+* 如果无法避免使用该dll，另一种方法是将dll添加为资源文件，并在插件加载时动态复制该dll，并使用[AppDomain::AssemblyResolve](https://docs.microsoft.com/en-us/dotnet/api/system.appdomain.assemblyresolve?view=netframework-4.8)通知在运行时正确解析引用。
