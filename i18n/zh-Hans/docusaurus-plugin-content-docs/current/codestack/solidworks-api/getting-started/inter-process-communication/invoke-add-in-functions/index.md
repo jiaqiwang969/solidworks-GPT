@@ -1,15 +1,15 @@
 ---
-title: Invoke function of SOLIDWORKS add-in from stand-alone application or macro
-caption: Invoke Function Of Add-in
-description: Calling function of SOLIDWORKS add-in from stand-alone application or macro (enabling add-in custom API)
-labels: [add-in api,invoke]
+title: 从独立应用程序或宏调用SOLIDWORKS插件的函数
+caption: 调用插件函数
+description: 从独立应用程序或宏（启用插件自定义API）调用SOLIDWORKS插件的函数的示例和说明
+labels: [插件API,调用]
 ---
-This section contains examples and explains how to create an API for SOLIDWORKS add-in so its functions can be called from [Macros](/docs/codestack/solidworks-api/getting-started/macros/), [Stand-Alone Applications](/docs/codestack/solidworks-api/getting-started/stand-alone/), [Scripts](/docs/codestack/solidworks-api/getting-started/scripts/) or other [Add-Ins](/docs/codestack/solidworks-api/getting-started/add-ins/)
+本节包含示例和说明如何为SOLIDWORKS插件创建API，以便可以从[宏](/docs/codestack/solidworks-api/getting-started/macros/)、[独立应用程序](/docs/codestack/solidworks-api/getting-started/stand-alone/)、[脚本](/docs/codestack/solidworks-api/getting-started/scripts/)或其他[插件](/docs/codestack/solidworks-api/getting-started/add-ins/)中调用其函数。
 
-Enabling API functions in your add-in might be required when add-in itself needs to be automated. This approach can also help to improve performance. As add-ins are in-process applications, they provide the best performance. In this case add-in can act as an engine for the functionality which gets triggered from the macro or another add-in so the performance is optimal.
+在需要自动化插件本身时，可能需要启用插件的API函数。这种方法还可以帮助提高性能。由于插件是进程内应用程序，因此它们提供了最佳的性能。在这种情况下，插件可以充当从宏或其他插件触发的功能的引擎，因此性能是最佳的。
 
-There are several approaches could be used to achieve this functionality. Explore the following options for more information:
+有几种方法可以实现此功能。请查看以下选项以获取更多信息：
 
-* [Via Add-In Object](via-add-in-object)
-* [Via Running Objects Table (ROT)](via-rot)
-* [Via In-Process Invoking From Out-Of-Process Applications](in-process-invoking)
+* [通过插件对象](#通过插件对象)
+* [通过运行对象表（ROT）](#通过ROT)
+* [通过进程内从外部进程调用](#进程内调用)
