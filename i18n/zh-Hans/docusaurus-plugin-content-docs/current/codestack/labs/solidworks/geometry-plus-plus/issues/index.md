@@ -1,10 +1,10 @@
 ---
-title: Issues report page for Geometry++ add-in
-caption: Issues
-description: Reporting and reviewing the status of issues for Geometry++ add-in for SOLIDWORKS
+title: Geometry++插件的问题报告页面
+caption: 问题
+description: 用于报告和审查SOLIDWORKS的Geometry++插件的问题状态
 toc-group-name: labs-solidworks-geometry-plus-plus
 sidebar_position: 0
 ---
-Geometry++ was started as a SOLIDWORKS Power User Challenge and its features are driven by SOLIDWORKS community. Add-in source code is available in the GitHub.
+Geometry++是作为SOLIDWORKS Power User Challenge启动的，其功能由SOLIDWORKS社区驱动。插件的源代码可在GitHub上获取。
 
 {% github-issues { project: codestackdev, repo: geometry-plus-plus } %}
