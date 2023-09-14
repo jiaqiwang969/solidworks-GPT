@@ -1,13 +1,13 @@
 ---
-title: Collection of algorithms for Visual Basic
-caption: Algorithms
-description: Collection of common algorithms and function for writing code in Visual Basic
+title: Visual Basic 算法集合
+caption: 算法
+description: 包含在 Visual Basic 中编写代码时常用的算法和函数的集合
 sidebar_position: 0
 sitemap: true
 ---
-*Coming soon...*
+*即将推出...*
 
-### Working with file system objects
-### Connecting to database
-### Reading the Comma Separated Values file
-### Using regular expressions
+### 使用文件系统对象
+### 连接到数据库
+### 读取逗号分隔值文件
+### 使用正则表达式
