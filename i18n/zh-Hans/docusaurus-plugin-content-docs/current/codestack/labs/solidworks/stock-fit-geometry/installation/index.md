@@ -1,21 +1,21 @@
 ---
-title: Installation Guide for Stock Master add-ins for SOLIDWORKS
-caption: Installation Guide
-description: Instructions of installing of Stock Master add-in for SOLIDWORKS which provides additional features for packaging and stocking
+title: Stock Master插件的安装指南
+caption: 安装指南
+description: Stock Master插件的安装指南，为SOLIDWORKS提供了额外的包装和库存功能
 toc-group-name: labs-solidworks-stock-master
 sidebar_position: 0
 ---
-To install add-in download the latest msi-installer (*StockMaster.msi*) at [this link v. 0.5.0 (beta 1)](https://github.com/codestackdev/stock-fit-geometry/releases/tag/beta1).
+要安装插件，请在[此链接v. 0.5.0（beta 1）](https://github.com/codestackdev/stock-fit-geometry/releases/tag/beta1)下载最新的msi安装程序（*StockMaster.msi*）。
 
-## Note
-If older version of the add-in (v. 0.0.3 or older) is installed it is required to manually uninstall the previous version by following steps below:
+## 注意
+如果已安装较旧版本的插件（v. 0.0.3或更早版本），则需要按照以下步骤手动卸载先前的版本：
 
-* Navigate to the installation folder of previous version (The path can be found by hovering the mouse over the *Stock Fit Geometry* addin in the Tools->Add-ins... menu in SOLIDWORKS)
-* Run the following command from the command line (it might be required to run command line as administrator). Replace *FULL PATH TO CodeStack.StockFit.Sw.dll* with the corresponding full path to the dll.
+* 导航到先前版本的安装文件夹（可以通过在SOLIDWORKS的Tools->Add-ins...菜单中将鼠标悬停在*Stock Fit Geometry*插件上来找到路径）
+* 从命令行运行以下命令（可能需要以管理员身份运行命令行）。将*FULL PATH TO CodeStack.StockFit.Sw.dll*替换为相应的dll的完整路径。
 
 ~~~ bat
 "%Windir%\Microsoft.NET\Framework64\v4.0.30319\regasm" /codebase /u "FULL PATH TO CodeStack.StockFit.Sw.dll"
 ~~~
-* Delete the folder
+* 删除该文件夹
 
-This procedure is not required for any future versions of the add-in.
+对于将来的任何版本，不需要执行此过程。
