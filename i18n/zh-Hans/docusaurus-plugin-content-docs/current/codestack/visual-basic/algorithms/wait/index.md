@@ -1,13 +1,13 @@
 ---
-title: Blocking and non-blocking wait function in Visual Basic
-caption: Wait
-description: Visual Basic function to wait for the specified amount of time either blocking or unblocking
+title: Visual Basic 中的阻塞和非阻塞等待函数
+caption: 等待
+description: Visual Basic 中用于等待指定时间的阻塞或非阻塞函数
 ---
-This code snippet demonstrates how to pause the execution for the specified amount of time (in milliseconds).
+这段代码演示了如何暂停执行指定的时间（以毫秒为单位）。
 
-Function can be either blocking or unblocking (with DoEvents)
+函数可以是阻塞的或非阻塞的（使用 DoEvents）。
 
-~~~ vb
+```vb
 #If VBA7 Then
     Declare PtrSafe Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As LongPtr)
 #Else
@@ -45,6 +45,5 @@ Sub Wait(period As Long, blocked As Boolean)
     End If
 
 End Sub
-~~~
-
+```
 
