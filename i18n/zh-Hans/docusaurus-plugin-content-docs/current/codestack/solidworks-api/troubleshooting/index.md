@@ -1,10 +1,10 @@
 ---
-title: Troubleshooting the common errors in SOLIDWORKS API development
-caption: Troubleshooting
-description: Techniques for troubleshooting and fixing the errors in the SOLIDWORKS API applications (macros, add-ins and stand-alones)
+title: SOLIDWORKS API开发常见错误的故障排除
+caption: 故障排除
+description: 解决SOLIDWORKS API应用程序（宏、插件和独立应用程序）中的错误的技巧
 image: troubleshooting-api.png
 sidebar_position: 0
 ---
-![Troubleshooting applications developed using SOLIDWORKS API](troubleshooting-api.png){ width=300 }
+![使用SOLIDWORKS API开发的应用程序的故障排除](troubleshooting-api.png){ width=300 }
 
-This section provides the techniques for troubleshooting and fixing the errors in the SOLIDWORKS API applications (macros, add-ins and stand-alones)
+本节介绍了解决SOLIDWORKS API应用程序（宏、插件和独立应用程序）中的错误的技巧。
