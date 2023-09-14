@@ -1,28 +1,28 @@
 ---
-title: Call function of SOLIDWORKS add-in object from stand-alone application or macro
-caption: Via Add-in Object
-description: Invoking function of SOLIDWORKS add-in from stand-alone application or macro (enabling add-in custom API)
+title: 从独立应用程序或宏调用SOLIDWORKS插件对象的函数
+caption: 通过插件对象
+description: 通过使用SOLIDWORKS API检索插件对象来从独立应用程序或宏调用SOLIDWORKS插件的函数（启用插件自定义API）
 image: object-browser-interface.png
 labels: [add-in api,addin object,invoke]
 sidebar_position: 1
 ---
-This article explains how to call function of SOLIDWORKS add-in from stand-alone application or macro by retrieving add-in object using SOLIDWORKS API.
+本文介绍如何通过使用SOLIDWORKS API检索插件对象来从独立应用程序或宏调用SOLIDWORKS插件的函数。
 
-This is based on the same technique to enable COM communication as shown in this video tutorial to reuse .NET functions from the VBA macros:
+这基于与此视频教程中显示的相同技术，以便从VBA宏中重用.NET函数来启用COM通信：
 
 {% youtube { id: lTEONui2H0s } %}
 
-## Enabling API in the add-in
+## 在插件中启用API
 
-To enable API in your add-in it is required to follow several rules
+要在插件中启用API，需要遵循几个规则：
 
-* Add-in must implement COM visible interface which is exposing COM visible function.
-* All of the parameters and return values of those functions must be COM visible as well
-* Add-in must generate Type Library (TLB) with definitions of those API functions
+* 插件必须实现COM可见接口，该接口公开COM可见函数。
+* 这些函数的所有参数和返回值也必须是COM可见的。
+* 插件必须生成带有这些API函数定义的类型库（TLB）。
 
-When developing c# application it is required to create com-visible interface and implement it in the add-in.
+在开发C#应用程序时，需要创建COM可见接口并在插件中实现它。
 
-~~~ cs
+```cs
 [ComVisible(true)]
 public interface IMyAddInApi
 {
@@ -38,36 +38,36 @@ public class MyAddIn : ISwAddIn
         //Implement
     }
 }
-~~~
+```
 
-If *Register for COM Interop* option is selected in Visual Studio this will automatically add all com-visible functions, classes and interfaces to the tlb file.
+如果在Visual Studio中选择了“注册COM互操作”选项，则会自动将所有COM可见的函数、类和接口添加到tlb文件中。
 
-![Type library generated for the add-in](add-in-type-library.png){ width=550 }
+![为插件生成的类型库](add-in-type-library.png){ width=550 }
 
-## Example add-in with API
+## 具有API的示例插件
 
-The following add-in examples is built using the [SwEx.AddIn Framework](/docs/codestack/labs/solidworks/swex/add-in/), but the same technique can apply to add-in built with different methods.
+以下插件示例是使用[SwEx.AddIn Framework](/docs/codestack/labs/solidworks/swex/add-in/)构建的，但是相同的技术也适用于使用不同方法构建的插件。
 
-Add-in adds the menu command under the *Tools* menu allowing to create cylindrical feature
+插件在“工具”菜单下添加了菜单命令，允许创建圆柱体特征。
 
-![Add-in menu](create-geometry-add-in-menu.png){ width=350 }
+![插件菜单](create-geometry-add-in-menu.png){ width=350 }
 
-When invoked from the menu, cylinder will have hard-coded parameter values.
+当从菜单调用时，圆柱体将具有硬编码的参数值。
 
-![Cylinder geometry created from the add-in menu](cylinder-geometry-feature.png){ width=350 }
+![从插件菜单创建的圆柱体几何特征](cylinder-geometry-feature.png){ width=350 }
 
-At the same time add-in exposes the public API *CreateCylinder* which allows to create cylinder. API has two parameters:
+同时，插件公开了名为*CreateCylinder*的公共API，允许创建圆柱体。API有两个参数：
 
-* Diameter
-* Height
+* 直径
+* 高度
 
-And returns the pointer to [IFeature](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ifeature.html). Because SOLIDWORKS API is COM visible, add-in can directly use this interface in the communication.
+并返回指向[IFeature](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ifeature.html)的指针。由于SOLIDWORKS API是COM可见的，插件可以直接在通信中使用此接口。
 
-*CreateCylinder* function itself is used by the add-in *Create Cylinder* command.
+*CreateCylinder*函数本身由插件的*Create Cylinder*命令使用。
 
-### C# Add-in source code
+### C#插件源代码
 
-~~~ cs
+```cs
 using CodeStack.SwEx.AddIn;
 using CodeStack.SwEx.AddIn.Attributes;
 using CodeStack.SwEx.AddIn.Enums;
@@ -164,50 +164,50 @@ namespace CodeStack.Examples.CreateGeometryAddIn
     }
 }
 
-~~~
+```
 
 
 
-## Accessing the add-in
+## 访问插件
 
-To access the add-in and its API it is required to retrieve the pointer to the add-in interface. [ISldWorks::GetAddInObject](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~getaddinobject.html) SOLIDWORKS API function can be used to get the pointer to the add-in by its program id (ProgID) or global unique identifier (GUID)
+要访问插件及其API，需要检索指向插件接口的指针。可以使用[SOLIDWORKS API函数ISldWorks::GetAddInObject](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~getaddinobject.html)通过程序ID（ProgID）或全局唯一标识符（GUID）获取插件的指针。
 
-The below code snippet retrieves the pointer to the add-in from its guid. This is the value assigned via [Guid](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.guidattribute) attribute on the add-in class:
+下面的代码片段通过其GUID从插件中检索指针。这是通过在插件类上使用[Guid](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.guidattribute)属性分配的值：
 
-~~~ vb
+```vb
 Set swGeomAddIn = swApp.GetAddInObject("{799A191E-A4CF-4622-9E77-EA1A9EF07621}")
-~~~
+```
 
-Alternatively add-in can be retrieved by its ProgId. If ProgId is not specified explicitly then it is equal to *Namespace*.*ClassName*
+或者可以通过其ProgId检索插件。如果未显式指定ProgId，则它等于*Namespace*.*ClassName*
 
-~~~ vb
+```vb
 Set swGeomAddIn = swApp.GetAddInObject("CodeStack.Examples.CreateGeometryAddIn.AddIn")
-~~~
+```
 
-It is recommended to specify the ProgId explicitly via [ProgId](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.progidattribute) attribute. In this case class and namespace can be renamed while refactoring keeping the ProgId unchanged.
+建议通过[ProgId](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.progidattribute)属性显式指定ProgId。在这种情况下，可以在重构时更改类和命名空间而保持ProgId不变。
 
-~~~ cs
+```cs
 [ComVisible(true), Guid("799A191E-A4CF-4622-9E77-EA1A9EF07621")]
 [ProgId("CodeStack.MyAddIn")]
 public class AddIn : ISwAddIn
 {
 }
-~~~
+```
 
-### Calling add-in API from macro
+### 从宏调用插件API
 
-* Create new VBA macro
-* Add the reference to add-in Type Library from the *Tools->References* menu in the VBA Editor
+* 创建新的VBA宏
+* 在VBA编辑器的“工具->引用”菜单中添加对插件类型库的引用
 
-![Add-in type library added to the macro](tlb-reference.png){ width=450 }
+![将插件类型库添加到宏](tlb-reference.png){ width=450 }
 
-Note that the interface will be visible in the object browser:
+请注意，该接口将在对象浏览器中可见：
 
-![Add-in API functions visible in the object browser](object-browser-interface.png){ width=350 }
+![对象浏览器中可见的插件API函数](object-browser-interface.png){ width=350 }
 
-#### VBA macro invoking add-in function
+#### VBA宏调用插件函数
 
-~~~ vb
+```vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -223,25 +223,25 @@ Sub main()
     swFeat.Name = "MyCylinder"
     
 End Sub
-~~~
+```
 
 
 
-This macro will create the cylinder with custom parameters and use the returned pointer to feature to rename it.
+此宏将使用自定义参数创建圆柱体，并使用返回的特征指针对其进行重命名。
 
-![Cylinder geometry created from the macro](my-cylinder-renamed-feature.png){ width=350 }
+![从宏创建的圆柱体几何特征](my-cylinder-renamed-feature.png){ width=350 }
 
-Note that the add-in errors are correctly thrown from the macro. For example the following exception is generated when invalid input is supplied:
+请注意，插件错误会在宏中正确抛出。例如，当提供无效输入时，会生成以下异常：
 
-![Exception with the description thrown in the macro](add-in-com-error.png){ width=500 }
+![在宏中抛出的带有描述的异常](add-in-com-error.png){ width=500 }
 
-### Calling add-in from stand-alone applications
+### 从独立应用程序调用插件
 
-Similarly to VBA macro, add-in can be automated from the [Stand-Alone Applications](/docs/codestack/solidworks-api/getting-started/stand-alone/). To enable type safety it is required to add the reference to add-in dll. Note if add-in is a .NET add-in you won't be able to add .tlb file as the reference, instead it is required to add the actual add-in dll.
+与VBA宏类似，也可以从[独立应用程序](/docs/codestack/solidworks-api/getting-started/stand-alone/)中自动化插件。为了实现类型安全，需要添加对插件dll的引用。请注意，如果插件是.NET插件，则无法将.tlb文件添加为引用，而是需要添加实际的插件dll。
 
-#### VB.NET Stand-Alone application
+#### VB.NET独立应用程序
 
-~~~ vb
+```vb
 Imports CodeStack.Examples.CreateGeometryAddIn
 Imports SolidWorks.Interop.sldworks
 
@@ -258,13 +258,13 @@ Module Module
 
 End Module
 
-~~~
+```
 
 
 
-#### C# Stand-Alone application
+#### C#独立应用程序
 
-~~~ cs
+```cs
 using CodeStack.Examples.CreateGeometryAddIn;
 using SolidWorks.Interop.sldworks;
 using System;
@@ -283,22 +283,22 @@ namespace ConsoleAddIn
     }
 }
 
-~~~
+```
 
 
 
-Exception can also be handled from the stand-alone application
+异常也可以从独立应用程序中处理
 
-![.NET exception thrown in the .NET application](add-in-exception-net.png){ width=550 }
+![在.NET应用程序中抛出的.NET异常](add-in-exception-net.png){ width=550 }
 
-> The above approach to connect to SOLIDWORKS instance (Activator::CreateInstance or GetObject methods) in some cases might create new invisible instance of SOLIDWORKS instead of connecting to an existing session. These instances would be created as background applications and no add-ins loaded so the code will fail. To force connect to the active session of SOLIDWORKS follow [Connecting by querying the COM instance from the Running Object Table (ROT)](/docs/codestack/solidworks-api/getting-started/stand-alone/#method-b-connecting-by-querying-the-com-instance-from-the-running-object-table-rot) article.
+> 通过连接到SOLIDWORKS实例（Activator::CreateInstance或GetObject方法）在某些情况下可能会创建新的不可见SOLIDWORKS实例，而不是连接到现有会话。这些实例将作为后台应用程序创建，不加载任何插件，因此代码将失败。要强制连接到SOLIDWORKS的活动会话，请参阅[通过从运行对象表（ROT）查询COM实例进行连接](/docs/codestack/solidworks-api/getting-started/stand-alone/#method-b-connecting-by-querying-the-com-instance-from-the-running-object-table-rot)文章。
 
-#### Notes
+#### 注意事项
 
-Although it is possible to avoid declaring the COM-visible interface and objects and use *dynamic* to retrieve and call add-in functions in .NET applications, this approach is not recommended by the number of reasons:
+虽然可以避免声明COM可见接口和对象并使用*dynamic*从.NET应用程序中检索和调用插件函数，但是出于以下原因，不建议使用此方法：
 
-* It is not type safe
-* Performance can be significantly affected as framework will need to lookup and find the appropriate object in the memory
-* Unexpected behavior can occur as incorrect object can be mapped
+* 它不是类型安全的
+* 性能可能会受到显著影响，因为框架需要在内存中查找和查找适当的对象
+* 可能会出现意外行为，因为可能会映射到不正确的对象
 
-Download source code at [GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/swex/add-in/create-geometry-api)
+在[GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/swex/add-in/create-geometry-api)上下载源代码。
