@@ -1,29 +1,30 @@
 ---
-title: Embed Array In Visual Basic 6 (VBA) code
-caption: Embed Arrays
-description: Workarounds for embedding data in array within the Visual Basic 6 (VBA) project
+title: 在 Visual Basic 6 (VBA) 代码中嵌入数组
+caption: 嵌入数组
+description: 在 Visual Basic 6 (VBA) 项目中嵌入文件或数据的解决方法
 image: array-text-declaration.png
-labels: [embed array,declare array]
+labels: [嵌入数组,声明数组]
 ---
-In some cases it might be required to embed file or data directly into the Visual Basic 6 project or VBA macro. Resources are not supported in Visual Basic. The below functions demonstrate how to embed the binary array into the macro without the need to redistribute the data file.
 
-## Writing the array declaration
+在某些情况下，可能需要直接将文件或数据嵌入到 Visual Basic 6 项目或 VBA 宏中。Visual Basic 不支持资源。下面的函数演示了如何将二进制数组嵌入到宏中，而无需重新分发数据文件。
 
-This option allows to output the array declaration into a text format which can be copy-pasted to the macro as variable declaration
+## 编写数组声明
 
-~~~vb
+此选项允许将数组声明输出为文本格式，可以将其复制粘贴到宏中作为变量声明。
+
+```vb
 Dim buff(5) As Byte
 buff(0) = 1: buff(1) = 2: buff(2) = 3
 buff(3) = 4: buff(4) = 5: buff(5) = 6
 
 WriteArrayDeclarationToFile buff, "D:\arr.txt", "arr", "Byte", 2
-~~~
+```
 
-Just copy the content of the generated file and paste into the macro module to embed the data.
+只需复制生成文件的内容并粘贴到宏模块中即可嵌入数据。
 
-![Array declared as text](array-text-declaration.png)
+![以文本形式声明的数组](array-text-declaration.png)
 
-~~~ vb
+```vb
 Sub WriteArrayDeclarationToFile(buffer As Variant, filePath As String, varName As String, typeName As String, Optional elemsPerRow As Integer = 10)
     
     Dim fileNo As Integer
@@ -65,51 +66,49 @@ Sub WriteArrayDeclarationToFile(buffer As Variant, filePath As String, varName A
     Close #fileNo
     
 End Sub
-~~~
+```
 
+然而，这种方法有一个限制，即文件的大小会比数组的大小大得多（例如，大小为 500 KB 的数组将生成约 10 MB 的文件）。这会导致 Visual Basic 出现“内存不足”错误。
 
+![VBA 中的内存不足错误](vba-out-of-memory-error.png)
 
-This approach however has a limitation as the size of the file would be much bigger than the size of the array (e.g. array of size 500 KB would generate the file of about 10 MB). This results into the *'Out of memory'* error in Visual Basic
+## 编写 base64 编码的数组
 
-![Out of memory error in VBA](vba-out-of-memory-error.png)
+作为解决方法，可以将数组嵌入为 Base64 字符串。请参考以下文章中的代码示例，了解如何将字节数组编码为 Base64 字符串：[将字节数组编码为 Base64 字符串](/docs/codestack/visual-basic/algorithms/data/encoding/base64#encode)
 
-## Writing the base64 encoded array
-
-As the workaround array can be embedded as Base64 string. Follow the following article for the code example of [encoding the byte array into base64 string](/docs/codestack/visual-basic/algorithms/data/encoding/base64#encode)
-
-~~~vb
+```vb
 Dim buff(100) As Byte
 ...
 WriteByteArrayDeclarationToFileAsBase64 buff, "D:\arr1.txt"
-~~~
+```
 
-This would result in the following file to be created:
+这将创建以下文件：
 
-![Base64 encoded array](array-base64-encoded.png){ width=350 }
+![Base64 编码的数组](array-base64-encoded.png){ width=350 }
 
-Declare the string constant and paste the value from this file. [Decode](/docs/codestack/visual-basic/algorithms/data/encoding/base64#decode) this string to get the byte array.
+声明字符串常量并将值从此文件粘贴过来。[解码](/docs/codestack/visual-basic/algorithms/data/encoding/base64#decode)此字符串以获取字节数组。
 
-This solution can also run into the limitation of the maximum symbols per line.
+这种解决方案也可能遇到每行的最大字符数限制。
 
-![Line length limitation in VBA](vba-line-length-limitation.png)
+![VBA 中的行长度限制](vba-line-length-limitation.png)
 
-To overcome this use the 3rd parameter of *WriteByteArrayDeclarationToFileAsBase64* method which allows to set the maximum number of symbols and automatically split the line with line continuation symbol:
+要解决此问题，请使用 *WriteByteArrayDeclarationToFileAsBase64* 方法的第三个参数，该参数允许设置最大符号数并自动使用行继续符号拆分行：
 
-~~~vb
+```vb
 WriteByteArrayDeclarationToFileAsBase64 buff, "D:\arr1.txt", 100
-~~~
+```
 
-The function provides the workaround for the limitation of maximum numbers of continuations which is equal to 24 (*'Too many line continuations'*) and splits the data in different functions.
+该函数提供了解决每行继续数限制（等于 24 个“太多的行继续”）并将数据拆分为不同函数的方法。
 
-![Too many line continuations error in VBA](too-many-line-continuations.png)
+![VBA 中的太多行继续错误](too-many-line-continuations.png)
 
-As the result the data is written to the file in the following format:
+结果，数据以以下格式写入文件：
 
-![Base64 encoded string split by functions](vba-array-split-by-functions.png){ width=350 }
+![通过函数拆分的 Base64 编码字符串](vba-array-split-by-functions.png){ width=350 }
 
-To use this, copy the content into the module and call the *GetBase64Buffer* function from the code which will return the base 64 encoded array which can be [decoded](/docs/codestack/visual-basic/algorithms/data/encoding/base64#decode).
+要使用此方法，请将内容复制到模块中，并从代码中调用 *GetBase64Buffer* 函数，该函数将返回可以[解码](/docs/codestack/visual-basic/algorithms/data/encoding/base64#decode)的 Base64 编码数组。
 
-~~~ vb
+```vb
 Sub WriteByteArrayDeclarationToFileAsBase64(buffer As Variant, filePath As String, Optional lineMaxLength As Integer = -1)
     
     Const FUNC_NAME = "GetBufferPart"
@@ -211,6 +210,4 @@ Function ConvertToBase64String(vArr As Variant) As String
     ConvertToBase64String = xmlNode.Text
     
 End Function
-~~~
-
-
+```
