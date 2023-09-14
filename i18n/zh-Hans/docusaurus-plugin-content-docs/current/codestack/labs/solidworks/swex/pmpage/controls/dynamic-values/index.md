@@ -1,14 +1,14 @@
 ---
-title: Handling dynamic values updated in the controls
-caption: Dynamic Values
-description: Handling dynamic values updated in the controls of the Property Manager Page using SwEx.PMPage framework
+title: 处理控件中更新的动态值
+caption: 动态值
+description: 使用SwEx.PMPage框架处理属性管理器页面中控件中更新的动态值
 image: controls-dynamic-values.gif
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
-![Values updated controls](controls-dynamic-values.gif)
+![更新的控件值](controls-dynamic-values.gif)
 
-In order to update control values for the properties changed from the code behind dynamically (e.g. on button click or when one property is changing another property), it is required to implement the [INotifyPropertyChanged](https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.inotifypropertychanged?view=netframework-4.8) in the data model. Raise the [PropertyChanged](https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged?view=netframework-4.8) event for every property which needs to be watched to notify the environment that value has changed and control needs to be updated.
+为了在代码后台动态更新属性更改的控件值（例如在按钮点击时或当一个属性更改时），需要在数据模型中实现[INotifyPropertyChanged](https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.inotifypropertychanged?view=netframework-4.8)接口。对于每个需要监视的属性，触发[PropertyChanged](https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged?view=netframework-4.8)事件，通知环境值已更改并且控件需要更新。
 
 ~~~vb
 Imports System.ComponentModel
