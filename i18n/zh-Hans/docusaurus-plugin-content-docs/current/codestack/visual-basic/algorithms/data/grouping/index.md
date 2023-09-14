@@ -1,11 +1,8 @@
----
-title: Convert array to dictionary in Visual Basic
-caption: Grouping
-description: This example shows how to group the array of the elements into the dictionary by using the key selector in Visual Basic
----
-This Visual Basic example shows how to group the array of the elements into the dictionary by using the key selector
+# 将数组转换为字典的 Visual Basic 示例
 
-~~~ vb
+此示例演示了如何使用键选择器将元素数组分组到字典中的 Visual Basic 示例。
+
+```vb
 Sub main()
 
     Dim strArr(6) As String
@@ -67,6 +64,5 @@ End Function
 Function KeySelector(elem As Variant) As Variant
     KeySelector = elem
 End Function
-~~~
-
+```
 
