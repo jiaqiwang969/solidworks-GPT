@@ -1,15 +1,15 @@
 ---
-title: Write custom properties to all sources using Document Manager API
-caption: Write All Properties
-description: VBA macro to write custom properties to all sources (file, configuration, cut-list items) using Document Manager API
+title: 使用文档管理器 API 将自定义属性写入所有来源
+caption: 写入所有属性
+description: 使用文档管理器 API 将自定义属性写入所有来源（文件、配置、切割列表项）的 VBA 宏示例
 image: added-custom-property.png
-labels: [write properties]
+labels: [写入属性]
 ---
 ![Custom property added to the file](added-custom-property.png){ width=450 }
 
-This VBA example demonstrates how to add the *ApprovedBy* property with the value of the name of current user to all sources using Document Manager API. Property will be added (or updated) for the file (general), all configurations and all cut-list items.
+此 VBA 示例演示了如何使用文档管理器 API 将 *ApprovedBy* 属性添加到所有来源中，并将其值设置为当前用户的名称。该属性将添加（或更新）到文件（通用）、所有配置和所有切割列表项中。
 
-Specify the full path of the file in the *FILE_PATH* constant.
+在 *FILE_PATH* 常量中指定文件的完整路径。
 
 ~~~ vb
 Const SW_DM_KEY As String = "Your License Key"
@@ -41,7 +41,7 @@ Sub main()
         swDmDoc.CloseDoc
         
     Else
-        MsgBox "Document Manager SDK is not installed"
+        MsgBox "未安装文档管理器 SDK"
     End If
     
 End Sub
@@ -134,11 +134,10 @@ Function OpenDocument(filePath As String, readOnly As Boolean) As SwDocumentMgr.
     Set swDmDoc = swDmApp.GetDocument(filePath, docType, readOnly, openErr)
     
     If swDmDoc Is Nothing Then
-        Err.Raise vbError, "", "Failed to open document: " & openErr
+        Err.Raise vbError, "", "无法打开文档：" & openErr
     End If
     
     Set OpenDocument = swDmDoc
     
 End Function
 ~~~
-
