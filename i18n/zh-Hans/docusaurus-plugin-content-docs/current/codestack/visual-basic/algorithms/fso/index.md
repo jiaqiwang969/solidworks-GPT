@@ -1,7 +1,7 @@
 ---
-title: Code snippets for File System Object (FSO) in Visual Basic (VBA)
-caption: File System Object
-description: Algorithms and code snippets for manipulating File System Object using Visual Basic (VBA)
+title: Visual Basic（VBA）中的文件系统对象（FSO）代码片段
+caption: 文件系统对象
+description: 使用Visual Basic（VBA）操作文件系统对象的算法和代码片段
 labels: [fso]
 ---
-This section contains algorithms and code snippets for manipulation File System Objects (FSO) in Visual Basic (VBA). This includes traversing folders and files, reading nad writing content.
+本节包含了在Visual Basic（VBA）中操作文件系统对象（FSO）的算法和代码片段。包括遍历文件夹和文件、读取和写入内容等操作。
