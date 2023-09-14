@@ -1,17 +1,17 @@
 ---
-title: Create and display b-spline curve using SOLIDWORKS API
-caption: Create B-Spline Curve
-description: VBA example demonstrates how to create and preview b-spline curve from the sample data using SOLIDWORKS API
+title: 使用SOLIDWORKS API创建和显示B样条曲线
+caption: 创建B样条曲线
+description: 此VBA示例演示了如何使用SOLIDWORKS API从示例数据创建和预览B样条曲线。
 image: bspline-curve-preview.png
 labels: [curve, bspline, modeler]
 ---
-![Preview of b-spline curve](bspline-curve-preview.png){ width=250 }
+![B样条曲线预览](bspline-curve-preview.png){ width=250 }
 
-This VBA example demonstrates the use of [IModeler::CreateBsplineCurve](https://help.solidworks.com/2012/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModeler~CreateBsplineCurve.html) method to create and preview b-spline curve using sample data.
+此VBA示例演示了使用示例数据和[IModeler::CreateBsplineCurve](https://help.solidworks.com/2012/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModeler~CreateBsplineCurve.html)方法创建和预览B样条曲线。
 
-Open part document and run the macro. Curve will be previewed and macro stops. Continue the macro to dispose the curve.
+打开零件文档并运行宏。曲线将被预览并停止宏。继续运行宏以销毁曲线。
 
-Follow the [Get B-Spline Curve Parameters](/docs/codestack/solidworks-api/geometry/get-bspline-parameters/) example for a guide of extracting the required data from the selected edge.
+请参考[获取B样条曲线参数](/docs/codestack/solidworks-api/geometry/get-bspline-parameters/)示例，了解如何从所选边缘中提取所需数据的指南。
 
 ~~~ vb
 Type DoubleRec
@@ -75,4 +75,3 @@ Function PackToDouble(val1 As Long, val2 As Long) As Double
     
 End Function
 ~~~
-
