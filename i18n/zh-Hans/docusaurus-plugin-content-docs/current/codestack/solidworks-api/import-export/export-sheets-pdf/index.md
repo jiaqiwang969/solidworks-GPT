@@ -1,22 +1,22 @@
 ---
 layout: sw-tool
-title: Export individual sheets from SOLIDWORKS drawing to PDF
-caption: Export Sheets To PDF
-description: VBA macro to export all sheets (or selected sheets) from multi-sheets drawing to individual PDF files
+title: 从SOLIDWORKS图纸中导出单独的工作表到PDF
+caption: 导出工作表到PDF
+description: 用于将多工作表图纸中的所有工作表（或选定的工作表）导出为单独的PDF文件的VBA宏
 image: exports-sheets-pdf.svg
-labels: [sheet,pdf,drawing,export]
-group: Import/Export
+labels: [工作表, PDF, 图纸, 导出]
+group: 导入/导出
 ---
-![Multi sheet drawing](drawing-multi-sheets.png){ width=500 }
+![多工作表图纸](drawing-multi-sheets.png){ width=500 }
 
-This VBA macro allows to export all sheets (or selected sheets) from the active SOLIDWORKS drawing into the separate PDF files. If no sheets selected - all sheets will be exported.
+此VBA宏允许将活动SOLIDWORKS图纸中的所有工作表（或选定的工作表）导出为单独的PDF文件。如果未选择工作表，则将导出所有工作表。
 
-PDF files are saved to the same folder as original drawing and named after the sheet. 
+PDF文件将保存在与原始图纸相同的文件夹中，并以工作表的名称命名。
 
-*INCLUDE_DRAWING_NAME* option allows to also include the name of the drawing to the output PDF if set to *True*, otherwise only sheet name is used.
+*INCLUDE_DRAWING_NAME*选项允许在输出PDF中包含绘图的名称，如果设置为*True*，否则仅使用工作表名称。
 
 ~~~ vb jagged-bottom
-Const INCLUDE_DRAWING_NAME As Boolean = True 'include the name of the drawing
+Const INCLUDE_DRAWING_NAME As Boolean = True '包含绘图的名称
 ~~~
 
 ~~~ vb
@@ -40,7 +40,7 @@ try_:
     Set swModel = swDraw
         
     If swModel.GetPathName() = "" Then
-        Err.Raise vbError, "", "Please save drawing"
+        Err.Raise vbError, "", "请保存图纸"
     End If
         
     Dim vSheetNames As Variant
@@ -104,7 +104,7 @@ try_:
         outFile = outFile & IIf(INCLUDE_DRAWING_NAME, drawName & "_", "") & sheetName & ".pdf"
         
         If False = swModel.Extension.SaveAs(outFile, swSaveAsVersion_e.swSaveAsCurrentVersion, swSaveAsOptions_e.swSaveAsOptions_Silent, swExpPdfData, errs, warns) Then
-            Err.Raise vbError, "", "Failed to export PDF to " & outFile
+            Err.Raise vbError, "", "无法将PDF导出到 " & outFile
         End If
         
     Next
@@ -120,5 +120,3 @@ finally_:
     
 End Sub
 ~~~
-
-
