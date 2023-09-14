@@ -1,19 +1,20 @@
 ---
-title: Reading the content of binary file using Visual Basic (VBA)
-caption: Read Binary File
-description: Reading the content of binary file into the byte array using Visual Basic (VBA)
-labels: [read,input,binary]
+title: 使用Visual Basic（VBA）读取二进制文件内容
+caption: 读取二进制文件
+description: 使用Visual Basic（VBA）将二进制文件内容读取到字节数组中
+labels: [读取,输入,二进制]
 ---
-The below code snippet demonstrates how to read the binary content into the variable of type *Byte()* from the specified file in Visual Basic 6 (VBA).
 
-~~~ vb
+以下代码片段演示了如何在Visual Basic 6（VBA）中从指定文件中读取二进制内容到类型为*Byte()*的变量中。
+
+```vb
 Dim content As Byte()
 content = ReadByteArrFromFile("C:\MyFolder\MyFile.dat")
-~~~
+```
 
-Code will generate an exception if file doesn't exist or cannot be read.
+如果文件不存在或无法读取，代码将生成异常。
 
-~~~ vb
+```vb
 Function ReadByteArrFromFile(filePath) As Byte()
 
     Dim buff() As Byte
@@ -32,5 +33,4 @@ Function ReadByteArrFromFile(filePath) As Byte()
     ReadByteArrFromFile = buff
     
 End Function
-~~~
-
+```
