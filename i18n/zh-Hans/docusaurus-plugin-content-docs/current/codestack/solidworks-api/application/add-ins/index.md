@@ -1,14 +1,14 @@
 ---
-title: Developing C++, C#, VB.NET add-ins for SOLIDWORKS using API
-caption: Add-ins
-description: Examples and articles explaining how to work with add-ins in SOLIDWORKS
+title: 使用API为SOLIDWORKS开发C++、C#、VB.NET插件
+caption: 插件
+description: 说明如何在SOLIDWORKS中使用插件的示例和文章
 ---
-Add-ins are in-process extension to SOLIDWORKS which provide the best performance benefits across all application types. Add-ins are COM objects and must implement the [ISwAddin](https://help.solidworks.com/2012/english/api/swpublishedapi/solidworks.interop.swpublished~solidworks.interop.swpublished.iswaddin.html) interface in SOLIDWORKS API.
+插件是SOLIDWORKS的进程内扩展，可以在所有应用程序类型中提供最佳性能优势。插件是COM对象，必须在SOLIDWORKS API中实现[ISwAddin](https://help.solidworks.com/2012/english/api/swpublishedapi/solidworks.interop.swpublished~solidworks.interop.swpublished.iswaddin.html)接口。
 
-Add-ins can be developed with any COM-compatible language: C++, C#, VB.NET, VB6, Managed C++.
+插件可以使用任何兼容COM的语言进行开发：C++、C#、VB.NET、VB6、Managed C++。
 
-Add-ins are available under the Tools->Add-Ins dialog in SOLIDWORKS menu and can be optionally enabled or disabled.
+插件可以在SOLIDWORKS菜单的Tools->Add-Ins对话框中找到，并可以选择性地启用或禁用。
 
-Most of SOLIDWORKS partner products and some of the products of SOLIDWORKS Standard, Professional and Premium packages are developed as add-in application rather than built-in applications.
+大多数SOLIDWORKS合作伙伴产品以及SOLIDWORKS标准版、专业版和高级版中的一些产品都是作为插件应用程序开发的，而不是内置应用程序。
 
-Add-ins can monitor the full lifecycle of SOLIDWORKS applications and documents. Add-ins have an access to all available SOLIDWORKS API, while macros and stand-alone applications have some limitations as some of the APIs would not be available.
+插件可以监视SOLIDWORKS应用程序和文档的完整生命周期。插件可以访问所有可用的SOLIDWORKS API，而宏和独立应用程序则有一些限制，因为其中一些API可能不可用。
