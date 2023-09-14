@@ -1,25 +1,25 @@
 ---
-title: Create elliptical swept temp body using SOLIDWORKS modeler API
-caption: Create Elliptical Swept Temp Body
-description: Example demonstrates how to sweep the circular profile along elliptical path to create a temp body using SOLIDWORKS API and IModeler::CreateSweptBody method
+title: 使用SOLIDWORKS模型API创建椭圆扫描临时体
+caption: 创建椭圆扫描临时体
+description: 该示例演示了如何使用SOLIDWORKS API将圆形剖面沿椭圆路径扫描以创建临时体。
 image: elliptical-sweep.png
-labels: [topology, geometry, sheet, modeler, sphere]
+labels: [拓扑结构, 几何, 平面, 模型, 球体]
 ---
-![Circular profile swept along elliptical path](elliptical-sweep.png){ width=250 }
+![沿椭圆路径扫描的圆形剖面](elliptical-sweep.png){ width=250 }
 
-This example demonstrates how to sweep the circular profile along elliptical path to create a temp body using SOLIDWORKS API.
+该示例演示了如何使用SOLIDWORKS API将圆形剖面沿椭圆路径扫描以创建临时体。
 
-The [IModeler::CreateSweptBody](https://help.solidworks.com/2012/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IModeler~CreateSweptBody.html) SOLIDWORKS API method requires profile and path to be preselected which means curves cannot be used for sweep operation.
+[SOLIDWORKS API](https://help.solidworks.com/2012/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IModeler~CreateSweptBody.html)的`IModeler::CreateSweptBody`方法要求预先选择剖面和路径，这意味着无法使用曲线进行扫描操作。
 
-However macro demonstrates how to create edges from the curves in the temp wire bodies.
+但是，该宏演示了如何从临时线体中创建边缘。
 
-Using the [Selecting Objects For API Only](/docs/codestack/solidworks-api/document/selection/api-only-selection/) technique allows to create sweep body without displaying any wire bodies and without any visible selection in the graphics area. All the user selections will be also preserved.
+使用[仅用于API的对象选择](/docs/codestack/solidworks-api/document/selection/api-only-selection/)技术可以在不显示任何线体并且不在图形区域中选择任何可见对象的情况下创建扫描体。所有用户选择也将被保留。
 
-* Open part document
-* Optionally select any object (this will not affect the sweep operation).
-* Run the macro. Macro displays the temp body and all the user selected objects are preserved.
-* Macro stops the execution
-* Continue the macro to hide the preview
+* 打开零件文档
+* 可选择任何对象（这不会影响扫描操作）。
+* 运行宏。宏显示临时体，所有用户选择的对象都将被保留。
+* 停止宏的执行
+* 继续宏以隐藏预览
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -58,7 +58,7 @@ Sub main()
         Set swSweptBody = Nothing
         
     Else
-        MsgBox "Please open model"
+        MsgBox "请打开模型"
     End If
 
 End Sub
@@ -156,5 +156,3 @@ Function GetPath() As SldWorks.Curve
 
 End Function
 ~~~
-
-
