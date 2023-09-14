@@ -1,13 +1,13 @@
 ---
-title: Data Structures in Visual Basic
-caption: Data Structures
-description: Articles explains the usage of data structures (types and enumerations) in Visual Basic
+title: Visual Basic中的数据结构
+caption: 数据结构
+description: 本文介绍了在Visual Basic中使用数据结构（类型和枚举）的用法。
 sidebar_position: 0
 ---
-Data structures allows to store complex data groups as a single type.
+数据结构允许将复杂的数据组作为单个类型存储。
 
-For example it is required to store and modify the group of data entries (e.g. Part Number, Cost, Supplier, etc.). In this case it would be beneficial to declare custom structure to represent the item as a single element instead of using multiple variables or arrays. User defined Type can be declared in the code and required fields can be added inside this type. This structure can be assigned to variable, passed to function or copied as any other value type.
+例如，需要存储和修改数据条目组（例如零件编号、成本、供应商等）。在这种情况下，声明自定义结构来表示该项作为单个元素，而不是使用多个变量或数组将会很有益。用户定义的类型可以在代码中声明，并且可以在此类型中添加所需的字段。此结构可以分配给变量，传递给函数或像任何其他值类型一样进行复制。
 
-In order to represent options which needs to be consumed by class or function, enumeration can be defined. Enumeration is a group of named constants of type Long which can be automatically incremented. And those constants can be accessed by their name instead of value, so this eliminates the issue of 'magic numbers'.
+为了表示需要由类或函数使用的选项，可以定义枚举。枚举是一组具有自动递增的Long类型的命名常量。可以通过名称而不是值访问这些常量，因此可以消除“魔法数字”的问题。
 
-This section contains the Visual Basic code examples which demonstrate the usage of different data structures.
+本节包含了Visual Basic代码示例，演示了不同数据结构的用法。
