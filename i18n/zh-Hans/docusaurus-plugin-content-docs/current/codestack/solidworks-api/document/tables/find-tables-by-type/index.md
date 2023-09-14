@@ -1,17 +1,17 @@
 ---
-title: Find tables from drawing by type using SOLIDWORKS API
-caption: Find Tables By Type
-description: Find all tables (BOM, general, revision) from drawing sheets using SOLIDWORKS API
+title: 使用SOLIDWORKS API按类型从图纸中查找表格
+caption: 按类型查找表格
+description: 使用SOLIDWORKS API从图纸中查找所有表格（BOM、通用、修订）。
 image: drawing-view-tables.png
-labels: [table,drawing]
+labels: [表格,图纸]
 ---
-![Tables in the drawing document](drawing-view-tables.png){ width=250 }
+![图纸中的表格](drawing-view-tables.png){ width=250 }
 
-This examples allows to find all tables by specified type from the active drawing document using SOLIDWORKS API.
+此示例使用SOLIDWORKS API从活动图纸中按指定类型查找所有表格。
 
-It is required to specify the array of types using the Array function, where each value represents the type of the table (BOM, general, cut-list, revision, title block etc.) as defined in [swTableAnnotationType_e](https://help.solidworks.com/2017/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swtableannotationtype_e.html) enumeration.
+需要使用Array函数指定类型数组，其中每个值表示表格的类型（BOM、通用、切割列表、修订、标题块等），这些类型在[swTableAnnotationType_e](https://help.solidworks.com/2017/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swtableannotationtype_e.html)枚举中定义。
 
-As the result array of pointer to [ITableAnnotation](https://help.solidworks.com/2017/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ITableAnnotation.html) SOLIDWORKS API interface is returned and title of each table is output to the immediate window of VBA editor.
+作为结果，返回指向[ITableAnnotation](https://help.solidworks.com/2017/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ITableAnnotation.html) SOLIDWORKS API接口的指针数组，并将每个表格的标题输出到VBA编辑器的即时窗口。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -45,7 +45,7 @@ Sub main()
         End If
         
     Else
-        MsgBox "Please open drawing"
+        MsgBox "请打开图纸"
     End If
     
 End Sub
@@ -120,4 +120,3 @@ Function FilterContains(val As swTableAnnotationType_e, filter As Variant) As Bo
     
 End Function
 ~~~
-
