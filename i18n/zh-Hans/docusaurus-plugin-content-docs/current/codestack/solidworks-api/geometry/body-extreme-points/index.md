@@ -1,28 +1,29 @@
 ---
-title: Macro gets extreme points on body using SOLIDWORKS API
-caption: Get Extreme Points On Body
-description: Example will find the extreme points of the selected body in XYZ directions and create a sketch points
+title: 使用SOLIDWORKS API在物体上获取极值点的宏
+caption: 获取物体的极值点
+description: 该示例将在所选物体中找到XYZ方向上的极值点，并创建一个草图点。
 image: body-extreme-sketch-points.png
-labels: [body, bounding box, direction, example, extreme points, solidworks api]
+labels: [物体, 边界框, 方向, 示例, 极值点, solidworks api]
 redirect-from:
   - /2018/03/get-extreme-points-on-body.html
 ---
-Extreme points are usually used to find the most remote points in the specified directions. The points can be found using the [IBody2::GetExtremePoint]( https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ibody2~getextremepoint.html) SOLIDWORKS API.
 
-This function expects direction vector as an input and returns the X, Y, Z coordinate of the extreme point in this direction as out parameters.
+通常使用极值点来找到指定方向上最远的点。可以使用[SOLIDWORKS API](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ibody2~getextremepoint.html)的`IBody2::GetExtremePoint`函数来找到这些点。
 
-It is not required to specify the point on the vector when defining the direction.
-This function is usually used to find the bounding dimension of the body, especially when the body orientation is not aligned with global XYZ coordinate as it is not required to reorient the body to find its best fit bounding box.
+该函数需要方向向量作为输入，并将X、Y、Z坐标作为输出参数返回该方向上的极值点。
 
-Unlike bounding box returned via [IBody2::GetBodyBox]( https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ibody2~getbodybox.html) or any other bounding box function extreme points are precise which means that this data can be used for comparison and calculation purposes.
+在定义方向时，不需要指定向量上的点。
+通常在找到体的边界尺寸时使用此函数，特别是当体的方向与全局XYZ坐标不对齐时，不需要重新定位体以找到其最佳匹配边界框。
 
-Image below demonstrates typical extreme points in multiple directions of the model.
+与通过`IBody2::GetBodyBox`或任何其他边界框函数返回的边界框不同，极值点是精确的，这意味着可以将这些数据用于比较和计算。
 
-![Extreme points of the body in +X,-X,+Y and -Y directions](extereme-points.png){ width=400 }
+下图演示了模型在多个方向上的典型极值点。
 
-The following code example will find the extreme points of the selected body in XYZ directions and create a sketch points.
+![模型在+X、-X、+Y和-Y方向上的极值点](extereme-points.png){ width=400 }
 
-![Sketch points created in the extreme directions of the body](body-extreme-sketch-points.png){ width=320 height=217 }
+以下代码示例将在所选物体的XYZ方向上找到极值点，并创建一个草图点。
+
+![在物体的极值方向上创建的草图点](body-extreme-sketch-points.png){ width=320 height=217 }
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -76,18 +77,16 @@ Sub main()
         
         Else
             
-            MsgBox "Please select solid body"
+            MsgBox "请选择实体体"
             
         End If
         
     Else
         
-        MsgBox "Please open part or assembly"
+        MsgBox "请打开零件或装配体"
         
     End If
     
 End Sub
 
 ~~~
-
-
