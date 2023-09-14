@@ -1,28 +1,28 @@
 ---
 layout: sw-tool
-title: VBA macro to export sketch point coordinates to CSV file
-caption: Export Sketch Coordinates
-description: VBA macro to export coordinates of sketch points from the selected sketch with an ability to convert coordinate to user units and into the model space
+title: 将草图点坐标导出为CSV文件的VBA宏
+caption: 导出草图坐标
+description: 这个VBA宏可以将所选草图中的所有草图点坐标导出到CSV文件中。
 image: export-coordinates.svg
 labels: [sketch,export,points,coordinates,csv]
 group: Sketch
 ---
-![Sketch points in the selected sketch](sketch-points.png){ width=500 }
+![所选草图中的草图点](sketch-points.png){ width=500 }
 
-This VBA macro allows to export the coordinates of all sketch points from the selected sketch into the CSV file.
+这个VBA宏允许将所选草图中的所有草图点坐标导出到CSV文件中。
 
-CSV file can be opened in Excel
+CSV文件可以在Excel中打开。
 
-![Sketch points coordinates opened in Excel](excel-coordinates.png)
+![在Excel中打开的草图点坐标](excel-coordinates.png)
 
-Macro has an option to export coordinates in the sketch space (XY for 2D sketch) or in the model space (XYZ). Macro has an option to convert the points coordinates to system units (meters) or user units, currently assigned to the model.
+宏有一个选项，可以将坐标导出到草图空间（2D草图的XY坐标）或模型空间（XYZ坐标）。宏还有一个选项，可以将点坐标转换为系统单位（米）或当前分配给模型的用户单位。
 
-Configure the macro by changing the constants below.
+通过更改下面的常量来配置宏。
 
 ~~~ vb jagged-bottom
-Const CONVERT_TO_USER_UNIT As Boolean = True 'True to use the current model units, False to use system units (meters)
-Const CONVERT_TO_MODEL_SPACE As Boolean = True 'For 2D Sketches, True to export coordinates in the sketch space, False to convert coordinates to the model space
-Const OUT_PATH As String = "D:\points.csv" 'Full path to the output file
+Const CONVERT_TO_USER_UNIT As Boolean = True 'True表示使用当前模型单位，False表示使用系统单位（米）
+Const CONVERT_TO_MODEL_SPACE As Boolean = True '对于2D草图，True表示在草图空间中导出坐标，False表示将坐标转换为模型空间
+Const OUT_PATH As String = "D:\points.csv" '输出文件的完整路径
 ~~~
 
 ~~~ vb
@@ -44,7 +44,7 @@ try_:
     Set swModel = swApp.ActiveDoc
     
     If swModel Is Nothing Then
-        Err.Raise vbError, "", "Please open model"
+        Err.Raise vbError, "", "请打开模型"
     End If
     
     Dim swSelMgr As SldWorks.SelectionMgr
@@ -62,7 +62,7 @@ try_:
     End If
     
     If swSketch Is Nothing Then
-        Err.Raise vbError, "", "Please select sketch"
+        Err.Raise vbError, "", "请选择草图"
     End If
     
     Dim vPts As Variant
@@ -86,7 +86,7 @@ Function ExtractPoints(model As SldWorks.ModelDoc2, sketch As SldWorks.sketch, c
     Dim i As Integer
     
     If IsEmpty(vSkPts) Then
-        Err.Raise vbError, "", "Sketch contains no points"
+        Err.Raise vbError, "", "草图中没有点"
     End If
     
     Dim vPts() As Variant
@@ -170,4 +170,3 @@ Sub WritePointsToCsvFile(filePath As String, vPts As Variant)
     
 End Sub
 ~~~
-
