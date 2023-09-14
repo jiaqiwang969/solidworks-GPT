@@ -1,31 +1,31 @@
 ---
-title: Working with geometry (IModeler) using SOLIDWORKS API
-caption: Geometry
-description: Collection of examples and articles related to SOLIDWORKS model geometry topology.
+title: 使用SOLIDWORKS API处理几何图形（IModeler）
+caption: 几何图形
+description: 包含与SOLIDWORKS模型几何拓扑相关的示例和文章的集合。
 image: solidworks-geometry-api.png
 sidebar_position: 0
 ---
-![SOLIDWORKS models geometry API](solidworks-geometry-api.png){ width=250 }
+![SOLIDWORKS模型几何API](solidworks-geometry-api.png){ width=250 }
 
-SOLIDWORKS API provides a low level access to geometry generation and processing via [IModeler](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModeler.html) interface.
+SOLIDWORKS API通过[IModeler](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModeler.html)接口提供了对几何生成和处理的低级访问。
 
-This interface allows to manipulate the geometry on a kernel level:
+该接口允许在内核级别上操作几何图形：
 
-* Create surfaces from boundary representation (BREP) data
-* Create curves
-* Trim curves and surfaces
+* 从边界表示（BREP）数据创建曲面
+* 创建曲线
+* 修剪曲线和曲面
 
-Geometry API is most commonly used to generate and modify bodies in [Macro Features](/docs/codestack/solidworks-api/document/macro-feature/).
+几何API最常用于在[宏特征](/docs/codestack/solidworks-api/document/macro-feature/)中生成和修改实体。
 
-This section contains examples of working with geometry (adding, editing) using SOLIDWORKS API.
+本节包含使用SOLIDWORKS API处理几何图形（添加、编辑）的示例。
 
-## Previewing Temp Geometry
+## 预览临时几何图形
 
-Temporary geometry is invisible and resides in memory. However it can be very useful to preview the geometry to troubleshoot. Below are code snippets allowing to preview different types of temp geometry
+临时几何图形是不可见的，驻留在内存中。但是，预览几何图形可以非常有用，用于故障排除。下面是一些代码片段，可以用于预览不同类型的临时几何图形。
 
-### Previewing Curves
+### 预览曲线
 
-Curves can be previewed by converting them into the temp wire bodies which can be displayed in the graphics area.
+通过将曲线转换为可以在图形区域中显示的临时线体，可以预览曲线。
 
 ~~~ vb
 PreviewCurves swModel, swCurve1, swCurve2, swCurve3
