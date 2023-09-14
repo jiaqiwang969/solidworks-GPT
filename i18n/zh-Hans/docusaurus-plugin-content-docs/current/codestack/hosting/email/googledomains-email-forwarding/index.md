@@ -1,23 +1,23 @@
 ---
-title: Setup Google Domains e-mail forwarding from custom domain for free 
-caption: Setup Google Domains E-Mail Forwarding
-description: Setup of up to 100 of free e-mail forwarding from custom domain using Google Domains
-labels: [google domains,e-mail forwarding]
+title: 免费设置Google Domains自定义域名的电子邮件转发
+caption: 设置Google Domains电子邮件转发
+description: 使用Google Domains设置最多100个免费的自定义域名电子邮件转发
+labels: [google domains,电子邮件转发]
 ---
-Google domains registrar provides a free service to forward up to 100 e-mails from the custom domains. To enable this service navigate to *Email* tab in the Google Domains Console.
+Google Domains注册商提供了一个免费服务，可以将最多100封电子邮件从自定义域名转发。要启用此服务，请在Google Domains控制台中导航到*Email*选项卡。
 
-Specify the e-mail to forward from the in the first box and e-mail to forward to in the second box.
+在第一个框中指定要转发的电子邮件，第二个框中指定要转发到的电子邮件。
 
-![Add new E-Mail forwarding](email-forwarding.png)
+![添加新的电子邮件转发](email-forwarding.png)
 
-verification code will be sent to the destination e-mail. Until the e-mail is verified the forwarding is not enabled:
+验证代码将发送到目标电子邮件。在电子邮件验证之前，转发功能不会启用：
 
-![Pending for e-Mail forwarding verification](email-verification.png)
+![等待电子邮件转发验证](email-verification.png)
 
-Once e-mail is verified the warning is removed:
+一旦电子邮件验证成功，警告将被移除：
 
-![Validated E-Mail forwarding record](email-verified.png)
+![已验证的电子邮件转发记录](email-verified.png)
 
-Unlike [forwarding with GoDaddy](/docs/codestack/hosting/email/godaddy-email-forwarding/), Google Domains enables the encryption for the forwarded e-mails:
+与[GoDaddy的转发方式](/docs/codestack/hosting/email/godaddy-email-forwarding/)不同，Google Domains为转发的电子邮件启用了加密功能：
 
-![Received e-mail with encryption](secure-email.png)
+![带有加密的收到的电子邮件](secure-email.png)
