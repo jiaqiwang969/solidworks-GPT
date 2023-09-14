@@ -1,14 +1,14 @@
 ---
-title: Importing and exporting files using SOLIDWORKS API
-caption: Import/Export
-description: Collection of examples and articles related to files importing and exporting using SOLIDWORKS API
+title: 使用SOLIDWORKS API导入和导出文件
+caption: 导入/导出
+description: 收集了与使用SOLIDWORKS API导入和导出文件相关的示例和文章
 image: import-export.svg
 sidebar_position: 0
 ---
-![Importing and exporting SOLIDWORKS files with SOLIDWORKS API](import-export.svg){ width=250 }
+![使用SOLIDWORKS API导入和导出SOLIDWORKS文件](import-export.svg){ width=250 }
 
-SOLIDWORKS API allows to export file to foreign format via [IModelDocExtension::SaveAs2](https://help.solidworks.com/2019/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeldocextension~saveas2.html) and it is only required to specify the corresponding extension for the foreign file (e.g. stp, x_t, igs etc.).
+SOLIDWORKS API允许通过[IModelDocExtension::SaveAs2](https://help.solidworks.com/2019/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeldocextension~saveas2.html)将文件导出为外部格式，只需指定外部文件的相应扩展名（例如stp、x_t、igs等）。
 
-For importing foreign file it is required to use the [ISldWorks::LoadFile4](https://help.solidworks.com/2019/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~loadfile4.html) SOLIDWORKS API method. Parameters of this function allows to specify additional importing options.
+要导入外部文件，需要使用[ISldWorks::LoadFile4](https://help.solidworks.com/2019/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~loadfile4.html) SOLIDWORKS API方法。该函数的参数允许指定额外的导入选项。
 
-This section contains code example, macros and scripts for automation import and export functionality of SOLIDWORKS.
+本节包含了用于自动化导入和导出SOLIDWORKS功能的代码示例、宏和脚本。
