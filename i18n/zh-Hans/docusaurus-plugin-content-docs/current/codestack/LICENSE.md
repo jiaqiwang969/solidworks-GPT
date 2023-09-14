@@ -1,21 +1,9 @@
-MIT License
+MIT许可证
 
-Copyright (c) 2020 Xarial Pty Limited
+版权所有（c）2020年Xarial Pty有限公司
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+特此授予任何获得本软件及其相关文档文件（以下简称“软件”）副本的人免费使用本软件，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售本软件的副本，以及允许获得本软件的人这样做，但需遵守以下条件：
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+上述版权声明和本许可声明应包含在所有副本或实质部分的软件中。
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+本软件按“原样”提供，不提供任何明示或暗示的保证，包括但不限于适销性、特定用途适用性和非侵权性的保证。无论是在合同诉讼、侵权行为还是其他方面，作者或版权持有人均不对任何索赔、损害或其他责任负责，无论是因软件或使用或其他方式引起的。
