@@ -1,21 +1,21 @@
 ---
-title: Functions, subroutines and parameters in Visual Basic
-caption: Functions and Subroutines
-description: Articles about using functions and subroutines (procedures) in Visual Basic as well as parameters
+title: Visual Basic 中的函数、子程序和参数
+caption: 函数和子程序
+description: 有关在 Visual Basic 中使用函数、子程序（过程）以及参数的文章
 image: argument-not-optional.png
 sidebar_position: 0
 ---
-Functions are used to define the reusable procedures (group of code statements) which can be called from another functions. Functions in Visual Basic are synchronous which means that the caller must wait for the function to return the control before proceeding to the next statement.
+函数用于定义可从其他函数调用的可重用过程（一组代码语句）。Visual Basic 中的函数是同步的，这意味着调用者必须等待函数返回控制权，然后才能继续执行下一条语句。
 
-Function can return values or be void (this function is called **subroutine** or **sub**).
+函数可以返回值，也可以是无返回值（此类函数称为**子程序**或**子**）。
 
-Functions can expect or return parameters (**ByRef** parameters) or be parameterless.
+函数可以期望或返回参数（**ByRef** 参数），也可以没有参数。
 
-Function which is invoking itself called **recursive function**
+调用自身的函数称为**递归函数**。
 
-## Declaring function
+## 声明函数
 
-Function is declared within the **Function**-**End Function** block
+函数在 **Function**-**End Function** 块内声明。
 
 ~~~ vb
 Function <Name>(<Optional Parameters>) As <Type>
@@ -23,9 +23,9 @@ Function <Name>(<Optional Parameters>) As <Type>
 End Function
 ~~~
 
-Type of the function should be defined after the **As** keyword. If type is not explicitly specified than it is considered to be [Variant](/docs/codestack/visual-basic/variables/standard-types#variant)
+函数的类型应在 **As** 关键字之后定义。如果未明确指定类型，则被视为 [Variant](/docs/codestack/visual-basic/variables/standard-types#variant)。
 
-Subroutine is declared within the **Sub**-**End Sub** block
+子程序在 **Sub**-**End Sub** 块内声明。
 
 ~~~ vb
 Sub <Name>(<Optional Parameters>)
@@ -33,31 +33,31 @@ Sub <Name>(<Optional Parameters>)
 End Sub
 ~~~
 
-Functions and procedures must have unique name within module or class. Functions are not overloadable in Visual Basic. Even if functions have different parameters they cannot have the same names otherwise *Ambiguous name detected* compile error is thrown.
+函数和过程在模块或类中必须具有唯一的名称。在 Visual Basic 中，函数不能重载。即使函数具有不同的参数，它们也不能具有相同的名称，否则会引发“检测到模糊名称”编译错误。
 
-![Compile error: Ambiguous name detected](ambiguous-name-detected.png){ width=300 }
+![编译错误：检测到模糊名称](ambiguous-name-detected.png){ width=300 }
 
-## Calling functions and subroutines
+## 调用函数和子程序
 
-Function and subroutines can be called by specifying its name. If the function resides in different module than function name should be preceded by module name and . symbol
+通过指定其名称来调用函数和子程序。如果函数位于不同的模块中，则函数名前面应该加上模块名和 . 符号。
 
 ~~~ vb
 Func1
 Module1.Func1
 ~~~
 
-If result of the function is assigned to the variable than parenthesis symbol () should be used. () should be also used if *Call* operator is used to invoke the function.
+如果将函数的结果赋给变量，则应使用括号符号 ()。如果使用 *Call* 运算符调用函数，则也应使用括号符号 ()。
 
 ~~~ vb
-val = Func1() 'using () to retrieve the value
-Call Func1()  'using () while calling using Call operator
+val = Func1() '使用 () 检索值
+Call Func1()  '使用 () 调用时使用 Call 运算符
 ~~~
 
-> **Rule:** no equal (or call operator) - no parenthesis.
+> **规则：**没有等号（或 call 运算符）- 没有括号。
 
-## Returning values
+## 返回值
 
-In order to return the value from function is is required to consider its name as variable and follow the same rules as while [assigning the variables values](/docs/codestack/visual-basic/variables/)
+要从函数返回值，需要将其名称视为变量，并遵循与[分配变量值](/docs/codestack/visual-basic/variables/)相同的规则。
 
 ~~~ vb
 Function GetDouble() As Double
@@ -69,50 +69,50 @@ Function GetObject() As Object
 End Sub
 ~~~
 
-## Passing parameters
+## 传递参数
 
-Parameters must be passed to the function or subroutine in the order they declared in the function
+参数必须按照函数中声明的顺序传递给函数或子程序。
 
-Parameters can be either passed as variable or be defined 'on-a-fly'
+参数可以作为变量传递，也可以在调用函数时“即兴”定义。
 
 ~~~ vb
-Func par1, par2, "value2" 'calling function Func with 3 parameters
+Func par1, par2, "value2" '调用带有 3 个参数的函数 Func
 ~~~
 
-*Argument not optional* compile error is thrown when calling function without passing the required parameters.
+在调用函数时，如果没有传递所需的参数，则会引发“参数不可选”编译错误。
 
-![Compile error: Argument not optional](argument-not-optional.png){ width=300 }
+![编译错误：参数不可选](argument-not-optional.png){ width=300 }
 
-### Reference parameters
+### 引用参数
 
-Function or subroutine can return additional parameters. It is required to use **ByRef** keyword to declare parameter as out parameter.
+函数或子程序可以返回额外的参数。必须使用 **ByRef** 关键字将参数声明为输出参数。
 
 ~~~ vb
-Function Func(par1 As Double, ByRef outPar1 As Integer) As Double 'function expects par1 as input and returns double value and another integer value as reference parameter
+Function Func(par1 As Double, ByRef outPar1 As Integer) As Double '函数期望 par1 作为输入，并返回双精度值和另一个整数值作为引用参数
 End Function
 ~~~
 
-### Optional parameters
+### 可选参数
 
-Function or subroutine can declare optional parameters with the default values. In this case it is not required to explicitly set the value for the parameter when function is called.
+函数或子程序可以声明具有默认值的可选参数。在这种情况下，在调用函数时不需要显式设置参数的值。
 
 ~~~ vb
-Call Proc() 'no need to specify value for parameter explicitly. In this case the default value (i.e. 0.5) is used
+Call Proc() '不需要显式指定参数的值。在这种情况下，使用默认值（即 0.5）
 
-Sub Proc(Optional par1 As Double = 0.5) 'optional parameter with default value 0.5
+Sub Proc(Optional par1 As Double = 0.5) '具有默认值 0.5 的可选参数
 End Sub
 ~~~
 
-Optional parameters can be set selectively by name (*param name*:=*param value*). This allows to set the parameters in a different order they declared in the function signature
+可选参数可以通过名称（*param name*:=*param value*）进行选择性设置。这样可以按照与函数签名中声明的顺序不同的顺序设置参数。
 
 ~~~ vb
-Call Func(param1:=1, param3:="Test") 'only 2 parameters (1st and 3rd) are used
+Call Func(param1:=1, param3:="Test") '仅使用 2 个参数（第一个和第三个）
 
 Function Func (Optional param1 As Integer = 0, Optional param2 As Double = 0.0, Optional param3 As String = "")
 End Function
 ~~~
 
-Example below demonstrates cases where the optional parameters can be used.
+下面的示例演示了可以使用可选参数的情况。
 
 ~~~ vb
 Sub main()
@@ -165,20 +165,20 @@ End Sub
 
 
 
-## Terminating function and subroutine
+## 终止函数和子程序
 
-Function and subroutine can be terminated and control returned to the caller at any stage using the **Exit Function** and **Exit Sub** respectively.
+函数和子程序可以在任何阶段终止，并将控制权返回给调用者，使用 **Exit Function** 和 **Exit Sub**。
 
-Example below demonstrates different cases of using functions and subroutines.
+下面的示例演示了使用函数和子程序的不同情况。
 
 ~~~ vb
 Sub main()
     
-    'prints ProcedureWithoutParameters twice
+    '打印两次 ProcedureWithoutParameters
     ProcedureWithoutParameters
     ProcedureWithoutParameters
     
-    'Compile error: Argument not optional
+    '编译错误：参数不可选
     'SayHello
     
     'Hello, Test
@@ -225,5 +225,3 @@ Function GetFormattedDate(dateFormat As String) As String
     
 End Function
 ~~~
-
-
