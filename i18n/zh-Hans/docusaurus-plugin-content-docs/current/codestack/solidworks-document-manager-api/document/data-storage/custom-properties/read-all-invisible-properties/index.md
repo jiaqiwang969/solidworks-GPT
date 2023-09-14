@@ -1,30 +1,30 @@
 ---
-title: Read all invisible custom properties using SOLIDWORKS Document Manager API
-caption: Read All Invisible Custom Properties
-description: VBA example to read and output all invisible custom properties from the specific model using SOLIDWORKS Document Manager API
-labels: [invisible, custom property]
+title: 使用SOLIDWORKS文档管理器API读取所有不可见的自定义属性
+caption: 读取所有不可见的自定义属性
+description: 使用SOLIDWORKS文档管理器API从指定模型中读取并输出所有不可见的自定义属性的VBA示例
+labels: [不可见, 自定义属性]
 ---
-SOLIDWORKS models contain several invisible custom properties, such as $PRP:"SW-File Name", $PRP:"SW-Title". Those are read-only and cannot be modified.
+SOLIDWORKS模型包含多个不可见的自定义属性，例如$PRP:"SW-File Name"，$PRP:"SW-Title"。这些属性是只读的，无法修改。
 
-This VBA macro reads and outputs all invisible custom properties from the specified model using SOLIDWORKS Document Manager API. The result is output to the immediate window of the VBA editor in the following format:
+这个VBA宏使用SOLIDWORKS文档管理器API从指定的模型中读取并输出所有不可见的自定义属性。结果以以下格式输出到VBA编辑器的即时窗口中：
 
 ~~~
 ...
-SW-Short Date: 12/09/2019 [Text]
-SW-Long Date: Thursday, 12 September 2019 [Text]
-SW-Configuration Name: A [Text]
+SW-Short Date: 12/09/2019 [文本]
+SW-Long Date: Thursday, 12 September 2019 [文本]
+SW-Configuration Name: A [文本]
 ...
-SW-Created Date: Tuesday, 10 September 2019 10:46:55 AM [Text]
-SW-Last Saved Date: Thursday, 12 September 2019 8:33:04 PM [Text]
-SW-Last Saved By: artem.taturevych [Text]
+SW-Created Date: Tuesday, 10 September 2019 10:46:55 AM [文本]
+SW-Last Saved Date: Thursday, 12 September 2019 8:33:04 PM [文本]
+SW-Last Saved By: artem.taturevych [文本]
 ...
-MyProperty: MyValue [Text]
+MyProperty: MyValue [文本]
 ~~~
 
-Specify the file to read properties from in *FILE_PATH* constant.
+在*FILE_PATH*常量中指定要读取属性的文件。
 
 ~~~ vb
-Const SW_DM_KEY As String = "Your license key"
+Const SW_DM_KEY As String = "您的许可证密钥"
 
 Const FILE_PATH As String = "C:\SampleModel.SLDPRT"
 
@@ -62,15 +62,15 @@ Sub main()
                 
                 Select Case prpType
                     Case SwDmCustomInfoType.swDmCustomInfoDate
-                        prpTypeName = "Date"
+                        prpTypeName = "日期"
                     Case SwDmCustomInfoType.swDmCustomInfoNumber
-                        prpTypeName = "Number"
+                        prpTypeName = "数字"
                     Case SwDmCustomInfoType.swDmCustomInfoText
-                        prpTypeName = "Text"
+                        prpTypeName = "文本"
                     Case SwDmCustomInfoType.swDmCustomInfoYesOrNo
-                        prpTypeName = "YesNo"
+                        prpTypeName = "是/否"
                     Case SwDmCustomInfoType.swDmCustomInfoUnknown
-                        prpTypeName = "Unknown"
+                        prpTypeName = "未知"
                 End Select
             
                 Debug.Print prpName & ": " & prpVal & " [" & prpTypeName & "]"
@@ -79,7 +79,7 @@ Sub main()
         End If
         
     Else
-        MsgBox "Document Manager SDK is not installed"
+        MsgBox "未安装文档管理器SDK"
     End If
     
 End Sub
@@ -107,11 +107,10 @@ Function OpenDocument(filePath As String, readOnly As Boolean) As SwDocumentMgr.
     Set swDmDoc = swDmApp.GetDocument(filePath, docType, readOnly, openErr)
     
     If swDmDoc Is Nothing Then
-        Err.Raise vbError, "", "Failed to open document: " & openErr
+        Err.Raise vbError, "", "打开文档失败: " & openErr
     End If
     
     Set OpenDocument = swDmDoc
     
 End Function
 ~~~
-
