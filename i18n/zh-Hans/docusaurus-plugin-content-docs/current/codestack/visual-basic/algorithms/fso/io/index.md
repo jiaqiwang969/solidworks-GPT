@@ -1,7 +1,8 @@
 ---
-title: Handling of Input and output (I/O) in Visual Basic (VBA)
-caption: Input And Output
-description: Algorithms and code snippets for managing inputs and outputs (I/O) using Visual Basic (VBA)
+title: Visual Basic (VBA) 中的输入和输出 (I/O) 处理
+caption: 输入和输出
+description: 使用 Visual Basic (VBA) 管理文件输入和输出的算法和代码片段示例
 labels: [io]
 ---
-This section contains examples for managing inputs and outputs for files using Visual Basic (VBA)
+
+本节包含使用 Visual Basic (VBA) 管理文件输入和输出的示例。
