@@ -1,16 +1,16 @@
 ---
-title: Button control in SOLIDWORKS property Manager Page
-caption: Button
-description: Creating button control in the Property Manager Page using SwEx.PMPage framework
+title: SOLIDWORKS 属性管理器页面中的按钮控件
+caption: 按钮
+description: 使用 SwEx.PMPage 框架在属性管理器页面中创建按钮控件
 image: button.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
-![Button control](button.png)
+![按钮控件](button.png)
 
-In order to create a button in the property manager page, it is required to declare the property of delegate type [Action](https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netframework-4.8).
+要在属性管理器页面中创建按钮，需要声明委托类型 [Action](https://docs.microsoft.com/zh-cn/dotnet/api/system.action?view=netframework-4.8) 的属性。
 
-The pointer to void function assigned to this property is a handler of the button:
+将指向 void 函数的指针分配给此属性，作为按钮的处理程序：
 
 ~~~vb
 Public Class ButtonDataModel
@@ -22,7 +22,7 @@ Public Class ButtonDataModel
     End Property
 
     Private Sub OnButtonClick()
-        'TODO: Handle Button click
+        'TODO: 处理按钮点击事件
     End Sub
 
 End Class
@@ -37,7 +37,7 @@ public class ButtonDataModel
 
     private void OnButtonClick()
     {
-        //TODO: Handle button click
+        //TODO: 处理按钮点击事件
     }
 }
 ~~~
