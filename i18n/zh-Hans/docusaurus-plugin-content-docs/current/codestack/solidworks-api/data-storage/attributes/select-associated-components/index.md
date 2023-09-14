@@ -1,18 +1,13 @@
 ---
-title: Select components associated with attributes using SOLIDWORKS API
-caption: Select The Components Associated With Attributes On Select
-description: Example attaches to the selection events of the active assembly
-labels: [attribute, component, data, example, selection, solidworks api]
-redirect-from:
-  - /2018/03/select-components-associated-with.html
----
-This example attaches to the selection SOLIDWORKS API events of the active assembly via [NewSelectionNotify](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dassemblydocevents_newselectionnotifyeventhandler.html) notification.
+title: 使用SOLIDWORKS API选择与属性关联的组件
+caption: 选择与选择关联的组件上的属性
+description: 该示例通过[NewSelectionNotify](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dassemblydocevents_newselectionnotifyeventhandler.html)通知，附加到活动装配的选择SOLIDWORKS API事件。
 
-If the attribute is selected and there is a component associated with this attribute - this component will be selected in the tree.  
+如果选择了属性并且有与该属性关联的组件 - 则在树中选择该组件。
 
-Macro will stop once the active assembly is closed.  
+一旦活动装配关闭，宏将停止运行。
 
-*Macro module*
+*宏模块*
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -40,7 +35,7 @@ End Sub
 
 
 
-*EventsListener class*
+*EventsListener类*
 
 ~~~ vb
 Dim swModel As SldWorks.ModelDoc2
@@ -95,4 +90,3 @@ End Sub
 
 
 ~~~
-
