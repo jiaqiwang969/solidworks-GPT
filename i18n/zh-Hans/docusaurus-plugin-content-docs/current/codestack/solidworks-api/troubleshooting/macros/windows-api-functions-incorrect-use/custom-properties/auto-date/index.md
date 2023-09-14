@@ -1,18 +1,14 @@
 ---
 layout: sw-tool
-caption: Auto Date Custom Property
-title: Create a dynamic auto updatable date custom property in SOLIDWORKS file
-description: VBA macro which creates a date custom property in SOLIDWORKS file in the specified format with an option to automatically update
-image: auto-date-custom-property.svg
-group: Custom Properties
----
-This VBA macro allows to insert custom property **Date** into file-specific custom property. User has an option to specify the format of the date. Refer [Date and time format string](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings) for more information about supported formats.
+caption: 自动日期自定义属性
+title: 在SOLIDWORKS文件中创建一个动态自动更新的日期自定义属性
+description: 这个VBA宏允许将自定义属性**日期**插入到文件特定的自定义属性中。用户可以选择日期的格式。请参考[日期和时间格式字符串](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings)以获取更多关于支持的格式的信息。
 
 ## CAD+
 
-This macro is compatible with [Toolbar+](https://cadplus.xarial.com/toolbar/) and [Batch+](https://cadplus.xarial.com/batch/) tools so the buttons can be added to toolbar and assigned with shortcut for easier access or run in the batch mode.
+这个宏与[Toolbar+](https://cadplus.xarial.com/toolbar/)和[Batch+](https://cadplus.xarial.com/batch/)工具兼容，因此可以将按钮添加到工具栏并分配快捷键以便更容易访问或批量运行。
 
-In order to enable [macro arguments](https://cadplus.xarial.com/toolbar/configuration/arguments/) set the **ARGS** constant to true and pass the format as an argument
+为了启用[宏参数](https://cadplus.xarial.com/toolbar/configuration/arguments/)，将**ARGS**常量设置为true，并将格式作为参数传递。
 
 ~~~ vb
 #Const ARGS = True
@@ -59,7 +55,7 @@ try_:
             SetDateCustomProperty swModel, dateFormat
         End If
     Else
-        Err.Raise vbError, "", "Please open model"
+        Err.Raise vbError, "", "请打开模型"
     End If
     
     GoTo finally_
@@ -70,7 +66,7 @@ finally_:
 End Sub
 
 Function GetDateFormat(Optional defaultDateFormat As String = "dd/mm/yyyy") As String
-    GetDateFormat = InputBox("Specify the format for the Date custom property", "Date Custom Property", defaultDateFormat)
+    GetDateFormat = InputBox("指定日期自定义属性的格式", "日期自定义属性", defaultDateFormat)
 End Function
 
 Sub SetDateCustomProperty(model As SldWorks.ModelDoc2, dateFormat As String)
@@ -83,15 +79,13 @@ Sub SetDateCustomProperty(model As SldWorks.ModelDoc2, dateFormat As String)
     Set swCustPrpMgr = model.Extension.CustomPropertyManager(confName)
     
     If swCustPrpMgr.Add3(DATE_PRP_NAME, swCustomInfoType_e.swCustomInfoText, dateVal, swCustomPropertyAddOption_e.swCustomPropertyReplaceValue) <> swCustomInfoAddResult_e.swCustomInfoAddResult_AddedOrChanged Then
-        Err.Raise vbError, "", "Failed to add date property"
+        Err.Raise vbError, "", "添加日期属性失败"
     End If
     
 End Sub
 ~~~
 
-
-
-This macro can also be embedded into the model to automatically update the date on each rebuild.
+这个宏也可以嵌入到模型中，以便在每次重建时自动更新日期。
 
 ~~~ vb
 Const BASE_NAME As String = "AutoDateCustomProperty"
@@ -151,13 +145,13 @@ Sub main()
                 Empty, opts)
             
             If swFeat Is Nothing Then
-                MsgBox "Failed to create auto date feature"
+                MsgBox "创建自动日期特征失败"
             End If
             
         End If
         
     Else
-        MsgBox "Please open model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -186,7 +180,7 @@ Sub GetMacroEntryPoint(app As SldWorks.SldWorks, macroPath As String, ByRef modu
 End Sub
 
 Function GetDateFormat(Optional defaultDateFormat As String = "dd/mm/yyyy") As String
-    GetDateFormat = InputBox("Specify the format for the Date custom property", "Date Custom Property", defaultDateFormat)
+    GetDateFormat = InputBox("指定日期自定义属性的格式", "日期自定义属性", defaultDateFormat)
 End Function
 
 Function swmRebuild(varApp As Variant, varDoc As Variant, varFeat As Variant) As Variant
@@ -228,7 +222,7 @@ Sub SetDateCustomProperty(model As SldWorks.ModelDoc2, dateFormat As String)
     Set swCustPrpMgr = model.Extension.CustomPropertyManager(confName)
     
     If swCustPrpMgr.Add3(DATE_PRP_NAME, swCustomInfoType_e.swCustomInfoText, dateVal, swCustomPropertyAddOption_e.swCustomPropertyReplaceValue) <> swCustomInfoAddResult_e.swCustomInfoAddResult_AddedOrChanged Then
-        Err.Raise vbError, "", "Failed to add date property"
+        Err.Raise vbError, "", "添加日期属性失败"
     End If
     
 End Sub
@@ -269,4 +263,3 @@ Function swmSecurity(varApp As Variant, varDoc As Variant, varFeat As Variant) A
     swmSecurity = SwConst.swMacroFeatureSecurityOptions_e.swMacroFeatureSecurityByDefault
 End Function
 ~~~
-
