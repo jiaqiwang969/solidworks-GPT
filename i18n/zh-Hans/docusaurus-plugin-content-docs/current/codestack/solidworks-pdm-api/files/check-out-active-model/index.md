@@ -1,29 +1,29 @@
 ---
-title: Check-out active SOLIDWORKS model using SOLIDWORKS and PDM API
-caption: Check-Out Active Model
-description: VBA macro to check-out active model (using release lock) opened in SOLIDWORKS from PDM vault using SOLIDWORKS and PDM APIs
+title: 使用 SOLIDWORKS 和 PDM API 检出活动 SOLIDWORKS 模型
+caption: 检出活动模型
+description: 使用 SOLIDWORKS 和 PDM API 检出在 SOLIDWORKS 中打开的活动模型（使用释放锁）从 PDM 保险库中
 image: open-read-only-warning.png
-labels: [check-out,release locks]
+labels: [检出,释放锁]
 ---
-When file which is checked-in to SOLIDWORKS PDM vault is opened in SOLIDWORKS it will be accessed with read-only access
+当在 SOLIDWORKS PDM 保险库中检入的文件在 SOLIDWORKS 中打开时，它将以只读访问方式访问
 
-![Opening checked-in file in SOLIDWORKS](open-read-only-warning.png)
+![在 SOLIDWORKS 中打开已检入的文件](open-read-only-warning.png)
 
-The corresponding state is displayed next to the file name.
+相应的状态显示在文件名旁边。
 
-![Read-only state for the active document](read-only-file.png)
+![活动文档的只读状态](read-only-file.png)
 
-If standard SOLIDWORKS PDM add-in is used this file can be automatically checked out for editing without the need to close the file. However calling the [IEdmFile5::LockFile](https://help.solidworks.com/2014/english/api/epdmapi/EPDM.Interop.epdm~EPDM.Interop.epdm.IEdmFile5~LockFile.html) SOLIDWORKS PDM API for this scenario would result in the following COM exception.
+如果使用标准的 SOLIDWORKS PDM 加载项，可以自动将此文件检出以进行编辑，而无需关闭文件。然而，对于这种情况，调用 [IEdmFile5::LockFile](https://help.solidworks.com/2014/english/api/epdmapi/EPDM.Interop.epdm~EPDM.Interop.epdm.IEdmFile5~LockFile.html) SOLIDWORKS PDM API 将导致以下 COM 异常。
 
-> -2147220981: An attempt was made to access a file that is exclusively opened by another application.
+> -2147220981: 尝试访问由另一个应用程序独占打开的文件。
 
-SOLIDWORKS API provides methods to temporarily release lock for the active document so it can be updated or changed by other applications. The model can be later reloaded with changes applied. This technique allows to have model information and visual data to stay loaded in SOLIDWORKS while file is being edited by other applications.
+SOLIDWORKS API 提供了临时释放活动文档锁定的方法，以便其他应用程序可以对其进行更新或更改。稍后可以重新加载带有应用的更改的模型。这种技术允许在 SOLIDWORKS 中保持加载的模型信息和可视数据，同时由其他应用程序编辑文件。
 
-The following macro will demonstrate this technique and will check-out currently opened checked-in (read-only) file in SOLIDWORKS application.
+以下宏将演示此技术，并在 SOLIDWORKS 应用程序中检出当前打开的已检入（只读）文件。
 
-![Active document with write access](write-access-file.png)
+![具有写访问权限的活动文档](write-access-file.png)
 
-Modify the value of the *VAULT_NAME* variable to the corresponding vault name where the active model has been opened from.
+将 *VAULT_NAME* 变量的值修改为打开活动模型的相应保险库名称。
 
 ~~~ vb
 Const VAULT_NAME As String = "TestVault"
@@ -47,11 +47,11 @@ Sub main()
         If swPdmVault.IsLoggedIn Then
             CheckOutModel swModel, swPdmVault
         Else
-            MsgBox "Please login to vault"
+            MsgBox "请登录到保险库"
         End If
     
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -87,11 +87,9 @@ finally:
         model.ReloadOrReplace Not res, modelPath, Not res
 
     Else
-        Err.Raise vbError, "", "Specified model doesn't exist in the vault"
+        Err.Raise vbError, "", "保险库中不存在指定的模型"
     End If
     
 End Sub
 
 ~~~
-
-
