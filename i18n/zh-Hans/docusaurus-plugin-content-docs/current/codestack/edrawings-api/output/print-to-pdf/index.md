@@ -1,49 +1,49 @@
 ---
 layout: sw-tool
-title: Batch export SOLIDWORKS files to PDF via eDrawings API (without SOLIDWORKS)
-caption: Batch Export To Pdf
-description: Console application which exports all files from the specified folder to PDF format using eDrawings API, without the need to have SOLIDWORKS installed or SOLIDWORKS license
+title: 通过eDrawings API批量将SOLIDWORKS文件导出为PDF（无需SOLIDWORKS）
+caption: 批量导出为PDF
+description: 此控制台应用程序使用eDrawings API将指定文件夹中的所有文件导出为PDF格式，无需安装SOLIDWORKS或使用SOLIDWORKS许可证
 image: print-to-pdf.svg
-labels: [export,pdf,batch,edrawings,print]
-group: Import/Export
+labels: [导出, PDF, 批处理, eDrawings, 打印]
+group: 导入/导出
 ---
-![Exporting SOLIDWORKS files to PDF](print-to-pdf.svg){ width=200 }
+![将SOLIDWORKS文件导出为PDF](print-to-pdf.svg){ width=200 }
 
-This console application developed in VB.NET allows to export SOLIDWORKS, DXF, DWG files to PDF using free version of SOLIDWORKS eDrawings via its API. It is not required to have SOLIDWORKS installed or use its license to use this tool. This tool is supported on Windows 8.1 onwards.
+这个用VB.NET开发的控制台应用程序允许使用SOLIDWORKS eDrawings的免费版本通过其API将SOLIDWORKS、DXF、DWG文件导出为PDF。使用此工具不需要安装SOLIDWORKS或使用其许可证。此工具支持Windows 8.1及更高版本。
 
-This functionality has been integrated into the [xPort](https://cadplus.xarial.com/xport/) utility.
+此功能已集成到[xPort](https://cadplus.xarial.com/xport/)实用程序中。
 
-## Running the tool
+## 运行工具
 
-This application can be run from the command line and expects 2 mandatory and one optional argument as described below:
+此应用程序可以从命令行运行，并期望以下2个必填参数和一个可选参数：
 
-1. Full path to input file or folder (in this case all files which match the filter will be exported)
-1. Filter. Specify * for all files. Or *.slddrw for all SOLIDWORKS drawing files
-1. (optional) Output folder to save PDF files. If not specified PDF files will be created in the same folder as input SOLIDWORKS files. Folder is automatically created if doesn't exist.
+1. 输入文件或文件夹的完整路径（在这种情况下，将导出与过滤器匹配的所有文件）
+2. 过滤器。指定*以匹配所有文件。或者指定*.slddrw以匹配所有SOLIDWORKS绘图文件
+3. （可选）输出文件夹以保存PDF文件。如果未指定，PDF文件将在与输入SOLIDWORKS文件相同的文件夹中创建。如果文件夹不存在，则会自动创建。
 
-## Example commands
+## 示例命令
 
-* Export all slddrw files in the *C:\SOLIDWORKS Drawings* folder (including sub folders) to the same location as source file
+* 将*C:\SOLIDWORKS Drawings*文件夹中的所有slddrw文件（包括子文件夹）导出到与源文件相同的位置
 
 ~~~
 > exportpdf.exe "C:\SOLIDWORKS Drawings" "*.slddrw"
 ~~~
 
-* Export all SOLIDWORKS drawings from *C:\SOLIDWORKS Drawings* folder (including sub folders) whose file name starts with *print_* to the *C:\PDFs* directory
+* 将*C:\SOLIDWORKS Drawings*文件夹（包括子文件夹）中以*print_*开头的所有SOLIDWORKS绘图文件导出到*C:\PDFs*目录
 
 ~~~
 > exportpdf.exe "C:\SOLIDWORKS Drawings" "print_*.slddrw" "C:\PDFs"
 ~~~
 
-## Results
+## 结果
 
-Operation progress is displayed in the console window
+操作进度显示在控制台窗口中
 
-![Exporting process console output](export-results-console.png){ width=450 }
+![导出过程控制台输出](export-results-console.png){ width=450 }
 
-PDF files are created as per settings. PDF files are named after the source files they were generated from.
+根据设置创建PDF文件。PDF文件的名称与生成它们的源文件相同。
 
-![PDF files created from the input SOLIDWORKS drawing files](exported-pdfs.png){ width=450 }
+![从输入的SOLIDWORKS绘图文件创建的PDF文件](exported-pdfs.png){ width=450 }
 
 ## EDrawingsHost.vb
 
@@ -140,14 +140,14 @@ Module Module1
             m_Files = New List(Of String)()
             m_Files.Add(input)
         Else
-            Throw New Exception("Specify input file or directory")
+            Throw New Exception("请指定输入文件或目录")
         End If
 
     End Sub
 
     Sub OnEdrawingsControlLoaded(ctrl As EModelViewControl)
 
-        Console.WriteLine(String.Format("Starting job. Exporting {0} file(s)", m_Files.Count))
+        Console.WriteLine(String.Format("开始任务。正在导出{0}个文件", m_Files.Count))
 
         m_Ctrl = ctrl
 
@@ -172,7 +172,7 @@ Module Module1
             m_Ctrl.OpenDoc(filePath, False, False, False, "")
 
         Else
-            Console.WriteLine("Completed")
+            Console.WriteLine("完成")
             Environment.Exit(0)
         End If
 
@@ -183,7 +183,7 @@ Module Module1
         Const PRINTER_NAME As String = "Microsoft Print to PDF"
         Const AUTO_SOURCE As Integer = 7
 
-        Console.WriteLine(String.Format("Opened {0}", fileName))
+        Console.WriteLine(String.Format("已打开{0}", fileName))
         m_Ctrl.SetPageSetupOptions(EMVPrintOrientation.eLandscape, CInt(PaperKind.A4), 100, 100, 1, AUTO_SOURCE, PRINTER_NAME, 0, 0, 0, 0)
 
         Dim pdfFileName = Path.GetFileNameWithoutExtension(fileName) + ".pdf"
@@ -198,24 +198,24 @@ Module Module1
         Dim pdfFilePath As String
         pdfFilePath = Path.Combine(outDir, pdfFileName)
 
-        Console.WriteLine(String.Format("Exporting {0} to {1}", fileName, pdfFilePath))
+        Console.WriteLine(String.Format("正在将{0}导出为{1}", fileName, pdfFilePath))
 
         m_Ctrl.Print5(False, fileName, False, False, True, EMVPrintType.eOneToOne, 1, 0, 0, True, 1, 1, pdfFilePath)
 
     End Sub
 
     Sub OnDocumentLoadFailed(fileName As String, errorCode As Integer, errorString As String)
-        PrintError(String.Format("Failed to load {0}: {1}", fileName, errorString))
+        PrintError(String.Format("无法加载{0}：{1}", fileName, errorString))
         PrintNext()
     End Sub
 
     Sub OnDocumentPrinted(printJobName As String)
-        Console.WriteLine(String.Format("'{0}' export completed", printJobName))
+        Console.WriteLine(String.Format("'{0}'导出完成", printJobName))
         PrintNext()
     End Sub
 
     Sub OnPrintFailed(printJobName As String)
-        PrintError(String.Format("Failed to export '{0}'", printJobName))
+        PrintError(String.Format("无法导出'{0}'", printJobName))
         PrintNext()
     End Sub
 
@@ -233,4 +233,4 @@ End Module
 
 
 
-Source code is available on [GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/edrawings-api/BatchExportPdf)
+源代码可在[GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/edrawings-api/BatchExportPdf)上找到。
