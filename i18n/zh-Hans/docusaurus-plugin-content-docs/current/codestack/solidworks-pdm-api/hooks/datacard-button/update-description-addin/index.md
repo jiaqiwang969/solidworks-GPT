@@ -1,29 +1,30 @@
 ---
-title: Concatenate description variable on a data card button click using SOLIDWORKS PDM API
-caption: Concatenate Description Variable
-description: This example demonstrates how to handle the button click on data card and concatenate value of description variable based on values of revision and number variables in PDM add-in using SOLIDWORKS PDM Professional API
+title: 使用SOLIDWORKS PDM API在数据卡按钮点击时连接描述变量
+caption: 连接描述变量
+description: 本示例演示了如何使用SOLIDWORKS PDM Professional API处理数据卡上的按钮点击事件，并根据修订和编号变量的值连接描述变量。
 image: button-update-variable.gif
 labels: [hook, button click, variables]
 ---
-This example demonstrates how to handle the button click on data card using SOLIDWORKS PDM API and set the value of description variable based on concatenation of values of revision and number variables in PDM add-in.
 
-* Add button to data card in PDM administration console
-* Set the *Command type* option to *Run Add-in*
-* Specify the name of the add-in as shown on the picture below. This option allows to specify the unique tag which can be retrieved by the add-in when button is clicked to properly identify the button.
+本示例演示了如何使用SOLIDWORKS PDM API处理数据卡上的按钮点击事件，并根据修订和编号变量的值连接描述变量。
 
-![Data card setup options](data-card-button.png){ width=500 }
+* 在PDM管理控制台中为数据卡添加按钮
+* 将*Command type*选项设置为*Run Add-in*
+* 指定如下图片所示的插件名称。此选项允许指定唯一的标签，当单击按钮时，插件可以通过该标签正确识别按钮。
 
-This option should be equal to the value specified in the *BUTTON_TAG* constant in the add-in
+![数据卡设置选项](data-card-button.png){ width=500 }
+
+此选项的值应与插件中的*BUTTON_TAG*常量的值相等。
 
 ~~~ cs
 private const string BUTTON_TAG = "_UpdateDesc_";
 ~~~
 
-* Make sure that the *Number*, *Revision* and *Description* variables are present on the data card or modify the add-in code accordingly:
+* 确保数据卡上存在*Number*、*Revision*和*Description*变量，或者根据需要修改插件代码：
 
-When button clicked the *Description* variable is updated by concatenation of values in *Number* and *Revision* variables.
+单击按钮时，*Description*变量将根据*Number*和*Revision*变量的值连接更新。
 
-![Description is updated when button is clicked](button-update-variable.gif){ width=450 }
+![单击按钮时更新Description变量](button-update-variable.gif){ width=450 }
 
 ~~~ cs
 using EPDM.Interop.epdm;
@@ -76,5 +77,3 @@ namespace PdmCardVariableUpdate
     }
 }
 ~~~
-
-
