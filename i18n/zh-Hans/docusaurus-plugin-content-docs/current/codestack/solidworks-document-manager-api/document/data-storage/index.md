@@ -1,15 +1,15 @@
 ---
-title: Storing and data in model using SOLIDWORKS Document Manager API
-caption: Data Storage
-description: Overview of the options to store and read the data in the model using SOLIDWORKS Document Manager API
-labels: [data,storage,3rd party]
+title: 使用SOLIDWORKS文档管理器API存储和读取模型中的数据
+caption: 数据存储
+description: 通过SOLIDWORKS文档管理器API存储和读取模型中数据的选项概述
+labels: [数据,存储,第三方]
 ---
-This section is an overview of different options of storing the data into model stream using SOLIDWORKS Document Manager API.
+本节是使用SOLIDWORKS文档管理器API将数据存储到模型流中的不同选项的概述。
 
-The options include:
+这些选项包括：
 
-* Custom Properties
-* Invisible Custom Properties
-* 3rd Party Storage And Store
+* 自定义属性
+* 不可见的自定义属性
+* 第三方存储和存储
 
-Explore this section for code examples and articles.
+浏览本节以获取代码示例和文章。
