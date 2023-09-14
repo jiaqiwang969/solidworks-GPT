@@ -1,15 +1,16 @@
 ---
-title: Get hyperlink to a file in SOLIDWORKS PDM vault (conisio url)
-caption: Get File Hyperlink
-description: PowerShell scripts which allows to get the consistent hyperlink (conisio url) to a specified file using PDM Professional API
+title: 获取SOLIDWORKS PDM vault中文件的超链接（conisio url）
+caption: 获取文件超链接
+description: 使用PDM Professional API，这些PowerShell脚本允许获取指定文件的一致超链接（conisio url）
 image: hyperlink-email.png
 labels: [conisio, hyperlink]
 ---
-This PowerShell script allows extracting the conisio url to the specified file in the vault. This link can be used to get a persistent link to a file which can be used by any SOLIDWORKS PDM users.
 
-SOLIDWORKS PDM API is used to extract the data required to form the conisio url: file id, folder id, etc.
+这个PowerShell脚本允许提取存储库中指定文件的conisio url。该链接可用于获取一个持久链接，可供任何SOLIDWORKS PDM用户使用。
 
-Create 2 script files and paste the code below:
+使用SOLIDWORKS PDM API提取形成conisio url所需的数据：文件ID、文件夹ID等。
+
+创建2个脚本文件并粘贴以下代码：
 
 ## get-url.ps1
 ~~~ ps1
@@ -68,11 +69,11 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -File "%~dp0get-url.ps1" %vaultNam
 
 
 
-Call the command line with the following parameters
+使用以下参数调用命令行
 
-* Vault Name
-* Full path to a file
-* Action for the hyperlink. Select one of the following: 
+* 存储库名称
+* 文件的完整路径
+* 超链接的操作。选择以下之一：
     * open
     * view
     * explore
@@ -81,16 +82,16 @@ Call the command line with the following parameters
     * properties
     * history
 
-For example:
+例如：
 
 ~~~ cmd
 get-url myvault "D:\myvault\part.sldprt" explore
 ~~~
 
-The hyperlink is output to console:
+超链接将输出到控制台：
 
-![Conisio url is output to console window](conisio-url.png){ width=450 }
+![Conisio url输出到控制台窗口](conisio-url.png){ width=450 }
 
-This hyperlink can be used now to access the file.
+现在可以使用此超链接访问文件。
 
-![Conisio url inserted to the link in e-mail](hyperlink-email.png){ width=450 }
+![Conisio url插入到电子邮件中的链接](hyperlink-email.png){ width=450 }
