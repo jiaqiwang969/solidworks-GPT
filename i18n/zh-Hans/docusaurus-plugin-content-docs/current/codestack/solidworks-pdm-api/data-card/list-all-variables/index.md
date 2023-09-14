@@ -1,13 +1,13 @@
 ---
-title: List all variables in the vault using SOLIDWORKS PDM API
-caption: List All Variables
-description: VBA macro to list all variable names and ids in the specified vault using SOLIDWORKS PDM API
+title: 使用SOLIDWORKS PDM API列出存储库中的所有变量
+caption: 列出所有变量
+description: 使用SOLIDWORKS PDM API列出指定存储库中的所有变量的VBA宏
 image: pdm-variables.png
-labels: [variable,list]
+labels: [变量, 列表]
 ---
-![PDM variables list SOLIDWORKS PDM Administration panel](pdm-variables.png)
+![PDM变量列表SOLIDWORKS PDM管理面板](pdm-variables.png)
 
-This VBA macro lists all the variables of the specified vault using SOLIDWORKS PDM API. The variable name and ID is output to the immediate window of VBA Editor in the following format:
+这个VBA宏使用SOLIDWORKS PDM API列出了指定存储库中的所有变量。变量名称和ID将以以下格式输出到VBA编辑器的即时窗口中：
 
 ~~~
 Album(102)
@@ -43,10 +43,8 @@ Sub main()
             Debug.Print swPdmVar.Name & "(" & swPdmVar.ID & ")"
         Wend
     Else
-        Err.Raise vberr, "", "Not logged in"
+        Err.Raise vberr, "", "未登录"
     End If
 
 End Sub
 ~~~
-
-
