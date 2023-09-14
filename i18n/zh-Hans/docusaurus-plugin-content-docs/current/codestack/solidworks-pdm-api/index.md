@@ -1,32 +1,32 @@
 ---
 title: SOLIDWORKS PDM Professional API
 caption: PDM Professional (EPDM) API
-description: Overview of SOLIDWORKS PDM Professional (formerly SOLIDWORKS EPDM) API, examples, tutorials and code snippets
+description: SOLIDWORKS PDM Professional（以前称为SOLIDWORKS EPDM）API的概述，示例，教程和代码片段
 image: solidworks-pdm-api.svg
 labels: [epdm]
 sidebar_position: 0
 ---
 ![SOLIDWORKS PDM API](solidworks-pdm-api.svg){ width=250 }
 
-SOLIDWORKS PDM Professional (formerly SOLIDWORKS EPDM) is Product Data Management system allowing to manage the life cycle of CAD documents.
+SOLIDWORKS PDM Professional（以前称为SOLIDWORKS EPDM）是一种产品数据管理系统，可用于管理CAD文档的生命周期。
 
-Main feature include:
+主要功能包括：
 
-* Centralized vault for securing data files
-* Data card for managing metadata
-* Workflows management
-* User access management
-* Bill of materials management
-* Concurrent file access management
-* Integration with SOLIDWORKS and other CAD systems, such as AutoCAD, Solid Edge, ProE etc.
+* 集中式保险库以保护数据文件
+* 数据卡用于管理元数据
+* 工作流管理
+* 用户访问管理
+* BOM（Bill of Materials）管理
+* 并发文件访问管理
+* 与SOLIDWORKS和其他CAD系统（如AutoCAD，Solid Edge，ProE等）的集成
 
-SOLIDWORKS PDM is a highly configurable system which can be customized for a specific business process.
+SOLIDWORKS PDM是一个高度可配置的系统，可以根据特定的业务流程进行定制。
 
-SOLIDWORKS PDM API enables an access to a large number of API interfaces providing the possibility to extend the PDM functionality. This includes, but not limited to:
+SOLIDWORKS PDM API提供了访问大量API接口的功能，可以扩展PDM的功能。这包括但不限于：
 
-* Creating automation tasks add-ins with an ability to execute on a remote server
-* Creating serial number add-ins
-* Handling various events via SOLIDWORKS PDM hooks: file check in/check out, workflow change, etc.
-* Extending the menus and toolbars
+* 创建自动化任务插件，并能够在远程服务器上执行
+* 创建序列号插件
+* 通过SOLIDWORKS PDM钩子处理各种事件：文件签入/签出，工作流更改等
+* 扩展菜单和工具栏
 
-This section contains tutorials, code examples and snippets for the most common SOLIDWORKS PDM API functionality.
+本节包含了最常见的SOLIDWORKS PDM API功能的教程、代码示例和片段。
