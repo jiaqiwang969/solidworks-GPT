@@ -1,12 +1,12 @@
 ---
-title: Code examples of creating geometrical primitives using SOLIDWORKS modeler API
-caption: Primitives
-description: Collection of code examples for creating geometric primitives (e.g. box, cylinder, plane, tor, etc.)
+title: 使用 SOLIDWORKS 模型 API 创建几何原语的代码示例
+caption: 原语
+description: 使用 SOLIDWORKS API 创建几何原语（例如盒子、圆柱体、平面、圆环等）的代码示例集合。
 sidebar_position: 1
-labels: [geometric, topology, primitive]
+labels: [几何、拓扑、原语]
 ---
-Collection of code examples for creating geometric primitives (e.g. box, cylinder, plane, tor, etc.) using SOLIDWORKS API. 
+使用 SOLIDWORKS API 创建几何原语（例如盒子、圆柱体、平面、圆环等）的代码示例集合。
 
-Explore the methods of [IModeler](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModeler.html) SOLIDWORKS API interface for methods of creating the geometrical objects.
+探索 [IModeler](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModeler.html) SOLIDWORKS API 接口的方法，了解创建几何对象的方法。
 
-Use [IPartDoc::CreateFeatureFromBody3](https://help.solidworks.com/2016/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IPartDoc~CreateFeatureFromBody3.html) SOLIDWORKS API method to create a permanent body from the temporary body.
+使用 [IPartDoc::CreateFeatureFromBody3](https://help.solidworks.com/2016/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IPartDoc~CreateFeatureFromBody3.html) SOLIDWORKS API 方法从临时体创建永久体。
