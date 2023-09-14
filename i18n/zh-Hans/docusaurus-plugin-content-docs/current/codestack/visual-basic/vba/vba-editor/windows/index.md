@@ -1,21 +1,16 @@
----
-title: VBA Editor Windows
-description: Walkthrough the different windows available in VBA editor
-image: immediate-window-menu.png
----
-## Immediate Window
+## 立即窗口
 
-Immediate Window is a console which collects the output messages printed from the code.
+立即窗口是一个控制台，用于收集从代码中打印出的输出消息。
 
-Immediate window is usually used in debugging and troubleshooting as a simple way to output the log or the current state of variables.
+立即窗口通常用于调试和故障排除，作为输出日志或变量当前状态的简单方式。
 
-To enable this window click the *View->Immediate Window* command ot *Ctrl+G* shortcut.
+要启用此窗口，请单击“视图->立即窗口”命令或使用“Ctrl+G”快捷键。
 
-![Immediate Window Menu](immediate-window-menu.png)
+![立即窗口菜单](immediate-window-menu.png)
 
-Window can be docked to any panel in VBA Editor.
+窗口可以停靠在VBA编辑器的任何面板上。
 
-In order to output messages to this window use *Debug.Print* command
+要将消息输出到此窗口，请使用*Debug.Print*命令
 
 ~~~ vb jagged
 Dim str As String
@@ -24,6 +19,6 @@ Debug.Print "Some Message"
 Debug.Print str
 ~~~
 
-![Output in the immediate window](imediate-window-output.png)
+![立即窗口中的输出](imediate-window-output.png)
 
-## Watch Window
+## 观察窗口
