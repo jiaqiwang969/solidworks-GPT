@@ -1,12 +1,4 @@
----
-title: User Defined Types in Visual Basic
-caption: Types
-description: Article explaining usage of custom user defined types (aka Structures) in Visual Basic
-image: type-definition-intellisense.png
----
-![User defined type in intelli-sense](type-definition-intellisense.png){ width=350 }
-
-In Visual Basic complex data structure (group) of variables can be defined using the **Type - End Type** code block.
+在Visual Basic中，可以使用**Type - End Type**代码块定义复杂的数据结构（组）变量。
 
 ~~~ vb
 Type MyType
@@ -15,17 +7,17 @@ Type MyType
 End Type
 ~~~
 
-This enables developers to create easy to understand and use data structures.
+这使开发人员能够创建易于理解和使用的数据结构。
 
-Variables of any type can be defined inside the type code block.
+可以在类型代码块中定义任何类型的变量。
 
-Properties declared in type are public and browsable within the intelli-sense:
+在类型中声明的属性是公共的，并且可以在IntelliSense中浏览：
 
-![Properties of the user defined type displayed in the intelli-sense](type-properties-intellisense.png){ width=250 }
+![在IntelliSense中显示的用户定义类型的属性](type-properties-intellisense.png){ width=250 }
 
-It is not possible to set the access modifiers or add any functions or procedures within the type:
+无法在类型中设置访问修饰符或添加任何函数或过程：
 
-![Compile Error: Statement invalid inside Type block](statement-invalid-type-block.png){ width=350 }
+![编译错误：Type块内的语句无效](statement-invalid-type-block.png){ width=350 }
 
 ~~~ vb
 Type MyType
@@ -42,7 +34,7 @@ Sub main()
     val1.StringValue = "Hello World"
     
     Dim val2 As MyType
-    val2 = val1 'all values are copied
+    val2 = val1 '所有值都被复制
     
     val2.DoubleValue = 2.5
     val2.StringValue = "Modified Hello World"
@@ -56,5 +48,3 @@ Sub main()
     
 End Sub
 ~~~
-
-
