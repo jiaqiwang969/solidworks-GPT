@@ -1,60 +1,60 @@
 ---
-title: User Form And Controls in Visual Basic 6 (VBA)
-description: Article explaining the usage of user interface elements (text box, combo box, list etc.) and forms in Visual Basic 6 (VBA)
-caption: User Form And Controls
+title: Visual Basic 6（VBA）中的用户窗体和控件
+description: 本文介绍在Visual Basic 6（VBA）中使用用户界面元素（文本框、组合框、列表等）和窗体的方法。
+caption: 用户窗体和控件
 image: user-form-shown.png
 sidebar_position: 0
 ---
-User forms allow to defined the custom Graphics User Interface (GUI) to collect user inputs, show outputs or provide an interaction with your application.
+用户窗体允许定义自定义的图形用户界面（GUI），以收集用户输入、显示输出或与应用程序进行交互。
 
-User form can be added by calling the *Insert UserForm* command
+可以通过调用“插入用户窗体”命令来添加用户窗体。
 
-![Insert User Form](insert-user-form.png){ width=350 }
+![插入用户窗体](insert-user-form.png){ width=350 }
 
-By default forms will be named as *UserForm1*, *UserForm2*, etc., but it is recommended to give forms meaningful names.
+默认情况下，窗体的名称将为*UserForm1*、*UserForm2*等，但建议为窗体提供有意义的名称。
 
-## Adding Controls
+## 添加控件
 
-Form can be customized and additional controls can be placed onto the form.
+可以自定义窗体并将其他控件放置在窗体上。
 
-![Layout of the user form](user-form-layout.png){ width=450 }
+![用户窗体布局](user-form-layout.png){ width=450 }
 
-1. User Form design layout
-1. Toolbox with controls
-1. Control placed on the form layout
-1. Properties of the control
+1. 用户窗体设计布局
+1. 包含控件的工具箱
+1. 放置在窗体布局上的控件
+1. 控件的属性
 
-Properties of the controls can be customized.
+可以自定义控件的属性。
 
-## Code Behind
+## 代码背后
 
-Form and its controls are exposing different [events](/docs/codestack/visual-basic/events/), such as click, select, mouse move etc.
+窗体及其控件会公开不同的[事件](/docs/codestack/visual-basic/events/)，例如点击、选择、鼠标移动等。
 
-Event handlers are defined in the code behind of the form.
+事件处理程序在窗体的代码背后定义。
 
-![View Code command of User Form](view-code-menu-command.png){ width=400 }
+![用户窗体的查看代码命令](view-code-menu-command.png){ width=400 }
 
-Available control events can be selected from the drop-down list.
+可以从下拉列表中选择可用的控件事件。
 
-![Control events](windows-form-code-behind.png){ width=600 }
+![控件事件](windows-form-code-behind.png){ width=600 }
 
 ~~~vb
 Private Sub CommandButton1_Click()
-    MsgBox "CommandButton1 Clicked!"
+    MsgBox "CommandButton1 被点击了！"
 End Sub
 ~~~
 
-## Displaying Form
+## 显示窗体
 
-Form can be displayed by calling the *Show* method. This method should be called on the variable which equals to the form name. Note, it is not required to declare or instantiate the form variable explicitly (as it is required with the classes). This is done automatically when form is added to the project.
+可以通过调用*Show*方法来显示窗体。此方法应该在等于窗体名称的变量上调用。请注意，不需要显式声明或实例化窗体变量（与类不同）。当窗体添加到项目中时，这将自动完成。
 
-![User Form](user-form-shown.png)
+![用户窗体](user-form-shown.png)
 
-For can be displayed in 2 modes
+窗体可以以两种模式显示
 
-### Modal
+### 模态
 
-In this mode form is opened foreground and parent window is not accessible until the form is closed.
+在此模式下，窗体在前台打开，父窗口在窗体关闭之前不可访问。
 
 ~~~vb
 Sub main()
@@ -64,9 +64,9 @@ Sub main()
 End Sub
 ~~~
 
-### Modeless
+### 非模态
 
-Form is opened in a way that parent window is accessible and not blocked. To open the form in the modeless mode it is required to pass the *vbModeless* parameter to *Show* method.
+以使父窗口可访问且不被阻塞的方式打开窗体。要以非模态模式打开窗体，需要将*vbModeless*参数传递给*Show*方法。
 
 ~~~vb
 Sub main()
@@ -75,4 +75,3 @@ Sub main()
 
 End Sub
 ~~~
-
