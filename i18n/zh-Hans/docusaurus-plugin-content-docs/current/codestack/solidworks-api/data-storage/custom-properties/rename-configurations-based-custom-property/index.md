@@ -1,23 +1,24 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS macro to rename configurations based on custom property
-caption: Rename Configurations Based On Custom Property
-description: Macro renames all configurations of assembly or part into the value of the specified configuration specific custom property
+title: SOLIDWORKS宏根据自定义属性重命名配置
+caption: 根据自定义属性重命名配置
+description: 该宏使用SOLIDWORKS API将装配体或零件的所有配置重命名为指定配置特定自定义属性的值。
 image: sw-configuration-name.png
-labels: [configuration, custom property, rename, solidworks api, utility]
-group: Custom Properties
+labels: [配置, 自定义属性, 重命名, solidworks api, 实用工具]
+group: 自定义属性
 redirect-from:
   - /2018/04/solidworks-api-model-rename-configurations-based-on-custom-prp.html
 ---
-This macro renames all configurations of assembly or part into the value of the specified configuration specific custom property using SOLIDWORKS API.
 
-![Configuration name in the configuration properties manager page](sw-configuration-name.png){ width=200 }
+该宏使用SOLIDWORKS API将装配体或零件的所有配置重命名为指定配置特定自定义属性的值。
 
-* Run the macro and enter the name of the custom property to read the value from
-* Macro will traverse all configurations and rename them based on the corresponding value of the configuration specific custom property
-* If property doesn't exist in configuration or value is empty - configuration is not renamed  
+![配置属性管理器页面中的配置名称](sw-configuration-name.png){ width=200 }
 
-~~~ vb
+* 运行宏并输入要从中读取值的自定义属性的名称
+* 宏将遍历所有配置并根据相应的配置特定自定义属性的值对它们进行重命名
+* 如果属性在配置中不存在或值为空 - 则不会重命名配置
+
+```vb
 Dim swApp As SldWorks.SldWorks
 Dim swModel As SldWorks.ModelDoc2
 
@@ -31,7 +32,7 @@ Sub main()
         
         Dim prpName As String
         
-        prpName = InputBox("Specify the property name to read the value from")
+        prpName = InputBox("指定要从中读取值的属性名称")
         
         If prpName <> "" Then
             
@@ -60,10 +61,9 @@ Sub main()
         End If
         
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
-~~~
-
+```
 
