@@ -1,14 +1,15 @@
 ---
-title: Split SOLIDWORKS body by faces using Geometry++
-caption: Split Body By Faces
-description: Feature allows splitting solid or surface body(es) by faces creating individual sheet bodies
+title: 使用Geometry++按面分割SOLIDWORKS实体
+caption: 按面分割实体
+description: 此功能允许通过面从所选实体中创建表面（片）实体。
 image: icon.png
 toc-group-name: labs-solidworks-geometry-plus-plus
 ---
-This feature allows creation of surface (sheet) bodies from all of the faces of the selected solid or surface bodies.
+
+此功能允许从所选实体中的所有面创建表面（片）实体。
 
 ![Caption](split-body-by-faces-property-page.png){ width=450 }
 
-All resulting bodies are grouped under single feature and maintain parametric approach. If original geometry changes (including adding or removing of faces) feature is automatically regenerated with new bodies updated.
+所有生成的实体都被分组在单个功能下，并保持参数化方法。如果原始几何图形发生更改（包括添加或删除面），则功能会自动重新生成，并更新新的实体。
 
 ![Caption](split-surface-by-faces-result.png){ width=450 }
