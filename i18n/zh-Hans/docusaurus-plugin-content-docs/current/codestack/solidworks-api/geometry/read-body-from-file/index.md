@@ -1,16 +1,17 @@
 ---
-title: Read and display body from the file using SOLIDWORKS API
-caption: Read Body From File
-description: VBA example to deserialize body geometry from external binary file into temp body and display using SOLIDWORKS API
-labels: [deserialize,com stream,temp body]
+title: 使用SOLIDWORKS API读取和显示文件中的实体
+caption: 从文件中读取实体
+description: 使用SOLIDWORKS API将外部二进制文件中的实体几何数据反序列化为临时实体并显示的VBA示例
+labels: [反序列化,COM流,临时实体]
 ---
-This VBA example demonstrates how to read the body geometry data from the external binary file. Load this data into the COM Stream and restore into the temp solid body using SOLIDWORKS API.
 
-Body is displayed to the user and macro execution stops. Body is not present in the Feature Manager Tree and only visible in the graphics area.
+这个VBA示例演示了如何从外部二进制文件中读取实体几何数据。将这些数据加载到COM流中，并使用SOLIDWORKS API将其恢复为临时实体。
 
-Continue the macro execution to destroy the body.
+实体将显示给用户，并停止宏执行。实体不会出现在特征管理器树中，只会在图形区域中可见。
 
-~~~vb
+继续宏执行以销毁实体。
+
+```vb
 Imports SolidWorks.Interop.sldworks
 Imports SolidWorks.Interop.swconst
 Imports System.IO
@@ -215,9 +216,9 @@ Public Class ComStream
     End Sub
 
 End Class
-~~~
+```
 
-~~~vba
+```vba
 Const FILE_PATH As String = "D:\body.dat"
 
 Private Declare PtrSafe Function CreateStreamOnHGlobal Lib "ole32" (ByVal hGlobal As LongPtr, ByVal fDeleteOnRelease As Long, ByRef ppstm As Any) As Long
@@ -293,4 +294,4 @@ Private Function BytesArrToComStream(ByRef buff() As Byte) As IUnknown
     Set BytesArrToComStream = comStream
     
 End Function
-~~~
+```
