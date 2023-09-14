@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksolidworks_gpt=self.webpackChunksolidworks_gpt||[]).push([[75452],{32060:s=>{s.exports=JSON.parse('{"title":"CodeStack","description":"SolidWorks API.","slug":"/category/codestack","permalink":"/solidworks-GPT/docs/category/codestack","navigation":{"next":{"title":"solidworks-api","permalink":"/solidworks-GPT/docs/category/solidworks-api"}}}')}}]);
