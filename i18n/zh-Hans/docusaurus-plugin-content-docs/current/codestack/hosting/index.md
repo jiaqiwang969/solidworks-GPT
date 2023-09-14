@@ -1,9 +1,9 @@
 ---
-title: Hosting, configuration and maintenance of domains and e-mails
-caption: Hosting
-description: Guides and tutorials related to configuration and maintenance for hosting of web-sites and e-mails with various service providers
+title: 托管、配置和维护域名和电子邮件
+caption: 托管
+description: 与各种服务提供商配置和维护网站和电子邮件的指南和教程
 sidebar_position: 0
 ---
-If you are working for organization either in marketing or IT administration or maintaining your own web-site or blog, you run into requirements of setting up domains, e-mails either on cloud services or on-premises.
+如果您在市场营销或IT管理部门工作，或者维护自己的网站或博客，您会遇到设置域名、电子邮件的要求，无论是在云服务上还是在本地。
 
-This section contains guides and tutorials for configuration, maintenance, migration of domains, e-mails and other hosting services.
+本节包含有关配置、维护、迁移域名、电子邮件和其他托管服务的指南和教程。
