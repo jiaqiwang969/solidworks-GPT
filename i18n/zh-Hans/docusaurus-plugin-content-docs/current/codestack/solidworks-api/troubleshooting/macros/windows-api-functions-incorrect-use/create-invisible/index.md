@@ -1,22 +1,23 @@
 ---
-title: Create invisible attribute using SOLIDWORKS API
-caption: Create Invisible Attribute
-description: Example creates an invisible attribute and attaches to the selected object (entity or component)
+title: 使用SOLIDWORKS API创建不可见属性
+caption: 创建不可见属性
+description: 该示例创建一个不可见属性并将其附加到所选对象（实体或组件）。
 image: sw-attribute-features-tree.png
-labels: [attribute, data, example]
+labels: [属性, 数据, 示例]
 redirect-from:
   - /2018/03/create-invisible-attribute.html
 ---
-This example creates an invisible attribute and attaches to the selected object (entity or component).
 
-Attribute ca be hidden by setting the corresponding flag in the [IAttributeDef::CreateInstance5](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iattributedef~createinstance5.html) SOLIDWORKS API method.
+该示例创建一个不可见属性并将其附加到所选对象（实体或组件）。
 
-![Attribute feature inserted to the Feature Manager Tree](sw-attribute-features-tree.png){ width=272 height=320 }
+可以通过在[SOLIDWORKS API方法IAttributeDef::CreateInstance5](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iattributedef~createinstance5.html)中设置相应的标志来隐藏属性。
 
-Macro stops the execution once the attribute is created. At this stage the attribute feature is invisible.
-When execution of macro continues (F5 or run is clicked) the feature is set to visible.
+![插入到特征管理器树中的属性特征](sw-attribute-features-tree.png){ width=272 height=320 }
 
-~~~ vb
+一旦创建了属性，宏就会停止执行。此时，属性特征是不可见的。
+当宏继续执行（按下F5或点击运行）时，该特征将变为可见。
+
+```vb
 Enum CreateAtttributeOptions_e
     Visible = 0
     Hidden = 1
@@ -48,7 +49,7 @@ Sub main()
         
         Set swSelObject = swSelMgr.GetSelectedObject6(1, -1)
         
-        'get the unique name for the attribute
+        '获取属性的唯一名称
         Dim index As Integer
         index = 1
         
@@ -62,7 +63,7 @@ Sub main()
         
         Set swAtt = swAttDef.CreateInstance5(swModel, swSelObject, attName, CreateAtttributeOptions_e.Hidden, swInConfigurationOpts_e.swAllConfiguration)
         
-        'attribute feature is hidden in the tree
+        '属性特征在树中是隐藏的
         Debug.Assert Not swAtt Is Nothing
         
         Dim swAttFeat As SldWorks.Feature
@@ -70,17 +71,14 @@ Sub main()
         
         Stop
         
-        'show the attribute feature
+        '显示属性特征
         swAttFeat.SetUIState swUIStates_e.swIsHiddenInFeatureMgr, False
         swModel.EditRebuild3
         
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
-
-
-~~~
-
+```
 
