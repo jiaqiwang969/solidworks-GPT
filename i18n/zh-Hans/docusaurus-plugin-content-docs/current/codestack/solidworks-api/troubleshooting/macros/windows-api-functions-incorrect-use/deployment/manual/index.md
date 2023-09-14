@@ -1,75 +1,74 @@
 ---
-title: Installing SOLIDWORKS add-in by manual registration
-caption: Manual
-description: Article explains how to deploy and register SOLIDWORKS add-in manually
+title: 手动注册安装SOLIDWORKS插件
+caption: 手动
+description: 本文介绍如何手动部署和注册SOLIDWORKS插件
 image: types-registered-successfully.png
-labels: [deployment, setup, installer]
+labels: [部署, 安装, 安装程序]
 ---
-This article explains how to deploy and register SOLIDWORKS add-in manually.
 
-### Deploying binaries
+本文介绍如何手动部署和注册SOLIDWORKS插件。
 
-Once project is successfully compiled all required binaries and data files are placed into the output folder.
+### 部署二进制文件
 
-![Folder with binary output](bin-folder.png){ width=350 }
+一旦项目成功编译，所有所需的二进制文件和数据文件都会放置在输出文件夹中。
 
-When deploying the product (add-in or stand-alone application) all files must be deployed (including any 3rd party dlls or interops). You may exclude any supporting files such as pdb-files or xml documentation files.
+![带有二进制输出的文件夹](bin-folder.png){ width=350 }
 
-### Registering add-in
+在部署产品（插件或独立应用程序）时，必须部署所有文件（包括任何第三方dll或interop文件）。您可以排除任何支持文件，如pdb文件或xml文档文件。
 
-Copying the files to the user machine is not enough to register it on the target system. It is also required to register add-in COM object and add corresponding entries to the registry.
+### 注册插件
 
-To register .NET add-in (C# or VB.NET) it is required to call the [Assembly Registration Tool (regasm)](https://docs.microsoft.com/en-us/dotnet/framework/tools/regasm-exe-assembly-registration-tool) with /codebase option
+仅将文件复制到用户计算机上并不足以在目标系统上注册它。还需要注册插件的COM对象，并在注册表中添加相应的条目。
 
-> "%Windir%\Microsoft.NET\Framework64\v4.0.30319\regasm" /codebase "PATH TO ADDIN DLL"
+要注册.NET插件（C#或VB.NET），需要使用/regasm选项调用[程序集注册工具（regasm）](https://docs.microsoft.com/en-us/dotnet/framework/tools/regasm-exe-assembly-registration-tool)。
 
-Message similar to the following should be displayed if the registration successful:
+> "%Windir%\Microsoft.NET\Framework64\v4.0.30319\regasm" /codebase "插件DLL的路径"
 
-![Successful registration of COM types](types-registered-successfully.png){ width=500 }
+如果注册成功，将显示类似以下的消息：
 
-> It is required to use the correct version of the framework depending on the target framework add-in was compiled to.
+![成功注册COM类型](types-registered-successfully.png){ width=500 }
 
-To register COM add-in (C++) it is required to call the [regsvr32](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/regsvr32) utility.
+> 根据插件编译的目标框架，需要使用正确版本的框架。
 
-> Registration usually requires running the [Command Prompt](https://en.wikipedia.org/wiki/Cmd.exe) as an administrator.
+要注册COM插件（C++），需要调用[regsvr32](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/regsvr32)实用程序。
 
-It is not required to register COM objects for stand-alone application unless it explicitly requires this.
+> 注册通常需要以管理员身份运行[命令提示符](https://en.wikipedia.org/wiki/Cmd.exe)。
 
-### Adding the registry information
+对于独立应用程序，除非明确要求，否则不需要注册COM对象。
 
-Information about the add-in needs to be added to the registry so SOLIDWORKS can correctly load the add-in. It is possible to create a registry file which will be adding this information to the registry.
+### 添加注册表信息
 
-The keys added to HKEY_LOCAL_MACHINE are mandatory and identify the add-in to be available in the add-ins list. The keys added to HKEY_CURRENT_USER are optional and represent the start-up state of the add-in. Set value to 1 to load add-in at start-up, set to 0 to not load on start-up.
+需要将有关插件的信息添加到注册表中，以便SOLIDWORKS可以正确加载插件。可以创建一个注册表文件，将此信息添加到注册表中。
+
+添加到HKEY_LOCAL_MACHINE的键是必需的，并且用于在插件列表中可用的插件。添加到HKEY_CURRENT_USER的键是可选的，并表示插件的启动状态。将值设置为1以在启动时加载插件，设置为0以在启动时不加载插件。
 
 ~~~ reg
 Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\SolidWorks\Addins\{a377433e-f7cf-4a5a-9d74-b64c0c1758c2}]
 @=dword:00000001
-"Description"="Sample add-in description"
-"Title"="Sample add-in"
+"Description"="示例插件描述"
+"Title"="示例插件"
 
 [HKEY_CURRENT_USER\Software\SolidWorks\AddInsStartup\{a377433e-f7cf-4a5a-9d74-b64c0c1758c2}]
 @=dword:00000001
 ~~~
 
-
-
-The GUID used in the example above is an add-in guid set via [GuidAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.guidattribute?view=netframework-4.0) at the add-in class:
+上面示例中使用的GUID是通过在插件类上设置[GuidAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.guidattribute?view=netframework-4.0)时设置的插件GUID：
 
 ~~~ cs
 [Guid("a377433e-f7cf-4a5a-9d74-b64c0c1758c2"), ComVisible(true)]
-[SwAddin(Description = "Sample Addin", Title = "Sample AddIn Description", LoadAtStartup = true)]    
+[SwAddin(Description = "示例插件", Title = "示例插件描述", LoadAtStartup = true)]    
 public class MyAddIn : ISwAddin
 {
     ...
 }
 ~~~
 
-As an alternative option required registry keys can be added directly from the dll when it is registered as a COM object via [ComRegisterFunctionAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.comregisterfunctionattribute?view=netframework-4.0). In this case the above step is not required:
+作为替代选项，可以在将其注册为COM对象时，通过[ComRegisterFunctionAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.comregisterfunctionattribute?view=netframework-4.0)直接从dll中添加所需的注册表键。在这种情况下，上述步骤不是必需的：
 
 ~~~ cs
-#region SolidWorks Registration
+#region SolidWorks 注册
 
 [ComRegisterFunction]
 public static void RegisterFunction(Type t)
@@ -99,7 +98,7 @@ public static void RegisterFunction(Type t)
     }
     catch (Exception ex)
     {
-        Console.WriteLine("Error while registering the addin: " + ex.Message);
+        Console.WriteLine("注册插件时出错：" + ex.Message);
     }
 }
 
@@ -119,46 +118,42 @@ public static void UnregisterFunction(Type t)
     }
     catch (Exception e)
     {
-        Console.WriteLine("Error while unregistering the addin: " + e.Message);
+        Console.WriteLine("取消注册插件时出错：" + e.Message);
     }
 }
 
 #endregion
 ~~~
 
+### 取消注册插件
 
+要取消注册.NET插件，需要使用/u选项调用[程序集注册工具（regasm）](https://docs.microsoft.com/en-us/dotnet/framework/tools/regasm-exe-assembly-registration-tool)。
 
-### Unregistering the add-in
+> "%Windir%\Microsoft.NET\Framework64\v4.0.30319\regasm" /u /codebase "插件DLL的路径"
 
-To unregister the .NET add-in it is required to call the [Assembly Registration Tool (regasm)](https://docs.microsoft.com/en-us/dotnet/framework/tools/regasm-exe-assembly-registration-tool) with /u option
+取消注册插件后，控制台中会显示以下消息：
 
-> "%Windir%\Microsoft.NET\Framework64\v4.0.30319\regasm" /u /codebase "PATH TO ADDIN DLL"
+![成功取消注册COM类型](types-unregistered-successfully.png){ width=500 }
 
-When add-in is unregistered the following message is displayed in the console:
+要取消注册COM插件，需要使用/u标志调用[regsvr32](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/regsvr32)实用程序。
 
-![Successful unregistration of COM types](types-unregistered-successfully.png){ width=500 }
-
-To unregister the COM add-in it is required to call the [regsvr32](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/regsvr32) utility with /u flag.
-
-To clear the registry values (unless it is done via the [ComUnregisterFunctionAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.comunregisterfunctionattribute?view=netframework-4.0)) call the following registry file:
+要清除注册表值（除非通过[ComUnregisterFunctionAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.comunregisterfunctionattribute?view=netframework-4.0)完成），请调用以下注册表文件：
 
 ~~~ reg
 Windows Registry Editor Version 5.00
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\SolidWorks\Addins\{a377433e-f7cf-4a5a-9d74-b64c0c1758c2}]
 @=dword:00000001
-"Description"="Sample add-in description"
-"Title"="Sample add-in"
+"Description"="示例插件描述"
+"Title"="示例插件"
 
 [-HKEY_CURRENT_USER\Software\SolidWorks\AddInsStartup\{a377433e-f7cf-4a5a-9d74-b64c0c1758c2}]
 @=dword:00000001
 ~~~
 
+### 最佳实践
 
-
-### Best practices
-
-Registration and unregistration commands can be placed into a single bat file to simplify the registration and unregistration process:
+可以将注册和取消注册命令放入单个批处理文件中，以简化注册和取消注册过程：
 
 *Register.bat*
 ~~~ cmd
@@ -167,8 +162,6 @@ regedit.exe /S %~dp0add-registry.reg
 pause
 ~~~
 
-
-
 *Unregister.bat*
 ~~~ cmd
 "%windir%\Microsoft.NET\Framework64\v4.0.30319\RegAsm.exe" /codebase /u "%~dp0CodeStack.StockFit.Sw.dll"
@@ -176,6 +169,4 @@ regedit.exe /S %~dp0remove-registry.reg
 pause
 ~~~
 
-
-
-Change the name of the add-in and place these files into the bin folder and it will be only required to run this bat file on client machine.
+更改插件的名称并将这些文件放入bin文件夹中，只需要在客户机上运行此批处理文件即可。
