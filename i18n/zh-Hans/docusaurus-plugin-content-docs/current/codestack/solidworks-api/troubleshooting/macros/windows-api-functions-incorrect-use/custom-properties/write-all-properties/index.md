@@ -1,17 +1,17 @@
 ---
-title: Write custom property to file, configuration and cut-list using SOLIDWORKS API
-caption: Write All Properties
-description: VBA macro example to write different types of properties (general, configuration specific and cut list) using SOLIDWORKS API
+title: 使用SOLIDWORKS API将自定义属性写入文件、配置和切割清单
+caption: 写入所有属性
+description: 使用SOLIDWORKS API编写不同类型的属性（通用属性、配置特定属性和切割清单）的VBA宏示例
 image: approved-date-custom-property.png
-labels: [set property,add property,write property,date]
+labels: [设置属性,添加属性,写入属性,日期]
 ---
-![Date custom property](approved-date-custom-property.png){ width=550 }
+![日期自定义属性](approved-date-custom-property.png){ width=550 }
 
-This VBA macro example demonstrates how to add (create new or change existing) custom properties to various custom properties sources using SOLIDWORKS API. This includes file (general) custom properties, configuration specific custom properties and cut-list items (weldment or sheet metal) custom properties.
+此VBA宏示例演示了如何使用SOLIDWORKS API将自定义属性添加（创建新的或更改现有的）到各种自定义属性源中。这包括文件（通用）自定义属性、配置特定的自定义属性和切割清单项（焊接或钣金）自定义属性。
 
-Macro adds the *ApprovedDate* custom property of type *Date* and sets the value to the current date.
+该宏添加了类型为“日期”的*ApprovedDate*自定义属性，并将其值设置为当前日期。
 
-> By some reasons custom property field type is ignored and defaulted to Text when assigned to cut-list item
+> 由于某些原因，当分配给切割清单项时，自定义属性字段类型会被忽略并默认为文本
 
 ~~~ vb
 Const PRP_NAME As String = "ApprovedDate"
@@ -37,7 +37,7 @@ Sub main()
         SetConfigurationSpecificProperty swModel, PRP_NAME, dateFormat, swCustomInfoType_e.swCustomInfoDate
         SetCutListProperty swModel, PRP_NAME, dateFormat, swCustomInfoType_e.swCustomInfoDate
     Else
-        MsgBox "Please open model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -127,10 +127,8 @@ Sub SetProperty(custPrpMgr As SldWorks.CustomPropertyManager, prpName As String,
     res = custPrpMgr.Add3(prpName, prpType, prpVal, swCustomPropertyAddOption_e.swCustomPropertyReplaceValue)
     
     If res <> swCustomInfoAddResult_e.swCustomInfoAddResult_AddedOrChanged Then
-        Err.Raise vbError, "", "Failed to set custom property. Error code: " & res
+        Err.Raise vbError, "", "设置自定义属性失败。错误代码：" & res
     End If
     
 End Sub
 ~~~
-
-
