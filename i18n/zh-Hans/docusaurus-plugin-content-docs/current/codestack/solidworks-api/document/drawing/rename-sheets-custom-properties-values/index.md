@@ -1,29 +1,30 @@
 ---
 layout: sw-tool
-title: Rename SOLIDWORKS drawing sheets with custom properties values
-caption: Rename Drawing Sheets With Custom Properties Values
-description: Macro will rename all drawings sheets using the value of the specified custom property using SOLIDWORKS API
+title: 使用自定义属性值重命名SOLIDWORKS图纸工作表
+caption: 使用自定义属性值重命名图纸工作表
+description: 该宏将使用SOLIDWORKS API根据指定自定义属性的值重命名所有图纸工作表。
 image: drw-sheets.png
-labels: [custom property, drawing, example, macro, properties, rename, sheet, solidworks api, vba]
-group: Drawing
+labels: [自定义属性, 图纸, 示例, 宏, 属性, 重命名, 工作表, solidworks api, vba]
+group: 图纸
 redirect-from:
   - /2018/03/document_8.html
 ---
-This macro will rename all drawings sheets using the value of the specified custom property using SOLIDWORKS API.
 
-![List of sheets in the drawing](drw-sheets.png){ width=320 }
+该宏将使用SOLIDWORKS API根据指定自定义属性的值重命名所有图纸工作表。
 
-* Open the drawing and run the macro
-* Specify the property to read the value from
+![图纸中的工作表列表](drw-sheets.png){ width=320 }
 
-![Popup form for property name input](get-prp-name.png){ width=320 }
+* 打开图纸并运行宏
+* 指定要读取值的属性
 
-* All sheets are renamed based on the value of this property. Macro will get the value from the model view specified in the Sheet Properties.
-The 'Same as sheet specified in Document Properties'  option is not supported.
-If this option is selected then the property from the first view will be used.
-Macro will try to read the configuration specific property and if the property is not specified then model level property is read.
+![输入属性名称的弹出窗口](get-prp-name.png){ width=320 }
 
-![Use custom properties value from model option in the sheet properties](use-custom-prps-from-view-sheet-property.png){ width=400 }
+* 所有工作表将根据此属性的值进行重命名。宏将从工作表属性中指定的模型视图中获取该值。
+不支持“与文档属性中指定的工作表相同”的选项。
+如果选择了此选项，则将使用第一个视图的属性。
+宏将尝试读取配置特定属性，如果未指定属性，则读取模型级属性。
+
+![在工作表属性中使用模型的自定义属性值选项](use-custom-prps-from-view-sheet-property.png){ width=400 }
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -36,12 +37,12 @@ Sub main()
     Set swDraw = swApp.ActiveDoc
     
     If swDraw Is Nothing Then
-        MsgBox "Please open the drawing"
+        MsgBox "请打开图纸"
         End
     End If
     
     Dim prpName As String
-    prpName = InputBox("Please specify the custom property name to get the value from")
+    prpName = InputBox("请指定要从中获取值的自定义属性名称")
     
     Dim vSheetNames As Variant
     vSheetNames = swDraw.GetSheetNames
@@ -99,11 +100,11 @@ Sub main()
                 End If
                 
             Else
-                MsgBox "Failed to get the model from drawing view. Make sure that the drawing is not lightweight"
+                MsgBox "无法从绘图视图中获取模型。请确保绘图不是轻量级的"
             End If
             
         Else
-            MsgBox "Failed to get the view to get property from"
+            MsgBox "无法获取要获取属性的视图"
         End If
         
     Next
@@ -124,5 +125,3 @@ Function GetCustomPropertyValue(model as SldWorks.ModelDoc2, confName as String,
     
 End Function
 ~~~
-
-
