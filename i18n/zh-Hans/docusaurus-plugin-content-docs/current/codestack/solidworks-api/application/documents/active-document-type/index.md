@@ -1,14 +1,15 @@
 ---
-title: Determine the type Of active document using SOLIDWORKS API
-caption: Determine The Type Of Active Document
-description: Example displays the message box of the type of the document currently active in SOLIDWORKS
-labels: [assembly, document, drawing, example, part, type]
+title: 使用SOLIDWORKS API确定活动文档的类型
+caption: 确定活动文档的类型
+description: 该示例显示当前在SOLIDWORKS中活动文档的类型的消息框。
+labels: [装配, 文档, 绘图, 示例, 零件, 类型]
 redirect-from:
   - /2018/03/determine-type-of-active-document.html
 ---
-This example displays the message box of the type of the document currently active in SOLIDWORKS. This will work regardless the document is saved or not.  [IModelDoc2::GetType](https://help.solidworks.com/2018/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IModelDoc2~GetType.html) SOLIDWORKS API method can be used to return the type enumeration which will identify the document as SOLIDWORKS Part, Assembly or Drawing.
 
-~~~ vb
+该示例显示当前在SOLIDWORKS中活动文档的类型的消息框。无论文档是否已保存，都可以使用[IModelDoc2::GetType](https://help.solidworks.com/2018/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IModelDoc2~GetType.html) SOLIDWORKS API方法返回类型枚举，该枚举将标识文档为SOLIDWORKS零件、装配或绘图。
+
+```vb
 Dim swApp As SldWorks.SldWorks
 Dim swModel As SldWorks.ModelDoc2
 
@@ -23,21 +24,20 @@ Sub main()
         Select Case swModel.GetType
             
             Case swDocPART:
-                MsgBox "Active document is Part"
+                MsgBox "活动文档是零件"
             
             Case swDocASSEMBLY:
-                MsgBox "Active document is Assembly"
+                MsgBox "活动文档是装配"
                 
             Case swDocDRAWING:
-                MsgBox "Active document is Drawing"
+                MsgBox "活动文档是绘图"
         End Select
         
     Else
         
-        MsgBox "No document opened"
+        MsgBox "未打开文档"
         
     End If
     
 End Sub
-~~~
-
+```
