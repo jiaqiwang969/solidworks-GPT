@@ -1,25 +1,25 @@
 ---
 layout: sw-tool
-title: Open SOLIDWORKS assembly in quick view mode from Windows file explorer
-caption: Open Document In Quick View Mode From File Explorer
-description: Tool to open SOLIDWORKS assembly or drawing in quick view (large design review) mode from the context menu in Windows file explorer
+title: 从Windows文件资源管理器中以快速查看模式打开SOLIDWORKS装配体
+caption: 从文件资源管理器中以快速查看模式打开文档
+description: 通过在Windows文件资源管理器的上下文菜单中添加选项，以快速查看（大型设计审查）模式打开SOLIDWORKS装配体或图纸
 image: open-in-quick-view.svg
-labels: [quick view,large design review,performance,shell,context menu]
-group: Performance
+labels: [快速查看,大型设计审查,性能,外壳,上下文菜单]
+group: 性能
 ---
-![Opening large design review form SOLIDWORKS](large-design-review-open.png){ width=450 }
+![从SOLIDWORKS中打开大型设计审查表单](large-design-review-open.png){ width=450 }
 
-SOLIDWORKS enables an option to open large assemblies or drawing in [Large Design Review](https://help.solidworks.com/2018/English/SolidWorks/sldworks/HIDD_DIALOG_LDR_WARNING.htm) mode (aka Quick View). This allows to only load visual information of assembly and drawing and significantly improves the performance (large assembly usually opens in just few seconds instead minutes or even hours). Individual components can be later loaded on demand.
+SOLIDWORKS 提供了一种在[大型设计审查](https://help.solidworks.com/2018/English/SolidWorks/sldworks/HIDD_DIALOG_LDR_WARNING.htm)模式（也称为快速查看）下打开大型装配体或图纸的选项。这样可以仅加载装配体和图纸的可视信息，从而显著提高性能（大型装配体通常只需几秒钟即可打开，而不是几分钟甚至几小时）。可以随后按需加载各个组件。
 
-![Assembly opened in large design review mode](large-design-review.png){ width=650 }
+![以大型设计审查模式打开的装配体](large-design-review.png){ width=650 }
 
-However this mode is not supported when opening documents from Windows File Explorer. 
+然而，从Windows文件资源管理器中打开文档时不支持此模式。
 
-The following guide explains how to enable Quick View mode directly from the Windows File Explorer.
+以下指南说明如何直接从Windows文件资源管理器启用快速查看模式。
 
-* Create new folder which will contain the script to open the file in Quick View mode
-* Create a text file with an extension of .vbs and name it *opener.vbs*
-* Paste the following code into this file
+* 创建一个新文件夹，用于存放以快速查看模式打开文件的脚本
+* 创建一个扩展名为.vbs的文本文件，并将其命名为*opener.vbs*
+* 将以下代码粘贴到此文件中
 
 ~~~ vbs
 Dim swApp
@@ -39,37 +39,37 @@ If filePath <> "" then
 	Set swModel = swApp.OpenDoc7(docSpec)
 
 	If swModel is Nothing Then
-		MsgBox "Failed to open document"
+		MsgBox "无法打开文档"
 	End If
 	
 Else
-	MsgBox "File path is not specified"
+	MsgBox "未指定文件路径"
 End If
 ~~~
 
 
 
-* Create another text file and name it *install.cmd*
-* Add the following line into the *install.cmd* which will enable a Quick Mode for assemblies
+* 创建另一个文本文件，并将其命名为*install.cmd*
+* 将以下行添加到*install.cmd*中，以启用装配体的快速模式
 
 ~~~ bat
 reg add "HKCR\SldAssem.Document\shell\Quick View\command" /ve /d "wscript.exe """%~dp0opener.vbs""" ""%%1""" /f
 ~~~
 
-* If you want to enable Quick View model for drawings, add the following line as well
+* 如果要启用图纸的快速查看模式，还需要添加以下行
 
 ~~~ bat
 reg add "HKCR\SldDraw.Document\shell\Quick View\command" /ve /d "wscript.exe """%~dp0opener.vbs""" ""%%1""" /f
 ~~~
 
-* Save both files. It is important to keep those files in the same folder
+* 保存这两个文件。重要的是要将这些文件保存在同一个文件夹中
 
-![Files for enabling the quick mode from the Windows Explorer](quick-view-files.png){ width=250 }
+![用于在Windows资源管理器中启用快速模式的文件](quick-view-files.png){ width=250 }
 
-* Run *install.cmd*. You might need to run this as an administrator
+* 运行*install.cmd*。您可能需要以管理员身份运行此命令
 
-As the result the *Quick View* context menu command is added to the Windows File Explorer. Select any assembly and click right mouse button. Click Quick View and the file will be opened in the quick view mode in SOLIDWORKS:
+结果是在Windows文件资源管理器中添加了*快速查看*上下文菜单命令。选择任何装配体，单击鼠标右键。点击快速查看，文件将在SOLIDWORKS中以快速查看模式打开：
 
-![Quick View context menu when assembly is selected](quick-view-context-menu.png){ width=450 }
+![选择装配体时的快速查看上下文菜单](quick-view-context-menu.png){ width=450 }
 
-Watch [video demonstration](https://youtu.be/9uZCecGg25I?t=12)
+观看[视频演示](https://youtu.be/9uZCecGg25I?t=12)
