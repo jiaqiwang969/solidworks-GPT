@@ -1,53 +1,52 @@
 ---
-title: Dictionary in Visual Basic
-caption: Dictionary
-description: Explanation of using Dictionary object to store key-value pairs in Visual Basic
+title: Visual Basic 中的字典
+caption: 字典
+description: 在 Visual Basic 中使用字典对象存储键值对的解释
 image: dictionary-key-already-associated.png
 sidebar_position: 0
 ---
-Visual Basic dictionary object is a collection of unique keys and associated values. It is also possible to
-[index items with keys in collection](/docs/codestack/visual-basic/data-sets/collection#indexing-items-by-keys), but in this case it is only possible to have keys of String types. While it is possible to create keys of any type in Dictionary.
+Visual Basic 字典对象是一组唯一键和关联值的集合。在集合中可以使用键进行索引项，但在这种情况下，只能使用字符串类型的键。而在字典中可以创建任何类型的键。
 
-Unlike collections dictionaries are COM objects and require reference to *Microsoft Scripting Runtime* library in order to use early binding.
+与集合不同，字典是 COM 对象，需要引用 *Microsoft Scripting Runtime* 库才能使用早期绑定。
 
-![Microsoft Scripting Runtime reference](microsoft-scripting-runtime-library.png){ width=350 }
+![Microsoft Scripting Runtime 引用](microsoft-scripting-runtime-library.png){ width=350 }
 
 ~~~ vb
-Dim dict As Dictionary 'early binding
+Dim dict As Dictionary '早期绑定
 Set dict = New Dictionary
 ~~~
 
-It is also possible to use late binding, so it is not required to add the *Microsoft Scripting Runtime* library to the project.
+也可以使用晚期绑定，因此不需要将 *Microsoft Scripting Runtime* 库添加到项目中。
 
 ~~~ vb
-Dim dict As Object 'late binding
+Dim dict As Object '晚期绑定
 Set dict = CreateObject("Scripting.Dictionary")
 ~~~
 
-Refer [Early Binding and Late Binding](/docs/codestack/visual-basic/variables/declaration#early-binding-and-late-binding) article for more information about these approaches.
+有关这些方法的更多信息，请参阅 [早期绑定和晚期绑定](/docs/codestack/visual-basic/variables/declaration#early-binding-and-late-binding) 文章。
 
-## Add, edit and traverse elements
+## 添加、编辑和遍历元素
 
-In order to add new key-value pair it is required to use **Add** method of **Dictionary** object
+要添加新的键值对，需要使用 **Dictionary** 对象的 **Add** 方法
 
 ~~~ vb
 dic.Add <Key>, <Value>
 ~~~
 
-Keys must be unique otherwise the error will be displayed.
+键必须是唯一的，否则将显示错误。
 
-![Run-time error '457' the key is already associated with an element of this collection when adding the duplicate key](dictionary-key-already-associated.png){ width=350 }
+![运行时错误 '457'，当添加重复键时，该键已与此集合的元素关联](dictionary-key-already-associated.png){ width=350 }
 
-Elements of the dictionary can be accessed by key or 0-based index either by using () symbol directly on the variable or via **Item** property
+可以通过键或基于 0 的索引访问字典的元素，可以直接在变量上使用 () 符号，也可以通过 **Item** 属性访问。
 
 ~~~ vb
 Debug.Print dict.Item(<Key>)
 Debug.Print dict(<Key>)
 ~~~
 
-All keys from the dictionary can be retrieved using the **Keys** property.
+可以使用 **Keys** 属性检索字典中的所有键。
 
-All values from the dictionary can be retrieved using the **Values** property.
+可以使用 **Values** 属性检索字典中的所有值。
 
 ~~~ vb
 Sub AddEditAndTraverse()
@@ -67,33 +66,33 @@ Sub AddEditAndTraverse()
         Debug.Print nmbKey & " = " & dict.item(nmbKey)
     Next
     
-    dict(100) = "One Hundred" 'value modified
+    dict(100) = "One Hundred" '修改值
     
     'One Hundred
-    Debug.Print dict(100) 'item accessed without the the Item property
+    Debug.Print dict(100) '无需使用 Item 属性访问项
     
     'Empty
-    Debug.Print dict(10000) 'not existing item
+    Debug.Print dict(10000) '不存在的项
 
 End Sub
 ~~~
 
 
 
-## Key compare mode
+## 键比较模式
 
-By default the compare mode for keys is set to **Binary** comparison. This means if dictionary has keys of type String the keys are case-sensitive, i.e. it is acceptable to have both *A* and *a* as the key.
+默认情况下，键的比较模式设置为**二进制**比较。这意味着如果字典的键是字符串类型，则键是区分大小写的，即可以同时拥有 *A* 和 *a* 作为键。
 
-**Exists** method provides a safe way to check if the key already registered in the dictionary.
+**Exists** 方法提供了一种安全的方式来检查键是否已在字典中注册。
 
-**CompareMode** property allows to set the mode which should be used when comparing the entries.
+**CompareMode** 属性允许设置比较条目时应使用的模式。
 
-* BinaryCompare (default). String keys are case-sensitive
-* TextCompare. String keys are case-insensitive
+* BinaryCompare（默认）。字符串键区分大小写
+* TextCompare。字符串键不区分大小写
 
-Mode can only be changed for an empty dictionary (without values), otherwise the error will be displayed.
+只能在空字典（没有值）中更改模式，否则将显示错误。
 
-![Run-time error '5': Invalid procedure call or argument when changing the compare mode of dictionary objects with elements](change-compare-mode-invalid-procedure.png){ width=400 }
+![运行时错误 '5'：更改具有元素的字典对象的比较模式时出现无效的过程调用或参数](change-compare-mode-invalid-procedure.png){ width=400 }
 
 ~~~ vb
 Sub ExistsCompareMode()
@@ -110,16 +109,16 @@ Sub ExistsCompareMode()
     'False
     Debug.Print dict.Exists("a")
     
-    dict.Add "d", 5 'allows to add the element as the default comparison is binary
+    dict.Add "d", 5 '允许添加元素，因为默认比较是二进制的
     
-    'dict.CompareMode = TextCompare 'Run-time error 5: Invalid procedure call or argument
+    'dict.CompareMode = TextCompare '运行时错误 5：无效的过程调用或参数
     
     Dim dict1 As New Dictionary
-    dict1.CompareMode = TextCompare 'case-insensitive comparison
+    dict1.CompareMode = TextCompare '不区分大小写比较
     
     dict1.Add "A", 1
     dict1.Add "B", 2
-    dict1.Add "a", 3 'Run-time error 457: This key is already associated with an element of this collection
+    dict1.Add "a", 3 '运行时错误 457：此键已与此集合的元素关联
     
     'True
     Debug.Print dict1.Exists("a")
@@ -129,15 +128,15 @@ End Sub
 
 
 
-## Remove elements
+## 删除元素
 
-Any element can be removed from the dictionary either by key or by 0-based index using **Remove** method.
+可以通过键或基于 0 的索引从字典中删除任何元素，使用 **Remove** 方法。
 
->Attempt on removing the item which is not present in the dictionary will throw an exception
+>尝试删除字典中不存在的项将引发异常
 
-![Run-time error '32811': Method Remove of object 'IDictionary' failed when removing non-existent element](dictionary-remove-object-error.png){ width=250 }
+![运行时错误 '32811'：当删除不存在的元素时，对象 'IDictionary' 的 Remove 方法失败](dictionary-remove-object-error.png){ width=250 }
 
-**RemoveAll** method allows to clear the dictionary and remove all items.
+**RemoveAll** 方法允许清除字典并删除所有项。
 
 ~~~ vb
 Sub Remove()
@@ -153,14 +152,14 @@ Sub Remove()
     
     dict.Remove "A"
     
-    'dict.Remove "Not Existing Item" 'Run-time error 32811: Method Remove of object IDictionary failed
+    'dict.Remove "Not Existing Item" '运行时错误 32811：对象 IDictionary 的 Remove 方法失败
     
     Dim i As Integer
     
     '2 3 4
     For i = 1 To dict.Count
         Dim item As Integer
-        item = dict.Items(i - 1) '0-based index
+        item = dict.Items(i - 1) '基于 0 的索引
         Debug.Print item
     Next
     
@@ -171,5 +170,3 @@ Sub Remove()
     
 End Sub
 ~~~
-
-
