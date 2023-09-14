@@ -1,18 +1,18 @@
 ---
-caption: Insert Predefined Views
-title: Macro to insert model into the predefined views of the SOLIDWORKS drawing template
-description: VBA macro allows to insert SOLIDWORKS model into all or selected predefined views of the active drawing document
-image: predefined-views.png
+标题：插入预定义视图
+描述：VBA宏允许将SOLIDWORKS模型插入活动绘图文档的所有或选定的预定义视图中
+图片：predefined-views.png
 ---
-![SOLIDWORKS predefined views](predefined-views.png){ width = 400 }
 
-This VBA macro allows to insert SOLIDWORKS part or assembly into the predefined views of the active drawing or drawing template
+![SOLIDWORKS预定义视图](predefined-views.png){ width = 400 }
 
-Select the predefined drawing views to insert model to. If no views are selected, all predefined views will be filled.
+这个VBA宏允许将SOLIDWORKS零件或装配体插入活动绘图文档或绘图模板的预定义视图中。
 
-Macro will show the file browse dialog to select model to insert.
+选择要插入模型的预定义绘图视图。如果没有选择视图，则将填充所有预定义视图。
 
-~~~ vb
+宏将显示文件浏览对话框以选择要插入的模型。
+
+``` vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -24,17 +24,16 @@ Sub main()
     Set swDraw = swApp.ActiveDoc
         
     Dim filePath As String
-    filePath = swApp.GetOpenFileName("Select model to insert into a predefined views", "", _
-        "SOLIDWORKS Model Files (*.sldprt; *.sldasm)|*.sldprt;*.sldasm|All Files (*.*)|*.*|", 0, "", "")
+    filePath = swApp.GetOpenFileName("选择要插入到预定义视图中的模型", "", _
+        "SOLIDWORKS模型文件 (*.sldprt; *.sldasm)|*.sldprt;*.sldasm|所有文件 (*.*)|*.*|", 0, "", "")
     
     If filePath <> "" Then
     
         If False = swDraw.InsertModelInPredefinedView(filePath) Then
-            Err.Raise vbError, "", "Failed to insert model into predefined views"
+            Err.Raise vbError, "", "无法将模型插入到预定义视图中"
         End If
     
     End If
     
 End Sub
-~~~
-
+```
