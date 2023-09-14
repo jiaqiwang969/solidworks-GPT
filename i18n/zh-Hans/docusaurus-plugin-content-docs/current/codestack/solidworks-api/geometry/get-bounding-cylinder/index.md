@@ -1,25 +1,25 @@
 ---
-title: Finding the body bounding cylinder using SOLIDWORKS API
-caption: Get Body Bounding Cylinder
-description: This example demonstrates how to get the bounding cylinder of the solid body using SOLIDWORKS API
+title: 使用SOLIDWORKS API查找体的包围圆柱体
+caption: 获取体的包围圆柱体
+description: 本示例演示如何使用SOLIDWORKS API查找体的包围圆柱体。
 image: cylindrical-bounding-box.png
 ---
-![Cylindrical bounding box is created around the body](cylindrical-bounding-box.png){ width=400 }
+![围绕体创建圆柱形边界框](cylindrical-bounding-box.png){ width=400 }
 
-This example demonstrates how to find the bounding cylinder of the solid body using SOLIDWORKS API.
+本示例演示如何使用SOLIDWORKS API查找体的包围圆柱体。
 
-Macro requires user to select the input parameter to identify the direction of the cylinder. User either needs to select circular face (in this case the axis will be used as the reference) or plane feature (in this case the normal will be used as the reference).
+宏要求用户选择输入参数以确定圆柱体的方向。用户可以选择圆形面（在这种情况下，轴将用作参考）或平面特征（在这种情况下，法线将用作参考）。
 
-As the result new feature is created representing the cylindrical boundary of the body.
+结果将创建一个新的特征，表示体的圆柱形边界。
 
-> This macro will create best-fit bounding cylinder for the bodies at any orientation. It is no necessarily to have the body aligned with XYZ axes.
+> 该宏将为任意方向的体创建最佳拟合的包围圆柱体。体不一定需要与XYZ轴对齐。
 
-Macro can be downloaded at [this link](GetBoundingCylinderBin.zip). Unzip the macro and run it from Tools->Macro->Run menu command. Specify the correct filter as shown below:
+可以在[此链接](GetBoundingCylinderBin.zip)下载宏。解压缩宏并从“工具”->“宏”->“运行”菜单命令中运行它。如下所示指定正确的过滤器：
 
-![Running the VSTA macro from SOLIDWORKS](run-vsta-macro.png){ width=500 }
+![从SOLIDWORKS运行VSTA宏](run-vsta-macro.png){ width=500 }
 
 ### SolidWorksMacro.cs
-This is an entry point of VSTA macro. In this module the input parameters are processed and the output body is created
+这是VSTA宏的入口点。在此模块中处理输入参数并创建输出体。
 ~~~ cs
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
@@ -52,12 +52,12 @@ namespace CodeStack
                 }
                 else
                 {
-                    throw new NullReferenceException("No Part Document opened");
+                    throw new NullReferenceException("未打开零件文档");
                 }
             }
             catch (Exception ex)
             {
-                swApp.SendMsgToUser2("Error: " + ex.Message, 
+                swApp.SendMsgToUser2("错误：" + ex.Message, 
                     (int)swMessageBoxIcon_e.swMbStop, (int)swMessageBoxBtn_e.swMbOk);
             }
         }
@@ -96,7 +96,7 @@ namespace CodeStack
                 }
             }
 
-            throw new NullReferenceException("Failed to find the input body. Either select cylindrical face or use single body part");
+            throw new NullReferenceException("未找到输入体。请选择圆柱面或使用单个实体零件");
         }
 
         private double[] GetDirection(IModelDoc2 model, object inputObj)
@@ -125,7 +125,7 @@ namespace CodeStack
                 }
             }
 
-            throw new NullReferenceException("Failed to find the direction. Please select cylindrical face or plane");
+            throw new NullReferenceException("未找到方向。请选择圆柱面或平面");
         }
 
         public SldWorks swApp;
@@ -139,7 +139,7 @@ namespace CodeStack
 
 
 ### CylinderParams.cs
-This structure represents the details of the bounding cylinder
+此结构表示包围圆柱体的详细信息
 ~~~ cs
 using System;
 using System.Collections.Generic;
@@ -169,7 +169,7 @@ namespace CodeStack
 
 
 ### BodyHelper.cs
-This utility class allows to find the orientation of the body and fit it into the cylinder
+此实用程序类允许查找体的方向并将其适配到圆柱体
 ~~~ cs
 using System;
 using System.Collections.Generic;
@@ -279,7 +279,7 @@ namespace CodeStack
 
 
 ### BodyHelper.cs
-This module provides utility functions for working with vectors, transformations and points
+此模块提供了用于处理向量、变换和点的实用函数
 ~~~ cs
 using System;
 using System.Collections.Generic;
@@ -354,4 +354,4 @@ namespace CodeStack
 
 
 
-This macro requires a reference to the [Smallest enclosing circle - Library (C#)](https://www.nayuki.io/page/smallest-enclosing-circle) by Project Nayuki.
+此宏需要引用[Smallest enclosing circle - Library (C#)](https://www.nayuki.io/page/smallest-enclosing-circle)的Project Nayuki。
