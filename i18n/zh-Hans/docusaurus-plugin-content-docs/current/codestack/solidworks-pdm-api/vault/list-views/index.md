@@ -1,15 +1,15 @@
 ---
-title: List all vault views using SOLIDWORKS PDM API
-caption: List All Views
-description: Example demonstrates how to list all available vault views and their paths using SOLIDWORKS PDM API
+title: 使用SOLIDWORKS PDM API列出所有存储库视图
+caption: 列出所有视图
+description: 该示例演示了如何使用SOLIDWORKS PDM API列出所有可用的存储库视图及其路径。
 image: pdm-vaults-list.png
 labels: [vault, view]
 ---
-![Vault views info printed to Console window](pdm-vaults-list.png){ width=250 }
+![将存储库视图信息打印到控制台窗口](pdm-vaults-list.png){ width=250 }
 
-This example demonstrates how to list all available vault views and their paths and prints the information to the console window.
+该示例演示了如何列出所有可用的存储库视图及其路径，并将信息打印到控制台窗口。
 
-[IEdmVault8::GetVaultViews](https://help.solidworks.com/2018/english/api/epdmapi/epdm.interop.epdm~epdm.interop.epdm.iedmvault8~getvaultviews.html) SOLIDWORKS PDM API is used to list the information about all available PDM vaults. Alternatively this information can be retrieved from the Registry.
+[IEdmVault8::GetVaultViews](https://help.solidworks.com/2018/english/api/epdmapi/epdm.interop.epdm~epdm.interop.epdm.iedmvault8~getvaultviews.html) SOLIDWORKS PDM API用于列出所有可用的PDM存储库的信息。或者，可以从注册表中检索此信息。
 
 ~~~ cs
 using EPDM.Interop.epdm;
@@ -34,5 +34,3 @@ namespace CodeStack.ListPdmVaults
 }
 
 ~~~
-
-
