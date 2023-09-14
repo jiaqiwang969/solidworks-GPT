@@ -1,17 +1,16 @@
 ---
-title: Adding sub-menus and spacers to SOLIDWORKS command manager using SwEx.AddIn
-caption: Sub-Menus And Spacers
-description: Adding sub-menus and spacers or command tab boxes in SOLIDWORKS command manager using SwEx.AddIn framework
+title: 使用 SwEx.AddIn 向 SOLIDWORKS 命令管理器添加子菜单和间隔符
+caption: 子菜单和间隔符
+description: 使用 SwEx.AddIn 框架向 SOLIDWORKS 命令管理器添加子菜单、间隔符或命令选项卡框
 image: sub-menu-and-spacer.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
-## Adding spacer
+## 添加间隔符
 
-Spacer can be added between the commands by decorating the command using the [CommandSpacerAttribute](https://docs.codestack.net/swex/add-in/html/T_CodeStack_SwEx_AddIn_Attributes_CommandSpacerAttribute.htm). Spacer will be added before this command.
+可以通过使用 [CommandSpacerAttribute](https://docs.codestack.net/swex/add-in/html/T_CodeStack_SwEx_AddIn_Attributes_CommandSpacerAttribute.htm) 来为命令之间添加间隔符。间隔符将添加在该命令之前。
 
-
-~~~vb
+```vb
 <Title("AddInEx Commands")>
 Public Enum Commands_e
 
@@ -21,9 +20,9 @@ Public Enum Commands_e
     Command2
 
 End Enum
-~~~
+```
 
-~~~cs
+```cs
 public enum Commands_e
 {
     Command1,
@@ -31,45 +30,40 @@ public enum Commands_e
     [CommandSpacer]
     Command2
 }
-~~~
+```
 
 
+如果为该命令组创建了命令选项卡框（即在 [CommandItemInfoAttribute](https://docs.codestack.net/swex/add-in/html/M_CodeStack_SwEx_AddIn_Attributes_CommandItemInfoAttribute__ctor_2.htm) 中将 *showInCmdTabBox* 参数设置为 *true*），则间隔符不会显示在相应的命令选项卡框中。
 
+## 添加子菜单
 
-If command tab tab boxes are created for this command group (i.e. *showInCmdTabBox* parameter is set to *true* in the [CommandItemInfoAttribute](https://docs.codestack.net/swex/add-in/html/M_CodeStack_SwEx_AddIn_Attributes_CommandItemInfoAttribute__ctor_2.htm)), spacer is not reflected in the corresponding command tab box.
+可以通过调用 [CommandGroupInfoAttribute](https://docs.codestack.net/swex/add-in/html/M_CodeStack_SwEx_AddIn_Attributes_CommandGroupInfoAttribute__ctor_2.htm) 属性的相应重载来定义命令组的子菜单，并指定父菜单组的类型。
 
-## Adding sub-menus
-
-Sub-menus for the command groups can be defined by calling the corresponding overload of the [CommandGroupInfoAttribute](https://docs.codestack.net/swex/add-in/html/M_CodeStack_SwEx_AddIn_Attributes_CommandGroupInfoAttribute__ctor_2.htm) attribute and specifying the type of the parent menu group
-
-
-~~~vb
+```vb
 <Title("Sub Menu Commands")>
 <CommandGroupInfo(GetType(Commands_e))>
 Public Enum SubCommands_e
     SubCommand1
     SubCommand2
 End Enum
-~~~
+```
 
-~~~cs
+```cs
 [CommandGroupInfo(typeof(Commands_e))]
 public enum SubCommands_e
 {
     SubCommand1,
     SubCommand2
 }
-~~~
+```
 
 
+子菜单将在命令选项卡中以单独的选项卡框呈现。
+
+## 示例
 
 
-Sub menus are rendered in separate tab boxes in the command tab.
-
-## Example
-
-
-~~~vb
+```vb
 <Title("AddInEx Commands")>
 Public Enum Commands_e
 
@@ -98,10 +92,10 @@ End Sub
 
 Private Sub OnButtonClick(ByVal cmd As SubCommands_e)
 End Sub
-~~~
+```
 
 
-~~~cs
+```cs
 [Title("AddInEx Commands")]
 public enum Commands_e
 {
@@ -133,21 +127,19 @@ private void OnButtonClick(Commands_e cmd)
 private void OnButtonClick(SubCommands_e cmd)
 {
 }
-~~~
+```
 
 
+上述命令配置将创建以下菜单和命令选项卡框：
 
+![子菜单和间隔符](sub-menu-and-spacer.png)
 
-The above commands configuration would result in the following menu and command tab boxes created:
+* Command1 和 Command2 是在 Commands_e 枚举中定义的顶级菜单的命令
+* 在 Command1 和 Command2 之间添加了间隔符
+* SubCommand1 和 SubCommand2 是在 SubCommands_e 枚举中定义的子菜单的命令，该子菜单是 Commands_e 枚举的子菜单
 
-![Sub-menus and spacer](sub-menu-and-spacer.png)
+![命令选项卡框](command-tab.png)
 
-* Command1 and Command2 are commands of the top level menu defined in Commands_e enumeration
-* Spacer is added between Command1 and Command2
-* SubCommand1 and SubCommand2 are commands of SubCommands_e enumeration which is a sub menu of Commands_e enumeration
-
-![Command tab boxes](command-tab.png)
-
-* All commands (including sub menu commands) are added on the same command tab
-* Command1 and Command2 are placed in a separate command tab boxes of SubCommand1 and SubCommand2
-* Spacer between Command1 and Command2 is ignored in the commands tab
+* 所有命令（包括子菜单命令）都添加在同一个命令选项卡中
+* Command1 和 Command2 放置在 SubCommand1 和 SubCommand2 的单独命令选项卡框中
+* Command1 和 Command2 之间的间隔符在命令选项卡中被忽略
