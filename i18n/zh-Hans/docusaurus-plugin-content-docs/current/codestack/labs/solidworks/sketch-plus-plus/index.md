@@ -1,22 +1,22 @@
 ---
-title: Sketch++ - SOLIDWORKS add-in which enables advanced sketch functionality
+title: Sketch++ - SOLIDWORKS插件，增强草图功能
 caption: Sketch++
-description: Utilities for complimenting sketch functionality in SOLIDWORKS
+description: 用于增强SOLIDWORKS草图功能的实用工具
 categories: sw-labs
 group: Model
 toc-group-name: labs-solidworks-sketch-plus-plus
 type: sw-lab
 ---
-Download the latest version 0.1.0 from [this link](https://github.com/codestackdev/sketch-plus-plus/releases/tag/v0.1.0-swpuc)
+从[此链接](https://github.com/codestackdev/sketch-plus-plus/releases/tag/v0.1.0-swpuc)下载最新版本0.1.0。
 
-Source code is available on [GitHub](https://github.com/codestackdev/sketch-plus-plus)
+源代码可在[GitHub](https://github.com/codestackdev/sketch-plus-plus)上获取。
 
-When installed the 'Sketch++' toolbar and menu are added to SOLIDWORKS.
+安装后，'Sketch++'工具栏和菜单将添加到SOLIDWORKS中。
 
-Open 2D sketch and run the 'Create offset' command.
+打开2D草图并运行'创建偏移'命令。
 
-In the property manager page select the chain of sketch segments to offset (you might need to deselect the plane if it got selected in the selection box).
+在属性管理器页面中，选择要偏移的草图线段链（如果选择框中选择了平面，则可能需要取消选择）。
 
-You can use the 'Select partial chain' command from the 'Sketch++' toolbar to select all connected segments between two selected segments.
+您可以使用'Sketch++'工具栏中的'选择部分链'命令来选择两个选定线段之间的所有连接线段。
 
-Click green tick to generate offset.
+点击绿色勾号生成偏移。
