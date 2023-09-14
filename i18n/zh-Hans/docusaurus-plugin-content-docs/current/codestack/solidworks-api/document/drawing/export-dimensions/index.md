@@ -1,32 +1,32 @@
 ---
 layout: sw-tool
-title: Export dimensions information from SOLIDWORKS drawing to CSV file
-caption: Export Dimensions Information
-description: VBA macro to export dimensions information (name, position, location, zone, value, tolerance) from SOLIDWORKS drawing to the CSV file
+title: 从SOLIDWORKS图纸导出尺寸信息到CSV文件
+caption: 导出尺寸信息
+description: VBA宏将SOLIDWORKS图纸中的尺寸信息（名称、位置、位置、区域、值、公差）导出到CSV文件中
 image: export-dimensions.svg
-labels: [dimensions,tolerance,export,csv]
-group: Drawing
+labels: [尺寸,公差,导出,CSV]
+group: 图纸
 ---
-![Dimensions in the drawing view](drawing-view.png)
+![图纸视图中的尺寸](drawing-view.png)
 
-This VBA macro allows to export information of all dimensions in the active drawing to the CSV file which can be opened by Excel.
+这个VBA宏允许将活动图纸中的所有尺寸信息导出到可以用Excel打开的CSV文件中。
 
-Macro includes the following information into the report:
+宏将以下信息包含在报告中：
 
-* Name - full name of the dimension
-* Owner - name of the drawing view or sheet this dimension belongs to
-* Type - type of the dimension (e.g. linear, angular, ordinate, etc.)
-* X - X position of the dimension in the current drawing units
-* Y - Y position of the dimension in the current drawing units
-* Value - value of the dimension in the current units
-* Grid Ref - reference of this dimension in the drawing grid (e.g. A5)
-* Tolerance - type of the tolerance assigned to this dimension (e.g. basic, symmetric, etc.)
-* Min - Minimum value of the tolerance in the current units
-* Max - Maximum value of the tolerance in the current units
+* 名称 - 尺寸的完整名称
+* 所有者 - 尺寸所属的图纸视图或图纸页的名称
+* 类型 - 尺寸的类型（例如线性、角度、坐标等）
+* X - 尺寸在当前图纸单位中的X位置
+* Y - 尺寸在当前图纸单位中的Y位置
+* 值 - 尺寸在当前单位中的值
+* 网格参考 - 尺寸在图纸网格中的参考（例如A5）
+* 公差 - 分配给该尺寸的公差类型（例如基本、对称等）
+* 最小值 - 公差的最小值（当前单位）
+* 最大值 - 公差的最大值（当前单位）
 
-![Dimensions information opened in Excel](dimensions-report.png){ width=600 }
+![在Excel中打开的尺寸信息](dimensions-report.png){ width=600 }
 
-Output file is saved into the same folder as original drawing and named *[drawing name]-dimensions.csv*
+输出文件保存在与原始图纸相同的文件夹中，命名为*[图纸名称]-dimensions.csv*
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -43,7 +43,7 @@ try_:
     Set swDraw = swApp.ActiveDoc
     
     If swDraw Is Nothing Then
-        Err.Raise vbError, "", "Please open drawing"
+        Err.Raise vbError, "", "请打开图纸"
     End If
     
     ExportDrawingDimensions swDraw
@@ -68,7 +68,7 @@ Sub ExportDrawingDimensions(draw As SldWorks.DrawingDoc)
     filePath = draw.GetPathName
     
     If filePath = "" Then
-        Err.Raise vbError, "", "Please save drawing document"
+        Err.Raise vbError, "", "请保存图纸文档"
     End If
     
     filePath = Left(filePath, InStrRev(filePath, ".") - 1) & "-dimensions.csv"
@@ -76,7 +76,7 @@ Sub ExportDrawingDimensions(draw As SldWorks.DrawingDoc)
     Open filePath For Output As #fileNmb
     
     Dim header As String
-    header = Join("Name", "Owner", "Type", "X", "Y", "Value", "Grid Ref", "Tolerance", "Min", "Max")
+    header = Join("名称", "所有者", "类型", "X", "Y", "值", "网格参考", "公差", "最小值", "最大值")
 
     Print #fileNmb, header
     
@@ -175,33 +175,33 @@ Function GetDimensionType(dispDim As SldWorks.DisplayDimension) As String
 
     Select Case dispDim.Type2
         Case swDimensionType_e.swAngularDimension
-            GetDimensionType = "Angular"
+            GetDimensionType = "角度"
         Case swDimensionType_e.swArcLengthDimension
-            GetDimensionType = "ArcLength"
+            GetDimensionType = "弧长"
         Case swDimensionType_e.swChamferDimension
-            GetDimensionType = "Chamfer"
+            GetDimensionType = "倒角"
         Case swDimensionType_e.swDiameterDimension
-            GetDimensionType = "Diameter"
+            GetDimensionType = "直径"
         Case swDimensionType_e.swDimensionTypeUnknown
-            GetDimensionType = "Unknown"
+            GetDimensionType = "未知"
         Case swDimensionType_e.swHorLinearDimension
-            GetDimensionType = "HorLinear"
+            GetDimensionType = "水平线性"
         Case swDimensionType_e.swHorOrdinateDimension
-            GetDimensionType = "HorOrdinate"
+            GetDimensionType = "水平坐标"
         Case swDimensionType_e.swLinearDimension
-            GetDimensionType = "Linear"
+            GetDimensionType = "线性"
         Case swDimensionType_e.swOrdinateDimension
-            GetDimensionType = "Ordinate"
+            GetDimensionType = "坐标"
         Case swDimensionType_e.swRadialDimension
-            GetDimensionType = "Radial"
+            GetDimensionType = "半径"
         Case swDimensionType_e.swScalarDimension
-            GetDimensionType = "Scalar"
+            GetDimensionType = "标量"
         Case swDimensionType_e.swVertLinearDimension
-            GetDimensionType = "VertLinear"
+            GetDimensionType = "垂直线性"
         Case swDimensionType_e.swVertOrdinateDimension
-            GetDimensionType = "VertOrdinate"
+            GetDimensionType = "垂直坐标"
         Case swDimensionType_e.swZAxisDimension
-            GetDimensionType = "ZAxis"
+            GetDimensionType = "Z轴"
     End Select
     
 End Function
@@ -213,31 +213,31 @@ Sub GetDimensionTolerance(draw As SldWorks.DrawingDoc, swDim As SldWorks.dimensi
     
     Select Case swTol.Type
         Case swTolType_e.swTolBASIC
-            tolType = "Basic"
+            tolType = "基本"
         Case swTolType_e.swTolBILAT
-            tolType = "Bilat"
+            tolType = "双向"
         Case swTolType_e.swTolBLOCK
-            tolType = "Block"
+            tolType = "块"
         Case swTolType_e.swTolFIT
-            tolType = "Fit"
+            tolType = "配合"
         Case swTolType_e.swTolFITTOLONLY
-            tolType = "FitTolOnly"
+            tolType = "仅配合公差"
         Case swTolType_e.swTolFITWITHTOL
-            tolType = "FitWithTol"
+            tolType = "配合公差"
         Case swTolType_e.swTolGeneral
-            tolType = "General"
+            tolType = "常规"
         Case swTolType_e.swTolLIMIT
-            tolType = "Limit"
+            tolType = "极限"
         Case swTolType_e.swTolMAX
-            tolType = "Max"
+            tolType = "最大"
         Case swTolType_e.swTolMETRIC
-            tolType = "Metric"
+            tolType = "公制"
         Case swTolType_e.swTolMIN
-            tolType = "Min"
+            tolType = "最小"
         Case swTolType_e.swTolNONE
-            tolType = "None"
+            tolType = "无"
         Case swTolType_e.swTolSYMMETRIC
-            tolType = "Symmetric"
+            tolType = "对称"
     End Select
 
     swTol.GetMinValue2 minVal
@@ -280,4 +280,3 @@ Function Join(ParamArray parts() As Variant) As String
     
 End Function
 ~~~
-
