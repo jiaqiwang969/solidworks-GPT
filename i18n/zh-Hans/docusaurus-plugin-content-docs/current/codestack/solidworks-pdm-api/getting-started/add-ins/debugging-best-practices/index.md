@@ -1,48 +1,48 @@
 ---
-title: Debugging SOLIDWORKS PDM Add-In - Best Practices
-caption: Debugging SOLIDWORKS PDM Add-In - Best Practices
-description: Detailed guide for debugging the SOLIDWORKS PDM Add-In. Simplified debugging using the Vault Browser tool
+title: SOLIDWORKS PDM Add-In 调试 - 最佳实践
+caption: SOLIDWORKS PDM Add-In 调试 - 最佳实践
+description: SOLIDWORKS PDM Add-In 调试的详细指南。使用 Vault Browser 工具简化调试过程
 image: debug-addin.png
 labels: [add-in, api, attach to process, debugging, epdm, example, notepad, pdm, solidworks pdm, visual studio]
 redirect-from:
   - /2018/03/debugging-solidworks-pdm-add-in-best.html
 ---
-When it comes to debugging of SOLIDWORKS PDM add-ins a lot of developers find this process cumbersome and complicated. This especially applies if you have been developing desktop or SOLIDWORKS applications before and now need to develop PDM add-in.
+在调试 SOLIDWORKS PDM add-in 时，许多开发人员发现这个过程繁琐且复杂。特别是对于之前开发桌面或 SOLIDWORKS 应用程序的开发人员来说，现在需要开发 PDM add-in。
 
-The main complexity comes from the fact that SOLIDWORKS PDM is a server-client system fully integrated into the Windows explorer process on the client machines. That means that the add-ins (as in-process extensions) are loaded into explorer.exe process. It is important to understand that explorer.exe is not only the process for Windows File Explorer, rather it also manages the start menu, taskbar, desktop, etc. So it is not enough to simply close the Windows File Explorer to unlock the add-in dlls.
+主要的复杂性来自于 SOLIDWORKS PDM 是一个完全集成到客户端机器上的 Windows 资源管理器进程的服务器-客户端系统。这意味着 add-in（作为进程内扩展）被加载到 explorer.exe 进程中。重要的是要理解，explorer.exe 不仅是 Windows 文件资源管理器的进程，而且还管理开始菜单、任务栏、桌面等。因此，仅仅关闭 Windows 文件资源管理器是不够的，无法释放 add-in 的 dll。
 
-SOLIDWORKS PDM provides a handy framework for developers which greatly simplify the development process. You can find the *Debug Add-ins* menu under the Add-ins node in the vault tree of the *SOLIDWORKS PDM Administration* console.
+SOLIDWORKS PDM 为开发人员提供了一个方便的框架，极大地简化了开发过程。您可以在 *SOLIDWORKS PDM 管理* 控制台的 vault 树下的 Add-ins 节点中找到 *Debug Add-ins* 菜单。
 
-![Debug add-in command in the Administration Panel](debug-addin.png){ width=320 height=297 }
+![在管理面板中的 Debug add-in 命令](debug-addin.png){ width=320 height=297 }
 
-You need to select single dll with your add-in to load it into the debugger.
+您需要选择一个包含您的 add-in 的 dll，将其加载到调试器中。
 
-![GUID of the add-in](debug-addins-register.png){ width=640 height=246 }
+![add-in 的 GUID](debug-addins-register.png){ width=640 height=246 }
 
-Once selected the entry of your add-in appears in the list and will remain there until removed. So it is not required to open this console every time the project is rebuilt.
+一旦选择了 add-in 的条目，它将出现在列表中，并保持在那里，直到被移除。因此，每次重新构建项目时都不需要打开此控制台。
 
-As I have previously pointed SOLIDWORKS PDM is a client-server architecture system and all the add-ins are hosted on a server and redistributed to clients machines. When the add-in is added as debug add-in - this will not load the add-in dlls to the server. The add-in will be debugged locally from directly from the *bin* folder. This also means that another users of the vault won't see the add-in in their systems.
+正如我之前所指出的，SOLIDWORKS PDM 是一个客户端-服务器架构系统，所有的 add-in 都托管在服务器上，并重新分发到客户端机器。当将 add-in 添加为调试 add-in 时，不会将 add-in 的 dll 加载到服务器上。add-in 将直接从 *bin* 文件夹中进行本地调试。这也意味着存储库的其他用户在他们的系统中看不到该 add-in。
 
-Traditionally SOLIDWORKS PDM add-ins are debugged via Notepad process by selecting the path to notepad.exe in the *Start external program* action in the Debug settings of the project:
+传统上，SOLIDWORKS PDM add-in 是通过 Notepad 进程进行调试的，方法是在项目的调试设置中选择 notepad.exe 的路径作为 *Start external program* 操作：
 
-![Start debugging in the external Notepad application](start-ext-prg-notepad.png){ width=640 height=344 }
+![在外部 Notepad 应用程序中开始调试](start-ext-prg-notepad.png){ width=640 height=344 }
 
-This allows to start the debugging process by simply running the solution (F5) and this will bring Notepad. In order to start actual debugging it is required to:
+这样可以通过运行解决方案（F5）来启动调试过程，并打开 Notepad。为了开始实际的调试，需要执行以下操作：
 
-1. Select File->Open menu command in the Notepad
-1. Navigate to the local vault folder
-1. Change the filter to *All Files (*.*)* to see all files in the vault
+1. 在 Notepad 中选择 File->Open 菜单命令
+1. 导航到本地存储库文件夹
+1. 将过滤器更改为 *All Files (*.*)*，以查看存储库中的所有文件
 
-![Debugging add-in in the Notepad](debug-notepad.gif){ width=400 height=271 }
+![在 Notepad 中调试 add-in](debug-notepad.gif){ width=400 height=271 }
 
-The benefit of this approach - stopping the Visual Studio debugging session (by clicking Stop button in Visual Studio or by closing the Notepad) will release the dlls from the memory so it is not required to restart explorer.exe process to compile new version of the add-in.  
+这种方法的好处是，停止 Visual Studio 的调试会话（通过单击 Visual Studio 中的停止按钮或关闭 Notepad）将释放内存中的 dll，因此不需要重新启动 explorer.exe 进程来编译 add-in 的新版本。
 
-The limitations are:
+这种方法的局限性是：
 
-* Not possible to have multi-select for files or folders
-* Too many steps required to be performed each time new debug session is started (i.e. click Open menu, navigate to vault, change filter). This may approximately take 5-10 seconds for each debug session.
+* 无法对文件或文件夹进行多选
+* 每次启动新的调试会话时需要执行太多步骤（例如，点击 Open 菜单，导航到存储库，更改过滤器）。每个调试会话可能需要大约 5-10 秒钟。
 
-Much better approach is to use the [PDM Vault Browser ](https://github.com/codestackdev/pdm-vault-browser/releases/tag/initial)tool. Source code is available on [GitHub](https://github.com/codestackdev/pdm-vault-browser). Source code is provided below (must be compiled in .NET Framework 4.0 otherwise the debug symbols will not be loaded):
+更好的方法是使用 [PDM Vault Browser](https://github.com/codestackdev/pdm-vault-browser/releases/tag/initial) 工具。源代码可在 [GitHub](https://github.com/codestackdev/pdm-vault-browser) 上找到。源代码如下（必须在 .NET Framework 4.0 中编译，否则将无法加载调试符号）：
 
 ~~~ cs
 using System;
@@ -76,22 +76,20 @@ namespace SwPdmVaultBrowser
 
 ~~~
 
+这个工具是一个简单的文件浏览对话框，启用了多选选项。该工具还接受一个命令行参数，指定了 PDM 存储库中文件夹的完整路径。因此，当启动时，它将自动浏览到指定的文件夹：
 
+![使用 PDM Vault Browser 调试 add-in](debug-with-pdm-vault-browser.png){ width=640 height=328 }
 
-This tool is a simple File Browse Dialog with multi-selection option enabled. The tool also takes a command line argument with the full path to the folder in the PDM vault. So when started it will automatically browse to the specified folder:
+现在，在启动调试器时，它将自动将您带到存储库中指定的文件夹，无需指定过滤器。
 
-![Debugging the add-in with PDM Vault Browser](debug-with-pdm-vault-browser.png){ width=640 height=328 }
-
-Now when starting the debugger it will automatically bring you to the specified folder in the vault without the need to specify the filter.  
-
-Video Demonstration:
+视频演示：
 
 {% youtube { id: uVcc4zvsSN0 } %}
 
-Examples of PDM add-ins. Please read the [How To Create SOLIDWORKS PDM Professional Add-In](/docs/codestack/solidworks-pdm-api/getting-started/add-ins/create/) article to learn how to build PDM add-in from scratch.
+SOLIDWORKS PDM add-in 的示例。请阅读 [如何创建 SOLIDWORKS PDM Professional Add-In](/docs/codestack/solidworks-pdm-api/getting-started/add-ins/create/) 文章，了解如何从头开始构建 PDM add-in。
 
 <details>
-<summary>C# Example</summary>
+<summary>C# 示例</summary>
 
 ~~~ cs
 using EdmLib;
@@ -153,12 +151,10 @@ namespace CodeStack
 
 ~~~
 
-
-
 </details>
 
 <details>
-<summary>VB.NET Example</summary>
+<summary>VB.NET 示例</summary>
 
 ~~~ vb
 Imports EdmLib
@@ -221,7 +217,5 @@ Namespace CodeStack
 End Namespace
 
 ~~~
-
-
 
 </details>
