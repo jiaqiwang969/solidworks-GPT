@@ -1,58 +1,58 @@
 ---
 layout: sw-tool
-caption: Replace Sheet Format
-title: Macro to replace sheet formats in SOLIDWORKS drawings
-description: VBA macro to replace sheet formats in the drawing sheets based on the specified map
+caption: 替换图纸格式
+title: 在SOLIDWORKS图纸中替换图纸格式的宏
+description: VBA宏根据指定的映射规则替换绘图中所有图纸的图纸格式（*.slddrt文件）
 image: replace-sheet-format.svg
-group: Drawing
+group: 绘图
 ---
-![Sheet format](sheet-format.png){ width=300 }
+![图纸格式](sheet-format.png){ width=300 }
 
-This VBA macro replaces sheet formats (*.slddrt files) in all sheets of an active drawing document according to specified mapping rules.
+这个VBA宏根据指定的映射规则，替换活动绘图文档中所有图纸的图纸格式（*.slddrt文件）。
 
-## Configuration
+## 配置
 
-Configure the map by changing the **REPLACE_MAP** array. This array contains instructions on replacing the sheets based on the size or sheet format file of the input sheet.
+通过修改**REPLACE_MAP**数组来配置映射规则。该数组包含了根据输入图纸的大小或图纸格式文件来替换图纸的指令。
 
-This map contains an array of matching filters and resulting sheet format file in the following format:
+这个映射规则的格式如下：
 
 ~~~
-|{Source paper size}|{Source sheet format file path}|{Target sheet format file path}
+|{源纸张大小}|{源图纸格式文件路径}|{目标图纸格式文件路径}
 ~~~
 
-Source paper size is the constant as defined in [swDwgPaperSizes_e](https://help.solidworks.com/2016/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swdwgpapersizes_e.html) enumeration. See the table below. Use one of these values or use \* to match any paper size
+源纸张大小是在[swDwgPaperSizes_e](https://help.solidworks.com/2016/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swdwgpapersizes_e.html)枚举中定义的常量。请参考下表。使用这些值之一或使用\*来匹配任何纸张大小。
 
-| Size        | Constant |
-|-------------|----------|
-| A           | 0        |
-| A Vertical  | 1        |
-| B           | 2        |
-| C           | 3        |
-| D           | 4        |
-| E           | 5        |
-| A4          | 6        |
-| A4 Vertical | 7        |
-| A3          | 8        |
-| A2          | 9        |
-| A1          | 10       |
-| A0          | 11       |
+| 大小        | 常量 |
+|-------------|------|
+| A           | 0    |
+| A纵向       | 1    |
+| B           | 2    |
+| C           | 3    |
+| D           | 4    |
+| E           | 5    |
+| A4          | 6    |
+| A4纵向      | 7    |
+| A3          | 8    |
+| A2          | 9    |
+| A1          | 10   |
+| A0          | 11   |
 
-Source sheet format file size is a full file path to the sheet format file or \* to match all sheet formats.
+源图纸格式文件大小是图纸格式文件的完整路径，或者使用\*来匹配所有图纸格式。
 
-For example the below map will
+例如，下面的映射规则将会：
 
-* Replace all sheets with A0 size (11) regardless of the sheet format file used (\*) with the *D:\Formats\format1.slddrt* sheet format.
-* Replace all sheets regardless of the size (\*) with sheet format linked to *D:\OldFormats\oldformat1.slddrt* with the *D:\Formats\format2.slddrt* file
+* 将所有A0大小（11）的图纸（无论使用的图纸格式文件是什么）替换为*D:\Formats\format1.slddrt*图纸格式。
+* 将所有图纸（无论大小）替换为与*D:\OldFormats\oldformat1.slddrt*链接的图纸格式，并使用*D:\Formats\format2.slddrt*文件。
 
 ~~~ vb
 REPLACE_MAP = Array("11|*|D:\Formats\format1.slddrt", "*|D:\OldFormats\oldformat1.slddrt|D:\Formats\format2.slddrt")
 ~~~
 
-You can specify as many rules as required.
+您可以指定任意数量的规则。
 
-Rules are executed in the specified order.
+规则按照指定的顺序执行。
 
-If none of the rules match the input - macro throws an error.
+如果没有规则与输入匹配 - 宏将抛出错误。
 
 ~~~ vb
 Const REMOVE_MODIFIED_NOTES As Boolean = True
@@ -141,7 +141,7 @@ Function GetReplaceSheetFormat(sheet As SldWorks.sheet) As String
             targetTemplateName = CStr(Trim(mapParams(2)))
         
             If targetTemplateName = "" Then
-                Err.Raise vbError, "", "Target template is not specified"
+                Err.Raise vbError, "", "未指定目标模板"
             End If
         
             GetReplaceSheetFormat = targetTemplateName
@@ -151,13 +151,13 @@ Function GetReplaceSheetFormat(sheet As SldWorks.sheet) As String
         
     Next
     
-    Err.Raise vbError, "", "Failed find the sheet format mathing current sheet"
+    Err.Raise vbError, "", "未找到与当前图纸匹配的图纸格式"
     
 End Function
 
 Sub ReplaceSheetFormat(draw As SldWorks.DrawingDoc, sheet As SldWorks.sheet, targetSheetFormatFile As String)
     
-    Debug.Print "Replacing '" & sheet.GetName() & "' with '" & targetSheetFormatFile & "'"
+    Debug.Print "替换 '" & sheet.GetName() & "' 为 '" & targetSheetFormatFile & "'"
     
     Dim vProps As Variant
     vProps = sheet.GetProperties()
@@ -182,12 +182,11 @@ Sub ReplaceSheetFormat(draw As SldWorks.DrawingDoc, sheet As SldWorks.sheet, tar
     
     If False <> draw.SetupSheet5(sheet.GetName(), paperSize, templateType, scale1, scale2, firstAngle, targetSheetFormatFile, width, height, custPrpView, REMOVE_MODIFIED_NOTES) Then
         If sheet.ReloadTemplate(Not REMOVE_MODIFIED_NOTES) <> swReloadTemplateResult_e.swReloadTemplate_Success Then
-            Err.Raise vbError, "", "Failed to reload sheet format"
+            Err.Raise vbError, "", "重新加载图纸格式失败"
         End If
     Else
-        Err.Raise vbError, "", "Failed to set the sheet format"
+        Err.Raise vbError, "", "设置图纸格式失败"
     End If
     
 End Sub
 ~~~
-
