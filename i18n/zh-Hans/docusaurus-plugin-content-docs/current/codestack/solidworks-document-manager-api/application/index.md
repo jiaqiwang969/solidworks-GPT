@@ -1,14 +1,15 @@
 ---
-title: Utilizing main ISwDMApplication application object in SOLIDWORKS Document Manager API
-caption: Application
-description: Explanation and examples of top level object in Document Manager API ISwDMApplication
+title: 在SOLIDWORKS文档管理器API中利用主要的ISwDMApplication应用程序对象
+caption: 应用程序
+description: 解释和示例SOLIDWORKS文档管理器API中的顶级对象ISwDMApplication
 ---
-[ISwDMApplication](https://help.solidworks.com/2017/english/api/swdocmgrapi/solidworks.interop.swdocumentmgr~solidworks.interop.swdocumentmgr.iswdmapplication.html) is a top level object in SOLIDWORKS Document Manager API hierarchy and represents the application itself.
 
-Pointer to the object can be accessed via [ISwDMClassFactory::GetApplication](https://help.solidworks.com/2017/english/api/swdocmgrapi/SOLIDWORKS.Interop.swdocumentmgr~SOLIDWORKS.Interop.swdocumentmgr.ISwDMClassFactory~GetApplication.html) method.
+[ISwDMApplication](https://help.solidworks.com/2017/english/api/swdocmgrapi/solidworks.interop.swdocumentmgr~solidworks.interop.swdocumentmgr.iswdmapplication.html)是SOLIDWORKS文档管理器API层次结构中的顶级对象，代表应用程序本身。
 
-### Functionality
+可以通过[ISwDMClassFactory::GetApplication](https://help.solidworks.com/2017/english/api/swdocmgrapi/SOLIDWORKS.Interop.swdocumentmgr~SOLIDWORKS.Interop.swdocumentmgr.ISwDMClassFactory~GetApplication.html)方法访问该对象的指针。
 
-* Accessing the documents (i.e. opening the document stream)
-* Operations with documents (moving, copying) with an ability to preserver references
-* Creating the data objects (such as search options or external reference options)
+### 功能
+
+* 访问文档（即打开文档流）
+* 对文档进行操作（移动、复制），并能够保留引用
+* 创建数据对象（如搜索选项或外部引用选项）
