@@ -1,10 +1,10 @@
 ---
-title: Explanation of SOLIDWORKS API Object Model and object relations
-caption: API Object Model
-description: Collection of articles for detailed explanation of SOLIDWORKS API Object Model, class hierarchy, naming convention and objects relations
-labels: [object model, api]
+title: SOLIDWORKS API对象模型和对象关系的解释
+caption: API对象模型
+description: 详细解释SOLIDWORKS API对象模型、类层次结构、命名约定和对象关系的文章集合
+labels: [对象模型, API]
 sidebar_position: 1
 ---
-SOLIDWORKS API object model contains hundreds of interfaces and thousands of methods and properties. All interfaces have relationships allowing to access certain object via another objects method or property.
+SOLIDWORKS API对象模型包含数百个接口和数千个方法和属性。所有接口都有关系，可以通过其他对象的方法或属性访问特定对象。
 
-This section contains articles explaining the relationship between classes and interfaces in the SOLIDWORKS API, name conventions and accessibility. Follow the articles in this section for more information.
+本节包含解释SOLIDWORKS API中类和接口之间关系、命名约定和可访问性的文章。请按照本节中的文章获取更多信息。
