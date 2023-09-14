@@ -1,11 +1,11 @@
 ---
-title: Managing of Edit Bodies in SOLIDWORKS macro feature
-caption: Edit Bodies
-description: Managing of Edit Bodies in SOLIDWORKS macro feature using SwEx.MacroFeature framework
+title: 在SOLIDWORKS宏特征中管理编辑体
+caption: 编辑体
+description: 使用SwEx.MacroFeature框架在SOLIDWORKS宏特征中管理编辑体
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
-Edit bodies are input bodies which macro feature will acquire. For example when boss-extrude feature is created using the merge bodies option the solid body it is based on became a body of the new boss-extrude. This could be validated by selecting the feature in the tree which will select the body as well. In this case the original body was passed as an edit body to the boss-extrude feature.
+编辑体是宏特征将要获取的输入体。例如，当使用合并体选项创建凸出特征时，它所基于的实体体将成为新凸出特征的一个体。可以通过在树中选择该特征来验证这一点，这将同时选择该体。在这种情况下，原始体被作为编辑体传递给凸出特征。
 
 ~~~ cs
 public class MacroFeatureParams
@@ -15,7 +15,7 @@ public class MacroFeatureParams
 }
 ~~~
 
-If multiple input bodies are required it could be either specified in different properties
+如果需要多个输入体，则可以在不同的属性中指定
 
 ~~~ cs
 public class MacroFeatureParams
@@ -28,7 +28,7 @@ public class MacroFeatureParams
 }
 ~~~
 
-or as list
+或者作为列表
 
 ~~~ cs
 public class MacroFeatureParams
