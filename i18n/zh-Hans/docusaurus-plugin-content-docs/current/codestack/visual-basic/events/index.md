@@ -1,62 +1,62 @@
 ---
-title: Handling and declaring events in Visual Basic 6 (VBA)
-description: Introduction of events handling and declaration in Visual Basic 6 (VBA)
-caption: Events
+title: 在Visual Basic 6 (VBA)中处理和声明事件
+description: 介绍在Visual Basic 6 (VBA)中处理和声明事件
+caption: 事件
 image: events-list.png
 sidebar_position: 0
 ---
-Event is a mechanism of providing a notification to external listeners when certain action occurs. For example your object might need to tell its listeners that it is loaded, updated or removed. In Microsoft Office application example of the event would be: opening of the document, entering text in MS word, recalculating the value of cell in Excel, etc.
+事件是一种在发生某些操作时向外部监听器提供通知的机制。例如，您的对象可能需要告诉其监听器它已加载、更新或删除。在Microsoft Office应用程序中，事件的示例包括：打开文档、在MS Word中输入文本、在Excel中重新计算单元格的值等。
 
-When developing automation software events are handled to invoke custom functionality, e.g. add log entry when cell value is changed in Excel.
+在开发自动化软件时，处理事件可以调用自定义功能，例如在Excel中更改单元格值时添加日志条目。
 
-It is possible to consume (handle) events of existing object or declare and raise your own events in custom classes.
+可以消耗（处理）现有对象的事件，也可以在自定义类中声明和触发自己的事件。
 
-## Handling events
+## 处理事件
 
-If object exposes events it is required to declare this object as [class](/docs/codestack/visual-basic/classes/) variable and use **WithEvents** keyword
+如果对象公开了事件，需要将该对象声明为[class](/docs/codestack/visual-basic/classes/)变量，并使用**WithEvents**关键字。
 
 ~~~ vb
 Dim WithEvents myObj As CustomObjectWithEvents
 ~~~
 
-Visual Basic Editor will show all available events in the drop-down as shown below, and it is possible to select the required event from the list to subscribe to the notification.
+Visual Basic编辑器将在下拉列表中显示所有可用的事件，如下图所示，可以从列表中选择所需的事件以订阅通知。
 
-![List of available events of the object](events-list.png){ width=450 }
+![对象的可用事件列表](events-list.png){ width=450 }
 
-Event handler function should be named as *{Variable Name}_{Event Name}* and match the signature of the event
+事件处理程序函数的名称应为*{变量名称}_{事件名称}*，并与事件的签名匹配。
 
 ~~~ vb
-Function myObj_SomeEvent(someParam As String) As Integer 'Handling 'SomeEvent' of 'myObj' variable
+Function myObj_SomeEvent(someParam As String) As Integer '处理'myObj'变量的'SomeEvent'
     myObj_SomeEvent = 0
 End Function
 ~~~
 
-## Declaring events
+## 声明事件
 
-Events can be declared in the [class](/docs/codestack/visual-basic/classes/) using the **Event** keyword. Signature of the event must be specified by providing the parameter names and their types in the parenthesis.
+可以使用**Event**关键字在[class](/docs/codestack/visual-basic/classes/)中声明事件。必须通过在括号中提供参数名称和类型来指定事件的签名。
 
-The following example demonstrates how to raise and handle the event.
+以下示例演示了如何引发和处理事件。
 
-The project tree looks the following:
+项目树如下所示：
 
-![VBA classes tree](events-project-tree.png)
+![VBA类树](events-project-tree.png)
 
-### EventsRaiser Class Module
+### EventsRaiser 类模块
 
-This class raises the event named *Completed* with a string parameter of *timeStamp*. Event is raised when the *DoWork* method is called.
+此类使用字符串参数*timeStamp*引发名为*Completed*的事件。当调用*DoWork*方法时，会引发事件。
 
 ~~~vb
 Public Event Completed(timeStamp As String)
 
 Public Sub DoWork()
-    'Do work
+    '进行工作
     RaiseEvent Completed(Now)
 End Sub
 ~~~
 
-## EventsHandler Class Module
+## EventsHandler 类模块
 
-This class handles the event and displays the message box.
+此类处理事件并显示消息框。
 
 ~~~vb
 Dim WithEvents myEventRaiser As EventsRaiser
@@ -67,13 +67,13 @@ Private Sub Class_Initialize()
 End Sub
 
 Private Sub myEventRaiser_Completed(timeStamp As String)
-    MsgBox "Completed: " & timeStamp
+    MsgBox "已完成: " & timeStamp
 End Sub
 ~~~
 
-## Macro11 Module
+## Macro11 模块
 
-This module is an entry point which instantiates an instance of the events handler and keeps it in the memory.
+此模块是一个入口点，它实例化一个事件处理程序的实例并将其保存在内存中。
 
 ~~~vb
 Dim swEventsHandler As EventsHandler
