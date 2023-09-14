@@ -1,11 +1,11 @@
 ---
-title: Developing stand-alone applications using SOLIDWORKS PDM API
-caption: Developing Stand-Alone Application
-description: Examples and guidelines for creating stand-alone (exe) applications with SOLIDWORKS PDM API
-labels: [stand-alone,pdm]
+title: 使用 SOLIDWORKS PDM API 开发独立应用程序
+caption: 开发独立应用程序
+description: 使用 SOLIDWORKS PDM API 创建独立（exe）应用程序的示例和指南
+labels: [独立应用程序, pdm]
 ---
-Stand-alone applications are executables which are running in the external process to SOLIDWORKS PDM explorer. This provides benefits of easier deployment as it is not required to do an installation to SOLIDWORKS PDM Administration Console. This type of application generally considered as safer option as it will be only run on the clients machine unlike PDM add-ins which will be redistributed on each client from the centralized storage.
+独立应用程序是在 SOLIDWORKS PDM 浏览器的外部进程中运行的可执行文件。这样做的好处是更容易部署，因为不需要在 SOLIDWORKS PDM 管理控制台上进行安装。这种类型的应用程序通常被认为是更安全的选择，因为它只会在客户机上运行，而不像 PDM 插件那样需要从集中存储重新分发到每个客户端。
 
-SOLIDWORKS PDM API should be used in exactly the same way as they used in the add-ins development.
+SOLIDWORKS PDM API 的使用方式与插件开发中的使用方式完全相同。
 
-Explore this section to find the examples and detailed guidelines of creating and troubleshooting stand-alone application which utilize SOLIDWORKS PDM API methods.
+浏览本节以查找使用 SOLIDWORKS PDM API 方法创建和排除故障的独立应用程序的示例和详细指南。
