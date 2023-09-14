@@ -1,33 +1,33 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS VBA macro to copy preselected faces
-caption: Copy Surfaces
-description: SOLIDWORKS VBA macro to copy selected faces by calling the "Surface Offset" feature with distance 0
+title: SOLIDWORKS VBA宏复制预选面
+caption: 复制曲面
+description: SOLIDWORKS VBA宏通过调用“曲面偏移”功能复制所选面，偏移距离为0
 image: surface-offset-equal.svg
-labels: [surface, geometry, macro, face, solidworks api, vba]
-group: Geometry
+labels: [曲面, 几何, 宏, 面, solidworks api, vba]
+group: 几何
 ---
-Author: [Eddy Alleman](https://www.linkedin.com/in/eddyalleman/)
+作者：[Eddy Alleman](https://www.linkedin.com/in/eddyalleman/)
 
-![Offset Surface with distance 0](surface-offset-workflow.png){ width=525 }
+![偏移距离为0的曲面偏移](surface-offset-workflow.png){ width=525 }
 
-This VBA macro creates a new surface feature from selected faces in a part file. Thus duplicating the selected surfaces and giving it a predefined color.
-This can be usefull if you want to reuse existing surfaces and don't want to consolidate existing ones.
+这个VBA宏在零件文件中从所选面创建一个新的曲面特征。从而复制所选曲面并给它一个预定义的颜色。
+如果您想重用现有曲面而不想合并现有曲面，这可能会很有用。
 
-Steps to take
+操作步骤
 
-* A part file must be the active document.
-* You have to select at least one face.
-* If you select other types of entities, they will be filtered out.
-* Run the macro. As the result a Surface Offset is created of the selected faces with distance 0
-* This feature will get a yellow color by default, but you can change the RGB color to set another one.
+* 必须将零件文件设为活动文档。
+* 必须选择至少一个面。
+* 如果选择其他类型的实体，它们将被过滤掉。
+* 运行宏。结果是创建了一个偏移距离为0的曲面偏移特征。
+* 默认情况下，该特征将显示为黄色，但您可以更改RGB颜色以设置其他颜色。
 
-Author: [Eddy Alleman](https://www.linkedin.com/in/eddyalleman/) ([EDAL Solutions](https://www.edalsolutions.be/index.php/en/))
+作者：[Eddy Alleman](https://www.linkedin.com/in/eddyalleman/) ([EDAL Solutions](https://www.edalsolutions.be/index.php/en/))
 
 ~~~ vb
 Option Explicit
 
-' INPUT You can change to another RGB color here (This example uses yellow)
+' INPUT 您可以在此处更改为另一种RGB颜色（此示例使用黄色）
 Const RED = 255
 Const GREEN = 255
 Const BLUE = 0
@@ -45,11 +45,11 @@ try_:
     
     Set swModel = swxApp.ActiveDoc
 
-    'Check if active document is a Part file
+    '检查活动文档是否为零件文件
     Select Case True
     
            Case swModel Is Nothing, swModel.GetType <> swDocPART
-              Call swxApp.SendMsgToUser2("Please open a part file", swMbInformation, swMbOk)
+              Call swxApp.SendMsgToUser2("请打开一个零件文件", swMbInformation, swMbOk)
               
            Case Else
                Call ProcessSelectedFaces
@@ -72,34 +72,34 @@ Private Function ProcessSelectedFaces() As Boolean
                   
         Set selMgr = swModel.SelectionManager
         
-        'Get number of selections
+        '获取选择数量
         Dim nSelections As Integer
         nSelections = selMgr.GetSelectedObjectCount2(-1)
                
-        'only process if there is something selected
+        '只有在有选择的情况下才进行处理
         If nSelections > 0 Then
          
               Call RemoveNonFacesFromSelection
 
-              'Get the number of selected faces
+              '获取所选面的数量
               Dim nFaces As Integer
               nFaces = selMgr.GetSelectedObjectCount2(-1)
         
               If nFaces > 0 Then
               
-                  'Offset selected faces
+                  '偏移所选面
                   swModel.InsertOffsetSurface 0#, False
                   
-                  'Give a name to the newly created offset feature
+                  '给新创建的偏移特征命名
                   Dim featOffset As Feature
                   Set featOffset = swModel.Extension.GetLastFeatureAdded
                     
                   featOffset.Name = featOffset.Name & " Offsets " & nFaces & " Faces"
                   
-                  'give the offset feature a color
+                  '给偏移特征设置颜色
                   Call SetColor(featOffset)
                      
-                  ' Deselect face to see new color
+                  '取消选择面以查看新颜色
                   swModel.ClearSelection2 True
 
               End If 'nFaces > 0
@@ -118,10 +118,10 @@ Private Function EnableUpdates(update As Boolean)
     End With
 End Function
 
-'Removes entities that are not faces from the selection manager
+'从选择管理器中删除非面实体
 Private Function RemoveNonFacesFromSelection()
 
-        'Get number of selections
+        '获取选择数量
         Dim nSelections As Integer
         nSelections = selMgr.GetSelectedObjectCount2(-1)
                 
@@ -140,14 +140,14 @@ Private Function RemoveNonFacesFromSelection()
               
 End Function
 
-'Sets the INPUT color on a feature
+'在特征上设置输入颜色
 Private Function SetColor(ByRef Feat As Feature) As Boolean
 
-      'get material properties from model
+      '从模型获取材料属性
       Dim MatProp As Variant
       MatProp = swModel.MaterialPropertyValues
                   
-      ' set color fi. RGB(225, 255 , 0), but we need them to be in range 0 to 1
+      '设置颜色，例如RGB(225, 255 , 0)，但我们需要将其范围设置为0到1
       MatProp(0) = RED / 255
       MatProp(1) = GREEN / 255
       MatProp(2) = BLUE / 255
@@ -156,7 +156,3 @@ Private Function SetColor(ByRef Feat As Feature) As Boolean
                   
 End Function
 ~~~
-
-
-
-
