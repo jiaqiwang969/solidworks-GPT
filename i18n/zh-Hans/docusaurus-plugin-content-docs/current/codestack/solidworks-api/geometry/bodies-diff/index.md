@@ -1,44 +1,44 @@
 ---
-title: SOLIDWORKS macro to find the geometrical difference between parts
-caption: Part Geometry Diff
-description: Diff tool to find the geometrical difference between multi-bodies parts using SOLIDWORKS API
+title: SOLIDWORKS宏以查找零件之间的几何差异
+caption: 零件几何差异
+description: 使用SOLIDWORKS API查找多体零件之间的几何差异的差异工具
 image: part-bodies-diff.png
 labels: [geometry, transform, diff, compare]
 ---
-This macro allows to compare two parts by its geometry.
+此宏允许通过其几何形状比较两个零件。
 
-[IBody2::GetCoincidenceTransform2](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ibody2~getcoincidencetransform2.html) SOLIDWORKS API is used to compare bodies and if equal find the transformation between them.
+使用[SOLIDWORKS API的IBody2::GetCoincidenceTransform2](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ibody2~getcoincidencetransform2.html)来比较零件，如果相等，则找到它们之间的变换。
 
-### Notes
+### 注意事项
 
-* Macro supports multi-bodies parts
-* Macro will compare the bodies even if they are located in different position (i.e. moved or rotated) in the comparable parts.
-* Comparable parts might have different number of bodies
-* Macro will try to find the most suitable transformation between two parts
+* 宏支持多体零件
+* 即使可比较的零件位于不同的位置（即移动或旋转），宏也会比较这些零件。
+* 可比较的零件可能具有不同数量的体
+* 宏将尝试找到两个零件之间最合适的变换
 
-### Example
+### 示例
 
-Original part to be compared:
+要比较的原始零件：
 
-![Original part](original-part.png){ width=250 }
+![原始零件](original-part.png){ width=250 }
 
-Part to compare
+要比较的零件
 
-![Part to compare](part-to-compare.png){ width=250 }
+![要比较的零件](part-to-compare.png){ width=250 }
 
-Second part has a modified geometry and was reoriented in space. Some of the bodies have been deleted from the second part.
+第二个零件具有修改后的几何形状，并在空间中重新定位。第二个零件中的一些体已被删除。
 
-The following result is calculated by the macro:
+宏计算出以下结果：
 
-![Resulting Difference file](part-bodies-diff.png){ width=250 }
+![结果差异文件](part-bodies-diff.png){ width=250 }
 
-### Instructions
+### 指令
 
-* Open the original part file
-* Run the macro.
-* Specify the full path for the part file to compare to
-* As the result second part is displayed within the original part
-* Continue the macro (F5) to clear the preview
+* 打开原始零件文件
+* 运行宏。
+* 指定要与之比较的零件文件的完整路径
+* 结果将在原始零件中显示第二个零件
+* 继续宏（F5）以清除预览
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -54,7 +54,7 @@ Sub main()
     If Not swPart Is Nothing Then
         
         Dim otherFilePath As String
-        otherFilePath = InputBox("Please specify the part path to compare to")
+        otherFilePath = InputBox("请指定要比较的零件路径")
         
         If otherFilePath <> "" Then
             
@@ -66,13 +66,13 @@ Sub main()
                 Set swXform = GetClosestTransform(swPart, swOtherPart)
                 PreviewPart swOtherPart, swXform, swPart
             Else
-                MsgBox "Failed to open the part to compare to"
+                MsgBox "无法打开要比较的零件"
             End If
             
         End If
         
     Else
-        MsgBox "Please open part"
+        MsgBox "请打开零件"
     End If
         
 End Sub
@@ -100,7 +100,7 @@ Sub PreviewPart(part As SldWorks.PartDoc, transform As SldWorks.MathTransform, c
         
     Next
     
-    Stop 'continue the macro to hide preview
+    Stop '继续宏以隐藏预览
     
 End Sub
 
@@ -113,7 +113,7 @@ Function GetClosestTransform(thisPart As SldWorks.PartDoc, otherPart As SldWorks
     vOtherBodies = otherPart.GetBodies2(swBodyType_e.swSolidBody, True)
     
     Dim transformsHits As Object
-    Set transformsHits = CreateObject("Scripting.Dictionary") 'by some reasons sometimes the first null element is added on creation
+    Set transformsHits = CreateObject("Scripting.Dictionary") '由于某些原因，有时在创建时会添加第一个空元素
         
     If Not IsEmpty(vThisBodies) And Not IsEmpty(vOtherBodies) Then
         
@@ -207,4 +207,3 @@ Function CompareValues(firstValue As Double, secondValue As Double, Optional tol
     
 End Function
 ~~~
-
