@@ -1,17 +1,17 @@
 ---
-title: Fill hole with temp body using SOLIDWORKS API
-caption: Fill Hole
-description: VBA example demonstrates how to use SOLIDWORKS modeler and create temp body to fill hole in the geometry
+title: 使用SOLIDWORKS API填充孔洞
+caption: 填充孔洞
+description: 此VBA示例演示了如何使用SOLIDWORKS模型创建临时几何体来填充所选特征（例如切割拉伸）中的孔洞。
 image: filled-hole.png
-labels: [fill,modeler,hole,temp geometry]
+labels: [填充, 模型, 孔洞, 临时几何体]
 ---
-![Hole filled with a temp geometry](filled-hole.png)
+![使用临时几何体填充的孔洞](filled-hole.png)
 
-This VBA example demonstrates how to use [IModeler::CreateBodyFromFaces2](https://help.solidworks.com/2017/English/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IModeler~CreateBodyFromFaces2.html) API to fill the hole of the selected feature (e.g. cut-extrude) with temp geometry.
+此VBA示例演示了如何使用[IModeler::CreateBodyFromFaces2](https://help.solidworks.com/2017/English/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IModeler~CreateBodyFromFaces2.html) API来使用临时几何体填充所选特征（例如切割拉伸）中的孔洞。
 
-Macro stops execution and displays temp body. Continue execution to remove the temp body.
+宏停止执行并显示临时几何体。继续执行以删除临时几何体。
 
-~~~ vb
+``` vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -23,7 +23,7 @@ Sub main()
     Set swModel = swApp.ActiveDoc
     
     If swModel Is Nothing Then
-        Err.Raise vbError, "", "Open model"
+        Err.Raise vbError, "", "打开模型"
     End If
     
     Dim swSelMgr As SldWorks.SelectionMgr
@@ -33,7 +33,7 @@ Sub main()
     Set swFeat = swSelMgr.GetSelectedObject6(1, -1)
     
     If swFeat Is Nothing Then
-        Err.Raise vbError, "", "Select feature"
+        Err.Raise vbError, "", "选择特征"
     End If
     
     Dim vFaces As Variant
@@ -49,7 +49,7 @@ Sub main()
                                                 False, False)
     
     If swTempBody Is Nothing Then
-        Err.Raise vbError, "", "Failed to create body"
+        Err.Raise vbError, "", "创建几何体失败"
     End If
     
     swTempBody.Display3 swModel, RGB(255, 255, 0), swTempBodySelectOptions_e.swTempBodySelectOptionNone
@@ -57,6 +57,4 @@ Sub main()
     Stop
     
 End Sub
-~~~
-
-
+```
