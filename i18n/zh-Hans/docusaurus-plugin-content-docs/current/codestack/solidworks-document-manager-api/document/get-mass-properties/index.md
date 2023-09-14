@@ -1,37 +1,37 @@
 ---
-caption: Extract Mass Properties
-title: Extract mass properties from all configurations using SOLIDWORKS Document Manager API
-description: Code example to extract mass properties from all files configurations of the specified input directory
+caption: 提取质量属性
+title: 使用SOLIDWORKS文档管理器API从所有配置中提取质量属性
+description: 代码示例，从指定输入目录中的所有文件配置中提取质量属性
 image: mass-properties-table.png
 ---
-This C# code example demonstrates how to employ SOLIDWORKS Document Manager API to extract mass properties from all configurations of the files in the input directory.
+这个C#代码示例演示了如何使用SOLIDWORKS文档管理器API从输入目录中的所有文件配置中提取质量属性。
 
-Result is output to the specified CSV file with the following columns:
+结果将输出到指定的CSV文件中，包含以下列：
 
-* File Path
-* Configuration Name
-* X coordinate of Center of gravity (m)
-* Y coordinate of Center of gravity (m)
-* Z coordinate of Center of gravity (m)
-* Volume (m^3)
-* Surface Area (m^2)
-* Mass (kg)
-* XX Moment Of Intertial (kg*m^2)
-* YY Moment Of Intertial (kg*m^2)
-* ZZ Moment Of Intertial (kg*m^2)
-* XY Moment Of Intertial (kg*m^2)
-* ZX Moment Of Intertial (kg*m^2)
-* YZ Moment Of Intertial (kg*m^2)
- 
-> If there were any errors extracting the properties, this will be output to the CSV file
+* 文件路径
+* 配置名称
+* 质心的X坐标（米）
+* 质心的Y坐标（米）
+* 质心的Z坐标（米）
+* 体积（立方米）
+* 表面积（平方米）
+* 质量（千克）
+* XX转动惯量（千克·米^2）
+* YY转动惯量（千克·米^2）
+* ZZ转动惯量（千克·米^2）
+* XY转动惯量（千克·米^2）
+* ZX转动惯量（千克·米^2）
+* YZ转动惯量（千克·米^2）
 
-![Mass properties in the CSV file](mass-properties-table.png)
+> 如果提取属性时出现任何错误，将输出到CSV文件中
 
-It is required to specify 3 command line parameters
+![CSV文件中的质量属性](mass-properties-table.png)
 
-1. Full path to an input directory
-1. Fiilter for files
-1. Full path to output CSV file
+需要指定3个命令行参数：
+
+1. 输入目录的完整路径
+2. 文件过滤器
+3. 输出CSV文件的完整路径
 
 ~~~
 > export-mass-props.exe "D:\Input Folder" *.sldprt D:\mass-prps.csv
@@ -61,7 +61,7 @@ namespace ExtractMassProperties
 
             using (var csvFileWriter = File.CreateText(outCsvFilePath))
             {
-                csvFileWriter.WriteLine("File Path, Configuration Name, X, Y, Z, Volume, Surface Area, Mass, XX, YY, ZZ, XY, ZX, YZ");
+                csvFileWriter.WriteLine("文件路径, 配置名称, X, Y, Z, 体积, 表面积, 质量, XX, YY, ZZ, XY, ZX, YZ");
 
                 foreach (var filePath in Directory.GetFiles(dirPath, filter, SearchOption.AllDirectories))
                 {
@@ -119,12 +119,12 @@ namespace ExtractMassProperties
                 }
                 else
                 {
-                    throw new Exception("No configurations found");
+                    throw new Exception("未找到配置");
                 }
             }
             else
             {
-                throw new Exception($"Failed to open the document: {err}");
+                throw new Exception($"无法打开文档：{err}");
             }
         }
 
@@ -136,7 +136,7 @@ namespace ExtractMassProperties
 
             if (massPrpsErr != SwDmMassPropError.swDmMassPropErrorNone)
             {
-                throw new Exception($"Failed to extract mass properties: {massPrpsErr}");
+                throw new Exception($"提取质量属性失败：{massPrpsErr}");
             }
 
             var cogX = massPrps[0];
@@ -158,4 +158,3 @@ namespace ExtractMassProperties
 }
 
 ~~~
-
