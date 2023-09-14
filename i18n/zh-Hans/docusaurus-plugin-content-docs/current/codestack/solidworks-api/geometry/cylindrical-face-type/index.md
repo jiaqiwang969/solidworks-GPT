@@ -1,19 +1,19 @@
 ---
-title: Get type of cylindrical face using SOLIDWORKS API
-caption: Get Type Of Cylindrical Face
-description: Macro identifies the type of the selected simple cylindrical face (through all hole, blind hole or external hole) using SOLIDWORKS API based on the loops type
+title: 使用SOLIDWORKS API获取圆柱面的类型
+caption: 获取圆柱面的类型
+description: 该宏基于循环类型使用SOLIDWORKS API来识别所选简单圆柱面的类型（通过所有孔、盲孔或外孔）
 image: cylindrical-faces-types.png
 labels: [geometry, face, hole, outer, inner]
 ---
-![Types of cylindrical faces](cylindrical-faces-types.png){ width=250 }
+![圆柱面的类型](cylindrical-faces-types.png){ width=250 }
 
-This macro identifies the type of the selected simple cylindrical face (through all hole, blind hole or external hole) based on the loops type using SOLIDWORKS API.
+该宏基于循环类型使用SOLIDWORKS API来识别所选简单圆柱面的类型（通过所有孔、盲孔或外孔）。
 
-Macro will only work with cylindrical faces whose adjacent faces are planar faces and upper and lower boundaries of the cylinder are closed circular edges.
+该宏仅适用于其相邻面为平面面且圆柱体的上下边界为封闭的圆形边缘的圆柱面。
 
-### Algorithm
+### 算法
 
-Macro traverses the loops of coedges of upper and lower boundary edges. If there is at least one internal loop that means that selected face is a hole, otherwise it is an external boss. If both of the boundary loops are internal that means that the hole is through all, if one boundary loop is external but other is internal that means that the selected face is a blind hole (i.e. not a through all hole).
+该宏遍历上下边界边缘的边的循环。如果存在至少一个内部循环，则表示所选面为孔，否则为外部凸台。如果两个边界循环都是内部的，则表示孔是通过所有的，如果一个边界循环是外部的而另一个是内部的，则表示所选面是盲孔（即不是通过所有的孔）。
 
 ~~~ vb
 Enum FaceType_e
@@ -55,25 +55,25 @@ Sub main()
                 
                 Select Case faceType
                     Case FaceType_e.BlindHole
-                        MsgBox "Selected face is a blind hole"
+                        MsgBox "所选面是盲孔"
                     Case FaceType_e.Outer
-                        MsgBox "Selected face is an outer face"
+                        MsgBox "所选面是外部面"
                     Case FaceType_e.ThroughHole
-                        MsgBox "Selected face is through all hole"
+                        MsgBox "所选面是通过所有孔"
                     Case FaceType_e.ContainsCutouts
-                        MsgBox "Selected face contains cutouts"
+                        MsgBox "所选面包含切割"
                 End Select
                 
             Else
-                MsgBox "Selected face is not cylindrical"
+                MsgBox "所选面不是圆柱面"
             End If
             
         Else
-            MsgBox "Please select face"
+            MsgBox "请选择面"
         End If
         
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -136,5 +136,3 @@ Function HasInnerLoop(edge As SldWorks.edge) As Boolean
     
 End Function
 ~~~
-
-
