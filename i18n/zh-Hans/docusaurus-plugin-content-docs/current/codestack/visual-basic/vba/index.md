@@ -1,11 +1,11 @@
 ---
 title: Visual Basic for Applications (VBA)
-description: Introduction to Visual Basic for Applications (VBA)
+description: Visual Basic for Applications (VBA) 简介
 sidebar_position: 0
 sitemap: false
 ---
-*Coming soon...*
+*即将推出...*
 
-### What is VBA?
-### Various VBA implementations
+### 什么是 VBA？
+### 不同的 VBA 实现
 ### VBA6 vs VBA7
