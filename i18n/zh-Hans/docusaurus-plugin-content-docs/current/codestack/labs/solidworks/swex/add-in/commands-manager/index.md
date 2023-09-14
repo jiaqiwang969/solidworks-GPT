@@ -1,14 +1,14 @@
 ---
-title: SOLIDWORKS commands manager with SwEx.AddIn framework
-caption: Commands Manager
-description: Instructions on adding commands (menu, toolbar and context menu) with SwEx.AddIn framework for developing SOLIDWORKS add-ins in C# and VB.NET
+title: 使用SwEx.AddIn框架的SOLIDWORKS命令管理器
+caption: 命令管理器
+description: 使用SwEx.AddIn框架在C#和VB.NET中开发SOLIDWORKS插件时，添加命令（菜单、工具栏和上下文菜单）的说明
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
-SwEx simplifies the adding of commands by considering the enumerator type as a command group and enumerator values as command items. Values can be decorated by various attributes to provide custom title, description and icon.
+SwEx通过将枚举类型视为命令组，将枚举值视为命令项，简化了添加命令的过程。可以使用各种属性修饰值，以提供自定义的标题、描述和图标。
 
-Commands can be inserted into menu, toolbar or context menu.
+命令可以插入到菜单、工具栏或上下文菜单中。
 
-User can handle the commands clicks and assign the custom state for command buttons.
+用户可以处理命令的点击事件，并为命令按钮分配自定义状态。
 
-Multiple command groups can be inserted within the same add-in.
+可以在同一个插件中插入多个命令组。
