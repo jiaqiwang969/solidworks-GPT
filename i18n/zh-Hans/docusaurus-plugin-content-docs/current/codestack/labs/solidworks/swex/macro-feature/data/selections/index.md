@@ -1,26 +1,26 @@
 ---
-title: Managing selection of SOLIDWORKS macro feature
-caption: Selections
-description: Managing selections of SOLIDWORKS macro feature using the SwEx.MacroFeature framework
+title: 管理SOLIDWORKS宏特征的选择
+caption: 选择
+description: 使用SwEx.MacroFeature框架管理SOLIDWORKS宏特征的选择
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
 ~~~ cs
 public class MacroFeatureParams
 {
-    //selection parameter of any entity (e.g. face, edge, feature etc.)
+    //任何实体（例如面、边、特征等）的选择参数
     [ParameterSelection]
     public object AnyEntity { get; set; }
 
-    //selection parameter of body
+    //体的选择参数
     [ParameterSelection]
     public IBody2 Body { get; set; }
 
-    //selection parameter of array of faces
+    //面数组的选择参数
     [ParameterSelection]
     public List<IFace2> Faces { get; set; }
 ~~~
 
-Parameter properties can be specified either using the direct SOLIDWORKS type or as object if type is unknown. List of selections is also supported.
+参数属性可以使用直接的SOLIDWORKS类型指定，也可以使用object类型指定（如果类型未知）。还支持选择列表。
 
-[OnRebuild](https://docs.codestack.net/swex/macro-feature/html/M_CodeStack_SwEx_MacroFeature_MacroFeatureEx_OnRebuild.htm) handler will be called if any of the selections have changed.
+如果任何选择发生更改，[OnRebuild](https://docs.codestack.net/swex/macro-feature/html/M_CodeStack_SwEx_MacroFeature_MacroFeatureEx_OnRebuild.htm)处理程序将被调用。
