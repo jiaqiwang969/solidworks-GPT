@@ -1,25 +1,25 @@
 ---
 layout: article
-caption: Find Specific Edge In Drawing View
-title: Find and select specific edge in the drawing view using SOLIDWORKS API
-description: VBA macro to find and select specific edge from the underlying model in the drawing view using SOLIDWORKS API
+caption: 在绘图视图中查找特定边
+title: 使用SOLIDWORKS API在绘图视图中查找和选择特定边
+description: 使用SOLIDWORKS API在绘图视图中查找和选择来自底层模型的特定边的VBA宏
 image: selected-edge.png
 ---
-This VBA macro demonstrates how to find the specific named edge from the underlying 3D document and select it in the drawing view.
+这个VBA宏演示了如何从底层的3D文档中找到特定的命名边，并在绘图视图中选择它。
 
-This technique can be used when developing drawing automation macros and applications.
+这个技术可以在开发绘图自动化宏和应用程序时使用。
 
-> Note in your macro you might not use named entities, instead some different logic can be applied (e.g. finding by coordinates, color, attributes etc.). However the process of conversion the pointer to drawing view space will be the same.
+> 注意，在您的宏中，您可能不会使用命名实体，而是可以应用一些不同的逻辑（例如，通过坐标、颜色、属性等进行查找）。然而，将指针转换为绘图视图空间的过程是相同的。
 
-This macro will work with the drawing view of the assembly where named edge is contained in the top level component as shown below:
+这个宏将与包含在顶层组件中的命名边的装配体的绘图视图一起工作，如下所示：
 
-![Edge selected in the drawing view](selected-edge.png)
+![在绘图视图中选择的边](selected-edge.png)
 
-> Refer [Get Component By Name](/docs/codestack/solidworks-api/document/assembly/components/get-by-name/) example for the code to get component on any level if needed.
+> 如果需要，可以参考[按名称获取组件](/docs/codestack/solidworks-api/document/assembly/components/get-by-name/)示例中的代码来获取任何级别上的组件。
 
-Name of the edge needs to be assigned from the corresponding part document.
+边的名称需要从相应的零件文档中分配。
 
-![Name of the edge assigned in the part](edge-name.png)
+![在零件中分配的边的名称](edge-name.png)
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -62,4 +62,3 @@ Function FindEdge(draw As SldWorks.DrawingDoc, view As SldWorks.view, compName A
     
 End Function
 ~~~
-
