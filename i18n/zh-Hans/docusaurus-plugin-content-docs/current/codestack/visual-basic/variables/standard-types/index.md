@@ -1,91 +1,91 @@
 ---
-title: Visual Basic 中的标准类型
-caption: 标准类型
-description: Visual Basic 中标准类型（例如 Integer、String、Double、Object 等）的概述
+title: Standard Types in Visual Basic
+caption: Standard Types
+description: An overview of the standard types (such as Integer, String, Double, Object, etc.) in Visual Basic
 image: vba-integer-overflow.png
 sidebar_position: 0
 ---
-以下分类列出了按类别分组的 Visual Basic 中的不同标准类型。每种类型分配不同大小的内存存储空间。某些类型具有声明字符，可用于以简短形式显式定义变量的类型。大多数类型提供将值从变体转换的特定函数。
+The following categorizes the different standard types in Visual Basic, grouped by category. Each type allocates different amounts of memory storage space. Some types have declaration characters that can be used to explicitly define the type of a variable in a short form. Most types provide specific functions for converting values from variants.
 
-## 数值
+## Numeric
 
-数值类型变量用于保存正负整数值（没有小数点），例如 1、2、10、-10、-1000 等。不同的数值类型允许存储不同的值范围，并且需要不同大小的分配存储空间。最常用的类型是 [Integer](#integer)。
+Numeric types variables are used to store positive and negative integer values (without decimal points), such as 1, 2, 10, -10, -1000, etc. Different numeric types allow storing different ranges of values and require different sizes of allocated storage space. The most commonly used type is [Integer](#integer).
 
-如果分配的值不适合范围，则在编译时将显示运行时错误“6”溢出。
+If a value assigned is not suitable for the range, a runtime error "6" Overflow will be displayed at compile time.
 
-![当分配的整数值超出接受范围时，显示运行时错误“6”溢出](vba-integer-overflow.png){ width=350 }
+![Runtime error "6" Overflow is displayed when an assigned integer value exceeds the acceptable range](vba-integer-overflow.png){ width=350 }
 
 ### Byte
-分配 1 字节的存储空间。值范围从 0 到 255。将其转换为 Byte 的函数是 *CByte*。
+Allocates 1 byte of storage space. The value range is from 0 to 255. The function to convert it to Byte is *CByte*.
 
 ### Integer
-分配 2 字节的存储空间。值范围从 -32,768 到 32,767。整数的类型声明字符是 %。将其转换为 Integer 的函数是 *CInt*。
+Allocates 2 bytes of storage space. The value range is from -32,768 to 32,767. The declaration character for an integer is %. The function to convert it to Integer is *CInt*.
 
-### Long 
-分配 4 字节的存储空间。值范围从 -2,147,483,648 到 2,147,486,647。长整数的类型声明字符是 &。将其转换为 Long 的函数是 *CLng*。
+### Long
+Allocates 4 bytes of storage space. The value range is from -2,147,483,648 to 2,147,486,647. The declaration character for a long integer is &. The function to convert it to Long is *CLng*.
 
 ### LongLong
-分配 8 字节的存储空间。值范围从 -9,223,372,036,854,775,808 到 9,223,372,036,854,775,807。LongLong 的类型声明字符是 ^。LongLong 只是在 64 位平台上有效的声明类型。
+Allocates 8 bytes of storage space. The value range is from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807. The declaration character for LongLong is ^. LongLong is only a valid declared type on 64-bit platforms.
 
 ### LongPtr
-在 32 位系统上表示 Long 类型（4 字节），在 64 位系统上表示 LongLong 类型（8 字节）。
+Represents a Long type (4 bytes) on a 32-bit system and a LongLong type (8 bytes) on a 64-bit system.
 
-LongPtr 通常用于编写可在 32 位和 64 位环境中运行的可移植代码。特别是在 [Windows 32 位 API](/docs/codestack/visual-basic/windows-api) 中用于指针和句柄。
+LongPtr is commonly used to write portable code that can run in both 32-bit and 64-bit environments. It is particularly used in the [Windows 32-bit API](/docs/codestack/visual-basic/windows-api) for pointers and handles.
 
-## 带小数点的数值
-这些类型的变量用于保存带小数点的正负数值，例如 20.5、-152.89 等。不同类型的变量允许存储不同范围的值，具有不同的精度。最常用的类型是 Double。对于高精度数字，可以使用 Currency 或 Decimal 类型。
+## Numeric with Decimal Point
+These types of variables are used to store positive and negative values with decimal points, such as 20.5, -152.89, etc. Different types of variables allow storing values in different ranges and have different levels of precision. The most commonly used type is Double. For high-precision numbers, the Currency or Decimal type can be used.
 
 ### Single
-分配 4 字节的存储空间。值范围从 -3.402823E38 到 -1.401298E–45 或从 1.401298E–45 到 3.402823E38。单精度的类型声明字符是 !。将其转换为 Single 的函数是 *CSng*。
+Allocates 4 bytes of storage space. The value range is from -3.402823E38 to -1.401298E–45 or from 1.401298E–45 to 3.402823E38. The declaration character for single precision is !. The function to convert it to Single is *CSng*.
 
 ### Double
-分配 8 字节的存储空间。值范围从 -1.79769313486232E308 到 -4.94065645841247E–324 或从 1.79769313486232E308 到 4.94065645841247E–324。双精度的类型声明字符是 #。将其转换为 Double 的函数是 *CDbl*。
+Allocates 8 bytes of storage space. The value range is from -1.79769313486232E308 to -4.94065645841247E–324 or from 1.79769313486232E308 to 4.94065645841247E–324. The declaration character for double precision is #. The function to convert it to Double is *CDbl*.
 
 ### Currency
-分配 8 字节的存储空间。值范围从 -922,337,203,477.5808 到 922,337,203,685,477.5807。货币的类型声明字符是 @。将其转换为 Currency 的函数是 *CCur*。
+Allocates 8 bytes of storage space. The value range is from -922,337,203,477.5808 to 922,337,203,685,477.5807. The declaration character for currency is @. The function to convert it to Currency is *CCur*.
 
 ### Decimal
-分配 14 字节的存储空间。值范围从 -79,228,162,514,264,337,593,543,950,335 到 79,228,162,514,264,337,593,543,950,335 或从 -7.2998162514264337593543950335 到 7.9228162514264337593543950335。将其转换为 Decimal 的函数是 *CDec*。请注意，Decimal 类型的变量必须声明为 [Variant](/docs/codestack/visual-basic/variables/standard-types#variant)，并使用 *CDec* 函数进行赋值。
+Allocates 14 bytes of storage space. The value range is from -79,228,162,514,264,337,593,543,950,335 to 79,228,162,514,264,337,593,543,950,335 or from -7.2998162514264337593543950335 to 7.9228162514264337593543950335. The function to convert it to Decimal is *CDec*. Note that variables of the Decimal type must be declared as [Variant](/docs/codestack/visual-basic/variables/standard-types#variant) and assigned using the *CDec* function.
 
-## 逻辑
-逻辑变量用于 [条件](/docs/codestack/visual-basic/conditions) 并表示为 1（True）或 0（False）。
+## Logical
+Logical variables are used for [conditions](/docs/codestack/visual-basic/conditions) and are represented as 1 (True) or 0 (False).
 
 ### Boolean
-分配 2 字节的存储空间。可以是 True 或 False。将其转换为 Boolean 的函数是 *CBool*。
+Allocates 2 bytes of storage space. It can be True or False. The function to convert it to Boolean is *CBool*.
 
-## 文本
-文本变量保存文字，当定义时，用双引号 "" 括起来。
+## Text
+Text variables store text and are enclosed in double quotation marks "" when defined.
 
 ### String
-分配 10 个字节加上字符数的存储空间。值范围从 0 到 20 亿个字符。将其转换为 String 的函数是 *CStr*。
+Allocates storage space of 10 bytes plus the number of characters. The value range is from 0 to 2 billion characters. The function to convert it to String is *CStr*.
 
-## 日期和时间
-保存日期和时间信息的变量。
+## Date and Time
+Variables that store date and time information.
 
 ### Date
-分配 8 字节的存储空间。值范围从 100 年 1 月 1 日到 9999 年 12 月 31 日。将其转换为 String 的函数是 *CDate*。
+Allocates 8 bytes of storage space. The value range is from January 1, 100 to December 31, 9999. The function to convert it to String is *CDate*.
 
-## 引用
-这些变量是可能保存复杂数据和结构的任何引用类型。
+## Reference
+These variables are any reference types that can store complex data and structures.
 
 ### Object
-分配 4 字节的存储空间。用于 [后期绑定](/docs/codestack/visual-basic/variables/declaration#early-binding-and-late- binding)
+Allocates 4 bytes of storage space. Used for [late binding](/docs/codestack/visual-basic/variables/declaration#early-binding-and-late-binding).
 
-## 任意
-这些变量类型可以保存任何数据对象（值类型、引用类型或数组）
+## Any
+These variable types can store any data object (value types, reference types, or arrays).
 
 ### Variant
-分配 16 字节的存储空间。将其转换为 Variant 的函数是 *CVar*。
+Allocates 16 bytes of storage space. The function to convert it to Variant is *CVar*.
 
-下面的代码示例演示了各种标准数据类型的声明和转换。
+The following code example demonstrates the declaration and conversion of various standard data types.
 
 ~~~ vb
 Sub main()
     
     Dim byteVar As Byte
     byteVar = 17
-    byteVar = CByte("12") '将文本值转换为 byte
-    byteVar = CByte(15.6) '浮点数不可接受，因此值将四舍五入为 16
+    byteVar = CByte("12") 'converts text value to byte
+    byteVar = CByte(15.6) 'floating-point number not acceptable, so the value will be rounded to 16
     
     Dim intVar As Integer
     intVar = 12567
@@ -96,7 +96,7 @@ Sub main()
     longVar = CLng("-124")
     longVar = 123&
     
-    Dim longLongVar As LongLong '仅适用于 64 位
+    Dim longLongVar As LongLong 'only applicable on 64-bit
     longLongVar = 103456
     longLongVar = 7392984646^
     
@@ -110,7 +110,7 @@ Sub main()
     
     Dim doubleVar As Double
     doubleVar = 3.4E+100
-    doubleVar = CDbl("106.278856") '将整数值强制转换为 double
+    doubleVar = CDbl("106.278856") 'converts integer value to double
     doubleVar = 12345# 
     
     Dim currVal As Currency
@@ -123,14 +123,14 @@ Sub main()
     
     Dim boolVar As Boolean
     boolVar = True
-    boolVar = CBool(1) '转换为 true
+    boolVar = CBool(1) 'converts to true
     
     Dim strVar As String
     strVar = "Hello World"
-    strVar = CStr(125) '将数字转换为字符串
+    strVar = CStr(125) 'converts number to string
     
     Dim dateVar As Date
-    dateVar = Now() '分配当前日期
+    dateVar = Now() 'assigns current date
     dateVar = CDate("10-Jun-2018")
     
     Dim objVar As Object
