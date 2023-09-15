@@ -1,37 +1,38 @@
 ---
-title: Draw sketch segments in context of the drawing sheet using SOLIDWORKS API
-caption: Draw Sketch Segments In Sheet
-description: Draw underlying model bounding box sketch segment in the context of the drawing sheet using SOLIDWORKS API
+title: 使用SOLIDWORKS API在绘图页上绘制草图线段
+caption: 在绘图页上绘制草图线段
+description: 使用SOLIDWORKS API在绘图页的上下文中绘制底层模型边界框的草图线段
 image: drawing-view-line.png
-labels: [sketch,dimension,edge,bounding box]
+labels: [草图,尺寸,边缘,边界框]
 ---
-This code example demonstrates how to draw the model bounding box diagonal in the drawing view using SOLIDWORKS API.
 
-![Bounding box of the assembly](assembly-bounding-box.png){ width=250 }
+此代码示例演示了如何使用SOLIDWORKS API在绘图视图中绘制模型边界框的对角线。
 
-The bounding box coordinate system is extracted from the underlying model of the drawing view. The coordinates are relative to the global coordinate system of the part or the assembly drawing view created from.
+![装配体的边界框](assembly-bounding-box.png){ width=250 }
 
-In order to properly transform the coordinate into the drawing sheet space it is required to consider the following:
+边界框坐标系是从绘图视图的底层模型中提取的。这些坐标是相对于零件或装配体绘图视图的全局坐标系的。
 
-* Drawing view transformation. This can be extracted using the [IView::ModelToViewTransform](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iview~modeltoviewtransform.html) SOLIDWORKS API method.
-* Drawing sheet transformation.
-* Drawing sheet scale
+为了将坐标正确转换为绘图页空间，需要考虑以下几点：
 
-![Drawing sheet scale property](sheet-scale-property.png){ width=350 }
+* 绘图视图变换。可以使用[SOLIDWORKS API](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iview~modeltoviewtransform.html)方法提取。
+* 绘图页变换。
+* 绘图页比例。
 
-The combination of the above transformation will return the full transformation of the coordinate from the model space into the current sheet space.
+![绘图页比例属性](sheet-scale-property.png){ width=350 }
 
-> When inserting the sketch segments into the drawing sheet it is imported to activate the sheet space by calling the [IDrawingDoc::ActivateView](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.idrawingdoc~activateview.html) SOLIDWORKS API method and passing an empty string as the parameter. Otherwise the entity will be inserted directly into the model space of the view document.
+上述变换的组合将返回从模型空间到当前绘图页空间的坐标的完整变换。
 
-## Running macro
+> 在将草图线段插入绘图页时，通过调用[SOLIDWORKS API](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.idrawingdoc~activateview.html)方法并将空字符串作为参数传递来激活绘图页空间。否则，实体将直接插入到视图文档的模型空间中。
 
-* Open drawing
-* Insert view of part or assembly
-* Modify view and drawing sheet scale. You can also rotate the view
-* Run the macro. As the result the diagonal is drawn in the sheet space representing the bounding box of the underlying model
-* Move the view. Note that the created line segment doesn't move with the view which means it was created in the drawing sheet space
+## 运行宏
 
-![Bounding box diagonal in the drawing](drawing-view-line.png){ width=300 }
+* 打开绘图
+* 插入零件或装配体的视图
+* 修改视图和绘图页比例。您还可以旋转视图
+* 运行宏。结果是在绘图页空间中绘制了表示底层模型边界框的对角线
+* 移动视图。请注意，创建的线段不会随视图移动，这意味着它是在绘图页空间中创建的
+
+![绘图中的边界框对角线](drawing-view-line.png){ width=300 }
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -52,10 +53,10 @@ Sub main()
         If Not swView Is Nothing Then
             DrawBBoxDiagonal swDraw, swView
         Else
-            MsgBox "Please select drawing view"
+            MsgBox "请选择绘图视图"
         End If
     Else
-        MsgBox "Please open the drawing document"
+        MsgBox "请打开绘图文档"
     End If
     
 End Sub
@@ -112,10 +113,10 @@ Function GetViewRefModelBBox(view As SldWorks.view) As Variant
             Const BOX_OPTS_DEFAULT As Integer = 0
             GetViewRefModelBBox = swAssy.GetBox(BOX_OPTS_DEFAULT)
         Else
-            Err.Raise vbError, "", "Unsupported view document"
+            Err.Raise vbError, "", "不支持的视图文档"
         End If
     Else
-        Err.Raise vbError, "", "No document attached to view"
+        Err.Raise vbError, "", "未附加文档到视图"
     End If
     
 End Function
@@ -151,5 +152,3 @@ Function GetViewToSheetTransform(draw As SldWorks.DrawingDoc, view As SldWorks.v
 
 End Function
 ~~~
-
-
