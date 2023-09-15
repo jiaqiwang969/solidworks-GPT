@@ -1,5 +1,5 @@
 ---
-title: 使用SOLIDWORKS API将文档前景带到前台（激活文档）
+title: 将文档前景带到前台（激活文档）
 caption: 将文档前景带到前台（激活文档）
 description: 本示例演示了如何使用[SOLIDWORKS API的ISldWorks::ActivateDoc3](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~activatedoc3.html)方法将通过路径选择的文档带到前台（激活）。
 labels: [激活文档, 装配体, 示例, 前景, 打开文档]
@@ -15,7 +15,7 @@ redirect-from:
 
 [下载示例文件](SimpleBox.zip)
 
-~~~ vb
+```vb
 Const FILE_NAME As String = "SimpleBox.SLDPRT"
 
 Dim swApp As SldWorks.SldWorks
@@ -50,6 +50,5 @@ Sub main()
     End If
     
 End Sub
+```
 
-
-~~~
