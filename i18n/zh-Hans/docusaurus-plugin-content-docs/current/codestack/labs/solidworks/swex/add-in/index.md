@@ -1,33 +1,33 @@
 ---
-title: SwEx.AddIn Framework enables easy and robust development of add-ins with SOLIDWORKS API
+title: SwEx.AddIn框架可轻松且稳健地使用SOLIDWORKS API开发插件
 caption: SwEx.AddIn
-description: Advanced utilities for the development of powerful SOLIDWORKS add-ins using SOLIDWORKS API in .NET (C# and VB.NET). Framework simplifies the creation and maintaining of commands and UI elements.
+description: 使用.NET（C＃和VB.NET）中的SOLIDWORKS API开发强大的SOLIDWORKS插件的高级工具。该框架简化了命令和UI元素的创建和维护。
 image: logo.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 redirect-from:
   - /labs/solidworks/dev-tools-addin/
 ---
-![SwEx.AddIn framework for SOLIDWORKS](logo.png)
+![SwEx.AddIn框架](logo.png)
 
-SwEx.AddIn provides utilities for simplified development of SOLIDWORKS add-ins.
+SwEx.AddIn提供了简化SOLIDWORKS插件开发的实用工具。
 
-The functionality includes
+功能包括：
 
-* Automatic registration of the add-in
-* Simplified commands groups management
-* Events management (future versions)
-* Task Panes, Feature Manager Tab, Model View Tab (future versions)
+* 插件的自动注册
+* 简化的命令组管理
+* 事件管理（未来版本）
+* 任务窗格、特征管理器选项卡、模型视图选项卡（未来版本）
 
-Source code is available on [GitHub](https://github.com/codestackdev/swex-addin)
+源代码可在[GitHub](https://github.com/codestackdev/swex-addin)上获取。
 
-## Features
+## 功能
 
-### Registering Add-In
+### 注册插件
 
-To Register add-in just add the AutoRegister attribute (no need to run custom regasm commands, no need to call any static classes)
+只需添加AutoRegister属性即可注册插件（无需运行自定义regasm命令，无需调用任何静态类）
 
-~~~vb
+```vb
 <AutoRegister("My C# SOLIDWORKS Add-In", "Sample SOLIDWORKS add-in in VB.NET", True)>
 <ComVisible(True), Guid("31E2C0F0-B68D-44C4-AB15-4CC7B56B6C16")>
 Public Class SampleAddIn
@@ -38,9 +38,9 @@ Public Class SampleAddIn
     End Function
 
 End Class
-~~~
+```
 
-~~~cs
+```cs
 [AutoRegister("My C# SOLIDWORKS Add-In", "Sample SOLIDWORKS add-in in C#", true)]
 [ComVisible(true), Guid("736EEACF-B294-40F6-8541-CFC8E7C5AA61")]
 public class SampleAddIn : SwAddInEx
@@ -50,14 +50,13 @@ public class SampleAddIn : SwAddInEx
         return true;
     }
 }
-~~~
+```
 
+### 添加命令
 
-### Adding Commands
+可以通过创建枚举来定义命令。可以通过添加属性来自定义命令，如标题、工具提示、图标等。命令可以分组到子菜单中。只需指定图像（支持透明度），框架将创建与SOLIDWORKS兼容的所需位图。无需分配灰色背景以启用透明度，无需缩放图像以适应所需大小 - 只需使用任何图像，框架将完成其余工作。使用资源来本地化插件。
 
-Commands can be defined by creating an enumerations. Commands can be customized by adding attributes to assign title, tooltip, icon etc. Commands can be grouped under sub menus. Simply specify the image (transparency is supported) and framework will create required bitmaps compatible with SOLIDWORKS. No need to assign gray background to enable transparency, no need to scale images to fit the required sizes - simply use any image and framework will do the rest. Use resources to localize the add-in.
-
-~~~vb
+```vb
 <Title(GetType(Resources), NameOf(Resources.ToolbarTitle)), Description("Toolbar with commands")>
 <Icon(GetType(Resources), NameOf(Resources.commands))>
 Public Enum Commands_e
@@ -72,9 +71,9 @@ End Enum
     '...
 Private Sub OnButtonClick(ByVal cmd As Commands_e)
 End Sub
-~~~
+```
 
-~~~cs
+```cs
 [Title(typeof(Resources), nameof(Resources.ToolbarTitle)), Description("Toolbar with commands")]
 [Icon(typeof(Resources), nameof(Resources.commands))]
 public enum Commands_e
@@ -92,16 +91,13 @@ private void OnButtonClick(Commands_e cmd)
 {
     //TODO: handle commands
 }
-~~~
+```
 
+### 管理文档生命周期和事件
 
+框架将通过将文档包装在指定的类中来管理文档的生命周期，并允许处理常见事件：
 
-### Managing Documents Lifecycle and Events
-
-Framework will manage the lifecycle of documents by wrapping them in the specified class and allows to handle common events:
-
-
-~~~vb
+```vb
 '...
 Private m_DocHandler As IDocumentsHandler(Of DocumentHandler)
 '...
@@ -123,9 +119,9 @@ Private Function OnDocSave(ByVal docHandler As DocumentHandler, ByVal fileName A
     'TODO: handle saving
     Return True
 End Function
-~~
+```
 
-~~~cs
+```cs
 //...
 private IDocumentsHandler<DocumentHandler> m_DocHandler;
 //...
@@ -151,16 +147,13 @@ private bool OnDocSave(DocumentHandler docHandler, string fileName, SaveState_e 
     //TODO: handle saving
     return true;
 }
-~~~
+```
 
+### 读写第三方存储和存储器
 
+现在更容易读写内部SOLIDWORKS文件存储器中的数据。只需重写相应的事件，并使用XML、DataContract、Binary等序列化器对数据进行序列化/反序列化：
 
-### Reading and Writing to 3rd Party Storage and Store
-
-It has never been easier to read and write data to the internal SOLIDWORKS file storage. Simply override the corresponding event and serialize/deserialize the data using XML, DataContract, Binary etc. serializers:
-
-
-~~~vb
+```vb
     '...
     AddHandler doc.Access3rdPartyData, AddressOf OnAccess3rdPartyData
     '...
@@ -179,10 +172,9 @@ Private Sub OnAccess3rdPartyData(ByVal docHandler As DocumentHandler, ByVal stat
             End Using
     End Select
 End Sub
-~~~
+```
 
-
-~~~cs
+```cs
     //...
     doc.Access3rdPartyData += OnAccess3rdPartyData;
     //...
@@ -205,16 +197,15 @@ private void OnAccess3rdPartyData(DocumentHandler docHandler, Access3rdPartyData
             break;
     }
 }
-~~~
+```
 
+### 在SOLIDWORKS面板中托管用户控件
 
-### Hosting User Controls In SOLIDWORKS Panels
+只需指定要托管的用户控件，框架将完成其余工作：
 
-Just specify User Control to host and framework will do the rest:
+#### 任务窗格
 
-#### Task Pane
-
-~~~vb
+```vb
 Public Class TaskPaneControl
     Inherits UserControl
 End Class
@@ -230,9 +221,9 @@ Private Sub OnTaskPaneCommandClick(ByVal cmd As TaskPaneCommands_e)
         Case TaskPaneCommands_e.Command1
     End Select
 End Sub
-~~~
+```
 
-~~~cs
+```cs
 public class TaskPaneControl : UserControl
 {
 }
@@ -253,16 +244,14 @@ private void OnTaskPaneCommandClick(TaskPaneCommands_e cmd)
             break;
     }
 }
-~~~
+```
 
+## 视频教程
 
-
-## Video Tutorials
-
-### Introduction
+### 介绍
 
 {% youtube { id: 8BXQZcPe4bA } %}
 
-### Detailed Guide
+### 详细指南
 
 {% youtube { id: EAm-3-Njkfw } %}
