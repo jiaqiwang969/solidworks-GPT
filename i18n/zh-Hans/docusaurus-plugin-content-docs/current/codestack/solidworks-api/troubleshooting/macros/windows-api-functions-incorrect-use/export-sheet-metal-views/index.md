@@ -1,34 +1,34 @@
 ---
 layout: sw-tool
-title: Export flat pattern view in the drawing using VBA macro
-caption: Export Flat Patterns
-description: VBA macro to export flat pattern views in the drawing active sheet to DXF or DWG or other format preserving the bend notes, annotations etc. using SOLIDWORKS API
+title: 使用VBA宏在绘图中导出展开图视图
+caption: 导出展开图
+description: 使用SOLIDWORKS API的VBA宏，将绘图活动工作表中的展开图视图导出为DXF、DWG或其他格式，并保留弯曲注释、注释等。
 image: flat-pattern-view.png
 labels: [dxf,dwg,export,flat pattern]
 group: Drawing
 ---
-![Flat pattern exported to DXF](flat-pattern-dxf.png){ width=350 }
+![导出为DXF的展开图](flat-pattern-dxf.png){ width=350 }
 
-This VBA macro exports all flat pattern views from the active sheet in the drawing to the specified format (e.g. DXF or DWG) using SOLIDWORKS API. Macro exports the file to the same folder as original drawing and names files after the drawing view name.
+这个VBA宏使用SOLIDWORKS API将绘图活动工作表中的所有展开图视图导出为指定格式（如DXF或DWG）。宏将文件导出到与原始绘图相同的文件夹，并以绘图视图名称命名文件。
 
-This macro can be used in conjunction with [Rename flat pattern views with cut-list names](/docs/codestack/solidworks-api/document/drawing/rename-sheet-metal-views/) macro  if it is required to name exported files after the cut list name.
+如果需要将导出的文件命名为切割清单名称，可以与[使用切割清单名称重命名展开图视图](/docs/codestack/solidworks-api/document/drawing/rename-sheet-metal-views/)宏一起使用。
 
-Specify the output file extension at the beginning of the macro:
+在宏的开头指定输出文件扩展名：
 
 ~~~ vb
 Const OUT_EXT As String = ".dxf"
 ~~~
 
-## Algorithm
+## 算法
 
-* Traverse all drawing view of the current sheet of the active drawing
-* Find all drawing views of flat pattern
-* Create new temp drawing and copies the view
-* Remove all dimensions
-* Remove all tables
-* Set view and sheet scale to 1:1
-* Fit sheet size to view
-* Export to the specified file
+* 遍历当前绘图工作表的所有绘图视图
+* 查找所有展开图视图
+* 创建新的临时绘图并复制视图
+* 删除所有尺寸
+* 删除所有表格
+* 将视图和工作表比例设置为1:1
+* 将工作表尺寸调整为视图大小
+* 导出到指定文件
 
 
 ~~~ vb
@@ -51,7 +51,7 @@ try:
     If Not swDraw Is Nothing Then
         ExportFlatPatternViews swDraw, swDraw.GetCurrentSheet
     Else
-        Err.Raise vbError, "", "Please open drawing document"
+        Err.Raise vbError, "", "请打开绘图文档"
     End If
     
     GoTo finally
@@ -94,7 +94,7 @@ Sub ExportFlatPatternView(model As SldWorks.ModelDoc2, view As SldWorks.view)
     saveDir = model.GetPathName()
     
     If saveDir = "" Then
-        Err.Raise vbError, "", "Only saved drawings are supported"
+        Err.Raise vbError, "", "仅支持保存的绘图"
     End If
     
     saveDir = Left(saveDir, InStrRev(saveDir, "\"))
@@ -118,11 +118,11 @@ Sub ExportFlatPatternView(model As SldWorks.ModelDoc2, view As SldWorks.view)
         swApp.CloseDoc swViewModel.GetTitle
         
         If False = expRes Then
-            Err.Raise vbError, "", "Failed to export " & view.Name & ". Error code: " & errs
+            Err.Raise vbError, "", "导出" & view.Name & "失败。错误代码：" & errs
         End If
         
     Else
-        Err.Raise vbError, "", "Failed to select " & view.Name
+        Err.Raise vbError, "", "选择" & view.Name & "失败"
     End If
     
 End Sub
@@ -139,7 +139,7 @@ Function PasteViewInNewDocument(Optional dummy As String = "") As SldWorks.Model
         Set swDraw = swApp.NewDocument(drawTemplate, swDwgPaperSizes_e.swDwgPapersUserDefined, 0.1, 0.1)
         
         If swDraw Is Nothing Then
-            Err.Raise vbError, "", "Failed to create new drawing document"
+            Err.Raise vbError, "", "创建新绘图文档失败"
         End If
 try:
         On Error GoTo catch
@@ -175,7 +175,7 @@ catch:
 finally:
     
     Else
-        Err.Raise vbError, "", "Default drawing template is not specified"
+        Err.Raise vbError, "", "未指定默认绘图模板"
     End If
     
 End Function
@@ -200,7 +200,7 @@ Sub RemoveDimensions(model As SldWorks.ModelDoc2, view As SldWorks.view)
         If model.Extension.MultiSelect2(vDispDims, False, Nothing) = UBound(vDispDims) + 1 Then
             model.Extension.DeleteSelection2 swDeleteSelectionOptions_e.swDelete_Absorbed
         Else
-            Err.Raise vbError, "", "Failed to select dimensions for deletion"
+            Err.Raise vbError, "", "选择要删除的尺寸失败"
         End If
     
     End If
@@ -227,7 +227,7 @@ Sub RemoveTables(model As SldWorks.ModelDoc2, view As SldWorks.view)
         If model.Extension.MultiSelect2(vTableAnns, False, Nothing) = UBound(vTableAnns) + 1 Then
             model.Extension.DeleteSelection2 swDeleteSelectionOptions_e.swDelete_Absorbed
         Else
-            Err.Raise vbError, "", "Failed to select dimensions for deletion"
+            Err.Raise vbError, "", "选择要删除的尺寸失败"
         End If
     
     End If
@@ -253,5 +253,3 @@ Sub FitSheetToView(sheet As SldWorks.sheet, view As SldWorks.view)
     
 End Sub
 ~~~
-
-
