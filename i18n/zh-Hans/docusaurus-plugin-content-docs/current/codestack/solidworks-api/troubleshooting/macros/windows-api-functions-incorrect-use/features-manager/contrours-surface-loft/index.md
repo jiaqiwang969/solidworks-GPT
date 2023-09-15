@@ -1,25 +1,25 @@
 ---
-title: SOLIDWORKS API to create surface loft feature via contours
-caption: Create Surface Loft Feature Via Contours
-description: Example demonstrates how to create surface loft feature from the contours as the profiles using SOLIDWORKS API
+title: 使用SOLIDWORKS API通过轮廓创建曲面放样特征
+caption: 通过轮廓创建曲面放样特征
+description: 该示例演示了如何使用SOLIDWORKS API通过轮廓作为剖面创建曲面放样特征。
 image: lofted-surface-sketch-contours.png
-labels: [surface, loft, contour]
+labels: [曲面, 放样, 轮廓]
 ---
-![Lofted surface feature using sketch contours as the profiles](lofted-surface-sketch-contours.png){ width=500 }
+![使用轮廓作为剖面创建曲面放样特征](lofted-surface-sketch-contours.png){ width=500 }
 
-This example demonstrates how to create surface loft feature from the contours as the profiles using SOLIDWORKS API.
+该示例演示了如何使用SOLIDWORKS API通过轮廓作为剖面创建曲面放样特征。
 
-Sketch segments are not accepted entities for the profiles in the surface loft feature. This means if only several segments from the sketch need to be used for profiles (instead of the entire sketch) it is not possible to create a feature by selecting the sketch segments. It is required to use sketch contours instead.
+曲面放样特征不接受剖面中的草图段作为实体。这意味着如果只需要使用草图中的几个段作为剖面（而不是整个草图），则无法通过选择草图段来创建特征。必须使用草图轮廓来代替。
 
-Sketch segments are not supported from the User Interface as well. When segment is selected the following selection manager is displayed allowing to select the open or closed loop.
+草图段在用户界面中也不受支持。当选择段时，会显示以下选择管理器，允许选择开放或闭合环。
 
-![Selection manager while selecting the profile](selection-manager.png){ width=250 }
+![选择剖面时的选择管理器](selection-manager.png){ width=250 }
 
-* Open part and select sketch segments for profile. Any types of sketch segments are supported (spline, line, arc etc.). There might be multiple sketch segments in the sketch and only several can be selected for the profile. Segments can be in different sketches as well.
-* Macro will find the corresponding sketch contour for each sketch segment
-* Macro will create surface loft feature with the corresponding sketch contours
+* 打开零件并选择用于剖面的草图段。支持任何类型的草图段（样条线、直线、弧等）。草图中可能有多个草图段，只能选择其中的几个作为剖面。草图段也可以位于不同的草图中。
+* 宏将为每个草图段找到相应的草图轮廓。
+* 宏将使用相应的草图轮廓创建曲面放样特征。
 
-> This macro is not an optimal performance code for finding sketch contours of segments within the same sketch as it will do a full traversal of all sketch segments within the sketch to find the corresponding contour for individual sketch segments. Modify the macro to find multiple sketch contours at a time within one traversal loop avoiding repetition.
+> 此宏不是用于在同一草图中查找草图段的最佳性能代码，因为它将对草图中的所有草图段进行完整遍历，以查找各个草图段的相应轮廓。可以修改宏以在一次遍历循环中查找多个草图轮廓，避免重复。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -104,5 +104,3 @@ Function GetSketchContour(sketchSeg As SldWorks.SketchSegment) As SldWorks.Sketc
     
 End Function
 ~~~
-
-
