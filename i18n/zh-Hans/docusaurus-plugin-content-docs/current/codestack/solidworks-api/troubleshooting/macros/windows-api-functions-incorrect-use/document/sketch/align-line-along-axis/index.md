@@ -1,23 +1,24 @@
 ---
-title: Align line along axis using SOLIDWORKS API
-caption: Align Line Along Axis
-description: Example demonstrates how to align all sketch lines in the active sketch (add the sketch relation) with one of the selected options (along X, Y or Z)
+title: 使用SOLIDWORKS API将线与轴对齐
+caption: 将线与轴对齐
+description: 该示例演示了如何使用SOLIDWORKS API将活动草图中的所有草图线（添加草图关系）与所选选项之一（沿X、Y或Z轴）对齐。
 image: sw-sketch-line-relation.png
-labels: [example, horizontal, relation, sketch, solidworks api, vertical]
+labels: [示例, 水平, 关系, 草图, solidworks api, 垂直]
 redirect-from:
   - /2018/03/solidworks-api-sketch-align-line-relations.html
 ---
-Example demonstrates how to align all sketch lines in the active sketch (add the sketch relation) with one of the selected options using SOLIDWORKS API:
 
-* Along X (horizontal)
-* Along Y (vertical)
-* Along Z
+该示例演示了如何使用SOLIDWORKS API将活动草图中的所有草图线（添加草图关系）与所选选项对齐，包括：
 
-This example will work with both 2D and 3D sketch.
+* 沿X轴（水平）
+* 沿Y轴（垂直）
+* 沿Z轴
 
-[ISketchRelationManager](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isketchrelationmanager.html) SOLIDWORKS API interface is used to manage the relations of the sketch entities.
+该示例适用于2D和3D草图。
 
-![Relations in sketch line](sw-sketch-line-relation.png){ width=320 height=229 }
+使用[SOLIDWORKS API接口ISketchRelationManager](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isketchrelationmanager.html)来管理草图实体的关系。
+
+![草图线的关系](sw-sketch-line-relation.png){ width=320 height=229 }
 
 ~~~ vb
 Enum AlignmentDir_e
@@ -46,7 +47,7 @@ Sub main()
         If Not swSketch Is Nothing Then
             
             Dim dir As AlignmentDir_e
-            dir = InputBox("Specify the type of alignment for sketch lines: 1 - Along X, 2 - Along Y, 3 - Along Z")
+            dir = InputBox("指定草图线的对齐类型：1 - 沿X轴，2 - 沿Y轴，3 - 沿Z轴")
             
             Set swSketchRelMgr = swSketch.RelationManager
             
@@ -97,7 +98,7 @@ Sub main()
                     If swSketch.Is3D Then
                         constType = swConstraintType_e.swConstraintType_ALONGZ
                     Else
-                        MsgBox "Invalid. Z is not a valid orientation for 2D Sketch"
+                        MsgBox "无效。Z轴不是2D草图的有效方向"
                         End
                     End If
             End Select
@@ -105,15 +106,13 @@ Sub main()
             swSketchRelMgr.AddRelation swSkLines, constType
         
         Else
-            MsgBox "Please open the sketch"
+            MsgBox "请打开草图"
         End If
     
     Else
-        MsgBox "Please open document"
+        MsgBox "请打开文档"
     End If
     
 End Sub
 
 ~~~
-
-
