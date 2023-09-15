@@ -1,19 +1,20 @@
 ---
 layout: sw-tool
-title: Open all selected components in positions in new windows
-caption: Open Components In Positions
-description: VBA macro to open each selected component in the assembly in the separate window in the same position they appear in the current assembly view
+title: 在新窗口中打开所有选定的组件位置
+caption: 在位置中打开组件
+description: VBA宏，将选定的每个组件在装配体中打开到单独的窗口中，位置与当前装配体视图中的位置相同
 image: open-in-position.svg
-labels: [position,component]
-group: Assembly
+labels: [位置,组件]
+group: 装配体
 ---
-This VBA macro opens all selected components in the active assembly in their own windows in the same position as they appear in the original SOLIDWORKS assembly.
 
-This macro emulates the *Open Part In Position* command in SOLIDWORKS toolbar, but allows to open multiple selected components at the same time.
+这个VBA宏将在活动装配体中以与它们在原始SOLIDWORKS装配体中出现的位置相同的位置打开所有选定的组件。
 
-![Open part in position command](open-part-in-position-command.png){ width=250 }
+这个宏模拟了SOLIDWORKS工具栏中的“在位置中打开零件”命令，但允许同时打开多个选定的组件。
 
-~~~ vb
+![在位置中打开零件命令](open-part-in-position-command.png){ width=250 }
+
+``` vb
 Dim swApp As SldWorks.SldWorks
     
 Sub main()
@@ -66,11 +67,11 @@ try:
         Next
         
         If Not hasCompSel Then
-            Err.Raise vbError, , "No components selected"
+            Err.Raise vbError, , "未选择任何组件"
         End If
         
     Else
-        Err.Raise vbError, , "Please open assembly"
+        Err.Raise vbError, , "请打开装配体"
     End If
     
     GoTo finally
@@ -100,7 +101,7 @@ Sub OpenComponentWithTransforms(comp As SldWorks.Component2, transform As SldWor
             Set swRefModel = swApp.ActivateDoc3(swRefModel.GetTitle(), False, swRebuildOnActivation_e.swUserDecision, errs)
             
             If swRefModel Is Nothing Then
-                Err.Raise vbError, , "Cannot activate the referenced document. Error code:" & errs
+                Err.Raise vbError, , "无法激活引用文档。错误代码：" & errs
             End If
         End If
         
@@ -110,10 +111,9 @@ Sub OpenComponentWithTransforms(comp As SldWorks.Component2, transform As SldWor
         swRefModel.ViewZoomtofit2
         
     Else
-        Err.Raise vbError, , "Cannot open the referenced document. Error code:" & swDocSpec.Error
+        Err.Raise vbError, , "无法打开引用文档。错误代码：" & swDocSpec.Error
     End If
 
 End Sub
-~~~
-
+```
 
