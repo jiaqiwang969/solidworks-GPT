@@ -1,11 +1,11 @@
 ---
-title: Working with Notes using SOLIDWORKS API
-caption: Notes
-description: Collection of articles and code examples about automation of SOLIDWORKS notes annotations
+title: 使用SOLIDWORKS API处理注释
+caption: 注释
+description: 关于自动化SOLIDWORKS注释的文章和代码示例的集合
 sidebar_position: 9
 ---
-[INote](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.INote.html) interface is a SOLIDWORKS API representation of the note annotation. This interface would work with notes in assembly, part and drawing environments.
+[INote](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.INote.html)接口是SOLIDWORKS API中注释注解的表示。此接口可与装配、零件和绘图环境中的注释一起使用。
 
-Pointer to the note can be retrieved via [IAnnotation::GetSpecificAnnotation](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iannotation~getspecificannotation.html) SOLIDWORKS API call.
+可以通过[SOLIDWORKS API调用IAnnotation::GetSpecificAnnotation](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iannotation~getspecificannotation.html)来检索注释的指针。
 
-This section contains various macro examples and code snippets for managing notes in SOLIDWORKS using API.
+本节包含了使用API在SOLIDWORKS中管理注释的各种宏示例和代码片段。
