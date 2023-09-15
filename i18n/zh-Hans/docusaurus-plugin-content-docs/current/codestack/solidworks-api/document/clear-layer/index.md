@@ -1,19 +1,19 @@
 ---
 layout: sw-tool
-caption: Clear Layer
-title: Remove all items from the layer in SOLIDWORKS model
-description: VBA macro to remove all items (annotations, sketch segments, blocks etc) from the specified layer in SOLIDWORKS document
+caption: 清除图层
+title: 从SOLIDWORKS模型中删除图层中的所有项目
+description: VBA宏，用于从SOLIDWORKS文档中删除指定图层中的所有项目（注释、草图线段、块等）
 image: remove-layer-items.svg
 group: Model
 ---
-![SOLIDWORKS layers](solidworks-layers.png)
+![SOLIDWORKS图层](solidworks-layers.png)
 
-This VBA macro collects and removes all items on the specified layer (annotations, sketch segments, blocks, sketch points and hatch). Layer itself is not removed.
+此VBA宏会收集并删除指定图层上的所有项目（注释、草图线段、块、草图点和填充区域）。图层本身不会被删除。
 
-Set the name of the layer in **LAYER_NAME** constant.
+在**LAYER_NAME**常量中设置图层的名称。
 
 ~~~ vb
-Const LAYER_NAME As String = "MY LAYER"
+Const LAYER_NAME As String = "我的图层"
 
 Dim swApp As SldWorks.SldWorks
 
@@ -42,10 +42,10 @@ Sub main()
     
     If swModel.Extension.MultiSelect(swLayerItems, False, Nothing) = UBound(swLayerItems) + 1 Then
         If False = swModel.Extension.DeleteSelection2(swDeleteSelectionOptions_e.swDelete_Absorbed) Then
-            Err.Raise vbError, "", "Failed to delete entities"
+            Err.Raise vbError, "", "删除实体失败"
         End If
     Else
-        Err.Raise vbError, "", "Failed to select items on layer"
+        Err.Raise vbError, "", "选择图层上的项目失败"
     End If
     
 End Sub
@@ -73,4 +73,3 @@ Sub AddItems(layer As SldWorks.layer, itemsType As swLayerItemsOption_e, ByRef l
     
 End Sub
 ~~~
-
