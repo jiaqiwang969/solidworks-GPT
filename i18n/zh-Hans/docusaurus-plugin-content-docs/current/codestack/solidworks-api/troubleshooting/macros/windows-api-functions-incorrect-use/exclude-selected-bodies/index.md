@@ -1,25 +1,25 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS宏以从切割清单中排除所选实体
-caption: 从切割清单中排除所选实体
-description: 该宏使用SOLIDWORKS API，将从图形区域或特征树中选择的实体从焊接或钣金切割清单中排除。
+title: Exclude Selected Entities from Cut List
+caption: Exclude Selected Entities from Cut List
+description: This macro uses the SOLIDWORKS API to exclude entities selected from the graphics area or feature tree from the weldment or sheet metal cut list.
 image: excluded-cut-list-item.svg
 labels: [api, cut-list, exclude, utility, vba]
 group: Cut-List
 ---
-![从切割清单中排除](exclude-from-cut-list.png){ width=300 }
+![Exclude from Cut List](exclude-from-cut-list.png){ width=300 }
 
-该宏允许使用SOLIDWORKS API将所选实体从焊接或钣金切割清单中排除。
+This macro allows you to exclude selected entities from the weldment or sheet metal cut list using the SOLIDWORKS API.
 
-可以在图形视图或特征树中选择实体，这样可以更轻松地进行操作，因为不需要查找相应的切割清单特征来排除实体。
+Entities can be selected either in the graphics view or the feature tree, making it easier to work with as you don't need to locate the corresponding cut list feature to exclude the entities.
 
-可以使用[选择过滤器](https://help.solidworks.com/2013/english/solidworks/sldworks/r_selection_filter_selection.htm)来简化从图形区域中选择所需实体的过程。
+You can use [selection filters](https://help.solidworks.com/2013/english/solidworks/sldworks/r_selection_filter_selection.htm) to simplify the process of selecting the desired entities from the graphics area.
 
-还可以选择要排除的实体的面、边或顶点。
+You can also select faces, edges, or vertices of the entities to be excluded.
 
-![使用选择过滤器选择要从切割清单中排除的实体](filter-bodies-selection.png){ width=500 }
+![Selecting entities to exclude from the cut list using selection filters](filter-bodies-selection.png){ width=500 }
 
-观看[演示视频](https://youtu.be/9uZCecGg25I?t=509)
+Watch the [demo video](https://youtu.be/9uZCecGg25I?t=509)
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -62,7 +62,7 @@ Sub main()
                         swCutListsColl.Add swCutListFeat
                     End If
                 Else
-                    MsgBox "无法找到 " & swBody.Name & " 的切割清单项"
+                    MsgBox "Cut list item for " & swBody.Name & " not found"
                 End If
                 
             End If
@@ -76,11 +76,11 @@ Sub main()
             Next
         
         Else
-            MsgBox "请选择要从切割清单中排除的实体"
+            MsgBox "Please select entities to exclude from the cut list"
         End If
         
     Else
-        MsgBox "请打开模型"
+        MsgBox "Please open a model"
     End If
     
 End Sub
