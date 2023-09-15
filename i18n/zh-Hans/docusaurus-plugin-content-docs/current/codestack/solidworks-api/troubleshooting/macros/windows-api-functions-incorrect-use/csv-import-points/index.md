@@ -1,42 +1,42 @@
 ---
 layout: sw-tool
-title: Import points cloud from CSV file into sketch via SOLIDWORKS API
-caption: Import Points Cloud From CSV File Into Sketch
-description: Macro imports the points cloud from the specified CSV file into the active 2D or 3D Sketch using SOLIDWORKS API
+title: 通过SOLIDWORKS API从CSV文件导入点云到草图
+caption: 通过SOLIDWORKS API从CSV文件导入点云到草图
+description: 该宏使用SOLIDWORKS API将从指定的CSV（逗号分隔值）文件中读取的点云导入到活动的2D或3D草图中。
 image: import-points.svg
-labels: [csv, points cloud, sketch, import]
-group: Sketch
+labels: [csv, 点云, 草图, 导入]
+group: 草图
 ---
-![Points cloud in the sketch](points-cloud.png)
+![草图中的点云](points-cloud.png)
 
-This macro imports the points read from the specified CSV (comma separated values) file into the active sketch using SOLIDWORKS API. Both 2D and 3D Sketches are supported.
+该宏使用SOLIDWORKS API将从指定的CSV（逗号分隔值）文件中读取的点云导入到活动的草图中。支持2D和3D草图。
 
-## Configuration
+## 配置
 
-Macro has several configuration options which can be modified by changing the values of the constants at the beginning of the macro
+宏有几个配置选项，可以通过更改宏开头的常量的值来修改。
 
 ~~~ vb
 Const USE_SYSTEM_UNITS As Boolean = True
 Const FIRST_ROW_HEADER As Boolean = True
 ~~~
 
-* **FIRST_ROW_HEADER** specifies if the if the first row of the CSV file is considered as a header and should be ignored ignored. If CSV file doesn't contain the header set the value of the constant to **False**.
-* **USE_SYSTEM_UNITS** indicates if the coordinate values in the CSV file are in system units (meters). If this option is set to **False**, macro will use the current document units instead.
-* Macro can also import points relative to coordinate system. Pre-select the target coordinate system before running the macro otherwise the points will be inserted relative to global coordinate system
+* **FIRST_ROW_HEADER** 指定CSV文件的第一行是否被视为标题并应被忽略。如果CSV文件不包含标题，请将该常量的值设置为**False**。
+* **USE_SYSTEM_UNITS** 指示CSV文件中的坐标值是否以系统单位（米）表示。如果将此选项设置为**False**，宏将使用当前文档单位。
+* 宏还可以导入相对于坐标系的点。在运行宏之前，预先选择目标坐标系，否则点将相对于全局坐标系插入。
 
-> Input CSV file can contain 3 coordinates (X, Y, Z) or 2 coordinates (X, Y)
+> 输入的CSV文件可以包含3个坐标（X、Y、Z）或2个坐标（X、Y）。
 
-## Sample Files
+## 示例文件
 
-* [Sample 2D Points Cloud CSV File](points-2d.csv)
-* [Sample 3D Points Cloud CSV File](points-3d.csv)
+* [示例2D点云CSV文件](points-2d.csv)
+* [示例3D点云CSV文件](points-3d.csv)
 
-## How To Run The Macro
+## 如何运行宏
 
-* Open the model and create 2D or 3D sketch (or edit existing sketch)
-* (Optional) Pre select coordinate system if points need to be imported relative to this system
-* Run the macro. Specify the full path to CSV file in the displayed file browse dialog
-* Click OK. Points are created in the active sketch
+* 打开模型并创建2D或3D草图（或编辑现有草图）
+* （可选）如果需要将点导入到该系统的相对位置，请预先选择坐标系
+* 运行宏。在显示的文件浏览对话框中指定CSV文件的完整路径
+* 单击确定。点将在活动草图中创建
 
 ~~~ vb
 Const USE_SYSTEM_UNITS As Boolean = True
@@ -66,7 +66,7 @@ try_:
             Dim vPoints As Variant
             Dim inputFile As String
             
-            inputFile = swApp.GetOpenFileName("Specify the full path to CSV file", "", "CSV Files (*.csv)|*.csv|Text Files (*.txt)|*.txt|All Files (*.*)|*.*|", -1, "", "")
+            inputFile = swApp.GetOpenFileName("在显示的文件浏览对话框中指定CSV文件的完整路径", "", "CSV文件 (*.csv)|*.csv|文本文件 (*.txt)|*.txt|所有文件 (*.*)|*.*|", -1, "", "")
             
             If inputFile <> "" Then
             
@@ -79,11 +79,11 @@ try_:
             End If
             
         Else
-            Err.Raise vbError, "", "Please open 2D or 3D Sketch"
+            Err.Raise vbError, "", "请打开2D或3D草图"
         End If
         
     Else
-        Err.Raise vbError, "", "Please open the model"
+        Err.Raise vbError, "", "请打开模型"
     End If
         
     GoTo finally_
@@ -133,7 +133,7 @@ Sub DrawPoints(model As SldWorks.ModelDoc2, vPoints As Variant)
         Set swSkPt = model.SketchManager.CreatePoint(x, y, z)
         
         If swSkPt Is Nothing Then
-            Err.Raise vbError, "", "Failed to create point at: " & x & "; " & y & "; " & z
+            Err.Raise vbError, "", "在位置 " & x & "; " & y & "; " & z & " 处创建点失败"
         End If
         
     Next
@@ -269,5 +269,3 @@ Function ReadCsvFile(filePath As String, firstRowHeader As Boolean) As Variant
     
 End Function
 ~~~
-
-
