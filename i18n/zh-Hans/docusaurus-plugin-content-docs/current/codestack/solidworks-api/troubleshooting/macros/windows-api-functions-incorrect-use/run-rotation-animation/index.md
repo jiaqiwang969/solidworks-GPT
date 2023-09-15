@@ -7,7 +7,7 @@ labels: [assembly, transform, rotation, animation]
 ---
 ![组件围绕Y轴的旋转动画](component-rotation.gif)
 
-此宏演示了如何使用演示变换通过[IComponent2::PresentationTransform](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.icomponent2~presentationtransform.html) SOLIDWORKS API方法运行组件围绕Y轴的平滑旋转动画。
+此示例演示了如何使用[SOLIDWORKS API](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.icomponent2~presentationtransform.html)中的演示变换方法运行组件围绕Y轴的平滑旋转动画。
 
 这允许仅为了视觉效果而移动组件，而不改变几何形状。组件将被移动，无论它在空间中是否完全定义（通过配合或固定约束）。并且配合关系仍然保留。
 
@@ -16,13 +16,13 @@ labels: [assembly, transform, rotation, animation]
 * 要停止动画，请清除选择（取消选择所有对象）
 * 要修改旋转速度，请更改*RunRotationAnimation*方法的可选参数*speed*
 
-~~~ vb
+```vb
 If Not swComp Is Nothing Then
     RunRotationAnimation swModel, swComp, 2 '速度x2
 Else
     MsgBox "请选择组件"
 End If
-~~~
+```
 
 ### 注意
 
@@ -32,7 +32,7 @@ End If
 
 ![装配演示模式中的锁定菜单](locked-menu.png){ width=300 }
 
-~~~ vb
+```vb
 Const PI As Double = 3.14159265359
 
 Dim swApp As SldWorks.SldWorks
@@ -121,4 +121,4 @@ Function GetTransform(comp As SldWorks.Component2, angle As Double) As MathTrans
     Set GetTransform = swMathUtils.CreateTransformRotateAxis(swOrigPt, swAxisVec, angle)
     
 End Function
-~~~
+```
