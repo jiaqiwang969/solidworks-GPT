@@ -1,5 +1,5 @@
 ---
-title: 使用SOLIDWORKS API移动设计表对象
+title: 移动设计表OLE对象
 caption: 移动设计表OLE对象
 description: 该示例演示了如何调整和移动模型图形区域中的设计表OLE对象
 image: design-table-ole-object.png
@@ -14,7 +14,7 @@ redirect-from:
 
 在此示例中，将移动现有的设计表元素到右侧，距离等于对象的宽度。
 
-~~~ vb
+``` vb
 Const DESIGN_TABLE_CLSID As String = "{00020830-0000-0000-C000-000000000046}"
 
 Dim swApp As SldWorks.SldWorks
@@ -72,4 +72,4 @@ Sub main()
     End If
     
 End Sub
-~~~
+```
