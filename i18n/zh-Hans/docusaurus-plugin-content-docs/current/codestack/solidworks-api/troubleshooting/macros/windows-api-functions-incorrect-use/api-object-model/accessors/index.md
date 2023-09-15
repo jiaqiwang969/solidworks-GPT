@@ -1,52 +1,49 @@
 ---
-title: 如何使用SOLIDWORKS API帮助中的访问器部分
-caption: 访问器
-description: 解释了API帮助文档中访问器部分的含义，该部分帮助找到在SOLIDWORKS API中访问特定对象的方法
+title: How to Use the Accessors Section in the SOLIDWORKS API Help
+caption: Accessors
+description: Explains the meaning of the Accessors section in the API Help documentation, which helps find methods to access specific objects in the SOLIDWORKS API.
 image: accessors.png
-labels: [访问,转换]
+labels: [access, translation]
 ---
 
-在SOLIDWORKS API帮助文档中，可以在特定接口的*访问器*部分找到某些接口的可访问性信息。
+In the SOLIDWORKS API Help documentation, you can find accessibility information for certain interfaces in the *Accessors* section of the specific interface.
 
-例如，下面的快照是[IAnnotation接口](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IAnnotation.html)的*访问器*部分。
+For example, the snapshot below shows the *Accessors* section of the [IAnnotation interface](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IAnnotation.html).
 
-![API帮助文档中的访问器部分](accessors.png){ width=250 }
+![Accessors section in the API Help documentation](accessors.png){ width=250 }
 
-这意味着可以通过[IAnnotation::GetNext3方法](https://help.solidworks.com/2018/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IAnnotation~GetNext3.html)、[IAnnotationView::Annotations属性](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IAnnotationView~Annotations.html)或此列表中的其他属性或方法来获取指向[IAnnotation接口](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IAnnotation.html)的指针。
+This means that you can obtain a pointer to the [IAnnotation interface](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IAnnotation.html) through the [IAnnotation::GetNext3 method](https://help.solidworks.com/2018/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IAnnotation~GetNext3.html), the [IAnnotationView::Annotations property](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IAnnotationView~Annotations.html), or other properties or methods listed here.
 
-某些接口可以显式或隐式地从一个接口转换为另一个接口。例如，[IModelDoc2](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDoc2.html)表示父接口（尽管没有直接继承），
-[IPartDoc](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IPartDoc.html)，
-[IAssemblyDoc](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IAssemblyDoc.html)，
-[IDrawingDoc](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IDrawingDoc.html)接口是其子接口。
+Certain interfaces can be explicitly or implicitly converted from one interface to another. For example, [IModelDoc2](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDoc2.html) represents the parent interface (although not directly inherited) and [IPartDoc](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IPartDoc.html), [IAssemblyDoc](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IAssemblyDoc.html), [IDrawingDoc](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IDrawingDoc.html) interfaces are its child interfaces.
 
-这意味着父接口和特定对象将指向同一个内存中的对象。
+This means that the parent interface and the specific object will point to the same object in memory.
 
 **VBA**
-~~~ vb
+```vb
 Dim swModel As SldWorks.ModelDoc2
 ...
 Dim swPart As SldWorks.PartDoc
 Set swPart = swModel
-~~~
+```
 
 **VB.NET**
-~~~ vb
+```vb
 Dim swModel As IModelDoc2
 ...
 Dim swPart As IPartDoc = CType(swModel, IPartDoc)
-~~~
+```
 
 **C#**
-~~~ cs
+```cs
 IModelDoc2 model;
 ...
 IPartDoc part = model as IPartDoc;
-~~~
+```
 
 **C++**
-~~~ cpp
+```cpp
 LPMODELDOC2 pModelDoc;
 ...
 LPPARTDOC pPartDoc = NULL;
 hres = pModelDoc->QueryInterface(IID_IPartDoc, (LPVOID*)&pPartDoc);
-~~~
+```
