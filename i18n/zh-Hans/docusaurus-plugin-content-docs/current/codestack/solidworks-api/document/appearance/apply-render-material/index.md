@@ -1,48 +1,48 @@
 ---
-caption: Apply Render Materia;
-title: Generate material variants configuration using SOLIDWORKS API
-description: VBA macro to generate a series of configuration with a custom appearance
-image: configurations.png
+标题：使用SOLIDWORKS API生成材料变体配置
+描述：使用VBA宏生成一系列具有自定义外观的配置
+图片：configurations.png
 ---
-![Generated configurations](configurations.png)
 
-This VBA macro generates a series of configurations corresponding to the material variant of the model.
+![生成的配置](configurations.png)
 
-Macro will assign the name of the configuration based on the file name and specified suffix.
+这个VBA宏将根据模型的材料变体生成一系列配置。
 
-Macro will create a configuration specific property which is based on the file specific property and the name of the color. 
+宏将根据文件名和指定的后缀来为配置分配名称。
 
-Macro will not generate new display states and assumes that the *Link display states to configuration colors* option is selected so display state is attached to the configuration.
+宏将创建一个特定于配置的属性，该属性基于文件特定属性和颜色的名称。
 
-![Link display states to configuration colors](link-display-states-configuration.png)
+宏不会生成新的显示状态，并假设已选择“将显示状态链接到配置颜色”选项，因此显示状态将附加到配置。
 
-## Configuration
+![将显示状态链接到配置颜色](link-display-states-configuration.png)
 
-Specify the name of the property to create
+## 配置
 
-~~~ vb
+指定要创建的属性的名称
+
+```vb
 Const PRP_NAME As String = "Description"
-~~~
+```
 
-Configure the input parameters for the configuration by modifying the **CONFIGS_DATA** array
+通过修改**CONFIGS_DATA**数组来配置配置的输入参数
 
-Set the size of the array to be equal to number of total instances - 1, e.g. 4 for 5 instances or 0 for 1 instance
+将数组的大小设置为总实例数减1，例如5个实例的情况下为4，1个实例的情况下为0
 
-~~~ vb
+```vb
 Dim CONFIGS_DATA(0) As ConfigData
 
 CONFIGS_DATA(0).colorName = "MyColor"
 CONFIGS_DATA(0).ConfigNameSuffix = "-9"
 CONFIGS_DATA(0).MaterialFilePath = "D:\my-color.p2m"
-~~~
+```
 
-* colorName - name of the color to be written as the suffix to the custom property
-* ConfigNameSuffix - suffix name of the configuration, can be empty (in this case the configuration will be named after the file)
-* MaterialFilePath - full path to the *.p2m* file to apply as appearance. If empty current appearance is preserved
+* colorName - 要写入为自定义属性后缀的颜色的名称
+* ConfigNameSuffix - 配置的后缀名称，可以为空（在这种情况下，配置将以文件名命名）
+* MaterialFilePath - 应用为外观的*.p2m*文件的完整路径。如果为空，则保留当前外观
 
-Macro will create new configuration for all instances starting from second. First instance will be skipped and active configuration will be used for the process (e.g. renamed and painted).
+宏将为从第二个开始的所有实例创建新的配置。第一个实例将被跳过，并且活动配置将用于该过程（例如重命名和着色）。
 
-~~~ vb
+```vb
 Type ConfigData
     MaterialFilePath As String
     ConfigNameSuffix As String
@@ -145,5 +145,4 @@ End Sub
 Function GetFileNameWithoutExtension(filePath As String) As String
     GetFileNameWithoutExtension = Mid(filePath, InStrRev(filePath, "\") + 1, InStrRev(filePath, ".") - InStrRev(filePath, "\") - 1)
 End Function
-~~~
-
+```
