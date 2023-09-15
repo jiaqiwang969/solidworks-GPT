@@ -1,56 +1,56 @@
 ---
-title: Setup E-Mail aliases in Gmail to send e-mail from custom domain
-caption: Setup E-Mail Aliases In Gmail
-description: Guide to setup e-mail aliases of custom domains when sending e-mails from Gmail
+title: 在Gmail中设置自定义域名的电子邮件别名
+caption: 在Gmail中设置电子邮件别名
+description: 在Gmail中发送电子邮件时设置自定义域名的电子邮件别名的指南
 image: smtp-server-details.png
-labels: [alias,e-mail,gmail,send as]
+labels: [别名, 电子邮件, Gmail, 以...的身份发送]
 ---
-Gmail enables sending of e-mails with alias, which means that gmail can be sent on behalf of the custom domain setup with registrars such as [GoDaddy](https://godaddy.com) or [Google Domains](https://domains.google).
+Gmail允许使用别名发送电子邮件，这意味着可以代表在[GoDaddy](https://godaddy.com)或[Google Domains](https://domains.google)等注册商设置的自定义域名发送Gmail。
 
-Below is a detailed step-by-step instruction of setting up the alias for sending e-mail as service without the need of using any additional 3rd party services.
+以下是设置别名以发送电子邮件的详细逐步说明，无需使用任何额外的第三方服务。
 
-## Setting up application
+## 设置应用程序
 
-The first step for enabling the alias is setting up the 2-step verification and app passwords.
+启用别名的第一步是设置两步验证和应用程序密码。
 
-Navigate to Google Accounts.
+转到Google帐户。
 
-![Opening Google account settings](google-account.png){ width=250 }
+![打开Google帐户设置](google-account.png){ width=250 }
 
-Select the security tab and enable *2-Step Verification* option. Follow the guide to setup the settings.
+选择安全选项卡并启用*2步验证*选项。按照指南设置设置。
 
-![Google account security tab](google-account-security.png)
+![Google帐户安全选项卡](google-account-security.png)
 
-Once finished select the *App passwords* option to create new application. Select *Other (custom name)* option from the *select app* drop-down box.
+完成后，选择*应用程序密码*选项以创建新的应用程序。从*选择应用程序*下拉框中选择*其他（自定义名称）*选项。
 
-![Creating new Google App](create-google-app.png){ width=350 }
+![创建新的Google应用程序](create-google-app.png){ width=350 }
 
-Click *Generate* button. As the result the password is generated for the app. Copy this password as it will be used in the next step.
+点击*生成*按钮。结果会为该应用程序生成密码。复制此密码，因为它将在下一步中使用。
 
-![Generated password for the application](generated-app-password.png){ width=350 }
+![为应用程序生成的密码](generated-app-password.png){ width=350 }
 
-## Setting up e-mail alias
+## 设置电子邮件别名
 
-Open the [e-mail page](https://mail.google.com) and select the *Settings* command from the drop-down.
+打开[电子邮件页面](https://mail.google.com)，并从下拉菜单中选择*设置*命令。
 
-![Opening Gmail settings page](google-email-settings.png){ width=350 }
+![打开Gmail设置页面](google-email-settings.png){ width=350 }
 
-Activate *Accounts and import* tab.
+激活*帐户和导入*选项卡。
 
-Locate *Send mail as* section and click *Add another e-mail address* link.
+找到*发送邮件作为*部分，然后点击*添加另一个电子邮件地址*链接。
 
-![Adding another e-mail alias](add-another-email-address.png)
+![添加另一个电子邮件别名](add-another-email-address.png)
 
-Specify the information about the other e-mail (i.e. the one you are creating alias for).
+指定有关其他电子邮件的信息（即您要为其创建别名的电子邮件）。
 
-![Setting up alias details](email-address-details.png){ width=450 }
+![设置别名详细信息](email-address-details.png){ width=450 }
 
-Configure the smtp server. Set the value of *SMTP server* to *smtp.gmail.com*. User name is your gmail user name (not the custom domain name, i.e. the currently logged in user to gmail). Password is an app password generated in the previous step (not the gmail password).
+配置SMTP服务器。将*SMTP服务器*的值设置为*smtp.gmail.com*。用户名是您的Gmail用户名（不是自定义域名，即当前登录到Gmail的用户）。密码是在上一步中生成的应用程序密码（不是Gmail密码）。
 
-![Specifying SMTP settings](smtp-server-details.png){ width=450 }
+![指定SMTP设置](smtp-server-details.png){ width=450 }
 
-As an optional step set the created alias as default option so e-mails will be sent using the alias by default.
+作为可选步骤，将创建的别名设置为默认选项，这样电子邮件将默认使用别名发送。
 
-![Setting the default option for send as](send-mail-as-default.png)
+![设置以发送为默认选项](send-mail-as-default.png)
 
-Now you can send e-mails with an alias and it will appear as e-mail with custom domain to the receiver instead of the @gmail.com e-mail.
+现在，您可以使用别名发送电子邮件，接收者将看到自定义域名的电子邮件，而不是@gmail.com的电子邮件。
