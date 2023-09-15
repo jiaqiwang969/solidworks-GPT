@@ -1,30 +1,28 @@
 ---
-caption: Find And Read Table By Cell
-title: Find and read the table in the SOLIDWORKS drawing by the value of the cell
-description: VBA macro to find the table in the SOLIDWORKS drawing by the value in the specified cell and reading its data into the variable
+caption: 通过单元格的值查找和读取SOLIDWORKS图纸中的表格
+title: 通过单元格的值在SOLIDWORKS图纸中查找和读取表格
+description: VBA宏，通过指定单元格中的值在SOLIDWORKS图纸中查找表格，并将其数据读入变量中
 image: general-table.png
 ---
-This VBA macro finds the table by the specified value pattern in the specified cell.
+这个VBA宏通过指定的值模式在指定的单元格中查找表格。
 
-![General table in the drawing](general-table.png){ width=500 }
+![图纸中的通用表格](general-table.png){ width=500 }
 
-The data of the table is read into the string variable **tableData** and output into the [VBA Immediate Window](/docs/codestack/visual-basic/vba/vba-editor/windows#immediate-window)
+表格的数据被读入字符串变量**tableData**中，并输出到[VBA立即窗口](/docs/codestack/visual-basic/vba/vba-editor/windows#immediate-window)中。
 
-Cells are separated by the value of the **DELIMETER** constant.
+单元格之间由**DELIMETER**常量的值分隔。
 
-It is possible to use the matching pattern to match the value of the cell (e.g. **\*ABC\*** will match text containing **ABC**)
+可以使用匹配模式来匹配单元格的值（例如，**\*ABC\***将匹配包含**ABC**的文本）
 
-Text comparison is case insensitive
+文本比较是不区分大小写的。
 
-Indices of the row and column to search are 0-based (e.g. first cell in the first column will have an index **0, 0**)
-
-Provide the value of the search pattern and the target cell position in the call to **FindTableByContent** function
+要调用**FindTableByContent**函数，需要提供搜索模式的值和目标单元格的位置。
 
 ~~~ vb jagged
 Set swTableAnnotation = FindTableByContent(swDraw, "*ABC*", 0, 0)
 ~~~
 
-![Table data output in the Immediate Window](immediate-window-output.png)
+![立即窗口中的表格数据输出](immediate-window-output.png)
 
 ~~~ vb
 Option Compare Text
@@ -69,7 +67,7 @@ Sub main()
         Debug.Print tableData
         
     Else
-        Err.Raise "Open drawing"
+        Err.Raise "打开图纸"
     End If
     
 End Sub
@@ -116,8 +114,7 @@ Function FindTableByContent(draw As SldWorks.DrawingDoc, searchCellVal As String
         
     Next
     
-    Err.Raise vbError, "", "Failed to find the table annotation"
+    Err.Raise vbError, "", "未能找到表格注释"
     
 End Function
 ~~~
-
