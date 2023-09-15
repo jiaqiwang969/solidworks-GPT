@@ -1,67 +1,67 @@
 ---
-title: Setup GoDaddy e-mail forwarding from custom domain for free
-caption: Setup GoDaddy E-Mail Forwarding
-description: Setup of up to 100 of free e-mail forwarding from custom domain using GoDaddy
-labels: [godaddy,email forwarding]
+title: 免费设置GoDaddy自定义域名的电子邮件转发
+caption: 设置GoDaddy电子邮件转发
+description: 使用GoDaddy设置最多100个免费自定义域名的电子邮件转发
+labels: [godaddy, 电子邮件转发]
 ---
-If you have a registered domain with GoDaddy you might want to setup e-mails to be send and received using the custom domain (e.g. info@domain.com).
+如果您在GoDaddy注册了域名，您可能希望设置使用自定义域名发送和接收电子邮件（例如info@domain.com）。
 
-GoDaddy provides the e-mail hosting service. The plan starts at 5$ per user per months.
+GoDaddy提供电子邮件托管服务。该计划每个用户每月从5美元起。
 
-GoDaddy also provides a free e-mail forwarding service for up to 100 e-mails. All e-mails sent to the specified e-mail will be redirected to the e-mail of your choice, including free emails (e.g. Gmail, Outlook, Yahoo etc.).
+GoDaddy还提供最多100个电子邮件的免费转发服务。所有发送到指定电子邮件的电子邮件都将重定向到您选择的电子邮件，包括免费电子邮件（例如Gmail、Outlook、Yahoo等）。
 
-This is a detailed step-by-step guide of setting up e-mail forwarding with GoDaddy.
+这是一个详细的逐步设置GoDaddy电子邮件转发的指南。
 
-## Add Forwarding E-Mail
+## 添加转发电子邮件
 
-Select the *Manage All* link under the *Workspace Email* section in the GoDaddy console.
+在GoDaddy控制台的*Workspace Email*部分下选择*Manage All*链接。
 
-> You might need to activate this server by clicking *Redeem* button under the *Additional Products* section on the same page.
+> 您可能需要通过单击同一页上*Additional Products*部分下的*Redeem*按钮来激活此服务器。
 
-![Free 100 Pack Email Forwarding](godaddy-100pack-email-forwarding.png){ width=550 }
+![免费100个电子邮件转发](godaddy-100pack-email-forwarding.png){ width=550 }
 
-Click *Create Forward* link in the opened page.
+在打开的页面中点击*Create Forward*链接。
 
-![Create Forward E-Mail](create-email-forwarding.png){ width=550 }
+![创建转发电子邮件](create-email-forwarding.png){ width=550 }
 
-Fill the *Forward Email* form. Specify the e-mail you want to forward from (i.e. e-mail with your custom domain). And e-mail you want to forward to (e.g. Gmail).
+填写*Forward Email*表单。指定您要转发的电子邮件（即带有自定义域名的电子邮件）。以及您要转发到的电子邮件（例如Gmail）。
 
-Specify other options if needed, such as capturing all e-mails sent to your domain.
+如果需要，可以指定其他选项，例如捕获发送到您的域的所有电子邮件。
 
-![Forward E-Mail details](create-forwarding-address.png){ width=450 }
+![转发电子邮件详细信息](create-forwarding-address.png){ width=450 }
 
-## Configure DNS Records
+## 配置DNS记录
 
-Now it is required to configure the DNS record to enable forwarding.
+现在需要配置DNS记录以启用转发。
 
-Click on *DNS* button under the domain.
+点击域名下的*DNS*按钮。
 
-![Manage domain DNS](manage-domain-dns.png)
+![管理域名DNS](manage-domain-dns.png)
 
-Add DNS records from the following table:
+根据以下表格添加DNS记录：
 
-| Type  | Host | Points to                   | Priority | TTL    |
+| 类型  | 主机 | 指向                       | 优先级 | TTL    |
 |-------|------|-----------------------------|----------|--------|
-| MX    | @    | smtp.secureserver.net       | 0        | 1 Hour |
-| MX    | @    | mailstore1.secureserver.net | 10       | 1 Hour |
-| CNAME | pop  | pop.secureserver.net        | N/A      | 1 Hour |
-| CNAME | imap | imap.secureserver.net       | N/A      | 1 Hour |
-| CNAME | smtp | smtpout.secureserver.net    | N/A      | 1 Hour |
+| MX    | @    | smtp.secureserver.net       | 0        | 1小时 |
+| MX    | @    | mailstore1.secureserver.net | 10       | 1小时 |
+| CNAME | pop  | pop.secureserver.net        | N/A      | 1小时 |
+| CNAME | imap | imap.secureserver.net       | N/A      | 1小时 |
+| CNAME | smtp | smtpout.secureserver.net    | N/A      | 1小时 |
 
-![Add new DNS record](add-dns-record.png)
+![添加新的DNS记录](add-dns-record.png)
 
-Validate that records are added correctly by activating the *Tools->Server Settings* menu command. The following dialog should be displayed.
+通过激活*Tools->Server Settings*菜单命令验证记录是否正确添加。应显示以下对话框。
 
-![Validated MX records](dns-records.png){ width=350 }
+![验证的MX记录](dns-records.png){ width=350 }
 
-## Receiving E-Mails
+## 接收电子邮件
 
-Now you can send e-mails from any e-mail address to your newly created e-mail (e.g. info@domain.com). The e-mail will be redirected to the specified e-mail box, while the *to* box will display the e-mail with custom domain.
+现在，您可以从任何电子邮件地址发送电子邮件到您新创建的电子邮件（例如info@domain.com）。电子邮件将被重定向到指定的电子邮件邮箱，而*to*框将显示带有自定义域名的电子邮件。
 
-![E-mail received via alias](received-email.png)
+![通过别名接收的电子邮件](received-email.png)
 
-There is however a limitation with GoDaddy e-mail forwarding as encryption is not supported and the *secureserver.net did not encrypt this message* warning is displayed for all forwarded e-mails:
+然而，GoDaddy电子邮件转发存在一个限制，即不支持加密，并且对所有转发的电子邮件显示“secureserver.net did not encrypt this message”警告：
 
-![Security warning](unsecure-email.png)
+![安全警告](unsecure-email.png)
 
-Follow the [Setup Google Domains e-mail forwarding from custom domain for free](/docs/codestack/hosting/email/googledomains-email-forwarding/) to setup similar free service with Google Domains which supports e-mails encryption and overcomes this limitation. You will need to [Transfer domain host from GoDaddy to Google Domains](/docs/codestack/hosting/domain/transfer-godaddy-domain-to-googledomains/) to use this service.
+请按照[免费设置Google Domains自定义域名的电子邮件转发](/docs/codestack/hosting/email/googledomains-email-forwarding/)的步骤设置类似的免费服务，Google Domains支持电子邮件加密并克服了此限制。您需要[将域名主机从GoDaddy转移到Google Domains](/docs/codestack/hosting/domain/transfer-godaddy-domain-to-googledomains/)以使用此服务。
