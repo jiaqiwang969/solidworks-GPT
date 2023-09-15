@@ -1,22 +1,23 @@
 ---
-caption: Get Corresponding Entity Of Derived Part
-title: Get corresponding entities (faces, edges and vertices) in the derived part using SOLIDWORKS API
-description: VBA macro demonstrates how to find the corresponding entities from the input part in the derived part using SOLIDWORKS API
+caption: 获取派生零件中对应的实体
+title: 使用SOLIDWORKS API获取派生零件中的对应实体（面、边和顶点）
+description: VBA宏演示了如何使用SOLIDWORKS API在派生零件中查找输入零件的对应实体的方法
 ---
-[IPartDoc::InsertPart3](https://help.solidworks.com/2019/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IPartDoc~InsertPart3.html) API allows to insert a derived part into another part. However the API to find the corresponding entity of the input part, similarly to [components](/docs/codestack/solidworks-api/document/assembly/context#converting-the-pointers) is not available.
 
-This VBA macro demonstrates a performance efficient workaround for this limitation.
+[IPartDoc::InsertPart3](https://help.solidworks.com/2019/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IPartDoc~InsertPart3.html) API允许将派生零件插入到另一个零件中。然而，与[组件](/docs/codestack/solidworks-api/document/assembly/context#converting-the-pointers)类似，找到输入零件的对应实体的API是不可用的。
 
-## Running the macro
+这个VBA宏演示了一个性能高效的解决方法来解决这个限制。
 
-* Open the source part (this is the part to be inserted into another part). This part must be saved on the disc
-* Select one or many entities (faces, edges, vertices). These can be selected in different bodies in case of the multi-body part
-* Run the macro. Macro will index inputs and stop the execution
-* Open or create new part where the source part needs to be inserted
-* Continue macro execution
-* As the result derived part is inserted and all the corresponding entities are selected
+## 运行宏
 
-~~~ vb
+* 打开源零件（这是要插入到另一个零件中的零件）。这个零件必须已经保存在磁盘上。
+* 选择一个或多个实体（面、边、顶点）。如果是多实体零件，可以在不同的实体中进行选择。
+* 运行宏。宏将索引输入并停止执行。
+* 打开或创建需要插入源零件的新零件。
+* 继续执行宏。
+* 结果是插入了派生零件，并且所有对应的实体都被选择了。
+
+``` vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -28,7 +29,7 @@ Sub main()
     Set swSrcModel = swApp.ActiveDoc
     
     If swSrcModel.GetType() <> swDocumentTypes_e.swDocPART Then
-        Err.Raise vbError, "", "Only parts are supported"
+        Err.Raise vbError, "", "仅支持零件"
     End If
     
     Dim trackDefId As Integer
@@ -52,7 +53,7 @@ Sub main()
     If Not IsEmpty(vTrackedEnts) Then
         swTargModel.Extension.MultiSelect2 vTrackedEnts, False, Nothing
     Else
-        Err.Raise vbError, "", "No tracked entities found"
+        Err.Raise vbError, "", "未找到跟踪的实体"
     End If
     
 End Sub
@@ -72,22 +73,22 @@ Function TrackSelectedEntities(model As SldWorks.ModelDoc2) As Integer
                 Dim swFace As SldWorks.Face2
                 Set swFace = model.SelectionManager.GetSelectedObject6(i, -1)
                 If swFace.SetTrackingID(trackDefId, i) <> swTrackingIDError_e.swTrackingIDError_NoError Then
-                    Err.Raise vbError, "", "Failed to track face"
+                    Err.Raise vbError, "", "跟踪面失败"
                 End If
             Case swSelectType_e.swSelEDGES
                 Dim swEdge As SldWorks.Edge
                 Set swEdge = model.SelectionManager.GetSelectedObject6(i, -1)
                 If swEdge.SetTrackingID(trackDefId, i) <> swTrackingIDError_e.swTrackingIDError_NoError Then
-                    Err.Raise vbError, "", "Failed to track edge"
+                    Err.Raise vbError, "", "跟踪边失败"
                 End If
             Case swSelectType_e.swSelVERTICES
                 Dim swVertex As SldWorks.Vertex
                 Set swVertex = model.SelectionManager.GetSelectedObject6(i, -1)
                 If swVertex.SetTrackingID(trackDefId, i) <> swTrackingIDError_e.swTrackingIDError_NoError Then
-                    Err.Raise vbError, "", "Failed to track vertex"
+                    Err.Raise vbError, "", "跟踪顶点失败"
                 End If
             Case Else
-                Err.Raise vbError, "", "Only faces, edges and vertices are supported"
+                Err.Raise vbError, "", "仅支持面、边和顶点"
         End Select
         
     Next
@@ -206,6 +207,5 @@ Function Contains(vArr As Variant, item As Object) As Boolean
     Contains = False
     
 End Function
-~~~
-
+```
 
