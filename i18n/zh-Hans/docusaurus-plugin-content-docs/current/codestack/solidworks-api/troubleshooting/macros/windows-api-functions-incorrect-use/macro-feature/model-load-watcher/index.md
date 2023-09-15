@@ -1,47 +1,47 @@
 ---
 layout: sw-tool
-title: Run VBA macro on model load using macro feature and SOLIDWORKS API
-caption: Automatically Run Macro On Model Load
-description: Macro feature to run VBA code on model loading using SOLIDWORKS API
+title: 使用宏特征和SOLIDWORKS API在模型加载时运行VBA宏
+caption: 自动在模型加载时运行宏
+description: 使用SOLIDWORKS API将宏特征插入模型并允许在加载具有此特征的模型时运行自定义代码
 image: load-watcher-macro-feature.png
-labels: [macro feature,load event,auto run]
-group: Model
+labels: [宏特征,加载事件,自动运行]
+group: 模型
 ---
 {% youtube { id: BTM5NZNdON8 } %}
 
-This VBA macro inserts the macro feature into the model using SOLIDWORKS API and allows to run custom code every time the model with this feature is loaded.
+这个VBA宏使用SOLIDWORKS API将宏特征插入模型，并允许在每次加载具有此特征的模型时运行自定义代码。
 
-This can be useful when certain code needs to be run on every model load (e.g. update custom properties, log information, etc.)
+当需要在每次模型加载时运行某些代码时（例如更新自定义属性、记录信息等），这将非常有用。
 
-Feature is visible in the tree and can be embedded into the document template if required.
+特征在树中可见，并且如果需要，可以嵌入到文档模板中。
 
-![Macro feature inserted into the feature manager tree](load-watcher-macro-feature.png){ width=250 }
+![插入到特征管理器树中的宏特征](load-watcher-macro-feature.png){ width=250 }
 
-## Configuration
+## 配置
 
-* Create new macro
-* Copy the code into corresponding modules of the macro
-* To configure the macro modify the options defined in the constants:
+* 创建新的宏
+* 将代码复制到宏的相应模块中
+* 要配置宏，请修改常量中定义的选项：
 
-    * EMBED_MACRO_FEATURE - true to embed this macro directly into the document. With this option model can be shared and will work on each computer (macro doesn't meed to be shared). Refer the [Macro Based Macro Feature](/docs/codestack/solidworks-api/document/macro-feature/#macro-based-macro-feature) section for benefits and limitation of this approach.
-    * BASE_NAME - default naming convention for the feature
+    * EMBED_MACRO_FEATURE - 将此宏直接嵌入到文档中，设置为true。使用此选项，模型可以共享，并且在每台计算机上都可以使用（不需要共享宏）。有关此方法的优点和限制，请参阅[基于宏的宏特征](/docs/codestack/solidworks-api/document/macro-feature/#macro-based-macro-feature)部分。
+    * BASE_NAME - 特征的默认命名约定
 
 ~~~ vb
 Const EMBED_MACRO_FEATURE As Boolean = True
 Const BASE_NAME As String = "MyFeatureName"
 ~~~
 
-* Place your code into the *main* sub of the *HandlerModule* module. The pointer to [IModelDoc2](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDoc2.html) document is passed as the parameter. Use this pointer instead of [ISldWorks::ActiveDoc](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~activedoc.html) SOLIDWORKS API property as this method is called for invisible documents (i.e. loaded as assembly or drawing components).
+* 将代码放入*HandlerModule*模块的*main*子程序中。将[IModelDoc2](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDoc2.html)文档的指针作为参数传递。使用此指针而不是[SolidWorks API](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~activedoc.html)属性的[ISldWorks::ActiveDoc](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~activedoc.html)方法，因为此方法对于不可见文档（即作为装配体或绘图组件加载的文档）也会被调用。
 
 ~~~ vb
 Sub main(model As SldWorks.ModelDoc2)
-    'TODO: add your routine here
+    'TODO: 在这里添加你的代码
 End Sub
 ~~~
 
-## Macro Module
+## 宏模块
 
-Main macro routine to insert feature and define event handles
+插入特征并定义事件处理程序的主要宏例程
 
 ~~~ vb
 Const EMBED_MACRO_FEATURE As Boolean = False
@@ -86,11 +86,11 @@ Sub main()
             Empty, opts)
         
         If swFeat Is Nothing Then
-            MsgBox "Failed to create model load watcher"
+            MsgBox "创建模型加载监视器失败"
         End If
         
     Else
-        MsgBox "Please open model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -222,15 +222,13 @@ End Sub
 
 
 
-## HandlerModule Module
+## HandlerModule 模块
 
-Module to insert required code to be run every time model loads. Must be named *HandlerModule*
+模块，用于在每次加载模型时插入要运行的必需代码。必须命名为*HandlerModule*
 
 ~~~ vb
 Sub main(model As SldWorks.ModelDoc2)
-    'TODO: add your routine here
+    'TODO: 在这里添加你的代码
     MsgBox model.GetTitle()
 End Sub
 ~~~
-
-
