@@ -1,21 +1,22 @@
 ---
-title: Get Model Doc from lightweight component using SOLIDWORKS API
-caption: Get Model Doc From Lightweight Component
-description: Example demonstrates how to get the pointer to IModelDoc2 from the component (even if it is in the suppressed or lightweight state)
+title: 使用SOLIDWORKS API从轻量级组件获取模型文档
+caption: 从轻量级组件获取模型文档
+description: 该示例演示了如何使用SOLIDWORKS API从组件中获取到IModelDoc2接口的指针（即使组件处于抑制或轻量级状态）
 image: lightweight-component.png
-labels: [assembly, component, example, lightweight, modeldoc, memory, solidworks api]
+labels: [装配体, 组件, 示例, 轻量级, 模型文档, 内存, solidworks api]
 ---
-![Lightweight component in the assembly tree](lightweight-component.png)
 
-[IComponent2::GetModelDoc2](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IComponent2~GetModelDoc2.html) SOLIDWORKS API method returns the pointer to [IModelDoc2](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDoc2.html) interface.
+![装配体树中的轻量级组件](lightweight-component.png)
 
-It is required to use this interface to retrieve the model specific information (such as custom properties, feature tree, annotations etc.).
+[IComponent2::GetModelDoc2](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IComponent2~GetModelDoc2.html) SOLIDWORKS API方法返回了指向[IModelDoc2](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDoc2.html)接口的指针。
 
-The model document is not available for the components loaded lightweight or suppressed (i.e. the pointer is *NULL*).
+需要使用该接口来检索模型特定的信息（如自定义属性、特征树、注释等）。
 
-The following example demonstrates how to get the pointer to IModelDoc2 from the component (even if it is in the suppressed or lightweight state) using SOLIDWORKS API. The result is achieved by loading the component directly into memory without the need of resolving the component or opening the file in its own window.
+对于以轻量级或抑制状态加载的组件，模型文档是不可用的（即指针为*NULL*）。
 
-~~~ vb
+以下示例演示了如何使用SOLIDWORKS API从组件中获取到IModelDoc2接口的指针（即使组件处于抑制或轻量级状态）。通过将组件直接加载到内存中，无需解析组件或在其自己的窗口中打开文件即可实现该结果。
+
+```vb
 Dim swApp As SldWorks.SldWorks
 Dim swAssy As SldWorks.AssemblyDoc
 
@@ -40,11 +41,11 @@ Sub main()
             Debug.Print swRefModel.GetTitle
             
         Else
-            MsgBox "Please select the component"
+            MsgBox "请选中组件"
         End If
         
     Else
-        MsgBox "Please open assembly"
+        MsgBox "请打开装配体"
     End If
     
 End Sub
@@ -54,7 +55,7 @@ Function GetModelDocFromComponent(comp As SldWorks.Component2) As SldWorks.Model
     Dim swRefModel As SldWorks.ModelDoc2
     Set swRefModel = comp.GetModelDoc2
     
-    If swRefModel Is Nothing Then 'component is lightweight or suppressed
+    If swRefModel Is Nothing Then '组件为轻量级或抑制状态
         
         Dim path As String
         path = comp.GetPathName
@@ -71,7 +72,7 @@ Function GetModelDocFromComponent(comp As SldWorks.Component2) As SldWorks.Model
         Dim wrns As Long
         Set swRefModel = swApp.OpenDoc6(path, docType, swOpenDocOptions_e.swOpenDocOptions_Silent, "", errs, wrns)
         
-End_: 'restore the flag otherwise all files will be opened invisible
+End_: '恢复标志，否则所有文件都将以不可见方式打开
     swApp.DocumentVisible True, docType
         
     End If
@@ -102,6 +103,5 @@ Function GetDocumentTypeFromPath(path As String) As swDocumentTypes_e
     End Select
     
 End Function
-~~~
-
+```
 
