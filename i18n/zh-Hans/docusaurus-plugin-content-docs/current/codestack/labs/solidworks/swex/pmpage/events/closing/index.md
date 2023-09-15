@@ -1,14 +1,14 @@
 ---
-title: SOLIDWORKS Property Manager Page closing events handling
-caption: Closing
-description: Overview of events associated with closing of SOLIDWORKS property manager page handled in SwEx.PMPage framework
+title: SOLIDWORKS Property Manager Page关闭事件处理
+caption: 关闭
+description: 介绍在SwEx.PMPage框架中处理SOLIDWORKS属性管理器页面关闭的事件概述
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
-## Pre Closing event
-[PropertyManagerPageHandlerEx::Closing](https://docs.codestack.net/swex/pmpage/html/E_CodeStack_SwEx_PMPage_PropertyManagerPageHandlerEx_Closing.htm) event is raised when property manager page is about to be closed.
+## 关闭前事件
+[PropertyManagerPageHandlerEx::Closing](https://docs.codestack.net/swex/pmpage/html/E_CodeStack_SwEx_PMPage_PropertyManagerPageHandlerEx_Closing.htm)事件在属性管理器页面即将关闭时触发。
 
-Framework passes the reason of close and [closing argument](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Base_ClosingArg.htm) which allows to cancel property manager page closing and display error to the user as a tooltip.
+框架传递了关闭的原因和[closing argument](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Base_ClosingArg.htm)，它允许取消属性管理器页面的关闭并向用户显示错误提示。
 
 ~~~vb
 Public Class DataModel
@@ -31,8 +31,8 @@ Private Sub OnClosing(ByVal reason As swPropertyManagerPageCloseReasons_e, ByVal
 
         If String.IsNullOrEmpty(m_Data.Text) Then
             arg.Cancel = True
-            arg.ErrorTitle = "Insert Note Error"
-            arg.ErrorMessage = "Please specify the note text"
+            arg.ErrorTitle = "插入注释错误"
+            arg.ErrorMessage = "请指定注释文本"
         End If
     End If
 End Sub
@@ -65,24 +65,22 @@ private void OnClosing(swPropertyManagerPageCloseReasons_e reason, ClosingArg ar
         if (string.IsNullOrEmpty(m_Data.Text))
         {
             arg.Cancel = true;
-            arg.ErrorTitle = "Insert Note Error";
-            arg.ErrorMessage = "Please specify the note text";
+            arg.ErrorTitle = "插入注释错误";
+            arg.ErrorMessage = "请指定注释文本";
         }
     }
 }
 ~~~
 
+此事件在属性管理器页面对话框仍可见时触发。在此处理程序中不应执行重建操作，包括直接重建以及任何新的特征或几何体的创建或修改（除了临时体）。请注意，某些操作（例如保存）可能也不受支持。通常情况下，如果在属性页面打开时无法从用户界面执行某个操作，则也不应通过API从关闭事件调用该操作。否则，这可能会导致不稳定性，包括崩溃。请使用[后关闭事件](#post-closing-event)来执行任何重建操作。
 
+在某些情况下，需要在属性管理器页面保持打开的情况下执行此操作。通常情况下，当页面支持固定（[PageOptionsAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_PageOptionsAttribute.htm)中的[swPropertyManagerOptions_PushpinButton](https://help.solidworks.com/2016/english/api/swconst/SOLIDWORKS.Interop.swconst~SOLIDWORKS.Interop.swconst.swPropertyManagerPageOptions_e.html)枚举的标志）时会发生这种情况。在这种情况下，需要在[PageOptionsAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_PageOptionsAttribute.htm)中设置[swPropertyManagerOptions_LockedPage](https://help.solidworks.com/2016/english/api/swconst/SOLIDWORKS.Interop.swconst~SOLIDWORKS.Interop.swconst.swPropertyManagerPageOptions_e.html)枚举的标志。这将启用从[PropertyManagerPageHandlerEx::Closing](https://docs.codestack.net/swex/pmpage/html/E_CodeStack_SwEx_PMPage_PropertyManagerPageHandlerEx_Closing.htm)事件中进行重建操作和特征创建的支持。
 
-This event is raised when Property Manager Page dialog is still visible. There should be no rebuild operations performed within this handler, it includes the direct rebuilds but also any new features or geometry creation or modification (with an exception of temp bodies). Note that some operations such as saving may also be unsupported. In general if certain operation cannot be performed from the user interface while property page is opened it shouldn't be called from the closing event via API as well. Otherwise this could cause instability including crashes. Use [Post closing event](#post-closing-event) event to perform any rebuild operations.
+## 后关闭事件
 
-In some cases it is required to perform this operation while property manager page stays open. Usually this happens when page supports pining (swPropertyManagerOptions_PushpinButton flag of [swPropertyManagerPageOptions_e](https://help.solidworks.com/2016/english/api/swconst/SOLIDWORKS.Interop.swconst~SOLIDWORKS.Interop.swconst.swPropertyManagerPageOptions_e.html) enumeration in [PageOptionsAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_PageOptionsAttribute.htm)). In this case it is required to set the swPropertyManagerOptions_LockedPage flag of [swPropertyManagerPageOptions_e](https://help.solidworks.com/2016/english/api/swconst/SOLIDWORKS.Interop.swconst~SOLIDWORKS.Interop.swconst.swPropertyManagerPageOptions_e.html) enumeration in [PageOptionsAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_PageOptionsAttribute.htm). This would enable the support of rebuild operations and feature creation from within the [PropertyManagerPageHandlerEx::Closing](https://docs.codestack.net/swex/pmpage/html/E_CodeStack_SwEx_PMPage_PropertyManagerPageHandlerEx_Closing.htm) event.
+[PropertyManagerPageHandlerEx::Closed](https://docs.codestack.net/swex/pmpage/html/E_CodeStack_SwEx_PMPage_PropertyManagerPageHandlerEx_Closed.htm)事件在属性管理器页面关闭时触发。
 
-## Post closing event
-
-[PropertyManagerPageHandlerEx::Closed](https://docs.codestack.net/swex/pmpage/html/E_CodeStack_SwEx_PMPage_PropertyManagerPageHandlerEx_Closed.htm) event is raised when property manager page is closed.
-
-Use this handler to perform the required operations.
+使用此处理程序执行所需的操作。
 
 ~~~vb
 Public Class DataModel
