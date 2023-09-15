@@ -1,21 +1,22 @@
 ---
-caption: Split Folders To Configurations
-title: Split feature folders of the SOLIDWORKS file to individual configurations
-description: VBA macro creates individual configurations for each feature folder in the active SOLIDWORKS part or assembly
+caption: 将SOLIDWORKS文件的特征文件夹拆分为单独的配置
+title: 将SOLIDWORKS文件的特征文件夹拆分为单独的配置
+description: VBA宏为活动的SOLIDWORKS零件或装配创建每个顶级特征文件夹的配置
 ---
-This VBA macro creates configuration for each top-level feature folder in the active SOLIDWORKS part or assembly.
 
-If no objects selected in the model then all folder features will be processed, otherwise only selected feature folders will be processed.
+此VBA宏为活动的SOLIDWORKS零件或装配中的每个顶级特征文件夹创建配置。
 
-Created configuration will be named after the feature folder.
+如果模型中没有选择任何对象，则将处理所有文件夹特征，否则只处理所选的文件夹特征。
 
-It is possible to specify if derived or top level configurations should be created for each feature folder.
+创建的配置将以特征文件夹的名称命名。
+
+可以指定是否为每个特征文件夹创建派生或顶级配置。
 
 ~~~ vb
-Const CREATE_DERIVED_CONFS As Boolean = True 'True to create derived configuration, False to create top level configuration
+Const CREATE_DERIVED_CONFS As Boolean = True 'True表示创建派生配置，False表示创建顶级配置
 ~~~
 
-All other folders will be suppressed for each configuration. Features outside of the folders will not be suppressed.
+对于每个配置，所有其他文件夹将被抑制。文件夹外的特征将不会被抑制。
 
 ~~~ vb
 Const CREATE_DERIVED_CONFS As Boolean = True
@@ -64,7 +65,7 @@ Sub main()
         End If
                 
     Else
-        Err.Raise vbError, "", "No active document"
+        Err.Raise vbError, "", "没有活动文档"
     End If
     
 End Sub
@@ -144,7 +145,7 @@ Sub CreateConfigurationForFolder(model As SldWorks.ModelDoc2, folderFeat As SldW
     Set swFolderConf = model.ConfigurationManager.AddConfiguration2(folderFeat.Name, "", "", swConfigurationOptions2_e.swConfigOption_DontActivate Or swConfigurationOptions2_e.swConfigOption_SuppressByDefault, parentConfName, "", False)
     
     If swFolderConf Is Nothing Then
-        Err.Raise vbError, "", "Failed to create configuration for " & folderFeat.Name
+        Err.Raise vbError, "", "无法为" & folderFeat.Name & "创建配置"
     End If
     
     Dim i As Integer
@@ -160,7 +161,7 @@ Sub CreateConfigurationForFolder(model As SldWorks.ModelDoc2, folderFeat As SldW
             targetConf(0) = swFolderConf.Name
             
             If False = swOtherFeatFolder.SetSuppression2(swFeatureSuppressionAction_e.swSuppressFeature, swInConfigurationOpts_e.swSpecifyConfiguration, targetConf) Then
-                Err.Raise vbError, "", "Failed to configure the suppression of the folder feature for " & swOtherFeatFolder.Name & " in " & swFolderConf.Name
+                Err.Raise vbError, "", "无法在" & swFolderConf.Name & "中配置" & swOtherFeatFolder.Name & "的抑制"
             End If
             
         End If
@@ -169,4 +170,3 @@ Sub CreateConfigurationForFolder(model As SldWorks.ModelDoc2, folderFeat As SldW
     
 End Sub
 ~~~
-
