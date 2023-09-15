@@ -1,19 +1,20 @@
 ---
-title: Create multiple rows callout using SOLIDWORKS API
-caption: Create Multiple Rows Callout
-description: Example demonstrates how to create a callout with multiple rows from the selection in SOLIDWORKS API
+title: 使用SOLIDWORKS API创建多行标注
+caption: 创建多行标注
+description: 该示例演示了如何使用SOLIDWORKS API在选择对象时创建多行标注。
 image: sw-callout-spec.png
-labels: [adornment, callout, example, note, solidworks api]
+labels: [装饰, 标注, 示例, 注意, solidworks api]
 redirect-from:
   - /2018/04/solidworks-api-adornment-create-multirow-callout.html
 ---
-This example demonstrates how to create a callout with multiple rows while selecting the object using [ISelectionMgr::CreateCallout2](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iselectionmgr~createcallout2.html) SOLIDWORKS API method.
 
-![Callout element specification](sw-callout-spec.png){ width=640 height=354 }
+该示例演示了如何使用[SOLIDWORKS API的ISelectionMgr::CreateCallout2](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iselectionmgr~createcallout2.html)方法创建一个具有多行的标注。
 
-First row of the displayed callout is not editable (read only). Value of second row can be changed. The changed value will be displayed in the message box.
+![标注元素规范](sw-callout-spec.png){ width=640 height=354 }
 
-*Macro*
+显示的标注的第一行是只读的，第二行的值可以更改。更改后的值将显示在消息框中。
+
+*宏*
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -48,13 +49,13 @@ Sub main()
         Set swCallout = swSelMgr.CreateCallout2(2, swCalloutHandler)
         swCallout.TargetStyle = swCalloutTargetStyle_e.swCalloutTargetStyle_Triangle
              
-        swCallout.Label2(0) = "Row 1"
-        swCallout.Value(0) = "Value 1"
+        swCallout.Label2(0) = "第一行"
+        swCallout.Value(0) = "值1"
         swCallout.SetTargetPoint 0, 0.01, 0.01, 0.01
         swCallout.ValueInactive(0) = True
         
-        swCallout.Label2(1) = "Row 1"
-        swCallout.Value(1) = "Value 1"
+        swCallout.Label2(1) = "第二行"
+        swCallout.Value(1) = "值2"
         swCallout.SetTargetPoint 1, 0.02, 0.02, 0.02
         swCallout.ValueInactive(1) = False
         
@@ -69,7 +70,7 @@ Sub main()
         Set swCallout = Nothing
         
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
         
 End Sub
@@ -77,18 +78,16 @@ End Sub
 
 
 
-*CalloutHandler class*
+*CalloutHandler类*
 
 ~~~ vb
 Implements swCalloutHandler
 
 Private Function SwCalloutHandler_OnStringValueChanged(ByVal pManipulator As Object, ByVal RowID As Long, ByVal Text As String) As Boolean
 
-        MsgBox "Text changed at row " & RowID & ": " & Text
+        MsgBox "第" & RowID & "行的文本已更改: " & Text
                 
         SwCalloutHandler_OnStringValueChanged = True
 
 End Function
 ~~~
-
-
