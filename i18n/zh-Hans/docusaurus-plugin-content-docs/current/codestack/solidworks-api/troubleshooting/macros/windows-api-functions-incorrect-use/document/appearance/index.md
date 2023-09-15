@@ -1,16 +1,16 @@
 ---
-title: Configuring document appearance using SOLIDWORKS API
-caption: Appearance
-description: Collection of examples and articles related to managing of appearance (e.g. color) in the documents using SOLIDWORKS API
+title: 使用SOLIDWORKS API配置文档外观
+caption: 外观
+description: 本文档收集了使用SOLIDWORKS API管理文档外观（例如颜色）的示例和文章。
 sidebar_position: 12
-labels: [color, appearance, material property]
+labels: [颜色, 外观, 材料属性]
 ---
-This section contains code examples and macros of configuring with various appearance layers (colors, decals, renders) in documents using SOLIDWORKS API.
+本节包含了使用SOLIDWORKS API在文档中配置各种外观层（颜色、贴花、渲染）的代码示例和宏。
 
-Appearance can be applied on different SOLIDWORKS entities in hierarchy allowing to overwrite the properties from previous layer. The following is a hierarchy of layers:
+外观可以应用于SOLIDWORKS实体的不同层次结构，允许覆盖前一层的属性。以下是层次结构：
 
-* Document
-* Component in assembly
-* Body
-* Feature
-* Face
+* 文档
+* 组件在装配体中
+* 实体
+* 特征
+* 面
