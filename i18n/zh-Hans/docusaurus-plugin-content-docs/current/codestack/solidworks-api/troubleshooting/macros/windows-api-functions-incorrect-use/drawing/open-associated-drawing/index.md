@@ -1,25 +1,28 @@
 ---
 layout: sw-tool
-title: Open associated drawings of active document or selected components
-caption: Open Associated Drawings
-description: VBA macro to open the drawings associated to the component in its own window regardless of naming (with an option to open the drawing in detailing mode)
+title: 打开活动文档或选定组件的关联图纸
+caption: 打开关联图纸
+description: 这个 VBA 宏允许打开装配体中选定组件的关联图纸，或者如果没有选定任何内容，则打开活动文档的关联图纸。
 image: open-associated-drawing.svg
-labels: [drawing, open, detailing]
-group: Drawing
+labels: [图纸, 打开, 详图]
+group: 图纸
 ---
-This VBA macro allows to open the associated drawings of the selected components in the assembly or active document if nothing is selected.
 
-Unlike out-of-the-box functionality this macro does not have a limitation related to the drawing to be named after the component and located in the same folder. This macro will find all drawings in all sub-folders of the current folder (folder of the active document) regardless if those are named after the component or not.
+这个 VBA 宏允许打开装配体中选定组件的关联图纸，或者如果没有选定任何内容，则打开活动文档的关联图纸。
 
-This macro has an option to open the drawing resolved or in the detailing mode. Modify the value oif **OPEN_DRAWING_DETAILING** to change the behavior.
+与开箱即用的功能不同，这个宏没有与组件同名并位于同一文件夹中的图纸的限制。这个宏将在当前文件夹（活动文档的文件夹）的所有子文件夹中查找所有图纸，无论这些图纸是否与组件同名。
 
-~~~ vb
-Const OPEN_DRAWING_DETAILING As Boolean = True 'opens drawings in detailing mode
-~~~
+这个宏有一个选项，可以打开解析的图纸或详图模式。修改 **OPEN_DRAWING_DETAILING** 的值来更改行为。
 
-~~~ vb
+```vb
+Const OPEN_DRAWING_DETAILING As Boolean = True '以详图模式打开图纸
+```
+
+```vb
 Const OPEN_DRAWING_DETAILING As Boolean = False
+```
 
+```vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -37,7 +40,7 @@ try_:
     
         If swModel.GetType() <> swDocumentTypes_e.swDocASSEMBLY And _
             swModel.GetType() <> swDocumentTypes_e.swDocPART Then
-            Err.Raise vbError, "", "Active document is not a part or assembly"
+            Err.Raise vbError, "", "活动文档不是零件或装配体"
         End If
                 
         Dim vDrawings As Variant
@@ -49,7 +52,7 @@ try_:
         GoTo finally_
         
     Else
-        Err.Raise vbError, "", "Please open assembly or drawing document"
+        Err.Raise vbError, "", "请打开装配体或图纸文档"
     End If
 
 catch_:
@@ -80,13 +83,13 @@ Sub OpenDrawings(vPaths As Variant)
             Set swDraw = swApp.OpenDoc7(swDocSpec)
             
             If swDraw Is Nothing Then
-                Err.Raise vbError, "", "Failed to open drawing. Error code: " & swDocSpec.Error
+                Err.Raise vbError, "", "无法打开图纸。错误代码：" & swDocSpec.Error
             End If
             
         Next
         
     Else
-        Err.Raise vbError, "", "No component selected"
+        Err.Raise vbError, "", "未选择组件"
     End If
     
 End Sub
@@ -187,7 +190,7 @@ Function FindAssociatedDrawings(rootDir As String, filePath As String) As Varian
     If (Not paths) <> -1 Then
         FindAssociatedDrawings = paths
     Else
-        Err.Raise vbError, "", "Failed to find the associated drawings for " & filePath
+        Err.Raise vbError, "", "找不到 " & filePath & " 的关联图纸"
     End If
     
 End Function
@@ -285,6 +288,4 @@ Function ResolveReferencePath(rootDocPath As String, refPath As String) As Strin
     ResolveReferencePath = refPath
     
 End Function
-~~~
-
-
+```
