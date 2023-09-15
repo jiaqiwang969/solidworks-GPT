@@ -1,24 +1,24 @@
 ---
-title: Examples and source code for SwEx.PMPage framework
-caption: Examples
-description: Collection of examples using the SwEx.PMPage framework for SOLIDWORKS
+title: SwEx.PMPage框架的示例和源代码
+caption: 示例
+description: 使用SwEx.PMPage框架和SOLIDWORKS API开发高级属性管理器页面的示例集合
 toc-group-name: labs-solidworks-swex
 order: 4
 ---
-This section contains examples which are using SwEx.PMPage framework and SOLIDWORKS API for developing advanced Property Manager Pages in SOLIDWORKS add-ins.
+本节包含使用SwEx.PMPage框架和SOLIDWORKS API开发高级属性管理器页面的示例。
 
-## Dummy add-in used to debug main framework functionality (C#)
-[Source Code](https://github.com/codestackdev/swex-pmpage/tree/master/Samples/AddIn)
+## 用于调试主要框架功能的虚拟插件（C#）
+[源代码](https://github.com/codestackdev/swex-pmpage/tree/master/Samples/AddIn)
 
-This project contains short example which is utilizing all functionality of SwEx.PMPage framework, although this project doesn't perform any useful operations it is a good starting point to explore SwEx.PMPage API.
+该项目包含一个简短的示例，利用了SwEx.PMPage框架的所有功能，尽管该项目不执行任何有用的操作，但它是探索SwEx.PMPage API的良好起点。
 
-## Insert Note Example (C#)
-* [Source Code](https://github.com/codestackdev/swex-examples/tree/master/pmpage/InsertNote/csharp)
+## 插入注释示例（C#）
+* [源代码](https://github.com/codestackdev/swex-examples/tree/master/pmpage/InsertNote/csharp)
 
-This examples is using Property Manager page to collect the user input required for insertion of the repetitive note in the SOLIDWORKS drawing document:
+此示例使用属性管理器页面收集用户输入，以便在SOLIDWORKS绘图文档中插入重复的注释：
 
-* Note text
-* Note position
-* Optional entity to attach
+* 注释文本
+* 注释位置
+* 可选的附加实体
 
-Use inputs are stored and can be reused in different SOLIDWORKS sessions
+用户输入将被存储，可以在不同的SOLIDWORKS会话中重复使用。
