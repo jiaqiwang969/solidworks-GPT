@@ -1,29 +1,29 @@
 ---
-title: Read summary information from file using SOLIDWORKS API
-caption: Read Summary Information
-description: VBA macro to extract the summary information (e.g. author, keywords, comments, title, creation info etc.) for active SOLIDWORKS file using SOLIDWORKS API
+title: 使用SOLIDWORKS API从文件中读取摘要信息
+caption: 读取摘要信息
+description: 使用SOLIDWORKS API从活动SOLIDWORKS文件中提取摘要信息（例如作者、关键字、注释、标题、创建信息等）的VBA宏
 image: summary.png
-labels: [summary info,author,comments,title]
+labels: [摘要信息,作者,注释,标题]
 ---
-![Summary Information of SOLIDWORKS file](summary.png){ width=500 }
+![SOLIDWORKS文件的摘要信息](summary.png){ width=500 }
 
-This VBA macro extracts the data from the *Summary Information* tab from custom properties of the active SOLIDWORKS document using SOLIDWORKS API. This information includes author, keywords, comments, title, creation info, last saved info.
+此VBA宏使用SOLIDWORKS API从活动SOLIDWORKS文档的自定义属性中提取*摘要信息*选项卡中的数据。这些信息包括作者、关键字、注释、标题、创建信息和最后保存信息。
 
-This macro additionally extracts the SOLIDWORKS version the file was created in.
+此宏还提取了文件创建时的SOLIDWORKS版本。
 
-Result is output to the [immediate window of VBA editor](/docs/codestack/visual-basic/vba/vba-editor/windows#immediate-window) in the following format:
+结果以以下格式输出到[VBA编辑器的即时窗口](/docs/codestack/visual-basic/vba/vba-editor/windows#immediate-window)中：
 
 ~~~
-Author: CodeStack
-Keywords: sample,summary,api
-Comments: Example comments
-Title: Summary API Example
-Subject: CodeStack API Examples
-Created: Tuesday, 10 September 2019 10:35:37 AM
-Last Saved: Tuesday, 10 September 2019 11:08:23 AM
-Last Saved By: artem.taturevych
-Last Saved With: SOLIDWORKS 2019
-Created With: SOLIDWORKS 2012
+作者: CodeStack
+关键字: 示例,摘要,API
+注释: 示例注释
+标题: 摘要API示例
+主题: CodeStack API示例
+创建时间: 2019年9月10日 星期二 上午10:35:37
+最后保存时间: 2019年9月10日 星期二 上午11:08:23
+最后保存者: artem.taturevych
+最后保存版本: SOLIDWORKS 2019
+创建版本: SOLIDWORKS 2012
 ~~~
 
 ~~~ vb
@@ -42,20 +42,20 @@ Sub main()
         Dim vHistory As Variant
         vHistory = swModel.VersionHistory()
             
-        Debug.Print "Author: " & swModel.SummaryInfo(swSummInfoField_e.swSumInfoAuthor)
-        Debug.Print "Keywords: " & swModel.SummaryInfo(swSummInfoField_e.swSumInfoKeywords)
-        Debug.Print "Comments: " & swModel.SummaryInfo(swSummInfoField_e.swSumInfoComment)
-        Debug.Print "Title: " & swModel.SummaryInfo(swSummInfoField_e.swSumInfoTitle)
-        Debug.Print "Subject: " & swModel.SummaryInfo(swSummInfoField_e.swSumInfoSubject)
+        Debug.Print "作者: " & swModel.SummaryInfo(swSummInfoField_e.swSumInfoAuthor)
+        Debug.Print "关键字: " & swModel.SummaryInfo(swSummInfoField_e.swSumInfoKeywords)
+        Debug.Print "注释: " & swModel.SummaryInfo(swSummInfoField_e.swSumInfoComment)
+        Debug.Print "标题: " & swModel.SummaryInfo(swSummInfoField_e.swSumInfoTitle)
+        Debug.Print "主题: " & swModel.SummaryInfo(swSummInfoField_e.swSumInfoSubject)
         
-        Debug.Print "Created: " & swModel.SummaryInfo(swSummInfoField_e.swSumInfoCreateDate2)
-        Debug.Print "Last Saved: " & swModel.SummaryInfo(swSummInfoField_e.swSumInfoSaveDate2)
-        Debug.Print "Last Saved By: " & swModel.SummaryInfo(swSummInfoField_e.swSumInfoSavedBy)
-        Debug.Print "Last Saved With: " & ConvertFileVersionToSwMajorVersion(ExtractSwRevisonFromHistoryRecord(CStr(vHistory(UBound(vHistory)))))
-        Debug.Print "Created With: " & ConvertFileVersionToSwMajorVersion(ExtractSwRevisonFromHistoryRecord(CStr(vHistory(0))))
+        Debug.Print "创建时间: " & swModel.SummaryInfo(swSummInfoField_e.swSumInfoCreateDate2)
+        Debug.Print "最后保存时间: " & swModel.SummaryInfo(swSummInfoField_e.swSumInfoSaveDate2)
+        Debug.Print "最后保存者: " & swModel.SummaryInfo(swSummInfoField_e.swSumInfoSavedBy)
+        Debug.Print "最后保存版本: " & ConvertFileVersionToSwMajorVersion(ExtractSwRevisonFromHistoryRecord(CStr(vHistory(UBound(vHistory)))))
+        Debug.Print "创建版本: " & ConvertFileVersionToSwMajorVersion(ExtractSwRevisonFromHistoryRecord(CStr(vHistory(0))))
         
     Else
-        Err.Raise vbError, "", "Please open model"
+        Err.Raise vbError, "", "请打开模型"
     End If
     
 End Sub
@@ -119,5 +119,3 @@ Function ConvertFileVersionToSwMajorVersion(versNumber As Integer) As String
     
 End Function
 ~~~
-
-
