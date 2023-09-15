@@ -1,30 +1,29 @@
 ---
-caption: 循环
-title: 在Visual Basic中使用for、while、for each、do循环的用法
-description: 解释循环（while-wend、for-next、for each-next、do-while）和遍历技术的文章
+caption: Loops
+title: Using for, while, for each, do loops in Visual Basic
+description: Article explaining the while-wend, for-next, for each-next, do-while loops and traversal techniques
 sidebar_position: 0
 ---
-编程中的循环是一种迭代遍历[集合](/docs/codestack/visual-basic/data-sets/collection/)、[数组](/docs/codestack/visual-basic/data-sets/array/)和其他数据集的技术。
+Loops in programming are techniques for iterating over [collections](/docs/codestack/visual-basic/data-sets/collection/), [arrays](/docs/codestack/visual-basic/data-sets/array/), and other datasets.
 
-以下部分介绍了不同类型的循环。下面的所有代码片段都基于一个简单的声明为*String*的数组：
+The following sections describe different types of loops. All the code snippets below are based on a simple array declared as *String*:
 
-~~~vba
+```vba
 Dim Arr(9) As String
 
 Sub InitArr()
     Arr(0) = "A": Arr(1) = "B": Arr(2) = "C": Arr(3) = "D": Arr(4) = "E"
     Arr(5) = "F": Arr(6) = "G": Arr(7) = "H": Arr(8) = "I": Arr(9) = "J"
 End Sub
-~~~
+```
 
-
-然而，类似的技术可以用于任何类型的数组。
+However, similar techniques can be applied to arrays of any type.
 
 ## For-Next
 
-这可能是最常见的循环类型。它允许执行指定次数的迭代。默认情况下，每次循环迭代都会将索引值增加一。
+This is perhaps the most common type of loop. It allows for a specified number of iterations. By default, the index value is incremented by one with each iteration.
 
-~~~vba
+```vba
 Sub ForLoop()
     
     InitArr
@@ -38,17 +37,17 @@ Sub ForLoop()
     Next
     
 End Sub
-~~~
+```
 
+The above example will print all the values in the array:
 
+```
+A B C D E F G H I J
+```
 
-上面的示例将打印数组中的所有值：
+Alternatively, a different step value can be specified using the *Step* keyword. The step can be a negative number to iterate in reverse.
 
-> A B C D E F G H I J
-
-或者，可以使用*Step*关键字指定不同的步长值。步长可以为负数，以逆向迭代。
-
-~~~vba
+```vba
 Sub ForLoopStep()
     
     InitArr
@@ -62,21 +61,21 @@ Sub ForLoopStep()
     Next
     
 End Sub
-~~~
+```
 
+The above code will output the values in reverse order:
 
-
-上面的代码将以相反的顺序输出值：
-
-> J I H G F E D C B A
+```
+J I H G F E D C B A
+```
 
 ## While-Wend
 
-此循环在条件为*True*时执行。
+This loop executes as long as the condition is *True*.
 
-当迭代次数事先不知道时，这种类型的循环很有用。
+This type of loop is useful when the number of iterations is not known in advance.
 
-~~~vba
+```vba
 Sub WhileLoop()
     
     InitArr
@@ -92,19 +91,19 @@ Sub WhileLoop()
     Wend
     
 End Sub
-~~~
+```
 
+The above code will output and terminate when the current element is equal to *D*:
 
-
-上面的代码将输出并在当前元素等于*D*时终止：
-
-> A B C D
+```
+A B C D
+```
 
 ## Do-Loop While
 
-**Do-Loop While**与**While-Wend**循环类似，唯一的区别是条件在步骤之后执行，因此它确保至少执行一次迭代，而不管条件如何。
+The **Do-Loop While** loop is similar to the **While-Wend** loop, with the only difference being that the condition is evaluated after the step, ensuring that at least one iteration is performed regardless of the condition.
 
-~~~vba
+```vba
 Sub DoLoop()
     
     InitArr
@@ -120,21 +119,21 @@ Sub DoLoop()
     Loop While val <> "D"
     
 End Sub
-~~~
+```
 
+The above code will produce the following result:
 
-
-上面的代码将产生以下结果：
-
-> A B C D
+```
+A B C D
+```
 
 ## For Each-Next
 
-尽管在大多数情况下，**For-Next**循环用于迭代数组的元素，但它不限于此用例。在循环体中可以执行任何代码。
+While the **For-Next** loop is commonly used to iterate over elements of an array, it is not limited to this use case. Any code can be executed within the loop body.
 
-要专门迭代数组的元素，可以使用**For Each-Next**循环
+To specifically iterate over elements of an array, the **For Each-Next** loop can be used.
 
-~~~vba
+```vba
 Sub ForEachLoop()
             
     InitArr
@@ -144,21 +143,21 @@ Sub ForEachLoop()
     Next
     
 End Sub
-~~~
+```
 
+The above code snippet will output:
 
+```
+J I H G F E D C B A
+```
 
-上面的代码片段将输出：
+## Infinite Loop
 
-> J I H G F E D C B A
+Incorrect usage of loop conditions can result in an infinite loop. Such code often leads to software hanging or crashing.
 
-## 无限循环
+For example, the following loop will run indefinitely as the **i** variable is never incremented.
 
-循环条件的错误使用可能导致无限循环。这种代码通常导致软件挂起或崩溃。
-
-例如，下面的循环将无限运行，因为**i**变量从未递增。
-
-~~~vba
+```vba
 Sub InifiniteLoop()
     
     InitArr
@@ -171,13 +170,10 @@ Sub InifiniteLoop()
     Wend
     
 End Sub
-~~~
+```
 
+To terminate an infinite loop (or any running code in VBA), you can press the key combination: *ctrl+alt+pause/break*
 
+This will display the following message box, allowing you to stop the code or enter debug mode.
 
-
-要终止无限循环（或VBA中的任何正在运行的代码），可以按下组合键：*ctrl+alt+pause/break*
-
-这将显示下面的消息框，可以停止代码或进入调试模式。
-
-![终止无限循环](terminate-code-execution.png)
+![Terminate Code Execution](terminate-code-execution.png)
