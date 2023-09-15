@@ -1,27 +1,27 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS macro renames all features in model sequentially
-caption: Rename All Features Sequentially
-description: Macro renames all the features in the order preserving the base names using SOLIDWORKS API
+title: SOLIDWORKS宏按顺序重命名模型中的所有特征
+caption: 按顺序重命名所有特征
+description: 使用SOLIDWORKS API按顺序重命名活动模型中的所有特征，保留基本名称。
 image: sequntial-features.svg
 labels: [feature, rename]
 group: Model
 ---
-![Features renamed sequentially](rename-features-sequentially.png)
+![按顺序重命名的特征](rename-features-sequentially.png)
 
-This macro renames all the features in active model in the sequential order using SOLIDWORKS API, preserving the base names .
+该宏使用SOLIDWORKS API按顺序重命名活动模型中的所有特征，保留基本名称。
 
-Only indices are renamed and the base name is preserved. For example *Sketch21* will be renamed to *Sketch1* for the first appearance of the sketch feature.
+只有索引会被重命名，基本名称会保留。例如，第一次出现的草图特征*Sketch21*将被重命名为*Sketch1*。
 
-## Notes
+## 注意事项
 
-* Only features with number at the end will be renamed (e.g. *Front Plane* will not be renamed to *Front Plane1* and *My1Feature* will not be renamed)
-* Case is ignored (case insensitive search)
-* Only modelling features are renamed (the ones created after the Origin feature)
-* In the assembly documents, only assembly feature are renamed (components are ignored)
-* If components are selected in the assembly, features of those components will be renamed
+* 只有以数字结尾的特征会被重命名（例如，*Front Plane*不会被重命名为*Front Plane1*，*My1Feature*也不会被重命名）。
+* 不区分大小写（大小写不敏感搜索）。
+* 只有建模特征会被重命名（在原点特征之后创建的特征）。
+* 在装配文档中，只有装配特征会被重命名（组件会被忽略）。
+* 如果在装配中选择了组件，则会重命名这些组件的特征。
 
-Watch [video demonstration](https://youtu.be/jsjN8zNRTuc?t=139)
+观看[演示视频](https://youtu.be/jsjN8zNRTuc?t=139)
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -63,7 +63,7 @@ try_:
         End If
         
     Else
-        Err.Raise vbError, "", "Please open model"
+        Err.Raise vbError, "", "请打开模型"
     End If
     
     GoTo finally_
@@ -226,7 +226,7 @@ Sub ResolveFeatureNameConflict(owner As Object, name As String)
             Set swFeatMgr = swRefModel.FeatureManager
             Set swFeat = swComp.FeatureByName(name)
         Else
-            Err.Raise vbError, "", "Component model is not loaded"
+            Err.Raise vbError, "", "未加载组件模型"
         End If
         
     ElseIf TypeOf owner Is SldWorks.ModelDoc2 Then
@@ -237,7 +237,7 @@ Sub ResolveFeatureNameConflict(owner As Object, name As String)
         Set swFeat = swModel.FeatureByName(name)
         
     Else
-        Err.Raise vbError, "", "Not supported owner"
+        Err.Raise vbError, "", "不支持的所有者"
     End If
     
     If Not swFeat Is Nothing Then
@@ -319,5 +319,3 @@ Function GetSelectedComponents(selMgr As SldWorks.SelectionMgr) As Variant
 
 End Function
 ~~~
-
-
