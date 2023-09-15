@@ -1,22 +1,23 @@
 ---
-title: Storing and restoring temp body in 3rd party storage using SOLIDWORKS API
-caption: Store And Restore Body
-description: Storing the temp body in the SOLIDWORKS document stream via 3rd party storage and restoring it on opening using SOLIDWORKS API
+title: 使用SOLIDWORKS API将临时实体存储和恢复到第三方存储
+caption: 存储和恢复实体
+description: 使用SOLIDWORKS API将临时实体存储到SOLIDWORKS文档流中的第三方存储，并在打开时恢复和显示实体
 image: restored-body.png
-labels: [3rd party storage,store body,restore body]
+labels: [第三方存储, 存储实体, 恢复实体]
 ---
-This VBA example demonstrates how to store the copy of the selected body in the new document's stream and restore and display the body on model opening.
 
-Body is serialized and deserialized from the [3rd party storage](/docs/codestack/solidworks-api/data-storage/third-party/).
+这个VBA示例演示了如何将选定的实体副本存储在新文档的流中，并在模型打开时恢复和显示实体。
 
-* Create new macro and add new form. Name it *UserForm1* (default name)
-* Add the button. Specify the caption *Store Body* and name *cmdStoreBody* as shown below
+实体是通过[第三方存储](/docs/codestack/solidworks-api/data-storage/third-party/)进行序列化和反序列化的。
 
-![Macro tree and user form controls](macro-solution-tree.png){ width=450 }
+* 创建新的宏并添加新的窗体。将其命名为*UserForm1*（默认名称）。
+* 添加按钮。如下图所示，指定标题为*Store Body*，名称为*cmdStoreBody*。
 
-* Paste the following into the user form's code behind:
+![宏树和用户窗体控件](macro-solution-tree.png){ width=450 }
 
-~~~ vb
+* 将以下内容粘贴到用户窗体的代码后面：
+
+```vb
 Const BODY_STREAM_NAME = "_CodeStackBody_"
 
 Dim WithEvents swApp As SldWorks.SldWorks
@@ -55,7 +56,7 @@ Private Function swCurPart_SaveToStorageNotify() As Long
 
     If Not swCurBody Is Nothing Then
         StoreBodyToStream
-        MsgBox "Body is stored to the model stream. Close and reopen the model to restore the body"
+        MsgBox "实体已存储到模型流。关闭并重新打开模型以恢复实体。"
     End If
     
     swCurPart_SaveToStorageNotify = 0
@@ -77,9 +78,9 @@ Private Sub cmdStoreBody_Click()
         Dim partTemplate As String
         partTemplate = swApp.GetUserPreferenceStringValue(swUserPreferenceStringValue_e.swDefaultTemplatePart)
         Set swCurPart = swApp.NewDocument(partTemplate, swDwgPaperSizes_e.swDwgPapersUserDefined, 0, 0)
-        MsgBox "Save this document to store the body in its stream"
+        MsgBox "保存此文档以将实体存储在其流中。"
     Else
-        MsgBox "Please select body"
+        MsgBox "请选择实体。"
     End If
     
 End Sub
@@ -112,32 +113,32 @@ Sub StoreBodyToStream()
     swModel.IRelease3rdPartyStorage BODY_STREAM_NAME
     
 End Sub
-~~~
+```
 
 
 
-* Insert the following code into the macro's main module:
+* 将以下代码插入到宏的主模块中：
 
-~~~ vb
+```vb
 Sub main()
 
     UserForm1.Show vbModeless
     
 End Sub
-~~~
+```
 
 
 
-## Running Macro
+## 运行宏
 
-* Start the macro from the main module. Note, if you run the macro when form is active in the macro editor - form will be displayed as modal window and will prevent selections and saving
-* Open any part document with any geometry
-* Select solid body from the tree and click *Store Body* in the user form
-* New part document is created and the following message is displayed: *Save this document to store the body in its stream*
-* Save this file. When file is saving the body from different part is serialized into the stream of new document and no longer related to the original body.
-* Once completed, the following message is displayed: *Body is stored to the model stream. Close and reopen the model to restore the body*
-* Now, close all documents and reopen the last saved file. The body is deserialized and displayed. Note, that there is no feature tree in the model.
+* 从主模块启动宏。注意，如果在宏编辑器中激活窗体时运行宏，窗体将显示为模态窗口，会阻止选择和保存操作。
+* 打开任何具有任意几何体的零件文档。
+* 从树中选择实体并单击用户窗体中的*Store Body*按钮。
+* 创建新的零件文档，并显示以下消息：“保存此文档以将实体存储在其流中”。
+* 保存此文件。保存文件时，来自不同零件的实体被序列化到新文档的流中，并且不再与原始实体相关联。
+* 完成后，显示以下消息：“实体已存储到模型流。关闭并重新打开模型以恢复实体”。
+* 现在，关闭所有文档并重新打开最后保存的文件。实体被反序列化并显示。请注意，模型中没有特征树。
 
-![Restored body](restored-body.png){ width=350 }
+![恢复的实体](restored-body.png){ width=350 }
 
-* You can close SOLIDWORKS session and reopen the model. The body will still be loaded. Note, you need to run the macro before opening the model.
+* 您可以关闭SOLIDWORKS会话并重新打开模型。实体仍将被加载。请注意，您需要在打开模型之前运行宏。
