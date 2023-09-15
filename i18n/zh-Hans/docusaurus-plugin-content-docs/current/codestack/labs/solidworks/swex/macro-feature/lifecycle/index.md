@@ -1,15 +1,14 @@
 ---
-title: Life cycle of SOLIDWORKS macro feature
-caption: Lifecycle
-description: Explanation of the SOLIDWORKS macro feature behavior and life cycle
+title: SOLIDWORKS宏特征的生命周期
+caption: 生命周期
+description: 解释SOLIDWORKS宏特征的行为和生命周期
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
-Macro feature resides in the model and saved together with the document. Macro feature can handle various events during its lifecycle
+宏特征驻留在模型中，并与文档一起保存。宏特征可以在其生命周期中处理各种事件。
 
-* Regeneration. Override [OnRebuild](https://docs.codestack.net/swex/macro-feature/html/M_CodeStack_SwEx_MacroFeature_MacroFeatureEx_OnRebuild.htm) method to handle this event.
-* Editing. Override [OnEditDefinition](https://docs.codestack.net/swex/macro-feature/html/M_CodeStack_SwEx_MacroFeature_MacroFeatureEx_OnEditDefinition.htm) method to handle this event.
-* Updating state. Override [OnUpdateState](https://docs.codestack.net/swex/macro-feature/html/M_CodeStack_SwEx_MacroFeature_MacroFeatureEx_OnUpdateState.htm) method to handle this event.
+* 重建。重写[OnRebuild](https://docs.codestack.net/swex/macro-feature/html/M_CodeStack_SwEx_MacroFeature_MacroFeatureEx_OnRebuild.htm)方法来处理此事件。
+* 编辑。重写[OnEditDefinition](https://docs.codestack.net/swex/macro-feature/html/M_CodeStack_SwEx_MacroFeature_MacroFeatureEx_OnEditDefinition.htm)方法来处理此事件。
+* 更新状态。重写[OnUpdateState](https://docs.codestack.net/swex/macro-feature/html/M_CodeStack_SwEx_MacroFeature_MacroFeatureEx_OnUpdateState.htm)方法来处理此事件。
 
-Macro feature is a singleton service. Do not create any class level variables in the macro feature class. If it is required to track the lifecycle of particular macro feature use
-[Feature Handler](feature-handler)
+宏特征是一个单例服务。不要在宏特征类中创建任何类级别的变量。如果需要跟踪特定宏特征的生命周期，请使用[特征处理器](feature-handler)。
