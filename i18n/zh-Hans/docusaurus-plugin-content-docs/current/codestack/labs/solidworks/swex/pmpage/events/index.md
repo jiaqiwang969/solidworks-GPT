@@ -1,15 +1,8 @@
----
-title: Handling events of SOLIDWORKS property manager page
-caption: Events
-description: Overview of property manager page events handling
-toc-group-name: labs-solidworks-swex
-sidebar_position: 0
----
-[PropertyManagerPageHandlerEx](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_PropertyManagerPageHandlerEx.htm) class is responsible for providing the events raised by property manager page to the client
+[PropertyManagerPageHandlerEx](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_PropertyManagerPageHandlerEx.htm)类负责将属性管理器页面引发的事件提供给客户端。
 
-Instance of the handler will be created by the framework and can be accessed via [PropertyManagerPageEx::Handler](https://docs.codestack.net/swex/pmpage/html/P_CodeStack_SwEx_PMPage_PropertyManagerPageEx_2_Handler.htm) property
+处理程序的实例将由框架创建，并可以通过[PropertyManagerPageEx::Handler](https://docs.codestack.net/swex/pmpage/html/P_CodeStack_SwEx_PMPage_PropertyManagerPageEx_2_Handler.htm)属性访问。
 
-~~~ cs
+``` cs
 ...
 m_Page = new PropertyManagerPageEx<MyPMPageHandler, DataModel>(m_Data, m_App);
 m_Page.Handler.Closed += r =>
@@ -17,4 +10,4 @@ m_Page.Handler.Closed += r =>
     ...
 };
 ...
-~~~
+```
