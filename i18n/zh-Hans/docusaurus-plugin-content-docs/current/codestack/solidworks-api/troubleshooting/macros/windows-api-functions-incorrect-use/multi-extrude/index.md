@@ -1,32 +1,26 @@
----
-caption: Create MultiBoss-Extrude Macro Feature
-title: Create MultiBoss-Extrude VBA macro feature using SOLIDWORKS API
-description: VBA example demonstrates how to create parametric macro feature to create extrude from multiple sketches with an editing and preview ability
-image: multiboss-extrude.png
----
-![Property Manager Page and preview for MultiBoss-Extrude Macro Feature](multiboss-extrude.png) { width=500 }
+## 创建 MultiBoss-Extrude 宏特征
 
-This VBA macro demonstrates how to create parametric SOLIDWORKS macro feature to create single extrude from multiple sketches using VBA.
+使用 SOLIDWORKS API 创建 VBA 宏特征，该示例演示了如何创建具有编辑和预览功能的多个草图的参数化宏特征。
 
-Watch video below which demonstrates the macro and explains how macro was built and how it works.
+以下视频演示了该宏以及宏的构建和工作原理。
 
 {% youtube id: EAx78xOsU3s %}
 
-Create the following macro structure and copy the code snippets to the corresponding modules and classes.
+创建以下宏结构，并将代码片段复制到相应的模块和类中。
 
-![Macro modules and classes](macro-project-structure.png)
+![宏模块和类](macro-project-structure.png)
 
-Property Manager pages are defined in the **SolidWorks {{Version}} exposed type library for add-in use** type library. So it needs to be added to the references of the VBA macro.
+属性管理器页面在 **SolidWorks {{Version}} 暴露的类型库用于加载项** 类型库中定义。因此，需要将其添加到 VBA 宏的引用中。
 
-![VBA macro references](macro-references.png)
+![VBA 宏引用](macro-references.png)
 
-In order to add custom icons, download the [Icons](Icons.zip) file and unzip into the **Icons** sub-folder next to the macro feature file
+为了添加自定义图标，请下载 [Icons](Icons.zip) 文件并解压缩到宏特征文件旁边的 **Icons** 子文件夹中。
 
-## Macro Module
+## 宏模块
 
-Entry point of the macro. Use this to insert new macro feature.
+宏的入口点。使用此模块插入新的宏特征。
 
-~~~ vb
+```vb
 Dim swController As Controller
 
 Sub main()
@@ -43,19 +37,19 @@ Sub main()
         swController.InsertExtrude
         
     Else
-        MsgBox "Please open model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
-~~~
+```
 
 
 
-## Geometry Module
+## 几何模块
 
-Module contains helper functions for building temp geometry of extrudes from input sketches
+模块包含用于从输入草图构建临时几何体的辅助函数
 
-~~~ vb
+```vb
 Dim swApp As SldWorks.SldWorks
 
 Function CreateBodiesFromSketches(vSketches As Variant, vDepths As Variant) As Variant
@@ -235,15 +229,15 @@ Private Function CreatePlanarSurfaceFromSketch(sketch As SldWorks.sketch) As Sld
     Set CreatePlanarSurfaceFromSketch = swSurf
     
 End Function
-~~~
+```
 
 
 
-## MacroFeature Module
+## MacroFeature 模块
 
-Implements the behavior of macro feature: regeneration and editing
+实现宏特征的行为：重建和编辑
 
-~~~ vb
+```vb
 Dim swController As Controller
 
 Function swmRebuild(varApp As Variant, varDoc As Variant, varFeat As Variant) As Variant
@@ -326,15 +320,15 @@ End Function
 Function swmSecurity(varApp As Variant, varDoc As Variant, varFeat As Variant) As Variant
     swmSecurity = swMacroFeatureSecurityOptions_e.swMacroFeatureSecurityByDefault
 End Function
-~~~
+```
 
 
 
-## PropertyPage Class Module
+## PropertyPage 类模块
 
-Implements the property manager page interface for the macro feature.
+实现宏特征的属性管理器页面接口。
 
-~~~ vb
+```vb
 Implements PropertyManagerPage2Handler9
 
 Public Event Closed(mode As Integer, vSketches As Variant, vDepths As Variant, isCancelled As Boolean)
@@ -595,6 +589,9 @@ Sub HandleDataChanged()
 
 End Sub
 
+```
+
+```vb
 Sub CollectData(ByRef sketches As Variant, ByRef depths As Variant)
     
     Dim swSketches() As SldWorks.Feature
@@ -638,15 +635,13 @@ Sub CollectData(ByRef sketches As Variant, ByRef depths As Variant)
     End If
     
 End Sub
-~~~
+```
 
+## 控制器类模块
 
+将属性管理器页面的输入连接到相应的功能（即编辑或插入）
 
-## Controller Class Module
-
-Connects the property manager page inputs to corresponding functionality (i.e. Edit or Insert)
-
-~~~ vb
+```vb
 Enum PageModes_e
     Insert
     Edit
@@ -838,8 +833,6 @@ Sub HidePreview()
     End If
     
 End Sub
-~~~
+```
 
-
-
-[Download sample model](MacroFeatureMultiExtrude.SLDPRT)
+[下载示例模型](MacroFeatureMultiExtrude.SLDPRT)
