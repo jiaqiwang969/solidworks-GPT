@@ -1,14 +1,8 @@
----
-caption: Combine Identical Components
-title: Combine identical components command in SOLIDWORKS BOM table
-description: Macro to emulate combine identical components command in SOLIDWORKS BOM table
-image: combine-identical-components.png
----
 ![Combine identical components command](combine-identical-components.png)
 
-This VBA macro demonstrates how to emulate the *Combine identical component* command which is missing in SOLIDWORKS API.
+这个VBA宏演示了如何模拟SOLIDWORKS API中缺失的“合并相同组件”命令。
 
-Select BOM table to combine identical components. By default, all components are combined, however it is possible to specify the rows to combine by changing the parameters of **CombineIdenticalComponents** function in the macro.
+选择BOM表以合并相同的组件。默认情况下，所有组件都会被合并，但可以通过更改宏中的**CombineIdenticalComponents**函数的参数来指定要合并的行。
 
 ~~~ vb
 #If VBA7 Then
@@ -69,4 +63,3 @@ Sub RunCombineIdenticalComponentsCommand(Optional dummy = Empty)
     
 End Sub
 ~~~
-
