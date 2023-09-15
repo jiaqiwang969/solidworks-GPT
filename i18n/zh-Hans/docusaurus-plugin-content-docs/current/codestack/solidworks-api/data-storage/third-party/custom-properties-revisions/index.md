@@ -431,67 +431,37 @@ namespace CodeStack
 
                 IStorage subStorage;
 
-                try
-                {
-                    subStorage = storage.OpenStorage(subStorageName, mode);
-                }
-                catch
-                {
-                    if (createIfNotExist)
-                    {
-                        subStorage = storage.CreateStorage(subStorageName);
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                
-                using (var subComStorage = new ComStorage(subStorage, false))
-                {
-                    var nextLevelPath = path.Substring(parentIndex + 1);
-                    AccessStreamFromPath(subComStorage, nextLevelPath, writable, createIfNotExist, action);
-                }
-            }
-        }
 
-        private void ReadStorage(IModelDoc2 model, string storageName, Action<ComStorage> action)
-        {
-            try
-            {
-                var storage = model.Extension.IGet3rdPartyStorageStore(storageName, false) as IStorage;
 
-                if (storage != null)
-                {
-                    using (var comStorage = new ComStorage(storage, false))
-                    {
-                        action.Invoke(comStorage);
-                    }
-                }
-                else
-                {
-                    throw new ThirdPartyStoreNotFoundException();
-                }
-            }
-            catch
-            {
-                throw;
-            }
-            finally
-            {
-                model.Extension.IRelease3rdPartyStorageStore(storageName);
-            }
-        }
+```cs
+try
+{
+    subStorage = storage.OpenStorage(subStorageName, mode);
+}
+catch
+{
+    if (createIfNotExist)
+    {
+        subStorage = storage.CreateStorage(subStorageName);
+    }
+    else
+    {
+        throw;
     }
 }
 
-~~~
+using (var subComStorage = new ComStorage(subStorage, false))
+{
+    var nextLevelPath = path.Substring(parentIndex + 1);
+    AccessStreamFromPath(subComStorage, nextLevelPath, writable, createIfNotExist, action);
+}
+```
 
 ### ComStorage.cs
 
-在.NET语言中简化对[IStorage](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istorage)接口的访问的包装器
+A wrapper that simplifies access to the [IStorage](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istorage) interface in .NET languages.
 
-~~~ cs
+```cs
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -688,15 +658,15 @@ namespace ThirdPartyStorage
     }
 }
 
-~~~
+```
 
 
 
 ### ComStream.cs
 
-在.NET语言中简化对[IStream](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istream)接口的访问的包装器
+A wrapper that simplifies access to the [IStream](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istream) interface in .NET languages.
 
-~~~ cs
+```cs
 using System;
 using System.IO;
 using System.Runtime.InteropServices.ComTypes;
@@ -846,4 +816,4 @@ namespace ThirdPartyStorage
     }
 }
 
-~~~
+```
