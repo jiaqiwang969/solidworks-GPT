@@ -1,40 +1,40 @@
 ---
 layout: sw-tool
-title: Find the where used assemblies of the selected component using SOLIDWORKS API
-caption: Find Where Used
-description: VBA macro to find the assemblies within active assembly which are using the selected component using SOLIDWORKS API
+title: 使用SOLIDWORKS API查找所选组件的使用组件
+caption: 查找使用位置
+description: 使用SOLIDWORKS API查找活动装配中使用所选组件的组件的VBA宏
 image: where-used-form.png
-labels: [where used,parent,component]
-group: Assembly
+labels: [使用位置,父级,组件]
+group: 装配
 ---
-This VBA macro finds all parent components of the selected component instances (Where Used) in the active assembly using SOLIDWORKS API and displays the list for review.
+此VBA宏使用SOLIDWORKS API在活动装配中查找所选组件实例的所有父组件（使用位置），并显示列表以供查看。
 
-![Where used form with the list of parent components](where-used-form.png){ width=350 }
+![具有父组件列表的使用位置表单](where-used-form.png){ width=350 }
 
-All references can be selected in the form and corresponding component will be highlighted in the Feature Manager Tree.
+可以在表单中选择所有引用，并在特征管理器树中突出显示相应的组件。
 
-## Configuration
+## 配置
 
-Macro can be configured by changing the constant parameters at the beginning of the macro as shown below:
+可以通过更改宏开头的常量参数来配置宏，如下所示：
 
 ~~~ vb
-Const CONSIDER_CONFIG As Boolean = False 'True to only find the component which have the same referenced configuration, False to find by model path only
-Const INCLUDE_SUPPRESSED As Boolean = False 'True to include suppressed components in the search, False to not include
+Const CONSIDER_CONFIG As Boolean = False 'True仅查找具有相同引用配置的组件，False仅按模型路径查找
+Const INCLUDE_SUPPRESSED As Boolean = False 'True在搜索中包括抑制的组件，False不包括
 ~~~
 
-## Creating Macro
+## 创建宏
 
-* Create new macro
-* Add new [User Form](/docs/codestack/visual-basic/user-forms/)
-* Set the name of the form as *WhereUsedForm*
-* Drag-n-drop ListBox control onto the form
-* Name the ListBox control as *ReferencesList*
+* 创建新的宏
+* 添加新的[用户窗体](/docs/codestack/visual-basic/user-forms/)
+* 将窗体的名称设置为*WhereUsedForm*
+* 将ListBox控件拖放到窗体上
+* 将ListBox控件命名为*ReferencesList*
 
-![Form designer](where-used-form-designer.png){ width=550 }
+![窗体设计器](where-used-form-designer.png){ width=550 }
 
-Place the code into corresponding modules
+将代码放入相应的模块中
 
-### Macro
+### 宏
 
 ~~~ vb
 Const CONSIDER_CONFIG As Boolean = False
@@ -69,14 +69,14 @@ Sub main()
                 Set WhereUsedForm.Assembly = swAssy
                 WhereUsedForm.Show vbModeless
             Else
-                MsgBox "Failed to find component instances"
+                MsgBox "未找到组件实例"
             End If
             
         Else
-            MsgBox "Please select component"
+            MsgBox "请选择组件"
         End If
     Else
-        MsgBox "Please open assembly"
+        MsgBox "请打开装配"
     End If
     
 End Sub
@@ -226,5 +226,3 @@ Private Sub ReferencesList_Change()
         
 End Sub
 ~~~
-
-
