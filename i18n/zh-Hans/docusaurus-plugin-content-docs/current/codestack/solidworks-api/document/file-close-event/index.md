@@ -1,39 +1,40 @@
 ---
-title: Handling pre and post close notifications using SOLIDWORKS API
-caption: Handle Pre and Post Close Notification
-description: Example demonstrates how to handle pre and post notification of file closing using SOLIDWORKS API
+title: 使用SOLIDWORKS API处理预关闭和后关闭通知
+caption: 处理预关闭和后关闭通知
+description: 该示例演示了如何使用SOLIDWORKS API处理文件关闭的预关闭和后关闭通知。
 image: file-lock-output.png
 labels: [event, close, pdm]
 ---
-File closing (destroy) notification (such as [DestroyNotify2](https://help.solidworks.com/2017/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.DAssemblyDocEvents_DestroyNotify2EventHandler.html)) for parts, assemblies and drawings are raised when the file is about to be closed (pre notification), which means that file is still not released from memory.
 
-This could be a blocker for the applications such as Product Data Management (PDM) where closing of the file should unlock it as some additional operation might need to be performed (e.g. removing the file from the local cache, moving to the archive, post processing the stream, clearing resources).
+在关闭零件、装配体和图纸等文件时，会触发文件关闭（销毁）通知（例如[DestroyNotify2](https://help.solidworks.com/2017/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.DAssemblyDocEvents_DestroyNotify2EventHandler.html)），这意味着文件仍未从内存中释放。
 
-This example demonstrates how to handle both pre and post notifications using SOLIDWORKS API.
+这对于像产品数据管理（PDM）这样的应用程序可能是一个阻塞因素，因为关闭文件应该解锁它，因为可能需要执行一些附加操作（例如从本地缓存中删除文件，移动到存档，对流进行后处理，清除资源）。
 
-* Open any SOLIDWORKS file
-* Run the macro from the main method in the macro module. Temp form is displayed
-* Close SOLIDWORKS file
-* See the output in the Immediate window of VBA. There are 2 lines printed:
-    * First - when the file is about to be closed
-    * Second - when file is fully closed
+该示例演示了如何使用SOLIDWORKS API处理预关闭和后关闭通知。
 
-At both handlers macro checks if the file is unlocked (i.e. released from the memory). As the result in first handler - file is locked and it is unlocked in the second handler, as expected.
+* 打开任何SOLIDWORKS文件
+* 从宏模块的主方法运行宏。将显示临时窗体
+* 关闭SOLIDWORKS文件
+* 在VBA的即时窗口中查看输出。会打印出2行：
+    * 第一行 - 当文件即将关闭时
+    * 第二行 - 当文件完全关闭时
 
-![Output results of the file closing](file-lock-output.png)
+在两个处理程序中，宏会检查文件是否解锁（即从内存中释放）。第一个处理程序中，文件被锁定，而在第二个处理程序中，文件被解锁，正如预期的那样。
 
-**NOTE: IsFileUnlocked function is opening the stream for read-write and it can potentially corrupt the file. It is strongly recommended to use this macro on sample model only**
+![文件关闭的输出结果](file-lock-output.png)
 
-To create a macro add 2 more modules into your VBA Editor:
+**注意：IsFileUnlocked函数会以读写模式打开流，可能会损坏文件。强烈建议仅在示例模型上使用此宏**
 
-* Class Module named *FileWatcher* 
-* User Form named *UserForm1*
+要创建一个宏，请将另外两个模块添加到VBA编辑器中：
 
-![VBA Macro solution tree](macro-solution.png){ width=250 }
+* 名为*FileWatcher*的类模块
+* 名为*UserForm1*的用户窗体
 
-Paste the codes into the corresponding modules as follows:
+![VBA宏解决方案树](macro-solution.png){ width=250 }
 
-**FileWatcher Class Module**
+将代码粘贴到相应的模块中，如下所示：
+
+**FileWatcher类模块**
 ~~~ vb
 Public Event ModelClosed(path As String)
 Public Event ModelClosing(path As String)
@@ -111,17 +112,17 @@ End Function
 
 
 
-**UserForm1 Form**
+**UserForm1用户窗体**
 ~~~ vb
 Dim WithEvents FileCloseWatcher As FileWatcher
 
 Private Sub FileCloseWatcher_ModelClosed(path As String)
-    CheckFileLockState "Post Close", path
+    CheckFileLockState "后关闭", path
     End
 End Sub
 
 Private Sub FileCloseWatcher_ModelClosing(path As String)
-    CheckFileLockState "Pre Close", path
+    CheckFileLockState "预关闭", path
 End Sub
 
 Private Sub UserForm_Initialize()
@@ -137,7 +138,7 @@ Private Sub UserForm_Initialize()
 End Sub
 
 Sub CheckFileLockState(state As String, path As String)
-    Debug.Print "State: " & state & ". Unlocked: " & IsFileUnlocked(path)
+    Debug.Print "状态: " & state & "。解锁: " & IsFileUnlocked(path)
 End Sub
 
 Function IsFileUnlocked(filePath As String) As Boolean
@@ -163,7 +164,7 @@ End Function
 
 
 
-**Macro Module**
+**宏模块**
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
 
@@ -175,5 +176,3 @@ Sub main()
     
 End Sub
 ~~~
-
-
