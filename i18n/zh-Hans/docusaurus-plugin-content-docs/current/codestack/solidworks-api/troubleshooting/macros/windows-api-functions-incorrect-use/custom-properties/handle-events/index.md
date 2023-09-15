@@ -1,26 +1,26 @@
 ---
-title: 使用SOLIDWORKS API处理自定义属性修改事件（添加、删除、更改）
-caption: 处理修改事件
-description: 使用SOLIDWORKS API处理与修改通用或配置特定自定义属性相关的所有事件。当不会引发AddCustomPropertyNotify、DeleteCustomPropertyNotify、ChangeCustomPropertyNotify事件时的问题的解决方法
+title: Handling Custom Property Modification Events with SOLIDWORKS API (Add, Delete, Change)
+caption: Handling Modification Events
+description: Use the SOLIDWORKS API to handle all events related to modifying common or configuration-specific custom properties. Solution to the problem where AddCustomPropertyNotify, DeleteCustomPropertyNotify, and ChangeCustomPropertyNotify events are not triggered when modifying custom properties in the user interface.
 image: custom-properties-events-console.png
-labels: [自定义属性,通知]
+labels: [Custom Properties, Notifications]
 ---
 
-SOLIDWORKS API提供了通知来处理自定义属性的修改（如添加、删除或更改）。这些事件（AddCustomPropertyNotify、DeleteCustomPropertyNotify、ChangeCustomPropertyNotify）适用于零件、装配体和图纸，并支持通用和配置特定的自定义属性。然而，自SOLIDWORKS 2018以来，这些事件不再针对用户在用户界面中修改的自定义属性引发，而只支持从SOLIDWORKS API中修改的自定义属性。
+The SOLIDWORKS API provides notifications to handle modifications to custom properties such as adding, deleting, or changing. These events (AddCustomPropertyNotify, DeleteCustomPropertyNotify, ChangeCustomPropertyNotify) are applicable to parts, assemblies, and drawings, and support both common and configuration-specific custom properties. However, since SOLIDWORKS 2018, these events are no longer triggered for custom properties modified by the user in the user interface, but only support custom properties modified from the SOLIDWORKS API.
 
-下面的代码示例提供了此问题的解决方法，并且可以处理无论以何种方式修改自定义属性。
+The following code example provides a solution to this problem and can handle modifications to custom properties regardless of how they are modified.
 
-* 创建控制台应用程序并添加下面的代码
-* 运行控制台
-* 修改自定义属性。修改结果将输出到控制台窗口：
+* Create a console application and add the code below.
+* Run the console.
+* Modify the custom properties. The modified results will be output to the console window:
 
-![将属性修改信息输出到控制台](custom-properties-events-console.png)
+![Output property modification information to the console](custom-properties-events-console.png)
 
 ## Program.cs
 
-程序的入口点
+The entry point of the program.
 
-~~~ cs
+```cs
 using SolidWorks.Interop.sldworks;
 using System;
 using System.Collections.Generic;
@@ -45,7 +45,7 @@ namespace HandlePrpsEvents
                 model = app.IActiveDoc2;
                 if (model == null)
                 {
-                    Console.WriteLine("打开模型并按任意键继续");
+                    Console.WriteLine("Open a model and press any key to continue");
                     Console.ReadLine();
                 }
             } while (model == null);
@@ -62,18 +62,15 @@ namespace HandlePrpsEvents
 
         private static void OnPropertyChanged(PropertyChangeAction_e type, string name, string conf, string value)
         {
-            Console.WriteLine($"属性 {name}；操作：{type}；配置：{conf}；值：{value}");
+            Console.WriteLine($"Property {name}; Action: {type}; Configuration: {conf}; Value: {value}");
         }
     }
 }
-
-~~~
-
-
+```
 
 ## CustomPropertiesEventsHandler.cs
 
-~~~ cs
+```cs
 using SolidWorks.Interop.sldworks;
 using System;
 using System.Collections.Generic;
@@ -86,9 +83,9 @@ namespace HandlePrpsEvents
 {
     public enum PropertyChangeAction_e
     {
-        添加,
-        删除,
-        修改
+        Add,
+        Delete,
+        Modify
     }
 
     public class CustomPropertiesEventsHandler : IDisposable
@@ -224,14 +221,14 @@ namespace HandlePrpsEvents
 
                 foreach (var newPrpName in addedPrpNames)
                 {
-                    PropertyChanged?.Invoke(PropertyChangeAction_e.添加, newPrpName, conf, newPrsList[newPrpName]);
+                    PropertyChanged?.Invoke(PropertyChangeAction_e.Add, newPrpName, conf, newPrsList[newPrpName]);
                 }
 
                 var removedPrpNames = oldPrsList.Keys.Except(newPrsList.Keys);
 
                 foreach (var deletedPrpName in removedPrpNames)
                 {
-                    PropertyChanged?.Invoke(PropertyChangeAction_e.删除, deletedPrpName, conf, oldPrsList[deletedPrpName]);
+                    PropertyChanged?.Invoke(PropertyChangeAction_e.Delete, deletedPrpName, conf, oldPrsList[deletedPrpName]);
                 }
 
                 var commonPrpNames = oldPrsList.Keys.Intersect(newPrsList.Keys);
@@ -240,7 +237,7 @@ namespace HandlePrpsEvents
                 {
                     if (newPrsList[prpName] != oldPrsList[prpName])
                     {
-                        PropertyChanged?.Invoke(PropertyChangeAction_e.修改, prpName, conf, newPrsList[prpName]);
+                        PropertyChanged?.Invoke(PropertyChangeAction_e.Modify, prpName, conf, newPrsList[prpName]);
                     }
                 }
             }
@@ -248,19 +245,19 @@ namespace HandlePrpsEvents
 
         private int OnAddCustomPropertyNotify(string propName, string Configuration, string Value, int valueType)
         {
-            PropertyChanged?.Invoke(PropertyChangeAction_e.添加, propName, Configuration, Value);
+            PropertyChanged?.Invoke(PropertyChangeAction_e.Add, propName, Configuration, Value);
             return 0;
         }
 
         private int OnDeleteCustomPropertyNotify(string propName, string Configuration, string Value, int valueType)
         {
-            PropertyChanged?.Invoke(PropertyChangeAction_e.删除, propName, Configuration, Value);
+            PropertyChanged?.Invoke(PropertyChangeAction_e.Delete, propName, Configuration, Value);
             return 0;
         }
 
         private int OnChangeCustomPropertyNotify(string propName, string Configuration, string oldValue, string NewValue, int valueType)
         {
-            PropertyChanged?.Invoke(PropertyChangeAction_e.修改, propName, Configuration, NewValue);
+            PropertyChanged?.Invoke(PropertyChangeAction_e.Modify, propName, Configuration, NewValue);
             return 0;
         }
 
@@ -272,7 +269,7 @@ namespace HandlePrpsEvents
             {
                 if (!CaptureCurrentProperties())
                 {
-                    throw new Exception("无法找到摘要信息对话框");
+                    throw new Exception("Unable to find the Summary Information dialog");
                 }
             }
 
@@ -337,5 +334,4 @@ namespace HandlePrpsEvents
         }
     }
 }
-
-~~~
+```
