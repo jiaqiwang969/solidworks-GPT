@@ -1,14 +1,12 @@
 ---
-caption: Export Drawing As PDF Into Selected Folder
-title: Macro to save active drawing as PDF file into selected output folder and close drawing
-description: VBA macro which saves active SOLIDWORKS drawing as PDF file to a selected output folder and saves and closes the original drawing
----
-This VBA macro performs the following steps with the active SOLIDWORKS drawing:
+caption: 将绘图导出为PDF文件并保存到选定的文件夹中
+title: 宏，将活动绘图保存为PDF文件并关闭绘图
+description: 这个VBA宏对活动的SOLIDWORKS绘图执行以下步骤：
 
-* Shows *Browse For Folder* dialog to select the output folder for the PDF file
-* Saves the active drawing as PDF file into the folder selected in the previous step. File name of the PDF will be the same as file name of the drawing
-* If the original drawing was modified, macro saves the changes
-* Closes the active SOLIDWORKS drawing document
+* 显示“浏览文件夹”对话框以选择PDF文件的输出文件夹
+* 将活动绘图保存为PDF文件并保存到前一步选择的文件夹中。PDF文件的文件名与绘图的文件名相同
+* 如果原始绘图已被修改，宏将保存更改
+* 关闭活动的SOLIDWORKS绘图文档
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -22,7 +20,7 @@ Sub main()
     Set swDraw = swApp.ActiveDoc
     
     If swDraw Is Nothing Then
-        Err.Raise vbError, "", "Open drawing"
+        Err.Raise vbError, "", "打开绘图"
     End If
     
     If swDraw.GetType() = swDocumentTypes_e.swDocDRAWING Then
@@ -46,12 +44,12 @@ Sub main()
             Dim warns As Long
             
             If False = swDraw.Extension.SaveAs(outFilePath, swSaveAsVersion_e.swSaveAsCurrentVersion, swSaveAsOptions_e.swSaveAsOptions_Silent, Nothing, errs, warns) Then
-                Err.Raise vbError, "", "Failed to export PDF to " & outFile
+                Err.Raise vbError, "", "导出PDF到" & outFile & "失败"
             End If
             
             If False <> swDraw.GetSaveFlag() Then
                 If False = swDraw.Save3(swSaveAsOptions_e.swSaveAsOptions_Silent, errs, warns) Then
-                    Err.Raise vbError, "", "Failed to save drawing"
+                    Err.Raise vbError, "", "保存绘图失败"
                 End If
             End If
         
@@ -59,7 +57,7 @@ Sub main()
             
         End If
     Else
-        Err.Raise vbError, "", "Active document is not a drawing"
+        Err.Raise vbError, "", "活动文档不是绘图"
     End If
     
 End Sub
@@ -68,7 +66,7 @@ Function GetFileNameWithoutExtension(filePath As String) As String
     GetFileNameWithoutExtension = Mid(filePath, InStrRev(filePath, "\") + 1, InStrRev(filePath, ".") - InStrRev(filePath, "\") - 1)
 End Function
 
-Function BrowseForFolder(Optional title As String = "Select Folder") As String
+Function BrowseForFolder(Optional title As String = "选择文件夹") As String
     
     Dim shellApp As Object
     
@@ -83,4 +81,3 @@ Function BrowseForFolder(Optional title As String = "Select Folder") As String
     
 End Function
 ~~~
-
