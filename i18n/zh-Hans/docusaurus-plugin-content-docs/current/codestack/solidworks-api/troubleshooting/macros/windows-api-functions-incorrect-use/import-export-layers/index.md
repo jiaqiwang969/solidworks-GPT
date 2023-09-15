@@ -1,73 +1,73 @@
 ---
 layout: sw-tool
-caption: Import/Export Layers
-title: Macro to import and export all layers from SOLIDWORKS drawings into a text file
-description: VBA macro imports and exports information about layers (description, color, style, thickness, visibility and will print) in the SOLIDWORKS drawings
+caption: 导入/导出图层
+title: 将SOLIDWORKS图纸中的所有图层导入和导出到文本文件的宏
+description: VBA宏导入和导出SOLIDWORKS图纸中的图层信息（描述、颜色、样式、厚度、可见性和打印设置）
 image: import-export-drawing-layers.svg
-group: Drawing
+group: 绘图
 ---
-![Layers in SOLIDWORKS drawings](sw-layers.png){ width=600 }
+![SOLIDWORKS图纸中的图层](sw-layers.png){ width=600 }
 
-These macros allow to import and export the information from the SOLIDWORKS drawing layers into the text file.
+这些宏允许将SOLIDWORKS图纸中的图层信息导入和导出到文本文件中。
 
-The following information is imported and exported:
+导入和导出的信息包括：
 
-* Name
-* Description
-* Visibility
-* Will Print
-* Color
-* Style
-* Thickness
+* 名称
+* 描述
+* 可见性
+* 是否打印
+* 颜色
+* 样式
+* 厚度
 
-## Format
+## 格式
 
-This macro exports all the information into the output text file in the following format
+此宏将所有信息导出到输出文本文件中，格式如下：
 
 ~~~
-Layer: Entities
-    Description: Layer with entities
-    Color: 0 128 255
-    Printable: True
-    Style: 0
-    Visible: True
-    Thickness: 5
+图层: 实体
+    描述: 包含实体的图层
+    颜色: 0 128 255
+    可打印: True
+    样式: 0
+    可见: True
+    厚度: 5
 
-Layer: Branding
-    Description: Layer for branding images
-    Color: 0 128 128
-    Printable: True
-    Style: 0
-    Visible: True
-    Thickness: 0
+图层: 品牌
+    描述: 用于品牌图像的图层
+    颜色: 0 128 128
+    可打印: True
+    样式: 0
+    可见: True
+    厚度: 0
 ~~~
 
-By default file is saved or loaded in th same folder as the original file with the prefix **_Layers.txt**
+默认情况下，文件将保存或加载到与原始文件相同的文件夹中，文件名前缀为**_Layers.txt**
 
 ## CAD+
 
-This macro is compatible with [Toolbar+](https://cadplus.xarial.com/toolbar/) and [Batch+](https://cadplus.xarial.com/batch/) tools so the buttons can be added to toolbar and assigned with shortcut for easier access or run in the batch mode.
+此宏与[Toolbar+](https://cadplus.xarial.com/toolbar/)和[Batch+](https://cadplus.xarial.com/batch/)工具兼容，因此可以将按钮添加到工具栏并分配快捷键以便更方便地访问或批量运行。
 
-In order to enable [macro arguments](https://cadplus.xarial.com/toolbar/configuration/arguments/) set the **ARGS** constant to true
+要启用[宏参数](https://cadplus.xarial.com/toolbar/configuration/arguments/)，请将**ARGS**常量设置为true
 
 ~~~ vb
 #Const ARGS = True
 ~~~
 
-Path the path to text file to import or export as a macro argument.
+将文本文件的路径作为宏参数导入或导出。
 
-## Export
+## 导出
 
 ~~~ vb
 #Const ARGS = False 'True to use arguments from Toolbar+ or Batch+ instead of the constant
 
-Const TOKEN_LAYER = "Layer: "
-Const TOKEN_DESCRIPTION = "Description: "
-Const TOKEN_COLOR = "Color: "
-Const TOKEN_PRINTABLE = "Printable: "
-Const TOKEN_STYLE = "Style: "
-Const TOKEN_VISIBLE = "Visible: "
-Const TOKEN_THICKNESS = "Thickness: "
+Const TOKEN_LAYER = "图层: "
+Const TOKEN_DESCRIPTION = "描述: "
+Const TOKEN_COLOR = "颜色: "
+Const TOKEN_PRINTABLE = "可打印: "
+Const TOKEN_STYLE = "样式: "
+Const TOKEN_VISIBLE = "可见: "
+Const TOKEN_THICKNESS = "厚度: "
 
 Dim swApp As SldWorks.SldWorks
 
@@ -99,14 +99,14 @@ Sub main()
         If filePath <> "" Then
             filePath = Left(filePath, InStrRev(filePath, ".") - 1) & "_Layers.txt"
         Else
-            Err.Raise vbError, "", "If output file path is not specified file must be saved"
+            Err.Raise vbError, "", "如果未指定输出文件路径，则必须保存文件"
         End If
     #End If
     
     If Not swDraw Is Nothing Then
         ExportLayers swDraw, filePath
     Else
-        Err.Raise vbError, "", "Open drawing"
+        Err.Raise vbError, "", "打开图纸"
     End If
     
 End Sub
@@ -156,18 +156,18 @@ End Sub
 
 
 
-## Import
+## 导入
 
 ~~~ vb
 #Const ARGS = False 'True to use arguments from Toolbar+ or Batch+ instead of the constant
 
-Const TOKEN_LAYER = "Layer: "
-Const TOKEN_DESCRIPTION = "Description: "
-Const TOKEN_COLOR = "Color: "
-Const TOKEN_PRINTABLE = "Printable: "
-Const TOKEN_STYLE = "Style: "
-Const TOKEN_VISIBLE = "Visible: "
-Const TOKEN_THICKNESS = "Thickness: "
+Const TOKEN_LAYER = "图层: "
+Const TOKEN_DESCRIPTION = "描述: "
+Const TOKEN_COLOR = "颜色: "
+Const TOKEN_PRINTABLE = "可打印: "
+Const TOKEN_STYLE = "样式: "
+Const TOKEN_VISIBLE = "可见: "
+Const TOKEN_THICKNESS = "厚度: "
 
 Dim swApp As SldWorks.SldWorks
 
@@ -199,14 +199,14 @@ Sub main()
         If filePath <> "" Then
             filePath = Left(filePath, InStrRev(filePath, ".") - 1) & "_Layers.txt"
         Else
-            Err.Raise vbError, "", "If output file path is not specified file must be saved"
+            Err.Raise vbError, "", "如果未指定输出文件路径，则必须保存文件"
         End If
     #End If
     
     If Not swDraw Is Nothing Then
         ImportLayers swDraw, filePath
     Else
-        Err.Raise vbError, "", "Open drawing"
+        Err.Raise vbError, "", "打开图纸"
     End If
     
 End Sub
@@ -243,13 +243,13 @@ Sub ImportLayers(draw As SldWorks.DrawingDoc, filePath As String)
                 End If
                 
                 If swCurrentLayer Is Nothing Then
-                    Err.Raise vbError, "", "Failed to access layer " & value
+                    Err.Raise vbError, "", "无法访问图层 " & value
                 End If
                 
             Else
                 
                 If swCurrentLayer Is Nothing Then
-                    Err.Raise vbError, "", "Current layer is not set"
+                    Err.Raise vbError, "", "未设置当前图层"
                 End If
                 
                 If IsToken(line, TOKEN_DESCRIPTION, value) Then
@@ -275,7 +275,7 @@ Sub ImportLayers(draw As SldWorks.DrawingDoc, filePath As String)
         file.Close
         
     Else
-        Err.Raise vbError, "", "File does not exist"
+        Err.Raise vbError, "", "文件不存在"
     End If
     
 End Sub
@@ -294,4 +294,3 @@ Function IsToken(txt As String, token As String, ByRef value As String) As Boole
     
 End Function
 ~~~
-
