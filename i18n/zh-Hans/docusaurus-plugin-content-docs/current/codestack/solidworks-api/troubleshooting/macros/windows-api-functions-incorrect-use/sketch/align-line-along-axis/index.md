@@ -1,26 +1,12 @@
----
-title: 使用SOLIDWORKS API将线与轴对齐
-caption: 将线与轴对齐
-description: 该示例演示了如何使用SOLIDWORKS API将活动草图中的所有草图线（添加草图关系）与所选选项之一（沿X、Y或Z轴）对齐。
-image: sw-sketch-line-relation.png
-labels: [示例, 水平, 关系, 草图, solidworks api, 垂直]
-redirect-from:
-  - /2018/03/solidworks-api-sketch-align-line-relations.html
----
+## 说明
 
-该示例演示了如何使用SOLIDWORKS API将活动草图中的所有草图线（添加草图关系）与所选选项对齐（沿X轴、Y轴或Z轴）：
-
-* 沿X轴（水平）
-* 沿Y轴（垂直）
-* 沿Z轴
+该示例演示了如何使用SOLIDWORKS API将活动草图中的所有草图线（添加草图关系）与所选选项之一（沿X、Y或Z轴）对齐。
 
 此示例适用于2D和3D草图。
 
-使用[SOLIDWORKS API接口ISketchRelationManager](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isketchrelationmanager.html)来管理草图实体的关系。
+## 代码
 
-![草图线的关系](sw-sketch-line-relation.png){ width=320 height=229 }
-
-~~~ vb
+```vb
 Enum AlignmentDir_e
     AlongX = 1
     AlongY = 2
@@ -114,5 +100,17 @@ Sub main()
     End If
     
 End Sub
+```
 
-~~~
+## 示例
+
+使用上述代码，您可以将活动草图中的所有草图线与所选选项之一（沿X、Y或Z轴）对齐。
+
+1. 打开SOLIDWORKS文档。
+2. 打开草图。
+3. 运行宏。
+4. 在弹出的对话框中，输入对齐类型：1 - 沿X轴，2 - 沿Y轴，3 - 沿Z轴。
+5. 单击“确定”。
+6. 所有草图线将与所选选项对齐。
+
+![草图线的关系](sw-sketch-line-relation.png){ width=320 height=229 }
