@@ -1,25 +1,26 @@
 ---
 layout: sw-tool
-title: Export SOLIDWORKS table to CSV using VBA macro
-caption: Export Table To CSV
-description: Macro exports selected table or specified tables (BOM, General Table, Revision etc.) into CSV format allowing to export with or without header preserving the special symbols like comma (,) and new line symbol using VBA macro
+title: 使用VBA宏将SOLIDWORKS表格导出为CSV
+caption: 导出表格为CSV
+description: 该宏使用SOLIDWORKS API将选定的表格（或指定类型的表格）导出为CSV（逗号分隔值）文件。此功能类似于内置的“另存为”选项，用于表格：
 image: export-table-csv.svg
 labels: [table,csv,export]
 group: Model
 ---
-This macro exports the selected tables (or tables by specified type) to the CSV (Comma Separated Values) file using SOLIDWORKS API. This functionality is similar to built-in 'Save As' option for table:
 
-![Save As option for tables](bom-save-as.png){ width=350 }
+该宏使用SOLIDWORKS API将选定的表格（或指定类型的表格）导出为CSV（逗号分隔值）文件。此功能类似于内置的“另存为”选项，用于表格：
 
-However macro preserves the special symbols like commas, quotes or new line symbols and properly escapes them according to the CSV specification:
+![表格的另存为选项](bom-save-as.png){ width=350 }
 
-![Bill Of Materials with special symbols (comma and new line)](bom-table.png){ width=350 }
+但是，该宏保留了逗号、引号或换行符等特殊符号，并根据CSV规范进行适当的转义：
 
-So the file can be later properly read using the CSV readers like MS Excel;
+![带有特殊符号（逗号和换行符）的BOM](bom-table.png){ width=350 }
 
-![CSV file imported to Excel](bom-table-csv-excel.png){ width=350 }
+因此，可以使用CSV读取器（如MS Excel）正确读取该文件；
 
-For the above example BOM table the macro will generate the following output:
+![导入到Excel的CSV文件](bom-table-csv-excel.png){ width=350 }
+
+对于上述BOM表格示例，该宏将生成以下输出：
 
 ~~~ csv
 ITEM NO.,PART NUMBER,Description,QTY.
@@ -31,56 +32,56 @@ Fixed",1
 5,E25-E16,"Blade extension, Plastic",1
 ~~~
 
-## Configuration
+## 配置
 
-Macro can be configured by modifying the value of the constants
+可以通过修改常量的值来配置宏
 
 ~~~ vb
-Const OUT_FILE_PATH_TEMPLATE As String = "<_FileName_>-<_TableName_>.csv" 'empty string to save in the model's folder
-Const INCLUDE_HEADER As Boolean = True 'True to include the table header, False to only include data
-Const TABLE_TYPE As Integer = swTableAnnotationType_e.swTableAnnotation_BillOfMaterials  '-1 to use selected table or table type as defined in swTableAnnotationType_e (e.g. swTableAnnotationType_e.swTableAnnotation_BillOfMaterials to export all BOM tables)
-Const ALL_SHEETS As Boolean = False 'False to export from active sheet only
+Const OUT_FILE_PATH_TEMPLATE As String = "<_FileName_>-<_TableName_>.csv" '将其设置为空字符串以保存在模型文件夹中
+Const INCLUDE_HEADER As Boolean = True 'True表示包含表头，False表示仅包含数据
+Const TABLE_TYPE As Integer = swTableAnnotationType_e.swTableAnnotation_BillOfMaterials  '-1表示使用所选表格或在swTableAnnotationType_e中定义的表格类型（例如swTableAnnotationType_e.swTableAnnotation_BillOfMaterials以导出所有BOM表格）
+Const ALL_SHEETS As Boolean = False 'False表示仅从活动工作表导出
 
-Const MERGE As Boolean = False 'True to merge all tables into a single file
+Const MERGE As Boolean = False 'True表示将所有表格合并到单个文件中
 ~~~
 
-*OUT_FILE_PATH_TEMPLATE* can be either relative path or an absolute path. If relative path is specified the file will be saved in the same directory as the source file
+*OUT_FILE_PATH_TEMPLATE*可以是相对路径或绝对路径。如果指定了相对路径，则文件将保存在与源文件相同的目录中
 
-The following placeholders are supported:
+支持以下占位符：
 
-* <\_FileName\_> - name of the source file
-* <\_TableName\_> - name of the table
-* <\_SheetName\_> - name of the sheet of the table (only applicable in the drawings)
+* <\_FileName\_> - 源文件的名称
+* <\_TableName\_> - 表格的名称
+* <\_SheetName\_> - 表格所在的工作表的名称（仅适用于绘图）
 
-If **MERGE** option is used all table data will be output into a single CSV file and each table will be separated by an empty row. If file name template is using table specific placeholder, first table will be used as the template.
+如果使用了**MERGE**选项，则所有表格数据将输出到单个CSV文件中，并且每个表格之间将用空行分隔。如果文件名模板使用了表格特定的占位符，则将使用第一个表格作为模板。
 
 ## CAD+
 
-This macro is compatible with [Toolbar+](https://cadplus.xarial.com/toolbar/) and [Batch+](https://cadplus.xarial.com/batch/) tools so the buttons can be added to toolbar and assigned with shortcut for easier access or run in the batch mode.
+该宏与[Toolbar+](https://cadplus.xarial.com/toolbar/)和[Batch+](https://cadplus.xarial.com/batch/)工具兼容，因此可以将按钮添加到工具栏并分配快捷键以便更轻松地访问或批处理运行。
 
-In order to enable [macro arguments](https://cadplus.xarial.com/toolbar/configuration/arguments/) set the **ARGS** constant to true
+要启用[宏参数](https://cadplus.xarial.com/toolbar/configuration/arguments/)，请将**ARGS**常量设置为true
 
 ~~~ vb
 #Const ARGS = True
 ~~~
 
-In this case it is not required to make copies of the macro to set individual [options to hide and show](#configuration).
+在这种情况下，不需要复制宏以设置单独的[隐藏和显示选项](#configuration)。
 
-Instead use the **-bom**, **-general**, **-revision**, **-cutlist** as the first argument to specify the type of the table to export and optional output file template as the second parameter
+而是使用**-bom**，**-general**，**-revision**，**-cutlist**作为第一个参数来指定要导出的表格类型，并将可选的输出文件模板作为第二个参数
 
-For example, the below parameter will export BOM table into the CSV format into the **Tables** folder in D drive with the name of source table.
+例如，以下参数将将BOM表格导出为CSV格式，并将其保存在D驱动器上的**Tables**文件夹中，文件名为源表格的名称。
 
 ~~~
 > -bom "D:\Tables\<_TableName_>.csv"
 ~~~
 
 ~~~ vb
-#Const ARGS = False 'True to use arguments from Toolbar+ or Batch+ instead of the constant
+#Const ARGS = False '将其设置为True以使用Toolbar+或Batch+中的参数，而不是使用常量
 
-Const OUT_FILE_PATH_TEMPLATE As String = "<_FileName_>-<_TableName_>.csv" 'ouput file path template
+Const OUT_FILE_PATH_TEMPLATE As String = "<_FileName_>-<_TableName_>.csv" '输出文件路径模板
 Const INCLUDE_HEADER As Boolean = True
-Const TABLE_TYPE As Integer = -1  '-1 to use selected table or table type as defined in swTableAnnotationType_e
-Const ALL_SHEETS As Boolean = True 'True to export from all sheets (if TABLE_TYPE is not -1), False to export from active sheet only
+Const TABLE_TYPE As Integer = -1  '-1表示使用所选表格或在swTableAnnotationType_e中定义的表格类型
+Const ALL_SHEETS As Boolean = True 'True表示从所有工作表导出（如果TABLE_TYPE不是-1），False表示仅从活动工作表导出
 
 Const MERGE As Boolean = False
 
@@ -516,59 +517,62 @@ End Function
 
 Function GetSheetFromTableAnnotation(draw As SldWorks.DrawingDoc, tableAnn As SldWorks.TableAnnotation) As SldWorks.Sheet
 
-    Dim vSheets As Variant
-    
-    vSheets = draw.GetViews()
-    
-    Dim i As Integer
-    
-    For i = 0 To UBound(vSheets)
-        
-        Dim vViews As Variant
-        vViews = vSheets(i)
-        
-        Dim swSheetView As SldWorks.View
-        Set swSheetView = vViews(0)
-        
-        Dim vTableAnns As Variant
-        vTableAnns = swSheetView.GetTableAnnotations
-        
-        If Not IsEmpty(vTableAnns) Then
-            
-            Dim j As Integer
-            
-            For j = 0 To UBound(vTableAnns)
-                
-                Dim swTableAnn As SldWorks.TableAnnotation
-                Set swTableAnn = vTableAnns(j)
-                
-                If swTableAnn Is tableAnn Then
-                    
-                    Dim swSheet As SldWorks.Sheet
-                    Set swSheet = draw.Sheet(swSheetView.GetName2())
-                    Set GetSheetFromTableAnnotation = swSheet
-                    Exit Function
-                    
-                End If
-                
-            Next
-            
-        End If
-        
-    Next
-    
-    Err.Raise vbError, "", "Table does not belong to sheet"
 
-End Function
 
+```vba
+Dim vSheets As Variant
+
+vSheets = draw.GetViews()
+
+Dim i As Integer
+
+For i = 0 To UBound(vSheets)
+    
+    Dim vViews As Variant
+    vViews = vSheets(i)
+    
+    Dim swSheetView As SldWorks.View
+    Set swSheetView = vViews(0)
+    
+    Dim vTableAnns As Variant
+    vTableAnns = swSheetView.GetTableAnnotations
+    
+    If Not IsEmpty(vTableAnns) Then
+        
+        Dim j As Integer
+        
+        For j = 0 To UBound(vTableAnns)
+            
+            Dim swTableAnn As SldWorks.TableAnnotation
+            Set swTableAnn = vTableAnns(j)
+            
+            If swTableAnn Is tableAnn Then
+                
+                Dim swSheet As SldWorks.Sheet
+                Set swSheet = draw.Sheet(swSheetView.GetName2())
+                Set GetSheetFromTableAnnotation = swSheet
+                Exit Function
+                
+            End If
+            
+        Next
+        
+    End If
+    
+Next
+
+Err.Raise vbError, "", "Table does not belong to sheet"
+```
+
+```vba
 Function HasSpecialSymbols(cell As String) As Boolean
     HasSpecialSymbols = InStr(cell, ",") > 0 Or InStr(cell, vbLf) > 0 Or InStr(cell, vbNewLine) > 0 Or InStr(cell, """") > 0
 End Function
+```
 
+```vba
 Function ReplaceSpecialSymbols(cell As String) As String
     cell = Replace(cell, """", """""")
     ReplaceSpecialSymbols = cell
 End Function
-~~~
-
-
+```
