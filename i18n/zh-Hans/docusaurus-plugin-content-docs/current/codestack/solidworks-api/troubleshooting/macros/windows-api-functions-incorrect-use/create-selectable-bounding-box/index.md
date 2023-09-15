@@ -1,23 +1,23 @@
 ---
 layout: sw-tool
-title: Create selectable 3D bounding box sketch using SOLIDWORKS API
-caption: Create Selectable Bounding Box
-description: VBA macro which creates 3D bounding box sketch based on the SOLIDWORKS bounding box with an ability to select sketch segments
+title: 使用SOLIDWORKS API创建可选择的3D边界框草图
+caption: 创建可选择的边界框
+description: 使用VBA宏基于SOLIDWORKS边界框创建3D边界框草图，并能够选择草图线段
 image: bounding-box.svg
-labels: [bounding box]
-group: Geometry
+labels: [边界框]
+group: 几何
 ---
-![Bonding box sketch](bounding-box-sketch.png){ width=450 }
+![边界框草图](bounding-box-sketch.png){ width=450 }
 
-SOLIDWORKS enables the functionality to insert 3D bounding box into the part document. However the edges (segments) of this bonding box cannot be selected and used for the modelling purposes.
+SOLIDWORKS可以在零件文档中插入3D边界框。然而，这个边界框的边缘（线段）不能被选择和用于建模。
 
-This VBA macro creates a bounding box sketch based on SOLIDWORKS 3D bounding box. All segments from the sketch can be selected and used for reference or geometry creation.
+这个VBA宏基于SOLIDWORKS 3D边界框创建一个边界框草图。草图中的所有线段都可以被选择并用于参考或几何创建。
 
-## Notes
+## 注意事项
 
-* Macro will use existing 3D bonding box or create new one if not exists
-* Generated bounding box is automatically updated when original bounding box changes (after the rebuild)
-    * It is required for the original bounding box to be visible to update the derived bounding box
+* 宏将使用现有的3D边界框，如果不存在则创建新的边界框
+* 生成的边界框在原始边界框更改后（重建后）会自动更新
+    * 原始边界框必须可见以更新派生边界框
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -48,11 +48,11 @@ Sub main()
             ConvertSegmentsIntoSketch swModel, vSegs
             
         Else
-            MsgBox "Failed to get bounding box feature"
+            MsgBox "获取边界框特征失败"
         End If
     
     Else
-        MsgBox "Please open document"
+        MsgBox "请打开文档"
     End If
     
 End Sub
@@ -101,7 +101,7 @@ Sub ConvertSegmentsIntoSketch(model As SldWorks.ModelDoc2, segs As Variant)
         model.SketchManager.Insert3DSketch True
     Else
         If False = model.SketchManager.ActiveSketch.Is3D() Then
-            Err.Raise vbError, "", "Only 3D sketch is supported"
+            Err.Raise vbError, "", "仅支持3D草图"
         End If
     End If
     
@@ -121,5 +121,3 @@ Sub ConvertSegmentsIntoSketch(model As SldWorks.ModelDoc2, segs As Variant)
     
 End Sub
 ~~~
-
-
