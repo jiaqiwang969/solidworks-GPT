@@ -1,15 +1,15 @@
 ---
-title: Macro to create spline CSV file using SOLIDWORKS API
-caption: Create Spline From CSV
-description: VBA macro to create spline in the active sketch from the points loaded from the CSV file using SOLIDWORKS API
+title: 使用SOLIDWORKS API创建样条曲线CSV文件的宏
+caption: 从CSV文件创建样条曲线
+description: 使用SOLIDWORKS API从加载的CSV文件中的点数据创建活动草图中的样条曲线的VBA宏
 image: spline-pmpage.png
 labels: [csv, sketch, spline]
 ---
-![Spline in the sketch with Property Manager Page](spline-pmpage.png)
+![在具有属性管理器页面的草图中的样条曲线](spline-pmpage.png)
 
-This VBA macro demonstrates how to create spline in the active sketch by loading points data from the CSV file. CSV file should contain 3 columns for the coordinates of spline nodes in meters. [Download sample spline data](spline-data.csv)
+这个VBA宏演示了如何通过从CSV文件加载点数据来在活动草图中创建样条曲线。CSV文件应该包含3列，用于表示样条节点的坐标（以米为单位）。[下载示例样条数据](spline-data.csv)
 
-Specify full path to this file in the **CSV_FILE_PATH** constant
+在**CSV_FILE_PATH**常量中指定该文件的完整路径。
 
 ~~~ vb
 Const CSV_FILE_PATH As String = "D:\spline-data.csv"
@@ -34,7 +34,7 @@ Sub main()
         DrawSpline swSkMgr, vPts
         
     Else
-        Err.Raise vbError, "", "Please activate sketch"
+        Err.Raise vbError, "", "请激活草图"
     End If
     
 End Sub
@@ -80,7 +80,7 @@ Sub DrawSpline(skMgr As SldWorks.SketchManager, vPoints As Variant)
     Set swSkSegment = skMgr.CreateSpline2(dSplinePts, False)
     
     If swSkSegment Is Nothing Then
-        Err.Raise vbError, "", "Failed to create spline"
+        Err.Raise vbError, "", "无法创建样条曲线"
     End If
     
     skMgr.AddToDB = False
@@ -145,5 +145,3 @@ Function ReadCsvFile(filePath As String, firstRowHeader As Boolean) As Variant
     
 End Function
 ~~~
-
-
