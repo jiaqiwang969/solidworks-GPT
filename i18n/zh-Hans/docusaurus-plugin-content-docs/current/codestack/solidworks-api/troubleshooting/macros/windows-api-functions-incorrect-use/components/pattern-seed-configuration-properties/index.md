@@ -1,20 +1,20 @@
 ---
-title: SOLIDWORKS macro to change configuration specific properties for component in pattern
-caption: Change Configuration Specific Properties For Component In Pattern
-description: Example demonstrates how to change the configuration specific properties (use same configuration as pattern seed component or use named configuration) of the component in the pattern using SOLIDWORKS API
+title: SOLIDWORKS宏以更改模式中组件的配置特定属性
+caption: 更改模式中组件的配置特定属性
+description: 示例演示了如何使用SOLIDWORKS API更改模式中组件的配置特定属性（使用与模式种子组件相同的配置或使用命名配置）
 image: component-config-specific-properties.png
 labels: [assembly, spattern, configuration, seed]
 ---
-![Configuration specific properties for the seed component of the sketch driven pattern](component-config-specific-properties.png)
+![模式驱动模式的种子组件的配置特定属性](component-config-specific-properties.png)
 
-This macro example demonstrates how to change the following configuration specific properties using SOLIDWORKS API.
+此宏示例演示了如何使用SOLIDWORKS API更改以下配置特定属性。
 
-* Use same configuration as pattern seed component
-* Use named configuration
+* 使用与模式种子组件相同的配置
+* 使用命名配置
 
-[IAssemblyDoc::CompConfigProperties5](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iassemblydoc~compconfigproperties5.html) SOLIDWORKS API is used to modify the multiple properties at a time for the selected component.
+使用[IAssemblyDoc::CompConfigProperties5](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iassemblydoc~compconfigproperties5.html) SOLIDWORKS API可以一次修改所选组件的多个属性。
 
-In the instance component of the pattern (e.g. Sketch Driven Pattern)
+在模式的实例组件中（例如，驱动模式）
 
 ~~~ vb
 Enum SeedCompConfigOpts_e
@@ -37,16 +37,16 @@ Sub main()
     
     If Not swComp Is Nothing Then
         
-        'Set use named to 'Config1'
+        '将使用命名配置设置为“Config1”
         SetConfigSpecProps swComp, SeedCompConfigOpts_e.UseNamedConfiguration, "Config1"
         
         Stop
         
-        'Set use same configuration as pattern seed component
+        '将使用与模式种子组件相同的配置
         SetConfigSpecProps swComp, SeedCompConfigOpts_e.UseSameConfigAsPatternSeed
     
     Else
-        MsgBox "Please select component"
+        MsgBox "请选择组件"
     End If
     
 End Sub
@@ -67,7 +67,7 @@ Sub SetConfigSpecProps(comp As SldWorks.Component2, opts As SeedCompConfigOpts_e
     solveOpts = comp.Solving
     
     If solveOpts = -1 Then
-        'Note: for part components this will be -1 but the CompConfigProperties5 failse if -1 is passed
+        '注意：对于零件组件，这将是-1，但如果传递-1，CompConfigProperties5将失败
         solveOpts = swComponentSolvingOption_e.swComponentRigidSolving
     End If
     
@@ -87,5 +87,3 @@ Sub SetConfigSpecProps(comp As SldWorks.Component2, opts As SeedCompConfigOpts_e
     
 End Sub
 ~~~
-
-
