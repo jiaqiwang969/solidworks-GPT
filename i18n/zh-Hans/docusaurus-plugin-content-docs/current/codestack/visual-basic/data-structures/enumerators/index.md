@@ -1,20 +1,20 @@
 ---
-title: Visual Basic (VBA) 中的枚举
-caption: 枚举
-description: Visual Basic 中枚举数据类型（预定义长整型常量的集合）的介绍
+title: Enumerations in Visual Basic (VBA)
+caption: Enumerations
+description: An introduction to enumeration data types (collections of predefined Long constants) in Visual Basic
 image: enum-icon-intellisense.png
 ---
-![IntelliSense 中的枚举类型](enum-icon-intellisense.png){ width=350 }
+![Enumeration types in IntelliSense](enum-icon-intellisense.png){ width=350 }
 
-枚举是一组以 [Long](/docs/codestack/visual-basic/variables/standard-types#long) 类型命名的常量。
+An enumeration is a collection of named constants of type [Long](/docs/codestack/visual-basic/variables/standard-types#long).
 
-与常量相比，枚举的主要优势是能够将常量分组到单个数据类型下，并允许自动递增值。
+The main advantage of enumerations over constants is the ability to group constants under a single data type and allow for automatic incrementing values.
 
-枚举通常用于声明不同的选项或操作（例如添加、删除、移动、复制等）。
+Enumerations are commonly used to declare different options or actions (such as add, delete, move, copy, etc.).
 
-## 声明和赋值枚举
+## Declaring and Assigning Enumerations
 
-可以使用 **Enum - End Enum** 代码块声明枚举，每个常量在新行上声明。
+Enumerations can be declared using the **Enum - End Enum** code block, with each constant declared on a new line.
 
 ~~~ vb
 Enum SampleEnum_e
@@ -24,23 +24,23 @@ Enum SampleEnum_e
 End Enum
 ~~~
 
-常量的值可以显式或隐式（自动）赋值。第一个自动值为 0，并且每个下一个项目都会递增 1。
+The values of the constants can be assigned explicitly or implicitly (automatically). The first automatic value is 0, and each subsequent item increments by 1.
 
-枚举是值类型，可以赋值给变量。可以直接使用枚举值或通过枚举名称使用枚举值。
+Enumerations are value types and can be assigned to variables. The enumeration value can be used directly or by using the enumeration name.
 
 ~~~ vb
 Dim enumVal As SampleEnum_e
-enumVal = SampleEnum_e.Val1 '使用枚举名称
+enumVal = SampleEnum_e.Val1 'using the enumeration name
 enumVal = Val1
 ~~~
 
->建议显式使用枚举的名称。这样可以使代码更易读，并解决如果另一个枚举或变量具有相同名称时可能出现的歧义。
+>It is recommended to use the enumeration name explicitly. This makes the code more readable and resolves any ambiguity that may arise if another enumeration or variable has the same name.
 
 ~~~ vb
 Enum MyEnum_e
-    Val1 '自动分配值 0
-    Val2 = 5 '显式分配值 5
-    Val3 '下一个自动分配的数字 6
+    Val1 'automatically assigned value 0
+    Val2 = 5 'explicitly assigned value 5
+    Val3 'next automatically assigned number 6
 End Enum
 
 Enum MyIncrementEnum_e
@@ -57,7 +57,7 @@ Sub main()
     '0 3 7
     Debug.Print MyIncrementEnum_e.Val1 & " " & MyIncrementEnum_e.Val2 & " " & MyIncrementEnum_e.Val3
     
-    '将值分配给变量
+    'assigning values to a variable
     Dim val As MyEnum_e
     val = MyEnum_e.Val2
     
@@ -66,13 +66,13 @@ End Sub
 
 
 
-## 遍历枚举值
+## Iterating through Enumerated Values
 
-由于枚举是长整型常量，因此可以通过知道第一个和最后一个常量来遍历所有项。
+Since enumerations are long integer constants, all items can be iterated through by knowing the first and last constant.
 
-Visual Basic 允许声明特殊的枚举值，这些值在 IntelliSense 中不可见，但仍然是有效的值。为了使项目不可见，需要在名称前使用下划线 _ 符号。例如，在枚举的开头和结尾添加 [_First] 和 [_Last] 元素将允许定义枚举值的边界以进行遍历。
+Visual Basic allows for the declaration of special enumeration values that are not visible in IntelliSense but are still valid values. To make an item invisible, the underscore _ symbol needs to be used before the name. For example, adding [_First] and [_Last] elements at the beginning and end of an enumeration allows for defining the boundaries of the enumeration values for iteration.
 
-![IntelliSense 中仅显示可见的枚举值](enum-invisible-elements.png){ width=250 }
+![Only visible enumeration values shown in IntelliSense](enum-invisible-elements.png){ width=250 }
 
 ~~~ vb
 Enum MyFirstLastEnum_e
@@ -88,7 +88,7 @@ Sub TraversingEnumValues()
     Debug.Print MyFirstLastEnum_e.[_First] '0
     Debug.Print MyFirstLastEnum_e.[_Last] '4
         
-    '遍历所有枚举值
+    'iterating through all enumeration values
     '1 2 3
     For enumVal = MyFirstLastEnum_e.[_First] + 1 To MyFirstLastEnum_e.[_Last] - 1
         Debug.Print enumVal
@@ -99,11 +99,11 @@ End Sub
 
 
 
-## 标志枚举（多个选项）
+## Flag Enumerations (Multiple Options)
 
-枚举对于使用位掩码保存多个选项非常有用。
+Enumerations are useful for saving multiple options using bit masks.
 
-这种技术允许使用加号 + 符号将多个选项组合到一个变量中，可以使用 **And** 位运算符来确定是否设置了特定选项。
+This technique allows for combining multiple options into a single variable using the plus + symbol, and the **And** bitwise operator can be used to determine if a specific option is set.
 
 ~~~ vb
 Enum MyOptionEnum_e
