@@ -1,17 +1,17 @@
 ---
 layout: sw-tool
-title: Upgrade cosmetic threads in active SOLIDWORKS part or assembly using SOLIDWORKS API
-caption: Upgrade Cosmetic Threads
-description: VBA macro upgrades cosmetic threads to a new (SOLIDWORKS 2020) version which allows to improve performance of the document
+title: 使用SOLIDWORKS API升级活动SOLIDWORKS零件或装配中的美化螺纹
+caption: 升级美化螺纹
+description: VBA宏升级美化螺纹为新版本（SOLIDWORKS 2020），以提高文档性能
 image: upgrade-cosmetic-thread.png
-labels: [api, upgrade, performance, cosmetic thread]
-group: Performance
+labels: [api, 升级, 性能, 美化螺纹]
+group: 性能
 ---
-![Upgrade cosmetic threads command](upgrade-cosmetic-thread.png){ width=500 }
+![升级美化螺纹命令](upgrade-cosmetic-thread.png){ width=500 }
 
-This macro invokes the *Upgrade cosmetic thread features* command in SOLIDWORKS part and assembly which may improve the performance of the document.
+此宏在SOLIDWORKS零件和装配中调用*升级美化螺纹特征*命令，可以提高文档的性能。
 
-This macro will be beneficial to use along with task automation software such as [SOLIDWORKS Task Scheduler](https://help.solidworks.com/2019/English/SolidWorks/sldworks/c_SOLIDWORKS_Task_Scheduler_Overview.htm) or [Batch+](https://cadplus.xarial.com/batch/).
+此宏可与[SOLIDWORKS任务计划程序](https://help.solidworks.com/2019/English/SolidWorks/sldworks/c_SOLIDWORKS_Task_Scheduler_Overview.htm)或[Batch+](https://cadplus.xarial.com/batch/)等任务自动化软件一起使用。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -34,11 +34,11 @@ try:
         swApp.SetUserPreferenceToggle swUserPreferenceToggle_e.swEnableAllowCosmeticThreadsUpgrade, True
         
         If False = swModel.Extension.UpgradeLegacyCThreads() Then
-            Debug.Print "Thread is not upgraded"
+            Debug.Print "螺纹未升级"
         End If
             
     Else
-        Err.Raise vbError, "", "Please open document"
+        Err.Raise vbError, "", "请打开文档"
     End If
     
     GoTo finally
@@ -51,5 +51,3 @@ finally:
 
 End Sub
 ~~~
-
-
