@@ -1,6 +1,6 @@
 ## 示例
 
-此示例演示了如何使用 SOLIDWORKS API 创建临时几何体来填充所选特征（例如切割拉伸）中的孔洞。
+此示例演示了如何使用SOLIDWORKS API创建临时几何体来填充所选特征（例如切割拉伸）中的孔洞。
 
 ``` vb
 Dim swApp As SldWorks.SldWorks
@@ -52,7 +52,7 @@ End Sub
 
 ## 说明
 
-此示例使用 `IModeler::CreateBodyFromFaces2` API 来创建临时几何体，并使用该几何体填充所选特征中的孔洞。
+此示例使用`IModeler::CreateBodyFromFaces2` API来创建临时几何体，并使用该几何体填充所选特征中的孔洞。
 
 宏停止执行并显示临时几何体。继续执行以删除临时几何体。
 
