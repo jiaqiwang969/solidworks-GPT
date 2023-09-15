@@ -22,7 +22,7 @@ sidebar_position: 1
 
 在开发C#应用程序时，需要创建COM可见接口并在插件中实现它。
 
-~~~ cs
+```cs
 [ComVisible(true)]
 public interface IMyAddInApi
 {
@@ -38,7 +38,7 @@ public class MyAddIn : ISwAddIn
         //Implement
     }
 }
-~~~
+```
 
 如果在Visual Studio中选择了“注册COM互操作”选项，则会自动将所有COM可见的函数、类和接口添加到tlb文件中。
 
@@ -67,7 +67,7 @@ public class MyAddIn : ISwAddIn
 
 ### C#插件源代码
 
-~~~ cs
+```cs
 using CodeStack.SwEx.AddIn;
 using CodeStack.SwEx.AddIn.Attributes;
 using CodeStack.SwEx.AddIn.Enums;
@@ -164,7 +164,7 @@ namespace CodeStack.Examples.CreateGeometryAddIn
     }
 }
 
-~~~
+```
 
 
 
@@ -174,25 +174,25 @@ namespace CodeStack.Examples.CreateGeometryAddIn
 
 下面的代码片段通过其GUID从插件中检索指针。这是通过在插件类上使用[Guid](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.guidattribute)属性分配的值：
 
-~~~ vb
+```vb
 Set swGeomAddIn = swApp.GetAddInObject("{799A191E-A4CF-4622-9E77-EA1A9EF07621}")
-~~~
+```
 
 或者，可以通过其ProgId检索插件。如果未显式指定ProgId，则它等于*Namespace*.*ClassName*
 
-~~~ vb
+```vb
 Set swGeomAddIn = swApp.GetAddInObject("CodeStack.Examples.CreateGeometryAddIn.AddIn")
-~~~
+```
 
 建议通过[ProgId](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.progidattribute)属性显式指定ProgId。在这种情况下，可以在重构时更改类和命名空间而保持ProgId不变。
 
-~~~ cs
+```cs
 [ComVisible(true), Guid("799A191E-A4CF-4622-9E77-EA1A9EF07621")]
 [ProgId("CodeStack.MyAddIn")]
 public class AddIn : ISwAddIn
 {
 }
-~~~
+```
 
 ### 从宏调用插件API
 
@@ -207,7 +207,7 @@ public class AddIn : ISwAddIn
 
 #### VBA宏调用插件函数
 
-~~~ vb
+```vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -223,7 +223,7 @@ Sub main()
     swFeat.Name = "MyCylinder"
     
 End Sub
-~~~
+```
 
 
 
@@ -241,7 +241,7 @@ End Sub
 
 #### VB.NET独立应用程序
 
-~~~ vb
+```vb
 Imports CodeStack.Examples.CreateGeometryAddIn
 Imports SolidWorks.Interop.sldworks
 
@@ -258,13 +258,13 @@ Module Module
 
 End Module
 
-~~~
+```
 
 
 
 #### C#独立应用程序
 
-~~~ cs
+```cs
 using CodeStack.Examples.CreateGeometryAddIn;
 using SolidWorks.Interop.sldworks;
 using System;
@@ -283,7 +283,7 @@ namespace ConsoleAddIn
     }
 }
 
-~~~
+```
 
 
 
