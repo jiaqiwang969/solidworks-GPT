@@ -1,34 +1,34 @@
 ---
 layout: sw-tool
-title: Link Cut-List Custom Properties To File With SOLIDWORKS Macro Feature API
-caption: Link Cut-List Custom Properties To File Custom Properties
-description: Macro feature to link specified custom properties from weldment cut-lists to SOLIDWORKS file custom properties
+title: 使用SOLIDWORKS宏特征API将切割清单自定义属性链接到文件
+caption: 将切割清单自定义属性链接到文件自定义属性
+description: 使用SOLIDWORKS API将指定的切割清单自定义属性动态链接到文件通用自定义属性的VBA宏特征
 image: link-cut-list-properties.svg
-labels: [macro feature,cut-list,link properties]
-group: Custom Properties
+labels: [宏特征,切割清单,链接属性]
+group: 自定义属性
 ---
-![Linked file custom properties](linked-custom-properties.png){ width=450 }
+![链接的文件自定义属性](linked-custom-properties.png){ width=450 }
 
-This VBA macro inserts the macro feature using SOLIDWORKS API into the part file which allows to dynamically link specified cut-list custom properties to the file generic custom properties.
+这个VBA宏使用SOLIDWORKS API将宏特征插入到零件文件中，允许将指定的切割清单自定义属性动态链接到文件的通用自定义属性。
 
-![Cut-List custom properties](cut-list-properties.png){ width=250 }
+![切割清单自定义属性](cut-list-properties.png){ width=250 }
 
-Macro feature rebuilds automatically when the parent weldment feature (e.g. structural member feature) is changed. Regeneration method is handling the post update notification which allows to read the up-to-date values of cut-list custom properties.
+当父级焊接特征（例如结构成员特征）发生更改时，宏特征会自动重建。再生方法处理后更新通知，允许读取切割清单自定义属性的最新值。
 
-> Reading the custom properties directly from the swmRebuild function will not return the up-to-date values as at the moment of the regeneration all the properties are not evaluated yet.
+> 直接从swmRebuild函数中读取自定义属性将不会返回最新值，因为在再生时，尚未评估所有属性。
 
-Macro feature is inserted into the feature tree and can be suppressed or removed.
+宏特征插入到特征树中，可以被抑制或删除。
 
-There are several benefits of this approach comparing to linking the properties directly with the expression (e.g. `"LENGTH@@@Al I BEAM STD 4x3.28<1>@Part1.SLDPRT"`)
+与直接使用表达式链接属性（例如`"LENGTH@@@Al I BEAM STD 4x3.28<1>@Part1.SLDPRT"`）相比，这种方法有几个优点：
 
-* Link is not name dependent, i.e. properties will remain linked even if cut-list renamed (for example when structural member profile is changed)
-* Macro will work for older sheet metal part architecutre. The linking with an expression will not work for sheet metal parts build in older versions of SOLIDWORKS
+* 链接不依赖于名称，即使切割清单重命名（例如当结构成员剖面发生更改时），属性仍然保持链接
+* 宏将适用于旧版的钣金零件结构。使用表达式链接对于在旧版本的SOLIDWORKS中构建的钣金零件无效
 
-![Macro feature in the feature manager tree](cut-list-link-macro-feature.png){ width=250 }
+![特征管理器树中的宏特征](cut-list-link-macro-feature.png){ width=250 }
 
-## Instructions
+## 指示
 
-* Create new macro and copy the code below
+* 创建新的宏并复制下面的代码
 
 ~~~ vb
 Const BASE_NAME As String = "CutListPropertiesLink"
@@ -222,7 +222,7 @@ End Function
 
 
 
-* Add new class module to the macro and name it *PostRegenerateListener*. Place the code below into the class module
+* 添加新的类模块到宏中，并将其命名为*PostRegenerateListener*。将下面的代码放入类模块中
 
 ~~~ vb
 Dim WithEvents swApp As SldWorks.SldWorks
@@ -278,7 +278,7 @@ End Sub
 
 
 
-* Configure the properties which needs to be linked in the *Class_Initialize* function in *PostRegenerateListener*
+* 在*PostRegenerateListener*的*Class_Initialize*函数中配置需要链接的属性
 
 ~~~ vb
 Private Sub Class_Initialize()
@@ -286,4 +286,4 @@ Private Sub Class_Initialize()
 End Sub
 ~~~
 
-* Select the weldment feature (e.g. structural member) and run the macro. Macro feature is inserted and embedded into the model. You can close and reopen model and SOLIDWORKS session - feature will automatically rebuild. Model can be shared with other users and the behavior will be preserved.
+* 选择焊接特征（例如结构成员）并运行宏。宏特征被插入并嵌入到模型中。您可以关闭和重新打开模型和SOLIDWORKS会话-特征将自动重建。模型可以与其他用户共享，行为将被保留。
