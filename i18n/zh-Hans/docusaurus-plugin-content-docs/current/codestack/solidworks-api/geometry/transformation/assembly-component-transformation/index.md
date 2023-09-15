@@ -1,6 +1,6 @@
 ---
-title: SOLIDWORKS API中的装配组件变换用法
-caption: 装配中的组件变换
+title: 装配中的组件变换
+caption: SOLIDWORKS API中的装配组件变换用法
 description: 本示例说明了装配中组件的旋转和平移变换
 image: comp-translation.png
 labels: [acos, 角度, 组件, 示例, 方向, 点, 位置, 旋转, solidworks api, 变换, 平移, 向量]
@@ -17,7 +17,7 @@ SOLIDWORKS组件是另一个父装配中模型（零件或装配）的实例。�
 
 ![组件平移变换](comp-translation.png){ width=640 }
 
-~~~ vb
+```vb
 Dim swApp As SldWorks.SldWorks
 Dim swMathUtils As SldWorks.MathUtility
 Dim swModel As SldWorks.ModelDoc2
@@ -55,7 +55,7 @@ Sub main()
     Debug.Print "沿X轴: " & vCompOriginPt(0) * 1000 & "mm; " & "沿Y轴: " & vCompOriginPt(1) * 1000 & "mm; " & "沿Z轴: " & vCompOriginPt(2) * 1000 & "mm"
     
 End Sub
-~~~
+```
 
 
 
@@ -69,7 +69,7 @@ End Sub
 
 ![组件旋转变换](comp-rotation.png){ width=640 }
 
-~~~ vb
+```vb
 Const PI As Double = 3.14159265359
 
 Dim swApp As SldWorks.SldWorks
@@ -127,7 +127,7 @@ Function ACos(val As Double) As Double
     End If
     
 End Function
-~~~
+```
 
 
 
@@ -156,7 +156,7 @@ End Function
 * 宏将在几个点停止。阅读指示状态的注释
 * 在最后一步中，浮动组件的变换被配置A中的变换覆盖，由约束驱动。
 
-~~~ vb
+```vb
 #If VBA7 Then
      Private Declare PtrSafe Function SendMessage Lib "User32" Alias "SendMessageA" (ByVal hWnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
 #Else
@@ -232,7 +232,7 @@ Sub FixComponentInThisConfiguration(comp As SldWorks.Component2)
     End If
     
 End Sub
-~~~
+```
 
 
 
@@ -241,14 +241,14 @@ End Sub
 * 取消以下行的注释
 * 关闭装配时不保存并重新打开
 
-~~~ vb
+```vb
 'FixComponentInThisConfiguration swComp
-~~~
+```
 
 改为
 
-~~~ vb
+```vb
 FixComponentInThisConfiguration swComp
-~~~
+```
 
 * 再次运行宏。现在变换已保留
