@@ -1,19 +1,19 @@
 ---
 layout: sw-tool
-title: Macro to close all SOLIDWORKS documents except active
-caption: Close All Documents Except Active
-description: Closes all opened documents except of an active one using SOLIDWORKS API
+title: 关闭除活动文档外的所有SOLIDWORKS文档
+caption: 关闭除活动文档外的所有文档
+description: 使用SOLIDWORKS API关闭除活动文档外的所有已打开文档
 image: close-all-but-active.svg
-labels: [close, window]
-group: Frame
+labels: [关闭, 窗口]
+group: 框架
 ---
-![Documents opened in SOLIDWORKS](opened-documents.png){ width=250 }
+![在SOLIDWORKS中打开的文档](opened-documents.png){ width=250 }
 
-This macro utilizes SOLIDWORKS API and closes all opened documents except of an active one.
+此宏利用SOLIDWORKS API关闭除活动文档外的所有已打开文档。
 
-If document is dirty (i.e. has any unsaved changes) the macro will prompt user to specify the action (save, do not save or cancel) for the closing documents. Otherwise the document will be closed silently.
+如果文档有未保存的更改（即脏文档），宏将提示用户为要关闭的文档指定操作（保存、不保存或取消）。否则，文档将被静默关闭。
 
-Watch [video demonstration](https://youtu.be/9uZCecGg25I?t=166)
+观看[演示视频](https://youtu.be/9uZCecGg25I?t=166)
 
 ~~~ vb
 #If VBA7 Then
@@ -53,7 +53,7 @@ Sub main()
             
             If Not swRefDoc Is swModel Then
                 If swRefDoc.GetSaveFlag() Then
-                    'display the close confirmation dialog for unsaved files
+                    '显示未保存文件的关闭确认对话框
                     swApp.ActivateDoc3 swRefDoc.GetTitle, False, swRebuildOnActivation_e.swDontRebuildActiveDoc, 0
                     Const WM_COMMAND As Long = &H111
                     Const CMD_FileClose As Long = 57602
@@ -71,5 +71,3 @@ Sub main()
     
 End Sub
 ~~~
-
-
