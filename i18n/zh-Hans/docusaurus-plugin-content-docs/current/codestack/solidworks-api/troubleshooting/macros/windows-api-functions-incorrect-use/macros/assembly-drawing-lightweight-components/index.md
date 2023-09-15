@@ -1,29 +1,29 @@
 ---
 layout: sw-macro-fix
-title: Fix SOLIDWORKS macro issues with lightweight components in assembly or drawing
-caption: Lightweight Components In Assembly Or Drawing
-description: Fixing the Run-time Error '91' - Object variable or With block variable not set when macro is working with the components in the assembly
+title: 修复在装配或绘图中使用轻量级组件的SOLIDWORKS宏问题
+caption: 装配或绘图中的轻量级组件
+description: 修复宏在处理装配中的组件时出现的运行时错误'91' - 对象变量或With块变量未设置
 image: lightweight-component.png
-labels: [macro, troubleshooting]
+labels: [宏, 故障排除]
 redirect-from:
   - /2018/04/macro-troubleshooting-lightweight-components-in-assembly.html
 ---
-## Symptoms
+## 症状
 
-SOLIDWORKS macro is working with the components in the assembly (e.g. reading/writing properties, materials, working with features etc.).
-Error *Run-time Error '91': Object variable or With block variable not set* is displayed when macro is run.
+SOLIDWORKS宏在处理装配中的组件（例如读取/写入属性、材料、处理特征等）时出现错误。
+运行宏时显示错误*运行时错误'91'：对象变量或With块变量未设置*。
 
-## Cause
+## 原因
 
-Components can be loaded lightweight which means that their underlying model is not loaded into the memory.
-In this case all APIs of the component's model are not available
+组件可以以轻量级加载，这意味着它们的底层模型未加载到内存中。
+在这种情况下，组件模型的所有API都不可用。
 
-![Lightweight component in the Feature Manager Tree](lightweight-component.png)
+![特征管理器树中的轻量级组件](lightweight-component.png)
 
-## Resolutions
+## 解决方法
 
-* Check if the pointer to reference model is not null. Display the error message to the user
-* Use [AssemblyDoc::ResolveAllLightWeightComponents](https://help.solidworks.com/2016/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iassemblydoc~resolvealllightweightcomponents.html) or [AssemblyDoc::ResolveAllLightWeight](https://help.solidworks.com/2016/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IAssemblyDoc~ResolveAllLightweight.html) method to forcibly resolve components states
+* 检查引用模型的指针是否不为空。向用户显示错误消息。
+* 使用[AssemblyDoc::ResolveAllLightWeightComponents](https://help.solidworks.com/2016/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iassemblydoc~resolvealllightweightcomponents.html)或[AssemblyDoc::ResolveAllLightWeight](https://help.solidworks.com/2016/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IAssemblyDoc~ResolveAllLightweight.html)方法强制解析组件状态。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -43,14 +43,12 @@ Sub main()
     Dim swRefModel As SldWorks.ModelDoc2
     Set swRefModel = swComp.GetModelDoc2
         
-    If Not swRefModel Is Nothing Then 'Check if the pointer is not nothing
-        MsgBox "Material of " & swComp.Name2 & ": " & swRefModel.MaterialIdName
+    If Not swRefModel Is Nothing Then '检查指针是否不为空
+        MsgBox "材料：" & swComp.Name2 & " 的材料: " & swRefModel.MaterialIdName
     Else
-        MsgBox "Component's model is not loaded into the memory" 'display the error
+        MsgBox "组件的模型未加载到内存中" '显示错误
     End If
     
 End Sub
 
 ~~~
-
-
