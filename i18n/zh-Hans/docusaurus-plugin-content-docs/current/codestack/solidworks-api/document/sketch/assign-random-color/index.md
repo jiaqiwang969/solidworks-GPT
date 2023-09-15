@@ -1,19 +1,19 @@
 ---
-caption: Assign Random Color To Sketches
-title: Macro to assign random color to sketches in the document
-description: VBA macro assigns random color to sketches in SOLIDWORKS parts or assemblies with an option to skip already assigned sketches and unabsorbed sketches
+caption: 为草图分配随机颜色
+title: 将随机颜色分配给文档中的草图的宏
+description: VBA宏将随机颜色分配给SOLIDWORKS零件或装配体中的所有草图，并提供跳过已分配的草图和未吸收的草图的选项
 ---
 
-This VBA macro assigns the random color to all sketches of active parts or assemblies.
+这个VBA宏将随机颜色分配给活动零件或装配体中的所有草图。
 
-Macro can be configured to skip sketches with already assigned colors and select only unabsorbed sketches (e.g. sketches which are not used in other features)
+可以配置宏以跳过已分配颜色的草图，并仅选择未吸收的草图（例如，未在其他特征中使用的草图）。
 
 ~~~vb
-Const SKIP_ASSIGNED As Boolean = False 'Processes all sketches (including the sketches with assigned colors)
-Const UNABSORBED_ONLY As Boolean = False 'Process all sketches (absorbed and unabsorbed)
+Const SKIP_ASSIGNED As Boolean = False '处理所有草图（包括已分配颜色的草图）
+Const UNABSORBED_ONLY As Boolean = False '处理所有草图（吸收和未吸收的）
 ~~~
 
-Color will be assigned on the feature appearance level.
+颜色将在特征外观级别上分配。
 
 ~~~ vb
 Const SKIP_ASSIGNED As Boolean = True
@@ -121,11 +121,11 @@ End Function
 
 
 
-## Line Colors
+## 线颜色
 
-This is an alternative version of the macro which assigns the color as a line color instead of the feature appearance.
+这是将颜色分配为线颜色而不是特征外观的宏的另一种版本。
 
-This macro will assign the random color for all selected sketches or all sketches if no sketches are selected. **UNABSORBED_ONLY** option is only considered when no sketches are selected.
+此宏将为所有选定的草图或如果没有选定的草图，则为所有草图分配随机颜色。**UNABSORBED_ONLY**选项仅在没有选定草图时考虑。
 
 ~~~ vb
 Const UNUBSORBED_ONLY As Boolean = True
@@ -257,4 +257,3 @@ Function CollectAllSketchFeatures(firstFeat As SldWorks.Feature) As Variant
     
 End Function
 ~~~
-
