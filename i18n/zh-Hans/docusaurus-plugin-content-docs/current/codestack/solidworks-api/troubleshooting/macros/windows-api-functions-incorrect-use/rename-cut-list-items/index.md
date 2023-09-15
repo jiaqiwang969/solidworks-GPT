@@ -1,34 +1,34 @@
 ---
 layout: sw-tool
-title: Rename cut list features based on custom properties using SOLIDWORKS API
-caption: Rename Cut List Features
-description: VBA macro to rename cut list features (sheet metal and weldment) based on custom properties using SOLIDWORKS API
+title: 使用SOLIDWORKS API根据自定义属性重命名切割列表特征
+caption: 重命名切割列表特征
+description: 使用SOLIDWORKS API根据名称模板（可以包含文件和切割列表自定义属性、文件名、配置名和自由文本的值）重命名焊接件和钣金件的所有切割列表特征的VBA宏
 image: cut-list-table.svg
-labels: [cut-list,sheet metal,weldment,rename]
-group: Cut-List
+labels: [切割列表,钣金,焊接件,重命名]
+group: 切割列表
 ---
-![Sheet metal cut list features](sheet-metal-cut-list.png){ width=250 }
+![钣金切割列表特征](sheet-metal-cut-list.png){ width=250 }
 
-This VBA macro allows to rename all cut list features for weldment and sheet metal part based on the name template which can include values of file and cut-list custom properties, file name, configuration name and free text.
+此VBA宏允许根据名称模板重命名焊接件和钣金件的所有切割列表特征，名称模板可以包含文件和切割列表自定义属性、文件名、配置名和自由文本的值。
 
-![Cut list properties](cut-list-properties.png){ width=550 }
+![切割列表属性](cut-list-properties.png){ width=550 }
 
-To configure the macro modify the values of *NAME_TEMPLATE*, *INDEX_FORMAT* and *ALWAYS_ADD_INDEX* constants
+要配置宏，请修改*NAME_TEMPLATE*、*INDEX_FORMAT*和*ALWAYS_ADD_INDEX*常量的值。
 
-*NAME_TEMPLATE* can contain free text and placeholders which will be dynamically replaced by corresponding custom properties values
+*NAME_TEMPLATE*可以包含自由文本和占位符，占位符将动态替换为相应的自定义属性值。
 
-The following placeholders are supported
+支持以下占位符：
 
-* <\_FileName\_> - name of the part file (without extension) where the cut-list resides in
-* <\_ConfName\_> - name of the active configuration of the part file
-* <$CLPRP:[PropertyName]> - any name of the cut-list property to read value from, e.g.  is replaced with the value of cut-list custom property Thickness
-* <$PRP:[PropertyName]> - any name of the custom property of part to read value from, e.g.  is replaced with the value of cut-list custom property PartNo
+* <\_FileName\_> - 零件文件的名称（不包括扩展名），切割列表所在的文件
+* <\_ConfName\_> - 零件文件的活动配置的名称
+* <$CLPRP:[PropertyName]> - 任何切割列表属性的名称，用于读取值，例如<$CLPRP:Thickness>将被替换为切割列表自定义属性Thickness的值
+* <$PRP:[PropertyName]> - 零件的任何自定义属性的名称，用于读取值，例如<$PRP:PartNo>将被替换为切割列表自定义属性PartNo的值
 
-Placeholders will be resolved for each cut-list at runtime.
+占位符将在运行时为每个切割列表解析。
 
-*INDEX_FORMAT* constant allows to specify the padding of the index for feature name if name is used. By default feature names resolved to the same value will have an index for second feature and so on, unless *ALWAYS_ADD_INDEX* constant is set to true. In this case first feature will have index as well.
+*INDEX_FORMAT*常量允许指定特征名称的索引填充。默认情况下，解析为相同值的特征名称将具有第二个特征的索引，依此类推，除非将*ALWAYS_ADD_INDEX*常量设置为true。在这种情况下，第一个特征也将具有索引。
 
-For example the following setup (in case part PartNo equals to ABC) will resolve cut-list feature to *ABC_001*, *ABC_002*, *ABC_003* etc.
+例如，以下设置（如果零件PartNo等于ABC）将将切割列表特征解析为*ABC_001*、*ABC_002*、*ABC_003*等。
 
 ~~~ vb
 Const NAME_TEMPLATE = "<$PRP:PartNo>_"
@@ -36,7 +36,7 @@ Const INDEX_FORMAT As String = "000"
 Const ALWAYS_ADD_INDEX As Boolean = True
 ~~~
 
-Watch [video demonstration](https://youtu.be/jsjN8zNRTuc?t=200)
+观看[视频演示](https://youtu.be/jsjN8zNRTuc?t=200)
 
 ~~~ vb
 Const NAME_TEMPLATE = "<_FileName_>_<$CLPRP:Description>_<$PRP:PartNo>"
@@ -277,5 +277,3 @@ Function GetFileNameWithoutExtension(path As String) As String
     GetFileNameWithoutExtension = Mid(path, InStrRev(path, "\") + 1, InStrRev(path, ".") - InStrRev(path, "\") - 1)
 End Function
 ~~~
-
-
