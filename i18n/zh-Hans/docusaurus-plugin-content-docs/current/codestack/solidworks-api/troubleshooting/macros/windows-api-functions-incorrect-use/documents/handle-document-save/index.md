@@ -19,12 +19,12 @@ group: 模型
 * 将代码从[宏模块](#宏模块)复制到默认模块中
 * 将需要在每次保存时执行的代码添加到*OnSaveDocument*函数中
 
-~~~ vb
+``` vb
 Sub OnSaveDocument(Optional dummy As Variant = Empty)
     'TODO: 在此处放置在文档保存时运行的代码
     MsgBox "已保存"
 End Sub
-~~~
+```
 
 * 为了简化此函数，您可以调用另一个宏，而无需显式复制代码。请参阅[运行一组宏](/docs/codestack/solidworks-api/application/frame/run-macros-group/)示例。
 
@@ -36,7 +36,7 @@ End Sub
 
 入口点，用于启动事件监视并处理一次保存事件到达时需要运行的代码。
 
-~~~ vb
+``` vb
 Dim swFileSaveHandler As SaveEventsHandler
 
 Sub main()
@@ -53,7 +53,7 @@ Sub OnSaveDocument(Optional dummy As Variant = Empty)
     'TODO: 在此处放置在文档保存时运行的代码
     MsgBox "已保存"
 End Sub
-~~~
+```
 
 
 
@@ -61,7 +61,7 @@ End Sub
 
 处理SOLIDWORKS API保存通知的类。
 
-~~~ vb
+``` vb
 Dim WithEvents swApp As SldWorks.SldWorks
 
 Private Sub Class_Initialize()
@@ -80,4 +80,4 @@ Private Function swApp_CommandCloseNotify(ByVal Command As Long, ByVal reason As
     
 End Function
 
-~~~
+```
