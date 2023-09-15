@@ -1,15 +1,16 @@
 ---
-title: Change apply appearance option in material using SOLIDWORKS API
-caption: Change Apply Appearance Option In Material
-description: Example demonstrates how to change the Apply Appearance option in the material options
+title: 使用SOLIDWORKS API更改材料中的应用外观选项
+caption: 更改材料中的应用外观选项
+description: 该示例演示了如何使用SOLIDWORKS API更改材料选项中的应用外观选项。
 image: material-apply-appearance.png
 labels: [part, solidworks api, material, appearance, example]
 ---
-![Apply Appearance option in Edit material dialog](material-apply-appearance.png)
 
-This example demonstrates how to change the *Apply Appearance* option in the material options using SOLIDWORKS API.
+![编辑材料对话框中的应用外观选项](material-apply-appearance.png)
 
-~~~ vb
+该示例演示了如何使用SOLIDWORKS API更改材料选项中的*应用外观*选项。
+
+```vb
 Dim swApp As SldWorks.SldWorks
 Dim swPart As SldWorks.PartDoc
 
@@ -27,10 +28,9 @@ Sub main()
         
         swPart.SetMaterialVisualProperties swMatVisPrps, swInConfigurationOpts_e.swAllConfiguration, Empty
     Else
-        MsgBox "Please open part document"
+        MsgBox "请打开零件文档"
     End If
     
 End Sub
-~~~
-
+```
 
