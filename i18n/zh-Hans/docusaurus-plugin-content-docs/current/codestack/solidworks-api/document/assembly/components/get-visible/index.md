@@ -1,13 +1,13 @@
 ---
-title: Get and select all visible components in assembly using SOLIDWORKS API
-caption: Get And Select Visible Components Only
-description: VBA macro example to get and select all visible components (not suppressed and not hidden) using SOLIDWORKS API
+title: 使用SOLIDWORKS API获取并选择装配中的所有可见部件
+caption: 仅获取和选择可见部件
+description: 使用SOLIDWORKS API获取并选择所有可见部件（未抑制和未隐藏）的VBA宏示例
 image: components-tree.png
 labels: [components,suppressed,hidden,select]
 ---
-![Components selected in the feature manager tree](components-tree.png){ width=350 }
+![在特征管理器树中选择的部件](components-tree.png){ width=350 }
 
-This VBA macro gets all the pointers to the visible (not suppressed and not hidden) components in the active assembly. All the components are selected using multi-select SOLIDWORKS API.
+这个VBA宏获取活动装配中所有可见（未抑制和未隐藏）部件的指针。使用多选SOLIDWORKS API选择所有部件。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -25,7 +25,7 @@ Sub main()
         vComps = GetVisibleComponents(swAssy, False)
         swAssy.Extension.MultiSelect2 vComps, False, Nothing
     Else
-        MsgBox "Please open assembly document"
+        MsgBox "请打开装配文档"
     End If
     
 End Sub
@@ -82,4 +82,3 @@ Function IsVisible(comp As SldWorks.Component2) As Boolean
     
 End Function
 ~~~
-
