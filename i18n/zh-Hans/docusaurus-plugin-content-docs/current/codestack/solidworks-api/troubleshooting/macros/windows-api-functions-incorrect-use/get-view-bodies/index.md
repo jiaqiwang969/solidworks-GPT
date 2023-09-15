@@ -1,19 +1,19 @@
 ---
-title: Get bodies and materials from drawing view using SOLIDWORKS API
-caption: Get Bodies And Materials From Drawing View
-description: VBA macro to find bodies and their materials of the selected drawing view (including sheet metal flat pattern) using SOLIDWORKS API
+title: 使用SOLIDWORKS API从绘图视图获取实体和材料
+caption: 获取绘图视图中的实体和材料
+description: 使用SOLIDWORKS API查找所选绘图视图（包括钣金展开图）的所有实体及其材料的VBA宏
 image: sheet-metal-views.png
-labels: [view bodies,flat pattern]
+labels: [视图实体,展开图]
 ---
-![Flat pattern drawing views](sheet-metal-views.png){ width=200 }
+![展开图绘图视图](sheet-metal-views.png){ width=200 }
 
-This VBA macro finds all bodies of the selected drawing view (including sheet metal flat pattern) and extracts their materials using SOLIDWORKS API.
+这个VBA宏使用SOLIDWORKS API查找所选绘图视图（包括钣金展开图）的所有实体，并提取它们的材料。
 
-[IView::Bodies](https://help.solidworks.com/2017/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iview~bodies.html) property finds the bodies of the drawing view, however this SOLIDWORKS API property returns Nothing for the drawing view created from sheet metal flat pattern.
+[IView::Bodies](https://help.solidworks.com/2017/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iview~bodies.html) 属性用于查找绘图视图的实体，但是对于从钣金展开图创建的绘图视图，这个SOLIDWORKS API属性返回的是空值。
 
-![Flat pattern is set in the drawing view property page](flat-pattern-view-settings.png){ width=250 }
+![在绘图视图属性页中设置展开图](flat-pattern-view-settings.png){ width=250 }
 
-Macro below extracts bodies and finds the materials assigned to them in both cases (for regular parts and for sheet metal patterns). The result is output to Immediate window of VBA editor.
+下面的宏在两种情况下（普通零件和钣金图案）提取实体并查找分配给它们的材料。结果将输出到VBA编辑器的即时窗口。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -53,11 +53,11 @@ Sub main()
             Next
             
         Else
-            MsgBox "Please select view"
+            MsgBox "请选择视图"
         End If
         
     Else
-        MsgBox "Please open model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -69,7 +69,7 @@ Function GetBodies(view As SldWorks.view) As Variant
         Dim vComps As Variant
         vComps = view.GetVisibleComponents()
         
-        'Flat pattern can be only created for a single body (either single body part or select body for multi-body part)
+        '展开图只能为单个实体创建（单实体零件或多实体零件选择实体）
         Dim swComp As SldWorks.Component2
         Set swComp = vComps(0)
         
@@ -90,5 +90,3 @@ Function GetBodies(view As SldWorks.view) As Variant
     
 End Function
 ~~~
-
-
