@@ -1,38 +1,38 @@
 ---
 layout: sw-macro-fix
-title: Fix the inconsistent model title extension in SOLIDWORKS API
-caption: Model Title Inconsistency Displaying Extension
-description: Fixing the Run-time Error '5' - Invalid procedure call or argument error when running a macro which is using the title of the model (e.g. inserting the note, linking the custom property value, generating new file name for exporting)
+title: 修复SOLIDWORKS API中模型标题扩展名不一致的问题
+caption: 模型标题显示扩展名不一致
+description: 修复运行宏时出现的“运行时错误 '5' - 无效的过程调用或参数”错误，该宏使用模型的标题（例如插入注释、链接自定义属性值、生成导出文件的新文件名）
 image: invalid-procedure-or-call-error.png
-labels: [macro, troubleshooting]
+labels: [宏, 故障排除]
 redirect-from:
   - /2018/04/macro-troubleshooting--model-title-inconsistency-displaying-extension.html
 ---
-## Symptoms
+## 症状
 
-SOLIDWORKS macro is using the title of the model (e.g. inserting the note, linking the custom property value, generating new file name for exporting).
-As the result macro misbehaves (inserting extension twice) or displays the error: *Run-time Error '5': Invalid procedure call or argument*  
+SOLIDWORKS宏使用模型的标题（例如插入注释、链接自定义属性值、生成导出文件的新文件名）。
+结果宏的行为异常（扩展名重复插入）或显示错误：*运行时错误 '5'：无效的过程调用或参数*。
 
-The extension is extracted from the document title via [IModelDoc2::GetTitle](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeldoc2~gettitle.html) SOLIDWORKS API method.
+通过[SOLIDWORKS API方法IModelDoc2::GetTitle](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeldoc2~gettitle.html)从文档标题中提取扩展名。
 
-![Run-time Error '5': Invalid procedure call or argument error when running a macro](invalid-procedure-or-call-error.png){ width=640 height=211 }
+![运行宏时出现的运行时错误 '5'：无效的过程调用或参数错误](invalid-procedure-or-call-error.png){ width=640 height=211 }
 
-## Cause
+## 原因
 
-There are several factors which affect the way title is displayed to the user:
+有几个因素会影响标题向用户显示的方式：
 
-* Extension visibility in the model's title is displayed based on the windows setting *'Hide extension for known file types'*.
-Depending on this setting title of the model can either include or exclude extension (e.g. *Part1 *or *Part1.sldprt*)  
+* 模型标题中的扩展名显示取决于Windows设置中的“隐藏已知文件类型的扩展名”选项。
+根据此设置，模型的标题可以包含或不包含扩展名（例如*Part1*或*Part1.sldprt*）。
 
-![Hide extensions for known file types option in Windows explorer](hide-extensions-for-known-file-types.png){ width=277 height=320 }
+![Windows资源管理器中的隐藏已知文件类型的扩展名选项](hide-extensions-for-known-file-types.png){ width=277 height=320 }
 
-* For the newly created files (i.e. files which were never saved) extension is never displayed
-* For drawings the title is a composition of a name and the active sheet. The extension is never displayed for drawings
+* 对于新创建的文件（即从未保存过的文件），扩展名永远不会显示。
+* 对于绘图，标题是名称和活动图纸的组合。绘图的标题中永远不会显示扩展名。
 
-## Resolution
+## 解决方法
 
-* Change the setting based on the macro requirement
-* Modify the macro code to consider both options. The example below provides two functions to get the title with or without extension regardless of the conditions.
+* 根据宏的要求更改设置。
+* 修改宏代码以考虑两种选项。下面的示例提供了两个函数，无论条件如何，都可以获取带有或不带有扩展名的标题。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -50,7 +50,7 @@ Sub main()
         Debug.Print GetTitleWithExtension(swModel)
         
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -70,7 +70,7 @@ Function GetTitleWithExtension(model As SldWorks.ModelDoc2) As String
     End Select
     
     If model.GetPathName() = "" Then
-        title = model.GetTitle + ext 'extension is not shown for file which is not saved
+        title = model.GetTitle + ext '未保存的文件不显示扩展名
     Else
         If IsExtensionShown() Then
             title = model.GetTitle
@@ -80,8 +80,8 @@ Function GetTitleWithExtension(model As SldWorks.ModelDoc2) As String
     End If
     
     If model.GetType() = swDocumentTypes_e.swDocDRAWING Then
-        title = model.GetTitle() 'drawing extension never included into the title
-        title = Left(title, InStrRev(title, "-") - 2) + ext 'removing the sheet name from the drawing title
+        title = model.GetTitle() '绘图的标题中永远不包含扩展名
+        title = Left(title, InStrRev(title, "-") - 2) + ext '从绘图标题中删除图纸名称
     End If
     
     GetTitleWithExtension = title
@@ -95,7 +95,7 @@ Function GetTitleWithoutExtension(model As SldWorks.ModelDoc2) As String
     Dim title As String
     
     If model.GetPathName() = "" Then
-        title = model.GetTitle 'extension is not shown for file which is not saved
+        title = model.GetTitle '未保存的文件不显示扩展名
     Else
         If IsExtensionShown() Then
             title = model.GetTitle
@@ -125,5 +125,3 @@ Function IsExtensionShown() As Boolean
 
 End Function
 ~~~
-
-
