@@ -1,41 +1,41 @@
 ---
 layout: sw-tool
-title: Macro for components configurations permutation using SOLIDWORKS API
-caption: Components Configurations Permutation
-description: Macro performs a permutation for each components in the root level of the assembly using SOLIDWORKS API and saves the results as individual files
+title: 使用SOLIDWORKS API进行组件配置排列的宏
+caption: 组件配置排列
+description: 该宏使用SOLIDWORKS API对装配体中根级别的每个组件进行排列，并将结果保存为单独的文件
 image: component-configurations.png
-labels: [permutation,component,generation,configuration]
-group: Assembly
+labels: [排列,组件,生成,配置]
+group: 装配体
 ---
-This macro generates the assemblies for each combination of top level components configurations (permutation) using SOLIDWORKS API.
+该宏使用SOLIDWORKS API对装配体中根级别的每个组件进行排列（排列），并将结果保存为单独的文件。
 
-![Component configurations](component-configurations.png){ width=450 }
+![组件配置](component-configurations.png){ width=450 }
 
-Resulting combinations are saved to the external assemblies (one file per combination).
+生成的组合将保存到外部装配体中（每个组合一个文件）。
 
-![Generated assemblies for each combination of components configurations](generated-permutation-assemblies.png){ width=350 }
+![每个组件配置的生成装配体](generated-permutation-assemblies.png){ width=350 }
 
-## Options
-* *OUT_FOLDER* - Full path to output folder where the resulting files need to be saved
-
-~~~ vb
-Const OUT_FOLDER As String = "OUTPUT FOLDER PATH"
-~~~
-
-* *PERMUTE_ASSEMBLY_CONF* option allows to specify if the configurations of assembly need to be used in permutation or only components
+## 选项
+* *OUT_FOLDER* - 结果文件需要保存的输出文件夹的完整路径
 
 ~~~ vb
-Const PERMUTE_ASSEMBLY_CONF As Boolean = True 'True to include assembly configurations, false to only include components
+Const OUT_FOLDER As String = "输出文件夹路径"
 ~~~
 
-## Notes
+* *PERMUTE_ASSEMBLY_CONF* 选项允许指定是否在排列中使用装配体的配置或仅使用组件
 
-* Original states of the components will not be restored as the result of running the macro. It is recommended to open the assembly as read only
-* Total number of files equals to {number of configuration of component 1}x{number of configuration of component 2}x...x{number of configuration of component n}
+~~~ vb
+Const PERMUTE_ASSEMBLY_CONF As Boolean = True 'True表示包括装配体配置，false表示仅包括组件
+~~~
+
+## 注意事项
+
+* 运行宏后，组件的原始状态将不会恢复。建议以只读方式打开装配体。
+* 文件的总数等于{组件1的配置数}x{组件2的配置数}x...x{组件n的配置数}
 
 ~~~ vb
 Const PERMUTE_ASSEMBLY_CONF As Boolean = True
-Const OUT_FOLDER As String = "OUTPUT FOLDER PATH"
+Const OUT_FOLDER As String = "输出文件夹路径"
 
 Dim swApp As SldWorks.SldWorks
 
@@ -53,11 +53,11 @@ Sub main()
             PermuteAssembly swAssy, PERMUTE_ASSEMBLY_CONF
             
         Else
-            MsgBox "Components must be resolved"
+            MsgBox "组件必须被解析"
         End If
         
     Else
-        MsgBox "Please open assembly"
+        MsgBox "请打开装配体"
     End If
     
 End Sub
@@ -172,6 +172,3 @@ Function TrimEnd(inputText As String, text As String) As String
     
 End Function
 ~~~
-
-
-
