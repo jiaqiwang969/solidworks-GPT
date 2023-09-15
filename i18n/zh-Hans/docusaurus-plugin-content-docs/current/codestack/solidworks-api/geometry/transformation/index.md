@@ -1,5 +1,5 @@
 ---
-title: 在SOLIDWORKS API中使用变换
+title: 使用变换在SOLIDWORKS API中操作
 caption: 变换
 description: 使用SOLIDWORKS API应用和读取变换（组件、实体、草图等）
 sidebar_position: 2
