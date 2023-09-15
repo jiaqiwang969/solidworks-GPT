@@ -1,24 +1,25 @@
 ---
-title: Using SOLIDWORKS API to render feature tree in HTML page
-caption: Render Feature Tree In HTML Page
-description: Example demonstrates how to extract and render feature tree of SOLIDWORKS part document in HTML page using SOLIDWORKS API with JavaScript and ActiveX control in Internet Explorer
+title: 使用SOLIDWORKS API在HTML页面中渲染特征树
+caption: 在HTML页面中渲染特征树
+description: 该示例演示了如何使用SOLIDWORKS API和JavaScript以及Internet Explorer中的ActiveX控件将SOLIDWORKS零件文档的特征树提取并渲染到HTML页面中。
 image: html-feature-tree-rendered.png
-labels: [JavaScript, feature manager]
+labels: [JavaScript, 特征管理器]
 ---
-This example demonstrates how to load feature tree content of the SOLIDWORKS part file using SOLIDWORKS API into the HTML page using JavaScript and ActiveX in Internet Explorer (this will not work in any other browsers as ActiveX is not supported by default - it might be required to install special plugins to enable the support).
 
-* Create new html file
-* Copy paste the following code into the file
+该示例演示了如何使用SOLIDWORKS API将SOLIDWORKS零件文件的特征树加载到HTML页面中，使用JavaScript和Internet Explorer中的ActiveX（这不适用于其他浏览器，因为默认情况下不支持ActiveX - 可能需要安装特殊插件以启用支持）。
 
-~~~html
+* 创建一个新的HTML文件
+* 将以下代码复制粘贴到文件中
+
+```html
 <!DOCTYPE html>
 <html>
 <body>
 
-	<input type="text" placeholder="Part File Path" id="filePath"></input>
-	<button type="button" onclick="RenderFeatureTree()">Get Feature Tree</button>
+	<input type="text" placeholder="零件文件路径" id="filePath"></input>
+	<button type="button" onclick="RenderFeatureTree()">获取特征树</button>
 
-	<p id="featTree">Feature Tree</p>
+	<p id="featTree">特征树</p>
 
 	<script>
 		function RenderFeatureTree() {
@@ -61,27 +62,25 @@ This example demonstrates how to load feature tree content of the SOLIDWORKS par
 	</script>
 </body>
 </html>
-~~~
+```
 
+* 保存文件并在MS Internet Explorer中打开
+![带有输入字段的HTML页面](input-html-page.png)
 
+由于此页面使用了ActiveX，因此可能会显示以下消息：
 
-* Save the file and open in in MS Internet Explorer
-![HTML page with input fields](input-html-page.png)
+![Internet Explorer中的ActiveX限制警告](ie-activex-run-restriction.png)
 
-This page is using ActiveX so the following message can be displayed:
+点击*允许阻止的内容*按钮
 
-![ActiveX restrictions warning in Internet Explorer](ie-activex-run-restriction.png)
+* 在文本框输入字段中输入SOLIDWORKS零件的完整路径
 
-Click *Allow blocked content* button
+* 点击*获取特征树*按钮
 
-* Enter the full path to the SOLIDWORKS part into the text box input field
+* 在弹出窗口上点击*是*
 
-* Click the *Get Feature Tree* button
+![关于ActiveX内容的警告消息](ie-allow-activex.png){ width=350 }
 
-* Click *Yes* on the following popup
+结果，零件的特征树将在页面上呈现出来
 
-![Warning message regarding the ActiveX content](ie-allow-activex.png){ width=350 }
-
-As the result the feature tree of the part is rendered on the page
-
-![SOLIDWORKS part feature tree rendered in HTML](html-feature-tree-rendered.png){ width=250 }
+![在HTML中呈现的SOLIDWORKS零件特征树](html-feature-tree-rendered.png){ width=250 }
