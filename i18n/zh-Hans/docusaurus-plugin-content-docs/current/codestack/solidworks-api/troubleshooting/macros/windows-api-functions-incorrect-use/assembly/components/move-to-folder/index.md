@@ -1,17 +1,17 @@
 ---
 layout: sw-tool
-title: Move selected components to feature folder using SOLIDWORKS API
-caption: Move To Folder
-description: Macro move the components selected in the graphics area into a new folder in the feature manager tree
+title: 使用SOLIDWORKS API将选定的组件移动到特征文件夹
+caption: 移动到文件夹
+description: 使用SOLIDWORKS API将选定的组件移动到特征管理器树中的新文件夹中的宏
 image: move-components-to-folder.png
-labels: [components, move to folder]
-group: Assembly
+labels: [组件, 移动到文件夹]
+group: 组件装配
 ---
-![Components added to new folder](new-folder.png){ width=250 }
+![添加到新文件夹的组件](new-folder.png){ width=250 }
 
-This macro allows moving the selected components into the new folder in the feature manager tree using SOLIDWORKS API.
+此宏允许使用SOLIDWORKS API将选定的组件移动到特征管理器树中的新文件夹中。
 
-Components (or any of their entities) can be selected in the graphics area. For example only face or edge of the component(s) can be selected for macro to work.
+可以在图形区域中选择组件（或其任何实体）。例如，只能选择组件的面或边以使宏正常工作。
 
 ~~~ vb
 #If VBA7 Then
@@ -34,7 +34,7 @@ Sub main()
         SelectComponentsFromCurrentSelection swModel
         AddSelectedComponentsToNewFolder ""
     Else
-        MsgBox "Please open assembly"
+        MsgBox "请打开装配体"
     End If
 
 End Sub
@@ -81,7 +81,7 @@ Sub SelectComponentsFromCurrentSelection(model As SldWorks.ModelDoc2)
     
     If True = isArrInit Then
         If UBound(swComps) + 1 <> model.Extension.MultiSelect2(swComps, False, Nothing) Then
-            Err.Raise vbError, , "Failed to select components"
+            Err.Raise vbError, , "选择组件失败"
         End If
     End If
     
@@ -115,4 +115,3 @@ Sub AddSelectedComponentsToNewFolder(dummy)
     
 End Sub
 ~~~
-
