@@ -1,17 +1,18 @@
 ---
-title: Display assembly visualization page using SOLIDWORKS API
-caption: Display Assembly Visualization Page
-description: Example displays the page for Assembly Visualization page
+title: 使用SOLIDWORKS API显示装配体可视化页面
+caption: 显示装配体可视化页面
+description: 该示例演示了如何使用SOLIDWORKS API显示装配体可视化页面。
 image: sw-assembly-visualization.png
-labels: [assembly, example, solidworks api, visualization]
+labels: [装配体, 示例, solidworks api, 可视化]
 redirect-from:
   - /2018/03/solidworks-api-assembly-display-assm-visual-tool.html
 ---
-This example displays the feature tree page for Assembly Visualization using SOLIDWORKS API.
 
-![Assembly Visualization Feature Manager Tab](sw-assembly-visualization.png){ width=320 height=291 }
+该示例使用SOLIDWORKS API显示装配体可视化页面的特征树页面。
 
-~~~ vb
+![装配体可视化特征管理器选项卡](sw-assembly-visualization.png){ width=320 height=291 }
+
+```vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -24,7 +25,7 @@ Sub main()
     If Not swAssy Is Nothing Then
         swApp.RunCommand swCommands_VisualizationTool, ""
     Else
-        MsgBox "Please open assembly"
+        MsgBox "请打开装配体"
     End If
     
 End Sub
@@ -44,6 +45,5 @@ Function TryGetActiveAssembly() As SldWorks.AssemblyDoc
     End If
     
 End Function
-~~~
-
+```
 
