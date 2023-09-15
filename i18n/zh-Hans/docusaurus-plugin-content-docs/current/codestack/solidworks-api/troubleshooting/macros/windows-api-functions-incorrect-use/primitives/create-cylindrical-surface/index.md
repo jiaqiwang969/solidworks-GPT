@@ -1,15 +1,15 @@
 ---
-title: Create temp cylindrical sheet body using SOLIDWORKS modeler API
-caption: Create Temp Cylindrical Sheet Body
-description: Example demonstrates how to create temp body of a cylindrical sheet
+title: 使用SOLIDWORKS模型API创建临时圆柱面板体
+caption: 创建临时圆柱面板体
+description: 该示例演示了如何使用SOLIDWORKS API从圆柱面创建一个面板体。
 image: cylindrical-surface.png
-labels: [topology, geometry, sheet, modeler, cylinder]
+labels: [拓扑结构, 几何, 面板, 模型, 圆柱体]
 ---
-![Cylindrical sheet body](cylindrical-surface.png)
+![圆柱面板体](cylindrical-surface.png)
 
-This example demonstrates how to create a sheet body from the cylindrical surface using SOLIDWORKS API.
+该示例演示了如何使用SOLIDWORKS API从圆柱面创建一个面板体。
 
-Run the macro and temp body is displayed. Body can be rotated and selected but it is not presented in the feature tree. Continue the macro execution to destroy the body.
+运行宏，将显示临时体。可以旋转和选择该体，但它不会显示在特征树中。继续执行宏以销毁该体。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -55,15 +55,13 @@ Sub main()
         
         swBody.Display3 swModel, RGB(255, 255, 0), swTempBodySelectOptions_e.swTempBodySelectable
         
-        Stop 'continue to hide the body
+        Stop '继续隐藏该体
         
         Set swBody = Nothing
         
     Else
-        MsgBox "Please open the part document"
+        MsgBox "请打开零件文档"
     End If
     
 End Sub
 ~~~
-
-
