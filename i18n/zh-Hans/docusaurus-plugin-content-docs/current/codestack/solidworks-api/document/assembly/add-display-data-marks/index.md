@@ -1,22 +1,22 @@
 ---
 layout: sw-tool
-caption: Add Display Data Marks
-title: Macro to add display data marks to configuration used by the main SOLIDWORKS assembly
-description: VBA macro to add display data mark for configurations used in Large assembly to be opened in Large Design Review Mode or eDrawings
+caption: 添加显示数据标记
+title: 将显示数据标记添加到主SOLIDWORKS装配使用的配置的宏
+description: VBA宏，用于将显示数据标记添加到在大型装配中使用的配置，以便在大型设计审查模式或eDrawings中打开
 image: display-data-mark.svg
 group: Assembly
 ---
-This VBA macro is useful for the users working with assemblies in the Large Design Review mode or when it is required to support configurations in eDrawings.
+这个VBA宏对于在大型设计审查模式下使用装配件的用户或者需要在eDrawings中支持配置的用户非常有用。
 
-By default only active configuration is preserved for using the the Large Design Review mode and other configurations of the assembly cannot be activated:
+默认情况下，只有活动配置被保留用于在大型设计审查模式下使用，而装配的其他配置无法被激活：
 
-![No display marks in the assembly configurations](configuration-no-display-marks.png)
+![装配配置中没有显示标记](configuration-no-display-marks.png)
 
-This macro will traverse all components of the root assembly and find all the used configurations and add the display mark data to all of them.
+这个宏将遍历根装配的所有组件，找到所有使用的配置，并为所有配置添加显示标记数据。
 
-![Add display data mark command](add-display-data-mark.png)
+![添加显示数据标记命令](add-display-data-mark.png)
 
-This will allow to open all sub components in the Large Design Review mode and activate used configurations.
+这将允许在大型设计审查模式下打开所有子组件并激活使用的配置。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -47,7 +47,7 @@ Sub main()
         Next
     
     Else
-        Err.Raise vbError, "", "Open assembly"
+        Err.Raise vbError, "", "打开装配件"
     End If
     
 End Sub
@@ -129,7 +129,7 @@ Function CollectFilesNeedDisplayMarks(comps As Variant, rootDocPath As String) A
                 End If
             End If
         Else
-            Debug.Print "Failed to resolve component " & swComp.Name2 & " path: " & filePath
+            Debug.Print "无法解析组件 " & swComp.Name2 & " 路径: " & filePath
         End If
         
     Next
@@ -155,7 +155,7 @@ End Function
 
 Sub AddDisplayMarks(filePath As String, confNames As Variant)
     
-    Debug.Print "Adding display mark for " & filePath
+    Debug.Print "为 " & filePath & " 添加显示标记"
     
     Dim swModel As SldWorks.ModelDoc2
     Dim swDocSpec As SldWorks.DocumentSpecification
@@ -189,11 +189,11 @@ Sub AddDisplayMarks(filePath As String, confNames As Variant)
             swApp.CloseDoc swModel.GetTitle
         
         Else
-            Debug.Print "Failed to activate document: " & filePath
+            Debug.Print "无法激活文档: " & filePath
         End If
         
     Else
-        Debug.Print "Failed to open document: " & filePath
+        Debug.Print "无法打开文档: " & filePath
     End If
 
 End Sub
@@ -231,7 +231,7 @@ End Function
 
 
 
-Alternative version of the macro will only process configurations of the active part or assembly and add the Display Data marks
+另一种版本的宏只会处理活动零件或装配的配置，并添加显示数据标记
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -262,13 +262,12 @@ Sub main()
             swModel.ForceRebuild3 False
             
         Else
-            Err.Raise vbError, "", "Only assemblies and parts are supported"
+            Err.Raise vbError, "", "仅支持装配和零件"
         End If
         
     Else
-        Err.Raise vbError, "", "No files opened"
+        Err.Raise vbError, "", "没有打开的文件"
     End If
     
 End Sub
 ~~~
-
