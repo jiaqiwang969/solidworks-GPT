@@ -9,7 +9,7 @@ labels: [sketch,length]
 
 这是一个使用SOLIDWORKS API计算所选草图中所有线段的总长度的C#示例。计算中排除了构造几何线段。
 
-~~~ cs
+```cs
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using System;
@@ -57,5 +57,6 @@ namespace CodeStack
         }
     }
 }
+```
 
-~~~
+[!code-csharp[Get total length of sketch segments](sketch-total-length.cs)]
