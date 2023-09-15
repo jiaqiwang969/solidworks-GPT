@@ -1,32 +1,32 @@
 ---
-caption: Set Configuration BOM Options
-title: Macro to change the Bill Of Materials options (Part Number source and children visibility) of SOLIDWORKS configuration
-description: VBA macro which changes the Bill Of Materials part number source (configuration name, document name, parent name) and children display (show, hide, promote) options for all or active configuration in SOLIDWORKS document
+caption: 设置配置BOM选项
+title: 更改SOLIDWORKS配置的Bill Of Materials选项的宏（零件号来源和子组件可见性）
+description: VBA宏，用于更改SOLIDWORKS文档中所有或活动配置的Bill Of Materials零件号来源（配置名称、文档名称、父级名称）和子组件显示（显示、隐藏、提升）选项
 image: configuration-options.png
 ---
-This VBA macro allows to change the options of the configuration regarding the processing in the Bill Of Materials
+该VBA宏允许更改配置在Bill Of Materials中的处理选项
 
-* Part Number Source
-    * Configuration name
-    * Document name
-    * Parent name
-* Children Components Display
-    * Show
-    * Hide
-    * Promote
+* 零件号来源
+    * 配置名称
+    * 文档名称
+    * 父级名称
+* 子组件显示
+    * 显示
+    * 隐藏
+    * 提升
 
-![Configuration options Property Manager Page](configuration-options.png)
+![配置选项属性管理器页面](configuration-options.png)
 
-Macro can process active configuration only or all configurations
+宏可以仅处理活动配置或所有配置
 
-Configure the macro by changing its constants
+通过更改宏的常量来配置宏
 
-Specify -1 for **PART_NUMBER_SRC** or **CHILD_COMPS_DISP** options to keep original values or new value to override
+对于**PART_NUMBER_SRC**或**CHILD_COMPS_DISP**选项，指定-1以保留原始值，或指定新值以覆盖
 
 ~~~ vb
-Const ALL_CONFIGS As Boolean = True 'True to process all configurations, False to process active configuration only
-Const PART_NUMBER_SRC As Integer = swBOMPartNumberSource_e.swBOMPartNumber_ConfigurationName 'Part number source: -1 to keep as is or swBOMPartNumberSource_e.swBOMPartNumber_ConfigurationName, swBOMPartNumberSource_e.swBOMPartNumber_DocumentName or swBOMPartNumberSource_e.swBOMPartNumber_ParentName
-Const CHILD_COMPS_DISP As Integer = swChildComponentInBOMOption_e.swChildComponent_Promote 'Display of components in BOM: -1 to keep as is or swChildComponentInBOMOption_e.swChildComponent_Show, swChildComponentInBOMOption_e.swChildComponent_Hide or swChildComponentInBOMOption_e.swChildComponent_Promote
+Const ALL_CONFIGS As Boolean = True 'True表示处理所有配置，False表示仅处理活动配置
+Const PART_NUMBER_SRC As Integer = swBOMPartNumberSource_e.swBOMPartNumber_ConfigurationName '零件号来源：-1保持不变，或swBOMPartNumberSource_e.swBOMPartNumber_ConfigurationName、swBOMPartNumberSource_e.swBOMPartNumber_DocumentName或swBOMPartNumberSource_e.swBOMPartNumber_ParentName
+Const CHILD_COMPS_DISP As Integer = swChildComponentInBOMOption_e.swChildComponent_Promote 'BOM中组件的显示：-1保持不变，或swChildComponentInBOMOption_e.swChildComponent_Show、swChildComponentInBOMOption_e.swChildComponent_Hide或swChildComponentInBOMOption_e.swChildComponent_Promote
 ~~~
 
 ~~~ vb
@@ -45,11 +45,11 @@ Sub main()
     Set swModel = swApp.ActiveDoc
     
     If swModel Is Nothing Then
-        Err.Raise vbError, "", "Open document"
+        Err.Raise vbError, "", "打开文档"
     End If
     
     If swModel.GetType() = swDocumentTypes_e.swDocDRAWING Then
-        Err.Raise vbError, "", "Drawings are not supported"
+        Err.Raise vbError, "", "不支持绘图"
     End If
     
     If ALL_CONFIGS Then
@@ -83,4 +83,3 @@ Sub SetConfigurationBomOptions(config As SldWorks.Configuration)
     
 End Sub
 ~~~
-
