@@ -1,26 +1,27 @@
 ---
-title: 使用Visual Basic（VBA）将文本内容写入文件
-caption: 写入文本文件
-description: 使用Visual Basic（VBA）将文本内容写入文件的函数，可以选择覆盖或追加内容。
-labels: [写入,文本,输出]
+title: Write Text Content to a File Using Visual Basic (VBA)
+caption: Write Text to File
+description: This function demonstrates how to write text content to a file using Visual Basic (VBA), with the option to overwrite or append the content.
+labels: [write, text, output]
 ---
-此代码片段演示了如何使用Visual Basic（VBA）将文本写入指定的文件。该函数可以选择覆盖现有内容或追加内容。
 
-以下代码片段将覆盖目标文本文件中的数据：
+This code snippet demonstrates how to write text to a specified file using Visual Basic (VBA). The function allows you to choose whether to overwrite existing content or append to it.
 
-```vb
-WriteText("C:\MyFolder\MyFile.txt", "文本数据", False)
-```
-
-而以下代码片段将追加数据：
+The following code snippet will overwrite the data in the target text file:
 
 ```vb
-WriteText("C:\MyFolder\MyFile.txt", "文本数据", True)
+WriteText("C:\MyFolder\MyFile.txt", "Text data", False)
 ```
 
-如果文件不存在，代码将自动创建新文件。
+And the following code snippet will append the data:
 
-如果发生任何错误（例如无法访问文件进行写入），将引发异常。
+```vb
+WriteText("C:\MyFolder\MyFile.txt", "Text data", True)
+```
+
+If the file does not exist, the code will automatically create a new file.
+
+If any errors occur, such as being unable to access the file for writing, an exception will be thrown.
 
 ```vb
 Sub WriteText(filePath As String, content As String, append As Boolean)
