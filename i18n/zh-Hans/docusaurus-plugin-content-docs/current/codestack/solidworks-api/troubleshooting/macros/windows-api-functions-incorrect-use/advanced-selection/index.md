@@ -18,32 +18,32 @@ labels: [选择, 固定, 包络]
 
 要配置该宏，请修改宏的开头处的*CRITERIA*和*TOP_LEVEL_ONLY*常量。
 
-~~~ vb
+``` vb
 Const CRITERIA As Integer = Criteria_e.Float + Criteria_e.NoMates
 Const TOP_LEVEL_ONLY As Boolean = False
-~~~
+```
 
 *TOP_LEVEL_ONLY*指示是否仅使用顶层组件进行过滤。将此选项设置为*True*以选择嵌套组件。
 
-~~~ vb
+``` vb
 Const TOP_LEVEL_ONLY As Boolean = True
-~~~
+```
 
 *CRITERIA*是一组过滤器的组合，其中应用*Or*运算符。
 
 例如：
 
-~~~ vb
+``` vb
 Const CRITERIA As Integer = Criteria_e.Float + Criteria_e.NoMates '将选择所有浮动组件或没有装配关系的组件
-~~~
+```
 
-~~~ vb
+``` vb
 Const CRITERIA As Integer = Criteria_e.Envelope '将选择仅包络组件
-~~~
+```
 
 根据需要修改宏中的过滤器。
 
-~~~ vb
+``` vb
 Enum Criteria_e
     Float = 1
     ExcludedFromBom = 2
@@ -139,4 +139,4 @@ End Function
 Function IsFlagSet(val As Criteria_e, flag As Criteria_e) As Boolean
     IsFlagSet = (val And flag) = flag
 End Function
-~~~
+```
