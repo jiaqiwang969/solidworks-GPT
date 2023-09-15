@@ -9,7 +9,7 @@ labels: [选择, 草图线段, 草图点]
 
 本示例演示了如何使用SOLIDWORKS API中的直接::Select方法选择活动草图中的所有草图线段和草图点。
 
-~~~ vb
+``` vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -74,4 +74,4 @@ Sub SelectAllSketchPoints(sketch As SldWorks.sketch)
     Next
     
 End Sub
-~~~
+```
