@@ -1,25 +1,26 @@
 ---
-title: Calculating rotation transformation to align component with direction
-caption: Aligning Component With Rotation Transformation
-description: VBA example demonstrates hwo to calculate the rotation transformation to align the normal of the component's face with edge direction around the component's origin
+title: 计算旋转变换以使组件与方向对齐
+caption: 用旋转变换对齐组件
+description: 这个 VBA 示例演示了如何使用 [IMathUtility::CreateTransformRotateAxis](https://help.solidworks.com/2017/English/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IMathUtility~CreateTransformRotateAxis.html) SOLIDWORKS API 来旋转组件并将其面的法线与线性边的方向对齐。
 image: rotation-transform.png
 labels: [transform,rotation,align]
 ---
-This VBA example demonstrates how to use the [IMathUtility::CreateTransformRotateAxis](https://help.solidworks.com/2017/English/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IMathUtility~CreateTransformRotateAxis.html) SOLIDWORKS API to rotate the component and align the normal of its face with the direction from the linear edge.
 
-As a precondition select the planar face on the first component in the assembly and linear edge on the second component in the assembly. First component must not be fixed and do not have any mates. As the result first component rotated in a way that its normal is collinear with the direction of the edge. Component is rotated around the origin.
+这个 VBA 示例演示了如何使用 [IMathUtility::CreateTransformRotateAxis](https://help.solidworks.com/2017/English/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IMathUtility~CreateTransformRotateAxis.html) SOLIDWORKS API 来旋转组件并将其面的法线与线性边的方向对齐。
 
-## Explanation
+作为前提条件，选择装配中第一个组件上的平面面和第二个组件上的线性边。第一个组件不能被固定，也不能有任何约束。结果是第一个组件以使其法线与边的方向共线的方式旋转。组件围绕原点旋转。
 
-In order to transform the component in the expected way it is required to calculate its transform. For that it is required to find the origin of rotation, rotation vector and an angle.
+## 解释
 
-At first we create vectors of the face normal and edge direction. It is required to apply the transformation of the components to represent vectors in the same coordinate system. The angle between those vectors is a required angle of transformation.
+为了以预期的方式转换组件，需要计算其变换。为此，需要找到旋转的原点、旋转向量和角度。
 
-In order to find the vector of rotation it is required to find the vector perpendicular to both normal and direction. This can be achieved by finding the cross product.
+首先，我们创建面法线和边方向的向量。需要应用组件的变换以将向量表示为相同的坐标系中的向量。这两个向量之间的角度是变换的所需角度。
 
-Finally point of rotation is an origin of the component transformed to the assembly coordinate system.
+为了找到旋转向量，需要找到法线和方向的垂直向量。可以通过求叉积来实现。
 
-![Rotation transformation parameters](rotation-transform.png)
+最后，旋转点是将组件的原点变换到装配坐标系中的点。
+
+![旋转变换参数](rotation-transform.png)
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -106,5 +107,3 @@ Function ACos(val As Double) As Double
     
 End Function
 ~~~
-
-
