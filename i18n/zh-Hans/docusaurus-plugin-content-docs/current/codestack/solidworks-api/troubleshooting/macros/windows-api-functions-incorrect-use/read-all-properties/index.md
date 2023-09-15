@@ -1,42 +1,42 @@
 ---
-title: Read custom properties from file, configuration and cut-list elements using SOLIDWORKS API
-caption: Read All Properties
-description: VBA example to extract all custom properties from various sources of the active document (general, configuration specific and cut-list) using SOLIDWORKS API
+title: 使用SOLIDWORKS API从文件、配置和切割列表元素中读取自定义属性
+caption: 读取所有属性
+description: 使用SOLIDWORKS API从活动文档的各种来源（通用、配置特定和切割列表）提取所有自定义属性的VBA示例
 image: custom-properties.png
-labels: [properties,cut-list,configuration]
+labels: [属性,切割列表,配置]
 ---
-![Custom properties of the file](custom-properties.png){ width=550 }
+![文件的自定义属性](custom-properties.png){ width=550 }
 
-This VBA macro example demonstrates how to read all properties from all sources of custom properties using SOLIDWORKS API. This includes file (general), configuration specific and cut-list properties.
+这个VBA宏示例演示了如何使用SOLIDWORKS API从所有自定义属性的所有来源中读取所有属性。这包括文件（通用）、配置特定和切割列表属性。
 
-Result is output to the immediate widow of SOLIDWORKS and contains information about source of the property, name, value, expression, status and linked state.
+结果输出到SOLIDWORKS的即时窗口中，包含属性的来源、名称、值、表达式、状态和链接状态的信息。
 
-Second parameter of *PrintConfigurationSpecificProperties* allows to specify if properties need to be read from cache or need to be resolved. This option is important when it is required to resolve the expressions which will result in different values in different configurations, e.g. mass or volume properties.
+*PrintConfigurationSpecificProperties*的第二个参数允许指定是否需要从缓存中读取属性或需要解析属性。当需要解析表达式以在不同配置中得到不同的值时，这个选项非常重要，例如质量或体积属性。
 
 ~~~ vb
-PrintConfigurationSpecificProperties swModel, False 'resolve properties for the configuration
+PrintConfigurationSpecificProperties swModel, False '解析配置的属性
 ~~~
 
 ~~~
-General Properties
-    Property: Description
-    Value/Text Expression: Test Part
-    Evaluated Value: Test Part
-    Was Resolved: True
-    Is Linked: False
-    Status: Resolved Value
+通用属性
+    属性: 描述
+    值/文本表达式: Test Part
+    评估值: Test Part
+    已解析: True
+    已链接: False
+    状态: 已解析的值
 
-Configuration Specific Properties
+配置特定属性
     A
-        Property: Weight
-        Value/Text Expression: "SW-Mass@@A@CS-01.SLDPRT"
-        Evaluated Value: 70.20
-        Was Resolved: True
-        Is Linked: False
-        Status: Cached Value
+        属性: 重量
+        值/文本表达式: "SW-Mass@@A@CS-01.SLDPRT"
+        评估值: 70.20
+        已解析: True
+        已链接: False
+        状态: 缓存值
 
-Cut List Properties
-    -No Cut Lists-
+切割列表属性
+    -没有切割列表-
 ~~~
 
 ~~~ vb
@@ -54,7 +54,7 @@ Sub main()
         PrintConfigurationSpecificProperties swModel, True
         PrintCutListProperties swModel
     Else
-        MsgBox "Please open model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -64,7 +64,7 @@ Sub PrintGeneralProperties(model As SldWorks.ModelDoc2)
     Dim swCustPrpMgr As SldWorks.CustomPropertyManager
     Set swCustPrpMgr = model.Extension.CustomPropertyManager("")
     
-    Debug.Print "General Properties"
+    Debug.Print "通用属性"
     
     PrintProperties swCustPrpMgr, False, "    "
     
@@ -77,7 +77,7 @@ Sub PrintConfigurationSpecificProperties(model As SldWorks.ModelDoc2, cached As 
     
     Dim i As Integer
     
-    Debug.Print "Configuration Specific Properties"
+    Debug.Print "配置特定属性"
     
     For i = 0 To UBound(vNames)
         
@@ -99,7 +99,7 @@ Sub PrintCutListProperties(model As SldWorks.ModelDoc2)
     Dim vCutLists As Variant
     vCutLists = GetCutLists(model)
     
-    Debug.Print "Cut List Properties"
+    Debug.Print "切割列表属性"
     
     If Not IsEmpty(vCutLists) Then
         Dim i As Integer
@@ -111,7 +111,7 @@ Sub PrintCutListProperties(model As SldWorks.ModelDoc2)
             PrintProperties swCutListFeat.CustomPropertyManager, False, "        "
         Next
     Else
-        Debug.Print "    -No Cut Lists-"
+        Debug.Print "    -没有切割列表-"
     End If
 
 End Sub
@@ -179,27 +179,25 @@ Sub PrintProperties(custPrpMgr As SldWorks.CustomPropertyManager, cached As Bool
             Dim status As String
             Select Case res
                 Case swCustomInfoGetResult_e.swCustomInfoGetResult_CachedValue
-                    status = "Cached Value"
+                    status = "缓存值"
                 Case swCustomInfoGetResult_e.swCustomInfoGetResult_ResolvedValue
-                    status = "Resolved Value"
+                    status = "已解析的值"
                 Case swCustomInfoGetResult_e.swCustomInfoGetResult_NotPresent
-                    status = "Not Present"
+                    status = "不存在"
             End Select
             
-            Debug.Print indent & "Property: " & prpName
-            Debug.Print indent & "Value/Text Expression: " & prpVal
-            Debug.Print indent & "Evaluated Value: " & prpResVal
-            Debug.Print indent & "Was Resolved: " & wasResolved
-            Debug.Print indent & "Is Linked: " & isLinked
-            Debug.Print indent & "Status: " & status
+            Debug.Print indent & "属性: " & prpName
+            Debug.Print indent & "值/文本表达式: " & prpVal
+            Debug.Print indent & "评估值: " & prpResVal
+            Debug.Print indent & "已解析: " & wasResolved
+            Debug.Print indent & "已链接: " & isLinked
+            Debug.Print indent & "状态: " & status
             Debug.Print ""
             
         Next
     Else
-        Debug.Print indent & "-No Properties-"
+        Debug.Print indent & "-没有属性-"
     End If
     
 End Sub
 ~~~
-
-
