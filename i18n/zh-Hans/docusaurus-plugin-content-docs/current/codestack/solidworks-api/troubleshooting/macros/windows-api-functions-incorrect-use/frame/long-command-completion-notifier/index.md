@@ -17,7 +17,7 @@ group: 性能
 
 * 创建新的宏并添加以下代码
 
-~~~ vb
+``` vb
 Const MIN_DELAY As Integer = 5
 
 Dim swCmdsListener As CommandsListener
@@ -28,7 +28,7 @@ Sub main()
     swCmdsListener.MinimumDelay = MIN_DELAY
     
 End Sub
-~~~
+```
 
 
 
@@ -36,7 +36,7 @@ End Sub
 * 创建新的类模块并将其命名为*CommandsListener*。将以下代码粘贴到类模块中：
 * 启动宏。要在每个SOLIDWORKS会话中自动启动宏，请参阅[在SOLIDWORKS启动时自动运行SOLIDWORKS宏](/docs/codestack/solidworks-api/getting-started/macros/run-macro-on-solidworks-start/)文章。
 
-~~~ vb
+``` vb
 Dim WithEvents swApp As SldWorks.SldWorks
 
 Dim IsCommandStarted As Boolean
@@ -76,4 +76,4 @@ Private Function swApp_CommandCloseNotify(ByVal Command As Long, ByVal reason As
     swApp_CommandCloseNotify = 0
     
 End Function
-~~~
+```
