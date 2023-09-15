@@ -1,33 +1,33 @@
 ---
-title: Using internal IDs of SOLIDWORKS objects from API
-caption: Internal IDs
-description: This article explains the use of internal ids and the ways to read the ids from the objects
+title: 使用SOLIDWORKS API中的内部ID
+caption: 内部ID
+description: 本文介绍了内部ID的使用以及从对象中读取ID的方法
 image: sketch-segments-ids.png
 labels: [id, track, internal id]
 ---
-![Internal ids assigned to sketch lines in the sketch](sketch-segments-ids.png){ width=350 }
+![在草图中分配给草图线的内部ID](sketch-segments-ids.png){ width=350 }
 
-Internal ids are usually Integer or Long values which uniquely identify the SOLIDWORKS object within the model. Ids are persistent and do not change across rebuild operations or sessions. Ids also updated when the object is changed (e.g. feature is renamed or sketch line changes the coordinates).
+内部ID通常是整数或长整数值，用于在模型中唯一标识SOLIDWORKS对象。ID是持久的，在重建操作或会话之间不会更改。当对象发生更改时（例如，特征重命名或草图线更改坐标），ID也会更新。
 
-> Sketch elements (points, segments, hatches) consist of 2 Integer or Long ids
+> 草图元素（点、线段、填充）由2个整数或长整数ID组成
 
-Same as [Persistent Reference IDs](/docs/codestack/solidworks-api/document/tracking-objects/persist-references) internal ids cannot be changed or assigned and not visible from the GUI (e.g. only available within the APIs). But unlike persistent reference ids, object cannot be looked up by internal id, i.e. it is required to traverse all objects in order to find required one by id.
+与[持久引用ID](/docs/codestack/solidworks-api/document/tracking-objects/persist-references)一样，内部ID不能更改或分配，并且在GUI中不可见（例如，仅在API中可用）。但与持久引用ID不同的是，无法通过内部ID查找对象，即需要遍历所有对象以按ID查找所需对象。
 
-Internal ids should be used if it is required to index all elements (e.g. sketch segments or features) and minimize the size of the indexed data (for example if it is required to store the data within the 3rd party storage or send via network).
+如果需要索引所有元素（例如，草图线段或特征）并最小化索引数据的大小（例如，如果需要将数据存储在第三方存储中或通过网络发送），则应使用内部ID。
 
-Internal ids can be accessed for the following objects
+可以访问以下对象的内部ID：
 
-* Component
-* Configuration
-* Feature
-* Layer
-* Light
-* Sheet
-* Sketch Hatch
-* Sketch Point
-* Sketch Segment
+* 零件
+* 配置
+* 特征
+* 图层
+* 光源
+* 图纸
+* 草图填充
+* 草图点
+* 草图线段
 
-Following example demonstrates how to retrieve the internal id from the selected object using SOLIDWORKS API. The returned array of ids also contains the type of the object as defined in ElementType_e enumerator.
+以下示例演示了如何使用SOLIDWORKS API从所选对象中检索内部ID。返回的ID数组还包含在ElementType_e枚举器中定义的对象类型。
 
 ~~~ vb
 Enum ElementType_e
@@ -70,11 +70,11 @@ Sub main()
                 Debug.Print vId(i);
             Next
         Else
-            MsgBox "Please select object to get id"
+            MsgBox "请选择要获取ID的对象"
         End If
         
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
         
 End Sub
@@ -144,12 +144,10 @@ Function GetObjectId(obj As Object) As Variant
         id = Array(ElementType_e.SketchSegment, swSkSeg.GetSketch().GetId(), skSegId(0), skSegId(1))
         
     Else
-        Err.Raise vbObjectError, , "Object doesn't have id"
+        Err.Raise vbObjectError, , "对象没有ID"
     End If
     
     GetObjectId = id
     
 End Function
 ~~~
-
-
