@@ -15,11 +15,11 @@ group: 装配
 
 要配置文件夹名称，请更改*FOLDER_NAME*变量的值：
 
-~~~ vb
+``` vb
 Const FOLDER_NAME As String = "<文件夹名称>"
-~~~
+```
 
-~~~ vb
+``` vb
 Const FOLDER_NAME As String = "被压制的约束"
 
 Dim swApp As SldWorks.SldWorks
@@ -270,4 +270,4 @@ Function ObjectArrayContains(arr As Variant, item As Object) As Boolean
     ObjectArrayContains = False
     
 End Function
-~~~
+```
