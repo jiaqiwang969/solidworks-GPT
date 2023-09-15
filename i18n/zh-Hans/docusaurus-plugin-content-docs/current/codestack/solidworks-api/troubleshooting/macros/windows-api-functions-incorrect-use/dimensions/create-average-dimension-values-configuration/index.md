@@ -1,19 +1,20 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS macro to create configuration with average dimension values
-caption: Create Configuration With Average Dimension Values
-description: Macro will create child configuration where all the dimension will be set to average value based on the minimum and maximum values of the tolerance
+title: 使用SOLIDWORKS宏创建具有平均尺寸值的配置
+caption: 创建具有平均尺寸值的配置
+description: 该宏将使用SOLIDWORKS API创建子配置，其中所有尺寸将根据公差的最小值和最大值设置为平均值。
 image: sw-dimension-tolerance.png
-labels: [average, configuration, dimension, solidworks api, tolerance, utility]
-group: Model
+labels: [平均值, 配置, 尺寸, solidworks api, 公差, 实用工具]
+group: 模型
 redirect-from:
   - /2018/03/solidworks-api-dimensions-average-dims.html
 ---
-This macro will create child configuration where all the dimension will be set to average value based on the minimum and maximum values of the tolerance using SOLIDWORKS API.
 
-![Dimension Tolerance/Precision group in property manager page](sw-dimension-tolerance.png){ width=400 }
+该宏将使用SOLIDWORKS API创建子配置，其中所有尺寸将根据公差的最小值和最大值设置为平均值。
 
-~~~ vb
+![属性管理器页面中的尺寸公差/精度组](sw-dimension-tolerance.png){ width=400 }
+
+```vb
 Dim swApp As SldWorks.SldWorks
 Dim swModel As SldWorks.ModelDoc2
 
@@ -70,12 +71,10 @@ Sub main()
         swModel.EditRebuild3
     
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
 
 
-~~~
-
-
+```
