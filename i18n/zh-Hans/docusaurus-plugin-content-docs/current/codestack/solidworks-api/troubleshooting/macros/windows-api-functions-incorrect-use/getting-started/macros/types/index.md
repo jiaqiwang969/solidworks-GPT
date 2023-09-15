@@ -1,49 +1,49 @@
 ---
-title: SOLIDWORKS Macro types - VBA (swp), SWBasic (swb), VSTA (dll)
-caption: Macros Types
-description: This article explains the different types of macros supported by SOLIDWORKS (VBA, VSTA, SWBasic)
+title: SOLIDWORKS宏类型 - VBA (swp), SWBasic (swb), VSTA (dll)
+caption: 宏类型
+description: 本文介绍SOLIDWORKS支持的不同类型的宏（VBA、VSTA、SWBasic）
 image: macro-edit-run-filters.png
-labels: [macros, vsta, vba, swmacro, swb, swp]
+labels: [宏, VSTA, VBA, SWMacro, SWB, SWP]
 sidebar_position: 1
 ---
-![Macros filter when running the macro](macro-edit-run-filters.png){ width=200 }
+![运行宏时的宏筛选器](macro-edit-run-filters.png){ width=200 }
 
-Macros can be edited directly in the built-in VBA Editor and can be executed in SOLIDWORKS using out-of-the-box engine. It is not required to install any additional software to run macros (the only exception are VSTA 3.0 macros which require the stand-alone installation of Visual Studio)
+宏可以直接在内置的VBA编辑器中进行编辑，并且可以在SOLIDWORKS中使用开箱即用的引擎执行。不需要安装任何额外的软件来运行宏（唯一的例外是需要独立安装Visual Studio的VSTA 3.0宏）。
 
-## VBA Macros (*.swp)
+## VBA宏（*.swp）
 
-These probably the most popular macros. The macros are based on VBA7 (for SOLIDWORKS 2015 and newer) and VBA6 for older versions. VBA6 and VBA7 are derived languages from Visual Basic 6. So all the syntax is the same. Refer [Visual Basic Tutorials](/docs/codestack/visual-basic) for more documentation about this language.
+这可能是最流行的宏类型。这些宏基于VBA7（适用于SOLIDWORKS 2015及更高版本）和VBA6（适用于旧版本）。VBA6和VBA7是从Visual Basic 6派生出来的语言。因此，所有的语法都是相同的。有关该语言的更多文档，请参阅[Visual Basic教程](/docs/codestack/visual-basic)。
 
-Macros are saved in the binary format with *.swb extension and can be viewed and edited by SOLIDWORKS VBA Editor only.
+宏以二进制格式保存，扩展名为*.swb，并且只能由SOLIDWORKS VBA编辑器查看和编辑。
 
-## SWBasic Macros (*.swb)
+## SWBasic宏（*.swb）
 
-Similar to *.swp macros these types of macros are based on VBA6 and VBA7 languages. The only difference that these macros are saved in plain text format with *.swp extensions.
+与*.swp宏类似，这些宏类型也基于VBA6和VBA7语言。唯一的区别是这些宏以纯文本格式保存，扩展名为*.swp。
 
-Which makes it readable and editable outside of SOLIDWORKS environment with any text editors (such as Notepad). This is in particular useful when macro code is maintained within the control version services such as SVN or GIT.
+这使得宏代码可以在SOLIDWORKS环境之外使用任何文本编辑器（如记事本）进行阅读和编辑。当宏代码在诸如SVN或GIT之类的版本控制服务中进行维护时，这尤其有用。
 
-These macros cannot reference any 3rd party type libraries (such as Excel, File System Object, etc.) and will only include references to SOLIDWORKS type libraries. If it is required to use any 3rd party type library it is possible to do so via [Late binding](/docs/codestack/visual-basic/variables/declaration/#early-binding-and-late-binding).
+这些宏不能引用任何第三方类型库（如Excel、文件系统对象等），并且只能包含对SOLIDWORKS类型库的引用。如果需要使用任何第三方类型库，可以通过[后期绑定](/docs/codestack/visual-basic/variables/declaration/#early-binding-and-late-binding)来实现。
 
-Those macros will only have one [module](/docs/codestack/visual-basic/modules/) and cannot use [classes](/docs/codestack/visual-basic/classes/) or [user forms](/docs/codestack/visual-basic/user-forms/).
+这些宏只能有一个[模块](/docs/codestack/visual-basic/modules/)，不能使用[类](/docs/codestack/visual-basic/classes/)或[用户窗体](/docs/codestack/visual-basic/user-forms/)。
 
-## C# and VB.NET VSTA Macros
+## C#和VB.NET VSTA宏
 
-**V**isual **ST**udio for **A**pplication (VSTA) macros based on .NET language (C# or VB.NET) which provides more flexibility and leverages the power of .NET framework bringing the access to the big variety of libraries, 3rd party components and Object Oriented Programming (OOP) paradigms into the macros.
+**V**isual **ST**udio for **A**pplication（VSTA）宏基于.NET语言（C#或VB.NET），提供了更大的灵活性，并利用了.NET框架的强大功能，使宏能够访问各种库、第三方组件和面向对象编程（OOP）范例。
 
-Unlike VBA macros VSTA macros separate the project with the source code (*.csproj, *.vbproj) for editing and binaries (*.dll) output for running the macros. So binaries can be used without the source code available.
+与VBA宏不同，VSTA宏将项目与源代码（*.csproj、*.vbproj）分开进行编辑，并将二进制文件（*.dll）输出用于运行宏。因此，可以在没有源代码的情况下使用二进制文件。
 
-VSTA macros are in-process applications and can be either automatically released from the memory or continue to execute after the main function finishes. 
+VSTA宏是进程内应用程序，可以在主函数完成后自动释放内存或继续执行。
 
-This behaviour controlled by the following option:
+此行为由以下选项控制：
 
-![Stop VSTA debugger on macro exit option](option-stop-vsta-debugger-on-macro-exit.png){ width=350 }
+![停止VSTA调试器在宏退出时选项](option-stop-vsta-debugger-on-macro-exit.png){ width=350 }
 
-If this option is unchecked macro will remain loaded into memory until **Stop** button is clicked. This is useful option when macro performs any asynchronous operations such as handling events or displaying property manager page.
+如果取消选中此选项，宏将保留在内存中，直到单击**停止**按钮。当宏执行任何异步操作（如处理事件或显示属性管理器页面）时，这是一个有用的选项。
 
-VSTA macros are based on .NET Framework 2.0 and can be edited and debugged using built-in VSTA editor.
+VSTA宏基于.NET Framework 2.0，并可以使用内置的VSTA编辑器进行编辑和调试。
 
-In SOLIDWORKS 2018 new VSTA Version 3.0 is introduced however older VSTA version is still supported. The target version can be controlled by the following options:
+在SOLIDWORKS 2018中引入了新的VSTA 3.0版本，但仍然支持旧的VSTA版本。可以通过以下选项来控制目标版本：
 
-![Enable VSTA VERSION 3.0 option](option-enable-vsta-version-3.png){ width=350 }
+![启用VSTA VERSION 3.0选项](option-enable-vsta-version-3.png){ width=350 }
 
-VSTA 3.0 required the stand alone installation of Visual Studio (either Professional or Community edition). The main benefit of VSTA 3.0 is an ability to use newer version of .NET Framework.
+VSTA 3.0需要独立安装Visual Studio（专业版或社区版均可）。VSTA 3.0的主要优点是能够使用更新版本的.NET Framework。
