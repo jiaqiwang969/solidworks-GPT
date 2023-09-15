@@ -1,120 +1,119 @@
 ---
-title: Creating the Visual Studio Installer (VSI) for SOLIDWORKS application
-caption: Visual Studio Installer (VSI)
-description: Article explains the steps required to create an installer package for deploying SOLIDWORKS add-in
+title: 创建SOLIDWORKS应用程序的Visual Studio安装程序（VSI）
+caption: Visual Studio安装程序（VSI）
+description: 本文介绍了创建用于部署SOLIDWORKS插件的安装程序包的步骤
 image: installation-process.png
 labels: [installer, setup, deployment, msi, vsi]
 ---
 {% youtube { id: JRc1vx1snv4 } %}
 
-### Installing the VSI Extension
+### 安装VSI扩展
 
-Download the Microsoft Visual Studio Installer Projects Extension from [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.MicrosoftVisualStudio2017InstallerProjects). Find the version which matches your Visual Studio version.
+从[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.MicrosoftVisualStudio2017InstallerProjects)下载Microsoft Visual Studio Installer Projects扩展。找到与您的Visual Studio版本匹配的版本。
 
-> It is recommended to close current session of Visual Studio when installing this extension.
+> 建议在安装此扩展时关闭当前的Visual Studio会话。
 
-### Creating setup project
+### 创建安装程序项目
 
-Add new Setup project to the solution which can be found under the *Other Project Types->Visual Studio Installer* section.
+在解决方案中添加新的安装程序项目，可以在“其他项目类型->Visual Studio Installer”部分找到。
 
-![Project template for Visual Studio Setup](visual-studio-installer-project-template.png){ width=450 }
+![Visual Studio安装程序的项目模板](visual-studio-installer-project-template.png){ width=450 }
 
-Configure the attributes of the installer by selection Setup project in the solution tree and changing the attributes in the properties page.
+通过选择解决方案树中的安装程序项目并在属性页中更改属性来配置安装程序的属性。
 
-![Properties of the installer](installer-properties.png){ width=350 }
+![安装程序的属性](installer-properties.png){ width=350 }
 
-> Make sure to select the correct version of the platform. Default option x86 should be changed to x64 to support 64-bit versions of SOLIDWORKS.
+> 确保选择正确的平台版本。默认选项x86应更改为x64以支持64位版本的SOLIDWORKS。
 
-### Adding installation files and COM registration
+### 添加安装文件和COM注册
 
-Click right mouse button (RMB) o the project node and select *Add-->Project Output...* command from the context menu.
+单击项目节点上的右键，并从上下文菜单中选择“添加->项目输出...”命令。
 
-![Adding project outputs](add-project-output.png){ width=300 }
+![添加项目输出](add-project-output.png){ width=300 }
 
-Select the main project of the add-in in the drop down and select *Primary Output* option
+在下拉菜单中选择插件的主项目，并选择“主输出”选项。
 
-![Adding primary outputs to setup project](add-primary-output.png){ width=250 }
+![将主输出添加到安装程序项目](add-primary-output.png){ width=250 }
 
-This will allow to add the dll into the setup as well as all dependent dlls and files.
+这将允许将dll以及所有依赖的dll和文件添加到安装程序中。
 
-![Dependent libraries of the primary output](primary-output-dependencies.png){ width=250 }
+![主输出的依赖库](primary-output-dependencies.png){ width=250 }
 
-This will also register the COM objects in the dll.
+这也将在dll中注册COM对象。
 
-### Customizing installer view
+### 自定义安装程序视图
 
-Installer can be customized and new components can be added via installer views.
+可以通过安装程序视图自定义安装程序并添加新组件。
 
-![Views of installer](installer-view.png){ width=300 }
+![安装程序的视图](installer-view.png){ width=300 }
 
-### Adding registry entries
+### 添加注册表项
 
-Registry values need to be added into the *SolidWorks* registry section to make SOLIDWORKS recognize the add-in.
+需要将注册表值添加到“SolidWorks”注册表部分，以使SOLIDWORKS识别插件。
 
-Open the *Registry View*
+打开“注册表视图”
 
-![Registry view of the setup project](registry-view.png){ width=350 }
+![安装程序项目的注册表视图](registry-view.png){ width=350 }
 
-Add the following:
+添加以下内容：
 > HKEY_LOCAL_MACHINE\Software\SolidWorks\Addins\[{ADDIN GUID}]
 
-And add the following fields to this key:
+并在此键中添加以下字段：
 
-(default) (DWORD Value) equals to 1. Simply leave the field name empty to set it to default (do not type (default) explicitly)
+(default)（DWORD值）等于1。将字段名称留空以将其设置为默认值（不要显式输入（default））
 
-Title (String Value) - value is a title of the add-in
+Title（字符串值）- 值是插件的标题
 
-Description (String Value) - value is a description of the add-in
+Description（字符串值）- 值是插件的描述
 
-In order for the add-in to be loaded at startup add the following key
+为了在启动时加载插件，添加以下键
 
 > HKEY_CURRENT_USER\Software\SolidWorks\AddinsStartup\[{ADDIN GUID}]
 
-Add the default DWORD field with value 1
+添加默认的DWORD字段，值为1
 
-### Adding resource files
+### 添加资源文件
 
-Add the resource files to the installer by RMB on the add-in project and selecting *Add->Files* menu command. The resource files can be used to add icon to the installer, banner images, EULA etc.
+通过右键单击插件项目并选择“添加->文件”菜单命令将资源文件添加到安装程序。资源文件可用于向安装程序添加图标、横幅图像、最终用户许可协议（EULA）等。
 
-#### Customizing User Interface
+#### 自定义用户界面
 
-Open the *User Interface* view. This view contains the list and order of all pages displayed during the installation process.
+打开“用户界面”视图。此视图包含安装过程中显示的所有页面的列表和顺序。
 
-![View of setup pages](user-interface-view.png){ width=150 }
+![设置页面的视图](user-interface-view.png){ width=150 }
 
-Pages can be customized, added, deleted and reordered.
+可以自定义、添加、删除和重新排序页面。
 
-Select all pages and set the banner image. Banner image displayed at the top of the installer and is a bitmap (bmp) or png file of 500x70 pixels size.
+选择所有页面并设置横幅图像。横幅图像显示在安装程序的顶部，是一个500x70像素大小的位图（bmp）或png文件。
 
-![Properties of setup page](ui-page-properties.png){ width=300 }
+![设置页面的属性](ui-page-properties.png){ width=300 }
 
-Change the banner attribute by browsing the bitmap resource added in previous step.
+通过浏览在上一步中添加的位图资源来更改横幅属性。
 
-![Selecting the resource file](browse-resource-application-folder.png){ width=300 }
+![选择资源文件](browse-resource-application-folder.png){ width=300 }
 
-More pages can be added to the installer, such as End User License Agreement (EULA) or registration page.
+可以向安装程序添加更多页面，例如最终用户许可协议（EULA）或注册页面。
 
-### Installing add-in
+### 安装插件
 
-When project compiled the msi package is generated in the output directory. This package can be redistributed to the user for installing your product.
+项目编译后，msi包将生成在输出目录中。可以将此包重新分发给用户以安装您的产品。
 
-![Installing the add-in](installation-process.png){ width=300 }
+![安装插件](installation-process.png){ width=300 }
 
-Once installed the product icon appears in the Programs and Features page of the Control Panel. The product can be repaired or uninstalled within this page.
+安装后，产品图标将出现在控制面板的“程序和功能”页面中。可以在此页面中修复或卸载产品。
 
-![Add-in icon in Programs and Features](programs-and-features-add-in.png){ width=650 }
+![程序和功能中的插件图标](programs-and-features-add-in.png){ width=650 }
 
-### Releasing update
+### 发布更新
 
-When product update is required and new installer needs to be redistributed it is required to update the version of the installer.
+当需要产品更新并需要重新分发新的安装程序时，需要更新安装程序的版本。
 
-The following message may be displayed.
+可能会显示以下消息。
 
-![Message for automatically updating the product code when installer version is changed](auto-update-product-code.png){ width=300 }
+![当更改安装程序版本时自动更新产品代码的消息](auto-update-product-code.png){ width=300 }
 
-It is required to change the *Product Code* for every new version while *Upgrade Code* should remain unchanged. This will allow users to upgrade without the need of uninstalling previous version of add-in (if already installed).
+每个新版本都需要更改*Product Code*，而*Upgrade Code*应保持不变。这将允许用户升级而无需卸载先前版本的插件（如果已安装）。
 
-> It is required to change the assembly versions of all changed projects otherwise the installer would not update the dlls on the target machines.
+> 需要更改所有更改的项目的程序集版本，否则安装程序将不会在目标机器上更新dll。
 
-![Assembly version of .NET project](assembly-version.png){ width=300 }
-
+![.NET项目的程序集版本](assembly-version.png){ width=300 }
