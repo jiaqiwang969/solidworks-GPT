@@ -1,21 +1,21 @@
 ---
-caption: 为草图分配随机颜色
-title: 将随机颜色分配给文档中的草图的宏
-description: VBA宏将随机颜色分配给SOLIDWORKS零件或装配体中的所有草图，并提供跳过已分配颜色的草图和未吸收草图的选项
+caption: Assign Random Colors to Sketches
+title: Macro to Assign Random Colors to Sketches in a Document
+description: This VBA macro assigns random colors to all sketches in a SOLIDWORKS part or assembly, with options to skip sketches that already have assigned colors and to select only unabsorbed sketches.
 ---
 
-这个VBA宏将随机颜色分配给活动零件或装配体中的所有草图。
+This VBA macro assigns random colors to all sketches in the active part or assembly.
 
-可以配置宏以跳过已分配颜色的草图，并仅选择未吸收的草图（例如，未在其他特征中使用的草图）。
+The macro can be configured to skip sketches that already have assigned colors and to select only unabsorbed sketches (i.e., sketches that are not used in other features).
 
-~~~vb
-Const SKIP_ASSIGNED As Boolean = False '处理所有草图（包括已分配颜色的草图）
-Const UNABSORBED_ONLY As Boolean = False '处理所有草图（吸收和未吸收的）
-~~~
+```vb
+Const SKIP_ASSIGNED As Boolean = False 'Process all sketches (including sketches with assigned colors)
+Const UNABSORBED_ONLY As Boolean = False 'Process all sketches (absorbed and unabsorbed)
+```
 
-颜色将在特征外观级别上分配。
+The colors are assigned at the feature appearance level.
 
-~~~ vb
+``` vb
 Const SKIP_ASSIGNED As Boolean = True
 Const UNABSORBED_ONLY As Boolean = True
 
@@ -49,7 +49,7 @@ Sub main()
                     dMatPrps(3) = 1: dMatPrps(4) = 1: dMatPrps(5) = 0.5
                     dMatPrps(6) = 0.4: dMatPrps(7) = 0: dMatPrps(8) = 0
                     
-                    Debug.Print "将颜色 " & dMatPrps(0) * 255 & ";" & dMatPrps(1) * 255 & ";" & dMatPrps(2) * 255 & " 分配给 " & swFeat.Name
+                    Debug.Print "Assigning color " & dMatPrps(0) * 255 & ";" & dMatPrps(1) * 255 & ";" & dMatPrps(2) * 255 & " to " & swFeat.Name
                     
                     swFeat.SetMaterialPropertyValues2 dMatPrps, swInConfigurationOpts_e.swThisConfiguration, Empty
                     
@@ -117,17 +117,17 @@ Function CollectAllSketchFeatures(firstFeat As SldWorks.Feature) As Variant
     End If
     
 End Function
-~~~
+```
 
 
 
-## 线颜色
+## Line Colors
 
-这是将颜色分配为线颜色而不是特征外观的宏的另一种版本。
+Here is another version of the macro that assigns colors as line colors instead of feature appearances.
 
-此宏将为所有选定的草图或如果没有选定的草图，则为所有草图分配随机颜色。**UNABSORBED_ONLY**选项仅在没有选定草图时考虑。
+This macro assigns random colors to all selected sketches or, if no sketches are selected, to all sketches. The **UNABSORBED_ONLY** option is considered only when no sketches are selected.
 
-~~~ vb
+``` vb
 Const UNUBSORBED_ONLY As Boolean = True
 
 Dim swApp As SldWorks.SldWorks
@@ -162,7 +162,7 @@ Sub main()
             If False <> swFeat.Select2(False, -1) Then
                 swPart.SetLineColor RGB(CInt(255 * Rnd()), CInt(255 * Rnd()), CInt(255 * Rnd()))
             Else
-                Err.Raise vbError, "", "无法选择 " & swFeat.Name
+                Err.Raise vbError, "", "Failed to select " & swFeat.Name
             End If
             
         Next
@@ -256,4 +256,4 @@ Function CollectAllSketchFeatures(firstFeat As SldWorks.Feature) As Variant
     End If
     
 End Function
-~~~
+```
