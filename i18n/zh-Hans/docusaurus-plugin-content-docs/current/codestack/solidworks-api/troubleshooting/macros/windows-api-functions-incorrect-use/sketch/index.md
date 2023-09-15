@@ -7,7 +7,7 @@ labels: [sketch,draw]
 ---
 草图是SOLIDWORKS零件、装配和绘图中的二维或三维布局。在大多数情况下，草图用作生成三维元素（挤压、切割、放样等）的轮廓。
 
-草图是一个特征，可以通过SOLIDWORKS API中的[ISketch](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ISketch.html)接口进行管理。
+草图是一个特征，可以通过[SOLIDWORKS API中的ISketch接口](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ISketch.html)进行管理。
 
 草图可以包含草图线段和草图点，以及注释（尺寸、注释等）。
 
