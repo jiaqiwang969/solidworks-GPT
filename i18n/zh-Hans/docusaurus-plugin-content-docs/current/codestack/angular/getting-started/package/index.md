@@ -1,20 +1,20 @@
 ---
-title: Angular package.json file overview
-caption: Package File Overview
-description: Overview of a package.json file to manage Angular project
+title: Angular package.json文件概述
+caption: Package文件概述
+description: 管理Angular项目的package.json文件概述
 image: angular-package.png
 labels: [angular,package,json,dependencies,devDependencies,scripts]
 sidebar_position: 0
 ---
-![Angular package file](angular-package.png){ width=400 }
+![Angular package文件](angular-package.png){ width=400 }
 
-Once you create new Angular application, you will see package.json file among the newly created files and folders. package.json file locates in project root and contains information about your web application. The main purpose of the file comes from its name *package*, so it'll contain the information about npm packages installed for the project.
+创建新的Angular应用程序后，您将在新创建的文件和文件夹中看到package.json文件。package.json文件位于项目根目录中，包含有关您的Web应用程序的信息。该文件的主要目的来自其名称*package*，因此它将包含有关项目安装的npm软件包的信息。
 
-Let's take a look at main sections in package.json file.
+让我们来看看package.json文件中的主要部分。
 
-## Project Metadata
+## 项目元数据
 
-Metadata contains information about your application.
+元数据包含有关您的应用程序的信息。
 
 ~~~
   "name": "my-first-angular-app",
@@ -22,28 +22,28 @@ Metadata contains information about your application.
   "private": true,
 ~~~
 
-Field         | Value                          | Description
+字段         | 值                          | 描述
 --------------|--------------------------------|-----------
-"name" | "my-first-angular-app"     | Your project name
-"version" | "0.0.1" | Your project version
-"private" | true | Project is private and can't be published in npm
+"name" | "my-first-angular-app"     | 您的项目名称
+"version" | "0.0.1" | 您的项目版本
+"private" | true | 项目是私有的，不能在npm中发布
 
-You can add the following fields and values:
+您可以添加以下字段和值：
 
-Field         | Value                          | Description
+字段         | 值                          | 描述
 --------------|--------------------------------|-----------
-"description" | "Some project description"     |
-"main"        | "src/main.ts"                  | Entry point in the app. "src/main.ts" is default value for Angular application
-"author"      | "Name, name@email.com, https://name.com" or "author": {   "name":"Name","email":"name@email.com", "url":"https://name.com"} | Set all in one plain string   or   using the structure
-"contributors"| ["Contributor, contributor@email.com, https://contributor.com"] or "contributors": [{ "name": "Contributor", "email": "contributor@email.com", "url": "https://contributor.com" }]   | You can add contributors information as string array or using the structure array
-"bugs"        | "https://github.com/UserName/my-first-angular-app/issues"  | Link to bug tracking system, if any
-"homepage"    | "https://site-name.com"                               | Link to homepage
-"license"     | "MIT"                                                 | License of the application
-"repository"  | "{"type": "git",  "url": "https://github.com/UserName/my-first-angular-app.git"}"                   | Repository location
+"description" | "一些项目描述"     |
+"main"        | "src/main.ts"                  | 应用程序的入口点。"src/main.ts"是Angular应用程序的默认值
+"author"      | "姓名, name@email.com, https://name.com" 或 "author": {   "name":"姓名","email":"name@email.com", "url":"https://name.com"} | 以纯字符串形式设置所有内容或使用结构
+"contributors"| ["贡献者, contributor@email.com, https://contributor.com"] 或 "contributors": [{ "name": "贡献者", "email": "contributor@email.com", "url": "https://contributor.com" }]   | 您可以将贡献者信息作为字符串数组或使用结构数组添加
+"bugs"        | "https://github.com/用户名/my-first-angular-app/issues"  | 如果有的话，链接到错误跟踪系统
+"homepage"    | "https://site-name.com"                               | 链接到主页
+"license"     | "MIT"                                                 | 应用程序的许可证
+"repository"  | "{"type": "git",  "url": "https://github.com/用户名/my-first-angular-app.git"}"                   | 存储库位置
 
-## Scripts
+## 脚本
 
-This section describes Node scripts you can run in your application. As the code sample uses Angular CLI, all scripts are calling it.
+此部分描述了您可以在应用程序中运行的Node脚本。由于代码示例使用Angular CLI，所有脚本都调用它。
 
 ~~~
   "scripts": {
@@ -56,17 +56,17 @@ This section describes Node scripts you can run in your application. As the code
   },
 ~~~
 
-You can put any cmd command in the script and you will be able to run it with npm. To run the script, just run it in command line from project location:
+您可以在脚本中放置任何cmd命令，并且可以使用npm运行它。要运行脚本，只需从项目位置在命令行中运行它：
 
 ~~~
 > npm start
 ~~~
 
-This line with run the **ng serve** for you, which means start the application. You can clean existing and add your own new scripts.
+这行代码将为您运行**ng serve**，这意味着启动应用程序。您可以清除现有的脚本并添加自己的新脚本。
 
-## Dependencies
+## 依赖项
 
-The list of packages installed as dependencies for this project are required at runtime.
+在此项目中作为依赖项安装的软件包列表在运行时是必需的。
 
 ~~~
 "dependencies": {
@@ -84,32 +84,32 @@ The list of packages installed as dependencies for this project are required at 
 },
 ~~~
 
-Where **@angular/animations** is package name and **~8.0.0** is package version. You may notice that package versions description vary. The symbol in front of version says to npm install which package version to use 
-**1.0.0** means strictly 1.0.0 version of the package 
-**~8.0.0** means, 8.0.0 version or it's later patch version (third number may vary): 8.0, 8.0.x 
-**^1.9.0** means, 1.9.0 version or it's later minor version (second number may vary): 1, 1.x  
+其中**@angular/animations**是软件包名称，**~8.0.0**是软件包版本。您可能会注意到软件包版本说明不同。版本前面的符号告诉npm install使用哪个软件包版本
+**1.0.0**表示严格使用软件包的1.0.0版本
+**~8.0.0**表示8.0.0版本或其后的补丁版本（第三个数字可能会有所不同）：8.0、8.0.x
+**^1.9.0**表示1.9.0版本或其后的次要版本（第二个数字可能会有所不同）：1、1.x
 
-Other version control symbols:
+其他版本控制符号：
 
-Symbol         | Description      
+符号         | 描述      
 ---------------|------------------
-*  | Latest version of the package may be installed, including major version update (first number may vary)
->  | Version higher then specified should be installed
->= | Same or higher package version should be installed
-<  | Version lower then specified should be installed
-<= | Same or lower package version should be installed 
+*  | 可以安装软件包的最新版本，包括主要版本更新（第一个数字可能会有所不同）
+>  | 必须安装高于指定版本的版本
+>= | 必须安装相同或更高版本的软件包
+<  | 必须安装低于指定版本的版本
+<= | 必须安装相同或更低版本的软件包
 
-To install a new package run:
+要安装新软件包，请运行：
 
 ~~~
-> npm i new-package-name-to-install
+> npm i 要安装的新软件包名称
 ~~~
 
-Where **i** is short for install and you will need to replace **new-package-name-to-install** with actual package name and it's version. Check the [https://www.npmjs.com/](https://www.npmjs.com/) for available packages. The line with package name and it's version will be added to "dependencies" list automatically after installation.
+其中**i**是install的缩写，您需要将**要安装的新软件包名称**替换为实际的软件包名称和版本。安装后，软件包名称和其版本的行将自动添加到"dependencies"列表中。
 
-## Development Dependencies
+## 开发依赖项
 
-The list of packages that are required only for development. This packages are installed only on developer's machine and will not be run for production build.
+仅在开发人员的计算机上需要的软件包列表。这些软件包仅在开发人员的计算机上安装，并且不会在生产构建中运行。
 
 ~~~
 "devDependencies": {
@@ -135,8 +135,8 @@ The list of packages that are required only for development. This packages are i
 }
 ~~~
 
-To install the development dependency add **-dev** flag to installation string:
+要安装开发依赖项，请在安装字符串中添加**-dev**标志：
 
 ~~~
-> npm i -dev new-package-name-to-install
+> npm i -dev 要安装的新软件包名称
 ~~~
