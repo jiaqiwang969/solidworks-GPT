@@ -35,15 +35,15 @@ group: 自定义属性
 
 可以通过更改宏中的常量值来配置宏，如下所示：
 
-~~~ vb
+``` vb
 Const ASCENDING As Boolean = True 'True表示升序，False表示降序
 Const REORDER_GENERAL_CUST_PRPS As Boolean = True 'True表示对文件特定的自定义属性进行排序，False表示跳过
 Const REORDER_CONF_CUST_PRPS As Boolean = True 'True表示对配置特定的自定义属性进行排序（对于零件和装配体），False表示跳过
-~~~
+```
 
 观看[演示视频](https://youtu.be/jsjN8zNRTuc?t=97)
 
-~~~ vb
+``` vb
 Declare PtrSafe Function StrCmpLogicalW Lib "shlwapi" (ByVal s1 As String, ByVal s2 As String) As Integer
 
 Const ASCENDING As Boolean = True
@@ -156,4 +156,4 @@ Function BubbleSort(vStrArray As Variant, asc As Boolean) As Variant
     BubbleSort = vResStrArray
     
 End Function
-~~~
+```
