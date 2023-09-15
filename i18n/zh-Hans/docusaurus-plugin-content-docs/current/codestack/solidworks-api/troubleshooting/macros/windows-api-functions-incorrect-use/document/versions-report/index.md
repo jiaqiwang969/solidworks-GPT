@@ -1,22 +1,22 @@
 ---
-caption: Report File Versions
-title: Generate report for the SOLIDWORKS file versions (created and last saved) for all the files in the folder
-description: VBA macro which generates CSV report of versions (created and last saved) for all files in the folder
+caption: 报告文件版本
+title: 为文件夹中的所有文件生成SOLIDWORKS文件版本（创建和最后保存）报告
+description: 这是一个VBA宏，用于生成指定文件夹中SOLIDWORKS文件的创建和最后保存版本的CSV报告（可在Excel中打开）。
 image: solidworks-file-versions-report.png
 ---
-![SOLIDWORKS file versions report](solidworks-file-versions-report.png) { width=500 }
+![SOLIDWORKS文件版本报告](solidworks-file-versions-report.png) { width=500 }
 
-This VBA macro generates a CSV report (can be opened in Excel) of created and last saved version of SOLIDWORKS file in the specified folder.
+这个VBA宏生成一个CSV报告（可以在Excel中打开），报告了指定文件夹中SOLIDWORKS文件的创建和最后保存版本。
 
-> This macro will not be opening each model individually which significantly reduces the processing time
+> 这个宏不会逐个打开每个模型，这显著减少了处理时间。
 
-Macro input and output parameter can be configured by changing the constants below
+可以通过更改下面的常量来配置宏的输入和输出参数。
 
 ~~~ vb
-Const INPUT_FOLDER_PATH As String = "D:\MyModels" 'full path to the input folder with SOLIDWORKS files
-Const OUT_FILE_PATH As String = "D:\sw-file-versions.csv" 'full path to the output CSV file of the report
-Const FILES_FILTER As String = "*.sld*" 'Filter for files with the support of wildcards
-Const INCLUDE_SUB_FOLDERS As Boolean = True 'True to process sub-folders, False to only process top level files
+Const INPUT_FOLDER_PATH As String = "D:\MyModels" 'SOLIDWORKS文件所在文件夹的完整路径
+Const OUT_FILE_PATH As String = "D:\sw-file-versions.csv" '报告的输出CSV文件的完整路径
+Const FILES_FILTER As String = "*.sld*" '支持通配符的文件过滤器
+Const INCLUDE_SUB_FOLDERS As Boolean = True 'True表示处理子文件夹，False表示只处理顶层文件
 ~~~
 
 ~~~ vb
@@ -41,7 +41,7 @@ Sub main()
     
     Open OUT_FILE_PATH For Output As #fileNo
  
-    Print #fileNo, "File Path,Created,Last Saved"
+    Print #fileNo, "文件路径,创建日期,最后保存日期"
     
     For i = 0 To UBound(vFilePaths)
     
@@ -177,4 +177,3 @@ End Function
 
 
 ~~~
-
