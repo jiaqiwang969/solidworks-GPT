@@ -1,49 +1,49 @@
 ---
 layout: sw-macro-fix
-title: How to fix Missing SOLIDWORKS Type Library References error
-caption: Missing SOLIDWORKS Type Library References
-description: Fixing Can't find project or library error in legacy macro
+title: 如何修复缺失的SOLIDWORKS类型库引用错误
+caption: 缺失的SOLIDWORKS类型库引用
+description: 修复遗留宏中的找不到项目或库错误
 image: error-cant-find-project-or-library.png
-labels: [macro, troubleshooting]
+labels: [宏, 故障排除]
 redirect-from:
   - /2018/04/macro-troubleshooting-missing-solidworks-type-library-references.html
 ---
-## Symptoms
+## 症状
 
-* Legacy SOLIDWORKS macro downloaded from the internet or have been developed in-house some time ago failed to run.
-*Can't find project or library error* is displayed and of the SOLIDWORKS declarations are highlighted.
+* 从互联网下载的遗留SOLIDWORKS宏或一段时间前开发的宏无法运行。
+* 显示*找不到项目或库错误*，并且SOLIDWORKS声明中的所有内容都被突出显示。
 
-![Can't find project or library error when running the macro](error-cant-find-project-or-library.png){ width=320 height=182 }
+![运行宏时出现找不到项目或库错误](error-cant-find-project-or-library.png){ width=320 height=182 }
 
-Alternatively non-SOLIDWORKS declarations can be highlighted (such as Left or Mid functions)
+或者非SOLIDWORKS声明也可能被突出显示（例如Left或Mid函数）
 
-![Can't find project or library error on Left function in VBA](error-cant-find-project-or-library-left.png){ width=320 height=185 }
+![VBA中Left函数出现找不到项目或库错误](error-cant-find-project-or-library-left.png){ width=320 height=185 }
 
-* If the libraries were never selected in the macro the *Compile error: user-defined type not defined* can be displayed.
+* 如果宏中从未选择过这些库，则可能显示*编译错误：未定义的用户类型*。
 
-![Compile error: user-defined type not defined](compile-error-user-defined-type-not-defined.png){ width=200 }
+![编译错误：未定义的用户类型](compile-error-user-defined-type-not-defined.png){ width=200 }
 
-## Cause
+## 原因
 
-* Macro is pointing to older versions of SOLIDWORKS type libraries and cannot resolve them automatically. As the result the libraries are marked as MISSING.
+* 宏指向较旧版本的SOLIDWORKS类型库，无法自动解析它们。结果，这些库被标记为“MISSING”。
 
-* SOLIDWORKS type libraries were never selected or were explicitly deselected in the macro (this usually happens when macro is converted from *.swp macro)
+* SOLIDWORKS类型库从未被选择，或者在宏中明确取消选择（通常在将宏从*.swp宏转换时发生）
 
-## Resolution
+## 解决方法
 
-* Open the macro for [editing](https://help.solidworks.com/2017/english/solidworks/sldworks/t_edit_macro.htm) via Tools->Macro->Edit menu
-* Navigate to Tools->References menu in the VBA editor
-* Select the SOLIDWORKS type libraries as shown below. If libraries cannot be found in the *Available References* list use *Browse...* button and find the *sldworks.tlb*, *swconst.tlb*, *swcommands.tlb* in the installation folder of SOLIDWORKS.
+* 通过工具->宏->编辑菜单打开宏进行[编辑](https://help.solidworks.com/2017/english/solidworks/sldworks/t_edit_macro.htm)
+* 在VBA编辑器中导航到工具->引用菜单
+* 如下图所示选择SOLIDWORKS类型库。如果在*可用引用*列表中找不到库，请使用*浏览...*按钮，并在SOLIDWORKS的安装文件夹中找到*sldworks.tlb*、*swconst.tlb*、*swcommands.tlb*。
 
-![Required SOLIDWORKS type libraries](selected-sw-references.png){ width=200 }
+![所需的SOLIDWORKS类型库](selected-sw-references.png){ width=200 }
 
-* If libraries are selected or **MISSING** keyword is present it is required to force update the references by following the steps below:
+* 如果已选择库或**MISSING**关键字存在，则需要按照以下步骤强制更新引用：
 
-![List of missing references in VBA macro](fix-update-vba-references.png){ width=320 height=269 }
+![VBA宏中缺失引用列表](fix-update-vba-references.png){ width=320 height=269 }
 
-* Uncheck all of the libraries which are referencing SOLIDWORKS. (including libraries with **MISSING** keyword next to them)
-* Click OK
-* Open the same dialog again and check corresponding SOLIDWORKS libraries. Those are usually available in the references list.
-If not you can use 'Browse...' button to manually select the libraries from the SOLIDWORKS installation folder
+* 取消选中所有引用SOLIDWORKS的库（包括旁边带有**MISSING**关键字的库）
+* 点击确定
+* 再次打开相同的对话框，然后选中相应的SOLIDWORKS库。这些库通常在引用列表中可用。
+如果没有，可以使用“浏览...”按钮从SOLIDWORKS安装文件夹手动选择库
 
-Alternatively you can copy paste all the code to newly created macro.
+或者，您可以将所有代码复制粘贴到新创建的宏中。
