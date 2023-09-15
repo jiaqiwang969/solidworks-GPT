@@ -1,19 +1,20 @@
 ---
-title: 使用SOLIDWORKS API将自定义属性写入文件、配置和切割清单
-caption: 写入所有属性
-description: 使用SOLIDWORKS API编写不同类型的属性（通用属性、配置特定属性和切割清单）的VBA宏示例
+title: Writing Custom Properties to Files, Configurations, and Cut Lists Using the SOLIDWORKS API
+caption: Writing All Properties
+description: VBA macro example that demonstrates how to add (create new or modify existing) custom properties to various custom property sources using the SOLIDWORKS API. This includes file (general) custom properties, configuration-specific custom properties, and cut list item (weldment or sheet metal) custom properties.
 image: approved-date-custom-property.png
-labels: [设置属性,添加属性,写入属性,日期]
+labels: [set properties, add properties, write properties, date]
 ---
-![日期自定义属性](approved-date-custom-property.png){ width=550 }
 
-此VBA宏示例演示了如何使用SOLIDWORKS API将自定义属性添加（创建新的或更改现有的）到各种自定义属性源中。这包括文件（通用）自定义属性、配置特定的自定义属性和切割清单项（焊接或钣金）自定义属性。
+![Date Custom Property](approved-date-custom-property.png){ width=550 }
 
-该宏添加了类型为“日期”的*ApprovedDate*自定义属性，并将其值设置为当前日期。
+This VBA macro example demonstrates how to use the SOLIDWORKS API to add (create new or modify existing) custom properties to various custom property sources. This includes file (general) custom properties, configuration-specific custom properties, and cut list item (weldment or sheet metal) custom properties.
 
-> 由于某些原因，当分配给切割清单项时，自定义属性字段类型会被忽略并默认为文本
+The macro adds a custom property named *ApprovedDate* with the type "Date" and sets its value to the current date.
 
-~~~ vb
+> For some reason, the custom property field type is ignored and defaults to text when assigned to a cut list item.
+
+```vb
 Const PRP_NAME As String = "ApprovedDate"
 
 Dim swApp As SldWorks.SldWorks
@@ -37,7 +38,7 @@ Sub main()
         SetConfigurationSpecificProperty swModel, PRP_NAME, dateFormat, swCustomInfoType_e.swCustomInfoDate
         SetCutListProperty swModel, PRP_NAME, dateFormat, swCustomInfoType_e.swCustomInfoDate
     Else
-        MsgBox "请打开模型"
+        MsgBox "Please open a model"
     End If
     
 End Sub
@@ -127,8 +128,8 @@ Sub SetProperty(custPrpMgr As SldWorks.CustomPropertyManager, prpName As String,
     res = custPrpMgr.Add3(prpName, prpType, prpVal, swCustomPropertyAddOption_e.swCustomPropertyReplaceValue)
     
     If res <> swCustomInfoAddResult_e.swCustomInfoAddResult_AddedOrChanged Then
-        Err.Raise vbError, "", "设置自定义属性失败。错误代码：" & res
+        Err.Raise vbError, "", "Failed to set custom property. Error code: " & res
     End If
     
 End Sub
-~~~
+```
