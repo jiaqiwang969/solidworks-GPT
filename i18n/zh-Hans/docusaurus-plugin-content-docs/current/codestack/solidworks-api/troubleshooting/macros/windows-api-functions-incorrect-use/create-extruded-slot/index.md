@@ -1,19 +1,19 @@
 ---
-title: Create extruded slot temp body using SOLIDWORKS modeler API
-caption: Create Extruded Slot Temp Body
-description: Example demonstrates how to extrude the slot profile to create a temp body using SOLIDWORKS API and IModeler interface
+title: 使用SOLIDWORKS模型API创建挤出槽临时体
+caption: 创建挤出槽临时体
+description: 该示例演示了如何使用SOLIDWORKS API和IModeler接口挤出槽剖面以创建临时体。
 image: extruded-slot.png
-labels: [topology, geometry, extrude, slot]
+labels: [拓扑结构, 几何, 挤出, 槽]
 ---
-![Extruded slot profile](extruded-slot.png){ width=250 }
+![挤出槽剖面](extruded-slot.png){ width=250 }
 
-This VBA example demonstrates how to create a temp body by extruding the slot profile.
+这个VBA示例演示了如何通过挤出槽剖面创建一个临时体。
 
-Macro will stop the execution and display the preview of the slot in the graphics area. Continue the macro to hide the preview and dispose temp body.
+宏将停止执行并在图形区域显示槽的预览。继续执行宏以隐藏预览并销毁临时体。
 
-Slot profile is built in the *GetSlotProfileBody* function as per the parameters below:
+槽剖面是根据以下参数在*GetSlotProfileBody*函数中构建的：
 
-![Parameters of the slot](slot-parameters.png){ width=250 }
+![槽的参数](slot-parameters.png){ width=250 }
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -49,7 +49,7 @@ Sub main()
         Set swSweptBody = Nothing
         
     Else
-        MsgBox "Please open model"
+        MsgBox "请打开模型"
     End If
 
 End Sub
@@ -132,5 +132,3 @@ Function CreateTrimmedArc(vCenterPt As Variant, vStartPt As Variant, vEndPt As V
     
 End Function
 ~~~
-
-
