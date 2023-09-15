@@ -1,25 +1,25 @@
 ---
-caption: Ray Intersection
-title: Find intersection points and topology entities by ray intersection SOLIDWORKS model
-description: VBA macro to find intersection points and the corresponding topology entities using rays in SOLIDWORKS part documents
-image: ray-intersection-entities.png
+标题：射线交点
+描述：在SOLIDWORKS模型中使用射线找到交点和拓扑实体的VBA宏示例
+图片：ray-intersection-entities.png
 ---
-This VBA macro example demonstrates how to find the intersection points and the corresponding topology entities between all solid bodies of the active SOLIDWORKS part document and rays created from the sketch points of the selected sketch.
 
-## How To Run The Macro
+这个VBA宏示例演示了如何在活动的SOLIDWORKS零件文档中的所有实体之间以及从所选草图的草图点创建的射线之间找到交点和相应的拓扑实体。
 
-* Open or create a part document with visible solid bodies.
-* Create 2D sketch with sketch points. Sketch points will be used as the starting points of the ray. And the sketch normal will be used as the direction for the rays
-* Select the sketch above
-* Run the macro. Macro will find all the intersections and pause on every found result
-    * Macro will output the information about each ray into the [VBA Immediate Window](/docs/codestack/visual-basic/vba/vba-editor/windows#immediate-window). Information includes the name of the body, ray information (starting point and direction), and intersection type as defined in [swRayPtsResults_e](https://help.solidworks.com/2020/english/api/swconst/SolidWorks.Interop.swconst~SolidWorks.Interop.swconst.swRayPtsResults_e.html)
+## 如何运行宏
+
+- 打开或创建一个具有可见实体的零件文档。
+- 创建带有草图点的2D草图。草图点将用作射线的起始点。草图法线将用作射线的方向。
+- 选择上述草图。
+- 运行宏。宏将找到所有的交点并在每个找到的结果上暂停。
+    - 宏将把每个射线的信息输出到[VBA立即窗口](/docs/codestack/visual-basic/vba/vba-editor/windows#immediate-window)中。信息包括实体的名称、射线信息（起始点和方向）以及交点类型，如[swRayPtsResults_e](https://help.solidworks.com/2020/english/api/swconst/SolidWorks.Interop.swconst~SolidWorks.Interop.swconst.swRayPtsResults_e.html)中定义的。
     
-    ![Ray intersection information](ray-intersection-result.png)
+    ![射线交点信息](ray-intersection-result.png)
 
-    * Macro will select the corresponding entity (face or edge) which ray has hit. The selection point will indicate the point where the ray hit the entity
-    * Continue macro with F5 or **Run** button in VBA editor to iterate all results
+    - 宏将选择射线击中的相应实体（面或边）。选择点将指示射线击中实体的点。
+    - 使用F5或VBA编辑器中的**运行**按钮继续执行宏以遍历所有结果。
 
-    ![Ray intersection entities](ray-intersection-entities.png)
+    ![射线交点实体](ray-intersection-entities.png)
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -45,7 +45,7 @@ Sub main()
         Set swFeat = swSelMgr.GetSelectedObject6(1, -1)
         Set swSketch = swFeat.GetSpecificFeature2
     Else
-        Err.Raise vbError, "", "Sketch with sketch point rays is not selected"
+        Err.Raise vbError, "", "未选择带有草图点射线的草图"
     End If
     
     Dim vRayStartPts As Variant
@@ -87,9 +87,9 @@ Sub main()
             Dim swEnt As SldWorks.Entity
             Set swEnt = vInterTopol(i)
             
-            Debug.Print "Intersecting body: " & vBodies(bodyIndex).Name
-            Debug.Print "Intersecting ray: [" & vRayStartPts(rayIndex * 3) & ";" & vRayStartPts(rayIndex * 3 + 1) & ";" & vRayStartPts(rayIndex * 3 + 2) & "] - [" & vRayVecs(rayIndex * 3) & ";" & vRayVecs(rayIndex * 3 + 1) & ";" & vRayVecs(rayIndex * 3 + 2) & "]"
-            Debug.Print "Intersection type: " & interType
+            Debug.Print "交叉实体：" & vBodies(bodyIndex).Name
+            Debug.Print "交叉射线：[" & vRayStartPts(rayIndex * 3) & ";" & vRayStartPts(rayIndex * 3 + 1) & ";" & vRayStartPts(rayIndex * 3 + 2) & "] - [" & vRayVecs(rayIndex * 3) & ";" & vRayVecs(rayIndex * 3 + 1) & ";" & vRayVecs(rayIndex * 3 + 2) & "]"
+            Debug.Print "交点类型：" & interType
             
             Dim swSelData As SldWorks.SelectData
             Set swSelData = swSelMgr.CreateSelectData
@@ -105,7 +105,7 @@ Sub main()
         Next
         
     Else
-        Err.Raise vbError, "", "No intersections found"
+        Err.Raise vbError, "", "未找到交点"
     End If
     
 End Sub
@@ -171,13 +171,12 @@ Sub GetRaysFromSketchPoints(sketch As SldWorks.sketch, rayStartPts As Variant, r
             rayVecs = dRayVecs
             
         Else
-            Err.Raise vbError, "", "No sketch points in the specified sketch"
+            Err.Raise vbError, "", "指定的草图中没有草图点"
         End If
         
     Else
-        Err.Raise vbError, "", "Only 2D sketch can be used for rays"
+        Err.Raise vbError, "", "只能使用2D草图进行射线"
     End If
     
 End Sub
 ~~~
-
