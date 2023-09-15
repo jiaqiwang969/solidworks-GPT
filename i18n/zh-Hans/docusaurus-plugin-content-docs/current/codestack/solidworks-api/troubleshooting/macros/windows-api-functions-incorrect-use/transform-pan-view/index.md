@@ -1,14 +1,10 @@
----
-title: Pan model views with screen pixels using SOLIDWORKS API
-caption: Pan Model View
-description: Example demonstrates how to pan a model view with view transforms by providing the offset in the screen pixels
-image: pan-view.png
----
-![Model View Panning](pan-view.png){ width=350 }
+# 使用SOLIDWORKS API通过屏幕像素平移模型视图
 
-This example demonstrates how to move the view (pan) by specifying the offset in X and Y coordinates of the screen (pixels). Macro transforms the offset into the model view 3D space and updates the view positions.
+![模型视图平移](pan-view.png){ width=350 }
 
-~~~ vb
+本示例演示了如何通过指定屏幕（像素）的X和Y坐标偏移来移动视图（平移）。宏将偏移转换为模型视图的3D空间，并更新视图位置。
+
+```vb
 Dim swApp As SldWorks.SldWorks
 Dim swModel As SldWorks.ModelDoc2
 Dim swView As SldWorks.ModelView
@@ -55,6 +51,5 @@ Sub main()
     swView.GraphicsRedraw Nothing
     
 End Sub
-~~~
-
+```
 
