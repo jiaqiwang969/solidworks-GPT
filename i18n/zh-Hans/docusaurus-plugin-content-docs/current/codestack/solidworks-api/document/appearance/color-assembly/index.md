@@ -1,32 +1,33 @@
 ---
-caption: Apply Random Colors To Components
-title: Macro to apply random colors to components in SOLIDWORKS assembly
-description: VBA macro to apply random color to all components in the SOLIDWORKS assembly with an option to apply on a component or model level and group by custom property value
+caption: 应用随机颜色到组件
+title: 在SOLIDWORKS装配中应用随机颜色的宏
+description: VBA宏，将随机颜色应用于SOLIDWORKS装配中的所有组件，并提供按自定义属性值分组的选项
 ---
-This VBA macro applies a random color on all components of the active assembly.
 
-Modify constants of the macro to change the level of the color (component or model level).
+这个VBA宏将在活动装配的所有组件上应用随机颜色。
 
-If colors is applied to the individual configurations (e.g. **ALL_CONFIGS** = **False**), documents must have a display state linked to the configuration, otherwise the color cannot be configuration specific
+修改宏的常量以更改颜色的级别（组件级别或模型级别）。
 
-~~~ vb
-Const COMP_LEVEL As Boolean = True 'True to apply color on the assembly level, False to apply color on a model level
-Const PARTS_ONLY As Boolean = True 'True to only process part components, False to apply color to assemblies as well
-Const ALL_CONFIGS As Boolean = True 'True to apply color to all configurations, False to apply to referenced configuration only
-~~~
+如果将颜色应用于各个配置（例如**ALL_CONFIGS** = **False**），文档必须有与配置关联的显示状态，否则颜色无法特定于配置。
 
-~~~ vb
-Const PRP_NAME As String = "Type" 'Custom property to group color by, Empty string "" to not group components
+```vb
+Const COMP_LEVEL As Boolean = True 'True表示在装配级别应用颜色，False表示在模型级别应用颜色
+Const PARTS_ONLY As Boolean = True 'True表示仅处理零件组件，False表示也将颜色应用于装配
+Const ALL_CONFIGS As Boolean = True 'True表示将颜色应用于所有配置，False表示仅应用于引用的配置
+```
+
+```vb
+Const PRP_NAME As String = "Type" '按此自定义属性分组颜色，空字符串 "" 表示不分组组件
 
 Sub InitColors(Optional dummy As Variant = Empty)
 
-    ColorsMap.Add "Plate", RGB(255, 0, 0) 'Color all component which custom property 'Type' equals to 'Plate' to Red color
-    ColorsMap.Add "Beam", RGB(0, 255, 0) 'Color all component which custom property 'Type' equals to 'Beam' to Green color
+    ColorsMap.Add "Plate", RGB(255, 0, 0) '将所有自定义属性'Type'等于'Plate'的组件颜色设置为红色
+    ColorsMap.Add "Beam", RGB(0, 255, 0) '将所有自定义属性'Type'等于'Beam'的组件颜色设置为绿色
     
 End Sub
-~~~
+```
 
-~~~ vb
+```vb
 Const COMP_LEVEL As Boolean = True
 Const PARTS_ONLY As Boolean = True
 Const ALL_CONFIGS As Boolean = True
@@ -77,10 +78,10 @@ try_:
             
             swModel.GraphicsRedraw2
         Else
-            Err.Raise vbError, "", "Only assembly document is supported"
+            Err.Raise vbError, "", "仅支持装配文档"
         End If
     Else
-        Err.Raise vbError, "", "Open assembly document"
+        Err.Raise vbError, "", "打开装配文档"
     End If
     
     GoTo finally_
@@ -223,5 +224,4 @@ Function Contains(arr() As String, item As String) As Boolean
     Contains = False
     
 End Function
-~~~
-
+```
