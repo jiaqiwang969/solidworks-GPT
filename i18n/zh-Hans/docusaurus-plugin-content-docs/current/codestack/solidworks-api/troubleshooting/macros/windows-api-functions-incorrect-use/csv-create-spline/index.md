@@ -11,7 +11,7 @@ labels: [csv, sketch, spline]
 
 在**CSV_FILE_PATH**常量中指定文件的完整路径。
 
-~~~ vb
+``` vb
 Const CSV_FILE_PATH As String = "D:\spline-data.csv"
 
 Dim swApp As SldWorks.SldWorks
@@ -144,4 +144,4 @@ Function ReadCsvFile(filePath As String, firstRowHeader As Boolean) As Variant
     ReadCsvFile = vTable
     
 End Function
-~~~
+```
