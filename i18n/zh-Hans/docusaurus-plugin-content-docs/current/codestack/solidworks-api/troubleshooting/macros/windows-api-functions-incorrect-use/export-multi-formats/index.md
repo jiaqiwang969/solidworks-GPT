@@ -1,41 +1,41 @@
 ---
 layout: sw-tool
-title: Macro to export SOLIDWORKS file to multiple formats
-caption: Export To Multiple Formats
-description: VBA macro to export file (or optionally all configuration or drawing sheets) to multiple formats
+title: 将SOLIDWORKS文件导出为多种格式的宏
+caption: 导出到多种格式
+description: 将文件（或可选的所有配置或绘图工作表）导出为SOLIDWORKS支持的多种格式的VBA宏
 image: batch-export.svg
-labels: [export]
-group: Import/Export
+labels: [导出]
+group: 导入/导出
 ---
-![Save File dialog with the list of supported formats](file-save-dialog.png){ width=500 }
+![带有支持的格式列表的保存文件对话框](file-save-dialog.png){ width=500 }
 
-This VBA macro allows exporting active SOLIDWORKS document to multiple formats supported by SOLIDWORKS. Macro supports flexible options for specifying file path and allows to export to multiple formats at the same time.
+此VBA宏允许将活动的SOLIDWORKS文档导出为SOLIDWORKS支持的多种格式。宏支持灵活的选项来指定文件路径，并允许同时导出多种格式。
 
-Macro will automatically create directories if not exist.
+如果目录不存在，宏将自动创建目录。
 
-## Configuration
+## 配置
 
-Macro can be configured by modifying the **OUT_NAME_TEMPLATES**, **OUT_FOLDER** and **ALL_CONFIGS** constants
+可以通过修改**OUT_NAME_TEMPLATES**、**OUT_FOLDER**和**ALL_CONFIGS**常量来配置宏
 
-### Output Name Template
+### 输出名称模板
 
-This constant allows to specify template for the output path of the export files. It should contain extension which defines the export format.
+此常量允许指定导出文件的输出路径模板。它应包含定义导出格式的扩展名。
 
-This can be either absolute or relative path. If later, result will be saved relative to the file directory or to the directory specified in **OUT_FOLDER** constant if not empty.
+这可以是绝对路径或相对路径。如果是后者，则结果将相对于文件目录保存，或者如果**OUT_FOLDER**常量不为空，则相对于指定的目录保存。
 
-> **OUT_FOLDER** can be passed as the [parameter to the macro](https://cadplus.xarial.com/macro-arguments/)
+> **OUT_FOLDER**可以作为[宏的参数](https://cadplus.xarial.com/macro-arguments/)传递
 
-The following placeholders are supported
+支持以下占位符
 
-* <\_FileName\_> - name of the document file (without extension)
-* <\_ConfName\_> - name of the active configuration of this file. This changes if **ALL_CONFIGS** option is set to **True**
-* <[PropertyName]> - any name of the custom property to read value from, e.g. \<PartNo\> is replaced with the value of custom property *PartNo*. Property will attempt to be read from configuration and if not available, generic property is used.
+* <\_FileName\_> - 文档文件的名称（不包括扩展名）
+* <\_ConfName\_> - 此文件的活动配置的名称。如果将**ALL_CONFIGS**选项设置为**True**，则会更改此配置
+* <[PropertyName]> - 任何自定义属性的名称，例如\<PartNo\>将替换为自定义属性*PartNo*的值。属性将尝试从配置中读取，如果不可用，则使用通用属性。
 
-Placeholders will be resolved for at runtime.
+占位符将在运行时解析。
 
-Configure the values in the beginning of the macro, by filling the constant with **Array** function. Specify as many array elements as required.
+通过在宏的开头使用**Array**函数填充常量来配置值。根据需要指定尽可能多的数组元素。
 
-Following example exports active document to PDF, DXF and JPG and names the output file after the **PartNo** custom property. Files will be saved to the same folder as original file
+以下示例将活动文档导出为PDF、DXF和JPG，并将输出文件命名为**PartNo**自定义属性。文件将保存在与原始文件相同的文件夹中。
 
 ~~~ vb
 Sub main()
@@ -43,7 +43,7 @@ Sub main()
     OUT_NAME_TEMPLATES = Array("<PartNo>.pdf", "<PartNo>.dxf", "<PartNo>.jpg")
 ~~~
 
-Following example exports active file to parasolid format into the **D:\Exports** folder. File is named with the name of the original file.
+以下示例将活动文件导出为Parasolid格式到**D:\Exports**文件夹。文件以原始文件的名称命名。
 
 ~~~ vb
 Sub main()
@@ -51,32 +51,31 @@ Sub main()
     OUT_NAME_TEMPLATES = Array("D:\Exports\<_FileName_>.x_t")
 ~~~
 
-### Export Options
+### 导出选项
 
-Export options for STEP format can be configured by changing the value of the **STEP_VERSION** constant. Set it to **214** for **AP214** format or to **203** to **AP203** format.
+可以通过更改**STEP_VERSION**常量的值来配置STEP格式的导出选项。将其设置为**214**以使用**AP214**格式，或将其设置为**203**以使用**AP203**格式。
 
 ~~~ vb
-Const STEP_VERSION As Long = 214 '203 or 214
+Const STEP_VERSION As Long = 214 '203或214
 ~~~
 
-To export 3D PDF set the **PDF_3D** constant to **True**
+要导出3D PDF，请将**PDF_3D**常量设置为**True**
 
 ~~~ vb
 Const PDF_3D As Boolean = True
 ~~~
 
-### Include Component Quantity Into File Name
+### 将组件数量包含到文件名中
 
-If this macro is run for all components of the assembly, it might be required to include the BOM quantity into the file name. Use the [Write component quantity in the SOLIDWORKS assembly to custom property
-](/docs/codestack/solidworks-api/document/assembly/components/write-quantities/) macro. Run this macro for the assembly before exporting to create custom property with the quantity value and then use **\<Qty\>** placeholder in order to include this into the output file name.
+如果对装配体的所有组件运行此宏，则可能需要将BOM数量包含到文件名中。使用[将SOLIDWORKS装配体中的组件数量写入自定义属性](/docs/codestack/solidworks-api/document/assembly/components/write-quantities/)宏。在导出之前，对装配体运行此宏以创建具有数量值的自定义属性，然后使用**\<Qty\>**占位符将其包含到输出文件名中。
 
-### Process All Configuration
+### 处理所有配置
 
-If **ALL_CONFIGS** constant is set to **True** macro will activate all configuration (for assembly and part) or all sheets (for drawing) one-by-one and run export command.
+如果将**ALL_CONFIGS**常量设置为**True**，宏将逐个激活所有配置（对于装配体和零件）或所有工作表（对于绘图）并运行导出命令。
 
-## Troubleshooting
+## 故障排除
 
-If macro reports an error, in some cases it might not be immediately evident what is causing an error as the error details are 'swallowed' by exception handler. In order to disable errors handling and reveal the exact line causing the error comment all *On Error GoTo catch_* lines in the code by placing the apostrophe ' symbol at the beginning of the line as shown below.
+如果宏报告错误，在某些情况下，可能不会立即明确导致错误的原因，因为错误详细信息被异常处理程序“吞噬”了。为了禁用错误处理并显示导致错误的确切行，请在代码中的所有*On Error GoTo catch_*行之前放置撇号'符号，如下所示。
 
 ~~~ vb jagged
 Sub main()
@@ -87,13 +86,13 @@ try_:
     'On Error GoTo catch_
 ~~~
 
-Please submit the [bug report](https://github.com/xarial/codestack/issues/new?labels=bug) and attach snapshot of this error and model used to reproduce (if possible)
+请提交[错误报告](https://github.com/xarial/codestack/issues/new?labels=bug)，并附上此错误的快照和用于重现的模型（如果可能）
 
 ~~~ vb
 Const ALL_CONFIGS As Boolean = False
 Const OUT_FOLDER As String = ""
-Const STEP_VERSION As Long = 214 '203 or 214
-Const PDF_3D As Boolean = False 'True to export 3D PDF
+Const STEP_VERSION As Long = 214 '203或214
+Const PDF_3D As Boolean = False '将3D PDF导出为True
 
 Dim OUT_NAME_TEMPLATES As Variant
 
@@ -114,11 +113,11 @@ try_:
     Set swModel = swApp.ActiveDoc
     
     If swModel Is Nothing Then
-        Err.Raise vbError, "", "Please open document"
+        Err.Raise vbError, "", "请打开文档"
     End If
     
     If swModel.GetPathName() = "" Then
-        Err.Raise vbError, "", "Please save the model"
+        Err.Raise vbError, "", "请保存模型"
     End If
     
     Dim outFolder As String
@@ -151,7 +150,7 @@ End Sub
 Sub SetupOptions(stepVersion As Long)
     
     If False = swApp.SetUserPreferenceIntegerValue(swUserPreferenceIntegerValue_e.swStepAP, stepVersion) Then
-        Err.Raise vbError, "", "Failed to set Step Export version to " & stepVersion
+        Err.Raise vbError, "", "无法将Step导出版本设置为" & stepVersion
     End If
     
 End Sub
@@ -222,7 +221,7 @@ Sub ExportFile(model As SldWorks.ModelDoc2, vOutNameTemplates As Variant, allCon
             End If
             
             If False = model.Extension.SaveAs(outFilePath, swSaveAsVersion_e.swSaveAsCurrentVersion, swSaveAsOptions_e.swSaveAsOptions_Silent, swExportData, errs, warns) Then
-                Err.Raise vberrror, "", "Failed to export to " & outFilePath
+                Err.Raise vberrror, "", "导出到" & outFilePath & "失败"
             End If
             
         Next
@@ -422,5 +421,3 @@ finally_:
 
 End Function
 ~~~
-
-
