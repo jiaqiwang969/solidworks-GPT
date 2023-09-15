@@ -1,25 +1,25 @@
 ---
-title: 使用SOLIDWORKS API将摘要信息写入活动文件
-caption: 写入摘要信息
-description: 使用SOLIDWORKS API的VBA宏，为活动的SOLIDWORKS文件填充摘要信息（作者、关键字、注释、标题、主题）
+title: Writing Summary Information to Active Files Using the SOLIDWORKS API
+caption: Writing Summary Information
+description: Use a VBA macro with the SOLIDWORKS API to populate summary information (Author, Keywords, Comments, Title, Subject) for active SOLIDWORKS files.
 image: summary.png
-labels: [摘要信息,写入摘要]
+labels: [Summary Information, Writing Summary]
 ---
-![SOLIDWORKS文件的摘要信息](summary.png){ width=500 }
+![Summary Information for a SOLIDWORKS File](summary.png){ width=500 }
 
-这个VBA宏使用SOLIDWORKS API为活动模型的自定义属性的*摘要信息*选项卡（作者、关键字、注释、标题和主题）填充内容。
+This VBA macro uses the SOLIDWORKS API to populate the *Summary Information* tab (Author, Keywords, Comments, Title, and Subject) of the active model's custom properties.
 
-配置宏并指定要写入的值：
+Configure the macro and specify the values to write:
 
-~~~ vb
+```vb
 Const AUTHOR As String = "CodeStack"
 Const KEYWORDS As String = "sample,summary,api"
 Const COMMENTS As String = "Example comments"
 Const TITLE As String = "Summary API Example"
 Const SUBJECT As String = "CodeStack API Examples"
-~~~
+```
 
-~~~ vb
+```vb
 Const AUTHOR As String = "CodeStack"
 Const KEYWORDS As String = "sample,summary,api"
 Const COMMENTS As String = "Example comments"
@@ -43,8 +43,8 @@ Sub main()
         swModel.SummaryInfo(swSummInfoField_e.swSumInfoTitle) = TITLE
         swModel.SummaryInfo(swSummInfoField_e.swSumInfoSubject) = SUBJECT
     Else
-        MsgBox "请打开模型"
+        MsgBox "Please open a model"
     End If
     
 End Sub
-~~~
+```
