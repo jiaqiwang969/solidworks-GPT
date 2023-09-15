@@ -1,40 +1,40 @@
 ---
 layout: sw-tool
-title: Reveal (display or delete) all feature hidden in the SOLIDWORKS Feature Manager tree
-caption: Reveal Hidden Features
-description: Macro finds all features which are hidden in the SOLIDWORKS model and either displays or removes them
+title: 显示或删除SOLIDWORKS特征管理器树中的所有隐藏特征
+caption: 显示隐藏特征
+description: 该宏用于显示SOLIDWORKS模型中在特征管理器树中隐藏的所有特征，或者删除它们
 image: hidden-feature.svg
 labels: [defeature,parasolid]
 group: Performance
 ---
-![Hidden feature](hidden-feature.svg){ width=250 }
+![隐藏特征](hidden-feature.svg){ width=250 }
 
-This VBA macro helps to reveal all features in the active SOLIDWORKS model which are hidden in the feature manager tree.
+这个VBA宏可以帮助在活动的SOLIDWORKS模型中显示特征管理器树中隐藏的所有特征。
 
-There are may be various reasons for the features to be hidden in the SOLIDWORKS files. In some cases those feature are invalid or dangling. This could cause unpredicted behavior of SOLIDWORKS, including performance problems or instability such as crashes or hanging.
+SOLIDWORKS文件中的特征可能会因为各种原因而被隐藏。在某些情况下，这些特征可能是无效的或者悬空的。这可能会导致SOLIDWORKS的行为不可预测，包括性能问题或者不稳定，如崩溃或卡死。
 
-* Create a new macro and paste the [module code](#macro-module) into the macro
-* Add new [user form](/docs/codestack/visual-basic/user-forms/) into the macro and name it *FeaturesForm* and paste the [code](#featuresform-user-form). The macro structure should look similar to the image below
+* 创建一个新的宏，并将[模块代码](#macro-module)粘贴到宏中
+* 在宏中添加一个新的[用户窗体](/docs/codestack/visual-basic/user-forms/)，并将其命名为*FeaturesForm*，然后粘贴[代码](#featuresform-user-form)。宏的结构应该类似于下面的图片
 
-![Macro project tree](project-tree.png)
+![宏项目树](project-tree.png)
 
-* Add controls to the form and name according the to image below. Optionally specify more attributes to controls such as caption.
+* 在窗体中添加控件，并按照下面的图片命名。可选地，可以为控件指定更多的属性，如标题。
 
-    * List Box named *lstFeatures*
-    * Button named *btnShow*
-    * Button named *btnDelete*
+    * 名为*lstFeatures*的列表框
+    * 名为*btnShow*的按钮
+    * 名为*btnDelete*的按钮
 
-![Form with controls](hidden-features-form.png)
+![带有控件的窗体](hidden-features-form.png)
 
-As the result of running the macro all hidden features will be populated in the list. Select (or multi select) features in the list and click *Show* or *Delete* button to either show or remove features from the model.
+运行宏后，所有隐藏的特征将会显示在列表中。在列表中选择（或多选）特征，然后点击*Show*或*Delete*按钮来显示或删除模型中的特征。
 
-![Hidden features displayed in the Feature Manager Tree](displayed-hidden-feature.png)
+![在特征管理器树中显示隐藏的特征](displayed-hidden-feature.png)
 
-> !IMPORTANT: use delete option on your own risk. In some cases the hidden feature is a valid feature created by SOLIDWORKS or 3rd party applications. For example [attributes](/docs/codestack/solidworks-api/data-storage/attributes/) can be created as a hidden features and can contain important information. Removing this can have unexpected results.
+> !重要提示：使用删除选项要自担风险。在某些情况下，隐藏的特征是由SOLIDWORKS或第三方应用程序创建的有效特征。例如，[属性](/docs/codestack/solidworks-api/data-storage/attributes/)可以被创建为隐藏特征，并且可能包含重要信息。删除这些特征可能会产生意想不到的结果。
 
-To hide the feature use the [following macro](/docs/codestack/solidworks-api/document/features-manager/hide-features/) macro.
+要隐藏特征，请使用[以下宏](/docs/codestack/solidworks-api/document/features-manager/hide-features/)。
 
-## Macro Module
+## 宏模块
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -55,7 +55,7 @@ Sub main()
         FeaturesForm.ShowFeatures swModel, swFeatsColl
         
     Else
-        MsgBox "There are no hidden features in the model"
+        MsgBox "模型中没有隐藏的特征"
     End If
     
 End Sub
@@ -66,7 +66,7 @@ Public Sub DeleteAllFeatures(model As SldWorks.ModelDoc2, feats As Variant)
         ShowAllFeatures model, feats
         
         If model.Extension.MultiSelect2(feats, False, Nothing) <> UBound(feats) + 1 Then
-            Err.Raise vbError, "", "Failed to select features to delete"
+            Err.Raise vbError, "", "选择要删除的特征失败"
         End If
         
         model.Extension.DeleteSelection2 swDeleteSelectionOptions_e.swDelete_Absorbed
@@ -169,14 +169,14 @@ End Function
 
 
 
-## FeaturesForm User Form
+## FeaturesForm 用户窗体
 
 ~~~ vb
 Dim swModel As SldWorks.ModelDoc2
 Dim swHiddenFeats As Collection
 
 Private Sub UserForm_Initialize()
-    Me.Caption = "Hidden Features"
+    Me.Caption = "隐藏特征"
     lstFeatures.MultiSelect = fmMultiSelectExtended
     lstFeatures.ColumnCount = 2
 End Sub
@@ -246,5 +246,3 @@ Function CollectionToArray(coll As Collection) As Variant
     
 End Function
 ~~~
-
-
