@@ -1,29 +1,29 @@
 ---
 layout: sw-addin-fix
-title: How to fix the error of SOLIDWORKS add-ins sharing common libraries
-caption: Add-ins which are using shared libraries cannot work together
-description: Fixing the issue of using different versions of shared library by enabling binding redirect
-labels: [add-in, troubleshooting, shared library]
+title: 如何修复SOLIDWORKS插件共享公共库的错误
+caption: 使用共享库的插件无法一起工作
+description: 通过启用绑定重定向来解决使用不同版本的共享库的问题
+labels: [插件, 故障排除, 共享库]
 ---
-## Symptoms
+## 症状
 
-There are several SOLIDWORKS add-ins (usually from the same supplier) which cannot work together. SOLIDWORKS may crash or misbehave. Add-ins are working correctly if loaded independently.
+有几个SOLIDWORKS插件（通常来自同一供应商）无法一起工作。SOLIDWORKS可能会崩溃或表现异常。如果单独加载插件，则插件可以正常工作。
 
-## Cause
+## 原因
 
-When same library (even of different versions) are used by different projects within the same application domain (e.g. add-in in SOLIDWORKS) .NET framework will use the cached library. The cached library will be the one which is accessed first. For example the library can be accessed when add-in button is clicked.
+当同一个库（即使是不同版本）被同一个应用程序域（例如SOLIDWORKS中的插件）中的不同项目使用时，.NET框架将使用缓存的库。缓存的库将是首次访问的库。例如，当单击插件按钮时可能会访问该库。
 
-This results in the issues when library is not backward and forward compatible (i.e. version is supported by both newer and older applications). This is usually not the case for the libraries as behaviour may be changed, bugs fixed or regression issues introduced in the newer versions of library.
+当库不向后和向前兼容时（即版本同时支持较新和较旧的应用程序），这将导致问题。这通常不适用于库，因为行为可能会改变，修复错误或在较新版本的库中引入回归问题。
 
-This introduces the possible conflicts when resolving the assembly references.
+这会在解析程序集引用时引入可能的冲突。
 
-## Resolution
+## 解决方法
 
-Sign conflicting assembly with a [strong name](https://docs.microsoft.com/en-us/dotnet/framework/app-domains/how-to-sign-an-assembly-with-a-strong-name). In this cases version specific assemblies will be used which will resolve conflict.
+使用[强名称](https://docs.microsoft.com/zh-cn/dotnet/framework/app-domains/how-to-sign-an-assembly-with-a-strong-name)对冲突的程序集进行签名。在这种情况下，将使用特定版本的程序集来解决冲突。
 
-Hoverer, it might be the case where main project A refers the shared dll B with version 1 and also refers dll C which refers dll B with version 2, which means that it is required to have version 1 and 2 of B loaded at the same time. As dlls are usually compiled in the same directory it is either required to add them to different folders or use [Binding Redirect](https://docs.microsoft.com/en-us/dotnet/framework/configure-apps/file-schema/runtime/bindingredirect-element) element to redirect different versions of the shared library:
+然而，可能出现这样的情况，即主项目A引用了具有版本1的共享dll B，并且还引用了引用了具有版本2的dll B的dll C，这意味着需要同时加载版本1和2的B。由于dll通常编译在同一个目录中，因此要么需要将它们添加到不同的文件夹中，要么使用[Binding Redirect](https://docs.microsoft.com/zh-cn/dotnet/framework/configure-apps/file-schema/runtime/bindingredirect-element)元素来重定向共享库的不同版本：
 
-Add the following snippet to **app.config** file:
+将以下代码段添加到**app.config**文件中：
 
 ~~~ xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -31,30 +31,30 @@ Add the following snippet to **app.config** file:
 	<runtime>
 		<assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
 			<dependentAssembly>
-				<assemblyIdentity name="[Assembly Name]" publicKeyToken="[Public Key Token]" culture="neutral" />
-				<bindingRedirect oldVersion="0.0.0.0-9999.9999.9999.9999" newVersion="[Current Version]" />
+				<assemblyIdentity name="[程序集名称]" publicKeyToken="[公钥令牌]" culture="neutral" />
+				<bindingRedirect oldVersion="0.0.0.0-9999.9999.9999.9999" newVersion="[当前版本]" />
 			</dependentAssembly>
 		</assemblyBinding>
 	</runtime>
 </configuration>
 ~~~
 
-You can use the following snippet to find the required identity information (i.e. assembly name, version, public key token and culture) from the shared library.
+您可以使用以下代码段从共享库中查找所需的标识信息（即程序集名称、版本、公钥令牌和区域设置）。
 
 ~~~ cs
-System.Diagnostics.Debug.Print(typeof([Any type from the shared assembly]).Assembly.FullName);
+System.Diagnostics.Debug.Print(typeof([共享程序集中的任何类型]).Assembly.FullName);
 ~~~
 
-This will be printed as 
+这将打印为
 
 ~~~
-[Assembly Name], Version=[Version], Culture=[Culture], PublicKeyToken=[Public Key Token]
+[程序集名称]，Version=[版本]，Culture=[区域设置]，PublicKeyToken=[公钥令牌]
 ~~~
 
-Video Demonstration: 
+视频演示：
 
 {% youtube { id: ZeWDoJ5TC7o } %}
 
-Be aware of backward compatibility when using binding redirect, i.e. redirecting from version 1 to 2 requires backward compatibility, otherwise this solution will not work.
+在使用绑定重定向时要注意向后兼容性，即从版本1重定向到版本2需要向后兼容，否则此解决方案将无法工作。
 
-If shared assembly is not signed with a strong name it is possible to resolve the conflict at runtime by capturing the [AppDomain::AssemblyResolve](https://docs.microsoft.com/en-us/dotnet/api/system.appdomain.assemblyresolve?view=netframework-4.8) event and returning the resolved assembly from the method handler.
+如果共享程序集未使用强名称进行签名，则可以通过捕获[AppDomain::AssemblyResolve](https://docs.microsoft.com/zh-cn/dotnet/api/system.appdomain.assemblyresolve?view=netframework-4.8)事件并从方法处理程序返回已解析的程序集来在运行时解决冲突。
