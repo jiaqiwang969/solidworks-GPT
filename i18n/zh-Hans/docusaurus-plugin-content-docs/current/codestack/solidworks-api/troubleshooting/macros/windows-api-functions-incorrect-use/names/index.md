@@ -1,45 +1,45 @@
 ---
-title: Reading and changing names of SOLIDWORKS objects (features, components, views) using API
-caption: Object Names
-description: This article explains the use of object names and the ways to read and change the names
+title: 使用API读取和更改SOLIDWORKS对象（特征、组件、视图）的名称
+caption: 对象名称
+description: 本文介绍了对象名称的使用方法以及读取和更改名称的方式
 image: face-name.png
 labels: [id, track, name]
 ---
-![Named face](face-name.png){ width=300 }
+![命名的面](face-name.png){ width=300 }
 
-Some SOLIDWORKS objects in models can have user names assigned to them. The names are unique identification of the object in the model and it is persistent across rebuild operations or sessions. Names available for viewing and editing from the GUI.
+模型中的一些SOLIDWORKS对象可以被赋予用户名称。这些名称是模型中对象的唯一标识，并且在重建操作或会话中保持不变。可以从GUI中查看和编辑名称。
 
-The following object types have names assigned to them
+以下对象类型具有分配给它们的名称：
 
-* Component
-* Configuration
-* Feature
-* Layer
-* Body
-* Sheet
-* Dimensions
-* Entity (Face, Edge, Vertex)
-* Sketch Segment (Line, Arc, Spline, Ellipse)
-* Drawing View
+* 组件
+* 配置
+* 特征
+* 图层
+* 实体
+* 平面
+* 尺寸
+* 实体（面、边、顶点）
+* 草图段（线、弧、样条、椭圆）
+* 绘图视图
 
-### Entity Names
+### 实体名称
 
-By default names of entities (faces, edges, vertices) are not assigned.
+默认情况下，实体（面、边、顶点）的名称未分配。
 
-Entity name can be changed from the **Entity Property** dialog. Refer [Displaying Entity Properties](https://help.solidworks.com/2017/english/solidworks/sldworks/hidd_ent_property.htm)
+可以从**实体属性**对话框中更改实体名称。参考[显示实体属性](https://help.solidworks.com/2017/english/solidworks/sldworks/hidd_ent_property.htm)
 
-![Entity Property dialog box for assigning the entity name](entity-property.png)
+![用于分配实体名称的实体属性对话框](entity-property.png)
 
-### Notes and Limitations
+### 注意事项和限制
 
-* Sketch segment names cannot be changed neither from GUI nor from API
+* 无法从GUI或API更改草图段的名称
 
-* Names displayed in the selection boxes are not the real names of entities. These are just temporarily assigned names for differentiation the selection in the currently opened property manager page. Those names should not be used as the reference.
-![Temporarily name of face used in the property manager page](temp-face-name.png)
+* 在选择框中显示的名称不是实体的真实名称。这些只是在当前打开的属性管理器页面中为区分选择而临时分配的名称。这些名称不应作为参考使用。
+![在属性管理器页面中使用的临时面名称](temp-face-name.png)
 
-* While changing the name of the component it is required to consider several factors. Refer [Renaming Components](/docs/codestack/solidworks-api/document/assembly/components/rename/) for more information
+* 在更改组件的名称时，需要考虑几个因素。更多信息请参考[重命名组件](/docs/codestack/solidworks-api/document/assembly/components/rename/)
 
-The following example allows to rename the selected object with the specified name using SOLIDWORKS API.
+以下示例允许使用SOLIDWORKS API将选定的对象重命名为指定的名称。
 
 ~~~ vb
 Enum ElementType_e
@@ -77,7 +77,7 @@ Sub main()
             Dim elementType As ElementType_e
             
             Dim name As String
-            name = InputBox("Specify new name name")
+            name = InputBox("指定新名称")
             
             SetObjectName swObj, swModel, name, elementType
             
@@ -87,11 +87,11 @@ Sub main()
             Debug.Assert name = newName
             
         Else
-            MsgBox "Please select object"
+            MsgBox "请选择对象"
         End If
         
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
         
 End Sub
@@ -167,7 +167,7 @@ Function GetObjectName(obj As Object, model As SldWorks.ModelDoc2, ByRef element
         name = swSkSeg.GetName
         
     Else
-        Err.Raise vbObjectError, , "Object doesn't have name"
+        Err.Raise vbObjectError, , "对象没有名称"
     End If
     
     GetObjectName = name
@@ -230,10 +230,10 @@ Sub SetObjectName(obj As Object, model As SldWorks.ModelDoc2, name As String, By
         If model.GetType() = swDocumentTypes_e.swDocPART Then
             Dim swPart As SldWorks.PartDoc
             Set swPart = model
-            swPart.DeleteEntityName swEnt 'it is required to clear the name if already exists
+            swPart.DeleteEntityName swEnt '如果名称已存在，则需要清除名称
             swPart.SetEntityName swEnt, name
         Else
-            Err.Raise vbObjectError, , "Entity name can only be changed in part documents"
+            Err.Raise vbObjectError, , "只能在零件文档中更改实体名称"
         End If
         
     ElseIf TypeOf obj Is SldWorks.View Then
@@ -245,13 +245,11 @@ Sub SetObjectName(obj As Object, model As SldWorks.ModelDoc2, name As String, By
         
     ElseIf TypeOf obj Is SldWorks.SketchSegment Then
         
-        Err.Raise vbObjectError, , "Name of sketch segment cannot be changed"
+        Err.Raise vbObjectError, , "无法更改草图段的名称"
         
     Else
-        Err.Raise vbObjectError, , "Object doesn't have name"
+        Err.Raise vbObjectError, , "对象没有名称"
     End If
     
 End Sub
 ~~~
-
-
