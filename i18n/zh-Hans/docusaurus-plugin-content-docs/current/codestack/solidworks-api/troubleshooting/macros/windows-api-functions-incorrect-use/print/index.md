@@ -1,25 +1,25 @@
 ---
 layout: sw-tool
-caption: Print
-title: Macro to print SOLIDWORKS documents
-description: VBA macro to print SOLIDWORKS documents using the specified settings (printer name, printer range, orientation, paper size and scale)
+caption: 打印
+title: 用于打印SOLIDWORKS文档的宏
+description: 使用指定的设置（打印机名称、打印范围、方向、纸张大小和比例）打印SOLIDWORKS文档的VBA宏
 image: printer.svg
 group: Model
 ---
-![Printer and page setup](page-setup.png){ width=500 }
+![打印机和页面设置](page-setup.png){ width=500 }
 
-This VBA macro allows to print active SOLIDWORKS document. It is possible to specify the settings for printing: printer name, printer range, orientation, paper size and scale
+这个VBA宏允许打印活动的SOLIDWORKS文档。可以指定打印的设置：打印机名称、打印范围、方向、纸张大小和比例。
 
-## Settings
+## 设置
 
-To configure settings change the values of constants at the top of the macro as described below
+要配置设置，请根据下面的描述更改宏顶部的常量的值。
 
 ~~~ vb
-Const PRINTER_NAME As String = "Microsoft Print To PDF" 'full name of the printer
-Const PRINT_RANGE As String = "1-3,5" 'range to print. Specify * to print all pages or a range
-Const PRINT_ORIENTATION As Integer = swPageSetupOrientation_e.swPageSetupOrient_Landscape 'orientation landscape or portrait
-Const PRINTER_PAPER_SIZE As String = "A3" 'Paper size to print to
-Const PRINT_SCALE As String = "*" 'Scale of print. Use * to scale to fit or a value of scale % (from 1 to 1000)
+Const PRINTER_NAME As String = "Microsoft Print To PDF" '打印机的全名
+Const PRINT_RANGE As String = "1-3,5" '要打印的范围。指定*以打印所有页面或一个范围
+Const PRINT_ORIENTATION As Integer = swPageSetupOrientation_e.swPageSetupOrient_Landscape '方向：横向或纵向
+Const PRINTER_PAPER_SIZE As String = "A3" '要打印的纸张大小
+Const PRINT_SCALE As String = "*" '打印比例。使用*以适应比例或比例的值（1到1000）
 ~~~
 
 ~~~ vb
@@ -42,7 +42,7 @@ Sub main()
     Set swModel = swApp.ActiveDoc
     
     If swModel Is Nothing Then
-        Err.Raise vbError, "", "Please open the document"
+        Err.Raise vbError, "", "请打开文档"
     End If
     
     Dim swPageSetup As SldWorks.PageSetup
@@ -124,7 +124,7 @@ Function GetPrintRange(range As String) As Variant
             ElseIf UBound(vStartEndPages) = 1 Then
                 endPage = CLng(vStartEndPages(1))
             Else
-                Err.Raise vbError, "", "Invalid page range: " & CStr(vPageRanges(i))
+                Err.Raise vbError, "", "无效的页面范围：" & CStr(vPageRanges(i))
             End If
             
             printRange(i * 2) = startPage
@@ -165,7 +165,7 @@ Function GetPaper(printerName As String, paperName As String) As Integer
             End If
         Next
     Else
-        Err.Raise vbError, "", "No sizes available for the specified printer"
+        Err.Raise vbError, "", "指定的打印机没有可用的尺寸"
     End If
     
 End Function
@@ -187,4 +187,3 @@ Function ParsePaperName(papersNames As String, offset As Integer) As String
     
 End Function
 ~~~
-
