@@ -1,29 +1,30 @@
 ---
-title: Serialize file content in model 3rd party storage using SOLIDWORKS API
-caption: Embed File In Third Party Store
-description: VB.NET example of usage of 3rd Party Storage (stream) to embed and retrieve file content using SOLIDWORKS API and XmlSerializers within the model document
+title: 使用SOLIDWORKS API在模型第三方存储中序列化文件内容
+caption: 将文件嵌入第三方存储
+description: 使用SOLIDWORKS API和模型文档中的XmlSerializers将文件内容嵌入和提取到模型流中的VB.NET示例
 image: embed-file-menu.png
-labels: [serialization,third party store,file]
+labels: [序列化,第三方存储,文件]
 ---
-This example demonstrates how to use 3rd Party Storage in SOLIDWORKS API to embed and extract the file content directly into the model stream.
 
-Example SOLIDWORKS add-in is built using the [SwEx.AddIn](/docs/codestack/labs/solidworks/swex/add-in/) framework but it could work with any other methods of creating the add-ins.
+此示例演示了如何使用SOLIDWORKS API中的第三方存储来直接将文件内容嵌入到模型流中，并从中提取文件内容。
 
-Add-in adds two buttons in the menu and toolbar and provides two handlers correspondingly: 
+示例SOLIDWORKS插件使用[SwEx.AddIn](/docs/codestack/labs/solidworks/swex/add-in/)框架构建，但也可以与其他创建插件的方法一起使用。
 
-![Add-in menu](embed-file-menu.png){ width=400 }
+插件在菜单和工具栏中添加了两个按钮，并相应地提供了两个处理程序：
 
-* AddFile - asynchronous method to store the embed file data in the stream. This method asks user to select the file, reads its content and serializes it into a file stream.
-* LoadFile - loads the embedded file from the stream and prompts user to select the file path to store the content. The file name is prepopulated based on the embedded file name
+![插件菜单](embed-file-menu.png){ width=400 }
 
-![Browse for save file path](select-save-path.png){ width=550 }
+* AddFile - 用于将嵌入文件数据存储到流中的异步方法。此方法要求用户选择文件，读取其内容并将其序列化为文件流。
+* LoadFile - 从流中加载嵌入的文件，并提示用户选择文件路径以存储内容。文件名基于嵌入文件名进行预填充。
 
-## Usage Instructions
+![浏览保存文件路径](select-save-path.png){ width=550 }
 
-* Open any model (model must be saved to a disk)
-* Click "AddFile" button. File browse dialog is displayed. Select any file. File data is serialized into the model and message box is displayed.
-* You can close the model and SOLIDWORKS
-* Reopen the model and click "LoadFile". File data is deserialized from the model and File Save As dialog is displayed (name is populated based on the embedded file name). File is saved to the selected location
+## 使用说明
+
+* 打开任何模型（模型必须保存到磁盘）
+* 单击“AddFile”按钮。将显示文件浏览对话框。选择任何文件。文件数据将序列化到模型中，并显示消息框。
+* 您可以关闭模型和SOLIDWORKS
+* 重新打开模型并单击“LoadFile”。将从模型中反序列化文件数据，并显示“文件另存为”对话框（根据嵌入文件名填充）。文件将保存到所选位置
 
 **EmbedFileAddIn.vb**
 
@@ -129,7 +130,7 @@ End Class
 
 
 
-Structure used for serialization contains the content of the file and file name
+用于序列化的结构包含文件的内容和文件名
 
 **EmbedFileData.vb**
 
@@ -143,7 +144,7 @@ End Class
 
 
 
-For simplicity [IStream](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istream) com stream is wrapped into the [System.IO.Stream](https://docs.microsoft.com/en-us/dotnet/api/system.io.stream?view=netframework-4.7.2) type.
+为了简化操作，将[IStream](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istream) COM流封装到[System.IO.Stream](https://docs.microsoft.com/en-us/dotnet/api/system.io.stream?view=netframework-4.7.2)类型中。
 
 **ComStream.vb**
 
@@ -303,7 +304,7 @@ End Class
 
 
 
-Serialization and deserialization routine utilizing the [XmlSerializer](https://docs.microsoft.com/en-us/dotnet/api/system.xml.serialization.xmlserializer?view=netframework-4.7.2) class, but any other serialization methods could be used.
+使用[XmlSerializer](https://docs.microsoft.com/en-us/dotnet/api/system.xml.serialization.xmlserializer?view=netframework-4.7.2)类进行序列化和反序列化，但也可以使用其他序列化方法。
 
 **EmbedFile.vb**
 
@@ -415,5 +416,3 @@ Partial Public Class EmbedFile
 End Class
 
 ~~~
-
-
