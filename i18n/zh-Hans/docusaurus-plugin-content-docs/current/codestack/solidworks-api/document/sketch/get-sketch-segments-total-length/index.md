@@ -1,13 +1,13 @@
 ---
-title: Get the total length of segments in selected sketch using SOLIDWORKS API
-caption: Get Total Length Of Sketch Segments
-description: C# example to calculate total length of all non construction geometry sketch segments in the selected sketch using SOLIDWORKS API
+title: 使用SOLIDWORKS API获取所选草图中线段的总长度
+caption: 获取草图线段的总长度
+description: 使用SOLIDWORKS API计算所选草图中所有非构造几何线段的总长度的C#示例
 image: sketch-total-length.png
 labels: [sketch,length]
 ---
-![Total length of the selected sketch segments](sketch-total-length.png){ width=450 }
+![所选草图线段的总长度](sketch-total-length.png){ width=450 }
 
-This C# example of [stand-alone console application](/docs/codestack/solidworks-api/getting-started/stand-alone/) to calculate the total length of all segments in the selected sketch using SOLIDWORKS API. Construction geometry sketch segments are excluded from the calculation.
+这是一个使用SOLIDWORKS API计算所选草图中所有线段的总长度的C#示例。计算时会排除构造几何线段。
 
 ~~~ cs
 using SolidWorks.Interop.sldworks;
@@ -38,26 +38,24 @@ namespace CodeStack
                     {
                         var totalLength = segs.Where(s => !s.ConstructionGeometry).Sum(s => s.GetLength());
 
-                        app.SendMsgToUser2($"Total length of segments: {totalLength} meters", (int)swMessageBoxIcon_e.swMbInformation, (int)swMessageBoxBtn_e.swMbOk);
+                        app.SendMsgToUser2($"线段的总长度为：{totalLength} 米", (int)swMessageBoxIcon_e.swMbInformation, (int)swMessageBoxBtn_e.swMbOk);
                     }
                     else
                     {
-                        throw new NullReferenceException("No segments in the sketch");
+                        throw new NullReferenceException("草图中没有线段");
                     }
                 }
                 else
                 {
-                    throw new NullReferenceException("Select sketch");
+                    throw new NullReferenceException("请选择草图");
                 }
             }
             else
             {
-                throw new NullReferenceException("Open document");
+                throw new NullReferenceException("请打开文档");
             }
         }
     }
 }
 
 ~~~
-
-
