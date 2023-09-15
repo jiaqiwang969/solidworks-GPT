@@ -1,9 +1,5 @@
----
-title: 使用SOLIDWORKS API管理自定义属性
-caption: 自定义属性
-description: 使用SOLIDWORKS API管理模型、配置和特定特征的自定义属性
-labels: [自定义属性, 配置属性]
----
+## 使用SOLIDWORKS API管理自定义属性
+
 本节包含了使用SOLIDWORKS API利用自定义属性的宏和代码示例。
 
 自定义属性是SOLIDWORKS中用于存储元数据的键值对集合。自定义属性可以与模型本身、其配置或切割列表特征（如焊接或钣金）相关联。
@@ -14,7 +10,7 @@ labels: [自定义属性, 配置属性]
 
 下面的代码演示了如何在代码中实现这种做法。
 
-~~~ vb
+```vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -48,4 +44,7 @@ Function GetPropertyValue(model As SldWorks.ModelDoc2, prpName As String) As Str
     GetPropertyValue = prpVal
     
 End Function
-~~~
+```
+
+[//]: # (Permalink to examples)
+[//]: # (end)
