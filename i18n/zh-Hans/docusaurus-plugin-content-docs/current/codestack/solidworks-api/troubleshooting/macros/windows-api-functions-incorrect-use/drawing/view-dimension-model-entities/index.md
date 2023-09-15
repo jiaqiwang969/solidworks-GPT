@@ -1,23 +1,24 @@
 ---
-title: Dimension named model entities in drawing view using SOLIDWORKS API
-caption: Dimension Named Model Entities
-description: Add dimension between two named entities of the part drawing retrieved from the underlying model using SOLIDWORKS API
+title: 在绘图视图中使用SOLIDWORKS API对命名模型实体进行标注
+caption: 标注命名模型实体
+description: 使用SOLIDWORKS API在从底层模型检索的零件图纸中的两个命名实体之间添加尺寸
 image: drawing-view-dimension.png
-labels: [view,dimension,named]
+labels: [视图,尺寸,命名]
 ---
-Similar to [Assembly Context](/docs/codestack/solidworks-api/document/assembly/context/) there is drawing context. Pointer to the entity may exist in underlying model context and in the drawing view context.
 
-When entities from the underlying model context (i.e. from part or assembly) need to be selected in the drawing view (for example for the dimensioning purposes), [IView::SelectEntity](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iview~selectentity.html) SOLIDWORKS API method could be called. SOLIDWORKS will automatically find the corresponding entity pointer in the drawing view and select it.
+与[装配上下文](/docs/codestack/solidworks-api/document/assembly/context/)类似，绘图上下文也存在。指向实体的指针可能存在于底层模型上下文和绘图视图上下文中。
 
-This example demonstrates how to add the linear dimension between two named edges (Edge1 and Edge2) from the underlying part model using SOLIDWORKS API. The entities can be named via the following property dialog:
+当需要在绘图视图中选择底层模型上下文（例如用于尺寸标注）中的实体时，可以调用[SOLIDWORKS API方法IView::SelectEntity](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iview~selectentity.html)。SOLIDWORKS将自动在绘图视图中找到相应的实体指针并选择它。
 
-![Edge property name](entity-property-name.png){ width=350 }
+此示例演示了如何使用SOLIDWORKS API在底层零件模型中的两个命名边（Edge1和Edge2）之间添加线性尺寸。可以通过以下属性对话框为实体命名：
 
-As the result the dimension is added between the edges.
+![边界属性名称](entity-property-name.png){ width=350 }
 
-![Dimension between 2 named edges](drawing-view-dimension.png){ width=250 }
+结果是在边界之间添加了尺寸。
 
-Location of the dimension is found as a middle point of the line drawn between two middle points of the dimensioned edges. Unlike [drawing in sheet context](/docs/codestack/solidworks-api/document/drawing/sheet-context-sketch/), drawing sheet scale is not required to be multiplied to the view transformation matrix when positioning the dimensions.
+![2个命名边之间的尺寸](drawing-view-dimension.png){ width=250 }
+
+尺寸的位置是通过两个被标注边界的中点之间绘制的线的中点来确定的。与[在图纸上下文中绘图](/docs/codestack/solidworks-api/document/drawing/sheet-context-sketch/)不同，不需要将图纸比例尺乘以视图变换矩阵来定位尺寸。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -38,10 +39,10 @@ Sub main()
         If Not swView Is Nothing Then
             DimensionNamedEdges "Edge1", "Edge2", swDraw, swView
         Else
-            MsgBox "Please select drawing view"
+            MsgBox "请选择绘图视图"
         End If
     Else
-        MsgBox "Please open the drawing document"
+        MsgBox "请打开绘图文档"
     End If
     
 End Sub
@@ -58,11 +59,11 @@ Function DimensionNamedEdges(firstEdgeName As String, secondEdgeName As String, 
     Set swSecondEdge = swRefPart.GetEntityByName(secondEdgeName, swSelectType_e.swSelEDGES)
     
     If swFirstEdge Is Nothing Or swSecondEdge Is Nothing Then
-        Err.Raise vbError, "", "Failed to find edge by name"
+        Err.Raise vbError, "", "无法通过名称找到边界"
     End If
     
     If False = view.SelectEntity(swFirstEdge, False) Or False = view.SelectEntity(swSecondEdge, True) Then
-        Err.Raise vbError, "", "Failed to select edges in the drawing view"
+        Err.Raise vbError, "", "无法在绘图视图中选择边界"
     End If
     
     Dim swModel As SldWorks.ModelDoc2
@@ -120,6 +121,3 @@ Function GetEdgeMidPoint(edge As SldWorks.edge, view As SldWorks.view) As Varian
     
 End Function
 ~~~
-
-
-
