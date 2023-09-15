@@ -1,21 +1,21 @@
 ---
-title: 使用SOLIDWORKS API将临时实体存储和恢复到第三方存储
-caption: 存储和恢复实体
-description: 使用SOLIDWORKS API将临时实体存储到SOLIDWORKS文档流中的第三方存储，并在打开时恢复和显示实体
+title: Store and Restore Bodies to Third-Party Storage with SOLIDWORKS API
+caption: Store and Restore Bodies
+description: Store selected bodies as copies in the stream of a new document using SOLIDWORKS API and restore and display the bodies when the model is opened
 image: restored-body.png
-labels: [第三方存储, 存储实体, 恢复实体]
+labels: [third-party storage, store bodies, restore bodies]
 ---
 
-这个VBA示例演示了如何将所选实体的副本存储在新文档的流中，并在模型打开时恢复和显示实体。
+This VBA example demonstrates how to store copies of selected bodies in the stream of a new document and restore and display the bodies when the model is opened.
 
-实体通过[第三方存储](/docs/codestack/solidworks-api/data-storage/third-party/)进行序列化和反序列化。
+The bodies are serialized and deserialized using [third-party storage](/docs/codestack/solidworks-api/data-storage/third-party/).
 
-* 创建新的宏并添加新的窗体。将其命名为*UserForm1*（默认名称）。
-* 添加按钮。指定标题为*Store Body*，名称为*cmdStoreBody*，如下所示：
+* Create a new macro and add a new user form. Name it *UserForm1* (default name).
+* Add a button. Specify the caption as *Store Body* and the name as *cmdStoreBody* as shown below:
 
-![宏树和用户窗体控件](macro-solution-tree.png){ width=450 }
+![Macro tree and user form controls](macro-solution-tree.png){ width=450 }
 
-* 将以下内容粘贴到用户窗体的代码后面：
+* Paste the following code after the code in the user form:
 
 ```vb
 Const BODY_STREAM_NAME = "_CodeStackBody_"
@@ -117,7 +117,7 @@ End Sub
 
 
 
-* 将以下代码插入到宏的主模块中：
+* Insert the following code into the main module of the macro:
 
 ```vb
 Sub main()
@@ -129,16 +129,16 @@ End Sub
 
 
 
-## 运行宏
+## Run the Macro
 
-* 从主模块启动宏。注意，如果在宏编辑器中激活窗体时运行宏，窗体将显示为模态窗口，并阻止选择和保存。
-* 打开任何带有任意几何体的零件文档。
-* 从树中选择实体，并单击用户窗体中的*Store Body*。
-* 创建新的零件文档，并显示以下消息：*Save this document to store the body in its stream*。
-* 保存此文件。当文件保存时，来自不同零件的实体被序列化到新文档的流中，并且不再与原始实体相关联。
-* 完成后，显示以下消息：*Body is stored to the model stream. Close and reopen the model to restore the body*。
-* 现在，关闭所有文档并重新打开最后保存的文件。实体被反序列化并显示。请注意，模型中没有特征树。
+* Start the macro from the main module. Note that if you run the macro with the form activated in the macro editor, the form will appear as a modal window and prevent selection and saving.
+* Open any part document with some bodies.
+* Select a body from the tree and click *Store Body* in the user form.
+* Create a new part document and display the following message: *Save this document to store the body in its stream*.
+* Save this file. When the file is saved, the bodies from different parts are serialized into the stream of the new document and are no longer associated with the original bodies.
+* After completion, display the following message: *Body is stored to the model stream. Close and reopen the model to restore the body*.
+* Now, close all documents and reopen the last saved file. The bodies are deserialized and displayed. Note that there is no feature tree in the model.
 
-![恢复的实体](restored-body.png){ width=350 }
+![Restored body](restored-body.png){ width=350 }
 
-* 您可以关闭SOLIDWORKS会话并重新打开模型。实体仍将被加载。请注意，在打开模型之前，您需要运行宏。
+* You can close the SOLIDWORKS session and reopen the model. The bodies will still be loaded. Note that you need to run the macro before opening the model.
