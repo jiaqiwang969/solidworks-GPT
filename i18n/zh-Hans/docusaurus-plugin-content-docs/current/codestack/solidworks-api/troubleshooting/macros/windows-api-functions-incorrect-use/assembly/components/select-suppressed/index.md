@@ -1,17 +1,17 @@
 ---
-title: Select all suppressed components in the assembly using SOLIDWORKS API
-caption: Select All Suppressed Components
-description: VBA macro which runs the 'Component Selection - Select Suppressed' command in assembly document to select all assembly components in a batch
+title: 使用SOLIDWORKS API选择所有抑制的组件
+caption: 选择所有抑制的组件
+description: 使用SOLIDWORKS和Windows API，在装配体文档中批量选择所有抑制的组件的VBA宏
 image: select-suppressed-components.png
-labels: [command,suppressed,components]
+labels: [命令, 抑制, 组件]
 ---
-This VBA macro allows to select all suppressed components in the active SOLIDWORKS assembly in a batch using SOLIDWORKS and Windows API.
+这个VBA宏允许在活动的SOLIDWORKS装配体中批量选择所有抑制的组件，使用SOLIDWORKS和Windows API。
 
-This executes the *Select Suppressed* command of *Component Selection* menu
+这个宏执行了*组件选择*菜单中的*选择抑制*命令。
 
-![Select Suppressed command for components](select-suppressed-components.png){ width=500 }
+![选择抑制命令](select-suppressed-components.png){ width=500 }
 
-This is preferable option of selecting all suppressed components over the [traversing components](/docs/codestack/solidworks-api/document/assembly/components/traversing-tree) one-by-one due to the performance benefits.
+与逐个遍历组件的方法相比，这是选择所有抑制的组件的首选方法，因为它具有更好的性能。
 
 ~~~ vb
 #If VBA7 Then
@@ -33,7 +33,7 @@ Sub main()
     If Not swAssy Is Nothing Then
         SelectSuppressedComponents
     Else
-       MsgBox "Please open assembly"
+       MsgBox "请打开装配体"
     End If
      
 End Sub
@@ -51,4 +51,3 @@ Sub SelectSuppressedComponents()
 
 End Sub
 ~~~
-
