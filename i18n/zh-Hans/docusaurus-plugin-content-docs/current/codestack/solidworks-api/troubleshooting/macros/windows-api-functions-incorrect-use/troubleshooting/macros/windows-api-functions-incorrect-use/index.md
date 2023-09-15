@@ -1,32 +1,32 @@
 ---
 layout: sw-macro-fix
-title: Fix incorrect use of 32-bit versions of Windows API functions in SOLIDWORKS macros
-caption: Incorrect Use Of 32-bit Versions Of Windows API Functions
-description: Fixing the Compile error - The code in this project must be updated for use on 64-bit systems when macro is utilizing Windows API functions
+title: 修复 SOLIDWORKS 宏中错误使用 32 位版本的 Windows API 函数
+caption: 错误使用 32 位版本的 Windows API 函数
+description: 修复编译错误 - 当宏使用 Windows API 函数时，必须更新此项目的代码以在 64 位系统上使用
 image: declare-function-win-api.png
-labels: [macro, troubleshooting]
+labels: [宏, 故障排除]
 redirect-from:
   - /2018/04/macro-troubleshooting-incorrect-use-of-32-bit-versions-of-win-api.html
 ---
-## Symptoms
+## 症状
 
-System is updated from SOLIDWORKS older than 2012 to a newer version.
-Or some legacy macro is run.
-Macro is utilizing Windows API functions (e.g. has browse file/folder dialog, connects to registry, uses windows handles) via *Declare Function* statement.
-When started the *Compile error: The code in this project must be updated for use on 64-bit systems* is displayed.
+系统从早于 2012 版本的 SOLIDWORKS 更新到更新版本。
+或者运行某些旧版宏。
+宏使用 Windows API 函数（例如具有浏览文件/文件夹对话框、连接到注册表、使用窗口句柄）通过 *Declare Function* 语句。
+启动时显示 *编译错误：必须更新此项目的代码以在 64 位系统上使用*。
 
-![Windows API Declare function incompatibility error](declare-function-win-api.png){ width=640 height=185 }
+![Windows API Declare 函数不兼容错误](declare-function-win-api.png){ width=640 height=185 }
 
-## Cause
+## 原因
 
-SOLIDWORKS has updated the Visual Basic for Application environment in 2013 release from VB6 to VB7.
-VB6 is 32bit application while [VB7](https://msdn.microsoft.com/en-us/vba/language-reference-vba/articles/64-bit-visual-basic-for-applications-overview) is 64bit application.
-Due to the difference in variables size in 32/64 it is required to use PtrSafe keyword to assert the environment that it is safe to run the macro in x64 systems and LongPtr or LongLong to properly resolve the Long type variable in 32 and 64 bit environments.
+SOLIDWORKS 在 2013 版本中将 Visual Basic for Application 环境从 VB6 更新为 VB7。
+VB6 是 32 位应用程序，而 [VB7](https://msdn.microsoft.com/en-us/vba/language-reference-vba/articles/64-bit-visual-basic-for-applications-overview) 是 64 位应用程序。
+由于 32/64 位环境中变量大小的差异，需要使用 PtrSafe 关键字来确保在 x64 系统中运行宏是安全的，并使用 LongPtr 或 LongLong 来正确解析 32 位和 64 位环境中的 Long 类型变量。
 
-## Resolution
+## 解决方法
 
-* Modify all of the declaration and include PtrSafe keyword and LongPtr as the variable declarations for Long types
-* If it is required to support older versions of SOLIDWORKS (prior to 2012) it is possible to use pre-compile conditional statements #IF-#Else
+* 修改所有声明并包含 PtrSafe 关键字和 LongPtr 作为 Long 类型的变量声明
+* 如果需要支持旧版本的 SOLIDWORKS（2012 年之前），可以使用预编译条件语句 #IF-#Else
 
 ~~~ vb
 #If VBA7 Then
@@ -95,5 +95,3 @@ Public Function BrowseForFolder() As String
 End Function
 
 ~~~
-
-
