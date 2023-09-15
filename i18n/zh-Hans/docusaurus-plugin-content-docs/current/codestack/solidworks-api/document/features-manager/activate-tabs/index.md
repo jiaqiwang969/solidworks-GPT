@@ -1,21 +1,22 @@
 ---
-title: VSTA Macro which activates feature manager tab via SOLIDWORKS API
-caption: Activate Feature Manager Tab
-description: Example demonstrates how to activate standard tabs (feature manager tree, property manager, configuration manager, DimXpert manager, display manager) in the feature manager view using SOLIDWORKS API
+title: 使用SOLIDWORKS API激活特征管理器选项卡的VSTA宏
+caption: 激活特征管理器选项卡
+description: 该示例演示了如何使用SOLIDWORKS API在特征管理器视图中激活标准选项卡（特征管理器树、属性管理器、配置管理器、DimXpert管理器、显示管理器）。
 image: feature-manager-tabs.png
 labels: [feature manager, tab]
 ---
-![Feature Manager Tabs](feature-manager-tabs.png)
 
-This example demonstrates how to activate standard tabs (feature manager tree, property manager, configuration manager, DimXpert manager, display manager) in the feature manager view using SOLIDWORKS API.
+![特征管理器选项卡](feature-manager-tabs.png)
 
-* Specify the tab to activate using the *FeatMgrTab_e* enumeration
-* Run the macro (VSTA3)
-* Active tab is shown in the message box
-* Specified tab is activated
+该示例演示了如何使用SOLIDWORKS API在特征管理器视图中激活标准选项卡（特征管理器树、属性管理器、配置管理器、DimXpert管理器、显示管理器）。
+
+- 使用 *FeatMgrTab_e* 枚举指定要激活的选项卡
+- 运行宏（VSTA3）
+- 激活的选项卡将显示在消息框中
+- 激活指定的选项卡
 
 **ModelDocExtension.cs**
-~~~ cs
+``` cs
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,12 +69,12 @@ namespace SolidWorks.Interop.sldworks
     }
 }
 
-~~~
+```
 
 
 
 **SolidWorksMacro.cs**
-~~~ cs
+``` cs
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -121,6 +122,4 @@ namespace ActivateFeatMgrTab
 }
 
 
-~~~
-
-
+```
