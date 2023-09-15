@@ -1,20 +1,21 @@
 ---
-title: Block model editing using SOLIDWORKS API
-caption: Block Model Editing
-description: Example demonstrate different ways of disabling the model editing
-labels: [block editing, block model, example, lock, menu, solidworks api]
+title: 使用SOLIDWORKS API进行块模型编辑
+caption: 块模型编辑
+description: 该示例演示了使用SOLIDWORKS API禁用模型编辑的不同方法。
+labels: [块编辑, 块模型, 示例, 锁定, 菜单, solidworks api]
 redirect-from:
   - /2018/03/block-model-editing.html
 ---
-This example demonstrate different ways of disabling the model editing from SOLIDWORKS API: 
 
-* Blocking menu - user is not able to invoke menu commands. This feature is usually used when property manager page is displayed and there should be no commands invoked
-* Blocking model editing - model is a view only and cannot be changed
-* Full block - editing and view manipulations are disabled
+该示例演示了使用SOLIDWORKS API禁用模型编辑的不同方法：
 
-It is required to debug macro step-by-step to see the different SOLIDWORKS API functions in action.
+* 阻止菜单 - 用户无法调用菜单命令。通常在显示属性管理器页面时使用此功能，不应调用任何命令。
+* 阻止模型编辑 - 模型只能查看，无法更改。
+* 完全阻止 - 禁用编辑和视图操作。
 
-~~~ vb
+需要逐步调试宏以查看不同的SOLIDWORKS API函数的操作。
+
+```vb
 Dim swApp As SldWorks.SldWorks
 Dim swModel As SldWorks.ModelDoc2
 
@@ -35,10 +36,10 @@ Sub main()
         
 End Sub
 
-'Block menu, buttons and any manipulations (including model rotation)
+'阻止菜单、按钮和任何操作（包括模型旋转）
 Sub BlockAll()
     
-    'get the current blocking state if it will be required to reset
+    '获取当前的阻止状态，如果需要重置
     Dim curBlock As Integer
     curBlock = swModel.GetBlockingState
         
@@ -46,14 +47,14 @@ Sub BlockAll()
         
 End Sub
 
-'Block menu, buttons and any manipulations (including model rotation)
+'解除阻止菜单、按钮和任何操作（包括模型旋转）
 Sub UnblockAll()
     
     swModel.ResetBlockingState
     
 End Sub
 
-'Blocks menus and edits, but allows model moving and zooming
+'阻止菜单和编辑，但允许模型移动和缩放
 Sub BlockMenusAndEdit()
     
     swModel.Lock
@@ -66,7 +67,7 @@ Sub UnlockMenusAndEdit()
     
 End Sub
 
-'Only blocks file related menu commands (new or save)
+'仅阻止与文件相关的菜单命令（新建或保存）
 Sub BlockMenu()
 
     swApp.EnableFileMenu = False
@@ -79,5 +80,4 @@ Sub UnblockMenu()
     
 End Sub
 
-~~~
-
+```
