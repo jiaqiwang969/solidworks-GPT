@@ -1,21 +1,22 @@
 ---
-title: Create vector normal to screen view using SOLIDWORKS API
-caption: Create Vector Normal To Screen View
-description: Example demonstrates how to draw a sketch line which is perpendicular (normal) to the current view orientation relative to the screen
+title: 使用SOLIDWORKS API创建垂直于屏幕视图的矢量
+caption: 创建垂直于屏幕视图的矢量
+description: 该示例演示了如何使用SOLIDWORKS API绘制一条垂直于当前视图方向相对于屏幕的草图线。
 image: sw-view-screen-transformation.png
-labels: [example, normal, screen, solidworks api, transformation, view]
+labels: [示例, 垂直, 屏幕, solidworks api, 变换, 视图]
 redirect-from:
   - /2018/04/solidworks-api-transformation-create-vector-normal-to-screen-view.html
 ---
-This example demonstrates how to draw a sketch line which is perpendicular (normal) to the current view orientation relative to the screen using SOLIDWORKS API.
 
-The line will start at the point at the middle of the screen and will be perpendicular to the screen orientation. That means that initially it will be rendered as point until view rotates.
+该示例演示了如何使用SOLIDWORKS API绘制一条垂直于当前视图方向相对于屏幕的草图线。
 
-[IModelView::Transform](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodelview~transform.html) SOLIDWORKS API property is used to extract the transformation matrix of current orientation of the view.
+该线条将从屏幕中间的点开始，并且垂直于屏幕方向。这意味着初始时它将被渲染为一个点，直到视图旋转。
 
-![Line created perpendicular to the current graphics view](sw-view-screen-transformation.png){ width=320 height=208 }
+使用[SOLIDWORKS API](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodelview~transform.html)的`IModelView::Transform`属性来提取当前视图方向相对于屏幕的变换矩阵。
 
-~~~ vb
+![垂直于当前图形视图创建的线条](sw-view-screen-transformation.png){ width=320 height=208 }
+
+```vb
 Dim swApp As SldWorks.SldWorks
 Dim swModel As SldWorks.ModelDoc2
 Dim swMathUtils As SldWorks.MathUtility
@@ -45,11 +46,11 @@ Sub main()
             DrawVector swMidPt.ArrayData, swNormVec.ArrayData, 0.1
             
         Else
-            MsgBox "Active model doesn't contain view"
+            MsgBox "活动模型中不包含视图"
         End If
         
     Else
-        MsgBox "Please open the 3D model"
+        MsgBox "请打开3D模型"
     End If
     
 End Sub
@@ -116,6 +117,5 @@ Function DrawVector(startPt As Variant, dir As Variant, length As Double)
     swModel.Insert3DSketch2 True
     
 End Function
-~~~
-
+```
 
