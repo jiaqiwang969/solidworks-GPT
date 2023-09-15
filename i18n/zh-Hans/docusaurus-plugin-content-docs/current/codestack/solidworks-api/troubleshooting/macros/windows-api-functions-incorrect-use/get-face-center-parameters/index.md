@@ -1,15 +1,15 @@
 ---
-title: Get parameters of face at centroid using SOLIDWORKS API
-caption: Get Face Center Parameters
-description: Example demonstrates how to find the face parameters (coordinate and normal) at the center of the face using SOLIDWORKS API
+title: 使用SOLIDWORKS API获取面的中心参数
+caption: 获取面中心参数
+description: 该示例演示了如何使用SOLIDWORKS API在面的中心找到参数（坐标和法线）
 image: face-center.png
 labels: [center, uv, normal]
 ---
-![Point created at the center of the face](face-center.png){ width=250 }
+![在面的中心创建的点](face-center.png){ width=250 }
 
-This example demonstrate how to find the parameters (point coordinate and normal) at the center of the face using SOLIDWORKS API. This macro will work with any type of face (planar, cylindrical, toroidal, b-surface etc.)
+该示例演示了如何使用SOLIDWORKS API在面的中心找到参数（点坐标和法线）。此宏适用于任何类型的面（平面、圆柱面、环面等）。
 
-Center is found as the average of minimum and maximum values of U and V parameters using the [ISurface::Evaluate](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isurface~evaluate.html) SOLIDWORKS API method.
+中心点通过使用[SOLIDWORKS API的ISurface::Evaluate](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isurface~evaluate.html)方法，通过U和V参数的最小值和最大值的平均值来计算。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -33,15 +33,15 @@ Sub main()
             
             GetFaceCenterParameters swFace, vPt, vNorm
             
-            Debug.Print "Coordinate at face center is: " & vPt(0) * 1000 & ", " & vPt(1) * 1000 & ", " & vPt(2) * 1000
-            Debug.Print "Normal at face center is: " & vNorm(0) & ", " & vNorm(1) & ", " & vNorm(2)
+            Debug.Print "面中心的坐标为: " & vPt(0) * 1000 & ", " & vPt(1) * 1000 & ", " & vPt(2) * 1000
+            Debug.Print "面中心的法线为: " & vNorm(0) & ", " & vNorm(1) & ", " & vNorm(2)
         
         Else
-            MsgBox "Please select face"
+            MsgBox "请选择面"
         End If
         
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -79,4 +79,3 @@ Sub GetFaceCenterParameters(face As SldWorks.Face2, ByRef point As Variant, ByRe
     
 End Sub
 ~~~
-
