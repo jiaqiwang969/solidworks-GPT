@@ -1,44 +1,44 @@
 ---
 layout: sw-tool
-title: Export all SOLIDWORKS document level options to Excel
-caption: Export All Document Options To Excel
-description: Macro allows to export all document properties into excel format using SOLIDWORKS API and reflection
+title: 将所有SOLIDWORKS文档级选项导出到Excel
+caption: 导出所有文档选项到Excel
+description: 使用SOLIDWORKS API和反射，宏允许将所有文档属性导出为Excel格式
 image: document-properties.png
-labels: [export, excel, csv, options]
-group: Options
+labels: [导出, Excel, CSV, 选项]
+group: 选项
 ---
-![Document Properties dialog](document-properties.png){ width=350 }
+![文档属性对话框](document-properties.png){ width=350 }
 
-This macro exports all document properties (available under the Tools->Options->Document) menu
+该宏导出所有文档属性（在工具->选项->文档菜单下可用）
 
-Macro is utilizing [Reflection](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/reflection) to dynamically read all available user preferences enumerations and calling the corresponding SOLIDWORKS API to extract each property value.
+该宏利用[反射](https://docs.microsoft.com/zh-cn/dotnet/csharp/programming-guide/concepts/reflection)动态读取所有可用的用户首选项枚举，并调用相应的SOLIDWORKS API提取每个属性值。
 
-Macro outputs the properties into the CSV file which can be opened in Excel. The following information is included:
+宏将属性输出到CSV文件中，可以在Excel中打开。包括以下信息：
 
-* Preference Group - numeric, toggle or text
-* ID of preference - the exact option being exported
-* Preference option - additional information about preference
-* Value - current value of the preference
+* 首选项组 - 数字、切换或文本
+* 首选项的ID - 要导出的确切选项
+* 首选项选项 - 关于首选项的附加信息
+* 值 - 首选项的当前值
 
-Refer [System Options and Document Properties](https://help.solidworks.com/2016/english/api/sldworksapiprogguide/overview/system_options_and_document_properties.htm) article for a list of options to match the specific preference ID and value.
+请参阅[System Options and Document Properties](https://help.solidworks.com/2016/english/api/sldworksapiprogguide/overview/system_options_and_document_properties.htm)文章，了解匹配特定首选项ID和值的选项列表。
 
-![Extracted user preferences opened in Excel](user-preferences-excel.png){ width=350 }
+![在Excel中打开的提取的用户首选项](user-preferences-excel.png){ width=350 }
 
-This macro can be useful if it is required to compare the preferences between different files. Any diff tool can be used to simplify the comparison and identify the differences, such as [WinMerge](https://winmerge.org/)
+如果需要比较不同文件之间的首选项，此宏可能很有用。可以使用任何差异工具简化比较并识别差异，例如[WinMerge](https://winmerge.org/)
 
-![Differences between user preferences of two models](diff-user-preferences.png){ width=550 }
+![两个模型的用户首选项之间的差异](diff-user-preferences.png){ width=550 }
 
-File output location be customized by modifying the *OUT_FILE_PATH* constant at the beginning of the macro.
+可以通过修改宏开头的*OUT_FILE_PATH*常量来自定义文件输出位置。
 
 ~~~ cs
-const string OUT_FILE_PATH = @""; //Output file will be created at the same location as SOLIDWORKS model and will be named as <ModelName>_prefs.csv
-const string OUT_FILE_PATH = @"Options.csv"; //Output file will be created at the same location as SOLIDWORKS model and will be named as Options.csv
-const string OUT_FILE_PATH = @"D:\Output\prefs.csv"; //File will be output to D:\Output\prefs.csv
+const string OUT_FILE_PATH = @""; //输出文件将在与SOLIDWORKS模型相同的位置创建，并命名为<模型名称>_prefs.csv
+const string OUT_FILE_PATH = @"Options.csv"; //输出文件将在与SOLIDWORKS模型相同的位置创建，并命名为Options.csv
+const string OUT_FILE_PATH = @"D:\Output\prefs.csv"; //文件将输出到D:\Output\prefs.csv
 ~~~
 
-Refer [Create And Run VSTA Macro](/docs/codestack/solidworks-api/getting-started/macros/create-vsta/) for information about creating and adding code to VSTA macro.
+有关创建和添加代码到VSTA宏的信息，请参阅[创建和运行VSTA宏](/docs/codestack/solidworks-api/getting-started/macros/create-vsta/)。
 
-## C# VSTA Macro
+## C# VSTA宏
 
 ~~~ cs
 using SolidWorks.Interop.sldworks;
@@ -81,7 +81,7 @@ namespace ExtractAlLDocProperties.csproj
 
                         if (string.IsNullOrEmpty(curModelPath))
                         {
-                            throw new NullReferenceException("Current model is not saved. Either save the model or specify the full path to the output file");
+                            throw new NullReferenceException("当前模型未保存。请保存模型或指定输出文件的完整路径");
                         }
 
                         outFilePath = Path.Combine(Path.GetDirectoryName(curModelPath), outFilePath);
@@ -91,7 +91,7 @@ namespace ExtractAlLDocProperties.csproj
                 }
                 else
                 {
-                    throw new NullReferenceException("Please open the model");
+                    throw new NullReferenceException("请打开模型");
                 }
             }
             catch (Exception ex)
@@ -186,5 +186,3 @@ namespace ExtractAlLDocProperties.csproj
     }
 }
 ~~~
-
-
