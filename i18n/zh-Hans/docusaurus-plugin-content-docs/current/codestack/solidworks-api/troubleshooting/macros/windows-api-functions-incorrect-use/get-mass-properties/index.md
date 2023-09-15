@@ -1,21 +1,22 @@
 ---
-title: Script extract mass properties of file using SOLIDWORKS API
-caption: Get Mass Properties
-description: Example demonstrates how to extract mass properties form the specified file using vbScript and SOLIDWORKS API
+title: 使用SOLIDWORKS API脚本提取文件的质量属性
+caption: 获取质量属性
+description: 该示例演示了如何使用vbScript和SOLIDWORKS API从指定的文件中提取质量属性。
 image: msgbox-mass-properties.png
-labels: [mass properties, vbscript]
+labels: [质量属性, vbScript]
 ---
-This example demonstrates how to extract mass properties from the specified file using vbScript via SOLIDWORKS API.
 
-* Create a text file and name it as *get-mass-prps.vbs*
-* Copy-paste the following code into the file
+该示例演示了如何使用vbScript通过SOLIDWORKS API从指定的文件中提取质量属性。
 
-~~~ vbs
+- 创建一个文本文件，并将其命名为*get-mass-prps.vbs*
+- 将以下代码复制粘贴到文件中
+
+```vbs
 Dim swApp
 Set swApp = CreateObject("SldWorks.Application")
 
 Dim filePath
-filePath = InputBox("Specify the path to the part file")
+filePath = InputBox("指定零件文件的路径")
 
 Dim docSpec
 Set docSpec = swApp.GetOpenDocSpec(filePath)
@@ -28,16 +29,14 @@ Set swModel = swApp.OpenDoc7(docSpec)
 Dim swMassPrps
 Set swMassPrps = swModel.Extension.CreateMassProperty()
 
-MsgBox "Mass: " & swMassPrps.Mass & vbLf & "Volume: " & swMassPrps.Volume & vbLf & "Surface area: " & swMassPrps.SurfaceArea
+MsgBox "质量: " & swMassPrps.Mass & vbLf & "体积: " & swMassPrps.Volume & vbLf & "表面积: " & swMassPrps.SurfaceArea
 
 swApp.CloseDoc swModel.GetTitle()
-~~~
+```
 
+- 保存文件
+- 双击运行脚本
+- 在显示的输入框中指定SOLIDWORKS文件（零件或装配）的完整路径
+- 结果将在消息框中显示指定模型的质量属性值
 
-
-* Save the file
-* Double click to run the script
-* Specify the full path to a SOLIDWORKS file (part or assembly) in the displayed input box
-* As the result the following message box is displayed with mass property values
-
-![Mass properties of the specified model are displayed in the message box](msgbox-mass-properties.png){ width=250 }
+![在消息框中显示指定模型的质量属性](msgbox-mass-properties.png){ width=250 }
