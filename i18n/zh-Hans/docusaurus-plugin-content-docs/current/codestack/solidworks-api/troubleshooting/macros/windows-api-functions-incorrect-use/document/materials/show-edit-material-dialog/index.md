@@ -1,15 +1,8 @@
----
-title: Show Edit Material dialog using SOLIDWORKS API
-caption: Show Edit Material Dialog
-description: VBA macro which opens the Edit Material dialog in SOLIDWORKS part documents using SOLIDWORKS API and Windows API
-image: edit-material-command.png
-labels: [edit material]
----
-![Edit material menu command in SOLIDWORKS part](edit-material-command.png){ width=350 }
+![SOLIDWORKS部件中的编辑材料菜单命令](edit-material-command.png){ width=350 }
 
-This VBA macro opens the 'Edit Material' dialog to assign or change the material of active SOLIDWORKS part document using the combination of SOLIDWORKS API and Windows API.
+这个VBA宏使用SOLIDWORKS API和Windows API的组合，打开“编辑材料”对话框，以分配或更改活动SOLIDWORKS部件文档的材料。
 
-~~~ vb
+``` vb
 #If VBA7 Then
      Private Declare PtrSafe Function SendMessage Lib "User32" Alias "SendMessageA" (ByVal hWnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
 #Else
@@ -44,6 +37,5 @@ Sub main()
     End If
     
 End Sub
-~~~
-
+```
 
