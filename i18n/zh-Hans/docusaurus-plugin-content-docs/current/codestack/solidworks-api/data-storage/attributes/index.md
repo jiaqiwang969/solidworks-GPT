@@ -1,20 +1,20 @@
 ---
-title: 使用SOLIDWORKS API中的属性存储数据和选择
-caption: 属性
-description: 本文介绍了使用属性（添加参数，与对象关联）的示例
+title: Using Attributes to Store Data and Make Selections in the SOLIDWORKS API
+caption: Attributes
+description: This article provides examples of using attributes (adding parameters, associating with objects)
 image: attributes.png
-labels: [跟踪, 属性, 选择, 参数]
+labels: [tracking, attributes, selection, parameters]
 ---
-![属性功能](attributes.png)
+![Attributes](attributes.png)
 
-属性是通过[SOLIDWORKS API方法IAttributeDef::CreateInstance5](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iattributedef~createinstance5.html)插入的特殊功能。虽然属性是本机功能，可以在特征管理器树中可见（可选），但不能通过常规用户界面插入或编辑（只能删除），只能通过API访问。
+Attributes are special features inserted using the [SOLIDWORKS API method IAttributeDef::CreateInstance5](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iattributedef~createinstance5.html). While attributes are native features and can be visible in the FeatureManager tree (optional), they cannot be inserted or edited through the regular user interface (only deleted) and can only be accessed through the API.
 
-属性实例是从属性定义创建的。将使用属性的软件应通过[SOLIDWORKS API方法ISldWorks::DefineAttribute](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~defineattribute.html)定义其定义。
+Attribute instances are created from attribute definitions. Software using attributes should define their definitions using the [SOLIDWORKS API method ISldWorks::DefineAttribute](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~defineattribute.html).
 
-### 注意事项
+### Notes
 
-* 属性可以与可选择对象（实体、组件、面、边、顶点、环或特征）关联
-* 属性可以存储参数
-* 属性可以在特征树中隐藏
+* Attributes can be associated with selectable objects (bodies, components, faces, edges, vertices, loops, or features)
+* Attributes can store parameters
+* Attributes can be hidden in the FeatureManager tree
 
-有关属性使用的更多信息，请参阅**属性**部分下的示例。
+For more information on using attributes, see the examples in the **Attributes** section below.
