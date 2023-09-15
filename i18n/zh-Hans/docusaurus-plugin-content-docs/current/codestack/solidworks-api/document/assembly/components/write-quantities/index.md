@@ -1,34 +1,34 @@
 ---
 layout: sw-tool
-title: Write component quantity in the SOLIDWORKS assembly to custom property
-caption: Write Component Quantity To Custom Property
-description: VBA macro which writes the total quantities of components in SOLIDWORKS assembly into custom property
+title: 将SOLIDWORKS装配中的组件数量写入自定义属性
+caption: 将组件数量写入自定义属性
+description: 这是一个VBA宏，用于计算SOLIDWORKS装配中每个组件的总数量，并将其写入自定义属性中。
 image: bom-quantity.svg
-labels: [quantity,component]
-group: Assembly
+labels: [数量,组件]
+group: 装配
 ---
-This VBA macro calculates the total quantity of each component in the SOLIDWORKS assembly and writes it to the custom property.
+这个VBA宏计算SOLIDWORKS装配中每个组件的总数量，并将其写入自定义属性中。
 
-This macro can be useful in conjunction with [Export Flat Patterns From Part Or Assembly Components](/docs/codestack/solidworks-api/document/sheet-metal/export-all-flat-patterns/) and [Export To Multiple Formats](/docs/codestack/solidworks-api/import-export/export-multi-formats/) macros.
+这个宏可以与[从零件或装配组件导出平展图案](/docs/codestack/solidworks-api/document/sheet-metal/export-all-flat-patterns/)和[导出到多种格式](/docs/codestack/solidworks-api/import-export/export-multi-formats/)宏一起使用。
 
-## Configuration
+## 配置
 
-Macro can be configured by changing the constant parameters at the beginning of the macro as shown below:
+可以通过更改宏开头的常量参数来配置宏，如下所示：
 
 ~~~ vb
-Const PRP_NAME As String = "Qty" 'Name of the custom property to write quantity to
-Const MERGE_CONFIGURATIONS As Boolean = False 'True to consider all configurations of the component as a single item
-Const INCLUDE_BOM_EXCLUDED As Boolean = False 'True to write quantities based on the Feature Manager Tree instead of BOM
+Const PRP_NAME As String = "Qty" '要写入数量的自定义属性的名称
+Const MERGE_CONFIGURATIONS As Boolean = False '如果要将组件的所有配置视为单个项目，则为True
+Const INCLUDE_BOM_EXCLUDED As Boolean = False '如果要根据特征管理器树而不是BOM写入数量，则为True
 ~~~
 
-## Notes
+## 注意事项
 
-* Macro will consider the user assigned quantity set via custom property (UNIT_OF_MEASURE)
-* Macro will consider configuration BOM options for children components (show, promote or hide)
-* Macro will write the quantity property to configuration if **MERGE_CONFIGURATIONS** is set to false and to the document property otherwise
-* Macro will not clear existing quantity if it is not in the current scope (for example if component is excluded from BOM)
-* Macro will fail for the unloaded components (e.g. lightweight)
-* Macro will attempt to resolve all lightweight components
+* 宏将考虑用户通过自定义属性（UNIT_OF_MEASURE）设置的数量
+* 宏将考虑子组件的配置BOM选项（显示、推广或隐藏）
+* 如果**MERGE_CONFIGURATIONS**设置为false，则宏将数量属性写入配置；否则写入文档属性
+* 如果现有的数量不在当前范围内（例如，如果组件从BOM中排除），宏将不会清除现有的数量
+* 宏将无法处理未加载的组件（例如轻量级组件）
+* 宏将尝试解析所有轻量级组件
 
 ~~~ vb
 Type BomPosition
@@ -55,7 +55,7 @@ try_:
     Set swAssy = swApp.ActiveDoc
     
     If swAssy Is Nothing Then
-        Err.Raise vbError, "", "Assembly is not opened"
+        Err.Raise vbError, "", "未打开装配"
     End If
     
     swAssy.ResolveAllLightWeightComponents True
@@ -72,7 +72,7 @@ try_:
     
     GoTo finally_
 catch_:
-    MsgBox Err.Description, vbCritical, "Count Components"
+    MsgBox Err.Description, vbCritical, "计算组件数量"
 finally_:
     
 End Sub
@@ -97,7 +97,7 @@ Sub ComposeFlatBom(swParentComp As SldWorks.Component2, bom() As BomPosition)
                 Set swRefModel = swComp.GetModelDoc2()
                 
                 If swRefModel Is Nothing Then
-                    Err.Raise vbError, "", swComp.GetPathName() & " model is not loaded"
+                    Err.Raise vbError, "", swComp.GetPathName() & " 模型未加载"
                 End If
                 
                 Dim swRefConf As SldWorks.Configuration
@@ -197,7 +197,7 @@ On Error GoTo err_
     Exit Function
 
 err_:
-    Debug.Print "Failed to extract quantity of " & comp.Name2 & ": " & Err.Description
+    Debug.Print "提取 " & comp.Name2 & " 的数量失败: " & Err.Description
     GetQuantity = 1
 
 End Function
@@ -285,5 +285,3 @@ Sub SetQuantity(model As SldWorks.ModelDoc2, confName As String, qty As Double)
     
 End Sub
 ~~~
-
-
