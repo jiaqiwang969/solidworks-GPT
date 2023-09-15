@@ -1,19 +1,19 @@
 ---
-title: Dimension visible drawing entities from view using SOLIDWORKS API
-caption: Dimension Visible Entities
-description: Find and dimension the longest visible entity in the drawing view using SOLIDWORKS API
+title: 从视图中使用SOLIDWORKS API维度可见绘图实体
+caption: 维度可见实体
+description: 使用SOLIDWORKS API在绘图视图中找到并维度最长的可见实体
 image: longest-edge-dimension.png
-labels: [drawing,dimension,visible entities]
+labels: [绘图,维度,可见实体]
 ---
-![Longest edge dimensioned in the drawing view](longest-edge-dimension.png){ width=250 }
+![在绘图视图中维度最长的边](longest-edge-dimension.png){ width=250 }
 
-This example demonstrates how to add a linear dimension to the longest edge in the selected drawing view using SOLIDWORKS API.
+此示例演示了如何使用SOLIDWORKS API在所选绘图视图中添加线性尺寸到最长的边。
 
-This macro is traversing all visible entities in the drawing view, calculates the length of the edge and finds the longest one. Macro will only work if the longest edge can be dimensioned (i.e. it is either linear or circular edge).
+此宏遍历绘图视图中的所有可见实体，计算边的长度并找到最长的边。只有当最长的边可以被标尺测量时，宏才能正常工作（即它是线性边或圆形边）。
 
-The entities returned from [IView::GetVisibleEntities](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iview~getvisibleentities.html) are already in the drawing view context and they could be selected directly via [IEntity::Select4](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ientity~select4.html) SOLIDWORKS API method and it is not required to call the [IView::SelectEntity](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iview~selectentity.html) function.
+从[IView::GetVisibleEntities](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iview~getvisibleentities.html)返回的实体已经处于绘图视图上下文中，可以直接通过[IEntity::Select4](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ientity~select4.html) SOLIDWORKS API方法选择它们，无需调用[IView::SelectEntity](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iview~selectentity.html)函数。
 
-Location of the dimension is calculated by offsetting the middle point of the dimensioned edge in the normal curve direction (cross product of the tangent direction and the sheet Z axis) by 20% of the edge length. Unlike [drawing in sheet context](/docs/codestack/solidworks-api/document/drawing/sheet-context-sketch/), drawing sheet scale is not required to be multiplied to the view transformation matrix when positioning the dimensions.
+尺寸的位置是通过将尺寸边的中点在法线曲线方向（切线方向和工作平面Z轴的叉乘）上偏移20%的边长来计算的。与[在工作平面上绘图](/docs/codestack/solidworks-api/document/drawing/sheet-context-sketch/)不同，绘图工作表比例在定位尺寸时不需要乘以视图变换矩阵。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -34,10 +34,10 @@ Sub main()
         If Not swView Is Nothing Then
             DimensionLongestEdge swDraw, swView
         Else
-            MsgBox "Please select drawing view"
+            MsgBox "请先选择绘图视图"
         End If
     Else
-        MsgBox "Please open the drawing document"
+        MsgBox "请先打开绘图文档"
     End If
     
 End Sub
@@ -82,7 +82,7 @@ Sub DimensionLongestEdge(draw As SldWorks.DrawingDoc, view As SldWorks.view)
     Next
     
     If swLongestEdge Is Nothing Then
-        Err.Raise vbError, "", "Failed to find the longest edge"
+        Err.Raise vbError, "", "未找到最长的边"
     End If
     
     Dim swEnt As SldWorks.Entity
@@ -166,5 +166,3 @@ Function MovePoint(pt As SldWorks.MathPoint, dir As SldWorks.MathVector, dist As
     
 End Function
 ~~~
-
-
