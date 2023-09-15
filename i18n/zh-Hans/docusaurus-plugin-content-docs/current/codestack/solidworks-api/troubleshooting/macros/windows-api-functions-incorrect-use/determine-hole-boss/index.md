@@ -1,25 +1,25 @@
 ---
-title: Determine if selected face is hole or boss using SOLIDWORKS API
-caption: Determine If The Selected Face Is Hole Or Boss
-description: Example demonstrates how to identify if the selected cylindrical face in SOLIDWORKS part or assembly is internal (i.e. hole) or external (i.e. boss) using SOLIDWORKS API based on the normals of the face.
+title: 使用SOLIDWORKS API确定所选面是孔还是凸台
+caption: 确定所选面是孔还是凸台
+description: 该示例演示了如何使用SOLIDWORKS API根据面的法线来确定所选SOLIDWORKS零件或装配中的圆柱面是内部（即孔）还是外部（即凸台）。
 image: boss-hole.png
-labels: [geometry, hole, boss]
+labels: [几何, 孔, 凸台]
 ---
-![Holes and bosses in the body](boss-hole.png){ width=250 }
+![零件中的孔和凸台](boss-hole.png){ width=250 }
 
-This example demonstrates how to identify if the selected cylindrical face is internal (i.e. hole) or external (i.e. boss) using SOLIDWORKS API.
+该示例演示了如何使用SOLIDWORKS API根据面的法线来确定所选的圆柱面是内部（即孔）还是外部（即凸台）。
 
-Select cylindrical face and run the macro. Message box is displayed with the type of the selected face. Macro will work with any face (it is not required for faces to have planar adjacent faces).
+选择圆柱面并运行宏。将显示一个消息框，其中包含所选面的类型。该宏适用于任何面（面不需要具有平面相邻面）。
 
-### Algorithm
+### 算法
 
-This macro identifies if the face is hole or boss based on the direction of the normal of the face. The normals for the holes are always directed towards the cylinder axis, while the normals for the bosses always directed outwards of the cylinder axis.
+该宏根据面的法线方向来确定面是孔还是凸台。孔的法线始终指向圆柱轴，而凸台的法线始终指向圆柱轴的外部。
 
-Macro finds random point on the face (in this example this is a middle between U and V parameters of the face) and normal at this point. After, the vector between this point and the cylinder origin is calculated. If the angle between this vector and normal is less than 90 degrees (PI / 2) than the normal is directed towards the cylinder axis which means that the face is a hole, otherwise (if angle is greater than 90 degrees (PI / 2)) the face is external (boss).
+该宏在面上找到一个随机点（在本示例中为面的U和V参数的中间点），并计算该点处的法线。然后计算该点与圆柱体原点之间的向量。如果该向量与法线之间的夹角小于90度（PI / 2），则法线指向圆柱轴，这意味着该面是孔；否则（如果夹角大于90度（PI / 2）），该面是外部（凸台）。
 
-Please see image below:
+请参见下图：
 
-![Normals for the hole and boss](inner-face-outer-face.png){ width=400 }
+![孔和凸台的法线](inner-face-outer-face.png){ width=400 }
 
 ~~~ vb
 Const PI As Double = 3.14159265359
@@ -51,17 +51,17 @@ Sub main()
         If Not swFace Is Nothing Then
             
             If IsHole(swFace) Then
-                MsgBox "Selected face is hole"
+                MsgBox "所选面是孔"
             Else
-                MsgBox "Selected face is boss"
+                MsgBox "所选面是凸台"
             End If
             
         Else
-            MsgBox "Please select face"
+            MsgBox "请选择面"
         End If
         
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -109,7 +109,7 @@ Function IsHole(face As SldWorks.Face2) As Boolean
         IsHole = GetAngle(swDirVec, swNormVec) < PI / 2
         
     Else
-        Err.Raise vbError, , "Selected face is not cylindrical"
+        Err.Raise vbError, , "所选面不是圆柱面"
     End If
     
 End Function
@@ -157,21 +157,21 @@ namespace HoleOrBoss.csproj
                 {
                     if (IsHole(face))
                     {
-                        swApp.SendMsgToUser("Selected face is hole");
+                        swApp.SendMsgToUser("所选面是孔");
                     }
                     else
                     {
-                        swApp.SendMsgToUser("Selected face is boss");
+                        swApp.SendMsgToUser("所选面是凸台");
                     }
                 }
                 else
                 {
-                    throw new Exception("Face is not selected");
+                    throw new Exception("未选择面");
                 }
             }
             else
             {
-                throw new Exception("No document opened");
+                throw new Exception("未打开文档");
             }
         }
 
@@ -206,7 +206,7 @@ namespace HoleOrBoss.csproj
             }
             else
             {
-                throw new NotSupportedException("Only cylindrical face is supported");
+                throw new NotSupportedException("仅支持圆柱面");
             }
         }
 
