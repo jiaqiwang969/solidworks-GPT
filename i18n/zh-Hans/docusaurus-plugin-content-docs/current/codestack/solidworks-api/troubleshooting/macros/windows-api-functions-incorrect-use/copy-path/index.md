@@ -1,19 +1,19 @@
 ---
 layout: sw-tool
-title: Macro to copy path of SOLIDWORKS component to clipboard
-caption: Copy Component Path
-description: Macro copies the path of the selected component in assembly or drawing into the clipboard using SOLIDWORKS API
+title: 将SOLIDWORKS组件的路径复制到剪贴板的宏
+caption: 复制组件路径
+description: 使用SOLIDWORKS API将选定组件的路径复制到剪贴板的宏
 image: copy-component-path.png
-labels: [path, clipboard, component]
-group: Assembly
+labels: [路径, 剪贴板, 组件]
+group: 组件装配
 ---
-![Component selected in the feature tree](selected-component.png){ width=250 }
+![在特征树中选择的组件](selected-component.png){ width=250 }
 
-This macro copies the full path to the selected component into the clipboard using SOLIDWORKS API.
+该宏使用SOLIDWORKS API将选定组件的完整路径复制到剪贴板中。
 
-* Component can be selected in assembly or drawing document
-* Component can be selected in the feature tree or in the graphics area
-    * It is also possible to select a component entity (i.e. face or edge) to get the path to the component
+* 组件可以在装配或绘图文档中选择
+* 组件可以在特征树或图形区域中选择
+    * 还可以选择组件实体（例如面或边）以获取组件的路径
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -42,7 +42,7 @@ Sub main()
             Set swDrawComp = swSelMgr.GetSelectedObjectsComponent4(1, -1)
             
             If swDrawComp Is Nothing Then
-                'for entities selected in graphics view - first seleciton is a view itself
+                '对于在图形视图中选择的实体，第一个选择是视图本身
                 Set swDrawComp = swSelMgr.GetSelectedObjectsComponent4(2, -1)
             End If
             
@@ -51,7 +51,7 @@ Sub main()
             End If
             
         Else
-            MsgBox "Only parts and drawings are supported"
+            MsgBox "仅支持零件和绘图"
             End
         End If
         
@@ -63,11 +63,11 @@ Sub main()
             SetTextToClipboard path
             
         Else
-            MsgBox "Please select component"
+            MsgBox "请选择组件"
         End If
         
     Else
-        MsgBox "Please open document"
+        MsgBox "请打开文档"
     End If
     
 End Sub
@@ -82,5 +82,3 @@ Sub SetTextToClipboard(text As String)
     
 End Sub
 ~~~
-
-
