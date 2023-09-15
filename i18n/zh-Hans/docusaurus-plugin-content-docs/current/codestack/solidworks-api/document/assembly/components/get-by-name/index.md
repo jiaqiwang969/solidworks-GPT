@@ -1,21 +1,21 @@
 ---
-title: Get the pointer to component from name using SOLIDWORKS API
-caption: Get Component By Name
-description: Example demonstrates how to get the pointer to the component at any level of the assembly from its full name
+title: 使用SOLIDWORKS API通过名称获取组件指针
+caption: 通过名称获取组件
+description: 该示例演示了如何从完整的名称层次结构中获取组件在装配体的任何级别上的指针
 image: components-tree.png
 labels: [select, component]
 ---
-![Multi-level tree of components](components-tree.png){ width=200 }
+![组件的多级树](components-tree.png){ width=200 }
 
-This example demonstrates how to retrieve the pointer to the [IComponent2](https://help.solidworks.com/2017/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.icomponent2.html) SOLIDWORKS API method on any level of the assembly from its full name hierarchy.
+该示例演示了如何从完整的名称层次结构中检索到[SOLIDWORKS API](https://help.solidworks.com/2017/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.icomponent2.html)中的[IComponent2](https://help.solidworks.com/2017/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.icomponent2.html)方法的指针。
 
-Name of the component is defined as a path where each level is separated by / symbol. Component instance id is specified with a - symbol (e.g. FirstLevelComp-1/SecondLevelComp-2/TargetComp-1)
+组件的名称被定义为一个路径，每个级别之间用/符号分隔。组件实例id用-符号指定（例如：FirstLevelComp-1/SecondLevelComp-2/TargetComp-1）。
 
-Component name can be found in the following dialog in SOLIDWORKS User Interface:
+在SOLIDWORKS用户界面中，可以在以下对话框中找到组件名称：
 
-![Component name in properties dialog](component-name.png){ width=250 }
+![属性对话框中的组件名称](component-name.png){ width=250 }
 
-Refer [Select Component By Name](/docs/codestack/solidworks-api/document/selection/select-component-by-name) example for an alternative way of selecting the component by name.
+有关通过名称选择组件的另一种方法，请参阅[通过名称选择组件](/docs/codestack/solidworks-api/document/selection/select-component-by-name)示例。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -32,10 +32,10 @@ Sub main()
     Set swComp = GetComponentByName(swAssy, "E-1/F^E-1/I-1")
     
     If Not swComp Is Nothing Then
-        Debug.Print "Component Found: " & swComp.Name2
+        Debug.Print "找到组件：" & swComp.Name2
         swComp.Select4 False, Nothing, False
     Else
-        Debug.Print "Component Not Found"
+        Debug.Print "未找到组件"
     End If
     
 End Sub
@@ -72,5 +72,3 @@ Function GetComponentByName(assy As SldWorks.AssemblyDoc, name As String) As Sld
     
 End Function
 ~~~
-
-
