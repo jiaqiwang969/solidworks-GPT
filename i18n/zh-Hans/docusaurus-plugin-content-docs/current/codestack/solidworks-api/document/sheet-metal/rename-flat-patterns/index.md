@@ -1,27 +1,27 @@
 ---
 layout: sw-tool
-title: Rename sheet metal flat patterns features after the cut-list features
-caption: Rename Flat Pattern After Cut-Lists
-description: VBA macro to rename sheet metal flat patterns after the corresponding cut-list feature names
+title: 在切割清单特征之后重命名钣金展开特征
+caption: 重命名展开特征
+description: 使用VBA宏在对应的切割清单特征名称之后重命名所有钣金展开特征
 image: flat-pattern.svg
-labels: [cut-list,sheet metal,flat-pattern,rename]
+labels: [切割清单,钣金,展开特征,重命名]
 group: Part
 ---
-![Cut-lists and sheet metal flat patterns](renamed-flat-patterns.png){ width=250 }
+![切割清单和钣金展开特征](renamed-flat-patterns.png){ width=250 }
 
-This VBA macro renames all sheet metal flat pattern features with the name of the corresponding cut-list item.
+这个VBA宏将所有钣金展开特征重命名为对应的切割清单项的名称。
 
-This macro can be used in conjunction with [Rename Cut List Features](/docs/codestack/solidworks-api/document/cut-lists/rename-cut-list-items/) macro.
+这个宏可以与[重命名切割清单特征](/docs/codestack/solidworks-api/document/cut-lists/rename-cut-list-items/)宏一起使用。
 
-In order to avoid the name conflict, suffix is added to flat pattern features as below.
+为了避免名称冲突，钣金展开特征会添加后缀，如下所示。
 
 ~~~ vb jagged-bottom
 Const SUFFIX As String = "_FP"
 ~~~
 
-Macro will automatically add the index to the flat pattern name which shares the same cut list.
+宏将自动为共享相同切割清单的钣金展开特征添加索引。
 
-Watch [video demonstration](https://youtu.be/jsjN8zNRTuc?t=276)
+观看[演示视频](https://youtu.be/jsjN8zNRTuc?t=276)
 
 ~~~ vb
 Const SUFFIX As String = "_FP"
@@ -50,11 +50,11 @@ try_:
         If Not IsEmpty(vFlatPatternFeats) Then
             RenameFlatPatternsWithCutList swModel, vFlatPatternFeats, vCutListFeats
         Else
-            Err.Raise vbError, "", "No flat pattern features found"
+            Err.Raise vbError, "", "未找到钣金展开特征"
         End If
         
     Else
-        Err.Raise vbError, "", "No cut-list items found"
+        Err.Raise vbError, "", "未找到切割清单项"
     End If
     
     GoTo finally_
@@ -219,5 +219,3 @@ Sub ProcessFeature(thisFeat As SldWorks.Feature, featsArr() As SldWorks.Feature,
         
 End Sub
 ~~~
-
-
