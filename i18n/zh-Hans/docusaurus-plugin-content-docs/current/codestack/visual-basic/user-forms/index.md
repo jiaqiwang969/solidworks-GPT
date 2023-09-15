@@ -1,5 +1,5 @@
 ---
-title: Visual Basic 6（VBA）中的用户窗体和控件
+title: 用户窗体和控件在Visual Basic 6（VBA）中的使用
 description: 本文介绍在Visual Basic 6（VBA）中使用用户界面元素（文本框、组合框、列表等）和窗体的方法。
 caption: 用户窗体和控件
 image: user-form-shown.png
@@ -20,9 +20,9 @@ sidebar_position: 0
 ![用户窗体布局](user-form-layout.png){ width=450 }
 
 1. 用户窗体设计布局
-1. 包含控件的工具箱
-1. 放置在窗体布局上的控件
-1. 控件的属性
+2. 包含控件的工具箱
+3. 放置在窗体布局上的控件
+4. 控件的属性
 
 可以自定义控件的属性。
 
