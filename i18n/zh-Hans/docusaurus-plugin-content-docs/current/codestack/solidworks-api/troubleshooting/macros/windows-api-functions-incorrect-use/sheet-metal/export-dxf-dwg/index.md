@@ -1,15 +1,15 @@
 ---
-title: Export flat pattern to DXF/DWG from part SOLIDWORKS API
-caption: Export Flat Pattern From Part
-description: Exports flat pattern to DXF or DWG from the sheet metal part document
+title: 从零件SOLIDWORKS API导出平面图到DXF/DWG
+caption: 从零件导出平面图
+description: 从零件文件中导出平面图到DXF或DWG
 image: export-dxf-dwg.png
-labels: [sheet metal, dxf, dwg, flat pattern]
+labels: [钣金, dxf, dwg, 平面图]
 ---
-![Export flat pattern to DXF/DWG](export-dxf-dwg.png)
+![从零件导出平面图到DXF/DWG](export-dxf-dwg.png)
 
-This VBA macro exports the sheet metal part or selected flat pattern feature in the multi-body sheet metal part to the DXF or DWG.
+这个VBA宏将钣金零件或选定的平面图特征导出到DXF或DWG。
 
-Change the value of *OUT_PATH* variable to save output to different location (change the extension to export to DXF or DWG).
+将*OUT_PATH*变量的值更改为不同的位置以保存输出（更改扩展名以导出到DXF或DWG）。
 
 ~~~ vb
 Enum SheetMetalOptions_e
@@ -40,14 +40,12 @@ Sub main()
     modelPath = swPart.GetPathName
     
     If modelPath = "" Then
-        Err.Raise vbError, "", "Part document must be saved"
+        Err.Raise vbError, "", "必须保存零件文档"
     End If
     
     If False = swPart.ExportToDWG2(OUT_PATH, modelPath, swExportToDWG_e.swExportToDWG_ExportSheetMetal, True, Empty, False, False, SheetMetalOptions_e.ExportFlatPatternGeometry + SheetMetalOptions_e.ExportBendLines, Empty) Then
-        Err.Raise vbError, "", "Failed to export flat pattern"
+        Err.Raise vbError, "", "导出平面图失败"
     End If
     
 End Sub
 ~~~
-
-
