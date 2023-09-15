@@ -1,18 +1,19 @@
 ---
-title: Get instance Id of assembly component using SOLIDWORKS API
-caption: Get Instance Id Of Component
-description: Example extracts the component instance index from the component's name
+title: 使用SOLIDWORKS API获取装配件组件的实例ID
+caption: 获取组件的实例ID
+description: 该示例使用SOLIDWORKS API从组件的名称中提取组件实例索引。
 image: sw-component-properties.png
-labels: [assembly, component, example, instance id, solidworks api]
+labels: [装配, 组件, 示例, 实例ID, solidworks api]
 redirect-from:
   - /2018/03/solidworks-api-assembly-get-component-instance-id.html
   - /solidworks-api/document/assembly/get-component-instance-id
 ---
-This example extracts the component instance index from the component's name using SOLIDWORKS API.
 
-![Component instance id option in the component properties dialog](sw-component-properties.png){ width=400 }
+该示例使用SOLIDWORKS API从组件的名称中提取组件实例索引。
 
-~~~ vb
+![组件属性对话框中的组件实例ID选项](sw-component-properties.png){ width=400 }
+
+```vb
 Dim swApp As SldWorks.SldWorks
 Dim swModel As SldWorks.ModelDoc2
 Dim swSelMgr As SldWorks.SelectionMgr
@@ -37,23 +38,19 @@ Sub main()
             compName = swComp.Name2
             instId = CInt(Right(compName, Len(compName) - InStrRev(compName, "-")))
             
-            MsgBox "Selected component's instance id is " & instId
+            MsgBox "所选组件的实例ID为 " & instId
                 
         Else
             
-            MsgBox "Please select component"
+            MsgBox "请选择组件"
             
         End If
         
     Else
         
-        MsgBox "Please open assembly"
+        MsgBox "请打开装配"
         
     End If
     
 End Sub
-
-
-~~~
-
-
+```
