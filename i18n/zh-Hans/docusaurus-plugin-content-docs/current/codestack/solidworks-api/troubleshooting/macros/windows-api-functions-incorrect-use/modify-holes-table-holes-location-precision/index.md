@@ -1,17 +1,18 @@
 ---
-title: Modify location precision of holes in holes table using SOLIDWORKS API
-caption: Modify Holes Table Holes Location Precision
-description: Example demonstrates how to change the precision for the hole locations in the selected Hole Table
+title: 使用SOLIDWORKS API修改孔表中孔的位置精度
+caption: 修改孔表孔的位置精度
+description: 本示例演示了如何使用SOLIDWORKS API更改所选孔表中孔的位置精度。
 image: sw-hole-table.png
-labels: [drawing, example, hole table, precision, solidworks api]
+labels: [绘图, 示例, 孔表, 精度, solidworks api]
 redirect-from:
   - /2018/04/solidworks-api-drawing-hole-table-holes-location-precision.html
 ---
-This example demonstrates how to change the precision for the hole locations in the selected Hole Table using SOLIDWORKS API.
 
-![Holes Table](sw-hole-table.png){ width=320 height=95 }
+本示例演示了如何使用SOLIDWORKS API更改所选孔表中孔的位置精度。
 
-~~~ vb
+![孔表](sw-hole-table.png){ width=320 height=95 }
+
+``` vb
 Dim swApp As SldWorks.SldWorks
 Dim swModel As SldWorks.ModelDoc2
 Dim swSelMgr As SldWorks.SelectionMgr
@@ -41,14 +42,13 @@ Sub main()
             swHoleTable.SetHoleLocationPrecision False, 3
                 
         Else
-            MsgBox "Please select hole table"
+            MsgBox "请选择孔表"
         End If
         
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
-~~~
-
+```
 
