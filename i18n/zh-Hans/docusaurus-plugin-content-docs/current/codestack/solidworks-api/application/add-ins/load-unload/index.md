@@ -7,15 +7,16 @@ image: toggle-addins.svg
 labels: [插件, 加载]
 group: 框架
 ---
+
 此宏允许使用[SolidWorks API](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~loadaddin.html)的[ISldWorks::LoadAddIn](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~loadaddin.html)和[ISldWorks::UnloadAddIn](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~unloadaddin.html)来触发指定插件的加载状态。
 
 这对于使用一个按钮点击加载和卸载插件非常有用。建议使用[宏按钮](/docs/codestack/solidworks-api/getting-started/macros/macro-buttons/)在工具栏上创建一个插件按钮。
 
 宏要求在宏的开头指定插件的全局唯一标识符（GUID）。
 
-~~~ vb
+```vb
 Const ADD_IN_GUID As String = "{1730410d-85ad-4be8-aa2d-ed977b93fe5d}"
-~~~
+```
 
 在注册表的*HKLM\SOFTWARE\SolidWorks\AddIns*位置找到所需SOLIDWORKS插件的GUID。该注册表键的每个子键都代表一个插件。选择每个键以查看插件的标题和描述。复制代表插件GUID的键的名称。
 
@@ -25,17 +26,17 @@ Const ADD_IN_GUID As String = "{1730410d-85ad-4be8-aa2d-ed977b93fe5d}"
 
 ![SOLIDWORKS菜单中的插件列表](addins-list.png){ width=450 }
 
-~~~ vb
+```vb
 Const ADD_IN_PATH As String = "C:\Program Files\CodeStack\MyToolbar\CodeStack.Sw.MyToolbar.dll"
-~~~
+```
 
 如果不使用此选项，请将值设置为空字符串
 
-~~~ vb
+```vb
 Const ADD_IN_PATH As String = ""
-~~~
+```
 
-~~~ vb
+```vb
 Const ADD_IN_GUID As String = "{63496b16-e9ad-4d3a-8473-99d124a1672b}"
 Const ADD_IN_PATH As String = "C:\Program Files\CodeStack\MyToolbar\CodeStack.Sw.MyToolbar.dll"
 
@@ -100,4 +101,4 @@ Function UriToLocalPath(uri As String) As String
     UriToLocalPath = Right(uri, Len(uri) - Len("file:///"))
     UriToLocalPath = Replace(UriToLocalPath, "/", "\")
 End Function
-~~~
+```
