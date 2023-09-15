@@ -1,40 +1,40 @@
 ---
 layout: sw-tool
-title: Run VBA macro automatically on document save using SOLIDWORKS API
-caption: Run Macro On Document Save
-description: Macro runs VBA code (or another macro) automatically on file save using SOLIDWORKS API
+title: 使用SOLIDWORKS API在文档保存时自动运行VBA宏
+caption: 在文档保存时运行宏
+description: 使用SOLIDWORKS API在文件保存时自动运行VBA代码（或其他宏）
 image: run-macro-on-save.svg
-labels: [auto run,model save event]
-group: Model
+labels: [自动运行,模型保存事件]
+group: 模型
 ---
-This VBA macro handles active document (part, assembly or drawing) save events (including save all and save as) using SOLIDWORKS API and runs a custom code.
+此VBA宏使用SOLIDWORKS API处理活动文档（零件、装配或绘图）的保存事件（包括全部保存和另存为），并运行自定义代码。
 
-Macro operates in the background and needs to be run once a session to start monitoring.
+宏在后台运行，需要在每个会话中运行一次以开始监视。
 
-![File save command](save-command.png)
+![文件保存命令](save-command.png)
 
-## Configuration
+## 配置
 
-* Create new macro
-* Place the code from the [Macro Module](#macro-module) to the default module
-* Add the code which needs to be executed on each save into the *OnSaveDocument* function
+* 创建新的宏
+* 将[宏模块](#宏模块)中的代码放置到默认模块中
+* 将需要在每次保存时执行的代码添加到*OnSaveDocument*函数中
 
 ~~~ vb
 Sub OnSaveDocument(Optional dummy As Variant = Empty)
-    'TODO: place the code here to run when document is saved
-    MsgBox "Saved"
+    'TODO: 在此处放置要在文档保存时运行的代码
+    MsgBox "已保存"
 End Sub
 ~~~
 
-* To simplify this function you can call another macro without explicitly copying the code. Explore the [Run Group Of Macros](/docs/codestack/solidworks-api/application/frame/run-macros-group/) example.
+* 为了简化此函数，您可以调用另一个宏而无需显式复制代码。请查看[运行一组宏](/docs/codestack/solidworks-api/application/frame/run-macros-group/)示例。
 
-* Add new Class Module and name it *SaveEventsHandler*. Paste the code from the [SaveEventsHandler Class Module](#saveeventshandler-class-module)
+* 添加新的类模块并将其命名为*SaveEventsHandler*。将代码从[SaveEventsHandler类模块](#saveeventshandler-class-module)粘贴到其中。
 
-* It might be useful to automatically run this macro with each session of SOLIDWORKS. Follow the [Run SOLIDWORKS macro automatically on application start](/docs/codestack/solidworks-api/getting-started/macros/run-macro-on-solidworks-start/) link for more information.
+* 可以自动在每个SOLIDWORKS会话中运行此宏可能会很有用。有关更多信息，请参阅[在SOLIDWORKS启动时自动运行宏](/docs/codestack/solidworks-api/getting-started/macros/run-macro-on-solidworks-start/)链接。
 
-## Macro Module
+## 宏模块
 
-Entry point which starts events monitoring and handles the code which needs to be run once the save event arrives.
+入口点，开始事件监视并处理一次保存事件到达时需要运行的代码。
 
 ~~~ vb
 Dim swFileSaveHandler As SaveEventsHandler
@@ -50,16 +50,16 @@ Sub main()
 End Sub
 
 Sub OnSaveDocument(Optional dummy As Variant = Empty)
-    'TODO: place the code here to run whn document is saved
-    MsgBox "Saved"
+    'TODO: 在此处放置要在文档保存时运行的代码
+    MsgBox "已保存"
 End Sub
 ~~~
 
 
 
-## SaveEventsHandler Class Module
+## SaveEventsHandler类模块
 
-Class which handles SOLIDWORKS API save notifications
+处理SOLIDWORKS API保存通知的类。
 
 ~~~ vb
 Dim WithEvents swApp As SldWorks.SldWorks
@@ -81,5 +81,3 @@ Private Function swApp_CommandCloseNotify(ByVal Command As Long, ByVal reason As
 End Function
 
 ~~~
-
-
