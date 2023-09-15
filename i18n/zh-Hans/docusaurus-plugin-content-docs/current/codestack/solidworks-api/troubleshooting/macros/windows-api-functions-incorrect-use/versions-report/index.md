@@ -1,25 +1,25 @@
 ---
-caption: 报告文件版本
-title: 为文件夹中的所有文件生成SOLIDWORKS文件版本（创建和最后保存）报告
-description: 生成CSV报告的VBA宏，报告包含指定文件夹中SOLIDWORKS文件的创建和最后保存版本
+caption: File Versions Report
+title: Generate SOLIDWORKS File Versions (Created and Last Saved) Report for all files in a folder
+description: VBA macro that generates a CSV report containing the creation and last saved versions of SOLIDWORKS files in a specified folder
 image: solidworks-file-versions-report.png
 ---
-![SOLIDWORKS文件版本报告](solidworks-file-versions-report.png) { width=500 }
+![SOLIDWORKS File Versions Report](solidworks-file-versions-report.png) { width=500 }
 
-这个VBA宏会生成一个CSV报告（可以在Excel中打开），报告包含指定文件夹中SOLIDWORKS文件的创建和最后保存版本。
+This VBA macro generates a CSV report (which can be opened in Excel) containing the creation and last saved versions of SOLIDWORKS files in a specified folder.
 
-> 这个宏不会逐个打开每个模型，从而大大减少处理时间。
+> This macro does not open each model individually, greatly reducing processing time.
 
-可以通过修改下面的常量来配置宏的输入和输出参数。
+You can configure the input and output parameters of the macro by modifying the following constants.
 
-~~~ vb
-Const INPUT_FOLDER_PATH As String = "D:\MyModels" 'SOLIDWORKS文件所在文件夹的完整路径
-Const OUT_FILE_PATH As String = "D:\sw-file-versions.csv" '报告的输出CSV文件的完整路径
-Const FILES_FILTER As String = "*.sld*" '支持通配符的文件过滤器
-Const INCLUDE_SUB_FOLDERS As Boolean = True 'True表示处理子文件夹，False表示只处理顶层文件
-~~~
+``` vb
+Const INPUT_FOLDER_PATH As String = "D:\MyModels" 'Full path to the folder containing SOLIDWORKS files
+Const OUT_FILE_PATH As String = "D:\sw-file-versions.csv" 'Full path to the output CSV file for the report
+Const FILES_FILTER As String = "*.sld*" 'File filter with wildcard support
+Const INCLUDE_SUB_FOLDERS As Boolean = True 'True to process subfolders, False to only process top-level files
+```
 
-~~~ vb
+``` vb
 Const INPUT_FOLDER_PATH As String = "D:\MyModels"
 Const OUT_FILE_PATH As String = "D:\sw-file-versions.csv"
 Const FILES_FILTER As String = "*.sld*"
@@ -41,7 +41,7 @@ Sub main()
     
     Open OUT_FILE_PATH For Output As #fileNo
  
-    Print #fileNo, "文件路径,创建时间,最后保存时间"
+    Print #fileNo, "File Path,Creation Time,Last Saved Time"
     
     For i = 0 To UBound(vFilePaths)
     
@@ -176,4 +176,4 @@ Function ConvertFileVersionToSwMajorVersion(versNumber As Integer) As String
 End Function
 
 
-~~~
+```
