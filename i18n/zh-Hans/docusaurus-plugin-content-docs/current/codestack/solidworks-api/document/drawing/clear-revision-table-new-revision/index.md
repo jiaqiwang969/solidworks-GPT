@@ -1,17 +1,17 @@
 ---
-title: Clear revision table and add new revision using SOLIDWORKS API
-caption: Clear Revision Table And Add New Revision
-description: Example finds the revision table and removes all revisions and then adds new row with custom data
+title: 清除修订表并使用SOLIDWORKS API添加新的修订
+caption: 清除修订表并添加新的修订
+description: 该示例使用SOLIDWORKS API找到修订表并删除所有修订，然后添加带有自定义数据的新行。
 image: sw-revision-table.png
-labels: [add revision, clear revisions, drawing.revision table, example, solidworks api]
+labels: [添加修订, 清除修订, 图纸.修订表, 示例, solidworks api]
 redirect-from:
   - /2018/03/solidworks-api-drawing-clear-rev-table-add-new-row.html
 ---
-This example finds the revision table and removes all revisions and then adds new row with custom data using SOLIDWORKS API.
+该示例使用SOLIDWORKS API找到修订表并删除所有修订，然后添加带有自定义数据的新行。
 
-![Revision Table](sw-revision-table.png){ width=640 }
+![修订表](sw-revision-table.png){ width=640 }
 
-[IRevisionTableAnnotation](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.irevisiontableannotation.html) SOLIDWORKS API interface is used to manage specific functionality of this type of the table.
+[IRevisionTableAnnotation](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.irevisiontableannotation.html) SOLIDWORKS API接口用于管理此类型表的特定功能。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -36,14 +36,14 @@ Sub main()
             
             ClearRevisionTable swRevTable
             
-            AddRevision swRevTable, "001", Array("Sample Zone", "", "Description", "", "Admin")
+            AddRevision swRevTable, "001", Array("样本区域", "", "描述", "", "管理员")
             
         Else
-            MsgBox "There is no revision table in the drawing"
+            MsgBox "图纸中没有修订表"
         End If
     
     Else
-        MsgBox "Plase open the drawing"
+        MsgBox "请打开图纸"
     End If
     
 End Sub
@@ -91,5 +91,3 @@ Sub AddRevision(swRevTable As SldWorks.RevisionTableAnnotation, revName As Strin
 End Sub
 
 ~~~
-
-
