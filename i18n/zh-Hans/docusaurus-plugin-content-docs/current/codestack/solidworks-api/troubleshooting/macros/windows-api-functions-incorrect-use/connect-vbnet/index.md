@@ -1,75 +1,73 @@
 ---
-title: Create VB.NET Stand-Alone (exe) application for SOLIDWORKS
-caption: Create VB.NET Stand-Alone Application for SOLIDWORKS
-description: Guide for how to connect to SOLIDWORKS application from out-of-process (a.k.a Stand-Alone) application (e.g. Windows Forms, Windows Console) using VB.NET and Microsoft Visual Studio
+title: 创建VB.NET独立应用程序（exe）用于SOLIDWORKS
+caption: 创建VB.NET独立应用程序用于SOLIDWORKS
+description: 通过VB.NET和Microsoft Visual Studio，介绍如何从外部进程（即独立应用程序，如Windows Forms、Windows Console）连接到SOLIDWORKS应用程序的指南
 sidebar_position: 2
 image: proj-template.png
 labels: [activator, create instance, example, getobject, rot, sdk, solidworks api, vb.net]
 redirect-from:
   - /2018/03/create-vbnet-stand-alone-application.html
 ---
-In this tutorial I will demonstrate how to connect to SOLIDWORKS application from out-of-process (a.k.a Stand-Alone) application (e.g. Windows Forms, Windows Console) using VB.NET and Microsoft Visual Studio.
+在本教程中，我将演示如何通过VB.NET和Microsoft Visual Studio从外部进程（即独立应用程序，如Windows Forms、Windows Console）连接到SOLIDWORKS应用程序。
 
-For more detailed explanation of the approaches discussed in this article please read the [Connect To SOLIDWORKS From Stand-Alone Application](/docs/codestack/solidworks-api/getting-started/stand-alone/) article.
+有关本文讨论的方法的更详细解释，请阅读[从独立应用程序连接到SOLIDWORKS](/docs/codestack/solidworks-api/getting-started/stand-alone/)文章。
 
-## Creating new project
+## 创建新项目
 
-I will be using Microsoft Visual Studio development environment. You can use any edition of Visual Studio. The same code will work in Professional, Express or Community editions. Follow this link to download [Visual Studio](https://www.visualstudio.com/vs/community/)  
+我将使用Microsoft Visual Studio开发环境。您可以使用任何版本的Visual Studio。相同的代码将适用于专业版、Express版或Community版。请点击此链接下载[Visual Studio](https://www.visualstudio.com/vs/community/)。
 
-* Open Visual Studio
-* Start new project:
+* 打开Visual Studio
+* 启动新项目：
 
-![Creating new VB.NET project in Visual Studio](new-project.png){ width=400 }
+![在Visual Studio中创建新的VB.NET项目](new-project.png){ width=400 }
 
-* Select the project template. I would recommend to start with Console Application project template as it contains the minimum pregenerated code:
+* 选择项目模板。我建议从控制台应用程序项目模板开始，因为它包含最少的预生成代码：
 
-![Selecting VB.NET Console Application project template](proj-template.png){ width=400 }
+![选择VB.NET控制台应用程序项目模板](proj-template.png){ width=400 }
 
-* Add reference to SolidWorks Interop library. Interop libraries are located at **SOLIDWORKS Installation Folder**\api\redist\SolidWorks.Interop.sldworks.dll* for projects targeting Framework 4.0 onwards and **SOLIDWORKS Installation Folder**\api\redist\**CLR2**\**SolidWorks.Interop.sldworks.dll* for projects targeting Framework 2.0 and 3.5.
+* 添加对SolidWorks Interop库的引用。Interop库位于**SOLIDWORKS安装文件夹**\api\redist\SolidWorks.Interop.sldworks.dll*，用于针对Framework 4.0及更高版本的项目，以及**SOLIDWORKS安装文件夹**\api\redist\**CLR2**\**SolidWorks.Interop.sldworks.dll*，用于针对Framework 2.0和3.5的项目。
 
-![Adding assembly references to the project](add-ref.png){ width=320 }
+![向项目添加程序集引用](add-ref.png){ width=320 }
 
-For projects targeting Framework 4.0 I recommend to set the **[Embed Interop Types](https://docs.microsoft.com/en-us/dotnet/framework/interop/type-equivalence-and-embedded-interop-types)** option to false.
-Otherwise it is possible to have unpredictable behavior of the application when calling the SOLIDWORKS API due to a type cast issue.  
+对于针对Framework 4.0的项目，我建议将**[嵌入互操作类型](https://docs.microsoft.com/en-us/dotnet/framework/interop/type-equivalence-and-embedded-interop-types)**选项设置为false。
+否则，在调用SOLIDWORKS API时，应用程序可能会出现无法预测的行为，因为存在类型转换问题。
 
-![Option to embed interop assemblies](embed-interops.png){ width=400 height=385 }
+![嵌入互操作程序集的选项](embed-interops.png){ width=400 height=385 }
 
-Now we can add the code to connect to SOLIDWORKS instance.  
+现在，我们可以添加连接到SOLIDWORKS实例的代码。
 
-## Creating or connecting to instance
+## 创建或连接实例
 
-Probably the most common and quick way to connect to COM server is using the [CreateObject](https://msdn.microsoft.com/en-us/library/microsoft.visualbasic.interaction.createobject(v=vs.110).aspx) method.
-Alternative methods are: [Activator::CreateInstance](https://msdn.microsoft.com/en-us/library/system.activator.createinstance(v=vs.110).aspx) and [GetObject](https://msdn.microsoft.com/en-us/library/microsoft.visualbasic.interaction.getobject(v=vs.110).aspx). Note, that [GetObject](https://msdn.microsoft.com/en-us/library/microsoft.visualbasic.interaction.getobject(v=vs.110).aspx) will create new instance if it cannot connect to the active session.  
+连接到COM服务器最常见且最快捷的方法是使用[CreateObject](https://msdn.microsoft.com/en-us/library/microsoft.visualbasic.interaction.createobject(v=vs.110).aspx)方法。
+其他方法包括：[Activator::CreateInstance](https://msdn.microsoft.com/en-us/library/system.activator.createinstance(v=vs.110).aspx)和[GetObject](https://msdn.microsoft.com/en-us/library/microsoft.visualbasic.interaction.getobject(v=vs.110).aspx)。请注意，如果无法连接到活动会话，[GetObject](https://msdn.microsoft.com/en-us/library/microsoft.visualbasic.interaction.getobject(v=vs.110).aspx)将创建新实例。
 
 ~~~ vb
 Const PROG_ID As String = "SldWorks.Application"
 
-'Using Interaction.CreateObject function
+'使用Interaction.CreateObject函数
 Dim app1 = TryCast(CreateObject(PROG_ID), SolidWorks.Interop.sldworks.ISldWorks)
 app1.Visible = True
 
-'Using Interaction.GetObject function
+'使用Interaction.GetObject函数
 Dim app2 = TryCast(GetObject("", PROG_ID), SolidWorks.Interop.sldworks.ISldWorks)
 app2.Visible = True
 
-'Using Activator
+'使用Activator
 Dim progType = System.Type.GetTypeFromProgID(PROG_ID)
 Dim app3 = TryCast(System.Activator.CreateInstance(progType), SolidWorks.Interop.sldworks.ISldWorks)
 app3.Visible = True
 
 ~~~
 
+我建议使用[Activator::CreateInstance](https://msdn.microsoft.com/en-us/library/system.activator.createinstance(v=vs.110).aspx)，因为它允许以2个步骤连接到会话：
 
-  
-I would recommend to use [Activator::CreateInstance](https://msdn.microsoft.com/en-us/library/system.activator.createinstance(v=vs.110).aspx) as this allows to connect to the session in 2 steps:  
+1. 由于SOLIDWORKS应用程序已注册为COM服务器，我们可以通过[Type::GetTypeFromProgID](https://msdn.microsoft.com/en-us/library/system.type.gettypefromprogid(v=vs.110).aspx)方法从其程序标识符创建类型。
+1. 从类型定义构造类型的实例。
 
-1. As SOLIDWORKS application is registered as COM server we can create the type from its program identifier via [Type::GetTypeFromProgID](https://msdn.microsoft.com/en-us/library/system.type.gettypefromprogid(v=vs.110).aspx) method
-1. Construct the instance of the type from the type definition.  
+这种方法可以在出现错误时提供更好的故障排除选项：如果第一步失败，这意味着COM类未注册或无法从注册表访问；否则，这可能表示某些权限问题。
+请阅读[从独立应用程序连接到SOLIDWORKS](/docs/codestack/solidworks-api/getting-started/stand-alone#method-a---activator-and-progid)文章，了解此方法的限制的解释。
 
-This approach would allow better troubleshooting options in case of an error: if the first step failed it means that either COM class is not registered or cannot be accessed from the registry; otherwise this might indicate some permissions issues.
-Please read the [Connect To SOLIDWORKS From Stand-Alone Application](/docs/codestack/solidworks-api/getting-started/stand-alone#method-a---activator-and-progid) article for explanations of limitation of this approach.  
-
-Alternatively you can connect to active (already started) session of SOLIDWORKS using the [Marshal::GetActiveObject](https://msdn.microsoft.com/en-us/library/system.runtime.interopservices.marshal.getactiveobject(v=vs.110).aspx) method. Unlike calling the [GetObject](https://msdn.microsoft.com/en-us/library/microsoft.visualbasic.interaction.getobject(v=vs.110).aspx), this approach will ensure that  there will be no new instances of SOLIDWORKS created and will throw an exception if there is no running SOLIDWORKS session to connect to.
+或者，您可以使用[Marshal::GetActiveObject](https://msdn.microsoft.com/en-us/library/system.runtime.interopservices.marshal.getactiveobject(v=vs.110).aspx)方法连接到活动（已启动）的SOLIDWORKS会话。与调用[GetObject](https://msdn.microsoft.com/en-us/library/microsoft.visualbasic.interaction.getobject(v=vs.110).aspx)不同，此方法将确保不会创建新的SOLIDWORKS实例，并且如果没有正在运行的SOLIDWORKS会话可连接，则会引发异常。
 
 ~~~ vb
 Const PROG_ID As String = "SldWorks.Application"
@@ -77,12 +75,10 @@ Dim app = TryCast(System.Runtime.InteropServices.Marshal.GetActiveObject(PROG_ID
 	SolidWorks.Interop.sldworks.ISldWorks)
 ~~~
 
+## 通过ROT获取运行实例
 
-
-## Getting the running instance via ROT
-
-In order to connect to already running specific session of SOLIDWORKS or to be able to create multiple sessions you can use Running Object Table APIs.
-Please read the [Connect To SOLIDWORKS From Stand-Alone Application](/docs/codestack/solidworks-api/getting-started/stand-alone#method-b---running-object-table-rot) article for more details about this approach.
+为了连接到已经运行的特定SOLIDWORKS会话或能够创建多个会话，可以使用Running Object Table（ROT）API。
+有关此方法的更多详细信息，请阅读[从独立应用程序连接到SOLIDWORKS](/docs/codestack/solidworks-api/getting-started/stand-alone#method-b---running-object-table-rot)文章。
 
 ~~~ vb
 Imports System.Runtime.InteropServices
@@ -193,13 +189,11 @@ End Module
 
 ~~~
 
+在上面的示例中，通过从SOLIDWORKS应用程序安装路径启动新进程来启动SOLIDWORKS的新会话。
+*StartSwApp*函数需要**sldworks.exe**的完整路径作为第一个参数，可选的超时时间（以秒为单位）作为第二个参数。
+超时时间将确保在进程启动失败的情况下，应用程序不会被锁定。
 
-
-In the above example new session of SOLIDWORKS is launched by starting new process from SOLIDWORKS application installation path.
-*StartSwApp* function requires the full path to **sldworks.exe** as first parameter and optional timeout in seconds as second parameter.
-Timeout will ensure that the application won't be locked in case process failed to start.  
-
-You can also make this call asynchronous and display some progress indication in your application while SOLIDWORKS process is starting:
+您还可以将此调用设置为异步，并在SOLIDWORKS进程启动时在应用程序中显示一些进度指示：
 
 ~~~ vb
 Private Async Function StartSwAppAsync(ByVal appPath As String, _
@@ -209,5 +203,3 @@ Private Async Function StartSwAppAsync(ByVal appPath As String, _
 End Function
 
 ~~~
-
-
