@@ -1,17 +1,18 @@
 ---
-title: Move design table object using SOLIDWORKS API
-caption: Move Design Table OLE Object
-description: Example demonstrates how to resize and move the design table OLE object in the model graphics area
+title: 使用SOLIDWORKS API移动设计表对象
+caption: 移动设计表OLE对象
+description: 该示例演示了如何调整和移动模型图形区域中的设计表OLE对象
 image: design-table-ole-object.png
-labels: [adornment, boundary, design table, example, move, ole object, solidworks api]
+labels: [装饰, 边界, 设计表, 示例, 移动, OLE对象, solidworks api]
 redirect-from:
   - /2018/03/move-design-table-ole-object.html
 ---
-This example demonstrates how to resize and move the design table OLE object in the graphics area using [ISwOLEObject::Boundaries](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iswoleobject~boundaries.html) SOLIDWORKS API method.
 
-![Design Table OLE object in the graphics area](design-table-ole-object.png){ width=640 height=226 }
+该示例演示了如何使用[SOLIDWORKS API的ISwOLEObject::Boundaries](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iswoleobject~boundaries.html)方法调整和移动图形区域中的设计表OLE对象。
 
-In this example an existing design table element will be moved to the right on the distance equals to object's width
+![图形区域中的设计表OLE对象](design-table-ole-object.png){ width=640 height=226 }
+
+在这个示例中，将会将现有的设计表元素向右移动与对象宽度相等的距离。
 
 ~~~ vb
 Const DESIGN_TABLE_CLSID As String = "{00020830-0000-0000-C000-000000000046}"
@@ -61,16 +62,14 @@ Sub main()
         Next
         
         If Not isDesTableFound Then
-            MsgBox "Design table is not found in this model"
+            MsgBox "在该模型中未找到设计表"
         End If
     
     Else
         
-        MsgBox "Please open the model with design table"
+        MsgBox "请打开带有设计表的模型"
         
     End If
     
 End Sub
 ~~~
-
-
