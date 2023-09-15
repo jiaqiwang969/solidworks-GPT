@@ -1,30 +1,30 @@
 ---
 layout: sw-macro-fix
-title: Fix too long path error when running the SOLIDWORKS macro
-caption: Too Long Macro Path
-description: Fixing the Cannot Open error when opening or running the macro stored under the long projects structure
+title: 运行SOLIDWORKS宏时修复路径过长错误
+caption: 过长的宏路径
+description: 修复在长项目结构下存储的宏打开或运行时出现的“无法打开”错误
 image: long-macro-path.png
-labels: [macro, troubleshooting]
+labels: [宏, 故障排除]
 redirect-from:
   - /2018/04/macro-troubleshooting-too-long-macro-path.html
 ---
-## Symptoms
+## 症状
 
-SOLIDWORKS macro is stored in the PDM vault under the long projects structure or the macro is generated on a fly to the secure location (isolated storage) and run via the SOLIDWORKS API.
+SOLIDWORKS宏存储在PDM存储库中的长项目结构下，或者宏是在安全位置（隔离存储）动态生成并通过SOLIDWORKS API运行。
 
-When macro runs or edits the *Cannot Open* error is displayed. The macro runs normally from another location.  
+当宏运行或编辑时，会显示“无法打开”错误。从其他位置运行宏时，它可以正常运行。
 
-![Error when running the macro](long-macro-path.png){ width=400 height=141 }
+![运行宏时出现的错误](long-macro-path.png){ width=400 height=141 }
 
-## Cause
+## 原因
 
-The maximum supported length of the macro path is 255 symbols.
+宏路径的最大支持长度为255个字符。
 
-Although it is highly unlikely the macro to be placed into the directory with full path over 255 symbols, it is still possible that that long path is used when the macro is run from the API and its location needs to be obfuscated (e.g. using the isolated storage).
+虽然宏被放置在超过255个字符的目录中的可能性非常小，但当宏从API中运行并且其位置需要被混淆时（例如使用隔离存储），仍然有可能使用长路径。
 
-It is also possible to have long paths in the PDM environments (such as SOLIDWORKS PDM vault) where the folder structure may reflect project numbers, branches, etc.  
+在PDM环境（如SOLIDWORKS PDM存储库）中可能存在长路径，其中文件夹结构可能反映项目编号、分支等。
 
-## Resolution
+## 解决方法
 
-There is no way to force SOLIDWORKS to run macro with long path. Move the macro to a new location.
-Alternatively it is possible to develop a macro launcher macro which will make a copy of the macro from long path to short path and run.
+无法强制SOLIDWORKS使用长路径运行宏。将宏移动到新位置。
+或者，可以开发一个宏启动器宏，该宏将宏从长路径复制到短路径并运行。
