@@ -1,22 +1,23 @@
 ---
-title: Naming for methods and properties in SOLIDWORKS API
-caption: Naming Convention
-description: Explanation of the naming convention for methods, properties and interfaces in the SOLIDWORKS API object model (i.e. OpenDoc6 vs OpenDoc5)
+title: SOLIDWORKS API中的方法和属性命名
+caption: 命名约定
+description: SOLIDWORKS API对象模型（即OpenDoc6 vs OpenDoc5）中方法、属性和接口的命名约定的解释
 image: obsolete-api-interface.png
-labels: [obsolete,version,number]
+labels: [过时,版本,编号]
 ---
-SOLIDWORKS API (and SOLIDWORKS) are both backward compatible which means that older versions of APIs are compatible with newer releases of SOLIDWORKS. This means that signatures and behaviors of API methods should not be changed when new version is released. For that purpose SOLIDWORKS introduces the revision system for the methods and interfaces names. Whenever new version of API is available it will be added to the class diagram as **MethodName** *Last Revision + 1*. For example [ISldWorks::OpenDoc6](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~opendoc6.html) is a newer version of [ISldWorks::OpenDoc5](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~opendoc5.html) method. While [IModelDoc2](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDoc2.html) is a newer (and current) version of [IModelDoc](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDoc.html) interface.
 
-## Obsolete Methods And Interfaces
+SOLIDWORKS API（以及SOLIDWORKS本身）都是向后兼容的，这意味着旧版本的API与新版本的SOLIDWORKS兼容。这意味着在发布新版本时，不应更改API方法的签名和行为。为此，SOLIDWORKS引入了方法和接口名称的修订系统。每当API的新版本可用时，它将作为**MethodName** *Last Revision + 1*添加到类图中。例如，[ISldWorks::OpenDoc6](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~opendoc6.html)是[ISldWorks::OpenDoc5](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~opendoc5.html)方法的较新版本。而[IModelDoc2](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDoc2.html)是[IModelDoc](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDoc.html)接口的较新（当前）版本。
 
-Although SOLIDWORKS is backward compatible and all the versions of the method should work it is recommended to utilize the newest version compatible with the minimum version of the SOLIDWORKS target program should support.
+## 过时的方法和接口
 
-Main reasons for that are:
+尽管SOLIDWORKS是向后兼容的，并且所有版本的方法都应该可以工作，但建议使用与SOLIDWORKS目标程序的最低版本兼容的最新版本。
 
-* Obsolete methods (or any remarks and descriptions) might not be available in the API Documentation. So it might be required to maintain the previous versions of the API help documentation.
+这样做的主要原因是：
 
-![Obsolete IModelDoc API Interface](obsolete-api-interface.png){ width=250 }
+* 过时的方法（或任何备注和描述）可能在API文档中不可用。因此，可能需要维护先前版本的API帮助文档。
 
-* It is not always known what was the reason for adding the replacement method. This might happened due to certain bug (or behavior) present in the older version of the method which might introduce unknown side effects for your program if this method is used.
+![过时的IModelDoc API接口](obsolete-api-interface.png){ width=250 }
 
-* It might be problematic to request help from support in case of the issues as the first obvious suggestion would be to upgrade methods to new version as older method can be considered as a *void warranty*.
+* 并不总是知道添加替代方法的原因。这可能是由于旧版本方法中存在的某个错误（或行为），如果使用该方法，可能会引入程序的未知副作用。
+
+* 如果出现问题，从支持部门请求帮助可能会有问题，因为最明显的建议是将方法升级到新版本，因为旧方法可能被视为“无效保修”。
