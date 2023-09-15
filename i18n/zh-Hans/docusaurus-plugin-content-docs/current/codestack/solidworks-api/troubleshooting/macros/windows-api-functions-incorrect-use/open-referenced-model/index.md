@@ -1,15 +1,16 @@
 ---
 layout: sw-tool
-title: VBA macro to open referenced document of the drawing view
-caption: Open Drawing View Referenced Document
-description: VBA macro opens the document referenced by the selected drawing view in the referenced configuration and display state
+title: 打开绘图视图引用文档的VBA宏
+caption: 打开绘图视图引用文档
+description: 这个VBA宏打开所选SOLIDWORKS绘图视图引用的文档，并显示引用的配置和显示状态
 image: ref-doc-display-state.svg
-labels: [drawing,reference,display state]
-group: Drawing
+labels: [绘图,引用,显示状态]
+group: 绘图
 ---
-This VBA macro performs similar operation to **Open assembly command** on the selected SOLIDWORKS drawing view, but also activates the referenced display state associated with the drawing view.
 
-![Open assembly command](open-assembly-command.png)
+这个VBA宏执行的操作类似于**打开装配体命令**，但还会激活与绘图视图关联的引用显示状态。
+
+![打开装配体命令](open-assembly-command.png)
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -37,7 +38,7 @@ Sub main()
             Set swRefDoc = swView.ReferencedDocument
             
             If swRefDoc Is Nothing Then
-                Err.Raise vbError, "", "Drawing view model is not loaded"
+                Err.Raise vbError, "", "绘图视图模型未加载"
             End If
             
             swRefDoc.ShowConfiguration2 swView.ReferencedConfiguration
@@ -50,14 +51,12 @@ Sub main()
             swRefDoc.Visible = True
             
         Else
-            Err.Raise vbError, "", "Select drawing view"
+            Err.Raise vbError, "", "请选择绘图视图"
         End If
         
     Else
-        Err.Raise vbError, "", "No active documents"
+        Err.Raise vbError, "", "没有活动文档"
     End If
     
 End Sub
 ~~~
-
-
