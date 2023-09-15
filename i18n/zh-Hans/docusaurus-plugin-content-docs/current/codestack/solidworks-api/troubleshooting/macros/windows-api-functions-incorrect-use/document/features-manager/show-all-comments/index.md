@@ -1,17 +1,8 @@
----
-layout: sw-tool
-title: Show the text of all comments in the active model using SOLIDWORKS API
-caption: Show All Comments Text
-description: VBA macro to show text from comments in the active document using SOLIDWORKS API
-image: comments.png
-labels: [comment]
-group: Model
----
-![Comments in the Feature Manager Tree](comments-features.png)
+显示使用SOLIDWORKS API在活动模型中的所有注释的文本
 
-This VBA macro extracts the text from all comments of the active document and displays it in a single message box.
+这个VBA宏从活动文档的所有注释中提取文本，并在一个单独的消息框中显示它。
 
-~~~ vb
+``` vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -61,11 +52,9 @@ Sub main()
         End If
         
     Else
-        MsgBox "Please open model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
 
-~~~
-
-
+```
