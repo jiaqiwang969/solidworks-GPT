@@ -1,44 +1,44 @@
 ---
 layout: sw-tool
-title: Macro feature to automatically run SOLIDWORKS macro on rebuild
-caption: Automatically Run Macro On Rebuild
-description: Macro allows to automatically run macros on every rebuild using the macro feature and designed binder attachment with SOLIDWORKS API
+title: 在重建时自动运行SOLIDWORKS宏的宏特征
+caption: 在重建时自动运行宏
+description: 使用SOLIDWORKS API，宏特征和设计绑定附件，可以自动运行宏来实现每次重建时自动运行宏的功能。
 image: design-binder-macro-attachment.png
-labels: [auto run, macro, rebuild]
-group: Model
+labels: [自动运行, 宏, 重建]
+group: 模型
 redirect-from:
   - /solidworks-api/document/run-macro-on-rebuild/
 ---
-This macro allows to automatically run specified macro with every rebuild operation using SOLIDWORKS API.
+此宏允许使用SOLIDWORKS API在每次重建操作时自动运行指定的宏。
 
-To setup the macro:
+设置宏的步骤如下：
 
-* Run the macro
-* Specify the full path to the macro to run
-![Select path to the macro for running](input-macro-file-path.png){ width=250 }
+* 运行宏
+* 指定要运行的宏的完整路径
+![选择要运行的宏的路径](input-macro-file-path.png){ width=250 }
 
-This macro will be added to the model as a design binder attachment
-![Macro added as a design binder attachment](design-binder-macro-attachment.png){ width=250 }
-* Macro feature is inserted to the macro as the last feature in the tree.
+此宏将作为设计绑定附件添加到模型中
+![宏作为设计绑定附件添加](design-binder-macro-attachment.png){ width=250 }
+* 宏特征将作为树中的最后一个特征插入到宏中。
 
-When model is rebuilt (either on demand or automatically) macro will be automatically run.
+当模型重建时（无论是按需还是自动），宏将自动运行。
 
-By default macro feature and a macro are embedded into the model. That means that the model can be opened and will be updated on any other workstation which doesn't have this macro available.
+默认情况下，宏特征和宏被嵌入到模型中。这意味着可以在没有此宏的任何其他工作站上打开并更新模型。
 
-This can be also embedded directly to the document template.
+这也可以直接嵌入到文档模板中。
 
-### Options
-Macro feature name can be changed via constant
+### 选项
+可以通过常量更改宏特征名称
 
 ~~~ vb
-Const BASE_NAME As String = "[Name of Feature]"
+Const BASE_NAME As String = "[特征名称]"
 ~~~
 
-By default the macro is embedded into the model. In order to edit the macro code use the *Edit* command in the design binder attachment
+默认情况下，宏被嵌入到模型中。要编辑宏代码，请使用设计绑定附件中的“编辑”命令
 
-![Edit embedded macro in the design binder](edit-embeded-macro.png){ width=250 }
+![在设计绑定中编辑嵌入的宏](edit-embeded-macro.png){ width=250 }
 
-In order to avoid embedding of the macro change the following constant to *False*
+为了避免嵌入宏，请将以下常量更改为*False*
 
 ~~~ vb
 Const EMBED_MACRO As Boolean = False
@@ -64,14 +64,14 @@ Sub main()
     If Not swModel Is Nothing Then
         
         Dim macroToRunPath As String
-        macroToRunPath = InputBox("Specify the full name for the macro to run")
+        macroToRunPath = InputBox("指定要运行的宏的完整名称")
         
         If macroToRunPath = "" Then
             Exit Sub
         End If
         
         If False = swModel.Extension.InsertAttachment(macroToRunPath, Not EMBED_MACRO) Then
-            MsgBox "Failed to insert macro attachment"
+            MsgBox "插入宏附件失败"
             Exit Sub
         End If
         
@@ -116,11 +116,11 @@ Sub main()
             Empty, swMacroFeatureOptions_e.swMacroFeatureEmbedMacroFile + swMacroFeatureOptions_e.swMacroFeatureAlwaysAtEnd)
         
         If swFeat Is Nothing Then
-            MsgBox "Failed to create macro runner"
+            MsgBox "创建宏运行器失败"
         End If
         
     Else
-        MsgBox "Please open model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -179,5 +179,3 @@ Sub GetMacroEntryPoint(app As SldWorks.SldWorks, macroPath As String, ByRef modu
     
 End Sub
 ~~~
-
-
