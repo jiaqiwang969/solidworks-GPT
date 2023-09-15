@@ -15,7 +15,7 @@ group: Frame
 
 以下示例允许在一个宏中运行多个SOLIDWORKS宏。
 
-~~~ vb
+``` vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -31,15 +31,15 @@ End Sub
 Sub RunMacro(path As String, moduleName As String, procName As String)
     swApp.RunMacro2 path, moduleName, procName, swRunMacroOption_e.swRunMacroUnloadAfterRun, 0
 End Sub
-~~~
+```
 
 
 
 更改**RunMacro**调用的参数以调用您自己的一组宏。
 
-~~~ vb
+``` vb
 RunMacro "宏的完整路径", "模块名称", "入口函数名称"
-~~~
+```
 
 其中
 
@@ -72,13 +72,13 @@ RunMacro "宏的完整路径", "模块名称", "入口函数名称"
 * 可以指定要运行的宏的文件夹（例如**D:\Macros**或**Macros**）。与宏路径一样，接受完整路径或相对文件夹路径。在这种情况下，将运行指定文件夹中的所有宏
 * 如果指定空字符串，即 
 
-~~~ vb
+``` vb
 Const MACROS_PATH As String = " "
-~~~
+```
 
 将运行放置此主宏的文件夹中的所有宏。此选项非常有用，因为只需将主宏复制到宏库的位置即可运行，无需修改它。
 
-~~~ vb
+``` vb
 #If VBA7 Then
      Private Declare PtrSafe Function PathIsRelative Lib "shlwapi" Alias "PathIsRelativeA" (ByVal path As String) As Boolean
 #Else
@@ -225,4 +225,4 @@ Sub AddMacros(swMacrosColl As Collection)
     Next
     
 End Sub
-~~~
+```
