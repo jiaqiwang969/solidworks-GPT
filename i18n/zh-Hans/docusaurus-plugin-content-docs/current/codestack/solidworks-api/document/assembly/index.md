@@ -1,16 +1,16 @@
 ---
-title: Automating assemblies using SOLIDWORKS API
-caption: Assembly
-description: Assemblies automation (components, BOM, contexts) using SOLIDWORKS API
+title: 使用SOLIDWORKS API自动化装配
+caption: 装配
+description: 使用SOLIDWORKS API自动化装配（组件、BOM、上下文）
 sidebar_position: 1
 labels: [assembly]
 ---
-Assembly is a specific type of the model document which represents a composition of sub documents to form the complete product.
+装配是一种特定类型的模型文档，它表示由子文档组成的完整产品。
 
-Assemblies are represented with [IAssemblyDoc](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IAssemblyDoc.html) SOLIDWORKS API interface.
+装配使用[SOLIDWORKS API接口](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IAssemblyDoc.html)来表示。
 
-This section contains examples and macros of automation assemblies using SOLIDWORKS API.
+本节包含使用SOLIDWORKS API自动化装配的示例和宏。
 
-* Automating components and mates
-* Assembly level features
-* Working in assembly contexts
+* 自动化组件和约束
+* 装配级特征
+* 在装配上下文中工作
