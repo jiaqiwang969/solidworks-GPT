@@ -1,40 +1,40 @@
 ---
-title: 理解在使用SOLIDWORKS API时的草图变换
-caption: 理解草图变换
-description: 解释了在SOLIDWORKS API中模型到草图和草图到模型变换的概念，以正确计算草图段的坐标
+title: Understanding Sketch Transformations in SOLIDWORKS API
+caption: Understanding Sketch Transformations
+description: Explains the concepts of model-to-sketch and sketch-to-model transformations in SOLIDWORKS API to correctly calculate the coordinates of sketch entities
 image: sketch-coordinate-systems.png
-labels: [变换,草图]
+labels: [transformations, sketch]
 ---
-在处理草图段（如线段、弧线等）或点时，需要考虑到从SOLIDWORKS API返回的坐标值（例如[ISketchPoint::X](https://help.solidworks.com/2017/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ISketchPoint~X.html)属性）是相对于局部草图坐标系的。
+When working with sketch entities such as lines, arcs, etc., or points, it is important to consider that the coordinate values returned by the SOLIDWORKS API (e.g., the [ISketchPoint::X](https://help.solidworks.com/2017/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ISketchPoint~X.html) property) are relative to the local sketch coordinate system.
 
-这些值在3D草图或在Front平面上创建的2D草图（如果未移动）中是相同的，但在其他情况下会有所不同。
+These values are the same for 3D sketches or 2D sketches created on the Front plane (if not moved), but differ in other cases.
 
-如下图所示，对于局部草图坐标系（在草图点属性管理器页面中），该点的值显示为{ -50, 10, 0 }，而对于全局坐标系（在SOLIDWORKS状态栏中），该点的值显示为{ -50, 0, -10 }。这种差异是因为2D草图是在Top平面上创建的。
+As shown in the image below, for the local sketch coordinate system (on the Sketch Point PropertyManager page), the point's value is displayed as { -50, 10, 0 }, while for the global coordinate system (on the SOLIDWORKS status bar), the point's value is displayed as { -50, 0, -10 }. This difference is because the 2D sketch was created on the Top plane.
 
-![局部和全局坐标系的不同值。](global-local-coordinates.png){ width=450 }
+![Different values in local and global coordinate systems.](global-local-coordinates.png){ width=450 }
 
-激活草图时，局部2D草图坐标系用红色的X和Y箭头表示。全局坐标系用红色、绿色和蓝色的三轴表示在SOLIDWORKS模型窗口的右下角。
+The local 2D sketch coordinate system is represented by red X and Y arrows when a sketch is active. The global coordinate system is represented by red, green, and blue axes in the bottom right corner of the SOLIDWORKS model window.
 
-![局部草图坐标系和全局坐标系](sketch-coordinate-systems.png){ width=350 }
+![Local sketch coordinate system and global coordinate system](sketch-coordinate-systems.png){ width=350 }
 
-## 从草图点读取局部坐标
+## Reading Local Coordinates from Sketch Points
 
-以下宏将读取所选草图点相对于局部草图坐标系的坐标，并将其输出到SOLIDWORKS的即时窗口中。
+The following macro will read the coordinates of the selected sketch point relative to the local sketch coordinate system and output them to the Immediate window in SOLIDWORKS.
 
-![提取的草图点坐标](coordinate-output.png){ width=350 }
+![Extracted sketch point coordinates](coordinate-output.png){ width=350 }
 
-* 在Front平面上创建一个草图并创建一个草图点
-* 选择此点
-* 运行宏并与全局坐标值进行比较（结果以米为单位打印）
-* 值将匹配
+* Create a sketch on the Front plane and create a sketch point
+* Select this point
+* Run the macro and compare the result with the global coordinate values (printed in meters)
+* The values will match
 
-![草图点的全局坐标](sketch-point-coordinate.png){ width=350 }
+![Global coordinates of the sketch point](sketch-point-coordinate.png){ width=350 }
 
-* 在任何平面上创建新的草图，但不是Front平面（例如Top平面）
-* 重复上述步骤
-* 现在坐标不匹配。
+* Create a new sketch on any plane other than the Front plane (e.g., Top plane)
+* Repeat the above steps
+* The coordinates will not match now
 
-~~~ vb
+```vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -52,17 +52,17 @@ Sub main()
     
 End Sub
 
-~~~
+```
 
 
 
-## 从草图点检索全局坐标
+## Retrieving Global Coordinates from Sketch Points
 
-为了找到相对于全局坐标系的坐标值，需要通过[SOLIDWORKS API](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ISketch~ModelToSketchTransform.html)属性的[ISketch::ModelToSketchTransform](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ISketch~ModelToSketchTransform.html)找到草图到模型的变换矩阵，并将其应用于点的坐标。
+To find the coordinate values relative to the global coordinate system, the transformation matrix from sketch to model needs to be found using the [ISketch::ModelToSketchTransform](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ISketch~ModelToSketchTransform.html) property of the SOLIDWORKS API, and it needs to be applied to the coordinates of the point.
 
-下面的宏可以用于执行上一段中的步骤，但现在提取的坐标将与全局坐标系中的值匹配。
+The following macro can be used to perform the steps mentioned in the previous section, but now the extracted coordinates will match the values in the global coordinate system.
 
-~~~ vb
+```vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -79,7 +79,7 @@ Sub main()
     Dim swSketch As SldWorks.Sketch
     Set swSketch = swSkPt.GetSketch
     
-    '获取草图到模型的变换（通过反转模型到草图的变换）
+    ' Get the transformation from sketch to model (by inverting the model to sketch transformation)
     Dim swTransform As SldWorks.MathTransform
     Set swTransform = swSketch.ModelToSketchTransform.Inverse
         
@@ -91,29 +91,29 @@ Sub main()
     dPt(1) = swSkPt.Y
     dPt(2) = swSkPt.Z
     
-    '从坐标创建数学点
+    ' Create a math point from the coordinates
     Dim swMathPt As SldWorks.MathPoint
     Set swMathPt = swMathUtils.CreatePoint(dPt)
     
-    '使用变换移动点
+    ' Move the point using the transformation
     Set swMathPt = swMathPt.MultiplyTransform(swTransform)
     
-    '读取新的坐标值
+    ' Read the new coordinate values
     Dim vPt As Variant
     vPt = swMathPt.ArrayData
     
     Debug.Print vPt(0) & "; " & vPt(1) & "; " & vPt(2)
     
 End Sub
-~~~
+```
 
 
 
-## 根据全局坐标在草图中创建点
+## Creating Points in a Sketch Based on Global Coordinates
 
-当需要根据全局坐标值在2D草图中创建草图点时，应使用反转变换。以下示例根据XYZ值在活动草图中插入一个草图点。
+When there is a need to create a sketch point in a 2D sketch based on global coordinate values, the inverse transformation should be used. The following example inserts a sketch point in the active sketch based on XYZ values.
 
-~~~ vb
+```vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -127,7 +127,7 @@ Sub main()
     Dim swSketch As SldWorks.Sketch
     Set swSketch = swModel.SketchManager.ActiveSketch
     
-    '获取模型到草图的变换
+    ' Get the transformation from model to sketch
     Dim swTransform As SldWorks.MathTransform
     Set swTransform = swSketch.ModelToSketchTransform
         
@@ -139,18 +139,18 @@ Sub main()
     dPt(1) = 0
     dPt(2) = 0.1
     
-    '从坐标创建数学点
+    ' Create a math point from the coordinates
     Dim swMathPt As SldWorks.MathPoint
     Set swMathPt = swMathUtils.CreatePoint(dPt)
     
-    '使用变换移动点
+    ' Move the point using the transformation
     Set swMathPt = swMathPt.MultiplyTransform(swTransform)
     
-    '读取新的坐标值
+    ' Read the new coordinate values
     Dim vPt As Variant
     vPt = swMathPt.ArrayData
     
     swModel.SketchManager.CreatePoint vPt(0), vPt(1), vPt(2)
     
 End Sub
-~~~
+```
