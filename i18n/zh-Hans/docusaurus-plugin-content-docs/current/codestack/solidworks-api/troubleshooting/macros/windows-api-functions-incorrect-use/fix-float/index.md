@@ -1,21 +1,14 @@
----
-title: Fix or float component in active or all configurations using SOLIDWORKS API
-caption: Fix/Float In This Or All Configurations
-description: Example demonstrates a workaround for missing SOLIDWORKS API for fixing or floating the component in the active or all configuration
-image: component-fix-options.png
-labels: [fix, float, component, workaround]
----
-![Options to fix component](component-fix-options.png)
+![组件固定选项](component-fix-options.png)
 
-This VBA example demonstrates a simple workaround for missing SOLIDWORKS API to fix or float the component in active configuration only. [IAssemblyDoc::FixComponent](https://help.solidworks.com/2017/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iassemblydoc~fixcomponent.html) only fixes the components in all configurations.
+这个VBA示例演示了一个简单的解决方案，用于在活动配置或所有配置中固定或浮动组件，因为SOLIDWORKS API中缺少相应的功能。[IAssemblyDoc::FixComponent](https://help.solidworks.com/2017/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iassemblydoc~fixcomponent.html)只能在所有配置中固定组件。
 
-Create an example assembly with 2 configurations and 4 instances of the component, where first 2 instances are floating in both configurations, while last 2 instances are fixed in both configuration.
+创建一个包含2个配置和4个组件实例的示例装配体，其中前2个实例在两个配置中都是浮动的，而后2个实例在两个配置中都是固定的。
 
-![Initial state of example](component-initial-state.png)
+![示例的初始状态](component-initial-state.png)
 
-As the result of running this macro components will be changed to the following result:
+运行此宏的结果将使组件更改为以下结果：
 
-![Result of running the macro](component-fix-result.png)
+![运行宏的结果](component-fix-result.png)
 
 ~~~ vb
 #If VBA7 Then
@@ -87,5 +80,3 @@ Sub FloatComponent(comp As SldWorks.Component2, thisConf As Boolean)
     
 End Sub
 ~~~
-
-
