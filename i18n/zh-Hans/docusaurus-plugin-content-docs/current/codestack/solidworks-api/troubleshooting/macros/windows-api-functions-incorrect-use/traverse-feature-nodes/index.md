@@ -1,17 +1,17 @@
 ---
-title: Traverse feature manager nodes using SOLIDWORKS API
-caption: Traverse Feature Nodes
-description: Example demonstrates how to traverse nodes in the Feature Manager Tree using SOLIDWORKS API
+title: 使用SOLIDWORKS API遍历特征管理器节点
+caption: 遍历特征节点
+description: 该示例演示了如何使用SOLIDWORKS API遍历特征管理器树中的节点。节点按照它们在树中呈现的顺序进行遍历，并提取出确切的文本。
 image: feature-manager-tree.png
-labels: [traverse, feature, node]
+labels: [遍历, 特征, 节点]
 ---
-![Feature Manager Tree](feature-manager-tree.png){ width=150 }
+![特征管理器树](feature-manager-tree.png){ width=150 }
 
-This example demonstrates how to traverse nodes in the Feature Manager Tree using SOLIDWORKS API. Nodes traversed in the exact order they are rendered in the tree and the exact text is extracted.
+该示例演示了如何使用SOLIDWORKS API遍历特征管理器树中的节点。节点按照它们在树中呈现的顺序进行遍历，并提取出确切的文本。
 
-[ITreeControlItem](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.itreecontrolitem.html) SOLIDWORKS API interface represents the node element and allows its automation.
+[SOLIDWORKS API接口ITreeControlItem](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.itreecontrolitem.html)表示节点元素，并允许进行自动化操作。
 
-This macro can be useful if it is required to get the exact features hierarchy and order or get the nodes of the system features (like history, design journal etc.)
+如果需要获取确切的特征层次结构和顺序，或者获取系统特征的节点（如历史记录、设计日志等），此宏可能会很有用。
 
 ~~~ vb
 Const OFFSET_SYMBOL = " "
@@ -41,7 +41,7 @@ Sub main()
         End If
         
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
 End Sub
 
@@ -60,5 +60,3 @@ Sub TraverseFeatureNode(featNode As SldWorks.TreeControlItem, offset As String)
     
 End Sub
 ~~~
-
-
