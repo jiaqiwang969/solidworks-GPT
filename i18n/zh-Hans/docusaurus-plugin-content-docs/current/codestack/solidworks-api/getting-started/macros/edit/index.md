@@ -1,18 +1,18 @@
 ---
-title: 在SOLIDWORKS中编辑VBA和VSTA宏
-caption: 编辑宏
-description: 在SOLIDWORKS中编辑现有的VBA和VSTA宏
+title: Editing VBA and VSTA Macros in SOLIDWORKS
+caption: Edit Macros
+description: Editing existing VBA and VSTA macros in SOLIDWORKS
 image: edit-macro.png
 ---
-VBA宏（*.swb和*.swp）以及VSTA宏（*.csproj和*.vbproj）的源代码可以直接在SOLIDWORKS中进行编辑。
+The source code for VBA macros (*.swb and *.swp) as well as VSTA macros (*.csproj and *.vbproj) can be edited directly in SOLIDWORKS.
 
-* 导航到*工具->宏->编辑*菜单命令
+* Navigate to the *Tools -> Macro -> Edit* menu command.
 
-![编辑宏菜单命令](edit-macro.png)
+![Edit Macro Menu Command](edit-macro.png)
 
-* 浏览指定的宏（如果需要，更改文件过滤器）
-* 或者从最近的文件中选择宏（如果可用）
+* Browse for the specified macro (or change the file filter if needed)
+* Or select a macro from the recent files (if available)
 
-此命令将打开新的VBA编辑器或Visual Studio（VSTA宏编辑器）。
+This command will open a new VBA editor or Visual Studio (VSTA macro editor).
 
-根据需要修改代码并保存更改
+Modify the code as needed and save the changes.
