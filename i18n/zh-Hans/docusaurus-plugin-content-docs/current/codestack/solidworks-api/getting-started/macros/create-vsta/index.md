@@ -1,39 +1,39 @@
 ---
-title: 在SOLIDWORKS中创建和运行VSTA宏（C#和VB.NET）
-caption: 创建和运行VSTA宏
-description: 本文介绍如何从现有代码创建和运行VSTA宏（C#或VB.NET）
+title: Creating and Running VSTA Macros in SOLIDWORKS (C# and VB.NET)
+caption: Creating and Running VSTA Macros
+description: This article explains how to create and run VSTA macros (C# or VB.NET) from existing code.
 image: new-macro-vsta-filter.png
 labels: [vsta, macro, run]
 ---
-本文介绍如何从现有代码创建和运行VSTA宏（C#或VB.NET）
+This article explains how to create and run VSTA macros (C# or VB.NET) from existing code.
 
-* 通过调用SOLIDWORKS菜单中的Tools->Macro->New命令创建新的宏
-* 根据源代码设置VSTA宏的过滤器（.vbproj或.csproj）
+* Create a new macro by calling the Tools->Macro->New command in the SOLIDWORKS menu.
+* Set the filter for the VSTA macro (.vbproj or .csproj) based on the source code.
 
-![过滤VSTA宏](new-macro-vsta-filter.png){ width=450 }
+![Filter VSTA Macro](new-macro-vsta-filter.png){ width=450 }
 
-* 复制或记住在*SolidWorksMacro.cs*文件中标记的宏的命名空间：
+* Copy or remember the namespace of the macro marked in the *SolidWorksMacro.cs* file:
 
-![VSTA宏的命名空间](vsta-macro-namespace.png){ width=450 }
+![Namespace of VSTA Macro](vsta-macro-namespace.png){ width=450 }
 
-* 删除*SolidWorksMacro.cs*文件中的所有代码，并将新的源代码粘贴到其中
+* Delete all the code in the *SolidWorksMacro.cs* file and paste the new source code into it.
 
-* 将命名空间修改为原始命名空间
+* Modify the namespace to the original namespace.
 
-> 如果不修改命名空间，将出现以下问题：[VSTA（C#或VB.NET）宏中的无效命名空间](/docs/codestack/solidworks-api/troubleshooting/macros/vsta-invalid-namespace/)
+> If the namespace is not modified, the following issue will occur: [Invalid Namespace in VSTA (C# or VB.NET) Macro](/docs/codestack/solidworks-api/troubleshooting/macros/vsta-invalid-namespace/)
 
-与VBA宏不同，VSTA宏必须编译为dll。在代码编辑器菜单中调用*Build->Compile*命令进行编译。您还可以直接点击绿色箭头按钮运行宏。编译完成后，dll将生成在宏的*bin\Release*文件夹中，并且完整路径将打印到*Output*窗口中，如下所示。
+Unlike VBA macros, VSTA macros must be compiled into a dll. Call the Build->Compile command in the code editor menu to compile. You can also directly click the green arrow button to run the macro. After the compilation is complete, the dll will be generated in the *bin\Release* folder of the macro, and the full path will be printed in the Output window as shown below.
 
-![编译VSTA宏](compile-vsta-macro.png){ width=450 }
+![Compile VSTA Macro](compile-vsta-macro.png){ width=450 }
 
-* 要运行VSTA宏，请从SOLIDWORKS菜单中打开*Tools->Macro->Run*命令，并选择VSTA宏（dll）的过滤器。
+* To run the VSTA macro, open the Tools->Macro->Run command in the SOLIDWORKS menu and select the filter for the VSTA macro (dll).
 
-![运行时设置VSTA宏的过滤器](run-vsta-macro.png){ width=550 }
+![Setting the Filter for Running VSTA Macro](run-vsta-macro.png){ width=550 }
 
-> 运行宏只需要二进制文件。因此，可以将*bin\Release*文件夹的内容复制到新位置或与其他用户共享。需要复制*bin\Release*文件夹的全部内容（而不仅仅是宏dll），以避免出现以下错误：[运行VSTA（C#或VB.NET）宏失败](/docs/codestack/solidworks-api/troubleshooting/macros/run-vsta-macro-error/)
+> Running the macro only requires the binary file. Therefore, you can copy the contents of the *bin\Release* folder to a new location or share it with other users. It is necessary to copy all the contents of the *bin\Release* folder (not just the macro dll) to avoid the following error: [Failed to Run VSTA (C# or VB.NET) Macro](/docs/codestack/solidworks-api/troubleshooting/macros/run-vsta-macro-error/)
 
-### 保持VSTA宏运行
+### Keeping VSTA Macro Running
 
-可以设置选项，在执行完成后继续运行VSTA宏。如果宏需要监视SOLIDWORKS事件并且不需要在执行完成后立即卸载，这将非常有用。要启用此行为，请在SOLIDWORKS菜单的*Tools->Options->System Options*对话框中取消选中*Stop VSTA debugger on macro exit*选项。
+You can set an option to keep the VSTA macro running after it finishes executing. This can be useful if the macro needs to monitor SOLIDWORKS events and does not need to be unloaded immediately after execution. To enable this behavior, uncheck the *Stop VSTA debugger on macro exit* option in the Tools->Options->System Options dialog in the SOLIDWORKS menu.
 
-![保持VSTA宏运行的选项](system-options-stop-vsta-debugger.png){ width=450 }
+![Option to Keep VSTA Macro Running](system-options-stop-vsta-debugger.png){ width=450 }
