@@ -1,21 +1,22 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS macro copies data from Excel table into general table
-caption: Write Data From Excel Table Into General Table
-description: Macro will read all the data from the Excel table and import it into the new general table of the active document or update existing table using SOLIDWORKS API
+title: SOLIDWORKS宏将数据从Excel表复制到通用表中
+caption: 将Excel表中的数据写入通用表
+description: 该宏将使用SOLIDWORKS API从指定的Excel电子表格中读取所有数据，并将其导入到活动文档的新通用表中，或者更新现有表。
 image: excel-to-table.svg
-labels: [table annotation, excel, general table, 2 dimensional array]
+labels: [表注释, Excel, 通用表, 二维数组]
 group: Model
 ---
-This macro will write the data into the newly created general table of the active document from the specified Excel spreadsheet using SOLIDWORKS API.
 
-Specify the full path to excel file and the name of the spreadsheet in the constants defined in the header of the macro.
+此宏将使用SOLIDWORKS API从指定的Excel电子表格中将数据写入活动文档的新创建的通用表中。
 
-In order order to update existing general table instead of creating new one, select the general table in the graphics view or from the feature manager tree and run the macro.
+在宏的头部定义的常量中指定Excel文件的完整路径和电子表格的名称。
 
-This macro can be embedded into the [Macro Feature](/docs/codestack/solidworks-api/document/macro-feature) which will allow automatic update of the table. Follow the [Link And Auto Update General Table To Excel](/docs/codestack/solidworks-api/document/macro-feature/general-table-link-excel/) for more information about this option.
+为了更新现有的通用表而不是创建新的表，选择图形视图中的通用表或从特征管理器树中选择通用表，然后运行宏。
 
-![Excel table with purchase order data imported into SOLIDWORKS General Table](excel-table-to-sw-general-table.png){ width=500 }
+此宏可以嵌入到[宏特征](/docs/codestack/solidworks-api/document/macro-feature)中，从而实现表的自动更新。有关此选项的更多信息，请参阅[将通用表链接到Excel并自动更新](/docs/codestack/solidworks-api/document/macro-feature/general-table-link-excel/)。
+
+![将采购订单数据导入到SOLIDWORKS通用表中的Excel表](excel-table-to-sw-general-table.png){ width=500 }
 
 ~~~ vb
 Const FILE_PATH As String = "C:\Orders\PurchaseOrder_5281.xlsx"
@@ -46,7 +47,7 @@ Sub main()
         End If
         
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -177,4 +178,3 @@ Sub FillTable(table As SldWorks.TableAnnotation, vTableData As Variant)
     
 End Sub
 ~~~
-
