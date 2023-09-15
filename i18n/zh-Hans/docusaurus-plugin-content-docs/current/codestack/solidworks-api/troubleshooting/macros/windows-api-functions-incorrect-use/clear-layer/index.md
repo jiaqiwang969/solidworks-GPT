@@ -12,7 +12,7 @@ group: Model
 
 在**LAYER_NAME**常量中设置图层的名称。
 
-~~~ vb
+``` vb
 Const LAYER_NAME As String = "我的图层"
 
 Dim swApp As SldWorks.SldWorks
@@ -72,4 +72,4 @@ Sub AddItems(layer As SldWorks.layer, itemsType As swLayerItemsOption_e, ByRef l
     End If
     
 End Sub
-~~~
+```
