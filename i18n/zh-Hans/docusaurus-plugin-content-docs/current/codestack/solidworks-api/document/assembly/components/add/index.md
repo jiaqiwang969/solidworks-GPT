@@ -1,18 +1,18 @@
 ---
-title: Add components to assembly using SOLIDWORKS API
-caption: Add Components To Assembly
-description: Example Demonstrates 2 different ways to add component into the assembly tree (single component add or batch adding)
-labels: [add component, assembly, example, solidworks api]
+title: 使用SOLIDWORKS API将组件添加到装配体
+caption: 添加组件到装配体
+description: 该示例演示了使用SOLIDWORKS API将组件添加到装配体树中的两种不同方法（单个组件添加或批量添加）
+labels: [添加组件, 装配体, 示例, solidworks api]
 redirect-from:
   - /2018/03/solidworks-api-assembly-add-components.html
   - /solidworks-api/document/assembly/add-components
 ---
-This example Demonstrates 2 different ways to add component into the assembly tree using SOLIDWORKS API.
+该示例演示了使用SOLIDWORKS API将组件添加到装配体树中的两种不同方法。
 
-* Traditional way to add component via [AddComponentX](https://help.solidworks.com/2015/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IAssemblyDoc~AddComponent5.html) SOLIDWORKS API requires the model to be loaded into the memory. Otherwise the operation fails.
-* More advanced way is to use the [AddComponents ](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IAssemblyDoc~AddComponents3.html) SOLIDWORKS API. This method allows batch insertion of different components without the need to open the model beforehand.
+* 传统的方法是通过[SOLIDWORKS API的AddComponentX](https://help.solidworks.com/2015/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IAssemblyDoc~AddComponent5.html)来添加组件。该方法要求将模型加载到内存中，否则操作将失败。
+* 更高级的方法是使用[SOLIDWORKS API的AddComponents](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IAssemblyDoc~AddComponents3.html)。该方法允许在不事先打开模型的情况下批量插入不同的组件。
 
-[Download Example Files](parts.zip)
+[下载示例文件](parts.zip)
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -37,17 +37,17 @@ Sub main()
         
         Dim swComp As SldWorks.Component2
         
-        'Following API call will fail as it is required to have the model loaded into the memory
+        '以下API调用将失败，因为需要将模型加载到内存中
         Set swComp = swAssy.AddComponent4(comp1Path, "", 0, 0, 0)
         
         Debug.Assert Not swComp Is Nothing
                 
-        'Loading model invisibly
+        '以不可见方式加载模型
         swApp.DocumentVisible False, swDocumentTypes_e.swDocPART
         swApp.OpenDoc6 comp1Path, swDocumentTypes_e.swDocPART, swOpenDocOptions_e.swOpenDocOptions_Silent, "", 0, 0
         swApp.DocumentVisible True, swDocumentTypes_e.swDocPART
         
-        'Now this API call succeeded
+        '现在这个API调用成功了
         Set swComp = swAssy.AddComponent4(comp1Path, "", 0, 0, 0)
         
         Debug.Assert Not swComp Is Nothing
@@ -59,14 +59,14 @@ Sub main()
         
         vTransformData = swMathUtils.CreateTransform(Empty).ArrayData
         
-        'It is not required to load document into memory if this method is used
+        '如果使用此方法，则不需要将文档加载到内存中
         vComps = swAssy.AddComponents(strCompNames, vTransformData)
     
         Debug.Assert UBound(vComps) <> 1
         
     Else
         
-        MsgBox "Please open or create assembly"
+        MsgBox "请打开或创建装配体"
         
     End If
 
@@ -74,4 +74,3 @@ End Sub
 
 
 ~~~
-
