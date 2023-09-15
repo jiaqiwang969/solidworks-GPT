@@ -1,21 +1,22 @@
 ---
-title: Set BOM Quantity (Unit Of Measure) property using SOLIDWORKS API
-caption: Set BOM Quantity (Unit Of Measure) Property In The Model
-description: Example demonstrates how to modify the BOM quantity field in the properties dialog
+title: 使用SOLIDWORKS API设置BOM数量（单位）属性
+caption: 在模型中设置BOM数量（单位）属性
+description: 本示例演示了如何使用SOLIDWORKS API修改属性对话框中的BOM数量字段。
 image: bom-quantity-property.png
-labels: [bom quantity, example, qty, unit of measure]
+labels: [BOM数量, 示例, 数量, 单位]
 redirect-from:
   - /2018/03/set-bom-quantity-unit-of-measure.html
 ---
-This example demonstrates how to modify the BOM quantity field in the properties dialog using SOLIDWORKS API.
+
+本示例演示了如何使用SOLIDWORKS API修改属性对话框中的BOM数量字段。
 
 ![Option to specify the property linked to Unit Of Measure](bom-quantity-property.png){ width=640 height=170 }
 
-This option allows overwriting the quantity value of the component in the BOM table
+此选项允许覆盖BOM表中组件的数量值。
 
 ![Bill Of Materials table displaying the altered quantity of the components](bom-table-unit-of-measure.png){ width=640 }
 
-In order to change this property it is required to set the hidden *UNIT_OF_MEASURE* custom property via [ICustomPropertyManager](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.icustompropertymanager.html) SOLIDWORKS API interface.
+要更改此属性，需要通过[SOLIDWORKS API接口](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.icustompropertymanager.html)设置隐藏的*UNIT_OF_MEASURE*自定义属性。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -46,11 +47,9 @@ Sub main()
     
     Else
         
-        MsgBox "Please open model"
+        MsgBox "请打开模型"
         
     End If
     
 End Sub
 ~~~
-
-
