@@ -1,35 +1,35 @@
 ---
 layout: sw-tool
-title: Macro to merge sketches using SOLIDWORKS API
-caption: Merge Sketches
-description: VBA macro to merge selected sketches into a single 3D sketch using SOLIDWORKS API
+title: 使用SOLIDWORKS API合并草图的宏
+caption: 合并草图
+description: 使用SOLIDWORKS API将选定的草图合并为一个单独的3D草图的VBA宏
 image: merged-sketches.svg
 labels: [sketch,convert entities,merge]
 group: Sketch
 ---
-![Sketches merged into the 3D sketch](merged-3dsketch.png)
+![草图合并为3D草图](merged-3dsketch.png)
 
-This VBA macro merges the selected sketches (3D and 3D) into a single 3D sketch using SOLIDWORKS API. This macro is using convert entities API to copy the entities from the source sketches to a target sketch.
+这个VBA宏使用SOLIDWORKS API将选定的草图（2D和3D）合并为一个单独的3D草图。该宏使用转换实体API将源草图的实体复制到目标草图中。
 
-## Options
+## 选项
 
-Macro can be configured by changing the values of the constant at the beginning of the macro
+可以通过更改宏开头的常量的值来配置宏
 
-* *DELETE_SOURCE_SKETCHES* - True to delete original source sketches, False to not delete
-* *NEW_SKETCH_NAME* - Name for the newly generated merged sketch, Empty string to use default auto generated name
+* *DELETE_SOURCE_SKETCHES* - True表示删除原始源草图，False表示不删除
+* *NEW_SKETCH_NAME* - 新生成的合并草图的名称，空字符串表示使用默认自动生成的名称
 
 ~~~ vb
-Const DELETE_SOURCE_SKETCHES As Boolean = True 'delete all source sketches
-Const NEW_SKETCH_NAME As String = "MergedSketch" 'new merged sketch to be named 'MergedSketch'
+Const DELETE_SOURCE_SKETCHES As Boolean = True '删除所有源草图
+Const NEW_SKETCH_NAME As String = "MergedSketch" '新合并的草图命名为'MergedSketch'
 ~~~
 
-## Notes
+## 注意事项
 
-* Sketches in the assembly or drawings components are also supported
-* Relations and dimensions from the source sketch are not copied to a target sketch
-* Sketches are merged to an active 3D sketch, or new 3D sketch is created automatically
+* 组件装配或绘图中的草图也受支持
+* 源草图的关系和尺寸不会复制到目标草图中
+* 草图合并到活动的3D草图中，或者自动创建新的3D草图
 
-Use this macro in conjunction with [Select Features By Type](/docs/codestack/solidworks-api/document/selection/select-features-by-type/) to select all sketches to be merged.
+与[按类型选择特征](/docs/codestack/solidworks-api/document/selection/select-features-by-type/)一起使用此宏来选择要合并的所有草图。
 
 ~~~ vb
 Const DELETE_SOURCE_SKETCHES As Boolean = False
@@ -52,7 +52,7 @@ try:
     If Not swModel Is Nothing Then
         MergeSelectedSketches swModel
     Else
-        Err.Raise vbError, "", "Please open model"
+        Err.Raise vbError, "", "请打开模型"
     End If
     
     GoTo finally
@@ -70,7 +70,7 @@ Sub MergeSelectedSketches(model As SldWorks.ModelDoc2)
         
     If Not model.SketchManager.ActiveSketch Is Nothing Then
         If False = model.SketchManager.ActiveSketch.Is3D() Then
-            Err.Raise vbError, "", "Only 3D sketch is supported as a target sketch"
+            Err.Raise vbError, "", "只支持将3D草图作为目标草图"
         End If
     End If
     
@@ -95,14 +95,14 @@ Sub MergeSelectedSketches(model As SldWorks.ModelDoc2)
                 
         model.SketchManager.Insert3DSketch True
     Else
-        Err.Raise vbError, "", "Failed to select sketches"
+        Err.Raise vbError, "", "选择草图失败"
     End If
     
     If DELETE_SOURCE_SKETCHES Then
         If model.Extension.MultiSelect2(vSketches, False, Nothing) = UBound(vSketches) + 1 Then
             model.Extension.DeleteSelection2 swDeleteSelectionOptions_e.swDelete_Absorbed
         Else
-            Err.Raise vbError, "", "Failed to selected sketches for deletion"
+            Err.Raise vbError, "", "选择要删除的草图失败"
         End If
     End If
     
@@ -179,4 +179,3 @@ Function GetSelectedSketchSegments(model As SldWorks.ModelDoc2, ByRef vSketches 
     
 End Function
 ~~~
-
