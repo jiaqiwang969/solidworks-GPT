@@ -1,16 +1,16 @@
 ---
-title: Working with sketch using SOLIDWORKS API
-caption: Sketch
-description: Working with 2D and 3D sketches (adding and reading segments, transformations, feature creation) using SOLIDWORKS API
+title: 使用SOLIDWORKS API处理草图
+caption: 草图
+description: 使用SOLIDWORKS API处理2D和3D草图（添加和读取线段、变换、创建特征）
 sidebar_position: 6
 labels: [sketch,draw]
 ---
-Sketch is a 3D or 3D layout in SOLIDWORKS parts, assemblies and drawing. In most cases sketch is used as a profile for generating 3D elements (extrudes, cuts, lofts etc.).
+草图是SOLIDWORKS零件、装配和绘图中的二维或三维布局。在大多数情况下，草图用作生成三维元素（挤压、切割、放样等）的轮廓。
 
-Sketch is a feature and it is managed via [ISketch](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ISketch.html) interface in SOLIDWORKS API.
+草图是一个特征，可以通过SOLIDWORKS API中的[ISketch](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ISketch.html)接口进行管理。
 
-Sketch can contain sketch segments and sketch points as well as annotations (dimensions, notes, etc.).
+草图可以包含草图线段和草图点，以及注释（尺寸、注释等）。
 
-2D sketch uses 2D coordinate system (X, Y) to position its elements. This coordinate system not always matches the global coordinate system. Which means that the coordinates of elements found in the sketch are relative to 2D coordinate system and need to be transformed to model space if required.
+2D草图使用二维坐标系（X，Y）来定位其元素。这个坐标系并不总是与全局坐标系匹配。这意味着在草图中找到的元素的坐标是相对于二维坐标系的，并且如果需要，需要将其转换到模型空间。
 
-This section contains various macros and code examples of working with sketches, adding and removing segments and points, creating new sketches, calculating transformation using SOLIDWORKS API.
+本节包含使用SOLIDWORKS API处理草图、添加和删除线段和点、创建新草图、计算变换的各种宏和代码示例。
