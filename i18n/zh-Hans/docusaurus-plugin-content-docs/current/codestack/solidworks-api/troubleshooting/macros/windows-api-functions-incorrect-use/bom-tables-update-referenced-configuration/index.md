@@ -1,24 +1,25 @@
 ---
-title: SOLIDWORKS macro to update referenced configuration from BOM tables
-caption: Update Referenced Configuration From BOM Tables
-description: Macro will update the referenced configurations for all Bill of Materials (BOM) tables on the active drawing document using SOLIDWORKS API
+title: SOLIDWORKS宏以从BOM表更新引用配置
+caption: 从BOM表更新引用配置
+description: 该宏将使用SOLIDWORKS API在活动绘图文档上更新所有Bill of Materials（BOM）表的引用配置。
 image: bom-configurations-property.png
-labels: [bom, default view, referenced configuration, solidworks api, utility, view]
+labels: [bom, 默认视图, 引用配置, solidworks api, 实用工具, 视图]
 redirect-from:
   - /2018/03/update-referenced-configuration-from.html
 ---
-This macro will update the referenced configurations for all Bill of Materials (BOM) tables on the active drawing document using SOLIDWORKS API.
 
-![List of configurations to use in the BOM table](bom-configurations-property.png){ width=168 height=320 }
+该宏将使用SOLIDWORKS API在活动绘图文档上更新所有Bill of Materials（BOM）表的引用配置。
 
-Bill of Materials tables are not associated with the drawing views and will exist even in case view is deleted.
-BOMs are not linked to the referenced configuration of the view. So if the view's referenced configuration is changed - the BOM won't update.
+![在BOM表中使用的配置列表](bom-configurations-property.png){ width=168 height=320 }
 
-This macro will find all BOM tables and update their referenced configurations based on the default view of the sheet.
+Bill of Materials（BOM）表与绘图视图无关，即使视图被删除，BOM表仍然存在。
+BOM表与视图的引用配置没有关联。因此，如果视图的引用配置发生更改，BOM表将不会更新。
 
-![Use custom properties value from model option in the sheet properties](use-custom-prps-from-view-sheet-property.png){ width=400 height=165 }
+该宏将查找所有BOM表，并根据工作表的默认视图更新它们的引用配置。
 
-~~~ vb
+![在工作表属性中使用模型的自定义属性值选项](use-custom-prps-from-view-sheet-property.png){ width=400 height=165 }
+
+```vb
 Dim swApp As SldWorks.SldWorks
 Dim swDraw As SldWorks.DrawingDoc
 
@@ -161,12 +162,10 @@ Function GetPropertiesView(swSheet As SldWorks.Sheet) As SldWorks.View
             
         Next
         
-        Set GetPropertiesView = vViews(0) 'use first one
+        Set GetPropertiesView = vViews(0) '使用第一个视图
         
     End If
     
 End Function
-
-~~~
-
+```
 
