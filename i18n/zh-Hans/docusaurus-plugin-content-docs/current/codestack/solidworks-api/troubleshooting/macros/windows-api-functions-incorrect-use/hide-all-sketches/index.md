@@ -1,41 +1,42 @@
 ---
 layout: sw-tool
-title: VBA Macro to hide all sketches in the model using SOLIDWORKS API
-caption: Hide All Sketches
-description: Macro will hide (blank) or show (unblank) all sketches (2D and 3D) in the active document using SOLIDWORKS API
+title: 使用SOLIDWORKS API隐藏模型中的所有草图的VBA宏
+caption: 隐藏所有草图
+description: 使用SOLIDWORKS API，此宏将隐藏（空白）或显示（非空白）活动文档中的所有草图（2D和3D）。
 image: hidden-sketches.svg
-labels: [blank sketch, hide sketch, solidworks api, utils]
-group: Sketch
+labels: [空白草图, 隐藏草图, solidworks api, 实用工具]
+group: 草图
 redirect-from:
   - /2018/03/solidworks-api-sketch-hide-all-sketches.html
 ---
-This macro will hide (blank) or show (unblank) all sketches (2D and 3D) in the active document using SOLIDWORKS API.
 
-If the active document is an assembly, sketches from all components will be included as well.
+此宏将使用SOLIDWORKS API隐藏（空白）或显示（非空白）活动文档中的所有草图（2D和3D）。
 
-![Hide sketch option in context menu](sw-hide-all-sketches.png){ width=320 }
+如果活动文档是装配体，则还将包括所有组件的草图。
 
-## Configuration
+![上下文菜单中的隐藏草图选项](sw-hide-all-sketches.png){ width=320 }
 
-Change *HIDE_ALL_SKETCHES* option to specify if sketches need to be hidden or shown.
+## 配置
+
+更改*HIDE_ALL_SKETCHES*选项以指定是否需要隐藏或显示草图。
 
 ## CAD+
 
-This macro is compatible with [Toolbar+](https://cadplus.xarial.com/toolbar/) and [Batch+](https://cadplus.xarial.com/batch/) tools so the buttons can be added to toolbar and assigned with shortcut for easier access or run in the batch mode.
+此宏与[Toolbar+](https://cadplus.xarial.com/toolbar/)和[Batch+](https://cadplus.xarial.com/batch/)工具兼容，因此可以将按钮添加到工具栏并分配快捷键以便更轻松地访问或批处理运行。
 
-![Buttons in toolbar](toolbar.png)
+![工具栏中的按钮](toolbar.png)
 
-In order to enable [macro arguments](https://cadplus.xarial.com/toolbar/configuration/arguments/) set the **ARGS** constant to true
+要启用[宏参数](https://cadplus.xarial.com/toolbar/configuration/arguments/)，请将**ARGS**常量设置为true
 
 ~~~ vb
 #Const ARGS = True
 ~~~
 
-In this case it is not required to make copies of the macro to set individual [options to hide and show](#configuration). Instead use the **-hide**, **-show** arguments to hide and show sketches correspondingly.
+在这种情况下，不需要复制宏以设置单独的[隐藏和显示选项](#configuration)。而是使用**-hide**和**-show**参数相应地隐藏和显示草图。
 
-You can download the icons for each button: [hide sketches](hide-sketches.svg), [show sketches](show-sketches.svg) or use your own icons.
+您可以下载每个按钮的图标：[隐藏草图](hide-sketches.svg)，[显示草图](show-sketches.svg)或使用您自己的图标。
 
-Watch [video demonstration](https://youtu.be/jsjN8zNRTuc?t=23)
+观看[视频演示](https://youtu.be/jsjN8zNRTuc?t=23)
 
 ~~~ vb
 #Const ARGS = False 'True to use arguments from Toolbar+ or Batch+ instead of the constant
@@ -71,7 +72,7 @@ Sub main()
             Case "-show"
                 hideAllSketches = False
             Case Else
-                Err.Raise vbError, "", "Invalid argument. Valid arguments -hide and -show"
+                Err.Raise vbError, "", "无效的参数。有效的参数为-hide和-show"
         End Select
     #Else
         hideAllSketches = HIDE_ALL_SKETCHES
@@ -98,7 +99,7 @@ try_:
         End If
         
         If (Not swSketches) = -1 Then
-            Err.Raise vbError, "", "No sketches found"
+            Err.Raise vbError, "", "未找到草图"
         End If
         
         If swModel.Extension.MultiSelect2(swSketches, False, Nothing) = UBound(swSketches) + 1 Then
@@ -108,13 +109,13 @@ try_:
                 swModel.UnblankSketch
             End If
         Else
-            Err.Raise vbError, "", "Failed to select sketches"
+            Err.Raise vbError, "", "选择草图失败"
         End If
         
         GoTo finally_
     
     Else
-        Err.Raise vbError, "", "Please open part or assembly"
+        Err.Raise vbError, "", "请打开零件或装配体"
     End If
 
 catch_:
@@ -216,5 +217,3 @@ Function Contains(arr() As String, item As String) As Boolean
     
 End Function
 ~~~
-
-
