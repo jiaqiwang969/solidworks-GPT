@@ -37,7 +37,7 @@ labels: [边界框, 极值点]
 
 ### 通过极值点计算精确边界框
 
-~~~ vb
+``` vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -170,13 +170,13 @@ Sub DrawBox(model As SldWorks.ModelDoc2, minX As Double, minY As Double, minZ As
     
 End Sub
 
-~~~
+```
 
 
 
 ### 计算近似边界框
 
-~~~ vb
+``` vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -236,4 +236,4 @@ Sub DrawBox(model As SldWorks.ModelDoc2, minX As Double, minY As Double, minZ As
 End Sub
 
 
-~~~
+```
