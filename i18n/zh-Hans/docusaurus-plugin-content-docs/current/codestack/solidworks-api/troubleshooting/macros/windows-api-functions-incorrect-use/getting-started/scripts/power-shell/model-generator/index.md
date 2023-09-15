@@ -6,9 +6,9 @@ image: model-parameters.png
 labels: [dimension, parameters, script]
 ---
 
-这个PowerShell脚本允许使用SOLIDWORKS API根据指定参数生成模型，基于模板。
+This PowerShell script allows you to generate a model using the SOLIDWORKS API based on specified parameters and a template.
 
-* 创建两个文件，并将下面代码段中的代码粘贴进去。
+* Create two files and paste the code snippets below into them.
 
 ## model-generator.ps1
 ~~~ ps1
@@ -33,7 +33,7 @@ Public Class ModelGenerator
         swApp.UserControlBackground = True
         
         If swApp Is Nothing Then
-            Console.WriteLine("连接到SOLIDWORKS实例失败")
+            Console.WriteLine("Failed to connect to SOLIDWORKS instance")
             Exit Sub
         End If
 
@@ -42,7 +42,7 @@ Public Class ModelGenerator
         Const PARAM_HEIGHT As String = "Height@Boss"
 
         Dim openDocSpec As Object
-        Console.WriteLine("打开模板模型: " + templatePath)
+        Console.WriteLine("Opening template model: " + templatePath)
         openDocSpec = swApp.GetOpenDocSpec(templatePath)
         openDocSpec.Silent = True
         openDocSpec.ReadOnly = True
@@ -52,7 +52,7 @@ Public Class ModelGenerator
         If model IsNot Nothing Then
 
             Try
-                Console.WriteLine("设置参数")
+                Console.WriteLine("Setting parameters")
 
                 Dim parameters As New Dictionary(Of String, Double)
                 parameters.Add(PARAM_WIDTH, Double.Parse(width))
@@ -74,15 +74,15 @@ Public Class ModelGenerator
                         If param.SetSystemValue3(paramValue, swSetValue_InAllConfigurations, Nothing) = swSetValue_Successful Then
                             Console.WriteLine(String.Format("{0}={1}", paramName, paramValue))
                         Else
-                            Throw New Exception(String.Format("将参数{0}设置为{1}失败", paramName, paramValue))
+                            Throw New Exception(String.Format("Failed to set parameter {0} to {1}", paramName, paramValue))
                         End If
                     Else
-                        Throw New Exception("找不到参数: " + paramName)
+                        Throw New Exception("Parameter not found: " + paramName)
                     End If
 
                 Next
 
-                Console.WriteLine("将模型保存到" + outFilePath)
+                Console.WriteLine("Saving the model to " + outFilePath)
 
                 Const swSaveAsCurrentVersion As Integer = 0
                 Const swSaveAsOptions_Silent As Integer = 1
@@ -91,17 +91,17 @@ Public Class ModelGenerator
                 model.ForceRebuild3(False)
 
                 If model.Extension.GetWhatsWrongCount() > 0 Then
-                    Console.WriteLine("模型存在重建错误")
+                    Console.WriteLine("Model has rebuild errors")
                 End If
 
                 Dim err As Integer = model.SaveAs3(outFilePath, swSaveAsCurrentVersion, swSaveAsOptions_Silent + swSaveAsOptions_Copy)
                 
                 If err <> 0  Then
-                    Throw New Exception(String.Format("将文档保存到{0}失败。错误代码: {1}", outFilePath, err))
+                    Throw New Exception(String.Format("Failed to save the document to {0}. Error code: {1}", outFilePath, err))
                 End If
 
             Catch ex As Exception
-                Console.WriteLine("错误: " & ex.Message)
+                Console.WriteLine("Error: " & ex.Message)
             Finally
                 swApp.CommandInProgress = False
                 Dim modelTitle As String = model.GetTitle()
@@ -111,7 +111,7 @@ Public Class ModelGenerator
                 swApp.CloseDoc(modelTitle)
             End Try
         Else
-            Console.WriteLine("打开模板模型失败 " + templatePath)
+            Console.WriteLine("Failed to open template model " + templatePath)
         End If
         
     End Sub
@@ -142,24 +142,24 @@ PowerShell -NoProfile -ExecutionPolicy Bypass -File "%~dp0model-generator.ps1" %
 
 
 
-下载[模板模型](template.SLDPRT)并将其保存到与上述两个脚本相同的文件夹中。
+Download the [template model](template.SLDPRT) and save it in the same folder as the above two scripts.
 
-这是一个带有3个驱动参数（宽度、高度和长度）的模板模型。
+This is a template model with 3 driving parameters (width, height, and length).
 
-![带有参数的模型](model-parameters.png){ width=350 }
+![Model with parameters](model-parameters.png){ width=350 }
 
-脚本将修改它并保存为一个新文件。
+The script will modify it and save it as a new file.
 
-* 启动命令行并执行以下命令
+* Launch the command prompt and execute the following command:
 
 ~~~ bat
-[model-generator.cmd的完整路径] [输出SOLIDWORKS文件的完整路径] [宽度] [长度] [高度]
+[path to model-generator.cmd] [full path to the output SOLIDWORKS file] [width] [length] [height]
 ~~~
 
-结果将生成文件，并在控制台中直接显示进程日志：
+The result will generate the file and display the process log directly in the console:
 
-![控制台中显示进程和模型生成结果的消息](console-output.png){ width=450 }
+![Console output showing the process and model generation result](console-output.png){ width=450 }
 
-模板文件不会被修改，生成的模型将带有更新的参数保存。
+The template file will not be modified, and the generated model will be saved with the updated parameters.
 
-![应用参数的生成模型](model-result.png){ width=350 }
+![Generated model with applied parameters](model-result.png){ width=350 }
