@@ -1,27 +1,28 @@
 ---
-title: Select any SOLIDWORKS objects in a batch using API
-caption: Select Any Objects In A Batch
-description: Example demonstrates how to select any SOLIDWORKS objects (entities, features, annotations, etc.) in a batch mode
+title: 使用API批量选择任意SOLIDWORKS对象
+caption: 批量选择任意对象
+description: 该示例演示了如何以批量模式选择任意SOLIDWORKS对象（实体、特征、注释等）。
 image: select-objects.png
-labels: [selection, batch selection, dispatch]
+labels: [选择, 批量选择, 调度]
 ---
-![Different object types selected in the graphics area]( select-objects.png)
 
-This example demonstrates how to select any SOLIDWORKS objects (entities, features, annotations, etc.) in a batch mode.
+![在图形区域中选择不同类型的对象](select-objects.png)
 
-This technique can be useful when the type of the object is not known in advance. It also gives performance benefits when selecting several objects at a time instead of selecting one-by-one using SOLIDWORKS API.
+该示例演示了如何以批量模式选择任意SOLIDWORKS对象（实体、特征、注释等）。
 
-The following example provides similar functionality to SOLIDWORKS [Create Selection Set](https://help.solidworks.com/2015/english/whatsnew/t_creating_selection_sets.htm)
+当对象的类型事先不知道时，这种技术非常有用。与使用SOLIDWORKS API逐个选择对象相比，一次选择多个对象可以提高性能。
 
-![Create Selection Set context menu command](create-selection-set.png){ width=300 }
+以下示例提供了类似于SOLIDWORKS的[创建选择集](https://help.solidworks.com/2015/english/whatsnew/t_creating_selection_sets.htm)的功能。
 
-* Open any model and select any objects (this can be different types objects like features, entities, annotations etc.)
-* Run the macro. Macro will collect the pointers of all selected object
-* Macro clears the selection and stops the execution
-* Continue the execution and all previously selected objects are reselected.
+![创建选择集上下文菜单命令](create-selection-set.png){ width=300 }
+
+* 打开任何模型并选择任意对象（可以是不同类型的对象，如特征、实体、注释等）。
+* 运行宏。宏将收集所有选定对象的指针。
+* 清除选择并停止执行。
+* 继续执行，之前选择的所有对象将被重新选择。
 
 <details open>
-<summary>VBA Example</summary>
+<summary>VBA示例</summary>
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
 
@@ -45,7 +46,7 @@ Sub main()
         swModel.Extension.MultiSelect2 vObjects, False, Nothing
         
     Else
-        MsgBox "Please open the document"
+        MsgBox "请打开文档"
     End If
     
 End Sub
@@ -77,7 +78,7 @@ End Function
 </details>
 
 <details open>
-<summary>C# Example</summary>
+<summary>C#示例</summary>
 ~~~ cs
 using System.Collections.Generic;
 using SolidWorks.Interop.sldworks;
@@ -112,7 +113,7 @@ namespace CodeStack
             }
             else
             {
-                swApp.SendMsgToUser("Please open the model");
+                swApp.SendMsgToUser("请打开模型");
             }
         }
 
