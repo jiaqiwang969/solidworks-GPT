@@ -1,15 +1,15 @@
 ---
-title: Macro renames table annotation using SOLIDWORKS API
-caption: Rename Table Annotation
-description: Example demonstrates how to rename the selected table using SOLIDWORKS API
+title: 使用SOLIDWORKS API重命名表格注释的宏
+caption: 重命名表格注释
+description: 该示例演示了如何使用SOLIDWORKS API通过[ITableAnnotation](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ITableAnnotation.html)接口重命名选定的表格。表格应该在图形区域中被选中（而不是在特征树中）。
 image: rename-table-annotation.png
 labels: [table, rename]
 ---
-![Table annotation renamed to a custom name](rename-table-annotation.png){ width=450 }
+![表格注释被重命名为自定义名称](rename-table-annotation.png){ width=450 }
 
-This example demonstrates how to rename the selected table using SOLIDWORKS API via [ITableAnnotation](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ITableAnnotation.html) interface. Table should be selected in the graphics area (not in the feature tree)
+该示例演示了如何使用SOLIDWORKS API通过[ITableAnnotation](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ITableAnnotation.html)接口重命名选定的表格。表格应该在图形区域中被选中（而不是在特征树中）。
 
-Specify the name of the table by modifying the constant at the beginning of the macro:
+通过修改宏的开头处的常量来指定表格的名称：
 
 ~~~ vb
 Const TABLE_NAME As String = "MyTable"
@@ -47,11 +47,11 @@ Sub main()
             swTableFeat.Name = TABLE_NAME
         
         Else
-            MsgBox "Please select table to rename"
+            MsgBox "请选择要重命名的表格"
         End If
         
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -128,5 +128,3 @@ Function GetFeatureFromTableAnnotation(tableAnn As SldWorks.TableAnnotation) As 
     
 End Function
 ~~~
-
-
