@@ -39,7 +39,7 @@ SOLIDWORKS是[向后兼容](https://en.wikipedia.org/wiki/Backward_compatibility
 
 示例宏使用添加到SOLIDWORKS 2017的API
 
-~~~ vb
+```vb
 Dim swApp As SldWorks.SldWorks
 Dim swAssy As SldWorks.AssemblyDoc
 
@@ -55,13 +55,13 @@ Sub main()
     
 End Sub
 
-~~~
+```
 
 
 
 修改后的宏，使其与SOLIDWORKS 2005及更高版本兼容
 
-~~~ vb
+```vb
 Dim swApp As SldWorks.SldWorks
 Dim swAssy As SldWorks.AssemblyDoc
 
@@ -76,4 +76,4 @@ Sub main()
             True, False, "", False
     
 End Sub
-~~~
+```
