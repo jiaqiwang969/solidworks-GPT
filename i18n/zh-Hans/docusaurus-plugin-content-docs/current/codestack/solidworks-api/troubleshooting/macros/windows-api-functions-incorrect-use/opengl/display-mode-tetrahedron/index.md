@@ -1,55 +1,56 @@
 ---
-title: Render tetrahedron using OpenGL and handle view display modes using SOLIDWORKS API
-caption: Render Tetrahedron And Handle View Display Modes
-description: VB.NET add-in for SOLIDWORKS to render the graphics of tetrahedron in different display modes (shaded, shaded with edges, hlr, hlv, wireframe)
+title: 使用OpenGL渲染四面体并使用SOLIDWORKS API处理视图显示模式
+caption: 渲染四面体并处理视图显示模式
+description: SOLIDWORKS的VB.NET插件，用于在不同的显示模式（填充、填充带边缘、隐藏线、隐藏线可见、线框）中渲染四面体的图形。
 image: shaded-with-edges.png
-labels: [opengl,display model,shaded,hlr,hlv,wireframe]
+labels: [opengl,显示模式,填充,隐藏线,线框]
 ---
-This example demonstrates how to render the tetrahedron geometry using OpenGL graphics and handle the different display modes (shaded, shaded with edges, hlr, hlv, wireframe).
 
-Once add-in is compiled, tetrahedron will be rendered in each newly opened or created 3D model (part or assembly).
+本示例演示了如何使用OpenGL图形渲染四面体几何体，并处理不同的显示模式（填充、填充带边缘、隐藏线、隐藏线可见、线框）。
 
-Change display modes in the heads up menu of SOLIDWORKS model view to see the graphics updated.
+一旦编译了插件，每次打开或创建新的3D模型（零件或装配）时，四面体都会被渲染。
 
-![Display modes in SOLIDWORKS model view](display-style.png){ width=350 }
+在SOLIDWORKS模型视图的快捷菜单中更改显示模式以查看图形更新。
 
-## Display Modes
+![SOLIDWORKS模型视图中的显示模式](display-style.png){ width=350 }
 
-### Shaded with edges
+## 显示模式
 
-Achieved by rendering two layers of graphics: filled triangles and not filled lines on top of the triangles.
+### 填充带边缘
 
-![Shaded with edges display mode](shaded-with-edges.png){ width=200 }
+通过在三角形上方渲染两层图形：填充的三角形和未填充的线条。
 
-### Shaded
+![填充带边缘显示模式](shaded-with-edges.png){ width=200 }
 
-Achieved by rendering the triangles
+### 填充
 
-![Shaded](shaded.png){ width=200 }
+通过渲染三角形来实现。
 
-### Hidden lines removed
+![填充](shaded.png){ width=200 }
 
-Achieved by rendering triangles with polygon mode set to lines.
+### 隐藏线
 
-![Hidden lines removed display mode](hidden-lines-removed.png){ width=200 }
+通过将多边形模式设置为线条来实现。
 
-### Hidden lines visible
+![隐藏线显示模式](hidden-lines-removed.png){ width=200 }
 
-Achieved by rendering dashed line in lines mode
+### 隐藏线可见
 
-![Hidden lines visible display mode](hidden-lines-visible.png){ width=200 }
+通过以线条模式渲染虚线来实现。
 
-### Wireframe
+![隐藏线可见显示模式](hidden-lines-visible.png){ width=200 }
 
-Achieved by rendering graphics in lines mode
+### 线框
 
-![Wireframe display mode](wireframe.png){ width=200 }
+通过以线条模式渲染图形来实现。
 
-Source code can be downloaded from [GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/swex/add-in/opengl/OglTetrahedron)
+![线框显示模式](wireframe.png){ width=200 }
+
+源代码可以从[GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/swex/add-in/opengl/OglTetrahedron)下载。
 
 ## AddIn.vb
 
-This the add-in entry point. [SwEx.AddIn](/docs/codestack/labs/solidworks/swex/add-in/) framework is used to manage documents lifecycle by providing the wrapper class.
+这是插件的入口点。使用[SwEx.AddIn](/docs/codestack/labs/solidworks/swex/add-in/)框架通过提供包装类来管理文档的生命周期。
 
 ~~~ vb
 Imports CodeStack.SwEx.AddIn
@@ -72,7 +73,7 @@ End Class
 
 ## OpenGlDocumentHandler.vb
 
-This is a handler class for each model document which subscribes to the OpenGL Buffer Swap notification provided by SOLIDWORKS and performs the calculation of tetrahedron triangle coordinates and renders the geometry. 
+这是每个模型文档的处理程序类，它订阅SOLIDWORKS提供的OpenGL缓冲区交换通知，并执行四面体三角形坐标的计算和渲染几何体。
 
 ~~~ vb
 Imports CodeStack.SwEx.AddIn.Base
@@ -196,7 +197,7 @@ End Class
 
 ## OpenGL.vb
 
-List of imports for OpenGL functions.
+OpenGL函数的导入列表。
 
 ~~~ vb
 Imports System.Runtime.InteropServices
@@ -252,5 +253,3 @@ Public Class OpenGl
 End Class
 
 ~~~
-
-
