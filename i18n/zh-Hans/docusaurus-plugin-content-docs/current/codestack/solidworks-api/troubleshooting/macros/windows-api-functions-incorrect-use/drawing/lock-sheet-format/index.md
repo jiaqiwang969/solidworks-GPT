@@ -1,85 +1,85 @@
 ---
 layout: sw-tool
-title: Macro to lock sheet format for editing using SOLIDWORKS API
-caption: Lock Sheet Format
-description: VBA macro which locks (or password protects) the sheet format editing using SOLIDWORKS API
+title: 使用SOLIDWORKS API锁定编辑表单格式的宏
+caption: 锁定表单格式
+description: 使用SOLIDWORKS API锁定（或密码保护）表单格式编辑的VBA宏
 image: locked-sheet-format.png
-labels: [lock,sheet format,protect]
-group: Drawing
+labels: [锁定,表单格式,保护]
+group: 绘图
 ---
-![Edit sheet format context menu command](edit-sheet-format-command.png){ width=250 }
+![编辑表单格式上下文菜单命令](edit-sheet-format-command.png){ width=250 }
 
-This VBA macro allows to disable (or password protect) the editing of the sheet format in SOLIDWORKS drawing using SOLIDWORKS API.
+这个VBA宏允许使用SOLIDWORKS API禁用（或密码保护）SOLIDWORKS绘图中的表单格式编辑。
 
-This macro can be useful where it is required to disallow users to modify the standard sheet format.
+当需要禁止用户修改标准表单格式时，这个宏非常有用。
 
-Macro provides 2 options which could be configured by changing the constants below:
+宏提供了两个选项，可以通过更改下面的常量进行配置：
 
 ~~~ vb
 Public Const LOCK_WITH_PASSWORD As Boolean = False
 Public Const PASSWORD As String = ""
 ~~~
 
-## Locking the editing
+## 锁定编辑
 
-Set the value of *LOCK_WITH_PASSWORD* to *False*. 
+将*LOCK_WITH_PASSWORD*的值设置为*False*。
 
-The following message is displayed every time the *Edit Sheet Format* command is called and command is cancelled:
+每次调用*编辑表单格式*命令并取消命令时，都会显示以下消息：
 
-![Message indicating that the sheet is locked for editing](locked-message.png)
+![指示表单已锁定以进行编辑的消息](locked-message.png)
 
-## Password protecting the editing
+## 密码保护编辑
 
-Set the value of *LOCK_WITH_PASSWORD* to *True*. Set the value of *PASSWORD* to the target password.
+将*LOCK_WITH_PASSWORD*的值设置为*True*。将*PASSWORD*的值设置为目标密码。
 
-It is recommended to password protect the VBA macro, so the password cannot be seen from the macro itself.
+建议对VBA宏进行密码保护，以便无法从宏本身查看密码。
 
-The following prompt is displayed every time the *Edit Sheet Format* command is called
+每次调用*编辑表单格式*命令时，都会显示以下提示：
 
-![Prompt to enter password to unlock spreadsheet](password-prompt.png)
+![提示输入密码以解锁电子表格](password-prompt.png)
 
-If password matches, the sheet format can be edited, otherwise the command is cancelled and error message is displayed.
+如果密码匹配，则可以编辑表单格式，否则将取消命令并显示错误消息。
 
-## Creating the macro
+## 创建宏
 
-* Create new macro and paste [the code](#macro-module) of Macro Module
-* Add new [class module](/docs/codestack/visual-basic/classes/) and name it *SheetFormatEditorHandler*. Paste the [code below](#sheetformateditorhandler-class) into class module.
-* Add new [user form](/docs/codestack/visual-basic/user-forms/) and name it *PasswordBox*. Paste the [code below](#passwordbox-user-form) into the user form code
-* Add the controls to the form as shown below and specify the name of each control as marked on the image
+* 创建新的宏并粘贴[宏模块](#macro-module)的代码
+* 添加新的[类模块](/docs/codestack/visual-basic/classes/)并将其命名为*SheetFormatEditorHandler*。将[class module](#sheetformateditorhandler-class)的代码粘贴到类模块中。
+* 添加新的[用户窗体](/docs/codestack/visual-basic/user-forms/)并将其命名为*PasswordBox*。将[user form](#passwordbox-user-form)的代码粘贴到用户窗体代码中。
+* 根据下图所示添加控件，并指定每个控件的名称。
 
-![Controls in password box user form](password-box-controls.png)
+![密码框用户窗体中的控件](password-box-controls.png)
 
-* Set the value of *PasswordChar* property of Text Box control to \* to hide the password from user interface while typing
+* 将文本框控件的*PasswordChar*属性值设置为\*，以在输入时隐藏用户界面中的密码。
 
-![Password char in text box control](text-box-password-char.png)
+![文本框控件中的密码字符](text-box-password-char.png)
 
-The files tree should look similar to below image.
+文件树应类似于下图。
 
-![Macro files tree](macro-files-tree.png)
+![宏文件树](macro-files-tree.png)
 
-Follow the [Run Macro On SOLIDWORKS Start](/docs/codestack/solidworks-api/getting-started/macros/run-macro-on-solidworks-start/) for the instruction of setting up the automatic run of the macro on SOLIDWORKS startup.
+按照[在SOLIDWORKS启动时运行宏](/docs/codestack/solidworks-api/getting-started/macros/run-macro-on-solidworks-start/)的说明设置宏在SOLIDWORKS启动时自动运行。
 
-## Blocking other commands
+## 阻止其他命令
 
-This macro can be modified to block another commands. It could be also changed to handle multiple commands at the same time. In order to enable this it is required to modify the following line
+可以修改此宏以阻止其他命令。还可以更改以同时处理多个命令。为此，需要修改以下行：
 
 ~~~ vb
 If Command = swCommands_Edit_Template Then
 ~~~
 
-To the
+为
 
 ~~~ vb
 If Command = CmdId1 Or Command = CmdId2 ... Or Command = CmdId3 Then
 ~~~
 
-For example the following line would block editing sketch, opening the SOLIDWORKS options dialog and printing the document. Refer the [Capture Commands](/docs/codestack/solidworks-api/application/frame/capture-commands/) macro for an explanation of how to extract the IDs for the specific command in SOLIDWORKS.
+例如，以下行将阻止编辑草图、打开SOLIDWORKS选项对话框和打印文档。请参阅[Capture Commands](/docs/codestack/solidworks-api/application/frame/capture-commands/)宏，了解如何提取SOLIDWORKS中特定命令的ID的说明。
 
 ~~~ vb
 If Command = 859 Or Command = 342 Or Command = 589 Then
 ~~~
 
-### Macro Module
+### 宏模块
 
 ~~~ vb
 Public Const LOCK_WITH_PASSWORD As Boolean = True
@@ -97,7 +97,7 @@ End Sub
 
 
 
-### SheetFormatEditorHandler Class
+### SheetFormatEditorHandler 类
 
 ~~~ vb
 Dim WithEvents swApp As SldWorks.SldWorks
@@ -117,7 +117,7 @@ Private Function swApp_CommandOpenPreNotify(ByVal Command As Long, ByVal UserCom
         If LOCK_WITH_PASSWORD Then
             
             Dim pwd As String
-            PasswordBox.Message = "Sheet format editing is locked. Please enter password to unlock"
+            PasswordBox.Message = "表单格式编辑已锁定。请输入密码以解锁"
             PasswordBox.ShowDialog
             pwd = PasswordBox.Password
             
@@ -125,11 +125,11 @@ Private Function swApp_CommandOpenPreNotify(ByVal Command As Long, ByVal UserCom
                 If pwd = Password Then
                     cancel = False
                 Else
-                    swApp.SendMsgToUser2 "Password is incorrect", swMessageBoxIcon_e.swMbStop, swMessageBoxBtn_e.swMbOk
+                    swApp.SendMsgToUser2 "密码不正确", swMessageBoxIcon_e.swMbStop, swMessageBoxBtn_e.swMbOk
                 End If
             End If
         Else
-            swApp.SendMsgToUser2 "Sheet format editing is locked", swMessageBoxIcon_e.swMbInformation, swMessageBoxBtn_e.swMbOk
+            swApp.SendMsgToUser2 "表单格式编辑已锁定", swMessageBoxIcon_e.swMbInformation, swMessageBoxBtn_e.swMbOk
         End If
         
         swApp_CommandOpenPreNotify = IIf(cancel, 1, 0)
@@ -140,7 +140,7 @@ End Function
 
 
 
-### PasswordBox User Form
+### PasswordBox 用户窗体
 
 ~~~ vb
 Public Password As String
@@ -162,5 +162,3 @@ Private Sub btnOk_Click()
     
 End Sub
 ~~~
-
-
