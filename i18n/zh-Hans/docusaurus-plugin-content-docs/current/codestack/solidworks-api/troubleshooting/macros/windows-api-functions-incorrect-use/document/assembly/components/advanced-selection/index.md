@@ -1,47 +1,47 @@
 ---
-title: Macro for extended advanced selections using SOLIDWORKS API
-caption: Advanced Selections
-description: Macro adds additional selection criteria to the advanced selection tool allowing to select components which are excluded from bom, envelope, float etc.
+title: 使用SOLIDWORKS API进行扩展高级选择的宏
+caption: 高级选择
+description: 该宏使用SOLIDWORKS API来扩展SOLIDWORKS装配中“高级选择”工具中可用的选择条件列表。
 image: filtered-components-selection.png
-labels: [selection, fixed, envelope]
+labels: [选择, 固定, 包络]
 ---
-![Envelope components selected in the feature manager tree](filtered-components-selection.png){ width=250 }
+![在特征管理器树中选择包络组件](filtered-components-selection.png){ width=250 }
 
-This macro is using SOLIDWORKS API to extend the available list of selection criteria in the *Advanced Selection* tool in SOLIDWORKS assembly.
+该宏使用SOLIDWORKS API来扩展SOLIDWORKS装配中“高级选择”工具中可用的选择条件列表。
 
-Macro allows to select the following group of components (or combinations)
+该宏允许选择以下组件（或组合）：
 
-* Float - underconstrained components (components which have minus symbol (-) in their names)
-* ExcludedFromBom - components which are excluded from Bill Of Materials (including Envelope components)
-* Envelope - components which are marked as envelope
-* NoMates - components which contain no mates
+* Float - 未完全约束的组件（名称中带有减号（-）的组件）
+* ExcludedFromBom - 从BOM中排除的组件（包括包络组件）
+* Envelope - 标记为包络的组件
+* NoMates - 不包含任何约束的组件
 
-In order to configure the macro modify the *CRITERIA*  and *TOP_LEVEL_ONLY* constants in the beginning of the macro.
+要配置该宏，请修改宏的开头处的*CRITERIA*和*TOP_LEVEL_ONLY*常量。
 
 ~~~ vb
 Const CRITERIA As Integer = Criteria_e.Float + Criteria_e.NoMates
 Const TOP_LEVEL_ONLY As Boolean = False
 ~~~
 
-*TOP_LEVEL_ONLY* indicates if only top level components should be used for filtering. Set this option to *True* to select nested components as well
+*TOP_LEVEL_ONLY*指示是否仅使用顶层组件进行过滤。将此选项设置为*True*以选择嵌套组件。
 
 ~~~ vb
 Const TOP_LEVEL_ONLY As Boolean = True
 ~~~
 
-*CRITERIA* is a combination of filters where *Or* operator is applied.
+*CRITERIA*是一组过滤器的组合，其中应用*Or*运算符。
 
-For example
+例如：
 
 ~~~ vb
-Const CRITERIA As Integer = Criteria_e.Float + Criteria_e.NoMates 'All float components or components with no mates wil be selected
+Const CRITERIA As Integer = Criteria_e.Float + Criteria_e.NoMates '将选择所有浮动组件或没有约束的组件
 ~~~
 
 ~~~ vb
-Const CRITERIA As Integer = Criteria_e.Envelope 'Only envelope components will be selected
+Const CRITERIA As Integer = Criteria_e.Envelope '将只选择包络组件
 ~~~
 
-Modify the filter in the macro as required.
+根据需要修改宏中的过滤器。
 
 ~~~ vb
 Enum Criteria_e
@@ -69,7 +69,7 @@ Sub main()
         SelectComponents swAssy, CRITERIA, TOP_LEVEL_ONLY
     
     Else
-        MsgBox "Please open assembly"
+        MsgBox "请打开装配体"
     End If
     
     Dim val As Criteria_e
@@ -130,7 +130,7 @@ Function SelectComponents(assy As SldWorks.AssemblyDoc, crit As Criteria_e, topL
         Dim swModel As SldWorks.ModelDoc2
         Set swModel = assy
         If UBound(swFilteredComps) + 1 <> swModel.Extension.MultiSelect2(swFilteredComps, False, Nothing) Then
-            Err.Raise vbError, , "Failed to select components"
+            Err.Raise vbError, , "选择组件失败"
         End If
     End If
     
@@ -140,5 +140,3 @@ Function IsFlagSet(val As Criteria_e, flag As Criteria_e) As Boolean
     IsFlagSet = (val And flag) = flag
 End Function
 ~~~
-
-
