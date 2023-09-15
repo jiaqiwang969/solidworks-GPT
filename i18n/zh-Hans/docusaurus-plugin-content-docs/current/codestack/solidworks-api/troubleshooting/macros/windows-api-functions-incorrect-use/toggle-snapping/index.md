@@ -1,30 +1,30 @@
 ---
 layout: sw-tool
-caption: Toggle Sketch Snapping
-title: Macro to toggle the sketch snapping in SOLIDWORKS document
-description: VBA macro to toggle on and off the sketch enable snapping option in SOLIDWORKS sketch
+caption: 切换草图捕捉
+title: 在SOLIDWORKS文档中切换草图捕捉的宏
+description: VBA宏用于在SOLIDWORKS草图中切换启用捕捉选项
 image: toggle-snapping.svg
 group: Sketch
 ---
-![Enable Sketch snapping option](enable-snapping-option.png)
+![启用草图捕捉选项](enable-snapping-option.png)
 
-This VBA macro allows to toggle on and off the 'Enable' option in SOLIDWORKS sketch.
+这个VBA宏允许在SOLIDWORKS草图中切换“启用”选项。
 
-## Using macro in Toolbar+
+## 在工具栏+中使用宏
 
-This macro can be used in [Toolbar+](https://cadplus.xarial.com/toolbar/) which will improve the user experience. It is possible to enable the [toggle state](https://cadplus.xarial.com/toolbar/configuration/toggles/) for the macro button.
+这个宏可以在[工具栏+](https://cadplus.xarial.com/toolbar/)中使用，这将改善用户体验。可以为宏按钮启用[切换状态](https://cadplus.xarial.com/toolbar/configuration/toggles/)。
 
-![Enable snapping toggle button](enable-snapping-animation.gif)
+![启用捕捉切换按钮](enable-snapping-animation.gif)
 
-Paste this code into the "Toggle Button State Code" text box:
+将以下代码粘贴到“切换按钮状态代码”文本框中：
 
 ~~~ vb
 Return CType(Application, Object).Sw.GetUserPreferenceToggle(249)
 ~~~
 
-![Code for handling the state of the toggle button](toggle-state-code.png)
+![处理切换按钮状态的代码](toggle-state-code.png)
 
-Download icon [here](toggle-snapping.svg)
+下载图标[这里](toggle-snapping.svg)
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -40,4 +40,3 @@ Sub main()
     
 End Sub
 ~~~
-
