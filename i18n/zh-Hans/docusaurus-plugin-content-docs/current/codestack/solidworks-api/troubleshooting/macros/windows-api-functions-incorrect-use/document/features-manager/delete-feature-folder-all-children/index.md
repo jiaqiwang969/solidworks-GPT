@@ -1,27 +1,28 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS Macro to delete feature folder with all children features
-caption: Delete Feature Folder With All Children Features
-description: Macro allows to delete all of the features in the selected folder in one click using SOLIDWORKS API
+title: SOLIDWORKS宏以及删除包含所有子特征的特征文件夹
+caption: 删除包含所有子特征的特征文件夹
+description: 该宏使用SOLIDWORKS API，允许一键删除所选文件夹中的所有特征
 image: deleted-folder-features.svg
-labels: [delete folder, feature manager, folder, solidworks api, utility]
-group: Model
+labels: [删除文件夹, 特征管理器, 文件夹, solidworks api, 实用工具]
+group: 模型
 redirect-from:
   - /2018/04/solidworks-api-feature-manager-delete-feature-folder-with-all-children.html
 ---
-When deleting the top folder in SOLIDWORKS features tree all sub features are not get deleted so it is required to select all of them one-by-one in order to delete folder content.
 
-This is not always possible to do in one step due to the features relations:  
+在SOLIDWORKS特征树中删除顶层文件夹时，所有子特征不会被删除，因此需要逐个选择它们以删除文件夹内容。
 
-![Manually deleting the folder feature](delete-features-manually.gif){ width=400 }
+由于特征之间的关系，这并不总是可以一步完成的：
 
-The macro below allows to delete all of the features in the selected folder in one click using SOLIDWORKS API. Nested folders are also supported.
+![手动删除文件夹特征](delete-features-manually.gif){ width=400 }
 
-![Deleting the folder with all children features](delete-folder-with-features.png){ width=400 }
+下面的宏允许使用SOLIDWORKS API一键删除所选文件夹中的所有特征。支持嵌套文件夹。
 
-Macro can optionally display the confirmation dialog with the list of features about to be deleted
+![删除包含所有子特征的文件夹](delete-folder-with-features.png){ width=400 }
 
-Watch [video demonstration](https://youtu.be/9uZCecGg25I?t=396)
+宏可以选择是否显示带有即将删除特征列表的确认对话框。
+
+观看[视频演示](https://youtu.be/9uZCecGg25I?t=396)
 
 ~~~ vb
 Const SHOW_CONFIRMATION_DIALOG As Boolean = True
@@ -76,7 +77,7 @@ Sub main()
                     Next
                 
                     If swApp.SendMsgToUser2( _
-                        "Delete the following feature(s) and all absorbed features?" & vbCrLf & featNames, _
+                        "删除以下特征及其吸收的特征？" & vbCrLf & featNames, _
                         swMessageBoxIcon_e.swMbQuestion, _
                         swMessageBoxBtn_e.swMbYesNo) = swMessageBoxResult_e.swMbHitNo Then
                         End
@@ -86,15 +87,15 @@ Sub main()
                 swModel.Extension.DeleteSelection2 swDeleteSelectionOptions_e.swDelete_Absorbed
                 
             Else
-                MsgBox "Selected feature is not a folder"
+                MsgBox "所选特征不是文件夹"
             End If
             
         Else
-            MsgBox "Please select folder feature"
+            MsgBox "请选择文件夹特征"
         End If
         
     Else
-        MsgBox "Please open model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -204,5 +205,3 @@ Function CollectionToArray(coll As Collection) As Variant
     
 End Function
 ~~~
-
-
