@@ -1,34 +1,34 @@
 ---
-title: 在SOLIDWORKS API中使用进度条处理长时间操作进度
-caption: 用户进度条
-description: 在SOLIDWORKS API中使用用户进度条显示长时间操作进度
+title: Using Progress Bar to Handle Long Operations in SOLIDWORKS API
+caption: User Progress Bar
+description: Using a user progress bar to display the progress of long operations in SOLIDWORKS API
 image: taskbar-progress.png
 labels: [progress,user progress bar,background]
 ---
 
-为了改善宏或插件的用户体验，建议在执行长时间的SOLIDWORKS API操作时显示和更新进度条。
+To improve the user experience of macros or add-ins, it is recommended to display and update a progress bar when performing long operations in the SOLIDWORKS API.
 
-SOLIDWORKS API提供了一种内置方法，可以在主线程锁定时（即在进程中执行操作）显示进度。进度值和消息可以通过[IUserProgressBar](https://help.solidworks.com/2017/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IUserProgressBar.html) SOLIDWORKS API接口进行处理。
+The SOLIDWORKS API provides a built-in method to display progress when the main thread is locked (i.e., when the operation is being executed in the process). The progress value and message can be handled using the [IUserProgressBar](https://help.solidworks.com/2017/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IUserProgressBar.html) SOLIDWORKS API interface.
 
-消息和进度显示在应用程序左下角的标准SOLIDWORKS进度条中。
+The message and progress are displayed in the standard SOLIDWORKS progress bar at the bottom left corner of the application.
 
-![在进度条中显示的进度和消息](user-progress-bar.png)
+![Progress and message displayed in the progress bar](user-progress-bar.png)
 
-进度还会反映在任务栏中的SOLIDWORKS图标中。
+The progress is also reflected in the SOLIDWORKS icon in the taskbar.
 
-![在任务栏中的SOLIDWORKS图标中显示进度](taskbar-progress.png)
+![Progress displayed in the SOLIDWORKS icon in the taskbar](taskbar-progress.png)
 
-## 注意事项和限制
+## Notes and Limitations
 
-* 进度值和消息可以被SOLIDWORKS的标准进度消息覆盖（例如重建操作、文件加载等）。
+* The progress value and message can be overridden by SOLIDWORKS' standard progress messages (e.g., rebuild operations, file loading, etc.).
 
-## 运行宏
+## Running the Macro
 
-* 打开具有实体的零件文档
-* 宏遍历所有实体的面并对每个面执行数据提取
-* 操作根据*ITERATIONS_COUNT*常量指定的次数重复
-* 显示进度条
-* 按ESC键可以选择取消操作
+* Open a part document with entities.
+* The macro iterates through all the faces of the entities and performs data extraction on each face.
+* The operation is repeated based on the *ITERATIONS_COUNT* constant.
+* The progress bar is displayed.
+* Pressing the ESC key allows the operation to be canceled.
 
 ~~~ vb
 Const ITERATIONS_COUNT As Integer = 1000
@@ -53,11 +53,11 @@ Sub main()
         If Not IsEmpty(vBodies) Then
             PerformOperation vBodies
         Else
-            MsgBox "此零件中没有实体"
+            MsgBox "No bodies in this part"
         End If
             
     Else
-        MsgBox "请打开零件文档"
+        MsgBox "Please open a part document"
     End If
     
 End Sub
@@ -67,7 +67,7 @@ Sub PerformOperation(bodies As Variant)
     Dim swPrgBar As SldWorks.UserProgressBar
     swApp.GetUserProgressBar swPrgBar
     
-    swPrgBar.Start 0, GetProgressBarUpperBound(bodies), "正在处理面操作"
+    swPrgBar.Start 0, GetProgressBarUpperBound(bodies), "Processing face operations"
     
     Dim i As Integer
     
@@ -82,7 +82,7 @@ Sub PerformOperation(bodies As Variant)
         Dim vFaces As Variant
         vFaces = swBody.GetFaces()
         
-        swPrgBar.UpdateTitle "正在处理 " & swBody.Name & "，共有 " & UBound(vFaces) + 1 & " 个面"
+        swPrgBar.UpdateTitle "Processing " & swBody.Name & ", " & UBound(vFaces) + 1 & " faces in total"
         
         Dim j As Integer
         
@@ -104,7 +104,7 @@ Sub PerformOperation(bodies As Variant)
                 swSurf.GetClosestPointOn 0, 0, 0
                 
                 If swUpdateProgressError_e.swUpdateProgressError_UserCancel = swPrgBar.UpdateProgress(pos) Then
-                    If swApp.SendMsgToUser2("取消操作？", swMessageBoxIcon_e.swMbWarning, swMessageBoxBtn_e.swMbYesNo) = swMessageBoxResult_e.swMbHitYes Then
+                    If swApp.SendMsgToUser2("Cancel the operation?", swMessageBoxIcon_e.swMbWarning, swMessageBoxBtn_e.swMbYesNo) = swMessageBoxResult_e.swMbHitYes Then
                         swPrgBar.End
                     End If
                 End If
