@@ -1,11 +1,11 @@
-在Visual Basic中，可以使用**Type - End Type**代码块定义复杂的数据结构（组）变量。
+在SolidWorks API中，也可以使用**Type - End Type**代码块来定义复杂的数据结构（组）变量。
 
-~~~ vb
+```vb
 Type MyType
     Var1 As Double
     Var2 As String
 End Type
-~~~
+```
 
 这使开发人员能够创建易于理解和使用的数据结构。
 
@@ -19,7 +19,7 @@ End Type
 
 ![编译错误：Type块内的语句无效](statement-invalid-type-block.png){ width=350 }
 
-~~~ vb
+```vb
 Type MyType
     IntValue As Integer
     DoubleValue As Double
@@ -47,4 +47,4 @@ Sub main()
     Debug.Print val2.DoubleValue & ", " & val2.IntValue & ", " & val2.StringValue
     
 End Sub
-~~~
+```
