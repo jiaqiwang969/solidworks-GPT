@@ -1,67 +1,65 @@
 ---
 layout: sw-tool
-title: VBA macro to capture SOLIDWORKS commands via API event handlers
-caption: Capture SOLIDWORKS Commands
-description: Macro allows capturing SOLIDWORKS and user commands into the list box
+title: 使用API事件处理程序捕获SOLIDWORKS命令的VBA宏
+caption: 捕获SOLIDWORKS命令
+description: 该宏允许将SOLIDWORKS和用户命令捕获到列表框中
 image: capturing-hide-command-id.png
 labels: [command, event]
 group: Developers
 ---
-This macro allows capturing of SOLIDWORKS command ids (e.g. toolbar, page button or context menu clicks). Commands are defined in the [swCommands_e](https://help.solidworks.com/2012/english/api/swcommands/solidworks.interop.swcommands~solidworks.interop.swcommands.swcommands_e.html) enumeration and can be called using the [ISldWorks::RunCommand](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~runcommand.html) SOLIDWORKS API method.
+该宏允许捕获SOLIDWORKS命令ID（例如工具栏、页面按钮或上下文菜单的点击）。命令在[swCommands_e](https://help.solidworks.com/2012/english/api/swcommands/solidworks.interop.swcommands~solidworks.interop.swcommands.swcommands_e.html)枚举中定义，并可以使用[SOLIDWORKS API](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~runcommand.html)中的[ISldWorks::RunCommand](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~runcommand.html)方法调用。
 
-This could be in particularly useful when certain SOLIDWORKS APIs are not available in the SDK.
+当SDK中不可用某些SOLIDWORKS API时，这可能特别有用。
 
-All commands have user friendly names however they could not always match the names in the user interface. This fact could make it hard to find the correct command (as there are currently more than 3000 commands available). For example Hide Sketch command in User Interface corresponds to *swCommands_Blank_Refgeom* command id.
+所有命令都有用户友好的名称，但它们不一定与用户界面中的名称匹配。这个事实可能会使查找正确的命令变得困难（因为当前有超过3000个可用命令）。例如，用户界面中的隐藏草图命令对应于*swCommands_Blank_Refgeom*命令ID。
 
-## Capturing standard commands
+## 捕获标准命令
 
-This macro helps to capture the id of command directly from SOLIDWORKS by clicking the required command.
+该宏帮助直接从SOLIDWORKS中捕获命令的ID，只需点击所需的命令即可。
 
-* Run the macro. Form with list is displayed
-* Perform the required action (i.e. click button or menu item)
-* Command id is recorded and displayed in the list
+* 运行宏。显示带有列表的窗体。
+* 执行所需的操作（例如点击按钮或菜单项）。
+* 命令ID将被记录并显示在列表中。
 
-![Capturing sketch hide command id](capturing-hide-command-id.png){ width=350 }
+![捕获隐藏草图命令ID](capturing-hide-command-id.png){ width=350 }
 
-The command id can be looked up in the the [commands list](https://help.solidworks.com/2012/english/api/swcommands/solidworks.interop.swcommands~solidworks.interop.swcommands.swcommands_e.html)
+可以在[命令列表](https://help.solidworks.com/2012/english/api/swcommands/solidworks.interop.swcommands~solidworks.interop.swcommands.swcommands_e.html)中查找命令ID。
 
-![Hide sketch command id in swCommands_e enumeration](sw-commands-id.png){ width=350 }
+![swCommands_e枚举中的隐藏草图命令ID](sw-commands-id.png){ width=350 }
 
-> It is not required to explicitly use [swCommands_e](https://help.solidworks.com/2012/english/api/swcommands/solidworks.interop.swcommands~solidworks.interop.swcommands.swcommands_e.html) enumeration as it is defined in another interop (*solidworks.interop.swcommands.dll*). Instead command id can be defined as an integer or custom enumeration.
+> 不需要显式使用[swCommands_e](https://help.solidworks.com/2012/english/api/swcommands/solidworks.interop.swcommands~solidworks.interop.swcommands.swcommands_e.html)枚举，因为它在另一个互操作（*solidworks.interop.swcommands.dll*）中定义。相反，命令ID可以定义为整数或自定义枚举。
 
-## Capturing commands from the custom add-ins
+## 从自定义加载项捕获命令
 
-For the standard SOLIDWORKS commands, User Command argument will be equal to 0. However commands cannot be defined for any custom add-in or [Macro Buttons](/docs/codestack/solidworks-api/getting-started/macros/macro-buttons/)
+对于标准SOLIDWORKS命令，User Command参数将等于0。但是，无法为任何自定义加载项或[宏按钮](/docs/codestack/solidworks-api/getting-started/macros/macro-buttons/)定义命令。
 
-If this command is clicked, the command id would be equal to one of the following:
+如果点击了此命令，则命令ID将等于以下之一：
 
-![User specific command ids](user-commands.png){ width=450 }
+![用户特定命令ID](user-commands.png){ width=450 }
 
-Command would indicate the type of the button (minimized toolbar, menu, macro button etc.), and the User Command Id will be equal to the user id of a custom button. This is a command user id which can be retrieved via [ICommandGroup::CommandId](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ICommandGroup~CommandID.html) property while creating the custom commands manager in the SOLIDWORKS add-in.
+Command将指示按钮的类型（最小化工具栏、菜单、宏按钮等），而User Command Id将等于自定义按钮的用户ID。这是一个命令用户ID，可以通过在SOLIDWORKS加载项中创建自定义命令管理器时使用[ICommandGroup::CommandId](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ICommandGroup~CommandID.html)属性检索。
 
-![Capturing the commands from the custom add-in](capturing-user-command-id.png){ width=250 }
+![从自定义加载项中捕获命令](capturing-user-command-id.png){ width=250 }
 
-## Creating macro
+## 创建宏
 
-* Add User Form module to the macro and name it *CommandsMonitorForm*
+* 将用户窗体模块添加到宏中，并将其命名为*CommandsMonitorForm*。
 
-![VBA project structure](vba-macro-project.png){ width=450 }
+![VBA项目结构](vba-macro-project.png){ width=450 }
 
-* Drag-n-drop the List Box control onto the form and name it *lstLog*
+* 将列表框控件拖放到窗体上，并将其命名为*lstLog*。
 
-![Adding list box control to the form](add-list-box-control.png){ width=450 }
+![将列表框控件添加到窗体](add-list-box-control.png){ width=450 }
 
-* Add the code to corresponding modules
+* 将代码添加到相应的模块中。
 
-**Macro**
+**宏**
 
 ~~~ vb
 Sub main()
     CommandsMonitorForm.Show vbModeless
 End Sub
 ~~~
-
-
 
 **CommandsMonitorForm**
 
@@ -76,5 +74,3 @@ Private Function swApp_CommandOpenPreNotify(ByVal Command As Long, ByVal UserCom
     lstLog.AddItem "Command: " & Command & "; User Command:" & UserCommand
 End Function
 ~~~
-
-
