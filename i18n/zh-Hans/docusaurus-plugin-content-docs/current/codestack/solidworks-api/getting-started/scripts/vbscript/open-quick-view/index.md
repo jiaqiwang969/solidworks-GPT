@@ -21,7 +21,7 @@ SOLIDWORKS 提供了一种在[大型设计审查](https://help.solidworks.com/20
 * 创建一个扩展名为.vbs的文本文件，并将其命名为*opener.vbs*
 * 将以下代码粘贴到此文件中
 
-~~~ vbs
+```vbs
 Dim swApp
 Set swApp = CreateObject("SldWorks.Application")
 swApp.Visible = True
@@ -45,22 +45,20 @@ If filePath <> "" then
 Else
 	MsgBox "未指定文件路径"
 End If
-~~~
-
-
+```
 
 * 创建另一个文本文件，并将其命名为*install.cmd*
 * 将以下行添加到*install.cmd*中，以启用装配体的快速模式
 
-~~~ bat
+```bat
 reg add "HKCR\SldAssem.Document\shell\Quick View\command" /ve /d "wscript.exe """%~dp0opener.vbs""" ""%%1""" /f
-~~~
+```
 
 * 如果要启用图纸的快速查看模式，还需要添加以下行
 
-~~~ bat
+```bat
 reg add "HKCR\SldDraw.Document\shell\Quick View\command" /ve /d "wscript.exe """%~dp0opener.vbs""" ""%%1""" /f
-~~~
+```
 
 * 保存这两个文件。重要的是要将这些文件保存在同一个文件夹中
 
