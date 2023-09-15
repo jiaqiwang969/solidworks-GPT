@@ -1,31 +1,31 @@
 ---
-title: Export assembly or part to IFC 2x3 or 4 using SOLIDWORKS API
-caption: Export To IFC (2x3 and 4)
-description: Example in VBA to export active part or assembly document to IFC format (2x3 or 4) using SOLIDWORKS API
+title: 使用SOLIDWORKS API将装配体或零件导出为IFC 2x3或4
+caption: 导出到IFC（2x3和4）
+description: 使用SOLIDWORKS API将活动零件或装配体文档导出为IFC格式（2x3或4）的VBA示例
 image: save-as-dialog-ifc.png
 labels: [ifc,ifc2x3,ifc4,export]
 ---
-This example demonstrates how to export active assembly or part document into IFC format using SOLIDWORKS API.
+本示例演示了如何使用SOLIDWORKS API将活动装配体或零件文档导出为IFC格式。
 
-![Save As Dialog with 2 ifc format options](save-as-dialog-ifc.png){ width=450 }
+![带有2个IFC格式选项的另存为对话框](save-as-dialog-ifc.png){ width=450 }
 
-Currently SOLIDWORKS supports 2 schemas for IFC format
+目前，SOLIDWORKS支持IFC格式的2个模式：
 
 * IFC 2x3
 * IFC 4
 
-The schema can be validated in the output IFC file when opened in text editor.
+在文本编辑器中打开输出的IFC文件时，可以验证模式。
 
-![IFC schema](ifc-file.png){ width=450 }
+![IFC模式](ifc-file.png){ width=450 }
 
-This VBA macro demonstrates how to export file to both IFC schemas. Change the value of the *IfcFormat_e* enumeration to change the format:
+此VBA宏演示了如何将文件导出到两个IFC模式。更改*IfcFormat_e*枚举的值以更改格式：
 
 ~~~ vb
-ExportIfc swModel, OUT_FILE_PATH, IfcFormat_e.Ifc4 'Export to IFC 4
-ExportIfc swModel, OUT_FILE_PATH, IfcFormat_e.Ifc2x3 'Export to IFC 2x3
+ExportIfc swModel, OUT_FILE_PATH, IfcFormat_e.Ifc4 '导出到IFC 4
+ExportIfc swModel, OUT_FILE_PATH, IfcFormat_e.Ifc2x3 '导出到IFC 2x3
 ~~~
 
-Change the value of *OUT_FILE_PATH* constant to specify the output file location
+更改*OUT_FILE_PATH*常量的值以指定输出文件位置：
 
 ~~~ vb
 Const OUT_FILE_PATH As String = "C:\Output\Building.ifc"
@@ -53,7 +53,7 @@ Sub main()
         ExportIfc swModel, OUT_FILE_PATH, IfcFormat_e.Ifc4
         
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -69,12 +69,10 @@ Sub ExportIfc(model As SldWorks.ModelDoc2, path As String, format As IfcFormat_e
     Dim warnings As Long
     
     If False = model.Extension.SaveAs(path, swSaveAsVersion_e.swSaveAsCurrentVersion, swSaveAsOptions_e.swSaveAsOptions_Silent, Nothing, errors, warnings) Then
-        Err.Raise vbError, "", "Failed to export file. Error code: " & errors
+        Err.Raise vbError, "", "导出文件失败。错误代码：" & errors
     End If
     
     swApp.SetUserPreferenceIntegerValue swUserPreferenceIntegerValue_e.swSaveIFCFormat, curIfcFormat
         
 End Sub
 ~~~
-
-
