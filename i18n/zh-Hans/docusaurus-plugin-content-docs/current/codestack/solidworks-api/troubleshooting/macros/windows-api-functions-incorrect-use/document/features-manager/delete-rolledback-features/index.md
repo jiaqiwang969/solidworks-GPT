@@ -1,14 +1,14 @@
 ---
 layout: sw-tool
-caption: Delete rolled back features
-title: Macro to delete all features which are in the rolled back state in SOLIDWORKS document
-description: VBA macro finds and deletes all features below the rollback bar
+caption: 删除回滚状态下的特征
+title: 在SOLIDWORKS文档中删除所有回滚状态下的特征的宏
+description: VBA宏查找并删除回滚栏下的所有特征
 image: rollback-feature.svg
 group: Model
 ---
-![Features rolled back in the feature manager tree](rolled-back-features.png)
+![特征回滚在特征管理器树中](rolled-back-features.png)
 
-This VBA macro deletes all features which are below the rollback bar.
+这个VBA宏删除回滚栏下的所有特征。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -30,15 +30,15 @@ try_:
     vRolledBackFeats = GetRolledBackFeatures(swModel)
     
     If False = swModel.FeatureManager.EditRollback(swMoveRollbackBarTo_e.swMoveRollbackBarToEnd, "") Then
-        Err.Raise vbError, "", "Failed to roll forward"
+        Err.Raise vbError, "", "无法向前回滚"
     End If
     
     If swModel.Extension.MultiSelect2(vRolledBackFeats, False, Nothing) <> UBound(vRolledBackFeats) + 1 Then
-        Err.Raise vbError, "", "Failed to select features"
+        Err.Raise vbError, "", "无法选择特征"
     End If
     
     If False = swModel.Extension.DeleteSelection2(swDeleteSelectionOptions_e.swDelete_Absorbed) Then
-        Err.Raise vbError, "", "Failed to delete features"
+        Err.Raise vbError, "", "无法删除特征"
     End If
     
     GoTo finally_
@@ -84,4 +84,3 @@ Function GetRolledBackFeatures(model As SldWorks.ModelDoc2) As Variant
     
 End Function
 ~~~
-
