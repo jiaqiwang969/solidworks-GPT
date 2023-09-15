@@ -1,49 +1,49 @@
 ---
-title: 在SOLIDWORKS应用程序启动时自动运行宏
-caption: 在SOLIDWORKS启动时运行宏
-description: 设置在SOLIDWORKS应用程序加载时自动运行宏
+title: Automatically Running Macros on SOLIDWORKS Application Startup
+caption: Running Macros on SOLIDWORKS Startup
+description: Setting up macros to run automatically when the SOLIDWORKS application loads
 image: shortcut-with-macro-run.png
-labels: [宏,自动运行]
+labels: [macros, auto-run]
 ---
-在某些情况下，可能需要在SOLIDWORKS启动时自动运行宏。例如，需要进行一些日志记录或应用设置。
+In certain cases, you may need to run a macro automatically when SOLIDWORKS starts up. For example, you may need to perform some logging or application setup.
 
-幸运的是，SOLIDWORKS应用程序接受命令行参数*/m*，它将自动运行指定的宏。
+Fortunately, the SOLIDWORKS application accepts the command-line parameter */m*, which will automatically run the specified macro.
 
-~~~ cmd
-"SOLIDWORKS.exe的路径" /m "宏的路径"
-~~~
+```cmd
+"path to SOLIDWORKS.exe" /m "path to macro"
+```
 
-## 设置启动SOLIDWORKS并运行宏的快捷方式
+## Setting up a Shortcut to Launch SOLIDWORKS and Run the Macro
 
-最常见的选项是在Windows桌面上的SOLIDWORKS快捷方式中直接指定宏的路径。在这种情况下，当您点击SOLIDWORKS应用程序快捷方式图标时，宏将自动运行。按照以下步骤进行操作：
+The most common option is to directly specify the path to the macro in the SOLIDWORKS shortcut on the Windows desktop. In this case, the macro will automatically run when you click on the SOLIDWORKS application shortcut icon. Follow these steps:
 
-* Windows操作系统允许在快捷方式选项的*目标*字段中指定命令行参数。默认快捷方式禁用了此选项，无法更改。
+* The Windows operating system allows specifying command-line parameters in the *Target* field of a shortcut. This option is disabled by default for the SOLIDWORKS shortcut and cannot be changed.
 
-![SOLIDWORKS快捷方式的默认选项](default-shortcut-options.png){ width=350 }
+![Default options for the SOLIDWORKS shortcut](default-shortcut-options.png){ width=350 }
 
-* 删除默认的SOLIDWORKS快捷方式
-* 导航到SOLIDWORKS安装文件夹（通常为*C:\Program Files\SOLIDWORKS Corp\SOLIDWORKS*）。
-* 找到*SLDWORKS.EXE*文件。
-* 选择该文件，点击鼠标右键。选择*发送到*->*桌面（创建快捷方式）*
+* Delete the default SOLIDWORKS shortcut.
+* Navigate to the SOLIDWORKS installation folder (usually *C:\Program Files\SOLIDWORKS Corp\SOLIDWORKS*).
+* Locate the *SLDWORKS.EXE* file.
+* Select the file and right-click. Choose *Send to* -> *Desktop (create shortcut)*.
 
-![SOLIDWORKS.exe文件位置](sldworks-exe-location.png){ width=550 }
+![Location of the SOLIDWORKS.exe file](sldworks-exe-location.png){ width=550 }
 
-* 快捷方式已添加到桌面。根据需要进行重命名（如果需要，将其固定到任务栏）。
-* 选择快捷方式图标，点击鼠标右键，选择*选项*命令
-* 在*目标*字段中的SLDWORKS.EXE路径后添加以下文本：
+* The shortcut is added to the desktop. Rename it if needed (and pin it to the taskbar if desired).
+* Right-click on the shortcut icon and choose the *Properties* command.
+* Add the following text after the path to SLDWORKS.EXE in the *Target* field:
 
-~~~ cmd
-/m "宏的完整路径" 
-~~~
+```cmd
+/m "full path to macro"
+```
 
-如果宏路径包含空格，请将路径括在双引号中。
+If the macro path contains spaces, enclose the path in double quotes.
 
-例如：
+For example:
 
-~~~ cmd
+```cmd
 "C:\Program Files\SOLIDWORKS Corp\SOLIDWORKS\SLDWORKS.EXE" /m "C:\My Macros\Macro1.swb"
-~~~
+```
 
-![带有宏路径的快捷方式](shortcut-with-macro-run.png){ width=450 }
+![Shortcut with the macro path](shortcut-with-macro-run.png){ width=450 }
 
-使用此快捷方式启动SOLIDWORKS。指定的宏将自动运行。
+Launch SOLIDWORKS using this shortcut. The specified macro will run automatically.
