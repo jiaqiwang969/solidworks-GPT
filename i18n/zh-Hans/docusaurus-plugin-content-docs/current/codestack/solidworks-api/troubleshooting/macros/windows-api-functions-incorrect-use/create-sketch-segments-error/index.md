@@ -1,25 +1,25 @@
 ---
 layout: sw-macro-fix
-title: Fix errors when creating sketch segments using SOLIDWORKS API
-caption: Failed to Create Sketch Segments
-description: Fixing the inconsistency of sketch segments (line, arcs, etc) or sketch points creation in the macro
-labels: [macro, troubleshooting]
+title: 修复使用SOLIDWORKS API创建草图段时的错误
+caption: 创建草图段失败
+description: 修复宏中创建草图段（线段、弧线等）或草图点时的不一致性问题
+labels: [宏, 故障排除]
 redirect-from:
   - /2018/04/macro-troubleshooting-failed-create-sketch-segments.html
 ---
-## Symptoms
+## 症状
 
-SOLIDWORKS macro creates sketch segments (line, arcs, etc) or sketch points using SOLIDWORKS API. And in some cases the elements are not created while it works correct in other cases.
+SOLIDWORKS宏使用SOLIDWORKS API创建草图段（线段、弧线等）或草图点。在某些情况下，这些元素未能创建，而在其他情况下却能正常工作。
 
-## Cause
+## 原因
 
-By default all entities inserted using the [ISketchManager](https://help.solidworks.com/2016/English/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.ISketchManager.html) interface are created via user interface. That means that the entity cannot be created if the target area (i.e. boundaries of the segments) is not visible in the user interface (e.g. the view is moved or scaled).  
+默认情况下，使用[ISketchManager](https://help.solidworks.com/2016/English/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.ISketchManager.html)接口插入的所有实体都是通过用户界面创建的。这意味着如果目标区域（即段的边界）在用户界面中不可见（例如视图被移动或缩放），则无法创建实体。
 
-## Resolution
+## 解决方法
 
-Set [ISketchManager::AddToDB](https://help.solidworks.com/2016/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isketchmanager~addtodb.html) property to *True* before the entities creation and restore the original value once the job is finished.
-Setting this option to true will bypass the creation of entities via User Interface rather add the data directly to the model storage. This may also improve performance while creating the entities.
-  
+在创建实体之前，将[ISketchManager::AddToDB](https://help.solidworks.com/2016/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isketchmanager~addtodb.html)属性设置为*True*，并在完成任务后恢复原始值。
+将此选项设置为true将绕过通过用户界面创建实体，而是直接将数据添加到模型存储中。这也可以提高创建实体的性能。
+
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
 Dim swModel As SldWorks.ModelDoc2
@@ -32,13 +32,12 @@ Sub main()
     
     Dim addToDbOrig As Boolean
     
-    addToDbOrig = swModel.SketchManager.AddToDB 'get the original value
+    addToDbOrig = swModel.SketchManager.AddToDB '获取原始值
     swModel.SketchManager.AddToDB = True
     
     swModel.SketchManager.CreateLine 0, 0, 0, 0.01, 0.02, 0
 
-    swModel.SketchManager.AddToDB = addToDbOrig 'restore the original value
+    swModel.SketchManager.AddToDB = addToDbOrig '恢复原始值
     
 End Sub
 ~~~
-
