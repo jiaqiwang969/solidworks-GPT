@@ -1,75 +1,75 @@
 ---
-title: Creating the SOLIDWORKS add-in installer with Windows Installer XML (WiX)
-caption: Windows Installer XML (WiX)
-description: Creating the installer package for SOLIDWORKS add-in using the Windows Installer XML (WiX)
+title: 使用Windows Installer XML（WiX）创建SOLIDWORKS插件安装程序
+caption: Windows Installer XML（WiX）
+description: 使用Windows Installer XML（WiX）创建SOLIDWORKS插件的安装程序包
 image: wix-installation-dialog.png
 labels: [installer, wix, deployment]
 ---
 {% youtube { id: HdG3vFaS_y4 } %}
 
-## Downloading and installing WiX framework
+## 下载并安装WiX框架
 
-Download the WiX installer from the [WiX Toolset](https://wixtoolset.org/) website
+从[WiX Toolset](https://wixtoolset.org/)网站下载WiX安装程序
 
-> It is recommended to download the latest stable version
+> 建议下载最新稳定版本
 
-Run the installation process
+运行安装过程
 
-![WiX installation dialog](wix-installation-dialog.png){ width=250 }
+![WiX安装对话框](wix-installation-dialog.png){ width=250 }
 
-Once installation is complete click the button to install the Visual Studio extension
+安装完成后，点击按钮安装Visual Studio扩展
 
-![Installing the Visual Studio extension](wix-visual-studio-extension.png){ width=250 }
+![安装Visual Studio扩展](wix-visual-studio-extension.png){ width=250 }
 
-> Alternatively extensions can be downloaded directly from the [Releases Page](https://wixtoolset.org/releases/) or from [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=RobMensching.WiXToolset)
+> 或者可以直接从[发布页面](https://wixtoolset.org/releases/)或[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=RobMensching.WiXToolset)下载扩展
 
-## Adding the installer project
+## 添加安装程序项目
 
-Once WiX framework and Visual Studio extension are installed setup project can be created and compiled directly from the Visual Studio.
+安装WiX框架和Visual Studio扩展后，可以直接从Visual Studio创建和编译安装程序项目。
 
-Add new project and select *Setup Project for WiX vX* under the *WiX Toolset* category
+添加新项目，选择*WiX Toolset*类别下的*Setup Project for WiX vX*
 
-![Creating new setup project](new-wix-setup-project.png){ width=350 }
+![创建新的安装程序项目](new-wix-setup-project.png){ width=350 }
 
-Visual Studio will generate the default project.
+Visual Studio将生成默认项目。
 
-## Configuring the project
+## 配置项目
 
-Follow the steps below to configure the project
+按照以下步骤配置项目
 
-### Add extension references 
+### 添加扩展引用
 
-Add the reference for WiX extension to use standard pages in installer dialog by clicking the *Add Reference...* command from the context menu
+通过单击上下文菜单中的*Add Reference...*命令，添加WiX扩展引用以在安装程序对话框中使用标准页面
 
-![Add Reference... context menu command](add-wix-references.png)
+![添加引用...上下文菜单命令](add-wix-references.png)
 
-Browse to *WixUIExtension.dll* and *WixUtilExtension.dll* files located at %wix%\bin
+浏览到%wix%\bin目录下的*WixUIExtension.dll*和*WixUtilExtension.dll*文件
 
-### Adding the x64 configuration
+### 添加x64配置
 
-By default WiX project is created for x86 deployment. Majority of SOLIDWORKS versions are x64. So it is required to modify the WiX project to support this environment.
+默认情况下，WiX项目是为x86部署创建的。大多数SOLIDWORKS版本都是x64的。因此，需要修改WiX项目以支持此环境。
 
-Unload the Setup project in Visual Studio and click *Edit Project* or open the *.wixproj file in any text editor. Modify property group to support x64 environment as shown on the picture below:
+在Visual Studio中卸载安装程序项目，然后单击*Edit Project*或在任何文本编辑器中打开*.wixproj*文件。修改属性组以支持x64环境，如下图所示：
 
-![Setting the x64 configuration for setup project](setting-x64-wix-configuration.png)
+![为安装程序项目设置x64配置](setting-x64-wix-configuration.png)
 
-### Setting the build folder as a preprocessor variable
+### 将构建文件夹设置为预处理器变量
 
-For the purpose of simplification of linking of files into the setup project it is recommended to create a preprocessor variable in the WiX project which is equal to the build location of the add-in
+为了简化将文件链接到安装程序项目的过程，建议在WiX项目中创建一个预处理器变量，该变量等于插件的构建位置
 
 > SourceOutDir=..\Build
 
-![Defining the preprocessor variable in WiX project](wix-preprocessor-variable.png){ width=350 }
+![在WiX项目中定义预处理器变量](wix-preprocessor-variable.png){ width=350 }
 
-> It is allowed and recommended to use relative path to point to the build location
+> 允许并建议使用相对路径指向构建位置
 
-## Configuring the product
+## 配置产品
 
-*Product.wxs* is the file which contains the configuration of the installer package
+*Product.wxs*文件包含安装程序包的配置
 
-### Adding the default dialogs
+### 添加默认对话框
 
-To add the minimal dialogs (i.e. welcome page, installation folder and progress) it is required to add the following lines within the *Package* node
+要添加最小对话框（例如欢迎页面、安装文件夹和进度），需要在*Package*节点中添加以下行
 
 ~~~ xml
 <UIRef Id="WixUI_InstallDir" />
@@ -77,21 +77,21 @@ To add the minimal dialogs (i.e. welcome page, installation folder and progress)
 <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
 ~~~
 
-### Adding the attribution
+### 添加属性
 
-It is possible to customize the dialog to include icons and banner images
+可以自定义对话框以包含图标和横幅图像
 
-Banner is an image displayed in the header of the installer. This should be a .bmp file with size of 493x58 pixels.
+横幅是安装程序标题中显示的图像。这应该是一个大小为493x58像素的.bmp文件。
 
-![Banner image in installer](wix-installer-banner.png)
+![安装程序中的横幅图像](wix-installer-banner.png)
 
-Dialog background is an image displayed in the background of the installer. This should be a .bmp file with size of 493x312 pixels.
+对话框背景是安装程序背景中显示的图像。这应该是一个大小为493x312像素的.bmp文件。
 
-![Background image in installer](wix-installer-background.png){ width=350 }
+![安装程序中的背景图像](wix-installer-background.png){ width=350 }
 
-Icon can be added as an .ico file and will be assigned to the product in the *Programs and Features* group in *Control Panel*.
+可以添加.ico文件作为图标，并将其分配给*控制面板*中的*程序和功能*组中的产品。
 
-The following lines needs to be added within the *Package* node to add the references to the attribution files:
+需要在*Package*节点中添加以下行以添加对属性文件的引用：
 
 ~~~ xml
 <Icon Id="MainIconId" SourceFile="Resources\icon.ico"/>
@@ -100,17 +100,17 @@ The following lines needs to be added within the *Package* node to add the refer
 <WixVariable Id="WixUIDialogBmp" Value="Resources\dialog.bmp" />
 ~~~
 
-### Adding End User License Agreement (EULA)
+### 添加最终用户许可协议（EULA）
 
-EULA page can be added to the installer by adding the following line within the *Package* node. Package won't be installed until user agrees on the EULA terms and conditions. EULA must be provided in the Rich Text Format (*.rtf)
+可以通过在*Package*节点中添加以下行将EULA页面添加到安装程序中。在用户同意EULA条款和条件之前，将不会安装软件包。EULA必须以富文本格式（*.rtf）提供。
 
 ~~~ xml
 <WixVariable Id="WixUILicenseRtf" Value="Resources\eula.rtf" />
 ~~~
 
-### Adding add-in registry component group
+### 添加插件注册表组件
 
-Add registry component into the **ComponentGroup** node to add registry key for the add-in
+将注册表组件添加到**ComponentGroup**节点中，以添加插件的注册表键
 
 ~~~ xml
 <Component Id="Reg" Guid="{NEW GUID}">
@@ -121,11 +121,11 @@ Add registry component into the **ComponentGroup** node to add registry key for 
 </Component>
 ~~~
 
-### Adding files
+### 添加文件
 
-#### Adding the group for SOLIDWORKS interops
+#### 添加SOLIDWORKS互操作组
 
-Add the SOLIDWORKS interops to be added to the installer by adding the following component into the **ComponentGroup** node
+通过将以下组件添加到**ComponentGroup**节点中，可以将SOLIDWORKS互操作添加到安装程序中
 
 ~~~ xml
 <Component Id="interops" Guid="{NEW GUID}">
@@ -136,11 +136,11 @@ Add the SOLIDWORKS interops to be added to the installer by adding the following
 </Component>
 ~~~
 
-> $(var.SourceOutDir) variable will be resolved to the build folder defined in [Setting the build folder as a preprocessor variable](#setting-the-build-folder-as-a-preprocessor-variable)
+> $(var.SourceOutDir)变量将解析为[将构建文件夹设置为预处理器变量](#将构建文件夹设置为预处理器变量)中定义的构建文件夹
 
-#### Adding another files to the installer
+#### 添加其他文件到安装程序
 
-If it is required to include any other data or dll files to the installer add another component with files under the **ComponentGroup** node
+如果需要将任何其他数据或dll文件包含到安装程序中，请在**ComponentGroup**节点下添加另一个组件和文件
 
 ~~~ xml
 <Component Id="files" Guid="{NEW GUID}">
@@ -149,9 +149,9 @@ If it is required to include any other data or dll files to the installer add an
 </Component>
 ~~~
 
-#### Automatically add project files
+#### 自动添加项目文件
 
-Alternatively files can be added automatically using the harvest tool so it is not required to manually add each file one-by one. Add the following snippet into the *.wixproj file
+或者，可以使用harvest工具自动添加文件，因此不需要手动逐个添加每个文件。将以下代码段添加到*.wixproj文件中
 
 ~~~ xml
 <Target Name="BeforeBuild">
@@ -159,7 +159,7 @@ Alternatively files can be added automatically using the harvest tool so it is n
 </Target>
 ~~~
 
-*Transforms* property allows to define the xslt transformation to exclude any files (e.g. pdb or xml) which are not required to be a part of the installer:
+*Transforms*属性允许定义xslt转换，以排除不需要作为安装程序一部分的任何文件（例如pdb或xml）：
 
 ~~~ xslt
 <?xml version="1.0" encoding="utf-8"?>
@@ -209,25 +209,25 @@ Alternatively files can be added automatically using the harvest tool so it is n
 
 
 
-## Registering COM components
+## 注册COM组件
 
-> If stand-alone application needs to be deployed and no COM components needs to be registered than this step could be skipped.
+> 如果需要部署独立应用程序并且不需要注册COM组件，则可以跳过此步骤。
 
-SOLIDWORKS add-in must be registered as a COM component. It is recommended to use [Harvest tool (heat)](https://wixtoolset.org/documentation/manual/v3/overview/heat.html) instead of custom action with [regasm](https://docs.microsoft.com/en-us/dotnet/framework/tools/regasm-exe-assembly-registration-tool) to deploy COM components
+SOLIDWORKS插件必须注册为COM组件。建议使用[Harvest工具（heat）](https://wixtoolset.org/documentation/manual/v3/overview/heat.html)而不是使用[regasm](https://docs.microsoft.com/en-us/dotnet/framework/tools/regasm-exe-assembly-registration-tool)自定义操作来部署COM组件
 
-Harvest tool can be used in 2 approaches
+可以使用Harvest工具的两种方法
 
-### Approach A: post build action
+### 方法A：后期构建操作
 
-Add the following line into the post action build event for the projects which requires COM components to be registered
+将以下行添加到需要注册COM组件的项目的后期构建事件中
 
 ~~~ cs
 "%WIX%\bin\heat.exe" file "$(TargetPath)" -ag -srd -cg "AddInComRegGroup" -var var.SourceOutDir -dr INSTALLFOLDER -o "..\Setup\AddInReg.wxs"
 ~~~
 
-### Approach B: BeforeBuild Target
+### 方法B：BeforeBuild目标
 
-Add the following snippet directly to *.wixprojfile
+直接将以下代码段添加到*.wixproj文件中
 
 ~~~ xml
 <Target Name="BeforeBuild">
@@ -235,35 +235,35 @@ Add the following snippet directly to *.wixprojfile
 </Target>
 ~~~
 
-This action will create an *AddInReg.wxs* with *AddInComRegGroup* component file with all required information needed to register the COM component on a target machine. 
+此操作将创建一个*AddInReg.wxs*文件，其中包含用于在目标计算机上注册COM组件所需的所有信息。
 
-> It is recommended to generate this file directly to the setup project folder
+> 建议将此文件直接生成到安装程序项目文件夹中
 
-Add this file into the WiX project so it gets compiled.
+将此文件添加到WiX项目中，以便进行编译。
 
-Add the reference to the component into the **Feature** node
+将对组件的引用添加到**Feature**节点中
 
 ~~~ xml
 <ComponentGroupRef Id="AddInComRegGroup"/>
 ~~~
 
-Set the **Manufacturer** attribute of the **Product** node as this is a mandatory attribute.
+将**Product**节点的**Manufacturer**属性设置为必填属性。
 
-## Additional parameters
+## 其他参数
 
-Modify the **MediaTemplate** node as follows
+修改**MediaTemplate**节点如下
 
-### Generating single .msi installer package
+### 生成单个.msi安装程序包
 
 ~~~ xml
 <MediaTemplate EmbedCab="yes"/>
 ~~~
 
-This will allow to generate a single *.msi file for setup.
+这将允许生成单个*.msi文件进行安装。
 
-### Setting the default installation folder
+### 设置默认安装文件夹
 
-Modify the default installation location to link to x64 version of program files *ProgramFiles64Folder*. Optionally specify the directory for the company name:
+将默认安装位置修改为链接到程序文件的x64版本*ProgramFiles64Folder*。可选择为公司名称指定目录：
 
 ~~~ xml
 <Directory Id="TARGETDIR" Name="SourceDir">
@@ -275,33 +275,33 @@ Modify the default installation location to link to x64 version of program files
 </Directory>
 ~~~
 
-> The above will generate a default install location to be equal to %programfiles%\CodeStack\MyAddIn
+> 以上将生成默认安装位置为%programfiles%\CodeStack\MyAddIn
 
-### Automatically building the add-in project when installer is built
+### 在构建安装程序时自动构建插件项目
 
-By default installer project is not dependent on other projects in solution. It is recommended to add the dependency so all projects are built before the installer project is compiled so it will ensure the latest binaries got added to the .msi package.
+默认情况下，安装程序项目不依赖于解决方案中的其他项目。建议添加此依赖关系，以便在编译安装程序项目之前构建所有项目，以确保最新的二进制文件已添加到.msi包中。
 
-Select the installer project and click *Project Dependencies...*
+选择安装程序项目，然后单击*Project Dependencies...*
 
-![Project dependencies context menu](project-dependencies-context-menu.png){ width=250 }
+![项目依赖关系上下文菜单](project-dependencies-context-menu.png){ width=250 }
 
-Make sure that the installer project is selected in the drop-down and check add-in project as a *depends on* reference
+确保在下拉菜单中选择安装程序项目，并将插件项目作为*depends on*引用进行选择
 
-![Setting the setup project to depend on add-in project](project-dependencies.png){ width=250 }
+![将安装程序项目设置为依赖于插件项目](project-dependencies.png){ width=250 }
 
-Compile the installer project. This will generate an .msi package in the output folder.
+编译安装程序项目。这将在输出文件夹中生成一个.msi包。
 
-Once installed add-in is added to the Programs and Features in Control Panel. The installation can be repaired or add-in can be uninstalled from this page.
+安装后，插件将添加到控制面板中的程序和功能中。可以从此页面修复安装或卸载插件。
 
-![Product icon is shown in the Programs and Features](programs-and-features-add-in.png){ width=350 }
+![产品图标显示在程序和功能中](programs-and-features-add-in.png){ width=350 }
 
-## Releasing new version of the product
+## 发布新版本的产品
 
-When new version of binaries are ready it is required to change the **Version** attribute of the **Product** node. And it is possible to upgrade the existing installation of the previous version without the need to uninstall the previous one.
+当准备好新版本的二进制文件时，需要更改**Product**节点的**Version**属性。并且可以升级先前版本的现有安装，而无需卸载先前版本。
 
-> It is recommended to keep the version of the installer in sync with the assembly version of the add-in dll.
+> 建议将安装程序的版本与插件dll的程序集版本保持同步。
 
-## Template example of Product.wxs file
+## Product.wxs文件的模板示例
 
 ~~~ wxs
 <?xml version="1.0" encoding="UTF-8"?>
@@ -362,9 +362,8 @@ When new version of binaries are ready it is required to change the **Version** 
 
 
 
-## Example projects
+## 示例项目
 
 * [Sketch++](https://github.com/codestackdev/sketch-plus-plus/tree/master/Installer)
 * [MyToolbar](https://github.com/codestackdev/my-toolbar/tree/master/Installer)
 * [Geometry++](https://github.com/codestackdev/geometry-plus-plus/tree/master/Installer)
-
