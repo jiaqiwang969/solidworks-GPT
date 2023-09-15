@@ -1,12 +1,13 @@
 ---
-title: Utilizing SOLIDWORKS API methods in PowerShell scripts
+title: 在 PowerShell 脚本中使用 SOLIDWORKS API 方法
 caption: PowerShell
-description: Introduction to automation of SOLIDWORKS using API with PowerShell script
+description: 使用 PowerShell 脚本自动化 SOLIDWORKS API 的介绍
 ---
-[PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/powershell-scripting?view=powershell-6) is a command line scripting language built on .NET. PowerShell provides more flexibility compared to other scripting languages. Code snippets in C# and VB.NET can be included into the script.
 
-Similar to other scripting languages PowerShell script can accept parameters.
+[PowerShell](https://docs.microsoft.com/zh-cn/powershell/scripting/powershell-scripting?view=powershell-6) 是一个基于 .NET 的命令行脚本语言。与其他脚本语言相比，PowerShell 提供了更大的灵活性。可以将 C# 和 VB.NET 的代码片段包含到脚本中。
 
-PowerShell script can be invoked from the command line.
+与其他脚本语言类似，PowerShell 脚本可以接受参数。
 
-Examples in this section demonstrates how to invoke SOLIDWORKS API using PowerShell scripts based on VB.NET and C#.
+可以从命令行调用 PowerShell 脚本。
+
+本节中的示例演示了如何使用基于 VB.NET 和 C# 的 PowerShell 脚本调用 SOLIDWORKS API。
