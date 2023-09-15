@@ -1,17 +1,17 @@
 ---
-title: Adding graphical elements to model graphics view using SOLIDWORKS API
-caption: Adornment
-description: Collection of articles and code examples which explain the different ways of customizing the view of the model and application (callouts, open GL graphics, etc.)
+title: 使用SOLIDWORKS API向模型图形视图添加图形元素
+caption: 装饰
+description: 一系列文章和代码示例，解释了使用API自定义SOLIDWORKS模型和应用程序框架视图的不同方法（标注、OpenGL图形等）
 image: adornment-api.png
 sidebar_position: 6
 ---
-![SOLIDWORKS API for adornment of models and application](adornment-api.png)
+![SOLIDWORKS API用于装饰模型和应用程序](adornment-api.png)
 
-This section contains the articles and code examples which explain the different ways of customizing the view of the SOLIDWORKS model and application frame using API.
+本节包含了一系列文章和代码示例，解释了使用API自定义SOLIDWORKS模型和应用程序框架视图的不同方法。
 
-This includes, but not limited to
+这包括但不限于以下内容：
 
-* Adding [callout](/docs/codestack/solidworks-api/adornment/callouts/) objects. Those objects can be useful to display additional information, such as tags or properties for the specific entities. Callouts also supports data value entry.
-* Injecting custom 3D graphics to the model view via Open GL. This can be useful when it is required to render complex graphics directly in the SOLIDWORKS model without modifying its geometry. The most common usage scenario is preview or Finite Elements Analysis (FEA) rendering.
-* Adding 2D images on the graphics view
-* Embedding [OLE objects](/docs/codestack/solidworks-api/adornment/ole-objects/) into the model
+* 添加[标注](/docs/codestack/solidworks-api/adornment/callouts/)对象。这些对象可以用于显示附加信息，例如特定实体的标签或属性。标注还支持数据值输入。
+* 通过OpenGL向模型视图注入自定义3D图形。当需要在SOLIDWORKS模型中直接渲染复杂图形而不修改其几何形状时，这非常有用。最常见的使用场景是预览或有限元分析（FEA）渲染。
+* 在图形视图上添加2D图像
+* 将[OLE对象](/docs/codestack/solidworks-api/adornment/ole-objects/)嵌入到模型中
