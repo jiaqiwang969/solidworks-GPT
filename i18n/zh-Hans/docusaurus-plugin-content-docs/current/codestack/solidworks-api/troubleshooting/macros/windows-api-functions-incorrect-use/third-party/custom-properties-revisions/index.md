@@ -1,36 +1,36 @@
 ---
-title: Save custom properties revisions into 3rd party storage store using SOLIDWORKS API
-caption: Save Custom Properties Revisions
-description: Saving custom properties revisions (snapshots) into document 3rd party storage store using SOLIDWORKS API
+title: 使用SOLIDWORKS API将自定义属性修订保存到第三方存储库
+caption: 保存自定义属性修订
+description: 使用SOLIDWORKS API将自定义属性修订（快照）保存到文档的第三方存储库
 image: properties-snapshots-data.png
-labels: [storage,3rd party,custom properties]
+labels: [存储,第三方,自定义属性]
 ---
-![Custom Properties](custom-properties.png){ width=450 }
+![自定义属性](custom-properties.png){ width=450 }
 
-This example demonstrates how to utilize 3rd party storage store to save file custom properties revisions using SOLIDWORKS API.
+此示例演示了如何使用SOLIDWORKS API利用第三方存储库保存文件的自定义属性修订。
 
-This add-in is built using the [SwEx.AddIn](/docs/codestack/labs/solidworks/swex/add-in/) framework but it could work with any other methods of creating the add-ins.
+此插件使用[SwEx.AddIn](/docs/codestack/labs/solidworks/swex/add-in/)框架构建，但也可以与其他创建插件的方法一起使用。
 
-Add-in adds two buttons in the menu and toolbar and provides two handlers correspondingly: 
+插件在菜单和工具栏中添加了两个按钮，并相应地提供了两个处理程序：
 
-* TakeCustomPropertiesSnapshot - reads current state of custom properties and serializes it to the 3rd party storage
-* LoadSnapshots - loads all revisions and displays the message box
+* TakeCustomPropertiesSnapshot - 读取自定义属性的当前状态并将其序列化到第三方存储库中
+* LoadSnapshots - 加载所有修订版本并显示消息框
 
-The snapshot of each revision is stored within the storages (streams) in 3rd party sub store, while information about all available snapshots is saved into the sub stream of 3rd party storage.
+每个修订版本的快照存储在第三方子存储库的存储（流）中，而有关所有可用快照的信息保存在第三方存储的子流中。
 
-## Usage Instructions
+## 使用说明
 
-* Open any existing SOLIDWORKS models (part, assembly or drawing)
-* Add some custom properties into *Custom* tab
-* Click *TakeCustomPropertiesSnapshot* from the *Tools\Custom Properties Revisions* menu
-* Modify properties and click *TakeCustomPropertiesSnapshot* again. Repeat if needed
-* You can close and reopen the model and SOLIDWORKS. Click *LoadSnapshots* command. All properties revisions are displayed in the message box
+* 打开任何现有的SOLIDWORKS模型（零件、装配或绘图）
+* 在“自定义”选项卡中添加一些自定义属性
+* 单击“工具\自定义属性修订”菜单中的“TakeCustomPropertiesSnapshot”
+* 修改属性并再次单击“TakeCustomPropertiesSnapshot”。如有需要，重复此步骤
+* 您可以关闭并重新打开模型和SOLIDWORKS。单击“LoadSnapshots”命令。所有属性修订将显示在消息框中
 
-![All properties revisions displayed in the message box](properties-snapshots-data.png){ width=450 }
+![消息框中显示的所有属性修订](properties-snapshots-data.png){ width=450 }
 
 ### PropertiesSnapshot.cs
 
-Structures to serialize properties and info
+用于序列化属性和信息的结构
 
 ~~~ cs
 using System;
@@ -63,7 +63,7 @@ namespace CodeStack
 
 ### CustomPropertiesRevisionsAddIn.cs
 
-Add-in class which is handling the menu commands and reads and outputs the data
+处理菜单命令并读取和输出数据的插件类
 
 ~~~ cs
 using CodeStack.SwEx.AddIn;
@@ -199,7 +199,7 @@ namespace CodeStack
 
 ### CustomPropertiesRevisions.cs
 
-Functions to access storage and store to serialize and deserialize the data
+用于访问存储库和序列化和反序列化数据的函数
 
 ~~~ cs
 using SolidWorks.Interop.sldworks;
@@ -487,13 +487,11 @@ namespace CodeStack
 
 ~~~
 
-
-
 ### ComStorage.cs
 
-Wrapper around [IStorage](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istorage) interface which simplifies the access from .NET language
+[ComStorage.cs](https://github.com/ArtyomFomenko/solidworks-api/blob/master/ThirdPartyStorage/ComStorage.cs)是对[IStorage](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istorage)接口的封装，简化了从.NET语言访问的过程。
 
-~~~ cs
+``` cs
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -690,15 +688,15 @@ namespace ThirdPartyStorage
     }
 }
 
-~~~
+```
 
 
 
 ### ComStream.cs
 
-Wrapper around [IStream](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istream) interface which simplifies the access from .NET language
+[ComStream.cs](https://github.com/ArtyomFomenko/solidworks-api/blob/master/ThirdPartyStorage/ComStream.cs)是对[IStream](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istream)接口的封装，简化了从.NET语言访问的过程。
 
-~~~ cs
+``` cs
 using System;
 using System.IO;
 using System.Runtime.InteropServices.ComTypes;
@@ -848,6 +846,4 @@ namespace ThirdPartyStorage
     }
 }
 
-~~~
-
-
+```
