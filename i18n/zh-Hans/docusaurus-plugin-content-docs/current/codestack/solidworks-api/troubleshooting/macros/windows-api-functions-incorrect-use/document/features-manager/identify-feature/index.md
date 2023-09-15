@@ -1,19 +1,19 @@
 ---
 layout: sw-tool
-title: Identify SOLIDWORKS API feature definition and specific type
-caption: Identify Feature Definition And Specific Type
-description: Helper methods allowing to identify the definition and specific type of the selected feature via SOLIDWORKS API and reflection
+title: 识别SOLIDWORKS API特征定义和特定类型
+caption: 识别特定特征和特征定义
+description: 通过SOLIDWORKS API和反射，提供帮助方法来识别所选特征的定义和特定类型
 image: specific-feature-types.png
 labels: [reflection, specific feature, feature definition]
 group: Developers
 ---
-![Type of specific feature and feature definition of selected feature output to the window](specific-feature-types.png){ width=450 }
+![将特定特征和特征定义的类型输出到窗口](specific-feature-types.png){ width=450 }
 
-[IFeature::GetSpecificFeature2](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IFeature~GetSpecificFeature2.html) and [IFeature::GetDefinition](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ifeature~getdefinition.html) SOLIDWORKS API methods return dispatch pointers which in some cases are not easy to identify and cast to specific types.
+[IFeature::GetSpecificFeature2](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IFeature~GetSpecificFeature2.html)和[IFeature::GetDefinition](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ifeature~getdefinition.html)是SOLIDWORKS API方法，返回的是分发指针，有时不容易识别和转换为特定类型。
 
-The following code example allows to output all assignable interfaces for the selected feature's definition and specific feature. The result is output to the *Output* window of VSTA editor.
+以下代码示例允许输出所选特征的定义和特定特征的所有可分配接口。结果输出到VSTA编辑器的*Output*窗口。
 
-~~~ cs
+```cs
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using System.Runtime.InteropServices;
@@ -40,12 +40,12 @@ namespace CodeStack.csproj
             {
                 foreach (Type defType in FindSpecificInterfacesFromDispatch(featDef))
                 {
-                    Debug.Print("Feature Definition: " + defType.FullName);
+                    Debug.Print("特征定义: " + defType.FullName);
                 }
             }
             else
             {
-                Debug.Print("Feature Definition: None");
+                Debug.Print("特征定义: 无");
             }
 
             object featSpec = feat.GetSpecificFeature2();
@@ -54,12 +54,12 @@ namespace CodeStack.csproj
             {
                 foreach (Type specType in FindSpecificInterfacesFromDispatch(featSpec))
                 {
-                    Debug.Print("Specific Feature: " + specType.FullName);
+                    Debug.Print("特定特征: " + specType.FullName);
                 }
             }
             else
             {
-                Debug.Print("Specific Feature: None");
+                Debug.Print("特定特征: 无");
             }
         }
 
@@ -84,6 +84,5 @@ namespace CodeStack.csproj
         public SldWorks swApp;
     }
 }
-~~~
-
+```
 
