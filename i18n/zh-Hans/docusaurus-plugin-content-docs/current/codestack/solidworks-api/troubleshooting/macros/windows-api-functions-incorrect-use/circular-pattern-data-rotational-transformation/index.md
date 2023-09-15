@@ -1,21 +1,21 @@
 ---
-title: Create rotational transformation of circular pattern via SOLIDWORKS API
-caption: Create A Rotational Transformation Based On Circular Pattern Data
-description: Example reads the transform of the selected circular pattern and creates a temp preview of the pattern of the specified seed body by applying the same transform as in the circular pattern
+title: 通过SOLIDWORKS API创建圆形模式的旋转变换
+caption: 根据圆形模式数据创建旋转变换
+description: 该示例通过读取所选圆形模式的变换，将相同的变换应用于之前步骤中选择的主体，从而创建指定种子主体的模式的临时预览。
 image: circ-pattern-emulator.png
-labels: [angle, axis, circular pattern, example, geometry, instances, rotation, transform]
+labels: [角度, 轴, 圆形模式, 示例, 几何, 实例, 旋转, 变换]
 redirect-from:
   - /2018/03/create-rotational-transformation-based.html
 ---
-This SOLIDWORKS API example reads the transform of the selected circular pattern and creates a temp preview of the pattern of the specified seed body by applying the same transform as in the circular pattern.
+这个SOLIDWORKS API示例通过读取所选圆形模式的变换，将相同的变换应用于之前步骤中选择的主体，从而创建指定种子主体的模式的临时预览。
 
-![Copy of the body created emulating the circular pattern feature](circ-pattern-emulator.png){ width=640 height=304 }
+![模拟圆形模式特征创建的主体副本](circ-pattern-emulator.png){ width=640 height=304 }
 
-* Select circular pattern feature as a first selected object
-  * It must use reference axis as the directionSelect any solid body which is not a part of the circular pattern feature
-* Run the macro. Macro will read the transformation from the pattern and apply the same transformation to the body selected in previous step.
-The preview will be displayed using temporarily bodies which will be destroyed immediately when macro resumes execution (i.e. F5 or run).
-* There won't be any temp features created or removed during the run of this macro
+* 选择圆形模式特征作为第一个选择的对象
+  * 它必须使用参考轴作为方向选择任何不属于圆形模式特征的实体主体
+* 运行宏。宏将从模式中读取变换，并将相同的变换应用于之前步骤中选择的主体。
+预览将使用临时主体显示，当宏恢复执行时（即按下F5或运行），这些主体将立即被销毁。
+* 在运行此宏期间不会创建或删除任何临时特征
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -48,7 +48,7 @@ Sub main()
     Set swBody = swSelMgr.GetSelectedObject6(2, -1)
     
     If swBody Is Nothing Then
-        MsgBox "Please select body to pattern as second selection"
+        MsgBox "请将要进行模式的主体作为第二个选择"
         End
     End If
     
@@ -69,7 +69,7 @@ Sub main()
         ClearTempBodies vPreviewBodies
         
     Else
-        MsgBox "Please select the circular pattern feature as first selection"
+        MsgBox "请将圆形模式特征作为第一个选择"
     End If
     
 End Sub
@@ -94,7 +94,7 @@ Sub GetCircularPatternParameters(swCircPatt As SldWorks.CircularPatternFeatureDa
     Set swAxis = swCircPatt.Axis
         
     If swAxis Is Nothing Then
-        MsgBox "Only reference axis is supported as the direction"
+        MsgBox "只支持参考轴作为方向"
         End
     End If
     
@@ -148,5 +148,3 @@ Sub ClearTempBodies(vBodies As Variant)
     
 End Sub
 ~~~
-
-
