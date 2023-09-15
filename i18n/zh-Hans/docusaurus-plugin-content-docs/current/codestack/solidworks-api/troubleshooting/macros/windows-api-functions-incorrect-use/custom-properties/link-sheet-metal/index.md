@@ -1,41 +1,41 @@
 ---
-caption: 链接到钣金切割清单属性
-title: 将钣金切割清单属性链接到SOLIDWORKS零件自定义属性的宏
-description: VBA宏，用于在SOLIDWORKS文件的自定义属性和指定的钣金切割清单属性之间添加永久链接（表达式），可选的回退值
+caption: Link to Sheet Metal Cut-List Properties
+title: Macro to Link Sheet Metal Cut-List Properties to SOLIDWORKS Part Custom Properties
+description: VBA macro to add a permanent link (expression) between specified cut-list custom properties of a sheet metal part and custom properties of a SOLIDWORKS file. Optional fallback value is available.
 image: linked-sheet-metal-cut-list-properties.png
 ---
-![链接的钣金切割清单自定义属性](linked-sheet-metal-cut-list-properties.png){ width=800 }
+![Linked Sheet Metal Cut-List Properties](linked-sheet-metal-cut-list-properties.png){ width=800 }
 
-此VBA宏允许将钣金零件的指定切割清单自定义属性链接到SOLIDWORKS文件的自定义属性。
+This VBA macro allows you to link specified cut-list custom properties of a sheet metal part to custom properties of a SOLIDWORKS file.
 
-自定义属性将通过公式链接，并在钣金的几何形状发生更改时自动更新。
+The custom properties are linked through formulas and will automatically update when the geometry of the sheet metal changes.
 
-可以指定一个回退值，如果源零件不是钣金文档，则将该值写入自定义属性。
+You can specify a fallback value that will be written to the custom property if the source part is not a sheet metal document.
 
-为了自定义属性映射，请在下面的**Init**函数中添加或删除映射值，如下所示。
+To customize the property mapping, add or remove mapping values in the **Init** function below.
 
-在最后一个参数（**回退值**）中指定表达式时，需要用其他**"**（引号）转义**"**（引号）。例如，SOLIDWORKS质量的公式是**"SW-Mass"**，如果需要将其设置为回退值，则第三个参数应为**"""SW-Mass"""**，其中外部引号是表示[VBA字符串值](/docs/codestack/visual-basic/variables/standard-types#string)的引号。
+When specifying the expression in the last parameter (**fallback value**), you need to escape the double quotes (**"**) with additional double quotes (**""**). For example, if the formula for SOLIDWORKS Mass is **"SW-Mass"**, and you want to set it as the fallback value, the third parameter should be **"""SW-Mass"""**, where the outer quotes represent the quotes for a [VBA string value](/docs/codestack/visual-basic/variables/standard-types#string).
 
-~~~ vb
+``` vb
 Sub Init(Optional dummy As Variant = Empty)
     
     Set Map = New Collection
     
-    Map.Add CreateMapValue("零件编号", "", "") '添加空的“零件编号”自定义属性
-    Map.Add CreateMapValue("宽度", "包围盒宽度", "") '添加来自钣金的“包围盒宽度”的自定义属性“宽度”，如果不是钣金零件，则为空
-    Map.Add CreateMapValue("材料", "", """SW-Material""") '添加自定义属性“材料”，并将其设置为“SW-Material”公式，无论是否为钣金零件
+    Map.Add CreateMapValue("Part Number", "", "") ' Add an empty "Part Number" custom property
+    Map.Add CreateMapValue("Width", "Bounding Box Width", "") ' Add the "Bounding Box Width" custom property from the sheet metal as "Width", if it's not a sheet metal part, it will be empty
+    Map.Add CreateMapValue("Material", "", """SW-Material""") ' Add the custom property "Material" and set it to the "SW-Material" formula, regardless of whether it's a sheet metal part
         
 End Sub
-~~~
+```
 
-## 注意事项和限制
+## Notes and Limitations
 
-* 仅支持单个切割清单文件（如果有多个切割清单，则会引发错误）
-* 宏将在切割清单文件夹上设置**自动创建切割清单**和**自动更新**选项
-* 仅支持零件文档
-* 切割清单自定义属性通过表达式和切割清单名称进行链接。如果切割清单重命名，属性将不会更新，需要重新运行宏。但是，如果切割清单保持原始名称，所有属性将动态更新，无需重新运行宏。
+* Supports only a single cut-list item (an error will be thrown if there are multiple cut-lists)
+* The macro sets the **Automatically create cut list** and **Automatically update** options on the cut-list folder
+* Supports only part documents
+* Cut-list custom properties are linked through expressions and the cut-list name. If the cut-list is renamed, the properties will not update and the macro needs to be re-run. However, if the cut-list remains with the original name, all properties will update dynamically without re-running the macro.
 
-~~~ vb
+``` vb
 Dim swApp As SldWorks.SldWorks
 
 Dim Map As Collection
@@ -44,9 +44,9 @@ Sub Init(Optional dummy As Variant = Empty)
     
     Set Map = New Collection
     
-    Map.Add CreateMapValue("长度", "包围盒长度", """D1@Boss-Extrude1""")
-    Map.Add CreateMapValue("质量", "质量", """SW-Mass""")
-    Map.Add CreateMapValue("表面积", "", """SW-SurfaceArea""")
+    Map.Add CreateMapValue("Length", "Bounding Box Length", """D1@Boss-Extrude1""")
+    Map.Add CreateMapValue("Mass", "Mass", """SW-Mass""")
+    Map.Add CreateMapValue("Surface Area", "", """SW-SurfaceArea""")
         
 End Sub
 
@@ -65,11 +65,11 @@ Sub main()
     Set swPart = swApp.ActiveDoc
     
     If swPart Is Nothing Then
-        Err.Raise vbError, "", "打开零件文档"
+        Err.Raise vbError, "", "Open a part document"
     End If
     
     If swPart.GetType() <> swDocumentTypes_e.swDocPART Then
-        Err.Raise vbError, "", "活动文档不是零件"
+        Err.Raise vbError, "", "The active document is not a part"
     End If
     
     Init
@@ -82,7 +82,7 @@ Sub main()
     If Not IsEmpty(vCutLists) Then
         
         If UBound(vCutLists) > 0 Then
-            Err.Raise vbError, "", "仅支持单个切割清单项"
+            Err.Raise vbError, "", "Supports only a single cut-list item"
         End If
         
         Dim swCutList As SldWorks.Feature
@@ -222,4 +222,4 @@ Sub CopyProperty(srcPrpMgr As SldWorks.CustomPropertyManager, targPrpMgr As SldW
     targPrpMgr.Set targetPrpName, prpVal
     
 End Sub
-~~~
+```
