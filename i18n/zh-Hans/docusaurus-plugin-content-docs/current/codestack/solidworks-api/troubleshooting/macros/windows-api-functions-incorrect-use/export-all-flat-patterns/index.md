@@ -1,104 +1,103 @@
 ---
 layout: sw-tool
-title: Export flat patterns from SOLIDWORKS part or assembly components
-caption: Export Flat Patterns From Part Or Assembly Components
-description: VBA macro to export flat patterns from all components of the active assembly or active part
+title: 从SOLIDWORKS零件或装配件组件导出展开图案
+caption: 从零件或装配件组件导出展开图案
+description: 从活动装配或活动零件中导出所有组件的展开图案的VBA宏
 image: assembly-flat-pattern.svg
-labels: [where used,parent,component]
-group: Import/Export
+labels: [使用位置,父级,组件]
+group: 导入/导出
 redirect-from:
     - /solidworks-api/document/sheet-metal/export-assembly-components/
 ---
-This VBA macro allows to export all flat patterns to DXF/DWG from all sheet metal components in the active SOLIDWORKS assembly or an active part document.
+这个VBA宏允许从活动SOLIDWORKS装配或活动零件文档中的所有钣金组件导出所有展开图案到DXF/DWG。
 
-Macro enables flexibility in specifying the name of the output file allowing to use placeholders (original file name, feature name, custom property, cut-list custom property, etc.) combined with the free text and supports specifying sub-folders.
+宏允许在指定输出文件名时灵活使用占位符（原始文件名、特征名、自定义属性、切割列表自定义属性等）与自由文本结合，并支持指定子文件夹。
 
-The following message box will be displayed once the exporting is completed.
+导出完成后将显示以下消息框。
 
-![Message box displayed when exporting is completed](operation-completed.png)
+![导出完成时显示的消息框](operation-completed.png)
 
 {%youtube id: FtXkdSlekG8 %}
 
-## Configuration
+## 配置
 
-Macro can be configured by modifying the **OUT_NAME_TEMPLATE** and **FLAT_PATTERN_OPTIONS** constants
+可以通过修改**OUT_NAME_TEMPLATE**和**FLAT_PATTERN_OPTIONS**常量来配置宏。
 
-### Output name template
+### 输出名称模板
 
-This constant allows to specify template for the output path of the flat pattern.
+此常量允许指定展开图案的输出路径模板。
 
-This can be either absolute or relative path. If later, result will be saved relative to the assembly directory.
+这可以是绝对路径或相对路径。如果是后者，则结果将相对于装配目录保存。
 
-Extension (either .dxf or .dwg) must be specified as the part of naming template
+扩展名（.dxf或.dwg）必须作为命名模板的一部分指定。
 
-The following placeholders are supported
+支持以下占位符：
 
-* <\_FileName\_> - name of the part file (without extension) where the flat pattern resides in
-* <\_FeatureName\_> - name of the flat pattern feature
-* <\_ConfName\_> - name of the configuration of this flat pattern (i.e. referenced configuration of the component)
-* <\_AssmFileName\_> - name of the main assembly
-* <$CLPRP:[PropertyName]> - any name of the cut-list property to read value from, e.g. \<Thickness\> is replaced with the value of cut-list custom property *Thickness*
-* <$PRP:[PropertyName]> - any name of the custom property of sheet metal part to read value from, e.g. \<PartNo\> is replaced with the value of cut-list custom property *PartNo*
-* <$ASSMPRP:[PropertyName]> - any name of the custom property of main assembly to read value from, e.g. \<ProductId\> is replaced with the value of cut-list custom property *ProductId*
+* <\_FileName\_> - 钣金部件所在的零件文件的名称（不包括扩展名）
+* <\_FeatureName\_> - 展开图案特征的名称
+* <\_ConfName\_> - 此展开图案的配置的名称（即组件的引用配置）
+* <\_AssmFileName\_> - 主装配的名称
+* <$CLPRP:[PropertyName]> - 任何切割列表属性的名称，用于读取值，例如\<Thickness\>将被替换为切割列表自定义属性*Thickness*的值
+* <$PRP:[PropertyName]> - 任何钣金零件的自定义属性的名称，用于读取值，例如\<PartNo\>将被替换为切割列表自定义属性*PartNo*的值
+* <$ASSMPRP:[PropertyName]> - 任何主装配的自定义属性的名称，用于读取值，例如\<ProductId\>将被替换为切割列表自定义属性*ProductId*的值
 
-Placeholders will be resolved for each flat pattern at runtime.
+占位符将在运行时为每个展开图案解析。
 
-For example the following value will save flat patterns with the name of the part document in the *DXFs* sub-folder in the same folder as main assembly
+例如，以下值将使用零件文档的名称将展开图案保存在与主装配相同文件夹中的*DXFs*子文件夹中。
 
 ~~~ vb
 Const OUT_NAME_TEMPLATE As String = "DXFs\<_FileName_>.dxf"
 ~~~
 
-While the following name will save all of the flat patterns as DWG file into the *Output* folder in *D* drive, where the file name will be extracted from the *PartNo* property for each corresponding flat pattern.
+而以下名称将将所有展开图案作为DWG文件保存到*D*驱动器上的*Output*文件夹中，其中文件名将从每个相应展开图案的*PartNo*属性中提取。
 
 ~~~ vb
 Const OUT_NAME_TEMPLATE As String = "D:\Output\<$CLPRP:PartNo>.dwg"
 ~~~
 
-The following setup will create sub-folder corresponding to value of the **Thickness** custom property in cut-lists and name files using the **ProductName** custom property extracted from the main assembly followed by underscore symbol and value of **PartNo** property from sheet metal part document.
+以下设置将创建与切割列表中的**Thickness**自定义属性值相对应的子文件夹，并使用从主装配中提取的**ProductName**自定义属性值，后跟下划线符号和来自钣金零件文档的**PartNo**属性值的文件名。
 
 ~~~ vb
 Const OUT_NAME_TEMPLATE As String = "D:\Output\<$CLPRP:Thickness>\<$ASSMPRP:ProductName>_<$PRP:PartNo>.dwg"
 ~~~
 
-### Include quantity into file name
+### 在文件名中包含数量
 
-This macro does not have an explicit variable to include quantity of flat patterns into the file name. It is however possible to extract the quantity of the multi body sheet metal part by including the value of automatic **QUANTITY** custom property with **<$CLPRP:QUANTITY>** placeholder.
+此宏没有明确的变量来在文件名中包含展开图案的数量。但是，可以通过包含自动**QUANTITY**自定义属性的值与**<$CLPRP:QUANTITY>**占位符来提取多体钣金零件的数量值。
 
-In order to include the component quantity in the assembly, use the [Write component quantity in the SOLIDWORKS assembly to custom property
-](/docs/codestack/solidworks-api/document/assembly/components/write-quantities/) macro. Run this macro before exporting to create custom property with the quantity value and then use **<$CLPRP:Qty>** placeholder in order to include this into the output file name.
+为了在装配中包含组件数量，请使用[将SOLIDWORKS装配中的组件数量写入自定义属性](/docs/codestack/solidworks-api/document/assembly/components/write-quantities/)宏。在导出之前运行此宏以创建具有数量值的自定义属性，然后使用**<$CLPRP:Qty>**占位符将其包含到输出文件名中。
 
-> Note, this macro will not multiple the quantity of multi-body sheet metal part and the component quantity
+> 注意，此宏不会将多体钣金零件的数量与组件数量相乘
 
-### Flat pattern options
+### 展开图案选项
 
-Options can be configured by specifying the values of **FLAT_PATTERN_OPTIONS**. Use **+** to combine options
+可以通过指定**FLAT_PATTERN_OPTIONS**的值来配置选项。使用**+**来组合选项
 
-![Flat pattern export options](flat-pattern-export-options.png)
+![展开图案导出选项](flat-pattern-export-options.png)
 
-For example to export hidden edges, library features and forming tools, use the setting below.
+例如，要导出隐藏边、库特征和成型工具，请使用以下设置。
 
 ~~~ vb
 Const FLAT_PATTERN_OPTIONS As Integer = SheetMetalOptions_e.IncludeHiddenEdges + SheetMetalOptions_e.ExportLibraryFeatures + SheetMetalOptions_e.ExportFormingTools
 ~~~
 
-> Note, geometry option must always be specified as it is required for the flat pattern export
+> 注意，必须始终指定几何选项，因为它是展开图案导出所必需的
 
-## Skip created files
+## 跳过已创建的文件
 
-**SKIP_EXISTING_FILES** options allows to specify if macro should regenerate output file if it already exists.
+**SKIP_EXISTING_FILES**选项允许指定如果输出文件已经存在，则宏是否应重新生成输出文件。
 
-Set this option to true to skip exporting the file if the output file (.dxf or .dwg) exists on the target location.
+将此选项设置为true以跳过如果目标位置上存在输出文件（.dxf或.dwg）则不导出文件。
 
 ~~~ vb
 Const SKIP_EXISTING_FILES As Boolean = True
 ~~~
 
-This option can be useful when processing large assemblies and it is required to continue the execution after SOLIDWORKS restart. Exporting flat patterns is a heavy performance operation so SOLIDWORKS may crash or hang when large job is processed. This option can help to continue the exporting after the restart.
+当处理大型装配时，此选项可能很有用，并且需要在SOLIDWORKS重新启动后继续执行。导出展开图案是一个性能消耗很大的操作，因此在处理大型作业时，SOLIDWORKS可能会崩溃或挂起。此选项可以帮助在重新启动后继续导出。
 
-## Troubleshooting
+## 故障排除
 
-If macro reports an error, in some cases it might not be immediately evident what is causing an error as the error details are 'swallowed' by exception handler. In order to disable errors handling and reveal the exact line causing the error comment all *On Error GoTo catch_* lines in the code by placing the apostrophe ' symbol at the beginning of the line as shown below.
+如果宏报告错误，在某些情况下，可能不会立即明确导致错误的原因，因为错误详细信息被异常处理程序“吞噬”了。为了禁用错误处理并显示导致错误的确切行，请在代码中将所有*On Error GoTo catch_*行注释掉，方法是在行的开头放置撇号'，如下所示。
 
 ~~~ vb jagged
 Sub main()
@@ -123,18 +122,18 @@ try_:
     'On Error GoTo catch_
 ~~~
 
-Please submit the [bug report](https://github.com/xarial/codestack/issues/new?labels=bug) and attach snapshot of this error and model used to reproduce (if possible)
+请提交[错误报告](https://github.com/xarial/codestack/issues/new?labels=bug)并附上此错误的快照和用于重现的模型（如果可能）。
 
-## Notes
+## 注意事项
 
-* Macro will ask to resolve lightweight components if any. Macro can generate error if components are not resolved
-* Each flat pattern from the multi-body sheet metal part will be exported. Make sure to use either <\_FeatureName\_> or <$CLPRP:[PropertyName]> to differentiate between result files
-* $PRP and $ASSMPRP values will be firstly extracted from the configuration specific properties and if empty from the general file properties
-* If specified property does not exist (for $CLPRP, $PRP and $ASSMPRP) - empty string is used as the placeholder value
-* Macro will process all distinct components (file path + configuration)
-* Macro will automatically create folders if required
-* Macro will replace all path invalid symbols with \_
-* Macro will only export unique bodies grouped under cut-list and skip flat patterns which belong to already exported cut-list
+* 如果有轻量级组件，宏将要求解析它们。如果未解析组件，则宏可能会生成错误。
+* 将导出每个多体钣金零件的每个展开图案。确保使用<\_FeatureName\_>或<$CLPRP:[PropertyName]>区分结果文件
+* $PRP和$ASSMPRP值将首先从配置特定属性中提取，如果为空，则从一般文件属性中提取
+* 如果指定的属性不存在（对于$CLPRP、$PRP和$ASSMPRP），则使用空字符串作为占位符值
+* 宏将处理所有不同的组件（文件路径+配置）
+* 宏将自动创建所需的文件夹
+* 宏将使用\_替换所有路径无效符号
+* 宏将仅导出切割列表下的唯一实体，并跳过属于已导出切割列表的展开图案
 
 ~~~ vb
 Enum SheetMetalOptions_e
@@ -167,7 +166,7 @@ try_:
     Set swModel = swApp.ActiveDoc
     
     If swModel Is Nothing Then
-        Err.Raise vbError, "", "Please open assembly or part document"
+        Err.Raise vbError, "", "请打开装配或零件文档"
     End If
     
     If swModel.GetType() = swDocumentTypes_e.swDocASSEMBLY Then
@@ -200,10 +199,10 @@ try_:
         ProcessSheetMetalModel swPart, swPart, swPart.ConfigurationManager.ActiveConfiguration.Name
         
     Else
-        Err.Raise vbError, "", "Only assembly and part documents are supported"
+        Err.Raise vbError, "", "仅支持装配和零件文档"
     End If
     
-    swApp.SendMsgToUser2 "Operation completed", swMessageBoxIcon_e.swMbInformation, swMessageBoxBtn_e.swMbOk
+    swApp.SendMsgToUser2 "操作完成", swMessageBoxIcon_e.swMbInformation, swMessageBoxBtn_e.swMbOk
     
     GoTo finally_
     
@@ -374,7 +373,7 @@ Function ResolveToken(token As String, rootModel As SldWorks.ModelDoc2, sheetMet
             ResolveToken = conf
         Case LCase(ASSM_FILE_NAME_TOKEN)
             If rootModel.GetPathName() = "" Then
-                Err.Raise vbError, "", "Assembly must be saved to use " & ASSM_FILE_NAME_TOKEN
+                Err.Raise vbError, "", "必须保存装配以使用 " & ASSM_FILE_NAME_TOKEN
             End If
             ResolveToken = GetFileNameWithoutExtension(rootModel.GetPathName())
         Case Else
@@ -391,7 +390,7 @@ Function ResolveToken(token As String, rootModel As SldWorks.ModelDoc2, sheetMet
                 prpName = Right(token, Len(token) - Len(CUT_LIST_PRP_TOKEN))
                 ResolveToken = GetPropertyValue(cutListFeat.CustomPropertyManager, prpName)
             Else
-                Err.Raise vbError, "", "Unrecognized token: " & token
+                Err.Raise vbError, "", "无法识别的占位符: " & token
             End If
             
     End Select
@@ -433,6 +432,11 @@ Function GetFlatPatternFeatures(model As SldWorks.ModelDoc2) As Variant
     GetFlatPatternFeatures = GetFeaturesByType(model, "FlatPattern")
 End Function
 
+
+
+子过程`ProcessSheetMetalModel`用于处理钣金模型。它接受三个参数：`rootModel`（根模型）、`sheetMetalModel`（钣金模型）和`conf`（配置名称）。
+
+```vba
 Sub ProcessSheetMetalModel(rootModel As SldWorks.ModelDoc2, sheetMetalModel As SldWorks.ModelDoc2, conf As String)
         
     Dim vCutListFeats As Variant
@@ -526,11 +530,19 @@ Sub ProcessSheetMetalModel(rootModel As SldWorks.ModelDoc2, sheetMetalModel As S
     End If
     
 End Sub
+```
 
+函数`FileExists`用于检查文件是否存在。
+
+```vba
 Function FileExists(filePath As String) As Boolean
     FileExists = Dir(filePath) <> ""
 End Function
+```
 
+函数`FindCutListFeature`用于查找包含指定实体的切割列表特征。
+
+```vba
 Function FindCutListFeature(vCutListFeats As Variant, body As SldWorks.Body2) As SldWorks.Feature
     
     Dim i As Integer
@@ -554,7 +566,11 @@ Function FindCutListFeature(vCutListFeats As Variant, body As SldWorks.Body2) As
     Next
     
 End Function
+```
 
+函数`ContainsSwObject`用于检查数组中是否包含指定对象。
+
+```vba
 Function ContainsSwObject(vArr As Variant, obj As Object) As Boolean
     
     If Not IsEmpty(vArr) Then
@@ -577,7 +593,11 @@ Function ContainsSwObject(vArr As Variant, obj As Object) As Boolean
     ContainsSwObject = False
     
 End Function
+```
 
+函数`GetFeaturesByType`用于获取指定类型的特征。
+
+```vba
 Function GetFeaturesByType(model As SldWorks.ModelDoc2, typeName As String) As Variant
     
     Dim swFeats() As SldWorks.Feature
@@ -607,7 +627,11 @@ Function GetFeaturesByType(model As SldWorks.ModelDoc2, typeName As String) As V
     End If
     
 End Function
+```
 
+子过程`ProcessFeature`用于处理特征。
+
+```vba
 Sub ProcessFeature(thisFeat As SldWorks.Feature, featsArr() As SldWorks.Feature, typeName As String)
     
     If thisFeat.GetTypeName2() = typeName Then
@@ -639,7 +663,11 @@ Sub ProcessFeature(thisFeat As SldWorks.Feature, featsArr() As SldWorks.Feature,
     Wend
         
 End Sub
+```
 
+子过程`ExportFlatPattern`用于导出平面图。
+
+```vba
 Sub ExportFlatPattern(part As SldWorks.PartDoc, flatPattern As SldWorks.Feature, outFilePath As String, opts As SheetMetalOptions_e, conf As String)
     
     Dim swModel As SldWorks.ModelDoc2
@@ -715,7 +743,11 @@ finally_:
     End If
     
 End Sub
+```
 
+子过程`CreateDirectories`用于创建目录。
+
+```vba
 Sub CreateDirectories(path As String)
 
     Dim fso As Object
@@ -730,7 +762,11 @@ Sub CreateDirectories(path As String)
     fso.CreateFolder path
     
 End Sub
+```
 
+函数`GetFullPath`用于获取完整路径。
+
+```vba
 Function GetFullPath(model As SldWorks.ModelDoc2, path As String)
     
     GetFullPath = path
@@ -753,14 +789,20 @@ Function GetFullPath(model As SldWorks.ModelDoc2, path As String)
     End If
     
 End Function
+```
 
+函数`IsPathRelative`用于检查路径是否为相对路径。
+
+```vba
 Function IsPathRelative(path As String)
     IsPathRelative = Mid(path, 2, 1) <> ":" And Not IsPathUnc(path)
 End Function
+```
 
+函数`IsPathUnc`用于检查路径是否为UNC路径。
+
+```vba
 Function IsPathUnc(path As String)
     IsPathUnc = Left(path, 2) = "\\"
 End Function
-~~~
-
-
+```
