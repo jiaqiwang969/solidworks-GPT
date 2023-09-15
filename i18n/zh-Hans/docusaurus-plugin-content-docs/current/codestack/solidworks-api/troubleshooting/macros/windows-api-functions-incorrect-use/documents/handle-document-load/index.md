@@ -1,6 +1,6 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API在文档加载时自动运行VBA宏
+title: 在文档加载时自动运行VBA宏
 caption: 在文档加载时运行宏
 description: 使用SOLIDWORKS API在文件加载时自动运行VBA代码（或其他宏）
 image: run-macro-on-load.svg
