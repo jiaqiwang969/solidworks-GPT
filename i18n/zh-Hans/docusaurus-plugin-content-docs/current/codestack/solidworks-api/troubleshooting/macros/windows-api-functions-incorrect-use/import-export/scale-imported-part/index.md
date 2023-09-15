@@ -1,14 +1,14 @@
 ---
-caption: Scale Imported Geometry
-title: VBA macro to scale the geometry of the imported features using SOLIDWORKS API
-description: VBA macro scales the bodies from the imported features of the foreign formats (e.g. STEP, IGES) with the specified scale factor
+caption: 缩放导入几何体
+title: 使用SOLIDWORKS API缩放导入特征的VBA宏
+description: VBA宏使用指定的缩放因子缩放外部格式（例如STEP、IGES）的导入特征的实体
 image: imported-feature.png
 ---
-![Imported geometry feature](imported-feature.png){ width=250 }
+![导入的几何特征](imported-feature.png){ width=250 }
 
-This VBA macro scales all bodies form the imported features in active SOLIDWORKS part file. THe imported features will be generated if file is loaded from neutral formats like STEP, IGES, Parasolid unless 3D Interconnect option is used.
+这个VBA宏会缩放活动SOLIDWORKS零件文件中所有导入特征的实体。如果从STEP、IGES、Parasolid等中性格式加载文件，将会生成导入特征，除非使用了3D互连选项。
 
-Set the scale factor in the **SCALE_FACTOR** constant.
+在**SCALE_FACTOR**常量中设置缩放因子。
 
 ~~~ vb
 Const SCALE_FACTOR As Double = 2.5
@@ -55,7 +55,7 @@ Sub main()
         Loop While Not swFeat Is Nothing
         
     Else
-        Err.Raise vbError, "", "Failed to load model: " & errs
+        Err.Raise vbError, "", "加载模型失败: " & errs
     End If
     
 End Sub
@@ -78,4 +78,3 @@ Sub ApplyScale(body As SldWorks.Body2, scaleFactor As Double)
     
 End Sub
 ~~~
-
