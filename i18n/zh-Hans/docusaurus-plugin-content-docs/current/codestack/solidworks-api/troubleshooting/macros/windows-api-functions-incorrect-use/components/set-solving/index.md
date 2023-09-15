@@ -1,24 +1,24 @@
 ---
 layout: sw-tool
-title: Set multiple assembly components solving (rigid or flexible) using SOLIDWORKS API
-caption: Set Components Solving (Rigid or Flexible)
-description: VBA macro to batch set the rigid or flexible option for selected components in the assembly using SOLIDWORKS API
+title: 使用SOLIDWORKS API设置多个装配组件的求解（刚性或柔性）
+caption: 设置组件求解（刚性或柔性）
+description: 使用SOLIDWORKS API批量设置装配中所选组件的刚性或柔性选项的VBA宏
 image: batch-set-solving.png
-labels: [batch,solving,rigid,flexible]
-group: Assembly
+labels: [批量,求解,刚性,柔性]
+group: 装配
 ---
-![Setting the solving for multiple assembly components](batch-set-solving.png)
+![设置多个装配组件的求解](batch-set-solving.png)
 
-User can change the solving options (rigid or flexible) for assembly components using components options page or toolbar command. This is however only limited for one component at a time.
+用户可以使用组件选项页面或工具栏命令更改装配组件的求解选项（刚性或柔性）。然而，这仅限于一次只能更改一个组件。
 
-![Solving options for the components page](solving-options.png)
+![组件页面的求解选项](solving-options.png)
 
-This VBA macro allows to set either rigid or solved options for all selected components as one command using SOLIDWORKS API.
+这个VBA宏允许使用SOLIDWORKS API一次将所有选定的组件设置为刚性或柔性选项。
 
-Specify the option as follows:
+指定选项如下：
 
 ~~~ vb
-Const SET_FLEXIBLE As Boolean = True 'True - set to flexible, False - set to Rigid
+Const SET_FLEXIBLE As Boolean = True 'True - 设置为柔性，False - 设置为刚性
 ~~~
 
 ~~~ vb
@@ -60,11 +60,11 @@ Sub main()
             Next
             
         Else
-            MsgBox "Please select assembly components"
+            MsgBox "请选择装配组件"
         End If
     
     Else
-        MsgBox "Please open assembly"
+        MsgBox "请打开装配"
     End If
     
     
@@ -138,5 +138,3 @@ Sub SetSolvingFlag(comp As SldWorks.Component2, solveOpts As swComponentSolvingO
     
 End Sub
 ~~~
-
-
