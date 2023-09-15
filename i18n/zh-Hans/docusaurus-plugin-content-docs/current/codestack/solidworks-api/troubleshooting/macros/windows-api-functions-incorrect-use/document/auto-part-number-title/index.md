@@ -1,29 +1,29 @@
 ---
 layout: sw-tool
-title: Set title as part number for new file using SOLIDWORKS API
-caption: Set Title To Next Part Number
-description: VBA Macro to set title with automatically incremented number from the shared file using SOLIDWORKS API for new files
+title: 使用SOLIDWORKS API将标题设置为零件编号
+caption: 将标题设置为下一个零件编号
+description: 使用SOLIDWORKS API为新文件设置自动递增的编号作为标题的VBA宏
 image: automatic-model-title.png
-labels: [part number,title]
-group: Model
+labels: [零件编号,标题]
+group: 模型
 ---
-![Model title set to part number](automatic-model-title.png){ width=450 }
+![将模型标题设置为零件编号](automatic-model-title.png){ width=450 }
 
-This VBA macro automatically increments the part number and sets this as a title for newly created file using SOLIDWORKS API.
+这个VBA宏使用SOLIDWORKS API自动递增零件编号，并将其设置为新创建文件的标题。
 
-Part number is incremented and stored in the external text file which can be shared across different users if needed.
+零件编号递增并存储在外部文本文件中，如果需要，可以在不同用户之间共享。
 
-![Current part number value in the text file](part-number-storage-file.png){ width=350 }
+![文本文件中的当前零件编号值](part-number-storage-file.png){ width=350 }
 
-Macro provides several options to format the title which can be modified by changes in the values of the constants in the macro.
+该宏提供了几种格式化标题的选项，可以通过修改宏中常量的值来进行修改。
 
 ~~~ vb
-Const NMB_SRC_FILE_PATH As String = "D:\prt.txt" 'path to store the current part index
-Const NMB_FORMAT As String = "000" 'padding for the number, e.g. 001, 002, instead of 1, 2
-Const BASE_NAME As String = "PRT-" 'Base prefix for file naming
+Const NMB_SRC_FILE_PATH As String = "D:\prt.txt" '存储当前零件索引的路径
+Const NMB_FORMAT As String = "000" '数字的填充，例如001、002，而不是1、2
+Const BASE_NAME As String = "PRT-" '文件命名的基本前缀
 ~~~
 
-Follow the video tutorial in the [Run Macro On Document Load](/docs/codestack/solidworks-api/application/documents/handle-document-load/) article for the guide of running this macro automatically for each newly created model.
+请参考[在文档加载时运行宏](/docs/codestack/solidworks-api/application/documents/handle-document-load/)文章中的视频教程，了解如何自动运行此宏以为每个新创建的模型设置标题。
 
 ~~~ vb
 Const NMB_SRC_FILE_PATH As String = "D:\prt.txt"
@@ -51,7 +51,7 @@ Sub main()
     name = BASE_NAME & Format(thisNumber, NMB_FORMAT)
     
     If False = swModel.SetTitle2(name) Then
-        Err.Raise vbError, "", "Failed to set title"
+        Err.Raise vbError, "", "设置标题失败"
     End If
     
     StoreNumber NMB_SRC_FILE_PATH, thisNumber
@@ -89,5 +89,3 @@ Sub StoreNumber(filePath As String, number As Integer)
     
 End Sub
 ~~~
-
-
