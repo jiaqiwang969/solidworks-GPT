@@ -1,16 +1,16 @@
 ---
-title: Managing OLE Objects in models using SOLIDWORKS API
-caption: OLE Objects
-description: Collection of macros and examples which demonstrate how to work with different embedded OLE objects (design table, attachment etc.) using SOLIDWORKS API
+title: 使用SOLIDWORKS API管理模型中的OLE对象
+caption: OLE对象
+description: 这是一个包含宏和示例的集合，演示了如何使用SOLIDWORKS API处理不同的嵌入式OLE对象（设计表、附件等）
 sidebar_position: 2
 labels: [ole, embeding]
 ---
-Object Linking and Embedding (OLE) is a Microsoft technology allowing to inserted 3rd party application objects into the documents. In SOLIDWORKS OLE objects are used to represent Design Tables, Attachment and any file dropped directly into the Document.
+对象链接和嵌入（OLE）是一种微软技术，允许将第三方应用程序对象插入到文档中。在SOLIDWORKS中，OLE对象用于表示设计表、附件以及直接拖放到文档中的任何文件。
 
-Such objects usually can be manipulated directly from the host environment. For example embeded Excel file can be modified without exiting the SOLIDWORKS window.
+这些对象通常可以直接从宿主环境中操作。例如，嵌入的Excel文件可以在不退出SOLIDWORKS窗口的情况下进行修改。
 
-OLE Objects are usually saved with SOLIDWORKS file and can be removed, resized or used directly in the graphics area.
+OLE对象通常与SOLIDWORKS文件一起保存，并且可以通过调整大小、删除或直接在图形区域中使用来进行操作。
 
-SOLIDWORKS API enables the access to OLE objects via [ISwOLEObject](https://help.solidworks.com/2018/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.ISwOLEObject.html) interface. Objects can be enumerated, created and deleted by using the API methods of [IModelDocExtension](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDocExtension.html) interface.
+SOLIDWORKS API通过[ISwOLEObject](https://help.solidworks.com/2018/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.ISwOLEObject.html)接口提供对OLE对象的访问。可以使用[IModelDocExtension](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDocExtension.html)接口的API方法枚举、创建和删除对象。
 
-This section contains macros and examples allowing to manipulate OLE objects in documents using the SOLIDWORKS API.
+本节包含了使用SOLIDWORKS API在文档中操作OLE对象的宏和示例。
