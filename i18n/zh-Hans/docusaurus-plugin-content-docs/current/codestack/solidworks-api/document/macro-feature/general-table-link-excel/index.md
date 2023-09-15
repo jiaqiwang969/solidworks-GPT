@@ -1,30 +1,30 @@
 ---
-title: SOLIDWORKS macro feature to link and auto update general table to Excel
-caption: Link And Auto Update General Table To Excel
-description: Macro allows to link and automatically update the general table to external Excel or text/CSV file using SOLIDWORKS API
+title: SOLIDWORKS宏功能以将通用表格链接并自动更新到Excel
+caption: 链接并自动更新通用表格到Excel
+description: 使用SOLIDWORKS API，宏允许将通用表格链接到外部Excel或文本/CSV文件，并自动更新。
 image: linked-excel-table.png
 labels: [general table, excel, link, macro feature]
 ---
-![Linked table macro feature in the feature tree](linked-excel-table.png){ width=350 }
+![在特征树中的链接表格宏功能](linked-excel-table.png){ width=350 }
 
-This macro allows to create General Table in part, assembly and drawing and link it to external Excel or text/csv file using SOLIDWORKS API. This macro implemented as embedded macro feature which means that table will be automatically updated once the model is rebuilt.
+此宏允许在零件、装配和绘图中创建通用表格，并使用SOLIDWORKS API将其链接到外部Excel或文本/CSV文件。此宏实现为嵌入式宏功能，这意味着一旦模型重建，表格将自动更新。
 
-* Run the macro
-* Specify the full path to excel (*.xls or *.xlsx) or comma separated text file (*.csv or *.txt) in the first prompt dialog
-* Optionally specify the name of the spreadsheet to read data from. If empty string is specified first spreadsheet will be used
+* 运行宏
+* 在第一个提示对话框中指定Excel（*.xls或*.xlsx）或逗号分隔的文本文件（*.csv或*.txt）的完整路径
+* 可选择指定要从中读取数据的电子表格的名称。如果指定空字符串，则使用第一个电子表格
 
-Macro inserts the table and macro feature in the feature tree with the data from external file. Modify the file or general table and rebuild the model - table is updated.
+宏将插入表格和宏功能到特征树中，并使用来自外部文件的数据。修改文件或通用表格并重新构建模型-表格将被更新。
 
-## Notes and limitations
+## 注意事项和限制
 
-* Only simple CSV files are supported (i.e. simple comma separated values, new line symbols or commas in the values are not supported)
-* Excel is not required when CSV file is used
-* Using CSV files has significant performance benefits as it is not required to start Excel and load document to get the data. Use this option where applicable
-* Excel is displayed invisible and session may be cached for better performance benefits
-* If CSV or Excel files are saved relative to the model - relative path will be maintained. It means that the SOLIDWORKS file can be moved together with Excel/CSV and link won't be broken
-* If General Table is selected when inserting new feature - this table will be used instead of creating new one
-* Currently it is not possible to change the path to external Excel file. Delete the macro feature instead and reinsert it by selecting the general table (see previous point)
-* Macro feature is embedded into the model which means that the table will be updated on any other workstations even if this macro is not available.
+* 仅支持简单的CSV文件（即简单的逗号分隔值，不支持换行符或值中的逗号）
+* 使用CSV文件时不需要Excel
+* 使用CSV文件具有显着的性能优势，因为无需启动Excel和加载文档即可获取数据。在适用的情况下使用此选项
+* Excel以不可见方式显示，并且会缓存会话以获得更好的性能优势
+* 如果将CSV或Excel文件保存相对于模型-将维护相对路径。这意味着SOLIDWORKS文件可以与Excel/CSV一起移动，链接不会中断
+* 如果在插入新特征时选择了通用表格-将使用此表格而不是创建新表格
+* 目前无法更改外部Excel文件的路径。请删除宏功能，然后通过选择通用表格重新插入它（参见上一点）
+* 宏功能嵌入到模型中，这意味着即使此宏不可用，表格也将在任何其他工作站上更新。
 
 ~~~ vb
 Const BASE_NAME As String = "LinkedTable"
@@ -46,8 +46,8 @@ Sub main()
         Dim excelFilePath As String
         Dim excelSheetName As String
 
-        excelFilePath = InputBox("Specify the full path to the excel or text/csv file")
-        excelSheetName = InputBox("Specify the sheet name for excel file (specify empty string for first sheet)")
+        excelFilePath = InputBox("在第一个提示对话框中指定Excel或文本/CSV文件的完整路径")
+        excelSheetName = InputBox("为Excel文件指定工作表名称（对于第一个工作表指定空字符串）")
         
         If excelFilePath = "" Then
             Exit Sub
@@ -94,11 +94,11 @@ Sub main()
             Empty, swMacroFeatureOptions_e.swMacroFeatureEmbedMacroFile + swMacroFeatureOptions_e.swMacroFeatureAlwaysAtEnd)
         
         If swFeat Is Nothing Then
-            MsgBox "Failed to create macro runner"
+            MsgBox "无法创建宏运行程序"
         End If
         
     Else
-        MsgBox "Please open model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -376,14 +376,14 @@ Function swmRebuild(varApp As Variant, varDoc As Variant, varFeat As Variant) As
     Set swTable = vObjects(0)
     
     If swTable Is Nothing Then
-        swmRebuild = "Linked general table is missing"
+        swmRebuild = "链接的通用表格丢失"
         Exit Function
     End If
     
     excelFileName = GetFullPath(swModel, excelFileName)
     
     If Dir(excelFileName) = "" Then
-        swmRebuild = "Linked Excel file is missing: " & excelFileName
+        swmRebuild = "链接的Excel文件丢失：" & excelFileName
         Exit Function
     End If
     
@@ -413,5 +413,3 @@ Function swmSecurity(varApp As Variant, varDoc As Variant, varFeat As Variant) A
     swmSecurity = SwConst.swMacroFeatureSecurityOptions_e.swMacroFeatureSecurityByDefault
 End Function
 ~~~
-
-
