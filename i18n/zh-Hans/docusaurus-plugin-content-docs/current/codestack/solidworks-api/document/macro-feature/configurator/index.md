@@ -1,102 +1,102 @@
 ---
 layout: sw-tool
-title: Macro feature to configure model dimensions
-caption: Model Configurator
-description: VBA macro feature which allows to configure the dimensions of the model via custom user Form
+title: 用于配置模型尺寸的宏特征
+caption: 模型配置器
+description: 使用自定义用户表单通过VBA宏特征配置模型尺寸的VBA宏
 image: part-configurator.svg
-labels: [configure, macro feature, dimensions]
-group: Model
+labels: [配置, 宏特征, 尺寸]
+group: 模型
 ---
-This VBA macro leverages functionality of macro feature to create custom model configurator for the specified dimensions.
+这个VBA宏利用宏特征的功能为指定的尺寸创建自定义模型配置器。
 
 {% youtube id: JbcYEL9GY_c %}
 
-Macro will build dynamic User Interface for the specified dimension and insert the **Configurator** feature directly in the Feature Manager tree.
+宏将为指定的尺寸构建动态用户界面，并直接将**配置器**特征插入到特征管理器树中。
 
-![Configuring dimensions of the model](configuring-model.png)
+![配置模型尺寸](configuring-model.png)
 
-Design can be modified at any time by clicking **Edit Feature** command
+可以通过单击**编辑特征**命令随时修改设计。
 
-![Editing the dimensions of the model via configurator form](edit-feature.png)
+![通过配置器表单编辑模型尺寸](edit-feature.png)
 
-Feature can also be edited in the context of the assembly.
+还可以在装配上下文中编辑特征。
 
-![Editing configuration in-context of the assembly](in-context-editing.png)
+![在装配上下文中编辑配置](in-context-editing.png)
 
-To insert the feature, pre-select dimensions you want to be configured and run the macro.
+要插入该特征，请预先选择要配置的尺寸，然后运行宏。
 
-For each selected dimension specify the user friendly title (this will be displayed on the form):
+对于每个选择的尺寸，请指定用户友好的标题（这将显示在表单上）：
 
-![Specify title for the dimension](specify-dimension-title.png)
+![为尺寸指定标题](specify-dimension-title.png)
 
-Once inserted. Edit the definition of the feature to update the model.
+插入后。编辑特征的定义以更新模型。
 
-Configurator feature can be inserted into the part or assembly (including inserting to the component edited in the context of the assembly).
+配置器特征可以插入到零件或装配体中（包括插入到在装配上下文中编辑的组件中）。
 
-Dimensions will be modified in the active configuration or in the referenced configuration of the component (if edited in context)
+尺寸将在活动配置或组件的引用配置中进行修改（如果在上下文中编辑）。
 
-When adding configurator feature to the assembly it is possible to modify the dimensions of any sub-component.
+将配置器特征添加到装配体时，可以修改任何子组件的尺寸。
 
-## Configuration
+## 配置
 
-User can modify the constants below to change some of the parameters.
+用户可以修改下面的常量来更改一些参数。
 
-* **BASE_NAME** constants defines the default name used for the configurator feature
-* **EMBED_MACRO_FEATURE** allows to embed the code directly to the model, so it is no longer linked to the original macro. This model can be shared with anyone and edited without the need to supply the original macro
+* **BASE_NAME** 常量定义了配置器特征的默认名称
+* **EMBED_MACRO_FEATURE** 允许将代码直接嵌入到模型中，因此不再与原始宏链接。可以与任何人共享此模型，并且无需提供原始宏即可进行编辑
 
 ~~~ vb
-Public Const BASE_NAME As String = "MyConfigurator" 'default name for the feature
+Public Const BASE_NAME As String = "MyConfigurator" '配置器特征的默认名称
 
-Const EMBED_MACRO_FEATURE As Boolean = True' embeds macro feature into the model
+Const EMBED_MACRO_FEATURE As Boolean = True' 将宏特征嵌入到模型中
 ~~~
 
-## Benefits Comparison
+## 优势比较
 
-Table below demonstrates the benefits of this approach compared to other poplar design automation methods and tools.
+下表演示了与其他流行的设计自动化方法和工具相比，此方法的优势。
 
-> Note, the table below only shows benefits of this macro compared to other methods. Other methods have more benefits and features which this macro does not cover and those are not included into the table below
+> 注意，下表仅显示此宏与其他方法相比的优势。其他方法具有更多的优势和功能，此宏不包含在下表中
 
-| Feature  | This Macro | Equations  | Design Table  | DriveWorks |
+| 功能  | 此宏 | 方程式  | 设计表  | DriveWorks |
 |---|---|---|---|---|
-| Easy to setup  | &check;  | &check;  | &check;  | &cross;  |
-| Simple input method  | &check;  | &cross;  | &cross;  | &check;  |
-| Performance  | &check;  | &check;  | &cross;  | &cross;  |
-| On-demand editing  | &check;  | &check;  | &check;  | &cross;  |
-| Sub-components support  | &check;  | &cross;  | &cross;  | &check;  |
-| In-context editing  | &check;  | &cross;  | &cross;  | N/A  |
-| Extensibility  | &check;  | &cross;  | &cross;  | &check;  |
+| 设置简单  | &check;  | &check;  | &check;  | &cross;  |
+| 输入方法简单  | &check;  | &cross;  | &cross;  | &check;  |
+| 性能  | &check;  | &check;  | &cross;  | &cross;  |
+| 按需编辑  | &check;  | &check;  | &check;  | &cross;  |
+| 支持子组件  | &check;  | &cross;  | &cross;  | &check;  |
+| 上下文编辑  | &check;  | &cross;  | &cross;  | N/A  |
+| 可扩展性  | &check;  | &cross;  | &cross;  | &check;  |
 
-### Easy to setup
+### 设置简单
 
-This criteria defines how quickly the configurator can be created. DriveWorks requires specific skills and rules engine to create a configurator, while this macro only requires dimensions preselection
+此标准定义了配置器可以多快地创建。DriveWorks需要特定的技能和规则引擎来创建配置器，而此宏只需要预先选择尺寸。
 
-### Simple input method
+### 输入方法简单
 
-This criteria defines how easy it is to apply and change the dimensions as per configurator input parameters. Both this macro and DriveWorks will use custom forms which simplifies the input while Equations and Design Table do not have a specific input form and it is required to search for the specific inputs through the list of other equations and definitions.
+此标准定义了根据配置器输入参数应用和更改尺寸的简易程度。此宏和DriveWorks都将使用自定义表单，简化了输入，而方程式和设计表没有特定的输入表单，需要在其他方程式和定义列表中搜索特定的输入。
 
-### Performance
+### 性能
 
-This criteria defines the execution performance (how long it takes before parameters are applied). This macro applies parameters instantly directly to dimension. Design Table needs to load Excel instance and open the file to recalculate and apply value. DriveWorks will always generate new model based on the specification inputs.
+此标准定义了执行性能（应用参数之前需要多长时间）。此宏直接将参数应用于尺寸，因此参数立即生效。设计表需要加载Excel实例并打开文件以重新计算和应用值。DriveWorks将始终基于规格输入生成新模型。
 
-### On-demand editing
+### 按需编辑
 
-This criteria defines if parameters can be changed to the existing design. DriveWorks generates new model and does not modify existing one.
+此标准定义了是否可以更改现有设计的参数。DriveWorks会生成新模型，而不会修改现有模型。
 
-### Sub-components support
+### 支持子组件
 
-This criteria defines if parameters of the sub component can be modified. Although Equations can be defined for the components those are not configuration specific, i.e. it will not be possible to have two instances of the component with different configurations and different equation values.
+此标准定义了是否可以修改子组件的参数。虽然可以为组件定义方程式，但这些方程式不是配置特定的，即不可能具有具有不同配置和不同方程式值的两个组件实例。
 
-### In-context editing
+### 上下文编辑
 
-This criteria defines if configuration of the component can be changed using in-context editing from the top level assembly. All of the methods except this macro requires the target component to be opened in its own window in order to be edited, while this macro allows in-context editing.
+此标准定义了是否可以使用装配体的上下文编辑更改组件的配置。除此宏之外的所有方法都要求将目标组件在其自己的窗口中打开以进行编辑，而此宏允许上下文编辑。
 
-### Extensibility
+### 可扩展性
 
-This criteria defines the possibility to extend the functionality beyond the out-of-the box functionality. Both Equations and DesignTable are built-in features. DriveWorks provides APIs and can be extended. This macro is open source and can be extended using SOLIDWORKS API.
+此标准定义了将功能扩展到超出开箱即用功能的可能性。方程式和设计表是内置功能。DriveWorks提供API并可扩展。此宏是开源的，可以使用SOLIDWORKS API进行扩展。
 
-## Macro Setup
+## 宏设置
 
-* Create new macro and copy the code below:
+* 创建新的宏并复制下面的代码：
 
 ~~~ vb
 Public Const MARGIN As Integer = 10
@@ -314,7 +314,7 @@ End Function
 
 
 
-Add new [User Form](/docs/codestack/visual-basic/user-forms/) and place the code below into the form's code behind
+添加新的[用户表单](/docs/codestack/visual-basic/user-forms/)并将下面的代码放入表单的代码后面
 
 ~~~ vb
 Dim lblParamName() As Label
@@ -471,6 +471,6 @@ End Function
 
 
 
-Specify the name for the form to be **ConfiguratorForm**. As the result the solution tree in VBA will look like below:
+为表单指定名称为**ConfiguratorForm**。结果，在VBA中的解决方案树如下所示：
 
-![VBA macro files tree](vba-solution-tree.png)
+![VBA宏文件树](vba-solution-tree.png)
