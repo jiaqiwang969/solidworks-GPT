@@ -1,33 +1,34 @@
 ---
-title: SOLIDWORKS API方法带有和不带有I的区别
-caption: I版本的方法和接口
-description: 解释了方法名和接口名以I开头（例如IModelDoc2 vs ModelDoc2）之间的区别
+title: Difference between SOLIDWORKS API Methods with and without "I"
+caption: I-Version Methods and Interfaces
+description: Explains the difference between method and interface names starting with "I" (e.g. IModelDoc2 vs ModelDoc2)
 image: intellisense-events.png
-labels: [事件,I方法,I接口]
+labels: [events, I methods, I interfaces]
 ---
-SOLIDWORKS API中的方法、属性和对象（接口）有两个版本可供使用：
 
-* 以**I**开头（例如ISldWorks、IModelDoc2、IAnnotation、ISldWorks::IActiveDoc）
-* 不以**I**开头（例如SldWorks、ModelDoc2、Annotation、SldWorks::ActiveDoc）
+There are two versions of methods, properties, and objects (interfaces) in the SOLIDWORKS API:
 
-这两个版本对应的是同一个对象或方法。主要区别如下：
+* Starting with **I** (e.g. ISldWorks, IModelDoc2, IAnnotation, ISldWorks::IActiveDoc)
+* Not starting with **I** (e.g. SldWorks, ModelDoc2, Annotation, SldWorks::ActiveDoc)
 
-* I版本的方法不公开事件
+These two versions correspond to the same object or method. The main differences are as follows:
 
-下面是将变量声明为*SldWorks*时可用成员的快照。事件可用。
+* I-version methods do not expose events.
 
-![将变量声明为SldWorks时可用的事件列表](intellisense-events.png){ width=250 }
+Here is a snapshot of the events available when the variable is declared as *SldWorks*. Events are available.
 
-下面是将变量声明为*ISldWorks*时可用成员的快照。没有事件可用。
+![List of events available when the variable is declared as SldWorks](intellisense-events.png){ width=250 }
 
-![将变量声明为ISldWorks时没有可用的事件](intellisense-no-events.png){ width=250 }
+Here is a snapshot of the members available when the variable is declared as *ISldWorks*. No events are available.
 
-* I版本的方法通常返回类型安全的接口版本，而不是对象或IDispatch。这意味着在编译时强制执行类型安全的语言（如C#）中不需要显式转换：
+![No events available when the variable is declared as ISldWorks](intellisense-no-events.png){ width=250 }
 
-~~~ cs
+* I-version methods typically return a type-safe interface version instead of an object or IDispatch. This means that explicit casting is not required in type-safe languages (e.g. C#) at compile time:
+
+```cs
 ISldWorks app;
 ...
-IModelDoc2 model = app.IActiveDoc; //正确
-IModelDoc2 model = app.ActiveDoc; //编译错误
-IModelDoc2 model = app.ActiveDoc as IModelDoc2; //正确
-~~~
+IModelDoc2 model = app.IActiveDoc; // Correct
+IModelDoc2 model = app.ActiveDoc; // Compilation error
+IModelDoc2 model = app.ActiveDoc as IModelDoc2; // Correct
+```
