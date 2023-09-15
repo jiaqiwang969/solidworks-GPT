@@ -1,38 +1,38 @@
 ---
 layout: sw-tool
-caption: 将切割清单拆分为配置
-title: 将SOLIDWORKS切割清单体拆分为单独的配置的宏
-description: VBA宏，用于为活动SOLIDWORKS零件文档中的所有切割清单体（或唯一体）创建单独的配置，以便生成绘图
+caption: Splitting Cut List Bodies into Configurations
+title: Macro to Split SOLIDWORKS Cut List Bodies into Separate Configurations
+description: VBA macro to create separate configurations for all cut list bodies (or unique bodies) in the active SOLIDWORKS part document for generating drawings
 image: cut-list-to-configuration.svg
-group: 切割清单
+group: Cut List
 ---
-![切割清单与配置的映射关系](cut-lists-configurations.png)
+![Mapping between Cut Lists and Configurations](cut-lists-configurations.png)
 
-此VBA宏为活动零件文档的所有切割清单体创建单独的配置。
+This VBA macro creates separate configurations for all cut list bodies in the active part document.
 
-当准备多体切割清单零件的绘图时，此宏非常有用，其中需要为每个唯一体绘制。
+This macro is useful when preparing drawings for multi-body cut list parts where a separate drawing is required for each unique body.
 
-宏将为文档中的切割清单特征创建相同数量的配置，并添加相应的**删除实体**特征，并设置此特征的抑制，以便每个配置仅显示单个切割清单的实体。
+The macro creates the same number of configurations as the cut list features in the document and adds the corresponding **Delete Body** feature with the suppression set so that each configuration displays only the bodies of a single cut list.
 
-宏将以切割清单名称命名配置。
+The configurations are named after the cut list.
 
-宏将在SOLIDWORKS图标中显示进度条：
+The macro displays a progress bar in the SOLIDWORKS icon:
 
-![操作的进度](progress-bar.png)
+![Progress of the operation](progress-bar.png)
 
-## 配置
+## Configuration
 
-**KEEP_ALL_CUT_LIST_BODIES**常量允许控制宏是否隔离所有切割清单体还是仅保留单个唯一体。
+The **KEEP_ALL_CUT_LIST_BODIES** constant allows controlling whether the macro isolates all cut list bodies or only keeps a single unique body.
 
 ~~~ vb
-Const KEEP_ALL_CUT_LIST_BODIES As Boolean = True '保留所有切割清单体
+Const KEEP_ALL_CUT_LIST_BODIES As Boolean = True 'Keep all cut list bodies
 ~~~
 
-如果将**KEEP_ALL_CUT_LIST_BODIES**设置为**False**，则仅保留每个切割清单的第一个实体。这简化了绘图创建过程，因为只需要选择相应的引用配置以在绘图中显示实体。但是，这将导致切割清单项的数量不正确，如果插入了BOM表（始终等于1）。
+If **KEEP_ALL_CUT_LIST_BODIES** is set to **False**, only the first body of each cut list is kept. This simplifies the process of creating drawings as only the appropriate reference configuration needs to be selected to display the bodies in the drawing. However, this will result in an incorrect quantity of cut list items if a BOM table is inserted (always equal to 1).
 
-如果将**KEEP_ALL_CUT_LIST_BODIES**设置为**True**，则将保留每个切割清单的所有实体。在这种情况下，用户还需要通过绘图视图中的**选择实体**按钮选择要保留的单个实体。但是，在这种情况下，物料清单表将显示正确的数量。
+If **KEEP_ALL_CUT_LIST_BODIES** is set to **True**, all bodies of each cut list are kept. In this case, the user will also need to select the individual bodies to keep through the **Select Bodies** button in the drawing view. However, in this case, the bill of materials table will display the correct quantity.
 
-![在绘图视图中选择实体的功能](view-select-bodies.png)
+![Select Bodies functionality in the drawing view](view-select-bodies.png)
 
 ~~~ vb
 Const KEEP_ALL_CUT_LIST_BODIES As Boolean = True
@@ -62,7 +62,7 @@ try_:
             Dim vCutLists As Variant
             vCutLists = GetCutLists(swModel)
             
-            swProgressBar.Start 0, UBound(vCutLists), "为切割清单创建配置"
+            swProgressBar.Start 0, UBound(vCutLists), "Creating configurations for cut lists"
             
             Dim i As Integer
             
@@ -89,12 +89,12 @@ try_:
                         vBodies = swBody
                     End If
                     
-                    Debug.Print "为" & swCutList.Name & "创建配置"
+                    Debug.Print "Creating configuration for " & swCutList.Name
                     
                     CreateConfigurationForBodies swModel, vBodies, swCutList.Name
                 
                 Else
-                    Debug.Print swCutList.Name & "没有实体"
+                    Debug.Print swCutList.Name & " has no bodies"
                 End If
                 
                 swProgressBar.UpdateProgress i + 1
@@ -102,10 +102,10 @@ try_:
             Next
             
         Else
-            Err.Raise vbError, "", "仅支持零件文档"
+            Err.Raise vbError, "", "Only part documents are supported"
         End If
     Else
-        Err.Raise vbError, "", "打开零件文档"
+        Err.Raise vbError, "", "Open a part document"
     End If
     
     GoTo finally_
@@ -123,7 +123,7 @@ End Sub
 Sub CreateConfigurationForBodies(model As SldWorks.ModelDoc2, vBodies As Variant, confName As String)
 
     If IsEmpty(vBodies) Then
-        Err.Raise vbError, "", "未指定实体"
+        Err.Raise vbError, "", "No bodies specified"
     End If
     
     Dim activeConfName As String
@@ -133,7 +133,7 @@ Sub CreateConfigurationForBodies(model As SldWorks.ModelDoc2, vBodies As Variant
     Set swBodyConf = model.ConfigurationManager.AddConfiguration2(confName, "", "", swConfigurationOptions2_e.swConfigOption_DontActivate Or swConfigurationOptions2_e.swConfigOption_SuppressByDefault, activeConfName, "", False)
     
     If swBodyConf Is Nothing Then
-        Err.Raise vbError, "", "无法为" & confName & "创建配置"
+        Err.Raise vbError, "", "Failed to create configuration for " & confName
     End If
     
     If model.Extension.MultiSelect2(vBodies, False, Nothing) = UBound(vBodies) + 1 Then
@@ -146,21 +146,21 @@ Sub CreateConfigurationForBodies(model As SldWorks.ModelDoc2, vBodies As Variant
             swBodyDeleteFeat.Name = confName + "_Isolated"
             
             If False = swBodyDeleteFeat.SetSuppression2(swFeatureSuppressionAction_e.swSuppressFeature, swInConfigurationOpts_e.swThisConfiguration, Empty) Then
-                Err.Raise vbError, "", "无法抑制" & confName & "的删除实体特征"
+                Err.Raise vbError, "", "Failed to suppress delete body feature for " & confName
             End If
             
             Dim targetConf(0) As String
             targetConf(0) = swBodyConf.Name
             
             If False = swBodyDeleteFeat.SetSuppression2(swFeatureSuppressionAction_e.swUnSuppressFeature, swInConfigurationOpts_e.swSpecifyConfiguration, targetConf) Then
-                Err.Raise vbError, "", "无法配置" & confName & "的删除实体特征的抑制"
+                Err.Raise vbError, "", "Failed to set suppression of delete body feature for " & confName & " in configuration"
             End If
         Else
-            Err.Raise vbError, "", "无法为" & confName & "创建删除实体特征"
+            Err.Raise vbError, "", "Failed to create delete body feature for " & confName
         End If
         
     Else
-        Err.Raise vbError, "", "无法选择" & confName & "的实体"
+        Err.Raise vbError, "", "Failed to select bodies for " & confName
     End If
 
 End Sub
