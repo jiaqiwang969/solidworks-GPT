@@ -1,20 +1,20 @@
 ---
 layout: sw-tool
-title: Macro to remove all colors from SOLIDWORKS document
-caption: Remove All Colors From Part
-description: Macro demonstrates how to remove all colors from the part or assembly documents on all levels (face, feature, body, model) using SOLIDWORKS API
+title: 从SOLIDWORKS文档中删除所有颜色的宏
+caption: 从零件中删除所有颜色
+description: 该宏演示了如何使用SOLIDWORKS API从零件或装配文档的所有级别（面、特征、实体、模型）中删除所有颜色。
 image: remove-colors.svg
-labels: [remove color, appearance, material property]
-group: Part
+labels: [删除颜色, 外观, 材料属性]
+group: 零件
 ---
-![Appearance layers in Part document](material-properties-levels.png){ width=250 }
+![零件文档中的外观层级](material-properties-levels.png){ width=250 }
 
-This macro removes all colors from the part document on all levels (face, feature, body, model) using SOLIDWORKS API.
+该宏使用SOLIDWORKS API从零件文档的所有级别（面、特征、实体、模型）中删除所有颜色。
 
-Macro can be configured to remove the colors from all configurations or active configuration only. This option can be set by changing the value of the following constant at the beginning of the macro:
+该宏可以配置为从所有配置或仅活动配置中删除颜色。可以通过更改宏开头的以下常量的值来设置此选项：
 
 ~~~ vb
-Const REMOVE_FROM_ALL_CONFIGS As Boolean = True 'True to remove from all configurations, False to remove from active configuration only
+Const REMOVE_FROM_ALL_CONFIGS As Boolean = True 'True表示从所有配置中删除，False表示仅从活动配置中删除
 ~~~
 
 ~~~ vb
@@ -33,7 +33,7 @@ Sub main()
     If Not swModel Is Nothing Then
         
         If swModel.GetType() = swDocumentTypes_e.swDocDRAWING Then
-            Err.Raise vbError, "", "Drawings are not supported"
+            Err.Raise vbError, "", "不支持绘图"
         End If
         
         Dim configOpts As swInConfigurationOpts_e
@@ -57,7 +57,7 @@ Sub main()
         swModel.GraphicsRedraw2
         
     Else
-        Err.Raise "Please open part or assembly document"
+        Err.Raise "请打开零件或装配文档"
     End If
     
 End Sub
@@ -135,5 +135,3 @@ Function GetConfigurationOptions(allConfigs As Boolean) As swInConfigurationOpts
     
 End Function
 ~~~
-
-
