@@ -1,21 +1,22 @@
 ---
-title: Create body rotation animation using SOLIDWORKS API
-caption: Create Body Rotation Animation
-description: VBA example to create a rotation animation of a selected body around Y axis using SOLIDWORKS API and temp bodies
+title: 使用SOLIDWORKS API创建物体旋转动画
+caption: 创建物体旋转动画
+description: 使用SOLIDWORKS API和临时物体创建选定物体围绕Y轴旋转的动画的VBA示例
 image: body-rotate.gif
-labels: [animation,rotate,temp body]
+labels: [动画, 旋转, 临时物体]
 ---
-![Body rotation animation](body-rotate.gif)
 
-This VBA example demonstrates how to create a rotation animation of a selected body in part document using SOLIDWORKS API.
+![物体旋转动画](body-rotate.gif)
 
-There will be no additional features created in the Feature Manager tree. This macro **is not** using the SOLIDWORKS motion study. Body is rotated around Y axis at origin. Animation is created using the temp bodies and original body or feature manager tree is not affected.
+这个VBA示例演示了如何使用SOLIDWORKS API在零件文档中创建一个选定物体的旋转动画。
 
-Select body from the Feature Manager tree and run the macro.
+在特征管理器树中不会创建额外的特征。这个宏**不使用**SOLIDWORKS运动研究。物体围绕原点的Y轴旋转。动画使用临时物体创建，原始物体或特征管理器树不受影响。
 
-![Body selected in the feature manager tree](feature-tree-body-selected.png){ width=250 }
+从特征管理器树中选择物体，然后运行宏。
 
-Preview of the body is created and rotated until selection is cleared. When macro stops the original body is reverted to the original state.
+![在特征管理器树中选择的物体](feature-tree-body-selected.png){ width=250 }
+
+预览的物体被创建并旋转，直到选择被清除。当宏停止时，原始物体将恢复到原始状态。
 
 ~~~ vb
 Const PI As Double = 3.14159265359
@@ -42,11 +43,11 @@ Sub main()
         If Not swBody Is Nothing Then
             RunRotationAnimation swModel, swBody
         Else
-            MsgBox "Please select body"
+            MsgBox "请选择物体"
         End If
         
     Else
-        MsgBox "Please open part document"
+        MsgBox "请打开零件文档"
     End If
     
 End Sub
@@ -108,5 +109,3 @@ Function GetTransform(angle As Double) As MathTransform
     
 End Function
 ~~~
-
-
