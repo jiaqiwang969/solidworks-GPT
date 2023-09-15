@@ -1,14 +1,14 @@
 ---
-title: Bitmap control in SOLIDWORKS property Manager Page
-caption: Bitmap
-description: Creating bitmap control in the Property Manager Page using SwEx.PMPage framework
+title: SOLIDWORKS 属性管理器页面中的位图控件
+caption: 位图
+description: 使用 SwEx.PMPage 框架在属性管理器页面中创建位图控件
 image: bitmap.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
-![Bitmap control](bitmap.png)
+![位图控件](bitmap.png)
 
-Static bitmap will be created in the property manager page for the properties of [Image](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.image?view=netframework-4.8) type or other types assignable from this type, e.g. [Bitmap](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.bitmap?view=netframework-4.8)
+对于 [Image](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.image?view=netframework-4.8) 类型或其他可从该类型分配的类型（例如 [Bitmap](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.bitmap?view=netframework-4.8)），在属性管理器页面中创建静态位图。
 
 ~~~vb
 Imports CodeStack.SwEx.PMPage.Attributes
@@ -35,9 +35,9 @@ public class BitmapDataModel
 }
 ~~~
 
-## Bitmap size
+## 位图大小
 
-Default size of the bitmap is 18x18 pixels, however this could be overridden using the [BitmapOptionsAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_BitmapOptionsAttribute.htm) by providing width and height values in the constructor parameters:
+位图的默认大小为 18x18 像素，但可以使用 [BitmapOptionsAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_BitmapOptionsAttribute.htm) 来覆盖它，通过在构造函数参数中提供宽度和高度值：
 
 ~~~vb
 <BitmapOptions(48, 48)>
@@ -49,4 +49,4 @@ Public Property BitmapLarge As Image = Resources.BitmapSample
 public Image BitmapLarge { get; set; } = Resources.BitmapSample;
 ~~~
 
-> Due to SOLIDWORKS API limitation bitmap cannot be changed as [dynamic value](/docs/codestack/labs/solidworks/swex/pmpage/controls/dynamic-values/) after property manager page is displayed. Assign the image in the data model class constructor or as a default value of the property.
+> 由于 SOLIDWORKS API 的限制，在属性管理器页面显示后，无法将位图作为 [动态值](/docs/codestack/labs/solidworks/swex/pmpage/controls/dynamic-values/) 进行更改。请在数据模型类的构造函数中或作为属性的默认值中分配图像。
