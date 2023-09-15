@@ -1,24 +1,23 @@
 ---
 layout: sw-macro-fix
-title: Fix invalid namespace in VSTA (C# or VB.NET) SOLIDWORKS macro
-caption: Invalid Namespace In VSTA (C# or VB.NET) Macro
-description: Fixing the compile error of VSTA macro when the code is copied from the example
+title: 修复VSTA（C#或VB.NET）SOLIDWORKS宏中的无效命名空间
+caption: VSTA（C#或VB.NET）宏中的无效命名空间
+description: 修复从示例中复制代码时VSTA宏的编译错误
 image: vsta-copy-example-compile-error.png
-labels: [macro, troubleshooting, vsta]
+labels: [宏, 故障排除, vsta]
 ---
-## Symptoms
+## 症状
 
-Example for SOLIDWORKS VSTA macro (C# or VB.NET) is copied from the SOLIDWORKS API Help documentation or from any source as a code. Number of compilation error are displayed:
+将SOLIDWORKS VSTA宏（C#或VB.NET）的示例代码从SOLIDWORKS API帮助文档或任何其他来源复制到代码中时，会显示多个编译错误：
 
-* MacroName.SolidWorksMacro doesn't contain a definition for 'SwApp'
-* The name 'Main' doesn't exist in the current context
+* MacroName.SolidWorksMacro不包含'SwApp'的定义
+* 当前上下文中不存在名称'Main'
 
-![Compile error when code is copied from the example into the VSTA macro](vsta-copy-example-compile-error.png){ width=450 }
+![将示例代码从示例复制到VSTA宏时的编译错误](vsta-copy-example-compile-error.png){ width=450 }
 
-## Cause
+## 原因
 
-VSTA macro is based on multiple connected files which must reside in the same namespace. When new macro is created the namespace might not be equal to the one 
-used in the example source code.
+VSTA宏基于多个连接的文件，这些文件必须位于相同的命名空间中。当创建新宏时，命名空间可能与示例源代码中使用的命名空间不相等。
 
 ~~~ cs
 namespace MacroName.csproj
@@ -27,20 +26,20 @@ namespace MacroName.csproj
 }
 ~~~
 
-## Resolution
+## 解决方法
 
-Change the namespace in the *SolidWorksMacro.cs* file to match the default namespace
+将*SolidWorksMacro.cs*文件中的命名空间更改为与默认命名空间匹配
 
-* Open the project properties page
+* 打开项目属性页面
 
-![VSTA macro project properties](project-properties.png){ width=250 }
+![VSTA宏项目属性](project-properties.png){ width=250 }
 
-* Copy the value in the *Default Namespace* field of the *Application* tab
+* 复制*应用程序*选项卡中的*默认命名空间*字段中的值
 
-![Default namespace of the VSTA project](project-default-namespace.png){ width=350 }
+![VSTA项目的默认命名空间](project-default-namespace.png){ width=350 }
 
-* Rename the namespace to the copied value
+* 将命名空间重命名为复制的值
 
-![Renamed namespace to match the default namespace](modified-namespace.png){ width=500 }
+![重命名命名空间以匹配默认命名空间](modified-namespace.png){ width=500 }
 
-* Rebuild the macro
+* 重新构建宏
