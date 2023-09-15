@@ -41,7 +41,7 @@ redirect-from:
 
 连接到COM服务器的最常见和快速的方法是使用[CoCreateInstance](https://msdn.microsoft.com/en-us/library/windows/desktop/ms686615(v=vs.85).aspx)函数。
 
-~~~ cpp
+```cpp
 #include "stdafx.h"
 #import "sldworks.tlb"
 #include <iostream>
@@ -68,15 +68,14 @@ int main()
 
     return 0;
 }
-
-~~~
+```
 
 ## 通过ROT获取运行实例
 
 为了连接到已经运行的特定SOLIDWORKS会话或能够创建多个会话，您可以使用Running Object Table（ROT）API。
 有关此方法的更多详细信息，请阅读[从独立应用程序连接到SOLIDWORKS](/docs/codestack/solidworks-api/getting-started/stand-alone#method-b---running-object-table-rot)文章。
 
-~~~ cpp
+```cpp
 #include "stdafx.h"
 #import "sldworks.tlb"
 #include <iostream>
@@ -219,9 +218,7 @@ int main()
     
     return 0;
 }
-
-
-~~~
+```
 
 在上面的示例中，通过从SOLIDWORKS应用程序安装路径启动新进程来启动SOLIDWORKS的新会话。
 *ConnectToSwApp*函数需要第一个参数为**sldworks.exe**的完整路径，第二个参数为超时时间（以秒为单位）。
