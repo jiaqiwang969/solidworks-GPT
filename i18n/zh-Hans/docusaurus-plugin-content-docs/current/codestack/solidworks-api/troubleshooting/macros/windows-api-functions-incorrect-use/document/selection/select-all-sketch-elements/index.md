@@ -1,13 +1,13 @@
 ---
-title: Select all sketch elements using SOLIDWORKS API
-caption: Select All Sketch Elements
-description: This example demonstrates how to select all sketch elements (segments and points) in the active sketch
+title: 使用SOLIDWORKS API选择所有草图元素
+caption: 选择所有草图元素
+description: 本示例演示了如何使用SOLIDWORKS API中的直接::Select方法选择活动草图中的所有草图线段和草图点。
 image: select-all-sketch-elements.png
-labels: [selection, sketch segment, sketch point]
+labels: [选择, 草图线段, 草图点]
 ---
-![Selected sketch elements in the active sketch](select-all-sketch-elements.png){ width=250 }
+![在活动草图中选择的草图元素](select-all-sketch-elements.png){ width=250 }
 
-This example demonstrates how to select all sketch segments and sketch points in the active sketch using the direct ::Select method in SOLIDWORKS API.
+本示例演示了如何使用SOLIDWORKS API中的直接::Select方法选择活动草图中的所有草图线段和草图点。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -34,11 +34,11 @@ Sub main()
             SelectAllSketchPoints swSketch
             
         Else
-            MsgBox "Please open sketch"
+            MsgBox "请打开草图"
         End If
         
     Else
-        MsgBox "Please open part or assembly"
+        MsgBox "请打开零件或装配体"
     End If
     
 End Sub
@@ -75,5 +75,3 @@ Sub SelectAllSketchPoints(sketch As SldWorks.sketch)
     
 End Sub
 ~~~
-
-
