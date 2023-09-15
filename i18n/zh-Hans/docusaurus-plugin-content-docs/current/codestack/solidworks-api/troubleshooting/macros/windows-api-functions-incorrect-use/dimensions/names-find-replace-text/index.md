@@ -1,25 +1,26 @@
 ---
 layout: sw-tool
-title: Find-replace text in dimension names using SOLIDWORKS API
-caption: Find-Replace Text In Dimension Names
-description: Macro replaces the text in the dimension names of the selected feature or features
+title: 使用SOLIDWORKS API在尺寸名称中查找和替换文本
+caption: 在尺寸名称中查找和替换文本
+description: 该宏用于在所选特征的尺寸名称中查找和替换文本（类似于文本编辑器中的查找和替换功能）。
 image: rename-dims.png
 labels: [dimension, example, find, model, rename, replace, solidworks, solidworks api]
 group: Model
 redirect-from:
   - /2018/03/find-replace-text-in-dimension-names.html
 ---
-This macro finds and replaces the text in the dimension names of the selected feature or features (similar to Find-Replace feature in text editors) using SOLIDWORKS API:
 
-![Input box for the text to find in the dimension names](rename-dims.png){ width=320 }
+该宏使用SOLIDWORKS API在所选特征的尺寸名称中查找和替换文本（类似于文本编辑器中的查找和替换功能）：
 
-1. Open SOLIDWORKS assembly or part
-1. Select features to lookup dimensions in
-1. Run the macro
-1. Specify the text to find and the text to replace. Only include short dimension name.
-For example the dimension D1 in Sketch1 will have a short name *D1* and full name *D1@Sketch1.* Specifying *D* in find field and *B* in replace field will result in dimension to be renamed to *B1@Sketch1*.
+![输入框用于查找尺寸名称中的文本](rename-dims.png){ width=320 }
 
-~~~ vb
+1. 打开SOLIDWORKS装配或零件。
+2. 选择要查找尺寸的特征。
+3. 运行宏。
+4. 指定要查找的文本和要替换的文本。只包括短尺寸名称。
+   例如，Sketch1中的尺寸D1将具有短名称*D1*和完整名称*D1@Sketch1*。在查找字段中指定*D*，在替换字段中指定*B*，将导致尺寸重命名为*B1@Sketch1*。
+
+```vb
 Dim swApp As SldWorks.SldWorks
 Dim swModel As SldWorks.ModelDoc2
 Dim swSelMgr As SldWorks.SelectionMgr
@@ -81,6 +82,5 @@ Sub main()
     End If
     
 End Sub
-~~~
-
+```
 
