@@ -1,11 +1,9 @@
 ---
-caption: Flip Alignment Of Last Mate
-title: Macro to flip alignment of the last inserted mate in SOLIDWORKS assembly
-description: VBA macro which flips alignment (anti-aligned to aligned and vice-versa) for the last mate in the SOLIDWORKS assembly feature manager tree
----
-This VBA macro finds the last mate in the feature manager tree of the active SOLIDWORKS assembly.
+caption: 翻转最后一个装配体中插入的对齐
+title: 在SOLIDWORKS装配体中翻转最后一个插入的对齐的宏
+description: 这个VBA宏在活动的SOLIDWORKS装配体的特征管理器树中找到最后一个对齐。
 
-For this mate the alignment is switched from anti-aligned to aligned and vice-versa.
+对于这个对齐，将从反对齐切换到对齐，反之亦然。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -92,7 +90,7 @@ Sub main()
             Set swTangentMateFeatData = swMateFeatData
             swTangentMateFeatData.MateAlignment = destAlignment
         Case Else
-            Err.Raise vbError, "", "Not supported mate type"
+            Err.Raise vbError, "", "不支持的对齐类型"
     End Select
         
     swMateFeat.ModifyDefinition swMateFeatData, swAssy, Nothing
@@ -140,4 +138,3 @@ Function GetLastMate(assm As SldWorks.AssemblyDoc) As SldWorks.Mate2
     
 End Function
 ~~~
-
