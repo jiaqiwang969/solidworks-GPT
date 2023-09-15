@@ -1,19 +1,20 @@
 ---
-title: VBA macro to hide all selected features from the SOLIDWORKS file tree
-caption: Hide Features In The Tree
-description: VBA macro which hides features and makes them invisible in the SOLIDWORKS Feature Manager tree
+title: VBA宏以隐藏SOLIDWORKS文件树中的所有选定特征
+caption: 在树中隐藏特征
+description: VBA宏可隐藏特征并使其在SOLIDWORKS特征管理器树中不可见
 image: hidden-features.png
 labels: [feature,hide,invisible]
 ---
-This VBA macro allows to make invisible selected features in the tree. The features still continue to be fully operational and visible in the graphics area (e.g. planes), but not visible in the feature manager tree.
 
-Even default features (such as planes) can be made invisible.
+这个VBA宏允许在树中使选定的特征不可见。这些特征仍然可以在图形区域中完全操作和显示（例如平面），但在特征管理器树中不可见。
 
-![Sketch, Right and Top planes hidden in the feature manager tree](hidden-features.png)
+甚至可以使默认特征（如平面）不可见。
 
-To show the hidden features use the [Reveal Hidden Features](/docs/codestack/solidworks-api/document/features-manager/reveal-hidden-features/) macro.
+![在特征管理器树中隐藏的草图、右侧和顶部平面](hidden-features.png)
 
-~~~ vb
+要显示隐藏的特征，请使用[显示隐藏的特征](/docs/codestack/solidworks-api/document/features-manager/reveal-hidden-features/)宏。
+
+```vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -39,10 +40,8 @@ Sub main()
         
         swModel.EditRebuild3
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
-~~~
-
-
+```
