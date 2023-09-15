@@ -1,15 +1,15 @@
 ---
-title: Modify configuration parameters for components using SOLIDWORKS API
-caption: Modify Configuration Parameters For Multiple Components
-description: Example demonstrates how to modify parameters of multiple components in the specified configurations (e.g. suppression state) using SOLIDWORKS API
+title: 使用SOLIDWORKS API修改组件的配置参数
+caption: 修改多个组件的配置参数
+description: 该示例演示了如何使用SOLIDWORKS API修改指定配置（例如抑制状态）中多个组件的参数。不需要激活配置或选择任何组件即可使用宏。
 image: modify-configurations.png
-labels: [parameters, design table, components, configuration]
+labels: [参数, 设计表, 组件, 配置]
 ---
-![Modify component parameters in configurations](modify-configurations.png){ width=350 }
+![在配置中修改组件参数](modify-configurations.png){ width=350 }
 
-This example demonstrates how to use parameters (similar to design table parameters) to suppress all components in every configuration except of the active one using SOLIDWORKS API. It is not required to activate configuration or select any components to use the macro.
+该示例演示了如何使用参数（类似于设计表参数）来抑制除活动配置之外的所有配置中的所有组件，使用SOLIDWORKS API。不需要激活配置或选择任何组件即可使用宏。
 
-Multiple components can be modified in a batch mode to improve performance.
+可以批量修改多个组件以提高性能。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -110,4 +110,3 @@ Function GetOtherConfigurations(model As SldWorks.ModelDoc2) As Variant
     
 End Function
 ~~~
-
