@@ -1,23 +1,23 @@
 ---
-title: Create sketch points on selected edge via SOLIDWORKS API
-caption: Create Sketch Points On Selected Edge
-description: Macro creates specified number of sketch points on the selected edge in the 3D sketch
+title: 通过SOLIDWORKS API在选定边上创建草图点
+caption: 在选定边上创建草图点
+description: 该宏使用SOLIDWORKS API在3D草图中的选定边上创建指定数量的草图点。
 image: sketch-points-edge.png
-labels: [curve, evaluate, geometry, macro, points, solidworks api, spline, utility, vba]
+labels: [曲线, 评估, 几何, 宏, 点, SOLIDWORKS API, 样条曲线, 实用工具, VBA]
 redirect-from:
   - /2018/03/this-macro-creates-specified-number-of.html
 ---
-This macro creates specified number of sketch points on the selected edge in the 3D sketch using SOLIDWORKS API.
+该宏使用SOLIDWORKS API在3D草图中的选定边上创建指定数量的草图点。
 
-1. Open SOLIDWORKS part
-1. *(Optionally)* Open 3D Sketch to insert points to the existing sketch, otherwise new sketch will be created
-1. Run the macro. Enter the number of points to generate
+1. 打开SOLIDWORKS零件
+2. *(可选)* 打开3D草图以在现有草图中插入点，否则将创建新的草图
+3. 运行宏。输入要生成的点的数量
 
-![Selected edge to create points on](selected-edge.png){ width=320 height=239 }
+![选定的边以创建点](selected-edge.png){ width=320 height=239 }
 
-As the result specified number of sketch points is generated in the 3D sketch:
+结果是在3D草图中生成了指定数量的草图点：
 
-![Sketch points created on the edge](sketch-points-edge.png){ width=320 height=204 }
+![在边上创建的草图点](sketch-points-edge.png){ width=320 height=204 }
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -40,7 +40,7 @@ Sub main()
     
     If isSketchActive Then
         If Not swModel.SketchManager.ActiveSketch.Is3D Then
-            MsgBox "Points can only be inserted into 3D sketch"
+            MsgBox "只能将点插入到3D草图中"
             End
         End If
     End If
@@ -58,10 +58,10 @@ Sub main()
         Dim vPts As Variant
         
         Dim pointsCount As Integer
-        pointsCount = CInt(InputBox("Specify the number of points"))
+        pointsCount = CInt(InputBox("指定点的数量"))
         
         If pointsCount <= 0 Then
-            MsgBox "Please specify the valid integer number more than 1"
+            MsgBox "请指定大于1的有效整数"
             End
         End If
         
@@ -69,7 +69,7 @@ Sub main()
     
         swModel.ClearSelection2 True
     
-        If Not isSketchActive Then 'open new 3D sketch
+        If Not isSketchActive Then '打开新的3D草图
             swModel.SketchManager.Insert3DSketch True
         End If
         
@@ -81,12 +81,12 @@ Sub main()
             
         Next
     
-    If Not isSketchActive Then 'only close sketch if it wasn't opened at the beginning
+    If Not isSketchActive Then '只有在开始时没有打开草图时才关闭草图
         swModel.SketchManager.Insert3DSketch True
     End If
         
     Else
-        MsgBox "Please select edge"
+        MsgBox "请选择边"
     End If
             
 End Sub
@@ -128,7 +128,7 @@ End Function
 
 
 
-Alternatively, it is possible to create points based on the curve length. The following example will create points by calculating the approximate length from curve tessellation points:
+或者，可以根据曲线长度创建点。以下示例将通过计算曲线细分点的近似长度来创建点：
 
 ~~~ vb
 Function SplitCurveByLength(swCurve As SldWorks.Curve, chordLength As Double) As Variant
@@ -147,7 +147,7 @@ End Function
 
 
 
-or by calculating the distance based on the total curve length:
+或者，可以根据总曲线长度计算距离来创建点：
 
 ~~~ vb
 Function SplitCurveByChord(swCurve As SldWorks.Curve, chordLength As Double) As Variant
@@ -187,5 +187,3 @@ Function SplitCurveByChord(swCurve As SldWorks.Curve, chordLength As Double) As 
     
 End Function
 ~~~
-
-
