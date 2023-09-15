@@ -1,25 +1,25 @@
 ---
 layout: sw-tool
-title: Copy component name to the component reference using SOLIDWORKS API
-caption: Copy Component Name To Component Reference
-description: VBA macro to copy component name to the component reference using SOLIDWORKS with an ability to filter virtual components only
+title: 使用SOLIDWORKS API将组件名称复制到组件引用
+caption: 将组件名称复制到组件引用
+description: 使用SOLIDWORKS API将活动装配中的组件名称复制到组件引用的VBA宏，可以过滤虚拟组件
 image: component-reference.png
-labels: [name,virtual,component reference]
-group: Assembly
+labels: [名称,虚拟,组件引用]
+group: 装配
 ---
-![Component reference](component-reference.png){ width=350 }
+![组件引用](component-reference.png){ width=350 }
 
-This VBA macro allows to copy the name of the components in the active assembly to the component's reference using SOLIDWORKS API.
+这个VBA宏允许使用SOLIDWORKS API将活动装配中的组件名称复制到组件引用。
 
-Macro has an option to only process virtual components by settings the *VIRTUAL_ONLY* option to *True*.
+通过将*VIRTUAL_ONLY*选项设置为*True*，该宏可以只处理虚拟组件。
 
 ~~~ vb
 Const VIRTUAL_ONLY As Boolean = True
 ~~~
 
-This macro can be useful if component names are used to store the project attributes (e.g. Part Number) as component name cannot be added to the Bill Of Materials while Component Reference can be.
+如果组件名称用于存储项目属性（例如零件编号），则此宏可能很有用，因为组件名称无法添加到物料清单，而组件引用可以。
 
-![Bill Of Materials with component references](bill-of-materials.png){ width=350 }
+![带有组件引用的物料清单](bill-of-materials.png){ width=350 }
 
 ~~~ vb
 Const VIRTUAL_ONLY As Boolean = False
@@ -59,15 +59,15 @@ Sub main()
                     compName = swComp.Name2
                     
                     If Not swComp.GetParent() Is Nothing Then
-                        'if not root remove the sub-assemblies name
+                        '如果不是根组件，则删除子装配的名称
                         compName = Right(compName, Len(compName) - InStrRev(compName, "/"))
                     End If
                     
                     If swComp.IsVirtual() Then
-                        'if virtual remove the context assembly name
+                        '如果是虚拟组件，则删除上下文装配的名称
                         compName = Left(compName, InStr(compName, "^") - 1)
                     Else
-                        'remove the index name
+                        '删除索引名称
                         compName = Left(compName, InStrRev(compName, "-") - 1)
                     End If
                     
@@ -78,14 +78,12 @@ Sub main()
             Next
 
         Else
-            MsgBox "Active document is not an assembly"
+            MsgBox "活动文档不是装配"
         End If
     
     Else
-        MsgBox "Please open assembly document"
+        MsgBox "请打开装配文档"
     End If
     
 End Sub
 ~~~
-
-
