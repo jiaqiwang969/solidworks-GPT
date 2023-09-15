@@ -1,25 +1,25 @@
 ---
-title: Select Named Entity (face, edge or vertex) using SOLIDWORKS API
-caption: Select Named Entity
-description: Select named entity (face, edge or vertex) in part, assembly (from component) or drawing (from view) using SOLIDWORKS API
+title: 使用SOLIDWORKS API选择命名实体（面、边或顶点）
+caption: 选择命名实体
+description: 使用SOLIDWORKS API在零件、装配体（从组件）或绘图（从视图）中选择命名实体（面、边或顶点）
 image: face-name.png
-labels: [face,edge,vertex,name,selection]
+labels: [面,边,顶点,名称,选择]
 ---
-This example demonstrates how to select a named entity (face, edge or vertex) in the different document types using SOLIDWORKS API.
+本示例演示了如何使用SOLIDWORKS API在不同的文档类型中选择命名实体（面、边或顶点）。
 
-Named entity can be only defined in the part document by selecting corresponding face or edge:
+只能在零件文档中通过选择相应的面或边来定义命名实体：
 
-![Face properties command in context menu](face-properties.png){ width=250 }
+![上下文菜单中的面属性命令](face-properties.png){ width=250 }
 
-Name can be set in the displayed dialog and it is unique per part.
+可以在显示的对话框中设置名称，每个零件的名称是唯一的。
 
-![Face name dialog](face-name.png){ width=250 }
+![面名称对话框](face-name.png){ width=250 }
 
-Pointer to the entity can be retrieved via [IPartDoc::GetEntityByName](https://help.solidworks.com/2014/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IPartDoc~GetEntityByName.html) SOLIDWORKS API method.
+可以通过[SOLIDWORKS API方法IPartDoc::GetEntityByName](https://help.solidworks.com/2014/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IPartDoc~GetEntityByName.html)获取实体的指针。
 
-This example enhances the functionality and also allows to select entity by name in drawing (from the selected drawing view) or assembly (from the selected component of part).
+此示例增强了功能，还允许在绘图（从所选绘图视图）或装配体（从所选零件的组件）中按名称选择实体。
 
-Modify the value of the *ENT_NAME* constant to define different name and change the value of *entType* argument if edge or vertex needs to be selected
+修改*ENT_NAME*常量的值以定义不同的名称，并根据需要更改*entType*参数的值，以选择边或顶点。
 
 ~~~ vb
 Const ENT_NAME As String = "MyEdge1"
@@ -58,7 +58,7 @@ Sub main()
         SelectNamedEntity swParentObject, ENT_NAME, NamedEntityType_e.Face
         
     Else
-        MsgBox "Please open model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -83,7 +83,7 @@ Function GetNamedEntity(parent As Object, name As String, entType As NamedEntity
     Dim swEnt As SldWorks.Entity
     
     If parent Is Nothing Then
-        Err.Raise vbError, "", "Entity parent is not specified (open part or select drawing view or component in assembly or drawing"
+        Err.Raise vbError, "", "未指定实体的父级（打开零件或选择装配体或绘图中的视图或组件）"
     ElseIf TypeOf parent Is SldWorks.PartDoc Then
         Set swEnt = GetNamedEntityFromPartDoc(parent, name, entType)
     ElseIf TypeOf parent Is SldWorks.Component2 Then
@@ -96,11 +96,11 @@ Function GetNamedEntity(parent As Object, name As String, entType As NamedEntity
         Set swView = parent
         Set swEnt = GetNamedEntityFromPartDoc(swView.ReferencedDocument, name, entType)
     Else
-        Err.Raise vbError, "", "Invalid parent selection: only drawing view or component is supported"
+        Err.Raise vbError, "", "无效的父级选择：仅支持绘图视图或组件"
     End If
     
     If swEnt Is Nothing Then
-        Err.Raise vbError, "", "Failed to find the entity by name"
+        Err.Raise vbError, "", "未找到该名称的实体"
     End If
     
     Set GetNamedEntity = swEnt
@@ -123,7 +123,7 @@ Function GetNamedEntityFromPartDoc(model As SldWorks.ModelDoc2, name As String, 
     Dim swEnt As SldWorks.Entity
     
     If model Is Nothing Then
-        Err.Raise vbError, "", "Pointer to model doc is null"
+        Err.Raise vbError, "", "模型文档的指针为空"
     End If
     
     If model.GetType() = swDocumentTypes_e.swDocPART Then
@@ -131,16 +131,14 @@ Function GetNamedEntityFromPartDoc(model As SldWorks.ModelDoc2, name As String, 
         Set swPart = model
         Set swEnt = swPart.GetEntityByName(name, selType)
     Else
-        Err.Raise vbError, "", "Document is not part doc"
+        Err.Raise vbError, "", "文档不是零件文档"
     End If
     
     If swEnt Is Nothing Then
-        Err.Raise vbError, "", "Failed to find the entity by name"
+        Err.Raise vbError, "", "未找到该名称的实体"
     End If
     
     Set GetNamedEntityFromPartDoc = swEnt
     
 End Function
 ~~~
-
-
