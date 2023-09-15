@@ -1,5 +1,5 @@
 ---
-title: Visual Basic中的数据结构
+title: 数据结构在Visual Basic中的使用
 caption: 数据结构
 description: 本文介绍了在Visual Basic中使用数据结构（类型和枚举）的用法。
 sidebar_position: 0
