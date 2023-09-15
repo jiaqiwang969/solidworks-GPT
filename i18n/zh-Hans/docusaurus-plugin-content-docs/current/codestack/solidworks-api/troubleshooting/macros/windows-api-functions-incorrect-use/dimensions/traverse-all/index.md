@@ -1,15 +1,16 @@
 ---
-title: Traverse all dimensions of component or model using SOLIDWORKS API
-caption: Traverse All Dimensions
-description: VBA macro which traverses all dimensions of all features in the selected component or active document using SOLIDWORKS API and outputs the dimension name and value to the output Window
+title: 使用SOLIDWORKS API遍历组件或模型的所有尺寸
+caption: 遍历所有尺寸
+description: 使用SOLIDWORKS API，此VBA宏将遍历所选组件或活动文档中的所有特征的所有尺寸，并将尺寸名称和值输出到输出窗口。
 image: dimensions.png
 labels: [dimension,display dimension,traverse]
 ---
-![Dimensions in the sketch of weldment feature](dimensions.png)
 
-This VBA macro demonstrates how to traverse all dimensions of the features from active SOLIDWORKS document or component (if selected) in the assembly using SOLIDWORKS API.
+![尺寸在焊接特征的草图中](dimensions.png)
 
-Macro will output the name of the dimension and the value in the current system units into the Immediate Window of VBA.
+此VBA宏演示了如何使用SOLIDWORKS API遍历装配体中的活动SOLIDWORKS文档或组件（如果已选择）的所有特征的尺寸。
+
+宏将把尺寸的名称和当前系统单位中的值输出到VBA的即时窗口中。
 
 ~~~
 D1@Sketch1=0.15
@@ -17,9 +18,9 @@ D2@Sketch1=2.0
 RI@Sketch11=0.008
 ~~~
 
-> The macro will exclude all duplicate dimensions as in some cases (e.g. weldment features) the same dimension may be present in the sketch and in the structural member feature as the same time
+> 该宏将排除所有重复的尺寸，因为在某些情况下（例如焊接特征），相同的尺寸可能同时存在于草图和结构成员特征中。
 
-~~~ vb
+``` vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -46,7 +47,7 @@ Sub main()
         End If
         
     Else
-        MsgBox "Please open document"
+        MsgBox "请打开文档"
     End If
     
 End Sub
@@ -193,6 +194,5 @@ Function Contains(coll As Collection, item As Object) As Boolean
     Contains = False
     
 End Function
-~~~
-
+```
 
