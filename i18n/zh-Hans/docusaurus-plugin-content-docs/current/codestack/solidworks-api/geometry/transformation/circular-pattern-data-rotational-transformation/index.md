@@ -1,23 +1,18 @@
----
-title: 通过SOLIDWORKS API创建圆形模式的旋转变换
-caption: 根据圆形模式数据创建旋转变换
-description: 该示例通过读取所选圆形模式的变换，并通过应用与圆形模式中相同的变换来创建指定种子体的模式的临时预览。
-image: circ-pattern-emulator.png
-labels: [角度, 轴, 圆形模式, 示例, 几何, 实例, 旋转, 变换]
-redirect-from:
-  - /2018/03/create-rotational-transformation-based.html
----
-这个SOLIDWORKS API示例通过读取所选圆形模式的变换，并通过应用与圆形模式中相同的变换来创建指定种子体的模式的临时预览。
+# 通过SOLIDWORKS API创建圆形模式的旋转变换
+
+根据圆形模式数据创建旋转变换
+
+该示例通过读取所选圆形模式的变换，并通过应用与圆形模式中相同的变换来创建指定种子体的模式的临时预览。
 
 ![模拟圆形模式特征创建的体的副本](circ-pattern-emulator.png){ width=640 height=304 }
 
-* 选择圆形模式特征作为第一个选定对象
-  * 它必须使用参考轴作为方向选择任何不属于圆形模式特征的实体体
-* 运行宏。宏将从模式中读取变换，并将相同的变换应用于在上一步中选择的体。
+- 选择圆形模式特征作为第一个选定对象
+  - 它必须使用参考轴作为方向选择任何不属于圆形模式特征的实体体
+- 运行宏。宏将从模式中读取变换，并将相同的变换应用于在上一步中选择的体。
 预览将使用临时体显示，当宏恢复执行时（即按F5或运行），它们将立即被销毁。
-* 在运行此宏时不会创建或删除任何临时特征
+- 在运行此宏时不会创建或删除任何临时特征
 
-~~~ vb
+```vb
 Dim swApp As SldWorks.SldWorks
 Dim swModel As SldWorks.ModelDoc2
 Dim swMathUtils As SldWorks.MathUtility
@@ -147,4 +142,4 @@ Sub ClearTempBodies(vBodies As Variant)
     Next
     
 End Sub
-~~~
+```
