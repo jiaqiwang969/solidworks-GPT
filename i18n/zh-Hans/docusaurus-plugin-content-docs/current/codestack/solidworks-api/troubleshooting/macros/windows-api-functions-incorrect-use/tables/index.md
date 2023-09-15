@@ -1,20 +1,20 @@
 ---
-title: Tables (BOM, General, Revision etc.) automation using SOLIDWORKS API
-caption: Tables
-description: Article explaining the functions to work with tables (Bill of Materials, General, Weldment Cut List, Holes Table) using SOLIDWORKS API
+title: 使用SOLIDWORKS API自动化表格（BOM、通用、修订等）
+caption: 表格
+description: 本文介绍使用SOLIDWORKS API处理表格（物料清单、通用、焊接切割清单、孔洞表）的函数。
 sidebar_position: 8
 ---
-All table types supported by SOLIDWORKS can be accessed via API. This includes but not limited to
+通过SOLIDWORKS API可以访问所有SOLIDWORKS支持的表格类型，包括但不限于：
 
-* Bill Of Material
-* General
-* Weldment Cut List
-* Holes Table
+* 物料清单（Bill Of Material）
+* 通用表格（General）
+* 焊接切割清单（Weldment Cut List）
+* 孔洞表（Holes Table）
 
-etc.
+等等。
 
-All table inherit the [ITableAnnotation](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ITableAnnotation.html) SOLIDWORKS API interface. This interface provides the method to work with the table (i.e. change cells, change formatting, add/remove rows etc.).
+所有表格都继承了[ITableAnnotation](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ITableAnnotation.html) SOLIDWORKS API接口。该接口提供了处理表格的方法，如更改单元格、更改格式、添加/删除行等。
 
-There are specific table annotation for a generic table annotation. For example [IBomTableAnnotation](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IBomTableAnnotation.html) is a specific table annotation for Bill of Materials (BOM) table. Generic table annotation can be cast to specific by directly assigning the pointer.
+对于通用表格注释，还有特定的表格注释。例如，[IBomTableAnnotation](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IBomTableAnnotation.html)是物料清单（BOM）表格的特定表格注释。可以通过直接赋值指针将通用表格注释转换为特定表格注释。
 
-Table is also present in the Feature Manager tree which means that it also provides methods exposed by the [IFeature](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ifeature.html) interface. Each specific table annotation provides the property to access the specific table feature. For example [IBomTableAnnotation::BomFeature](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ibomtableannotation~bomfeature.html) will return the specific BOM feature. To get the pointer to [IFeature](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ifeature.html) it is required to call the ::GetFeature method for all specific table features.
+表格也存在于特征管理器树中，这意味着它还提供了[IFeature](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ifeature.html)接口提供的方法。每个特定的表格注释都提供了访问特定表格特征的属性。例如，[IBomTableAnnotation::BomFeature](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ibomtableannotation~bomfeature.html)将返回特定的物料清单（BOM）特征。要获取[IFeature](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ifeature.html)的指针，需要对所有特定表格特征调用::GetFeature方法。
