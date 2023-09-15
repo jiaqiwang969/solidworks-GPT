@@ -1,21 +1,21 @@
 ---
-title: Usage of assembly component transformation in SOLIDWORKS API
-caption: Component Transformation In The Assembly
-description: Example explains transformation of rotation and translation for components in the assembly
+title: SOLIDWORKS API中使用装配组件变换的用法
+caption: 装配中的组件变换
+description: 本示例说明了装配中组件的旋转和平移变换
 image: comp-translation.png
-labels: [acos, angle, component, example, orientation, point, position, rotation, solidworks api, transform, translation, vector]
+labels: [acos, 角度, 组件, 示例, 方向, 点, 位置, 旋转, solidworks api, 变换, 平移, 向量]
 redirect-from:
   - /2018/03/component-transformation-in-assembly.html
 ---
-SOLIDWORKS components are instances of models (parts or assemblies) in the another parent assembly. Component's position in its space is driven by its transformation (regardless if the component is constrained by mates or moved in the space by free drag-n-drop operation). Transformation consists of 3 components: translation, rotation and scale.
+SOLIDWORKS组件是另一个父装配中模型（零件或装配）的实例。组件在其空间中的位置由其变换驱动（无论组件是否受到约束或通过自由拖放操作在空间中移动）。变换由3个组件组成：平移、旋转和缩放。
 
-To get the transformation of the component use the [IComponent2::Transform2](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.icomponent2~transform2.html) SOLIDWORKS API property. The transform in this case represents the relation of the component origin coordinate systems to the root assembly origin coordinate system. It is not required to multiple the transform of sub-assemblies for its children components to get the total transformation of these components relative to root assembly.
+要获取组件的变换，请使用[SOLIDWORKS API属性IComponent2::Transform2](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.icomponent2~transform2.html)。在这种情况下，变换表示组件原点坐标系与根装配原点坐标系之间的关系。不需要将子装配的变换与其子组件的变换相乘，以获得这些组件相对于根装配的总变换。
 
-## Translation Transformation
+## 平移变换
 
-In the example below the component is moved in space Along X, Y and Z coordinates. The following example will calculate the new positions of the component's origin:
+在下面的示例中，组件在空间中沿X、Y和Z坐标移动。以下示例将计算组件原点的新位置：
 
-![Component translational transform](comp-translation.png){ width=640 }
+![组件平移变换](comp-translation.png){ width=640 }
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -52,22 +52,22 @@ Sub main()
 
     vCompOriginPt = swMathPt.ArrayData
     
-    Debug.Print "Along X: " & vCompOriginPt(0) * 1000 & "mm; " & "Along Y: " & vCompOriginPt(1) * 1000 & "mm; " & "Along Z: " & vCompOriginPt(2) * 1000 & "mm"
+    Debug.Print "沿X轴: " & vCompOriginPt(0) * 1000 & "mm; " & "沿Y轴: " & vCompOriginPt(1) * 1000 & "mm; " & "沿Z轴: " & vCompOriginPt(2) * 1000 & "mm"
     
 End Sub
 ~~~
 
 
 
-The following line will be output to the Watch window as the result of running the macro on [this sample model](transform-translation.SLDASM):
+在运行此宏的[示例模型](transform-translation.SLDASM)上，将在“监视”窗口中输出以下行：
 
-> Along X: 75mm; Along Y: -50mm; Along Z: -100mm
+> 沿X轴: 75mm; 沿Y轴: -50mm; 沿Z轴: -100mm
 
-## Rotation Transformation
+## 旋转变换
 
-Now let's rotate the component and try to find the rotation angles. This component is rotated in all directions. **Red line** below - is the X axis of the assembly, **Green line** - Y axis, **Blue line** - Z axis. New X, New Y and New Z - are orientation of the corresponding axes in the component and dimensions indicate the angles between those axes.
+现在让我们旋转组件并尝试找到旋转角度。该组件在所有方向上都进行了旋转。下图中的**红线**表示装配的X轴，**绿线**表示Y轴，**蓝线**表示Z轴。New X、New Y和New Z表示组件中相应轴的方向，尺寸表示这些轴之间的角度。
 
-![Component rotational transform](comp-rotation.png){ width=640 }
+![组件旋转变换](comp-rotation.png){ width=640 }
 
 ~~~ vb
 Const PI As Double = 3.14159265359
@@ -93,9 +93,9 @@ Sub main()
     Dim swTransform As SldWorks.MathTransform
     Set swTransform = swComp.Transform2
     
-    Debug.Print "Angle between X axes: " & Round(GetAngle(1, 0, 0, swTransform) * 180 / PI, 2) & " deg"
-    Debug.Print "Angle between Y axes: " & Round(GetAngle(0, 1, 0, swTransform) * 180 / PI, 2) & " deg"
-    Debug.Print "Angle between Z axes: " & Round(GetAngle(0, 0, 1, swTransform) * 180 / PI, 2) & " deg"
+    Debug.Print "X轴之间的角度: " & Round(GetAngle(1, 0, 0, swTransform) * 180 / PI, 2) & " deg"
+    Debug.Print "Y轴之间的角度: " & Round(GetAngle(0, 1, 0, swTransform) * 180 / PI, 2) & " deg"
+    Debug.Print "Z轴之间的角度: " & Round(GetAngle(0, 0, 1, swTransform) * 180 / PI, 2) & " deg"
     
 End Sub
 
@@ -131,30 +131,30 @@ End Function
 
 
 
-Running the code above will output the following results for [this sample model](transform-rotation.SLDASM):
+运行上述代码将为[此示例模型](transform-rotation.SLDASM)输出以下结果：
 
-> Angle between X axes: 110 deg
+> X轴之间的角度: 110 deg
 
-> Angle between Y axes: 66.74 deg
+> Y轴之间的角度: 66.74 deg
 
-> Angle between Z axes: 75 deg
+> Z轴之间的角度: 75 deg
 
-## Preserving Transformation State In Configurations
+## 在配置中保留变换状态
 
-By default transformation state of the floating component in the configuration will be overridden by another configuration state in case of assembly modifications, such as new component addition, mate changes etc. This is different from the manual behavior when floating component's position will not be changed if another configuration modified.
+默认情况下，如果装配发生修改（例如添加新组件、约束更改等），则配置中浮动组件的变换状态将被另一个配置状态覆盖。这与手动行为不同，当另一个配置修改时，浮动组件的位置不会改变。
 
-To demonstrate the issue consider the following scenario:
+为了演示该问题，请考虑以下场景：
 
-* Download the [sample assembly](preserve-transform.zip) which has a single component
-* There are 2 configurations in the assembly
-  * Configuration **A** has the component position fully defined by mates
-  * Configuration **B** has a floating component without any mates in the random position
-* Run the following macro. Macro will align the corner of the component with the origin of the assembly in the Configuration B
+* 下载[示例装配](preserve-transform.zip)，其中只有一个组件
+* 装配中有2个配置
+  * 配置**A**通过约束完全定义了组件的位置
+  * 配置**B**中有一个没有任何约束的浮动组件，位置随机
+* 运行以下宏。宏将使组件的角与装配原点对齐在配置B中
 
-![Component's corner aligned with the origin of the assembly](aligned-component.png)
+![组件的角与装配原点对齐](aligned-component.png)
 
-* Macro will stop at several points. Read the comment indicating the state
-* On the last step the transformation assigned to the floating component was overridden by the transformation in the Configuration A driven by mates.
+* 宏将在几个点停止。阅读指示状态的注释
+* 在最后一步中，浮动组件的变换被配置A中的变换覆盖，该变换由约束驱动。
 
 ~~~ vb
 #If VBA7 Then
@@ -200,7 +200,7 @@ Sub main()
     
     swModel.EditRebuild3
     
-    Stop 'Component is aligned
+    Stop '组件已对齐
 	
     'FixComponentInThisConfiguration swComp
         
@@ -213,11 +213,11 @@ Sub main()
     
     swModel.EditRebuild3
     
-    Stop 'New component is added into configuration A
+    Stop '在配置A中添加了新组件
 	
     swModel.ShowConfiguration2 "B"
 	
-    Stop 'Component in configuraiton B lost its position
+    Stop '配置B中的组件丢失了其位置
     
 End Sub
 
@@ -228,7 +228,7 @@ Sub FixComponentInThisConfiguration(comp As SldWorks.Component2)
         Const CMD_FixCompInThisConf As Long = 51605
         SendMessage swApp.Frame().GetHWnd(), WM_COMMAND, CMD_FixCompInThisConf, 0
     Else
-        Err.Raise vbError, "", "Failed to select component"
+        Err.Raise vbError, "", "无法选择组件"
     End If
     
 End Sub
@@ -236,19 +236,18 @@ End Sub
 
 
 
-In order to preserve the transformation it is required to [fix](/docs/codestack/solidworks-api/document/assembly/components/fix-float/) the component in the Configuration B.
+为了保留变换，需要在配置B中[固定](/docs/codestack/solidworks-api/document/assembly/components/fix-float/)组件。
 
-* Uncomment the following line
-* Close the assembly without saving and reopen it again
+* 取消以下行的注释
 
 ~~~ vb
 'FixComponentInThisConfiguration swComp
 ~~~
 
-to
+改为
 
 ~~~ vb
 FixComponentInThisConfiguration swComp
 ~~~
 
-* Run macro again. Now the transformation is preserved
+* 再次运行宏。现在变换已被保留
