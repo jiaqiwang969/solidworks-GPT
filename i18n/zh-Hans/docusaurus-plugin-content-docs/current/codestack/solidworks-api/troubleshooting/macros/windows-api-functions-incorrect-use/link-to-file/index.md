@@ -1,16 +1,16 @@
 ---
 layout: sw-tool
-caption: Link Custom Properties To File
-title: Link SOLIDWORKS custom properties from text file
-description: VBA macro to link and auto-update multiple SOLIDWORKS custom properties from the external CSV/Text file into configuration or file
+caption: 将自定义属性链接到文件
+title: 从文本文件链接SOLIDWORKS自定义属性
+description: VBA宏将外部CSV/文本文件中的多个SOLIDWORKS自定义属性链接和自动更新到配置或文件中
 image: link-custom-property-file.svg
 group: Custom Properties
 ---
-This VBA macro allows to link external comma separated file into the configuration specific or file specific custom properties of SOLIDWORKS file.
+此VBA宏允许将外部逗号分隔文件链接到SOLIDWORKS文件的特定配置或文件特定自定义属性。
 
-CSV file consists of 2 columns (property name and property value) without a header.
+CSV文件由两列组成（属性名称和属性值），没有标题。
 
-If value of the cell contains special symbol **"** then the cell must have **""** at the start and ant the end of the cell value.
+如果单元格的值包含特殊符号**"**，则单元格的值必须在单元格值的开头和结尾处有**""**。
 
 ~~~
 Company,Xarial Pty Limited
@@ -18,20 +18,20 @@ Material,"""SW-Material"""
 Mass,"""SW-Mass"""
 ~~~
 
-> You can use Excel to modify these values and export to CSV file with comma delimiter, special symbol will be formatted correctly automatically.
+> 您可以使用Excel修改这些值并导出为逗号分隔的CSV文件，特殊符号将自动正确格式化。
 
-> Commas and new line symbols in the property names or values are not supported
+> 属性名称或值中的逗号和换行符不受支持。
 
-Set the value of the **CLEAR_PROPERTIES** constant to **True** or **False** to configure if existing properties need to be deleted before updating.
+将**CLEAR_PROPERTIES**常量的值设置为**True**或**False**以配置在更新之前是否需要删除现有属性。
 
-Set **ALL_COMPONENTS** to **True** to process all components of the assembly
+将**ALL_COMPONENTS**设置为**True**以处理装配体的所有组件
 
-~~~ vb
+``` vb
 Const CLEAR_PROPERTIES As Boolean = False
 Const ALL_COMPONENTS As Boolean = True
-~~~
+```
 
-~~~ vb
+``` vb
 Type RefCompModel
     RefModel As SldWorks.ModelDoc2
     RefConf As String
@@ -83,7 +83,7 @@ Sub main()
         
             'WritePropertiesFromFile swModel, csvFilePath, IIf(CBool(confSpecific), swModel.ConfigurationManager.ActiveConfiguration, Nothing)
         Else
-            Err.Raise vbError, "", "Please open model"
+            Err.Raise vbError, "", "请打开模型"
         End If
         
     End If
@@ -136,7 +136,7 @@ finally_:
     
     If csvFilePath <> "" Then
         If Not confSpecArgsParsed Then
-            confSpecific = app.SendMsgToUser2("Link to configuration specific properties (Yes) or File Specific (No)?", swMessageBoxIcon_e.swMbQuestion, swMessageBoxBtn_e.swMbYesNo) = swMessageBoxResult_e.swMbHitYes
+            confSpecific = app.SendMsgToUser2("链接到配置特定属性（是）还是文件特定属性（否）？", swMessageBoxIcon_e.swMbQuestion, swMessageBoxBtn_e.swMbYesNo) = swMessageBoxResult_e.swMbHitYes
         End If
         GetParameters = True
     Else
@@ -223,7 +223,7 @@ Sub WritePropertiesFromTable(model As SldWorks.ModelDoc2, table As Variant, conf
         prpVal = CStr(table(i, 1))
         
         If swCustPrpMgr.Add3(prpName, swCustomInfoType_e.swCustomInfoText, prpVal, swCustomPropertyAddOption_e.swCustomPropertyReplaceValue) <> swCustomInfoAddResult_e.swCustomInfoAddResult_AddedOrChanged Then
-            Err.Raise vbError, "", "Failed to add property '" & prpName & "'"
+            Err.Raise vbError, "", "无法添加属性'" & prpName & "'"
         End If
         
     Next
@@ -323,27 +323,25 @@ Function Contains(refCompModels() As RefCompModel, model As SldWorks.ModelDoc2, 
     End If
     
 End Function
-~~~
+```
 
+为了在每次重建时动态链接外部文本文件并更新属性，请使用以下宏。
 
+将**UPDATE_ON_CSV_FILE_CHANGE_ONLY**常量的值设置为**True**或**False**以配置是否仅在属性文本文件更改时重新加载属性或始终重新加载。
 
-In order to dynamically link external text file and update properties on every rebuild, use the following macro.
-
-Set the value of the **UPDATE_ON_CSV_FILE_CHANGE_ONLY** constant to **True** or **False** to configure if properties need to reload only if properties text file is changed or always when macro.
- 
-~~~ vb
+``` vb
 Const UPDATE_ON_CSV_FILE_CHANGE_ONLY As Boolean = False
-~~~
+```
 
-Macro will ask for the following input parameters upon insertion of the macro feature:
+在插入宏特征时，宏将要求输入以下参数：
 
-* Should the properties be configuration specific or file specific
-* Should the properties be cleared upon update
-* Should the reference components of the assembly be included into the scope of the properties
+* 属性是否为配置特定或文件特定
+* 是否在更新时清除属性
+* 是否应将装配体的参考组件包括在属性范围内
 
-Properties will be automatically updated upon rebuild of the macro feature.
+属性将在宏特征重建时自动更新。
 
-~~~ vb
+``` vb
 Type RefCompModel
     RefModel As SldWorks.ModelDoc2
     RefConf As String
@@ -578,6 +576,9 @@ finally_:
         
 End Function
 
+```
+
+```vba
 Sub UpdateProperties(model As SldWorks.ModelDoc2, feat As SldWorks.Feature)
         
     Dim swMacroFeat As SldWorks.MacroFeatureData
@@ -826,6 +827,5 @@ End Function
 Function swmSecurity(varApp As Variant, varDoc As Variant, varFeat As Variant) As Variant
     swmSecurity = SwConst.swMacroFeatureSecurityOptions_e.swMacroFeatureSecurityByDefault
 End Function
-~~~
-
+```
 
