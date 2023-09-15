@@ -1,16 +1,14 @@
 ---
-title: Pass Parameters To SOLIDWORKS VBA Macro
-caption: Pass Parameters To VBA Macro
-description: Workarounds for passing parameters to SOLIDWORKS VBA macro from external applications
-labels: [arguments,parameters,interoperability]
+title: 将参数传递给SOLIDWORKS VBA宏
+caption: 将参数传递给VBA宏
+description: 从外部应用程序向SOLIDWORKS VBA宏传递参数的解决方法
+labels: [参数,传递,互操作性]
 ---
-SOLIDWORKS VBA macros do not accept custom parameters as an input so it is not possible to pass user argument to [ISldWorks::RunMacro2](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~runmacro2.html) method. This limitation could be the major 'roadblock' for performing the automation of SOLIDWORKS using API.
+SOLIDWORKS VBA宏不接受自定义参数作为输入，因此无法将用户参数传递给[ISldWorks::RunMacro2](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~runmacro2.html)方法。这个限制可能是使用API自动化SOLIDWORKS的主要障碍。
 
-This could be a handy feature in cases where the macro is used as the part of bigger automation where multiple macros need to share the same argument (e.g. output location, time stamp, etc.). Or process is started from the server application or via scheduling software which generates the input which needs to be passed to the macro.  
+在某些情况下，这可能是一个很方便的功能，例如在更大的自动化过程中，多个宏需要共享相同的参数（例如输出位置、时间戳等）。或者从服务器应用程序或通过调度软件启动进程，这些进程需要将输入传递给宏。
 
-This section contains the implementation of alternative workarounds to overcome this limitation.
+本节介绍了解决此限制的替代方法的实现，并提供了示例。
 
-Several options of passing parameters to SOLIDWORKS VBA macros are explored and examples are provided.
-
-* [Via Clipboard](via-clipboard)
-* [Via SWB Macro](via-swb-macro)
+* [通过剪贴板](#通过剪贴板)
+* [通过SWB宏](#通过SWB宏)
