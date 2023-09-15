@@ -1,17 +1,17 @@
 ---
 layout: sw-tool
-title: Rename flat pattern views with cut-list names VBA macro
-caption: Rename Flat Pattern Views With Cut-List Names
-description: VBA macro to rename all flat pattern views in the the active sheet after the respective cut-list names using SOLIDWORKS API
+title: 使用切割清单名称重命名展开图视图的VBA宏
+caption: 使用切割清单名称重命名展开图视图
+description: 使用SOLIDWORKS API，将活动工作表中的所有展开图视图重命名为相应的切割清单名称的VBA宏
 image: renamed-flat-pattern-drawing-view.png
-labels: [rename view,cut list,flat pattern]
-group: Drawing
+labels: [重命名视图,切割清单,展开图]
+group: 图纸
 ---
-![Cut-list for sheet metal body](cut-list-name.png){ width=250 }
+![钣金体的切割清单](cut-list-name.png){ width=250 }
 
-Cut list names for sheet metal bodies can be used to store important information, such as part number. This VBA macro allows to rename all flat pattern views of sheet metal in the active drawing sheet with the name of the respective cut-list item using SOLIDWORKS API.
+钣金体的切割清单名称可用于存储重要信息，例如零件编号。此VBA宏允许使用SOLIDWORKS API将活动图纸中的所有钣金展开图视图重命名为相应切割清单项的名称。
 
-![Drawing view renamed after the cut-list](renamed-flat-pattern-drawing-view.png){ width=250 }
+![展开图视图重命名为切割清单](renamed-flat-pattern-drawing-view.png){ width=250 }
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -31,7 +31,7 @@ try:
     If Not swDraw Is Nothing Then
         RenameFlatPatternViews swDraw, swDraw.GetCurrentSheet
     Else
-        Err.Raise vbError, "", "Please open drawing document"
+        Err.Raise vbError, "", "请打开图纸文档"
     End If
     
     GoTo finally
@@ -59,7 +59,7 @@ Sub RenameFlatPatternViews(draw As SldWorks.DrawingDoc, sheet As SldWorks.sheet)
             
             If swView.IsFlatPatternView() Then
                 
-                Debug.Print "Renaming " & swView.Name
+                Debug.Print "正在重命名 " & swView.Name
                 
                 Dim swBody As SldWorks.Body2
                 Set swBody = GetFlatPatternViewBody(swView)
@@ -75,7 +75,7 @@ Sub RenameFlatPatternViews(draw As SldWorks.DrawingDoc, sheet As SldWorks.sheet)
                 swView.ReferencedDocument.ShowConfiguration2 activeConf
                 
                 If swCutListFeat Is Nothing Then
-                    Err.Raise vbError, "", "Failed to find cut list for " & swView.Name
+                    Err.Raise vbError, "", "未找到 " & swView.Name & " 的切割清单"
                 End If
                 
                 swView.SetName2 swCutListFeat.Name
@@ -93,7 +93,7 @@ Function GetFlatPatternViewBody(view As SldWorks.view) As SldWorks.Body2
     vVisComps = view.GetVisibleComponents()
     
     If IsEmpty(vVisComps) Then
-        Err.Raise vbError, "", view.Name & " doesn't have visible components"
+        Err.Raise vbError, "", view.Name & " 没有可见组件"
     End If
     
     Dim swComp As SldWorks.Component2
@@ -103,7 +103,7 @@ Function GetFlatPatternViewBody(view As SldWorks.view) As SldWorks.Body2
     vFaces = view.GetVisibleEntities(swComp, swViewEntityType_e.swViewEntityType_Face)
     
     If IsEmpty(vFaces) Then
-        Err.Raise vbError, "", view.Name & " doesn't have visible faces"
+        Err.Raise vbError, "", view.Name & " 没有可见面"
     End If
     
     Dim swFace As SldWorks.Face2
@@ -198,5 +198,3 @@ Function GetSheetViews(draw As SldWorks.DrawingDoc, sheet As SldWorks.sheet) As 
     
 End Function
 ~~~
-
-
