@@ -1,15 +1,15 @@
 ---
-title: 创建MSI安装程序以安装SOLIDWORKS插件
-caption: 安装程序
-description: 创建.msi安装程序包以部署SOLIDWORKS应用程序
+title: Creating an MSI Installer to Install SOLIDWORKS Add-ins
+caption: Installer
+description: Create an .msi installer package to deploy your SOLIDWORKS application
 ---
-安装程序包（.msi）是在部署应用程序时提供最佳用户体验的最可靠方式。安装程序可以提供友好的逐步向导，允许在安装产品时指定选项。有多种安装程序选项可供选择。
+An installer package (.msi) is the most reliable way to provide the best user experience when deploying an application. Installers can provide a friendly step-by-step wizard that allows options to be specified during the installation of the product. There are several installer options to choose from.
 
-[Microsoft Visual Studio Installer Projects](vsi) 提供了从构建的二进制文件创建安装程序的最简单和最快的方法。然而，该选项在自定义安装程序时功能和灵活性有限。
+[Microsoft Visual Studio Installer Projects](vsi) provides the simplest and fastest way to create an installer from the built binary files. However, this option has limited functionality and flexibility when customizing the installer.
 
-[WiX](wix) 是一个流行的免费框架，通过在XML格式中定义规则来创建安装程序。该框架提供了广泛的灵活性，并允许将任何自定义内容构建到安装程序中。
+[WiX](wix) is a popular free framework for creating installers by defining rules in XML format. This framework provides extensive flexibility and allows any custom content to be built into the installer.
 
-其他选项包括但不限于：
+Other options include, but are not limited to:
 
 * [InstallShield](https://en.wikipedia.org/wiki/InstallShield)
 * [Nullsoft Scriptable Install System](https://en.wikipedia.org/wiki/Nullsoft_Scriptable_Install_System)
