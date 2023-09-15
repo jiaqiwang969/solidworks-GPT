@@ -1,12 +1,12 @@
 ---
-title: Run force mate command using SOLIDWORKS and Windows API
-caption: Run Force Mate Command
-description: Example demonstrates how to run 'Force Mate' command for the mate with rebuild errors using the combination of SOLIDWORKS API and Windows API
+title: 使用SOLIDWORKS和Windows API运行力学配对命令
+caption: 运行力学配对命令
+description: 该示例演示了如何使用SOLIDWORKS API和Windows API的组合来运行具有重建错误的配对的“Force Mate”命令。
 image: force-mate.png
 ---
-![Force Mate command in the context menu](force-mate.png){ width=350 }
+![上下文菜单中的Force Mate命令](force-mate.png){ width=350 }
 
-This example demonstrates how to run 'Force Mate' command for the mate with rebuild errors in order to solve the constraint. This macro is based on combination of Windows and SOLIDWORKS API.
+该示例演示了如何运行“Force Mate”命令以解决具有重建错误的配对的约束。此宏基于Windows和SOLIDWORKS API的组合。
 
 ~~~ vb
 #If VBA7 Then
@@ -39,16 +39,16 @@ Sub main()
             
             Dim isWarn As Boolean
             If swMateFeat.GetErrorCode2(isWarn) = swFeatureError_e.swFeatureErrorNone Or True = isWarn Then
-                MsgBox "Force command is only applicable for the mate with rebuild errors"
+                MsgBox "Force命令仅适用于具有重建错误的配对"
             Else
                 ForceMate swMate
             End If
             
         Else
-            MsgBox "Please select mate"
+            MsgBox "请选择配对"
         End If
     Else
-       MsgBox "Please open assembly"
+       MsgBox "请打开装配体"
     End If
      
 End Sub
@@ -70,5 +70,3 @@ Sub ForceMate(mate As SldWorks.Mate2)
 
 End Sub
 ~~~
-
-
