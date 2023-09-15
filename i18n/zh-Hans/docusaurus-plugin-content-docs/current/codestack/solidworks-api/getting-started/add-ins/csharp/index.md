@@ -5,6 +5,7 @@ description: 使用C#从头开始创建SOLIDWORKS插件的详细指南
 image: new-project-class-library.png
 labels: [插件, c#]
 ---
+
 * 在Microsoft Visual Studio中创建新项目
 * 在*Visual C#*模板下选择*类库*模板。指定项目的位置和名称
 
@@ -21,14 +22,14 @@ labels: [插件, c#]
 
 * 添加一个具有用户友好名称的公共类。这将是插件的主类。此类必须是公共的和COM可见的。我建议使用[ComVisibleAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.comvisibleattribute?view=netframework-4.7.2)将类标记为COM可见对象，并使用[GuidAttribute](https://docs.microsoft.com/en-gb/dotnet/api/system.runtime.interopservices.guidattribute?view=netframework-4.7.2)为插件类显式分配COM GUID：
 
-~~~ cs
+```cs
 [ComVisible(true)]
 [Guid("31B803E0-7A01-4841-A0DE-895B726625C9")]
 public class MySampleAddin : ISwAddin
 {
     ...
 }
-~~~
+```
 
 我建议在项目设置中不选择*使程序集COM可见*选项，而只是像上面描述的那样将所需的类标记为COM可见。
 
@@ -36,9 +37,9 @@ public class MySampleAddin : ISwAddin
 
 * 插件dll必须使用/codebase标志进行注册。项目设置中的*注册COM互操作*选项在注册时不使用此选项，因此在此情况下不适用。相反，添加以下后期构建操作：
 
-~~~ bat
+```bat
 "%windir%\Microsoft.NET\Framework64\v4.0.30319\regasm" /codebase "$(TargetPath)"
-~~~
+```
 
 ![后期构建事件将dll注册为COM对象](post-build-event.png){ width=400 }
 
@@ -54,7 +55,7 @@ public class MySampleAddin : ISwAddin
 
 * 复制并粘贴如下所示的插件代码，并编译项目
 
-~~~ cs
+```cs
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swpublished;
 using System;
@@ -165,10 +166,7 @@ namespace SampleAddIn
         }
     }
 }
-
-~~~
-
-
+```
 
 * 编译时可能会显示以下警告。
 
@@ -180,7 +178,7 @@ namespace SampleAddIn
 
 上述代码可以使用[xCAD.NET Framework](https://xcad.net/)框架简化如下：
 
-~~~ cs
+```cs
 [Title("Sample Add-In")]
 [Description("Sample 'Hello World' SOLIDWORKS add-in")]
 [ComVisible(true), Guid("31B803E0-7A01-4841-A0DE-895B726625C9")]
@@ -191,4 +189,4 @@ public class MySampleAddIn : SwAddInEx
         Application.ShowMessageBox("Hello World!");
     }
 }
-~~~
+```
