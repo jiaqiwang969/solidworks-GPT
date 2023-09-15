@@ -1,17 +1,17 @@
 ---
 layout: article
-caption: Insert Location Label
-title: Add location label to a drawing view
-description: VBA macro which demonstrates how to add location label to a drawing view
+caption: 插入位置标签
+title: 向绘图视图添加位置标签
+description: 这是一个演示如何向绘图视图添加位置标签的 VBA 宏
 image: location-label.png
 ---
-![Inserting location label](location-label.png)
+![插入位置标签](location-label.png)
 
-This VBA macro provides a workaround for missing SOLIDWORKS API to insert the location label to a drawing view.
+这个 VBA 宏提供了一个解决方案，用于在绘图视图中插入位置标签，因为 SOLIDWORKS API 中没有提供相应的方法。
 
-Specify the name of the view as **VIEW_NAME** constant.
+请将视图的名称指定为 **VIEW_NAME** 常量。
 
-> Only views compatible with location label are supported, e.g. auxillary, detailed, etc.
+> 仅支持与位置标签兼容的视图，例如辅助视图、详图视图等。
 
 ~~~ vb
 #If VBA7 Then
@@ -34,7 +34,7 @@ Sub main()
     If Not swDraw Is Nothing Then
         InsertLocationLabel swDraw, swDraw.FeatureByName(VIEW_NAME).GetSpecificFeature
     Else
-        MsgBox "Please open drawing"
+        MsgBox "请打开绘图"
     End If
 
 End Sub
@@ -55,9 +55,8 @@ Sub InsertLocationLabel(draw As SldWorks.DrawingDoc, view As SldWorks.view)
             
         SendMessage swFrame.GetHWnd(), WM_COMMAND, ADD_LOCATION_LABEL, 0
     Else
-        Err.Raise vbError, "", "Failed to select view"
+        Err.Raise vbError, "", "选择视图失败"
     End If
     
 End Sub
 ~~~
-
