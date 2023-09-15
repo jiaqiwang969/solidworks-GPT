@@ -1,27 +1,27 @@
 ---
-title: SOLIDWORKS VBA macro to compose flat BOM table using API
-caption: Compose Flat Bill Of Materials (BOM)
-description: Example demonstrates how to compose bill of materials from the assembly tree using SOLIDWORKS API
+title: 使用API编写的SOLIDWORKS VBA宏来生成平面BOM表
+caption: 生成平面BOM
+description: 该示例演示了如何使用SOLIDWORKS API从装配树中生成平面（仅顶层）BOM表。
 image: bill-of-materials.png
 labels: [bom, flat, top level]
 ---
-![Bill Of Materials](bill-of-materials.png){ width=250 }
+![BOM表](bill-of-materials.png){ width=250 }
 
-This example demonstrates how to compose flat (top level only) Bill Of Materials table from the assembly tree using SOLIDWORKS API.
+该示例演示了如何使用SOLIDWORKS API从装配树中生成平面（仅顶层）BOM表。
 
-Bill Of Materials position includes the following columns:
+BOM表的位置包括以下列：
 
-* Model Path
-* Model Configuration
-* Description (custom property)
-* Price (custom property)
-* Quantity (calculated)
+* 模型路径
+* 模型配置
+* 描述（自定义属性）
+* 价格（自定义属性）
+* 数量（计算得出）
 
-The composed BOM is output to the immediate window of VBA editor:
+生成的BOM表将输出到VBA编辑器的即时窗口中：
 
-![BOM Table printed in the immediate window](flat-bom-print.png){ width=250 }
+![在即时窗口中打印的BOM表](flat-bom-print.png){ width=250 }
 
-It is not required to have a BOM Table inserted for this macro to work.
+不需要插入BOM表格即可运行此宏。
 
 ~~~ vb
 Type BomPosition
@@ -50,14 +50,14 @@ Sub Main()
         bom = GetFlatBom(swAssy)
         
         Dim i As Integer
-        Debug.Print "Path" & vbTab & "Configuration" & vbTab & "Description" & vbTab & "Price" & vbTab & "Qty"
+        Debug.Print "路径" & vbTab & "配置" & vbTab & "描述" & vbTab & "价格" & vbTab & "数量"
         
         For i = 0 To UBound(bom)
             Debug.Print bom(i).ModelPath & vbTab & bom(i).Configuration & vbTab & bom(i).Description & vbTab & bom(i).Price & vbTab & bom(i).Quantity
         Next
         
     Else
-        MsgBox "Please open assembly"
+        MsgBox "请打开装配体"
     End If
     
 End Sub
@@ -132,13 +132,13 @@ Sub GetProperties(comp As SldWorks.Component2, ByRef desc As String, ByRef prc A
     Set swCompModel = comp.GetModelDoc2()
     
     If swCompModel Is Nothing Then
-        Err.Raise vbError, "", "Failed to get model from the component"
+        Err.Raise vbError, "", "无法从组件中获取模型"
     End If
     
-    desc = GetPropertyValue(swCompModel, comp.ReferencedConfiguration, "Description")
+    desc = GetPropertyValue(swCompModel, comp.ReferencedConfiguration, "描述")
         
     Dim prcTxt As String
-    prcTxt = GetPropertyValue(swCompModel, comp.ReferencedConfiguration, "Price")
+    prcTxt = GetPropertyValue(swCompModel, comp.ReferencedConfiguration, "价格")
     
     If prcTxt <> "" Then
         prc = CDbl(prcTxt)
@@ -167,5 +167,3 @@ Function GetPropertyValue(model As SldWorks.ModelDoc2, conf As String, prpName A
     
 End Function
 ~~~
-
-
