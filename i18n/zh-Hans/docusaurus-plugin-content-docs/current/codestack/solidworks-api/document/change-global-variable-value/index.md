@@ -1,15 +1,15 @@
 ---
-title: Change value of global variable in model using SOLIDWORKS API
-caption: Change Value Of Global Variable
-description: Example demonstrate how to modify the value of the global variable by name in the equation manager
+title: 使用SOLIDWORKS API更改模型中的全局变量值
+caption: 更改全局变量的值
+description: 该示例演示了如何使用SOLIDWORKS API在方程管理器中按名称修改全局变量的值。
 image: equation-manager-global-variable.png
 labels: [equation, variable]
 ---
-![Equation Manager with Global Variable](equation-manager-global-variable.png)
+![带有全局变量的方程管理器](equation-manager-global-variable.png)
 
-This example demonstrates how to modify the value of the named global variable in the equation manager using SOLIDWORKS API.
+该示例演示了如何使用SOLIDWORKS API在方程管理器中按名称修改全局变量的值。
 
-Change the name of the variable and the value constants in the head of the macro.
+在宏的头部更改变量的名称和值常量。
 
 ~~~ vb
 Const VAR_NAME As String = "Factor"
@@ -33,11 +33,11 @@ Sub main()
         If SetEquationValue(swEqMgr, VAR_NAME, NEW_VALUE) Then
             swModel.ForceRebuild3 True
         Else
-            MsgBox "Failed to find the equation " & name
+            MsgBox "无法找到方程式 " & name
         End If
     
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -66,7 +66,7 @@ Function GetEquationIndexByName(eqMgr As SldWorks.EquationMgr, name As String) A
         
         Dim eqName As String
         eqName = Trim(Split(eqMgr.Equation(i), "=")(0))
-        eqName = Mid(eqName, 2, Len(eqName) - 2) 'removing the "" symbols from the name
+        eqName = Mid(eqName, 2, Len(eqName) - 2) '从名称中删除""符号
         
         If UCase(eqName) = UCase(VAR_NAME) Then
             GetEquationIndexByName = i
@@ -76,5 +76,3 @@ Function GetEquationIndexByName(eqMgr As SldWorks.EquationMgr, name As String) A
     
 End Function
 ~~~
-
-
