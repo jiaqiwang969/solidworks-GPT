@@ -1,13 +1,13 @@
 ---
-title: 使用SOLIDWORKS API自动化装配中的配合关系
-caption: 配合关系
-description: 配合关系的组合和代码示例集合
+title: Automating Mating Relationships in Assemblies with SOLIDWORKS API
+caption: Mating Relationships
+description: A collection of combinations and code examples for mating relationships
 image: assembly-mating.png
-labels: [装配, 配合关系]
+labels: [Assembly, Mating Relationships]
 sidebar_position: 1
 ---
-![通过API配合装配组件](assembly-mating.png){ width=200 }
+![Mating Assembly Components via API](assembly-mating.png){ width=200 }
 
-可以通过[SOLIDWORKS API方法IAssemblyDoc::AddMate3](https://help.solidworks.com/2012/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IAssemblyDoc~AddMate3.html)（或此方法的更新版本）以编程方式配合装配组件。
+You can programmatically mate assembly components using the [SOLIDWORKS API method IAssemblyDoc::AddMate3](https://help.solidworks.com/2012/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IAssemblyDoc~AddMate3.html) (or its updated version).
 
-需要为不同的配合类型使用不同的标记来标记所选对象。请参考SOLIDWORKS API帮助文档以获取特定配合关系的标记值，或使用SOLIDWORKS宏记录器来捕获正确的标记。
+Different markers are used to identify selected objects for different types of mates. Refer to the SOLIDWORKS API Help documentation for the marker values specific to each mating relationship, or use the SOLIDWORKS Macro Recorder to capture the correct markers.
