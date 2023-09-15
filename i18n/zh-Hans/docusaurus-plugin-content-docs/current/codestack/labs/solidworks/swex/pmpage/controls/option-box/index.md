@@ -1,15 +1,15 @@
 ---
-title: Option box control in SOLIDWORKS Property Page with SwEx.PMPage framework
-caption: Option Box
-description: Overview of SOLIDWORKS Property Manager Page option box control creation and customization using SwEx.PMPage framework
+title: 在SOLIDWORKS Property Page中使用SwEx.PMPage框架创建选项框控件
+caption: 选项框
+description: 使用SwEx.PMPage框架创建和自定义SOLIDWORKS Property Manager Page选项框控件的概述
 image: options-box.png
 toc-group-name: labs-solidworks-swex
-labels: [option,pmpage]
+labels: [选项, pmpage]
 sidebar_position: 0
 ---
-![Option box control](options-box.png)
+![选项框控件](options-box.png)
 
-Options group can be defined by decorating the property of type Enum with [OptionBoxAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_OptionBoxAttribute.htm).
+可以通过使用[OptionBoxAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_OptionBoxAttribute.htm)对类型为Enum的属性进行修饰来定义选项组。
 
 ~~~vb
 Imports CodeStack.SwEx.Common.Attributes
