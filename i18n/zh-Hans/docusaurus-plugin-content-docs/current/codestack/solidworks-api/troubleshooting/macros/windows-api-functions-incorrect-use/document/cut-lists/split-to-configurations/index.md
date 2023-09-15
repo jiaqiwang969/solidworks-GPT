@@ -1,38 +1,38 @@
 ---
 layout: sw-tool
-caption: Split To Configurations
-title: Macro to split SOLIDWORKS cut-list bodies into individual configurations
-description: VBA macro which creates individual configurations for all cut-list bodies (or unique bodies) in the active SOLIDWORKS part document for the drawing generation purpose
+caption: 将切割清单拆分为配置
+title: 将SOLIDWORKS切割清单体拆分为单独的配置的宏
+description: 用于在绘图生成过程中为活动SOLIDWORKS零件文档中的所有切割清单体（或唯一体）创建单独的配置的VBA宏
 image: cut-list-to-configuration.svg
-group: Cut-List
+group: 切割清单
 ---
-![Cut-lists to configuration mapping](cut-lists-configurations.png)
+![切割清单到配置的映射](cut-lists-configurations.png)
 
-This VBA macro creates individual configuration for all cut-list bodies of the active part document.
+此VBA宏为活动零件文档的所有切割清单体创建单独的配置。
 
-This macro can be useful when preparing drawings for multi-body cut-list parts where drawing is required for each unique body.
+当准备多体切割清单零件的绘图，每个唯一体都需要绘图时，此宏非常有用。
 
-Macro will create as many configurations as cut-lists feature in the document and will add the corresponding **Delete Body** feature and setup the suppression of this feature so each configuration will only display the body of the single cut-list.
+宏将为文档中的切割清单特征创建与切割清单数量相同的配置，并添加相应的**删除实体**特征，并设置该特征的抑制，以便每个配置仅显示单个切割清单的实体。
 
-Macro will name the configuration after the cut-list name.
+宏将以切割清单名称命名配置。
 
-Macro will display the progress bar in the SOLIDWORKS icon:
+宏将在SOLIDWORKS图标中显示进度条：
 
-![Progress of the operation](progress-bar.png)
+![操作的进度](progress-bar.png)
 
-## Configuration
+## 配置
 
-**KEEP_ALL_CUT_LIST_BODIES** constant allows to control should the macro isolate all cut-list bodies or only keep a single unique body.
+**KEEP_ALL_CUT_LIST_BODIES**常量用于控制宏是否隔离所有切割清单体还是仅保留单个唯一体。
 
 ~~~ vb
-Const KEEP_ALL_CUT_LIST_BODIES As Boolean = True 'keep all cut-list bodies
+Const KEEP_ALL_CUT_LIST_BODIES As Boolean = True '保留所有切割清单体
 ~~~
 
-If **KEEP_ALL_CUT_LIST_BODIES** is set to **False** only first body of each cut-list will be kept. This simplifies the drawing creation process as it is only required to select the corresponding referenced configuration to display body on drawing. However this will result in incorrect quantity of the cut-list item if BOM table is inserted (will always be equal to 1).
+如果将**KEEP_ALL_CUT_LIST_BODIES**设置为**False**，则仅保留每个切割清单的第一个实体。这简化了绘图创建过程，因为只需要选择相应的引用配置来在绘图中显示实体。但是，这将导致切割清单项的数量不正确，如果插入了BOM表（始终等于1）。
 
-If **KEEP_ALL_CUT_LIST_BODIES** is set to **True** all bodies of each cut-list will be kept. in this case user is additionally required to select the single body to keep in the drawing via **Select Body** button in the drawing view. However in this case Bill Of Materials table will display the correct quantity.
+如果将**KEEP_ALL_CUT_LIST_BODIES**设置为**True**，则将保留每个切割清单的所有实体。在这种情况下，用户还需要通过绘图视图中的**选择实体**按钮选择要保留的单个实体。但是，在这种情况下，BOM表将显示正确的数量。
 
-![Select bodies feature in the drawing view](view-select-bodies.png)
+![在绘图视图中选择实体的功能](view-select-bodies.png)
 
 ~~~ vb
 Const KEEP_ALL_CUT_LIST_BODIES As Boolean = True
@@ -240,4 +240,3 @@ Function Contains(arr As Variant, item As Object) As Boolean
     
 End Function
 ~~~
-
