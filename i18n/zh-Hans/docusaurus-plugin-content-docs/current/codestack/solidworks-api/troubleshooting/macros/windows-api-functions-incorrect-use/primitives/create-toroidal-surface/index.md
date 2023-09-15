@@ -1,19 +1,20 @@
 ---
-title: Create temp toroidal sheet body using SOLIDWORKS modeler API
-caption: Create Temp Toroidal Sheet Body
-description: Example demonstrates how to create temp body of a toroidal sheet
+title: 使用SOLIDWORKS模型API创建临时环面片体
+caption: 创建临时环面片体
+description: 该示例演示了如何使用SOLIDWORKS API从环面创建片体。
 image: toroidal-surface.png
-labels: [topology, geometry, sheet, modeler, cylinder]
+labels: [拓扑结构, 几何, 片体, 模型, 圆柱体]
 ---
-![Toroidal sheet body](toroidal-surface.png)
 
-This example demonstrates how to create a sheet body from the toroidal surface using SOLIDWORKS API.
+![环面片体](toroidal-surface.png)
 
-Geometry is created using the [IModeler::CreateToroidalSurface](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeler~createtoroidalsurface.html) SOLIDWORKS API method.
+该示例演示了如何使用SOLIDWORKS API从环面创建片体。
 
-Run the macro and temp body is displayed. Body can be rotated and selected but it is not presented in the feature tree. Continue the macro execution to destroy the body.
+几何图形是使用[SOLIDWORKS API的IModeler::CreateToroidalSurface](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeler~createtoroidalsurface.html)方法创建的。
 
-~~~ vb
+运行宏后，将显示临时片体。可以旋转和选择该片体，但它不会显示在特征树中。继续执行宏以销毁该片体。
+
+```vb
 Dim swApp As SldWorks.SldWorks
 Dim swModel As SldWorks.ModelDoc2
 Dim swModeler As SldWorks.Modeler
@@ -48,15 +49,14 @@ Sub main()
         
         swBody.Display3 swModel, RGB(255, 255, 0), swTempBodySelectOptions_e.swTempBodySelectable
     
-        Stop 'continue to hide the body
+        Stop '继续隐藏片体
         
         Set swBody = Nothing
         
     Else
-        MsgBox "Please open part document"
+        MsgBox "请打开零件文档"
     End If
     
 End Sub
-~~~
-
+```
 
