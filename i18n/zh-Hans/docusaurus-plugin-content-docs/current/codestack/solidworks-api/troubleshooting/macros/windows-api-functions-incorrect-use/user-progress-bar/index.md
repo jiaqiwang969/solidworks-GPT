@@ -1,33 +1,34 @@
 ---
-title: Handling the long operation progress using progress bar in SOLIDWORKS API
-caption: User Progress Bar
-description: Displaying the long operation progress using user progress bar in SOLIDWORKS API
+title: 在SOLIDWORKS API中使用进度条处理长时间操作进度
+caption: 用户进度条
+description: 在SOLIDWORKS API中使用用户进度条显示长时间操作进度
 image: taskbar-progress.png
 labels: [progress,user progress bar,background]
 ---
-To improve the user experience of your macro or add-in it is recommended to display and update the progress bar when the long SOLIDWORKS API operation is performed.
 
-SOLIDWORKS API provides a built-in method to display the progress while main thread is locked (i.e. operations are performed in process). Progress value and message can be handled via [IUserProgressBar](https://help.solidworks.com/2017/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IUserProgressBar.html) SOLIDWORKS API interface.
+为了改善宏或插件的用户体验，建议在执行长时间的SOLIDWORKS API操作时显示和更新进度条。
 
-Message and progress is displayed in the standard SOLIDWORKS progress bar in the bottom left corner of the application.
+SOLIDWORKS API提供了一种内置方法，在主线程被锁定时（即在进程中执行操作）显示进度。可以通过[IUserProgressBar](https://help.solidworks.com/2017/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IUserProgressBar.html) SOLIDWORKS API接口来处理消息和进度。
 
-![Progress and message displayed in the progress bar](user-progress-bar.png)
+消息和进度会显示在应用程序左下角的标准SOLIDWORKS进度条中。
 
-Progress is also reflected in the SOLIDWORKS icon in the task bar.
+![在进度条中显示消息和进度](user-progress-bar.png)
 
-![Progress is displayed in the SOLIDWORKS icon in the task bar](taskbar-progress.png)
+进度也会反映在任务栏中的SOLIDWORKS图标中。
 
-## Notes and limitations
+![在任务栏中的SOLIDWORKS图标中显示进度](taskbar-progress.png)
 
-* Progress values and messages can be overridden by standard progress messages from SOLIDWORKS (e.g. rebuild operation, file load etc.)
+## 注意事项和限制
 
-## Running the macro
+* 进度值和消息可以被SOLIDWORKS的标准进度消息覆盖（例如重建操作、文件加载等）。
 
-* Open part document with bodies
-* Macro traverses all faces of the body and performs data extraction of each face
-* Operation is repeated as specified in *ITERATIONS_COUNT* constant
-* Progress bar is displayed
-* Press ESC to have an option to cancel the operation
+## 运行宏
+
+* 打开具有实体的零件文档
+* 宏遍历每个实体的所有面，并对每个面执行数据提取操作
+* 操作将根据*ITERATIONS_COUNT*常量重复执行
+* 显示进度条
+* 按ESC键可以选择取消操作
 
 ~~~ vb
 Const ITERATIONS_COUNT As Integer = 1000
@@ -52,11 +53,11 @@ Sub main()
         If Not IsEmpty(vBodies) Then
             PerformOperation vBodies
         Else
-            MsgBox "There are no bodies in this part"
+            MsgBox "此零件中没有实体"
         End If
             
     Else
-        MsgBox "Please open part document"
+        MsgBox "请打开零件文档"
     End If
     
 End Sub
@@ -66,7 +67,7 @@ Sub PerformOperation(bodies As Variant)
     Dim swPrgBar As SldWorks.UserProgressBar
     swApp.GetUserProgressBar swPrgBar
     
-    swPrgBar.Start 0, GetProgressBarUpperBound(bodies), "Performing operations on faces"
+    swPrgBar.Start 0, GetProgressBarUpperBound(bodies), "正在处理面的操作"
     
     Dim i As Integer
     
@@ -81,7 +82,7 @@ Sub PerformOperation(bodies As Variant)
         Dim vFaces As Variant
         vFaces = swBody.GetFaces()
         
-        swPrgBar.UpdateTitle "Processing " & swBody.Name & " with " & UBound(vFaces) + 1 & " face(s)"
+        swPrgBar.UpdateTitle "正在处理 " & swBody.Name & "，共有 " & UBound(vFaces) + 1 & " 个面"
         
         Dim j As Integer
         
@@ -103,7 +104,7 @@ Sub PerformOperation(bodies As Variant)
                 swSurf.GetClosestPointOn 0, 0, 0
                 
                 If swUpdateProgressError_e.swUpdateProgressError_UserCancel = swPrgBar.UpdateProgress(pos) Then
-                    If swApp.SendMsgToUser2("Cancel operation?", swMessageBoxIcon_e.swMbWarning, swMessageBoxBtn_e.swMbYesNo) = swMessageBoxResult_e.swMbHitYes Then
+                    If swApp.SendMsgToUser2("取消操作？", swMessageBoxIcon_e.swMbWarning, swMessageBoxBtn_e.swMbYesNo) = swMessageBoxResult_e.swMbHitYes Then
                         swPrgBar.End
                     End If
                 End If
@@ -131,5 +132,3 @@ Function GetProgressBarUpperBound(bodies As Variant) As Long
     
 End Function
 ~~~
-
-
