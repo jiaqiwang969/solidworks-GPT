@@ -1,23 +1,24 @@
 ---
-caption: Toggle Drawing Detailing Mode On Save
-title: Save SOLIDWORKS drawing with detailing mode on and off
-description: VBA Macro to toggle detailing mode on and off while saving
+caption: 切换绘图详细模式保存
+title: 以绘图详细模式和非绘图详细模式保存SOLIDWORKS绘图
+description: 使用VBA宏在保存时切换绘图详细模式的开启和关闭
 ---
-When working with large drawings it may be beneficial to employ the detailing mode. In order to properly utilize the detailing mode it is required to save the data within the document itself.
 
-This process may decrease the saving performance.
+在处理大型绘图时，使用绘图详细模式可能会很有益。为了正确使用绘图详细模式，需要将数据保存在文档本身中。
 
-The toggle option to enable or disable saving of the detailing mode data is driven by document preferences.
+这个过程可能会降低保存性能。
 
-This macro allows to turn on or off the settings and perform the saving of the document.
+启用或禁用绘图详细模式数据保存的切换选项由文档首选项驱动。
 
-~~~ vb
-Const ENABLE As Boolean = True 'True to save with detailing data, False to save without the detailing data
-~~~
+该宏允许打开或关闭设置并执行文档的保存。
 
-It is possible to create 2 macro buttons (one which saves with detailing data and one which saves without the detailing data).
+```vb
+Const ENABLE As Boolean = True 'True表示保存详细数据，False表示不保存详细数据
+```
 
-~~~ vb
+可以创建两个宏按钮（一个保存详细数据，一个不保存详细数据）。
+
+```vb
 Const ENABLE As Boolean = True
 
 Const swCommands_Save As Long = 2
@@ -49,12 +50,11 @@ Sub main()
             swModel.Extension.SetUserPreferenceToggle swUserPreferenceToggle_e.swDetailingModeSaveModelData, swUserPreferenceOption_e.swDetailingNoOptionSpecified, saveModelDataOpt
             swModel.Extension.SetUserPreferenceToggle swUserPreferenceToggle_e.swDetailingModeIncludeStandardViewsInViewPalette, swUserPreferenceOption_e.swDetailingNoOptionSpecified, includeStandardView
         Else
-            Err.Raise vbError, "", "Only drawing documents are supported"
+            Err.Raise vbError, "", "仅支持绘图文档"
         End If
     Else
-        Err.Raise vbError, "", "Open drawing document"
+        Err.Raise vbError, "", "打开绘图文档"
     End If
     
 End Sub
-~~~
-
+```
