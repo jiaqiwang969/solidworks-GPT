@@ -1,33 +1,33 @@
 ---
-title: 使用 SOLIDWORKS API 从选定的边获取 B-Spline 参数
-caption: 获取 B-Spline 参数
-description: 使用 SOLIDWORKS API 从图形视图中选定的边获取 B-Spline 曲线的参数（维度、阶数、周期性、控制点和节点）。
+title: Get B-Spline Parameters from Selected Edge using SOLIDWORKS API
+caption: Get B-Spline Parameters
+description: Use SOLIDWORKS API to extract parameters (dimension, order, periodicity, control points, and knots) of a B-Spline curve from a selected edge in the graphics view.
 image: selected-bspline-edge.png
 labels: [bspline, parameters, modeler, edge]
 ---
-![选定的 B-Spline 边](selected-bspline-edge.png){ width=250 }
+![Selected B-Spline Edge](selected-bspline-edge.png){ width=250 }
 
-这个 VBA 示例从选定的 B-Spline 类型边（例如从样条线段派生的边）中提取参数（维度、阶数、周期性、控制点和节点）。提取的数据可以在 [IModeler::CreateBsplineCurve](https://help.solidworks.com/2012/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModeler~CreateBsplineCurve.html) SOLIDWORKS API 方法中使用，以构建相同几何形状的曲线。
+This VBA example extracts parameters (dimension, order, periodicity, control points, and knots) from a selected B-Spline type edge (e.g., derived from a spline segment). The extracted data can be used in the [IModeler::CreateBsplineCurve](https://help.solidworks.com/2012/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModeler~CreateBsplineCurve.html) SOLIDWORKS API method to construct a curve with the same geometry.
 
-数据以以下格式输出到 VBA 编辑器的即时窗口中：
+The data is output in the following format to the Immediate window in the VBA editor:
 
 ~~~
-属性：
- 维度 值
- 阶数 值
- 控制点数量 值
- 周期性 值
-节点：
- 值 1
+Properties:
+ Dimension Value
+ Order Value
+ Control Points Count Value
+ Periodic Value
+Knots:
+ Value 1
  ...
- 值 N
-控制点：
- 值 1
+ Value N
+Control Points:
+ Value 1
  ...
- 值 N
+ Value N
 ~~~
 
-~~~ vb
+```vb
 Dim swApp As SldWorks.SldWorks
 Dim swModel As SldWorks.ModelDoc2
 Dim swSelMgr As SldWorks.SelectionMgr
@@ -53,13 +53,13 @@ Sub main()
     
     Dim i As Integer
     
-    Debug.Print "属性："
+    Debug.Print "Properties:"
     Debug.Print swSplineData.Dimension
     Debug.Print swSplineData.Order
     Debug.Print swSplineData.ControlPointsCount
     Debug.Print swSplineData.Periodic
     
-    Debug.Print "节点："
+    Debug.Print "Knots:"
     Dim vKnotPts As Variant
     swSplineData.GetKnotPoints vKnotPts
     
@@ -67,7 +67,7 @@ Sub main()
         Debug.Print vKnotPts(i)
     Next
     
-    Debug.Print "控制点："
+    Debug.Print "Control Points:"
     Dim vCtrlPts As Variant
     swSplineData.GetControlPoints vCtrlPts
     For i = 0 To UBound(vCtrlPts)
@@ -75,4 +75,4 @@ Sub main()
     Next
     
 End Sub
-~~~
+```
