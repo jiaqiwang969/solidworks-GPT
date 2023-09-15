@@ -1,58 +1,55 @@
 ---
-title: Defining commands buttons in SOLIDWORKS toolbar using SwEx.AddIn framework
-caption: Defining Commands
-description: Explanations on the ways of defining the commands in groups using SwEx framework for SOLIDWORKS add-ins in C# and VB.NET
+title: 使用SwEx.AddIn框架在SOLIDWORKS工具栏中定义命令按钮
+caption: 定义命令
+description: 介绍使用SwEx框架在C#和VB.NET中定义SOLIDWORKS插件中命令组的方法
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
-## Defining Commands
+## 定义命令
 
-SwEx framework allows defining the commands in the enumeration (enum). In this case the enumeration value become the id of the corresponding command.
+SwEx框架允许在枚举（enum）中定义命令。在这种情况下，枚举值将成为相应命令的ID。
 
-
-~~~vb
+```vb
 Public Enum CommandsA_e
     CommandA1
     CommandA2
 End Enum
-~~~
+```
 
-
-~~~cs
+```cs
 public enum CommandsA_e
 {
     CommandA1,
     CommandA2
 }
-~~~
+```
 
-## Commands Decoration
+## 命令装饰
 
-Commands can be decorated with the additional attributes to define look and feel of the command.
+可以使用附加属性对命令进行装饰以定义命令的外观。
 
-### Title
-User friendly title can be defined using the [TitleAttribute](https://docs.codestack.net/swex/common/html/T_CodeStack_SwEx_Common_Attributes_TitleAttribute.htm). Alternatively, any attribute class which inherits [DisplayNameAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.displaynameattribute?view=netframework-4.0) is supported as a title.
+### 标题
+可以使用[TitleAttribute](https://docs.codestack.net/swex/common/html/T_CodeStack_SwEx_Common_Attributes_TitleAttribute.htm)来定义用户友好的标题。或者，任何继承[DisplayNameAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.displaynameattribute?view=netframework-4.0)的属性类都可以作为标题。
 
-### Description
-Description is a text displayed in the SOLIDWORKS command bar when user hovers the mouse over the command. Description can be defined using the [DescriptionAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.descriptionattribute?view=netframework-4.0)
+### 描述
+描述是当用户将鼠标悬停在命令上时在SOLIDWORKS命令栏中显示的文本。可以使用[DescriptionAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.descriptionattribute?view=netframework-4.0)来定义描述。
 
-### Icon
-Icon can be set using the [CommandIconAttribute](https://docs.codestack.net/swex/add-in/html/T_CodeStack_SwEx_AddIn_Attributes_CommandIconAttribute.htm). There are multiple overloads of this attribute. User can provide
+### 图标
+可以使用[CommandIconAttribute](https://docs.codestack.net/swex/add-in/html/T_CodeStack_SwEx_AddIn_Attributes_CommandIconAttribute.htm)来设置图标。这个属性有多个重载。用户可以提供：
 
-* Single master icon
-* 2 icons (small and large)
-* 6 icons for high resolution (supported from SOLIDWORKS 2016 onwards)
+* 单个主图标
+* 2个图标（小图标和大图标）
+* 6个高分辨率图标（从SOLIDWORKS 2016开始支持）
 
-Icon can be also specified using the generic [IconAttribute](https://docs.codestack.net/swex/common/html/T_CodeStack_SwEx_Common_Attributes_IconAttribute.htm).
+也可以使用通用的[IconAttribute](https://docs.codestack.net/swex/common/html/T_CodeStack_SwEx_Common_Attributes_IconAttribute.htm)来指定图标。
 
-Regardless of the option selected above, SwEx framework will scale the icon appropriately to match the version of SOLIDWORKS. For example if single master icon specified for SOLIDWORKS 2016 onwards, 6 icons will be created to support high resolution, for older SOLIDWORKS, 2 icons will be created (large and small). If user specified 6 icons - all of them will be used 'as is' for SOLIDWORKS 2016 or newer, but they will be converted to 2 (small and large) icons for older versions as high resolutions icons are not supported in SOLIDWORKS older than 2016.
+无论选择了上述哪个选项，SwEx框架都会根据SOLIDWORKS的版本适当地缩放图标。例如，如果为SOLIDWORKS 2016及更高版本指定了单个主图标，则会创建6个图标以支持高分辨率，对于旧版本的SOLIDWORKS，将创建2个图标（大图标和小图标）。如果用户指定了6个图标，则所有图标都将在SOLIDWORKS 2016或更新版本中按原样使用，但在旧版本中将转换为2个图标（小图标和大图标），因为在SOLIDWORKS 2016之前的版本中不支持高分辨率图标。
 
-Transparency is supported. SwEx framework will automatically assign the required transparency key for compatibility with SOLIDWORKS.
+支持透明度。SwEx框架将自动为与SOLIDWORKS兼容性分配所需的透明度键。
 
-Icons can be referenced from any static class. Usually this should be a resource class. It is required to specify the type of the resource class as first parameter, and the resource names as additional parameters. Use *nameof* keyword to load the resource name to avoid usage of 'magic' strings.
+图标可以从任何静态类引用。通常，这应该是一个资源类。需要将资源类的类型指定为第一个参数，并将资源名称指定为附加参数。使用*nameof*关键字加载资源名称以避免使用“魔术”字符串。
 
-
-~~~vb
+```vb
 Imports CodeStack.SwEx.Common.Attributes
 Imports CodeStack.SwEx.My.Resources
 Imports System.ComponentModel
@@ -78,10 +75,9 @@ Public Enum CommandsB_e
     CommandB3
 
 End Enum
-~~~
+```
 
-
-~~~cs
+```cs
 using CodeStack.SwEx.Common.Attributes;
 using CodeStack.SwEx.Properties;
 using System.ComponentModel;
@@ -106,18 +102,15 @@ public enum CommandsB_e
     [Icon(typeof(Resources), nameof(Resources.command3))]
     CommandB3
 }
-~~~
+```
 
+## 命令范围
 
+可以为每个命令分配操作范围（即可以执行该命令的环境，例如零件、装配等）。可以使用[CommandItemInfoAttribute](https://docs.codestack.net/swex/add-in/html/T_CodeStack_SwEx_AddIn_Attributes_CommandItemInfoAttribute.htm)属性通过在属性的构造函数的*suppWorkspaces*参数中指定值来分配范围。[swWorkspaceTypes_e](https://docs.codestack.net/swex/add-in/html/T_CodeStack_SwEx_AddIn_Enums_swWorkspaceTypes_e.htm)是一个标志枚举，因此可以组合工作区。
 
-## Commands Scope
+框架将根据指定的范围自动禁用/启用命令，以基于活动环境分配状态。有关分配状态的其他逻辑，请参阅[自定义启用命令状态](/docs/codestack/labs/solidworks/swex/add-in/commands-manager/command-states/)文章。
 
-Each command can be assigned with the operation scope (i.e. the environment where this command can be executed, e.g. Part, Assembly etc.). Scope can be assigned with [CommandItemInfoAttribute](https://docs.codestack.net/swex/add-in/html/T_CodeStack_SwEx_AddIn_Attributes_CommandItemInfoAttribute.htm) attribute by specifying the values in *suppWorkspaces* parameter of the attribute's constructor. The [swWorkspaceTypes_e](https://docs.codestack.net/swex/add-in/html/T_CodeStack_SwEx_AddIn_Enums_swWorkspaceTypes_e.htm) is a flag enumeration, so it is possible to combine the workspaces.
-
-Framework will automatically disable/enable the commands based on the active environment as per the specified scope. For additional logic for assigning the state visit [Custom Enable Command State](/docs/codestack/labs/solidworks/swex/add-in/commands-manager/command-states/) article.
-
-
-~~~vb
+```vb
 Imports CodeStack.SwEx.AddIn.Attributes
 Imports CodeStack.SwEx.AddIn.Enums
 
@@ -130,10 +123,9 @@ Public Enum CommandsD_e
     CommandD2
 
 End Enum
-~~~
+```
 
-
-~~~cs
+```cs
 using CodeStack.SwEx.AddIn.Attributes;
 using CodeStack.SwEx.AddIn.Enums;
 
@@ -145,13 +137,13 @@ public enum CommandsD_e
     [CommandItemInfo(swWorkspaceTypes_e.Part | swWorkspaceTypes_e.Assembly)]
     CommandD2
 }
-~~~
+```
 
-## User Assigned Command Group IDs
+## 用户分配的命令组ID
 
-[CommandGroupInfoAttribute](https://docs.codestack.net/swex/add-in/html/T_CodeStack_SwEx_AddIn_Attributes_CommandGroupInfoAttribute.htm) allows to assign the static command id to the group. This should be applied to the enumerator definition. If this attribute is not used SwEx framework will assign the ids automatically.
+[CommandGroupInfoAttribute](https://docs.codestack.net/swex/add-in/html/T_CodeStack_SwEx_AddIn_Attributes_CommandGroupInfoAttribute.htm)允许将静态命令ID分配给组。这应该应用于枚举器定义。如果不使用此属性，SwEx框架将自动分配ID。
 
-~~~vb
+```vb
 Imports CodeStack.SwEx.AddIn.Attributes
 
 <CommandGroupInfo(2)>
@@ -159,10 +151,9 @@ Public Enum CommandsE_e
     CommandE1
     CommandE2
 End Enum
-~~~
+```
 
-
-~~~cs
+```cs
 using CodeStack.SwEx.AddIn.Attributes;
 
 [CommandGroupInfo(2)]
@@ -171,4 +162,4 @@ public enum CommandsE_e
     CommandE1,
     CommandE2
 }
-~~~
+```
