@@ -1,21 +1,21 @@
 ---
-caption: Format Text Of The Note
-title: Example to format portions of the note text with different formats
-description: VBA example to apply font effects and styles for different portions of the note in SOLIDWORKS document
+caption: 格式化注释文本
+title: 用不同格式格式化注释文本的示例
+description: 在SOLIDWORKS文档中应用字体效果和样式来格式化注释的VBA示例
 image: note-text.png
 ---
-This VBA example demonstrates how to insert note into SOLIDWORKS document and format individual lines with different font effects and styles.
+这个VBA示例演示了如何在SOLIDWORKS文档中插入注释，并对单独的行应用不同的字体效果和样式。
 
-![Formatted text of the note](note-text.png)
+![格式化的注释文本](note-text.png)
 
-Portions of the text can be formatted with **\<FONT\>** instruction. This instruction has 2 attributes
+文本的部分可以使用**\<FONT\>**指令进行格式化。该指令有两个属性：
 
-* **effect** - can be equal to **U** (underline) or **RU** (remove underline)
-* **style** - can be equal to **B** (bold), **RB** (remove bold), **I** (italic) or **RI** (remove italic)
+* **effect** - 可以等于**U**（下划线）或**RU**（取消下划线）
+* **style** - 可以等于**B**（粗体）、**RB**（取消粗体）、**I**（斜体）或**RI**（取消斜体）
 
-All the text after the **\<FONT\>** instruction will be formatted according to the value of **effect** and **style**. 
+**\<FONT\>**指令之后的所有文本将根据**effect**和**style**的值进行格式化。
 
-[INote::GetText](https://help.solidworks.com/2023/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.INote~GetText.html) methods returns the resolved value of the note. For the note above it will return the following result:
+[INote::GetText](https://help.solidworks.com/2023/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.INote~GetText.html)方法返回注释的解析值。对于上面的注释，它将返回以下结果：
 
 ~~~
 First Line Underline
@@ -23,7 +23,7 @@ Second Line Bold
 Third Line Italic
 ~~~
 
-[INote::PropertyLinkedText](https://help.solidworks.com/2023/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.INote~PropertyLinkedText.html) property sets or gets the text supporting the **\<FONT\>** instruction. For the note above it will return the following result:
+[INote::PropertyLinkedText](https://help.solidworks.com/2023/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.INote~PropertyLinkedText.html)属性设置或获取支持**\<FONT\>**指令的文本。对于上面的注释，它将返回以下结果：
 
 ~~~
 <FONT effect=U>First Line Underline
@@ -55,4 +55,3 @@ Sub main()
     
 End Sub
 ~~~
-
