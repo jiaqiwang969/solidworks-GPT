@@ -1,39 +1,40 @@
 ---
-title: Tracking IDs in SOLIDWORKS API to track entities across operations
-caption: Tracking IDs
-description: This example demonstrates the use of tracking ids on face while running the merge body operation
+title: 在SOLIDWORKS API中使用跟踪ID跟踪实体
+caption: 跟踪ID
+description: 本示例演示了在运行合并实体操作时使用跟踪ID在面上的使用。
 image: select-bodies-faces.png
 labels: [tracking id, merge]
 ---
-Tracking ids are used to map (track) entities across geometrical operations such as merge, subtract, copy, split, pattern while developing macros and applications using SOLIDWORKS API.
 
-Tracking ids can be applied to faces, edges, loops, vertices and bodies.
+跟踪ID用于在使用SOLIDWORKS API开发宏和应用程序时，对几何操作（如合并、相减、复制、拆分、模式）中的实体进行映射（跟踪）。
 
-Tracking ids are assigned temporarily until the model rebuilt.
+跟踪ID可以应用于面、边、环、顶点和实体。
 
-Mainly the tracking ids are used for operations with temp bodies when it is required to track specific elements when the body get changed. Usually this is required in macro features.
+跟踪ID在模型重建之前是临时分配的。
 
-Following example demonstrates the use of tracking ids from SOLIDWORKS API to track and map the user selected faces to the copied merged body.
+主要用于临时实体的操作，当需要在实体发生变化时跟踪特定元素。通常在宏特征中需要这样做。
 
-* Download [Example File](tracking-ids-sample.SLDPRT) or use any other part document
-* Select at least one face. It is recommended to select at least two faces from the different bodies which are overlapping each other. This would allow to demonstrate the benefit of tracking ids as body will be merged.
-* Run the macro.
+以下示例演示了如何使用SOLIDWORKS API中的跟踪ID来跟踪和映射用户选择的面到复制的合并实体。
 
-![Two faces of two solid bodies selected in the graphics view](select-bodies-faces.png){ width=300 }
+* 下载[示例文件](tracking-ids-sample.SLDPRT)或使用任何其他零件文档。
+* 至少选择一个面。建议从不同的重叠体中选择至少两个面。这样可以演示跟踪ID的好处，因为将合并体。
+* 运行宏。
 
-Macro will perform the following steps
+![在图形视图中选择了两个实体的两个面](select-bodies-faces.png){ width=300 }
 
-* Collect all selected faces
-* Find all bodies from the selected faces
-* Clear all existing tracking ids if any
-* Make a copy of the bodies
-* Merge all bodies into one
-* Create new part document
-* Create new body from the merged copy
-* Find the faces which correspond to originally selected faces
-* Select those corresponding faces in the merged body
+宏将执行以下步骤：
 
-![Copy of the single body created as the result of a merge operation with two faces selected](merged-body.png){ width=250 }
+* 收集所有选择的面
+* 找到所有来自选择面的实体
+* 清除所有现有的跟踪ID（如果有）
+* 复制实体
+* 将所有实体合并为一个
+* 创建新的零件文档
+* 从合并的副本创建新的实体
+* 找到与最初选择的面对应的面
+* 在合并的实体中选择这些对应的面
+
+![通过合并操作创建的单个实体的副本，选择了两个面](merged-body.png){ width=250 }
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -227,4 +228,3 @@ Sub ClearAllFaceTrackingIds(swBody As SldWorks.Body2, trackingCookie As Long)
     
 End Sub
 ~~~
-
