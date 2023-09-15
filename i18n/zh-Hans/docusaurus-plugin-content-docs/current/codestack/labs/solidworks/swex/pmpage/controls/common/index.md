@@ -1,51 +1,48 @@
 ---
-title: Common Options of all controls in SOLIDWORKS property manager page
-caption: Common Options
-description: Overview of options applied to all controls in the SOLIDWORKS property manager page
+title: SOLIDWORKS 属性管理器页面中所有控件的常见选项
+caption: 常见选项
+description: SOLIDWORKS 属性管理器页面中所有控件的选项概述
 image: property-manager-page-control.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
-All generated controls have common properties which can be customized
+所有生成的控件都有可以自定义的公共属性
 
-![Control common properties](property-manager-page-control.png)
+![控件的公共属性](property-manager-page-control.png)
 
-1. Control icon selected from the standard library of icons
-1. Custom control icon loaded from the image
-1. Tooltip of the control displayed on mouse hovering
+1. 从标准图标库中选择的控件图标
+1. 从图像加载的自定义控件图标
+1. 鼠标悬停时显示的控件工具提示
 
-## Style
+## 样式
 
-Common styles can be customized via [ControlOptionsAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_ControlOptionsAttribute.htm) by decorating the specific properties in data model.
+可以通过 [ControlOptionsAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_ControlOptionsAttribute.htm) 自定义常见样式，通过在数据模型中装饰特定属性来实现。
 
-This attribute allows to define the alignment, position, size as well as background and foreground colours:
+该属性允许定义对齐方式、位置、大小以及背景和前景颜色：
 
 ~~~vb
 <ControlOptions(,, KnownColor.Green, KnownColor.Yellow)>
 Public Property TextField As String = "Sample Text"
 ~~~
 
-
 ~~~cs
 [ControlOptions(backgroundColor: KnownColor.Green, textColor: KnownColor.Yellow)]
 public string TextField { get; set; } = "Sample Text";
 ~~~
 
+![应用于文本框的自定义背景和前景颜色](textbox-foreground-background.png)
 
+## 归属
 
-![Custom background and foreground colours applied to textbox](textbox-foreground-background.png)
+### 工具提示
 
-## Attribution
+可以通过应用 [DescriptionAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.descriptionattribute?view=netframework-4.0) 来设置控件的工具提示。
 
-### Tooltip
+### 标准图标
 
-Tooltip for controls can be set by applying the [DescriptionAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.descriptionattribute?view=netframework-4.0)
+![添加到文本框控件的标准图标](standard-icon-textbox.png)
 
-### Standard Icon
-
-![Standard icon added to text box control](standard-icon-textbox.png)
-
-Standard icon defined in [swControlBitmapLabelType_e](https://help.solidworks.com/2017/english/api/swconst/SolidWorks.Interop.swconst~SolidWorks.Interop.swconst.swControlBitmapLabelType_e.html?id=aff2422a1ecf4632aae3e41abe59c6fc) enumeration can be set to control via [ControlAttributionAttribute](https://docs.codestack.net/swex/pmpage/html/M_CodeStack_SwEx_PMPage_Attributes_ControlAttributionAttribute__ctor.htm) attribute.
+可以通过 [ControlAttributionAttribute](https://docs.codestack.net/swex/pmpage/html/M_CodeStack_SwEx_PMPage_Attributes_ControlAttributionAttribute__ctor.htm) 属性将定义在 [swControlBitmapLabelType_e](https://help.solidworks.com/2017/english/api/swconst/SolidWorks.Interop.swconst~SolidWorks.Interop.swconst.swControlBitmapLabelType_e.html?id=aff2422a1ecf4632aae3e41abe59c6fc) 枚举中的标准图标设置为控件。
 
 ~~~vb
 <Description("Depth Value")>
@@ -53,18 +50,15 @@ Standard icon defined in [swControlBitmapLabelType_e](https://help.solidworks.co
    Public Property Depth As String
 ~~~
 
-
 ~~~cs
 [Description("Depth Value")]
 [ControlAttribution(swControlBitmapLabelType_e.swBitmapLabel_Depth)]
 public string Depth { get; set; }
 ~~~
 
+使用下面的映射表来查看所有可用的标准图标：
 
-
-Use the below map of all available standard icons:
-
-![Standard bitmap icons for Property Manager Page controls](property-page-controls-standard-icons.png)
+![属性管理器页面控件的标准位图图标](property-page-controls-standard-icons.png)
 
 1. swBitmapLabel_LinearDistance
 1. swBitmapLabel_AngularDistance
@@ -92,9 +86,9 @@ Use the below map of all available standard icons:
 1. swBitmapLabel_SelectProfile
 1. swBitmapLabel_SelectBoundary
 
-### Custom Icon
+### 自定义图标
 
-Custom icon can be set via overloaded constructor of [ControlAttributionAttribute](https://docs.codestack.net/swex/pmpage/html/M_CodeStack_SwEx_PMPage_Attributes_ControlAttributionAttribute__ctor_1.htm) attribute
+可以通过 [ControlAttributionAttribute](https://docs.codestack.net/swex/pmpage/html/M_CodeStack_SwEx_PMPage_Attributes_ControlAttributionAttribute__ctor_1.htm) 属性的重载构造函数来设置自定义图标。
 
 ~~~vb
 <ControlAttribution(GetType(Resources), NameOf(Resources.OffsetImage))>
@@ -106,6 +100,4 @@ Public Property Offset As Double
 public double Offset { get; set; }
 ~~~
 
-
-
-Second version of the [overloaded constructor](https://docs.codestack.net/swex/pmpage/html/M_CodeStack_SwEx_PMPage_Attributes_ControlAttributionAttribute__ctor_2.htm) allows to specify the transparency mask through shades of grey with boundaries of black pixels = 100% opaque and white pixels = 100% transparent. If first version of constructor is used mask will be generated automatically based on the transparency (Alpha channel of the image).
+[重载构造函数的第二个版本](https://docs.codestack.net/swex/pmpage/html/M_CodeStack_SwEx_PMPage_Attributes_ControlAttributionAttribute__ctor_2.htm) 允许通过灰度级别指定透明度掩码，黑色像素边界为 100% 不透明，白色像素为 100% 透明。如果使用构造函数的第一个版本，掩码将根据图像的透明度自动生成（图像的 Alpha 通道）。
