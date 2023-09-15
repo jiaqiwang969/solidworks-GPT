@@ -1,22 +1,23 @@
 ---
-caption: Batch Export Models
-title: Batch export SOLIDWORKS models via vbScript
-description: Example of batch exporting SOLIDWORKS documents from the vbScript
+caption: 批量导出模型
+title: 通过vbScript批量导出SOLIDWORKS模型
+description: 使用vbScript批量导出SOLIDWORKS文档的示例
 ---
-This example of vbScript which demonstrates how to batch export SOLIDWORKS documents using vbScript
 
-## Arguments
+这是一个使用vbScript批量导出SOLIDWORKS文档的示例。
 
-1. Path to folder with SOLIDWORKS models
-1. Filter for the input files extension
-1. Path to output folder
-1. Extension of the output format
+## 参数
 
-~~~
+1. SOLIDWORKS模型所在文件夹的路径
+2. 输入文件扩展名的过滤器
+3. 输出文件夹的路径
+4. 输出格式的扩展名
+
+```shell
 > "export-sw-models.vbs" "C:\Models" sldprt "C:\Output" step
-~~~
+```
 
-~~~ vbs
+```vbs
 Dim dirPath
 dirPath = WScript.Arguments.Item(0)
 
@@ -60,5 +61,5 @@ For Each file in folder.Files
 Next
 
 swApp.ExitApp
-~~~
+```
 
