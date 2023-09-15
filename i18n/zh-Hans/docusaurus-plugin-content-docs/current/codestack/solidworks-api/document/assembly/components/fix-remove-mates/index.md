@@ -1,26 +1,26 @@
 ---
 layout: sw-tool
-title: Remove all mates and fix components in SOLIDWORKS assembly
-caption: Remove All Mates And Fix Components
-description: VBA macro to remove all mates and fix all top level components in the active SOLIDWORKS assembly
+title: 删除SOLIDWORKS装配体中的所有约束并固定组件
+caption: 删除所有约束并固定组件
+description: 用于删除活动SOLIDWORKS装配体中的所有约束并固定所有顶层组件的VBA宏
 image: remove-mates.svg
-labels: [mates, remove, components, fix]
-group: Assembly
+labels: [约束, 删除, 组件, 固定]
+group: 装配体
 ---
-![Mates in the Feature Manager Tree](feature-tree-mates.png)
+![特征管理器树中的约束](feature-tree-mates.png)
 
-This VBA macro remove all mates from the active assembly and fixes all the top level components.
+这个VBA宏会从活动装配体中删除所有约束并固定所有顶层组件。
 
-Macro allows to configure the actions to perform on the assembly by changing the values of the constants
+通过更改常量的值，宏允许配置在装配体上执行的操作
 
 ~~~ vb
-Const FIX_COMPONENTS As Boolean = True 'True to fix components, False to keep components as is
-Const REMOVE_MATES As Boolean = True 'True to remove mates, False to keep mates
+Const FIX_COMPONENTS As Boolean = True 'True表示固定组件，False表示保持组件不变
+Const REMOVE_MATES As Boolean = True 'True表示删除约束，False表示保留约束
 ~~~
 
-> Macro will fix all top level components, excluding all components which are instances of the pattern
+> 该宏将固定所有顶层组件，但不包括模式的实例组件
 
-This allows to significantly improve the performance of the assembly.
+这样可以显著提高装配体的性能。
 
 ~~~ vb
 Const FIX_COMPONENTS As Boolean = True
@@ -39,7 +39,7 @@ Sub main()
     If Not swModel Is Nothing Then
         
         If swModel.GetType() <> swDocumentTypes_e.swDocASSEMBLY Then
-            Err.Raise vbError, "Only assembly document is supported"
+            Err.Raise vbError, "仅支持装配体文档"
         End If
         
         Dim swAssy As SldWorks.AssemblyDoc
@@ -54,10 +54,10 @@ Sub main()
                 
                 If swModel.Extension.MultiSelect2(vMates, False, Nothing) = UBound(vMates) + 1 Then
                     If False = swModel.Extension.DeleteSelection2(swDeleteSelectionOptions_e.swDelete_Absorbed) Then
-                        Err.Raise vbError, "", "Failed to delete mates"
+                        Err.Raise vbError, "", "删除约束失败"
                     End If
                 Else
-                    Err.Raise vbError, "", "Failed to select mates for deletion"
+                    Err.Raise vbError, "", "选择要删除的约束失败"
                 End If
             End If
         
@@ -72,14 +72,14 @@ Sub main()
                 If swAssy.Extension.MultiSelect2(vComps, False, Nothing) = UBound(vComps) + 1 Then
                     swAssy.FixComponent
                 Else
-                    Err.Raise vbError, "", "Failed to select components"
+                    Err.Raise vbError, "", "选择组件失败"
                 End If
             End If
             
         End If
         
     Else
-        Err.Raise vbError, "", "Please open assemby document"
+        Err.Raise vbError, "", "请打开装配体文档"
     End If
     
 End Sub
@@ -167,5 +167,3 @@ Function GetAllComponents(assm As SldWorks.AssemblyDoc) As Variant
     
 End Function
 ~~~
-
-
