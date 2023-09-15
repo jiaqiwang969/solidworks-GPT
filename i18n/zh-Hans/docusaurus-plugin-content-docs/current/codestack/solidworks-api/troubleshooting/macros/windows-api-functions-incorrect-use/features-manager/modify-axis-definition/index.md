@@ -1,18 +1,18 @@
 ---
-title: Modify the definition of axis feature using SOLIDWORKS API
-caption: Modify Axis Definition
-description: VBA macro example to change the selection of the axis feature using SOLIDWORKS API
+title: 使用SOLIDWORKS API修改轴特征的定义
+caption: 修改轴定义
+description: 使用SOLIDWORKS API更改轴特征选择的VBA宏示例
 image: axis-definition.png
 labels: [axis,definition]
 ---
-![Axis property manager page](axis-definition.png){ width=250 }
+![轴属性管理器页面](axis-definition.png){ width=250 }
 
-This VBA example demonstrates how to modify the definition and change the selection for the axis feature using SOLIDWORKS API.
+这个VBA示例演示了如何使用SOLIDWORKS API修改轴特征的定义并更改选择。
 
-* Select the target axis feature to modify as first selection
-* Select the objects to be set as the reference for the target axis. For example 2 intersecting planes, edge, etc.
+* 首先选择要修改的目标轴特征
+* 选择要设置为目标轴参考的对象，例如两个相交的平面、边等。
 
-As the result the selected objects (second to the last) will be assigned to the axis (first selection).
+结果是将选择的对象（倒数第二个）分配给轴（第一个选择）。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -55,5 +55,3 @@ Sub main()
     
 End Sub
 ~~~
-
-
