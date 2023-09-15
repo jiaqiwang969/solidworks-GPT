@@ -1,16 +1,17 @@
 ---
-title: Read and display body from the file using SOLIDWORKS API
-caption: Read Body From File
-description: VBA example to deserialize body geometry from external binary file into temp body and display using SOLIDWORKS API
-labels: [deserialize,com stream,temp body]
+title: 使用SOLIDWORKS API读取和显示文件中的实体
+caption: 从文件中读取实体
+description: VBA示例，使用SOLIDWORKS API将外部二进制文件中的实体几何数据反序列化为临时实体并显示出来
+labels: [反序列化, COM流, 临时实体]
 ---
-This VBA example demonstrates how to read the body geometry data from the external binary file. Load this data into the COM Stream and restore into the temp solid body using SOLIDWORKS API.
 
-Body is displayed to the user and macro execution stops. Body is not present in the Feature Manager Tree and only visible in the graphics area.
+这个VBA示例演示了如何从外部二进制文件中读取实体几何数据。将这些数据加载到COM流中，并使用SOLIDWORKS API将其恢复为临时实体。
 
-Continue the macro execution to destroy the body.
+实体将显示给用户，并停止宏执行。实体不会出现在特征管理器树中，只会在图形区域中可见。
 
-~~~vb
+继续执行宏以销毁实体。
+
+```vb
 Imports SolidWorks.Interop.sldworks
 Imports SolidWorks.Interop.swconst
 Imports System.IO
@@ -39,11 +40,11 @@ Module Module1
                 body.Display3(model, RGB(255, 255, 0), swTempBodySelectOptions_e.swTempBodySelectOptionNone)
                 Console.ReadLine()
             Else
-                Throw New Exception("Failed to restore the body")
+                Throw New Exception("恢复实体失败")
             End If
 
         Else
-            Throw New Exception("Please open the model")
+            Throw New Exception("请打开模型")
         End If
 
     End Sub
@@ -215,10 +216,9 @@ Public Class ComStream
     End Sub
 
 End Class
-~~~
+```
 
-
-~~~vba
+```vba
 Const FILE_PATH As String = "D:\body.dat"
 
 Private Declare PtrSafe Function CreateStreamOnHGlobal Lib "ole32" (ByVal hGlobal As LongPtr, ByVal fDeleteOnRelease As Long, ByRef ppstm As Any) As Long
@@ -238,10 +238,10 @@ Sub main()
         Set swBody = LoadBodyFromFile(FILE_PATH)
         swBody.Display3 swModel, RGB(255, 255, 0), swTempBodySelectOptions_e.swTempBodySelectOptionNone
         
-        Stop ' continue to hide body
+        Stop ' 继续隐藏实体
         
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -288,10 +288,10 @@ Private Function BytesArrToComStream(ByRef buff() As Byte) As IUnknown
     Dim comStream As IUnknown
     
     If CreateStreamOnHGlobal(VarPtr(buff(LBound(buff))), 0, comStream) Then
-        Err.Raise vbError, "", "Faield to create stream from byte array"
+        Err.Raise vbError, "", "从字节数组创建流失败"
     End If
     
     Set BytesArrToComStream = comStream
     
 End Function
-~~~
+```
