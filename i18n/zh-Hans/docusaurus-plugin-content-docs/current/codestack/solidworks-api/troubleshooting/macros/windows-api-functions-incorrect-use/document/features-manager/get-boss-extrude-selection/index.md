@@ -1,15 +1,16 @@
 ---
-title: Extract selection from boss-extrude feature using SOLIDWORKS API
-caption: Extract Selection From Boss-Extrude Feature
-description: C# VSTA macro to extract selection references (from entity, end condition and direction references) from the selected boss-extrude feature using SOLIDWORKS API
+title: 使用SOLIDWORKS API从Boss-Extrude特征中提取选择
+caption: 从Boss-Extrude特征中提取选择
+description: 使用SOLIDWORKS API，提取所选Boss-Extrude特征中的选择引用（来自实体、结束条件和方向引用）的C# VSTA宏
 image: boss-extrude-property-page.png
-labels: [selection,boss-extrude]
+labels: [选择，boss-extrude]
 ---
-This C# VSTA macro extracts the information about the selection entities specified in the From Entity, End Condition and Direction selection boxes in the Boss-Extrude feature definition using SOLIDWORKS API.
 
-![Boss-Extrude feature property manager page](boss-extrude-property-page.png)
+这个C# VSTA宏使用SOLIDWORKS API提取Boss-Extrude特征定义中的From Entity、End Condition和Direction选择框中指定的选择实体的信息。
 
-Extracted data is output to the Output Window of VSTA Editor in the following format.
+![Boss-Extrude特征属性管理器页面](boss-extrude-property-page.png)
+
+提取的数据以以下格式输出到VSTA编辑器的输出窗口中。
 
 ~~~
 From Entity: Yes [swSelFACES]
@@ -19,7 +20,7 @@ Direction (Direction 1): Yes [swSelSKETCHSEGS]
 Direction (Direction 2): No
 ~~~
 
-~~~ cs
+```cs
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using System.Runtime.InteropServices;
@@ -81,28 +82,27 @@ namespace GetExtrudeFeatureSelection.csproj
                         }
                         else
                         {
-                            throw new InvalidOperationException("Failed to access feature selection");
+                            throw new InvalidOperationException("无法访问特征选择");
                         }
                     }
                     else 
                     {
-                        throw new InvalidCastException("Selected feature is not Boss-Extrude");
+                        throw new InvalidCastException("所选特征不是Boss-Extrude");
                     }
                 }
                 else 
                 {
-                    throw new NullReferenceException("Select feature");
+                    throw new NullReferenceException("请选择特征");
                 }
             }
             else 
             {
-                throw new NullReferenceException("Open model");
+                throw new NullReferenceException("打开模型");
             }
         }
 
         public SldWorks swApp;
     }
 }
-~~~
-
+```
 
