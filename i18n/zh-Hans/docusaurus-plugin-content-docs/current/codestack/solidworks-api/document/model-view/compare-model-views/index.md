@@ -1,28 +1,28 @@
 ---
-title: Compare model views transformations using SOLIDWORKS API
-caption: Compare Model Views
-description: Example demonstrates how to compare 2 model views (by orientation, translation and scale)
+title: 使用SOLIDWORKS API比较模型视图变换
+caption: 比较模型视图
+description: 该示例演示了如何使用SOLIDWORKS API比较部件或装配中的两个模型视图（通过方向、平移和缩放）
 image: view-orientation.png
 ---
-![Model View Orientation](view-orientation.png){ width=250 }
+![模型视图方向](view-orientation.png){ width=250 }
 
-This example demonstrates how to compare two model views in part or assembly using SOLIDWORKS API.
+该示例演示了如何使用SOLIDWORKS API比较部件或装配中的两个模型视图。
 
-Macro will identify the changes and display the result if
+宏将识别变化并显示结果，如果：
 
-* Views are the same
-* Views are of different orientation (i.e. rotated)
-* Views are of different translation (i.e. moved)
-* Views are of different scale
+* 视图相同
+* 视图具有不同的方向（即旋转）
+* 视图具有不同的平移（即移动）
+* 视图具有不同的缩放
 
-Macro is using [user defined type](/docs/codestack/visual-basic/data-structures/types/) **ViewData** to store the orientation, translation and scale of the view. This structure is not linked to the view and represents the snapshot of view transformation.
+宏使用用户定义的类型**ViewData**来存储视图的方向、平移和缩放。该结构与视图没有关联，表示视图变换的快照。
 
-Result of the **CompareViewData** function is defined as *CompareViewResult_e* [flag enumerator](/docs/codestack/visual-basic/data-structures/enumerators#flag-enumerator-multiple-options). This allows to return specific change in the view orientation or combination of changes.
+**CompareViewData**函数的结果被定义为*CompareViewResult_e* [标志枚举器](/docs/codestack/visual-basic/data-structures/enumerators#flag-enumerator-multiple-options)。这允许返回视图方向的特定变化或变化的组合。
 
-* Open the model and start the macro.
-* Macro will pause the execution once the data from the first view is read.
-* Change the view and continue the execution of the macro.
-* Result is displayed in the message box.
+* 打开模型并启动宏。
+* 一旦读取了第一个视图的数据，宏将暂停执行。
+* 更改视图并继续执行宏。
+* 结果将显示在消息框中。
 
 ~~~ vb
 Type ViewData
@@ -67,32 +67,32 @@ Sub main()
             compRes = CompareViewData(origViewData, newViewData)
             
             If compRes = Same Then
-                MsgBox "Views are the same"
+                MsgBox "视图相同"
             Else
                 Dim msg As String
                 
                 If compRes And DiffOrientation Then
-                    msg = msg & vbLf & "Orientation"
+                    msg = msg & vbLf & "方向"
                 End If
                 
                 If compRes And DiffTranslation Then
-                    msg = msg & vbLf & "Translation"
+                    msg = msg & vbLf & "平移"
                 End If
                 
                 If compRes And DiffScale Then
-                    msg = msg & vbLf & "Scale"
+                    msg = msg & vbLf & "缩放"
                 End If
                 
-                MsgBox "Views are not the same. Differences:" & msg
+                MsgBox "视图不同。差异：" & msg
                 
             End If
             
         Else
-            MsgBox "Please open part or assembly"
+            MsgBox "请打开部件或装配"
         End If
         
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -150,5 +150,3 @@ Function CompareArrays(firstArr As Variant, secondArr As Variant) As Boolean
     
 End Function
 ~~~
-
-
