@@ -1,26 +1,26 @@
 ---
 layout: sw-tool
-title: Macro to move suppressed mates into feature folder using SOLIDWORKS API
-caption: Move Suppressed Mates Into A Folder
-description: VBA macro to move suppressed mates in assembly into feature folder using SOLIDWORKS API
+title: 使用SOLIDWORKS API将被压制的约束移动到特征文件夹的宏
+caption: 将被压制的约束移动到文件夹
+description: 使用SOLIDWORKS API将装配中的被压制的约束移动到指定的特征管理器文件夹的VBA宏
 image: move-mates-to-folder.png
-labels: [mates,suppressed,move,folder]
-group: Assembly
+labels: [约束,压制,移动,文件夹]
+group: 装配
 ---
-![Suppressed mates moved to the folder](suppressed-solidworks-mates.png){ width=250 }
+![被压制的约束移动到文件夹](suppressed-solidworks-mates.png){ width=250 }
 
-This VBA macro allows to move all suppressed mates to a nominated feature manager folder using SOLIDWORKS API. Macro will create folder if it doesn't exist or move to already existing one.
+这个VBA宏允许使用SOLIDWORKS API将所有被压制的约束移动到指定的特征管理器文件夹中。如果文件夹不存在，宏将创建一个新的文件夹或者移动到已经存在的文件夹中。
 
-Macro will also move all unsuppressed mates of the folder if exist.
+如果文件夹中存在未被压制的约束，宏也会将它们移动到文件夹中。
 
-To configure the folder name, change the value of the *FOLDER_NAME* variable:
+要配置文件夹名称，请更改*FOLDER_NAME*变量的值：
 
 ~~~ vb
-Const FOLDER_NAME As String = "<Folder Name>"
+Const FOLDER_NAME As String = "<文件夹名称>"
 ~~~
 
 ~~~ vb
-Const FOLDER_NAME As String = "SuppressedMates"
+Const FOLDER_NAME As String = "被压制的约束"
 
 Dim swApp As SldWorks.SldWorks
 
@@ -60,7 +60,7 @@ Sub main()
         End If
         
     Else
-        MsgBox "Please open assembly"
+        MsgBox "请打开装配体"
     End If
     
 End Sub
@@ -77,7 +77,7 @@ Sub InsertMatesIntoNewFolder(assm As SldWorks.AssemblyDoc, mates As Variant, fol
         swFolderFeat.Name = folderName
         
     Else
-        Err.Raise vbError, "", "Failed to select mates to add to new folder"
+        Err.Raise vbError, "", "选择要添加到新文件夹的约束失败"
     End If
     
 End Sub
@@ -92,7 +92,7 @@ Sub InsertMatesIntoExistingFolder(assy As SldWorks.AssemblyDoc, mates As Variant
     Wend
     
     If swLastFeatInFolder.GetTypeName2() = "FtrFolder" Then
-        Err.Raise vbError, "", "Not supported. Folder is empty"
+        Err.Raise vbError, "", "不支持。文件夹为空"
     End If
     
     Dim swModel As SldWorks.ModelDoc2
@@ -105,9 +105,9 @@ Sub InsertMatesIntoExistingFolder(assy As SldWorks.AssemblyDoc, mates As Variant
         Dim swMateFeat As SldWorks.Feature
         Set swMateFeat = mates(i)
         
-        'swMoveLocation_e.swMoveToFolder option doesn't work, need to move after last mate in the folder
+        'swMoveLocation_e.swMoveToFolder选项不起作用，需要在文件夹中的最后一个约束之后移动
         If False = swModel.Extension.ReorderFeature(swMateFeat.Name, swLastFeatInFolder.Name, swMoveLocation_e.swMoveAfter) Then
-            Err.Raise vbError, "", "Failed to move mate into the folder"
+            Err.Raise vbError, "", "将约束移动到文件夹失败"
         End If
     
         Set swLastFeatInFolder = swMateFeat
@@ -137,7 +137,7 @@ Sub MoveUnsuppressedMatesFromFolder(assy As SldWorks.AssemblyDoc, folderFeat As 
             
             If False = swMateFeat.IsSuppressed2(swInConfigurationOpts_e.swThisConfiguration, Empty)(0) Then
                 If False = swModel.Extension.ReorderFeature(swMateFeat.Name, "", swMoveLocation_e.swMoveToEnd) Then
-                    Err.Raise vbError, "", "Failed to move mate out of the folder"
+                    Err.Raise vbError, "", "将约束移出文件夹失败"
                 End If
             End If
             
@@ -271,5 +271,3 @@ Function ObjectArrayContains(arr As Variant, item As Object) As Boolean
     
 End Function
 ~~~
-
-
