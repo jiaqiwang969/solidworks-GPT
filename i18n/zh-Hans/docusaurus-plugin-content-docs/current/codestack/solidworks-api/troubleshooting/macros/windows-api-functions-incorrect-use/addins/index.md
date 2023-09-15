@@ -1,13 +1,13 @@
 ---
-title: 'SOLIDWORKS Add-Ins Troubleshooting: Issues And Resolutions'
-caption: 'Add-Ins Troubleshooting: Issues And Resolutions'
-description: Overview and solutions for the most common errors of SOLIDWORKS add-ins and SDK
-labels: [add-in, sdk, not working, problem, solidworks api, troubleshooting]
+title: 'SOLIDWORKS插件故障排除：问题和解决方案'
+caption: '插件故障排除：问题和解决方案'
+description: SOLIDWORKS插件和软件开发工具包（SDK）中最常见错误的概述和解决方案
+labels: [插件, SDK, 不工作, 问题, solidworks api, 故障排除]
 styles:
   - /_assets/styles/catalogue.css
 ---
-This section covers the most common symptoms of the errors in the SOLIDWORKS add-ins and Software Development Kit (SDK).
+本节介绍了SOLIDWORKS插件和软件开发工具包（SDK）中最常见的错误症状。
 
-Follow the corresponding link to get the detailed description of the issues, its cause and the steps to resolve the problem.
+请点击相应的链接以获取有关问题的详细描述、原因和解决步骤。
 
 {% catalogue { type: sw-addin-fix } %}
