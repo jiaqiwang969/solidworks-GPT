@@ -1,29 +1,29 @@
 ---
 layout: sw-tool
-title: Select standard reference geometry (e.g. Front plane or origin) by type using SOLIDWORKS API
-caption: Select Standard Plane Or Origin By Type
-description: Example demonstrates how to select standard plane (Top, Front or Right) and origin by specifying its type
+title: 使用SOLIDWORKS API按类型选择标准参考几何图形（例如前平面或原点）
+caption: 按类型选择标准平面或原点
+description: 该示例演示了如何使用SOLIDWORKS API按类型选择标准平面（顶部、前部或右侧）和原点
 image: plane.svg
-labels: [selection, plane, origin]
-group: Model
+labels: [选择, 平面, 原点]
+group: 模型
 redirect-from:
   - /solidworks-api/document/selection/select-standard-plane/
 ---
-![Right plane selected in the graphics view](selected-right-plane.png){ width=400 }
+![在图形视图中选择了右平面](selected-right-plane.png){ width=400 }
 
-This example demonstrates how to select standard plane (Top, Front or Right) or origin using SOLIDWORKS API by specifying its type so the selection will be consistent regardless of the plane name as it is not recommended to select the standard planes by their names as names are not consistent and may be changed in the template (e.g. different localization or standard).
+该示例演示了如何使用SOLIDWORKS API按类型选择标准平面（顶部、前部或右侧）或原点，以便无论平面名称如何，选择都是一致的。不建议按名称选择标准平面，因为名称不一致，可能会在模板中更改（例如，不同的本地化或标准）。
 
-This macro selects the primary planes or origin of root document. To select primary planes or origin of the specific component in the assembly, hover the mouse over any component's entity (you do not need to select it) and run the macro.
+此宏选择根文档的主平面或原点。要选择装配体中特定组件的主平面或原点，请将鼠标悬停在任何组件实体上（无需选择），然后运行宏。
 
-This macro works based on the fact that the default SOLIDWORKS planes are always ordered the same way, i.e. Front, Top and Right planes are the first planes in the model, positioned before the origin feature and cannot be reordered or removed.
+此宏基于默认的SOLIDWORKS平面始终以相同的顺序排序，即前部、顶部和右侧平面是模型中的第一个平面，在原点特征之前放置，并且无法重新排序或删除。
 
 {% youtube id: zUqHCUNxJoA %}
 
-## Configuration
+## 配置
 
-### Target plane or origin
+### 目标平面或原点
 
-To configure the macro set the type of the plane to select in the **REF_GEOM** variable. Supported values: **Right**, **Top**, **Front**, **Origin**
+要配置宏，请将要选择的平面类型设置为**REF_GEOM**变量。支持的值：**Right**、**Top**、**Front**、**Origin**
 
 ~~~ vb
 Dim REF_GEOM As swRefGeom_e
@@ -35,19 +35,19 @@ Dim REF_GEOM As swRefGeom_e
 #End If
 ~~~
 
-### Scrolling to selection
+### 滚动到选择
 
-This macro allows to specify if the plane should be scrolled into view by setting **SCROLL** constant
+此宏允许通过设置**SCROLL**常量来指定是否应将平面滚动到视图中
 
 ~~~ vb
-Const SCROLL As Boolean = False' scroll plane into view
+Const SCROLL As Boolean = False' 将平面滚动到视图中
 ~~~
 
-> Note, this macro will ignore the **Feature Manager -> Scroll selected item into view** option and scroll based on the option above preserving the setting in SOLIDWORKS.
+> 注意，此宏将忽略**特征管理器 -> 将选定项滚动到视图中**选项，并根据上述选项滚动，保留SOLIDWORKS中的设置。
 
-### Appending selection
+### 追加选择
 
-Macro will append the selection if **ctrl** button is pressed unless the **APPEND_SEL** constant is set to true. In this case selection will alway be appended. This is useful when shortcut are used for the macro buttons as **ctrl** will conflict with shortcut.
+如果按下**ctrl**键，则宏将追加选择，除非将**APPEND_SEL**常量设置为true。在使用宏按钮的快捷方式时，这很有用，因为**ctrl**将与快捷方式冲突。
 
 ~~~ vb
 Const APPEND_SEL As Boolean = True
@@ -55,19 +55,19 @@ Const APPEND_SEL As Boolean = True
 
 ## CAD+
 
-This macro is compatible with [Toolbar+](https://cadplus.xarial.com/toolbar/) and [Batch+](https://cadplus.xarial.com/batch/) tools so the buttons can be added to toolbar and assigned with shortcut for easier access or run in the batch mode.
+此宏与[Toolbar+](https://cadplus.xarial.com/toolbar/)和[Batch+](https://cadplus.xarial.com/batch/)工具兼容，因此可以将按钮添加到工具栏并分配快捷方式以便更轻松地访问或批处理运行。
 
-![Buttons in toolbar](toolbar.png)
+![工具栏中的按钮](toolbar.png)
 
-In order to enable [macro arguments](https://cadplus.xarial.com/toolbar/configuration/arguments/) set the **ARGS** constant to true
+要启用[宏参数](https://cadplus.xarial.com/toolbar/configuration/arguments/)，请将**ARGS**常量设置为true
 
 ~~~ vb
 #Const ARGS = True
 ~~~
 
-In this case it is not required to make copies of the macro to set individual [target plane or origin](#target-plane-or-origin). Instead use the **FRONT**, **TOP**, **RIGHT**, **ORIGIN** arguments for the corresponding target entity.
+在这种情况下，不需要复制宏以设置单独的[目标平面或原点](#target-plane-or-origin)。而是使用相应目标实体的**FRONT**、**TOP**、**RIGHT**、**ORIGIN**参数。
 
-You can download the icons for each button: [front plane](front.svg), [top plane](top.svg), [right plane](right.svg), [origin](origin.svg) or use your own icons.
+您可以下载每个按钮的图标：[前平面](front.svg)、[顶部平面](top.svg)、[右平面](right.svg)、[原点](origin.svg)，或使用您自己的图标。
 
 ~~~ vb
 #Const ARGS = False
@@ -209,5 +209,3 @@ Sub SelectOrigin(origFeat As SldWorks.Feature, append As Boolean)
     
 End Sub
 ~~~
-
-
