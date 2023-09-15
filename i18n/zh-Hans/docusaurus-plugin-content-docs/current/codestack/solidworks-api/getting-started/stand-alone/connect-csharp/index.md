@@ -40,14 +40,14 @@ redirect-from:
 
 连接到 COM 服务器最常见且最快速的方法是使用 [Activator::CreateInstance](https://msdn.microsoft.com/zh-cn/library/system.activator.createinstance(v=vs.110).aspx) 方法。
 
-~~~ cs
+```cs
 var progId = "SldWorks.Application";
 
 var progType = System.Type.GetTypeFromProgID(progId);
 
 var app = System.Activator.CreateInstance(progType) as SolidWorks.Interop.sldworks.ISldWorks;
 app.Visible = true;
-~~~
+```
 
 此方法将根据类型定义构造类型的实例。由于 SOLIDWORKS 应用程序已注册为 COM 服务器，我们可以通过 [Type::GetTypeFromProgID](https://msdn.microsoft.com/zh-cn/library/system.type.gettypefromprogid(v=vs.110).aspx) 方法从其程序标识符创建类型。
 请阅读[从独立应用程序连接到 SOLIDWORKS](/docs/codestack/solidworks-api/getting-started/stand-alone#method-a---activator-and-progid)文章，了解此方法的限制的解释。
@@ -55,18 +55,18 @@ app.Visible = true;
 或者，您可以使用 [Marshal::GetActiveObject](https://msdn.microsoft.com/zh-cn/library/system.runtime.interopservices.marshal.getactiveobject(v=vs.110).aspx) 方法连接到活动（已启动）的 SOLIDWORKS 会话。
 此方法将确保不会创建新的 SOLIDWORKS 实例，并且如果没有正在运行的 SOLIDWORKS 会话可连接，则会引发异常。
 
-~~~ cs
+```cs
 var progId = "SldWorks.Application";
 
 var app = System.Runtime.InteropServices.Marshal.GetActiveObject(progId) as SolidWorks.Interop.sldworks.ISldWorks;
-~~~
+```
 
 ## 通过 ROT 获取运行实例
 
 为了连接到已经运行的特定 SOLIDWORKS 会话或能够创建多个会话，您可以使用 Running Object Table（ROT）API。
 有关此方法的更多详细信息，请阅读[从独立应用程序连接到 SOLIDWORKS](/docs/codestack/solidworks-api/getting-started/stand-alone#method-b---running-object-table-rot)文章。
 
-~~~ cs
+```cs
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -185,7 +185,7 @@ namespace CodeStack.Sample
         }
     }
 }
-~~~
+```
 
 在上面的示例中，通过从 SOLIDWORKS 应用程序安装路径启动新进程来启动 SOLIDWORKS 的新会话。
 *StartSwApp* 函数的第一个参数需要 **sldworks.exe** 的完整路径，第二个参数是可选的超时时间（以秒为单位）。
@@ -193,7 +193,7 @@ namespace CodeStack.Sample
 
 您还可以将此调用设置为异步，并在 SOLIDWORKS 进程启动时在应用程序中显示一些进度指示：
 
-~~~ cs
+```cs
 static async System.Threading.Tasks.Task<SolidWorks.Interop.sldworks.ISldWorks> StartSwAppAsync(
     string appPath, int timeoutSec = 10)
 {
@@ -202,4 +202,4 @@ static async System.Threading.Tasks.Task<SolidWorks.Interop.sldworks.ISldWorks> 
         return StartSwApp(appPath, timeoutSec);
     });
 }
-~~~
+```
