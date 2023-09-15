@@ -1,28 +1,28 @@
 ---
 layout: sw-tool
-title: Macro to select all features in SOLIDWORKS model by type using SOLIDWORKS API
-caption: Select Features By Type
-description: VBA Macro to select all features in the active SOLIDWORKS model (part, assembly or drawing) by specifying its type
+title: 使用SOLIDWORKS API按类型选择SOLIDWORKS模型中的所有特征的宏
+caption: 按类型选择特征
+description: 使用SOLIDWORKS API选择活动SOLIDWORKS模型（零件、装配或绘图）中的所有特征，通过指定其类型
 image: selected-3dsketches.png
-labels: [select,feature type,multi select,batch select]
-group: Model
+labels: [选择,特征类型,多选,批量选择]
+group: 模型
 ---
-![All 3D sketches selected in the assembly documents](selected-3dsketches.png){ width=250 }
+![在装配文档中选择所有3D草图](selected-3dsketches.png){ width=250 }
 
-This VBA macro selects all features in the active model (part, assembly or drawing) using SOLIDWORKS API. For drawings and assemblies features in the children components are also selected.
+这个VBA宏使用SOLIDWORKS API选择活动模型（零件、装配或绘图）中的所有特征。对于绘图和装配，还会选择子组件中的特征。
 
-Use this macro in conjunction with [Get Features Type Name](/docs/codestack/solidworks-api/document/features-manager/get-feature-type-name/) to get the required feature type name for filtering.
+与[获取特征类型名称](/docs/codestack/solidworks-api/document/features-manager/get-feature-type-name/)一起使用此宏，以获取用于过滤的所需特征类型名称。
 
-## Configuration
+## 配置
 
-Modify the constants in the beginning of the macro
+修改宏开头的常量
 
 ~~~ vb
-Const APPEND_SELECTION As Boolean = False 'True to append selection False to clear existing selection
-Const TYPE_NAME As String = "" 'Refer 'Get Features Type Name' macro to get the type name from the feature
+Const APPEND_SELECTION As Boolean = False 'True表示追加选择，False表示清除现有选择
+Const TYPE_NAME As String = "" '从特征中获取类型名称，参考'获取特征类型名称'宏
 ~~~
 
-This macro can be useful with other macros which require features to be preselected. It can be also used with SOLIDWORKS batch operations (such as delete or suppress).
+此宏可与其他需要预先选择特征的宏一起使用。它还可以与SOLIDWORKS批量操作（如删除或抑制）一起使用。
 
 ~~~ vb
 Const APPEND_SELECTION As Boolean = False
@@ -50,7 +50,7 @@ Sub main()
         'End If
         
     Else
-        MsgBox "Please open model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -70,7 +70,7 @@ Function GetAllFeaturesByType(model As SldWorks.ModelDoc2, typeName As String) A
         Set swFeatsColl = New Collection
         TraverseFeatureNode swRootFeatNode, typeName, swFeatsColl
     Else
-        Err.Raise vbError, "", "Failed to get the root node"
+        Err.Raise vbError, "", "无法获取根节点"
     End If
     
     If swFeatsColl.Count() > 0 Then
@@ -138,4 +138,3 @@ Function Contains(coll As Collection, item As Object) As Boolean
     
 End Function
 ~~~
-
