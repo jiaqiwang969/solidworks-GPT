@@ -1,19 +1,17 @@
----
-caption: 添加孔位标注
-title: 用于在SOLIDWORKS图纸视图中为孔添加水平和垂直孔位标注的宏
-description: SOLIDWORKS VBA宏，用于为所选视图中的所有孔添加相对于左下顶点的水平和垂直孔位标注
-image: ordinate-dimensions.png
----
+# 添加孔位标注
+
+用于在SOLIDWORKS图纸视图中为孔添加水平和垂直孔位标注的宏
+
 ![图纸视图中的孔位标注](ordinate-dimensions.png)
 
 这个SOLIDWORKS VBA宏可以自动为所选图纸视图中的所有孔添加水平孔位标注。
 
-* 宏将通过查找视图中的左下顶点来确定孔位标注的原点
-* 宏将查找视图中的所有孔（仅包括内部孔，不考虑倒角）
-* 宏将为孔添加水平和垂直标注
-* 标注将相对于图纸视图进行定位
+- 宏将通过查找视图中的左下顶点来确定孔位标注的原点
+- 宏将查找视图中的所有孔（仅包括内部孔，不考虑倒角）
+- 宏将为孔添加水平和垂直标注
+- 标注将相对于图纸视图进行定位
 
-~~~ vb
+```vb
 Dim swApp As SldWorks.SldWorks
 Dim swMathUtils As SldWorks.MathUtility
 
@@ -221,4 +219,6 @@ Function FindHoles(view As SldWorks.view) As Variant
     End If
 
 End Function
-~~~
+```
+
+[原始链接](https://github.com/LorinBeer/solidworks-api/blob/master/Examples/OrdinateDimensions.md)
