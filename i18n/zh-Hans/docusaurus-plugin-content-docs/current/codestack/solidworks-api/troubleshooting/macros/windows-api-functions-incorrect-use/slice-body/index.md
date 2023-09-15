@@ -1,50 +1,51 @@
 ---
-title: Macro slices body by sections using SOLIDWORKS API
-caption: Slice Body By Sections
-description: Example demonstrates how to slice body by sections and extract the section data from the slices using SOLIDWORKS API
+title: 使用SOLIDWORKS API将实体切片成多个截面
+caption: 切片截面
+description: 该示例演示了如何使用SOLIDWORKS API将实体切片，并提取切片的截面数据。
 image: sliced-sections.png
-labels: [slice, projection, intersection, modeler, temp body]
+labels: [切片, 投影, 相交, 建模, 临时实体]
 ---
-![Section slices of the body](sliced-sections.png){ width=350 }
 
-This example demonstrates how to slice the selected body and find the section properties of the resulting section slices using SOLIDWORKS API.
+![实体的截面切片](sliced-sections.png){ width=350 }
 
-* Specify the number of required slices in the *SLICES_COUNT* constant
+该示例演示了如何使用SOLIDWORKS API切片选定的实体，并计算切片的截面属性。
+
+* 在*SLICES_COUNT*常量中指定所需切片的数量
 ~~~ vb
 Const SLICES_COUNT As Integer = 100
 ~~~
-* Select solid body in Part document
-* As the result:
-    * Body is sliced in Y direction
-    * Area of each slice is output to the immediate window in VBA editor
-    * Previews of each slice is displayed in the graphics area
-* Continue the macro to hide the preview
+* 在零件文档中选择实体
+* 结果如下：
+    * 实体在Y方向上被切片
+    * 每个切片的面积将输出到VBA编辑器的即时窗口
+    * 每个切片的预览将显示在图形区域中
+* 继续运行宏以隐藏预览
 
-## Algorithm
+## 算法
 
-### Identifying the starting point and the maximum length of the body
+### 确定实体的起始点和最大长度
 
-* Find 2 extreme points in positive and negative direction of the direction vector (Y vector in this example)
-* Project those points onto the direction vector line (vector can be fixed at any point, in this example it is fixed at 0, 0, 0).
-* Once projected calculate the distance between points - this will be equal to the maximum length of the body
-* First extreme point is a starting point
+* 找到正方向和负方向上的两个极点，这些极点位于方向向量上（本示例中为Y向量）
+* 将这些点投影到方向向量线上（向量可以固定在任何点上，在本示例中固定在0, 0, 0）
+* 一旦投影完成，计算两点之间的距离 - 这将等于实体的最大长度
+* 第一个极点是起始点
 
-### Identifying the maximum radius of the body
-It is only required to find big enough radius to cover the body. This radius will be used to create a planar body for intersection purposes. In this example the maximum radius is equal to the diagonal of the bounding box which will ensure the planar section will cover the input body
+### 确定实体的最大半径
+只需要找到足够大的半径以覆盖实体。该半径将用于创建一个平面实体进行相交。在本示例中，最大半径等于包围盒的对角线长度，这将确保平面截面将覆盖输入实体。
 
-### Calculate sections
-* Calculate the step of section
-* For each section move the starting point by the step. Sections at end points should be skipped as it won't produce any intersection results
-* At each step create a temp section plane (disc) and intersect it with the solid body
-    * Result of the intersection is the sheet body (or bodies) which is a section slice at this position
-    * Store the pointer to the section in the collection
-    * All the properties can be accessed from the resulting body (e.g. surface area)
+### 计算截面
+* 计算截面的步长
+* 对于每个截面，将起始点按步长移动。端点处的截面应该被跳过，因为它不会产生任何相交结果
+* 在每个步长处创建一个临时截面平面（圆盘），并将其与实体相交
+    * 相交的结果是截面位置处的片体（或片体）
+    * 将截面的指针存储在集合中
+    * 所有属性都可以从结果体中访问（例如表面积）
 
-### Preview the results
-* Display each of the resulting bodies as a preview
-* Stop the execution of the macro to validate the result
-    * It might be required to hide or change the transparency of the original body to see the sections displayed
-* Continue macro execution. This will clear the preview
+### 预览结果
+* 将每个结果体显示为预览
+* 停止宏的执行以验证结果
+    * 可能需要隐藏或更改原始实体的透明度以查看显示的截面
+* 继续宏的执行。这将清除预览
 
 ~~~ vb
 Const SLICES_COUNT As Integer = 100
@@ -255,5 +256,3 @@ Function MovePoint(vPt As Variant, vDir As Variant, dist As Double) As Variant
 End Function
 
 ~~~
-
-
