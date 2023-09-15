@@ -1,16 +1,16 @@
 ---
-caption: Set View Dimension Type
-title: Macro to set dimension type for all views in the active SOLIDWORKS drawing
-description: VBA macro which sets dimension type (projected or true) for all drawing view in the active SOLIDWORKS drawing document
-image: view-dimension-type.png
+标题：设置视图尺寸类型
+描述：用于在活动SOLIDWORKS绘图中设置所有视图的尺寸类型（投影或真实）的VBA宏
+图片：view-dimension-type.png
 ---
-![View dimension type](view-dimension-type.png)
 
-This VBA macros sets the dimension type (projected or true) for all drawing views in all sheets of the active SOLIDWORKS drawing.
+![视图尺寸类型](view-dimension-type.png)
 
-Set the **DIMS_TRUE** constant to **True** to set all dimension types to **True**. Set the **DIMS_TRUE** constant to **False** to set all dimension types to **Projected**
+这个VBA宏可以在活动SOLIDWORKS绘图中的所有工作表中设置所有视图的尺寸类型（投影或真实）。
 
-~~~ vb
+将**DIMS_TRUE**常量设置为**True**以将所有尺寸类型设置为**真实**。将**DIMS_TRUE**常量设置为**False**以将所有尺寸类型设置为**投影**。
+
+```vb
 Const DIMS_TRUE As Boolean = False
 
 Dim swApp As SldWorks.SldWorks
@@ -51,9 +51,8 @@ Sub main()
         End If
         
     Else
-        Err.Raise vbError, "", "Open drawing"
+        Err.Raise vbError, "", "打开绘图"
     End If
     
 End Sub
-~~~
-
+```
