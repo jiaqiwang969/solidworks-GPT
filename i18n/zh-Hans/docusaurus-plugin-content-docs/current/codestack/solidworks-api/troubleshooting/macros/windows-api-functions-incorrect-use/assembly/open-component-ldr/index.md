@@ -1,56 +1,56 @@
 ---
 layout: sw-tool
-title: Open selected components in the Large Design Review (LDR) mode
-caption: Open components in LDR mode
-description: VBA macro to open all selected sub-assemblies and part components in the Large Design Review (LDR) mode and view only mode correspondingly
+title: 在大型设计审查（LDR）模式下打开选定的组件
+caption: 在LDR模式下打开组件
+description: VBA宏，用于在大型设计审查（LDR）模式下打开所有选定的子装配和零件组件，并相应地以仅查看模式打开
 image: ldr-sub-assembly.svg
-labels: [performance, ldr, view only, large design review, open]
-group: Assembly
+labels: [性能, LDR, 仅查看, 大型设计审查, 打开]
+group: 装配体
 ---
-This VBA macro can be run from the assembly opened in the Large Design Review (LDR) mode or drawing opened in the Detailing mode. Macro will open all selected components in their own windows, but unlike out-of-the-box functionality assemblies will not be resolved and will preserve the LDR mode.
+此VBA宏可从在大型设计审查（LDR）模式下打开的装配体或在详图模式下打开的图纸中运行。该宏将打开所有选定的组件在其自己的窗口中，但与开箱即用的功能不同，装配体将不会被解析并将保留LDR模式。
 
-![Selected sub-assembly components](selected-sub-assemblies.png)
+![选定的子装配组件](selected-sub-assemblies.png)
 
-It is then possible to enable the editing in the LDR mode, modify the assembly and update the graphics in the top level assembly.
+然后可以在LDR模式下启用编辑，修改装配体并更新顶层装配体中的图形。
 
-Preserving the LDR mode on all the steps will significantly improve the performance.
+在所有步骤中保留LDR模式将显著提高性能。
 
-## Drawings
+## 图纸
 
-This macro can also work from the drawing opened in the Detailing mode. It is required to select drawing view(s) before running the macro.
+此宏也可以从在详图模式下打开的图纸中运行。在运行宏之前，需要选择图纸视图。
 
-![Selected drawing view](selected-drawing-view.png)
+![选定的图纸视图](selected-drawing-view.png)
 
-To enable drawing support it is required to enable Document Manager API in the macro. Follow [Activating Document Manager](/docs/codestack/solidworks-document-manager-api/getting-started/create-connection#activating-document-manager) section for the detailed steps to request Document Manager license key.
+要启用图纸支持，需要在宏中启用文档管理器API。请按照[激活文档管理器](/docs/codestack/solidworks-document-manager-api/getting-started/create-connection#activating-document-manager)部分的详细步骤请求文档管理器许可证密钥。
 
-Add the reference to **SwDocumentMgr [Year] Type Library** under the **Tools->References** menu in VBA editor. Follow [Document Manager in VBA](/docs/codestack/solidworks-document-manager-api/getting-started/create-connection#vba) for more information.
+在VBA编辑器的**工具->引用**菜单下添加对**SwDocumentMgr [Year] Type Library**的引用。请参阅[VBA中的文档管理器](/docs/codestack/solidworks-document-manager-api/getting-started/create-connection#vba)获取更多信息。
 
-![Document Manager reference](swdm-reference.png)
+![文档管理器引用](swdm-reference.png)
 
-Set the license key in the **DM_LIC_KEY** variable. Note that this macro only requires **swdocmgr_general** portion of the key. The following format would be sufficient.
+在**DM_LIC_KEY**变量中设置许可证密钥。请注意，此宏仅需要密钥的**swdocmgr_general**部分。以下格式足够使用。
 
 ~~~ vb
 Const DM_LIC_KEY As String = "[CompanyName]:swdocmgr_general-00000-{31 times}"
 ~~~
 
-This routine is not required if macro will only be used from assemblies.
+如果宏仅从装配体中使用，则不需要此过程。
 
-## Notes and limitations
+## 注意事项和限制
 
-* Sub-assembly components will be opened in Large Design Review mode while part components will be opened in the View Only mode
-* If target parts or assemblies do not have display data stored - error will be thrown
-* Components must be selected from the Feature Manager Tree. Entities selected in the graphics area will be ignored
-* This VBA macro is using the simplified version of the [Search Routine for Referenced Documents](https://help.solidworks.com/2016/english/SolidWorks/sldworks/c_Search_Routine_for_Referenced_Documents.htm) and only checks active assembly's folder and sub folders before falling back on the cached path of the component. In some cases this may result in incorrect reference loaded (e.g if search folders are used). But this will only apply to the assembly which was copied and cached file paths were never updated.
+* 子装配组件将以大型设计审查模式打开，而零件组件将以仅查看模式打开
+* 如果目标零件或装配体没有存储显示数据，则会引发错误
+* 组件必须从特征管理器树中选择。在图形区域中选择的实体将被忽略
+* 此VBA宏使用了[用于引用文档的搜索例程](https://help.solidworks.com/2016/english/SolidWorks/sldworks/c_Search_Routine_for_Referenced_Documents.htm)的简化版本，并且仅在回退到组件的缓存路径之前检查活动装配体的文件夹和子文件夹。在某些情况下，这可能导致加载不正确的引用（例如，如果使用搜索文件夹）。但这仅适用于被复制并且缓存文件路径从未更新的装配体。
 
-### Referenced Configurations
+### 引用的配置
 
-This macro will attempt to open the assembly in the referenced configuration of the component, however by default SOLIDWORKS only stores the display data in the active configuration, unless configurations are marked with 'Display Data Mark' flag
+此宏将尝试以组件的引用配置打开装配体，但是默认情况下SOLIDWORKS仅在活动配置中存储显示数据，除非配置标记为“显示数据标记”。
 
-![Add display data mark flag to configuration](add-display-data-mark.png){ width=250 }
+![向配置添加显示数据标记](add-display-data-mark.png){ width=250 }
 
-If the referenced configuration of the component is not marked with the above flag and it is not an active configuration, then it cannot be loaded in Large Design Review. In this case macro will load the default configuration and display the below warning indicating that the graphics of different configuration is loaded.
+如果组件的引用配置未标记为上述标记，并且它不是活动配置，则无法在大型设计审查中加载它。在这种情况下，宏将加载默认配置并显示下面的警告，指示加载了不同配置的图形。
 
-![Error with invalid configuration](configuration-error.png)
+![无效配置的错误](configuration-error.png)
 
 ~~~ vb
 Type DocumentInfo
@@ -388,4 +388,3 @@ Function ResolveReferencePath(rootDocPath As String, refPath As String) As Strin
     
 End Function
 ~~~
-
