@@ -1,42 +1,42 @@
 ---
 layout: sw-tool
-title: Run VBA macro automatically on document load using SOLIDWORKS API
-caption: Run Macro On Document Load
-description: Macro runs VBA code (or another macro) automatically on file load using SOLIDWORKS API
+title: 使用SOLIDWORKS API在文档加载时自动运行VBA宏
+caption: 在文档加载时运行宏
+description: 使用SOLIDWORKS API在文件加载时自动运行VBA代码（或其他宏）
 image: run-macro-on-load.svg
-labels: [auto run,model load event]
-group: Model
+labels: [自动运行,模型加载事件]
+group: 模型
 ---
 {% youtube { id: tgRB8YtB4v4 } %}
 
-This VBA macro handles document load events using SOLIDWORKS API and runs a custom code for each of the documents.
+这个VBA宏使用SOLIDWORKS API处理文档加载事件，并为每个文档运行自定义代码。
 
-Macro operates in the background and needs to be run once a session to start monitoring.
+该宏在后台运行，需要在每个会话中运行一次以开始监视。
 
-Both visible (opened in its own window) and invisible (opened as assembly or drawing component) documents are handled.
+可见（在自己的窗口中打开）和不可见（作为装配或绘图组件打开）的文档都会被处理。
 
-![SOLIDWORKS file open dialog](file-open-dialog.png){ width=350 }
+![SOLIDWORKS文件打开对话框](file-open-dialog.png){ width=350 }
 
-## Configuration
+## 配置
 
-* Create new macro
-* Copy the code into corresponding modules of the macro. The VBA macro tree should look similar to the image below:
+* 创建新的宏
+* 将代码复制到宏的相应模块中。VBA宏树应该类似于下面的图片：
 
-![VBA macro tree](vba-macro-tree.png){ width=250 }
+![VBA宏树](vba-macro-tree.png){ width=250 }
 
-* Place your code into the *main* sub of the *HandlerModule* module. The pointer to [IModelDoc2](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDoc2.html) document is passed as the parameter. Use this pointer instead of [ISldWorks::ActiveDoc](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~activedoc.html) to properly handle invisible documents.
+* 将代码放入*HandlerModule*模块的*main*子程序中。将[IModelDoc2](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDoc2.html)文档的指针作为参数传递。使用该指针而不是[ISldWorks::ActiveDoc](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~activedoc.html)来正确处理不可见文档。
 
 ~~~ vb
 Sub main(model As SldWorks.ModelDoc2)
-    'TODO: add your routine here
+    'TODO: 在这里添加你的代码
 End Sub
 ~~~
 
-* It might be useful to automatically run this macro with each session of SOLIDWORKS. Follow the [Run SOLIDWORKS macro automatically on application start](/docs/codestack/solidworks-api/getting-started/macros/run-macro-on-solidworks-start/) link for more information.
+* 可以自动运行此宏以每个SOLIDWORKS会话。请查看[在SOLIDWORKS启动时自动运行宏](/docs/codestack/solidworks-api/getting-started/macros/run-macro-on-solidworks-start/)链接获取更多信息。
 
-## Macro Module
+## 宏模块
 
-Entry point which starts events monitoring
+启动事件监视的入口点
 
 ~~~ vb
 Dim swFileLoadWatcher As FileLoadWatcher
@@ -54,9 +54,9 @@ End Sub
 
 
 
-## FileLoadWatcher Class Module
+## FileLoadWatcher 类模块
 
-Class which handles SOLIDWORKS API notifications
+处理SOLIDWORKS API通知的类
 
 ~~~ vb
 Dim WithEvents swApp As SldWorks.SldWorks
@@ -98,15 +98,13 @@ End Sub
 
 
 
-## HandlerModule Module
+## HandlerModule 模块
 
-Custom VBA code which needs to be run for each opened document
+需要为每个打开的文档运行的自定义VBA代码
 
 ~~~ vb
 Sub main(model As SldWorks.ModelDoc2)
-    'TODO:implement the procedure
-    MsgBox "File Loaded: " & model.GetTitle()
+    'TODO: 实现过程
+    MsgBox "文件已加载：" & model.GetTitle()
 End Sub
 ~~~
-
-
