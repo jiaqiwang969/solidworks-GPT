@@ -1,35 +1,35 @@
 ---
-title: Import and render XAML file using VBO in OpenGL and SOLIDWORKS API
-caption: Import XAML File And Render Using VBO
-description: C# add-in to import the geometry in XAML format into the current model space and render the graphics with high performance using Vertex Buffer Object (VBO) of OpenGL and SOLIDWORKS API
+title: 使用OpenGL和SOLIDWORKS API导入和渲染XAML文件
+caption: 导入XAML文件并使用VBO渲染
+description: 使用SOLIDWORKS API将XAML格式的几何图形导入到当前模型空间，并使用OpenGL和SOLIDWORKS API的顶点缓冲对象（VBO）功能高性能渲染图形的C#插件
 image: vbo-opengl.png
 labels: [opengl,vbo,performance,xaml,graphics]
 ---
-This C# add-in demonstrates how to import the geometry in the [XAML](https://en.wikipedia.org/wiki/Extensible_Application_Markup_Language) file into the active model space using SOLIDWORKS API. To achieve the maximum performance the graphics is rendered using the [Vertex Buffer Object (VBO)](https://en.wikipedia.org/wiki/Vertex_buffer_object) feature of OpenGL.
+这个C#插件演示了如何使用SOLIDWORKS API将[XAML](https://en.wikipedia.org/wiki/Extensible_Application_Markup_Language)文件中的几何图形导入到活动模型空间中。为了实现最大的性能，图形使用OpenGL的[顶点缓冲对象（VBO）](https://en.wikipedia.org/wiki/Vertex_buffer_object)功能进行渲染。
 
-[OpenTK](https://opentk.net/) library is used to invoke OpenGL APIs.
+使用[OpenTK](https://opentk.net/)库调用OpenGL API。
 
-Add-in can import the XAML files created from Part documents only (XAML files from the assembly are not supported).
+插件只能导入从零件文档创建的XAML文件（不支持从装配体导出的XAML文件）。
 
-XAML file export format supported natively by SOLIDWORKS. Use *File->Save As* menu command to export file in the XAML format.
+XAML文件是SOLIDWORKS原生支持的导出格式。使用*文件->另存为*菜单命令以XAML格式导出文件。
 
-![Save As XAML format in File Save As dialog](save-as-xaml.png){ width=550 }
+![在文件另存为对话框中保存为XAML格式](save-as-xaml.png){ width=550 }
 
-However this format cannot be imported natively. Add-in adds the *Import XAML File* commands into the menu. Open new or existing file and import xaml using this command.
+然而，这种格式不能被原生导入。插件将*导入XAML文件*命令添加到菜单中。打开新文件或现有文件，并使用此命令导入xaml。
 
-![Import XAML command in menu](import-xaml-menu.png){ width=450 }
+![菜单中的导入XAML命令](import-xaml-menu.png){ width=450 }
 
-Graphics is rendered using OpenGL. Model can be rotated, zoomed, panned. There are no feature elements or temp bodies created and graphics is rendered with high performance.
+图形使用OpenGL进行渲染。模型可以旋转、缩放、平移。没有创建特征元素或临时体，图形以高性能渲染。
 
-![Geometry rendered using OpenGL](vbo-opengl.png){ width=350 }
+![使用OpenGL渲染的几何图形](vbo-opengl.png){ width=350 }
 
-By default graphics of OpenGL is not respected by zoom commands. I.g. *Zoom To fit* fill not fit the geometry properly and would ignore its bounding box. To specify the visible boundaries it is required to use the [IModelDocExtension::SetVisibleBox](https://help.solidworks.com/2017/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDocExtension~SetVisibleBox.html) SOLIDWORKS API method. Note, it is not required to union the existing visible box of native SOLIDWORKS geometry, SOLIDWORKS will perform this operation automatically.
+默认情况下，OpenGL的图形不会受到缩放命令的影响。例如，*适应缩放*命令不会正确适应几何图形，并且会忽略其边界框。要指定可见边界，需要使用[SOLIDWORKS API的IModelDocExtension::SetVisibleBox](https://help.solidworks.com/2017/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDocExtension~SetVisibleBox.html)方法。注意，不需要合并原生SOLIDWORKS几何图形的现有可见框，SOLIDWORKS将自动执行此操作。
 
-Source code can be downloaded from [GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/swex/add-in/opengl/XamlImporter)
+源代码可以从[GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/swex/add-in/opengl/XamlImporter)下载。
 
 ## AddIn.cs
 
-This the add-in entry point. [SwEx.AddIn](/docs/codestack/labs/solidworks/swex/add-in/) framework is used to manage documents lifecycle by providing the wrapper class. Import command is handled in the add-in and [Model3DGroup](https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.media3d.model3dgroup) object of Microsoft WPF framework is extracted from the specified XAML file.
+这是插件的入口点。使用[SwEx.AddIn](/docs/codestack/labs/solidworks/swex/add-in/)框架通过提供包装类来管理文档生命周期。导入命令在插件中处理，并从指定的XAML文件中提取Microsoft WPF框架的[Model3DGroup](https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.media3d.model3dgroup)对象。
 
 ~~~ cs
 using CodeStack.SwEx.AddIn;
@@ -135,7 +135,7 @@ namespace CodeStack.XamlImporter
 
 ## MeshRendererModel.cs
 
-This is a handler class for each model document which subscribes to the OpenGL Buffer Swap notification provided by SOLIDWORKS and performs the binding and rendering of VBO based on the provided mesh data.
+这是每个模型文档的处理程序类，它订阅SOLIDWORKS提供的OpenGL缓冲区交换通知，并根据提供的网格数据执行VBO的绑定和渲染。
 
 ~~~ cs
 using CodeStack.SwEx.AddIn.Base;
@@ -360,5 +360,3 @@ namespace CodeStack.XamlImporter
 }
 
 ~~~
-
-
