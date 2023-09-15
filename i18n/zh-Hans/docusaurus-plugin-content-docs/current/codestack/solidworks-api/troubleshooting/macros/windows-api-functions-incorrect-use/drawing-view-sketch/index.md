@@ -1,21 +1,21 @@
 ---
-title: Create sketch segments in drawing view sketch using SOLIDWORKS API
-caption: Create Sketch Segments In Drawing View
-description: Creating sketch points and sketch segments directly in the drawing view sketch area using SOLIDWORKS API
+title: 在绘图视图草图中创建草图段
+caption: 在绘图视图中创建草图段
+description: 使用SOLIDWORKS API在绘图视图草图区域直接创建草图点和草图段
 image: point-in-drawing-view-sketch.png
-labels: [drawing,transform,sketch]
+labels: [绘图,转换,草图]
 ---
-![Point created in the center of the drawing view](point-in-drawing-view-sketch.png){ width=350 }
+![在绘图视图中心创建的点](point-in-drawing-view-sketch.png){ width=350 }
 
-All drawing views in the drawing document have their own sketches which can be retrieved via [IView::GetSketch](https://help.solidworks.com/2019/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iview~getsketch.html) SOLIDWORKS API method.
+绘图文档中的所有绘图视图都有自己的草图，可以通过[SOLIDWORKS API方法IView::GetSketch](https://help.solidworks.com/2019/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iview~getsketch.html)来检索。
 
-This is a sketch where sketch entities and points can be drawn using the [ISketchManager](https://help.solidworks.com/2019/english/api/draftsightapi/Interop.dsAutomation~Interop.dsAutomation.ISketchManager.html) interface.
+这是一个草图，可以使用[ISketchManager](https://help.solidworks.com/2019/english/api/draftsightapi/Interop.dsAutomation~Interop.dsAutomation.ISketchManager.html)接口绘制草图实体和点。
 
-Unlike [creating sketch segment in the sheet space](/docs/codestack/solidworks-api/document/drawing/sheet-context-sketch/), segments added to a view sketch will move together with the view and will be scaled and rotated in case of 3D rotation of the view.
+与[在图纸空间中创建草图段](/docs/codestack/solidworks-api/document/drawing/sheet-context-sketch/)不同，添加到视图草图中的段将随着视图一起移动，并且在视图的3D旋转时将被缩放和旋转。
 
-Similar to the sketches in the assembly or part it is required to transform the coordinates from the model space into the sheet space in order to properly position the segments.
+与装配或零件中的草图类似，需要将坐标从模型空间转换为图纸空间，以正确定位段。
 
-The following example demonstrates how to find the middle point of the drawing view (in sheet coordinate system) and draw this point directly in the view using SOLIDWORKS API using the transformation.
+以下示例演示了如何在绘图视图中找到中心点（在图纸坐标系中），并使用SOLIDWORKS API使用变换直接在视图中绘制此点。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -36,10 +36,10 @@ Sub main()
         If Not swView Is Nothing Then
             DrawPoint swDraw, swView
         Else
-            MsgBox "Please select drawing view"
+            MsgBox "请选择绘图视图"
         End If
     Else
-        MsgBox "Please open the drawing document"
+        MsgBox "请打开绘图文档"
     End If
     
 End Sub
@@ -77,5 +77,3 @@ Sub DrawPoint(draw As SldWorks.DrawingDoc, view As SldWorks.view)
     
 End Sub
 ~~~
-
-
