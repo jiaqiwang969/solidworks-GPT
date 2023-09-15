@@ -39,16 +39,16 @@ Sub main()
             
             Dim isWarn As Boolean
             If swMateFeat.GetErrorCode2(isWarn) = swFeatureError_e.swFeatureErrorNone Or True = isWarn Then
-                MsgBox "力学约束命令仅适用于具有重建错误的约束"
+                MsgBox "The Force Mate command is only applicable to constraints with rebuild errors"
             Else
                 ForceMate swMate
             End If
             
         Else
-            MsgBox "请选择约束"
+            MsgBox "Please select a constraint"
         End If
     Else
-       MsgBox "请打开装配体"
+       MsgBox "Please open an assembly"
     End If
      
 End Sub
