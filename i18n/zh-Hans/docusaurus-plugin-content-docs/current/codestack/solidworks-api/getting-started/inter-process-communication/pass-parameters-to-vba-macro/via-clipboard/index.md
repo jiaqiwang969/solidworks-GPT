@@ -1,18 +1,18 @@
 ---
-title: 通过剪贴板将参数传递给SOLIDWORKS VBA宏
-caption: 通过剪贴板
-description: 从.NET应用程序或另一个宏通过剪贴板将自定义字符串参数传递给VBA宏
+title: Pass Arguments to SOLIDWORKS VBA Macro via Clipboard
+caption: Via Clipboard
+description: Pass custom string arguments to a VBA macro from a .NET application or another macro via the clipboard
 image: msg-box-macro-argument.png
-labels: [参数, 剪贴板, 示例, SOLIDWORKS API]
+labels: [arguments, clipboard, example, SOLIDWORKS API]
 redirect-from:
   - /2018/04/pass-arguments-to-vba-macro-via-clipboard.html
 ---
 
-系统剪贴板可以存储不同类型的数据（包括但不限于文本、图像、HTML等）。最简单的方法是将自定义参数写入文本缓冲区，但这将清除缓冲区中已有的所有数据（如果有的话）。这可能会引起混淆，并导致用户体验不佳，因为运行宏可能会覆盖已经复制到剪贴板的文本。
+The system clipboard can store different types of data (including but not limited to text, images, HTML, etc.). The simplest way is to write the custom argument to the text buffer, but this will clear any existing data in the buffer (if any). This can be confusing and result in a poor user experience as running the macro may overwrite text that was already copied to the clipboard.
 
-另一种方法是将数据写入具有唯一名称的自定义缓冲区，以便它不会明确地暴露给用户，只能通过代码访问。
+Another approach is to write the data to a custom buffer with a unique name so that it is not explicitly exposed to the user and can only be accessed through code.
 
-让我们从将从不同的“主”宏调用的“目标”宏开始。
+Let's start with the "target" macro that will be called from a different "main" macro.
 
 ```vb
 Dim swApp As SldWorks.SldWorks
@@ -21,16 +21,16 @@ Sub main()
         
     Set swApp = Application.SldWorks
         
-     swApp.SendMsgToUser "指定的参数: " & ArgumentHelper.GetArgument()
+     swApp.SendMsgToUser "Specified argument: " & ArgumentHelper.GetArgument()
     
 End Sub
 ```
 
-上面的示例中，从“主”宏传递的参数值将在“目标”宏的消息框中提取并显示给用户：
+In the above example, the value of the argument passed from the "main" macro will be extracted and displayed to the user in a message box in the "target" macro:
 
-![宏中显示传递的参数值的消息框](msg-box-macro-argument.png){ width=400 height=132 }
+![Message box displaying the passed argument value in the macro](msg-box-macro-argument.png){ width=400 height=132 }
 
-帮助类从**__SwMacroArgs__**格式中读取缓冲区的值。这是一个已知的自定义名称，主宏（将写入参数值）和目标宏（将读取值）都知道。如果需要，可以将其重命名为任何其他自定义名称。
+The helper class reads the value of the buffer from the **__SwMacroArgs__** format. This is a known custom name that both the main macro (which will write the argument value) and the target macro (which will read the value) are aware of. It can be renamed to any other custom name if desired.
 
 ```vb
 Const ARG_FORMAT = "__SwMacroArgs__"
@@ -56,7 +56,7 @@ Public Function GetArgument() As String
     wFormat = RegisterClipboardFormat(ARG_FORMAT)
     
     If OpenClipboard(0&) = 0 Then
-        RaiseError "无法打开剪贴板"
+        RaiseError "Unable to open the clipboard"
     End If
             
     hClipMemory = GetClipboardData(wFormat)
@@ -85,16 +85,16 @@ Public Function GetArgument() As String
         End If
     
     Else
-        RaiseError "未指定参数"
+        RaiseError "No argument specified"
     End If
     
     GoTo Finally
     
 ErrorHandler:
-    MsgBox "关键错误: " & Err.Description
+    MsgBox "Critical error: " & Err.Description
 
 Finally:
-    CloseClipboard '必须关闭剪贴板，否则会内存泄漏
+    CloseClipboard ' Must close the clipboard, otherwise it will leak memory
     
 End Function
 
@@ -107,12 +107,12 @@ Sub RaiseError(desc As String)
 End Sub
 ```
 
-为了调用宏并传递参数，需要将**__SwMacroArgs__**格式的缓冲区值设置为Unicode字符串。以下是不同编程语言中如何实现此操作的示例。
+To call the macro and pass the argument, the buffer value in the **__SwMacroArgs__** format needs to be set as a Unicode string. Here are examples of how to achieve this in different programming languages.
 
 <details>
-<summary>VBA宏</summary>
+<summary>VBA Macro</summary>
 
-Argument Helper 模块
+Argument Helper module
 
 ```vb
 Const ARG_FORMAT = "__SwMacroArgs__"
@@ -144,11 +144,11 @@ Public Sub SetArgument(arg As String)
     lpGlobalMemory = lstrcpy(lpGlobalMemory, arg)
 
     If GlobalUnlock(hGlobalMemory) <> 0 Then
-        RaiseError "无法解锁内存"
+        RaiseError "Unable to unlock memory"
     End If
 
     If OpenClipboard(0&) = 0 Then
-        RaiseError "无法打开剪贴板"
+        RaiseError "Unable to open the clipboard"
     End If
 
     SetClipboardData wFormat, hGlobalMemory
@@ -156,7 +156,7 @@ Public Sub SetArgument(arg As String)
     GoTo Finally
     
 ErrorHandler:
-    MsgBox "关键错误: " & err.Description
+    MsgBox "Critical error: " & err.Description
 
 Finally:
     CloseClipboard
@@ -172,7 +172,7 @@ Sub RaiseError(desc As String)
 End Sub
 ```
 
-宏
+Macro
 
 ```vb
 Dim swApp As SldWorks.SldWorks
@@ -181,14 +181,14 @@ Sub main()
     
     Set swApp = Application.SldWorks
     
-    ArgumentHelper.SetArgument "来自VBA宏的参数"
+    ArgumentHelper.SetArgument "Argument from VBA macro"
     
     Dim err As Long
     
     If False = swApp.RunMacro2("D:\Macros\GetArgumentMacro.swp", _
         "Macro1", "main", swRunMacroOption_e.swRunMacroUnloadAfterRun, err) Then
         
-        swApp.SendMsgToUser "无法运行宏。错误代码: " & err
+        swApp.SendMsgToUser "Unable to run the macro. Error code: " & err
         
     End If
     
@@ -217,13 +217,13 @@ namespace CodeStack
 
         public void Main()
         {
-            SetArgument("来自C#宏的参数");
+            SetArgument("Argument from C# macro");
 
             int err;
             if (!swApp.RunMacro2(@"D:\Macros\GetArgumentMacro.swp",
                 "Macro1", "main", (int)swRunMacroOption_e.swRunMacroUnloadAfterRun, out err))
             {
-                swApp.SendMsgToUser(string.Format("无法运行宏。错误代码: {0}", err));
+                swApp.SendMsgToUser(string.Format("Unable to run the macro. Error code: {0}", err));
             }
         }
 
@@ -261,10 +261,10 @@ Partial Class CodeStack
     Const ARG_NAME As String = "__SwMacroArgs__"
 
     Public Sub Main()
-        SetArgument("来自VB.NET宏的参数")
+        SetArgument("Argument from VB.NET macro")
         Dim err As Integer
         If Not swApp.RunMacro2("D:\Macros\GetArgumentMacro.swp", "Macro1", "main", CInt(swRunMacroOption_e.swRunMacroUnloadAfterRun), err) Then
-            swApp.SendMsgToUser(String.Format("无法运行宏。错误代码: {0}", err))
+            swApp.SendMsgToUser(String.Format("Unable to run the macro. Error code: {0}", err))
         End If
     End Sub
 
@@ -284,4 +284,4 @@ End Class
 
 </details>
 
-> 注意：上述示例不处理“竞争条件”（当多个具有不同参数的宏可能并行运行时）。使用Mutex或Semaphore对象来同步对共享资源的访问。
+> Note: The above examples do not handle "race conditions" when multiple macros with different arguments may run in parallel. Use Mutex or Semaphore objects to synchronize access to shared resources.
