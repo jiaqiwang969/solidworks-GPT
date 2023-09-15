@@ -1,21 +1,22 @@
 ---
-title: Get the sheet body geometry type using SOLIDWORKS API
-caption: Get The Sheet Body Geometry Type
-description: Example identifies the type of the selected sheet body (open shell, internal shell, external shell)
+title: 使用SOLIDWORKS API获取工作表体几何类型
+caption: 获取工作表体几何类型
+description: 该示例用于识别所选工作表体的类型（开放壳体、内部壳体、外部壳体）
 image: face-shell-types.png
-labels: [example, face, geometry, open geometry, shell, solidworks api, topology]
+labels: [示例, 面, 几何, 开放几何, 壳体, solidworks api, 拓扑]
 redirect-from:
   - /2018/03/solidworks-api-geometry-get-body-geometry-type.html
 ---
-There are 3 types of faces in SOLIDWORKS bodies:  
 
-* **Open Shell**. Faces from the sheet bodies which are together with connected faces do not form the closed geometry (for example planar face, while face of the shell cube or sphere won't be considered as open)
-* **Internal Shell**. Faces in solid bodies which belong to the cavities.
-* **External Shell**. Any other faces which do not belong to previous groups
+SOLIDWORKS体中有3种类型的面：
 
-![Shell types of face](face-shell-types.png){ width=400 height=243 }
+* **开放壳体**。与相连面一起，来自工作表体的面不能形成封闭几何（例如平面面，而壳体立方体或球体的面不会被视为开放）。
+* **内部壳体**。属于实体体的空腔中的面。
+* **外部壳体**。不属于前两组的任何其他面。
 
-The example below identifies the type of the selected sheet body using SOLIDWORKS API. If the body is of open geometry (contains open shell faces) or closed geometry (no open shell faces). The closed geometry sheet body can be converted to a solid body.  
+![面的壳体类型](face-shell-types.png){ width=400 height=243 }
+
+下面的示例使用SOLIDWORKS API来识别所选工作表体的类型。如果该体是开放几何（包含开放壳体面）或封闭几何（没有开放壳体面），则可以将封闭几何工作表体转换为实体体。
 
 ~~~ cs
 using System;
@@ -49,26 +50,26 @@ namespace CodeStack
                     {
                         if (IsOpenGeometry(body))
                         {
-                            swApp.SendMsgToUser("Selected body is an open geometry");
+                            swApp.SendMsgToUser("所选体是开放几何");
                         }
                         else
                         {
-                            swApp.SendMsgToUser("Selected body is not an open geometry");
+                            swApp.SendMsgToUser("所选体不是开放几何");
                         }
                     }
                     else
                     {
-                        swApp.SendMsgToUser("Selected body is not a sheet body");
+                        swApp.SendMsgToUser("所选体不是工作表体");
                     }
                 }
                 else
                 {
-                    swApp.SendMsgToUser("Please select sheet body");
+                    swApp.SendMsgToUser("请选择工作表体");
                 }
             }
             else
             {
-                swApp.SendMsgToUser("Please open model");
+                swApp.SendMsgToUser("请打开模型");
             }
 
             return;
@@ -99,5 +100,3 @@ namespace CodeStack
 }
 
 ~~~
-
-
