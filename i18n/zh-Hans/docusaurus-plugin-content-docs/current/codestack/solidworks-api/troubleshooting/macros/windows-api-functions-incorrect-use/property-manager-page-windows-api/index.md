@@ -1,40 +1,40 @@
 ---
-caption: Configure Property Manager Page Using Windows API
-title: Run and configure SOLIDWORKS command using Windows API
-description: Example demonstrating how to call and configure the Insert Model Items command in SOLIDWORKS drawing using Windows API
+caption: 使用Windows API配置属性管理器页面
+title: 使用Windows API运行和配置SOLIDWORKS命令
+description: 示例演示如何使用Windows API调用和配置SOLIDWORKS绘图中的插入模型项命令
 image: insert-model-items-property-manager-page.png
 ---
-In some cases certain SOLIDWORKS functions or options may not be available within SOLIDWORKS API commands or may work incorrectly.
+在某些情况下，某些SOLIDWORKS功能或选项可能在SOLIDWORKS API命令中不可用或工作不正确。
 
-In this case one of the possible workarounds (if other workarounds are not available) is to use Windows API to invoke and configure the commands.
+在这种情况下，如果其他解决方法不可用，可以使用Windows API来调用和配置命令。
 
-This example demonstrate how to insert model dimensions into the SOLIDWORKS drawing view using Windows API. This example emulates the functionality of [IDrawingDoc::InsertModelAnnotations3](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.idrawingdoc~insertmodelannotations3.html) API methods.
+此示例演示如何使用Windows API将模型尺寸插入到SOLIDWORKS绘图视图中。此示例模拟了[IDrawingDoc::InsertModelAnnotations3](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.idrawingdoc~insertmodelannotations3.html) API方法的功能。
 
-![Model Items Property Manager page](insert-model-items-property-manager-page.png){ width=400 }
+![模型项属性管理器页面](insert-model-items-property-manager-page.png){ width=400 }
 
-This is a C# Console Application which accepts the path to a drawing as an input parameter. The following steps will be performed:
+这是一个C#控制台应用程序，它接受绘图文件的路径作为输入参数。将执行以下步骤：
 
-* Connect or create new instance of SOLIDWORKS
-* Open the specified drawing file
-* Open the **Insert Model Items** property manager page by running the command using SOLIDWORKS API
-* Iterate all controls and set the source to **Entire Model** and **Include items from hidden features** option
-* Close Property Manager Page by clicking OK button
-* Save and close the document
+* 连接或创建SOLIDWORKS的新实例
+* 打开指定的绘图文件
+* 使用SOLIDWORKS API运行命令打开**插入模型项**属性管理器页面
+* 遍历所有控件，并将源设置为**整个模型**和**包括隐藏特征中的项**选项
+* 点击OK按钮关闭属性管理器页面
+* 保存并关闭文档
 
-While invoking Windows API it is required to develop a strategy of finding the specific controls and command ids.
+在调用Windows API时，需要制定一种查找特定控件和命令ID的策略。
 
-Spy++ utility by Microsoft which is built-in into Visual Studio can be a useful tool to analyze Windows controls:
+Microsoft内置在Visual Studio中的Spy++实用程序可以作为分析Windows控件的有用工具：
 
-![Spy++ interface with the list of the Win32 controls of the Property Manager page](spy-plus-plus-solidworks-window.png){ width=400 }
+![带有属性管理器页面Win32控件列表的Spy++界面](spy-plus-plus-solidworks-window.png){ width=400 }
 
-Refer [Calling Windows API commands](https://blog.codestack.net/missing-solidworks-api-command#calling-windows-command) blog article for more information about this method.
+有关此方法的更多信息，请参阅[调用Windows API命令](https://blog.codestack.net/missing-solidworks-api-command#calling-windows-command)博客文章。
 
-## Limitations
+## 限制
 
-* Low-level code which is less readable and more complex
-* In some cases there is no permanent ids of controls, so it is required to use additional logic such as control title or order which may differ from session to session, release to release or be locale dependent
-* Windows API performs a low level calls so it is required to be careful working with memory, releasing pointers, etc. as it may cause an unexpected behavior. Read Windows API documentation for more information about the specific API calls
-* There is no feedback about the result of the operation (only low level API results) which means that it may be hard to identify if operation performed successfully. The operation may also produce model popup windows which needs to be handled separately.
+* 低级代码，可读性较差且更复杂
+* 在某些情况下，控件没有永久ID，因此需要使用其他逻辑，例如控件标题或顺序，这可能会因会话、版本或区域设置而有所不同
+* Windows API执行低级调用，因此在处理内存、释放指针等方面需要小心，因为这可能会导致意外行为。阅读Windows API文档以获取有关特定API调用的更多信息
+* 操作的结果没有反馈（只有低级API结果），这意味着很难确定操作是否成功执行。操作还可能产生需要单独处理的模型弹出窗口。
 
 ~~~ cs
 using SolidWorks.Interop.sldworks;
@@ -96,29 +96,29 @@ namespace InsertModelItemsWinAPI
             const int WM_COMMAND = 0x0111;
             const int MODEL_ITEMS_CMD = 38374;
 
-            //get the handle to SOLIDWORKS window
+            //获取SOLIDWORKS窗口的句柄
             var hWnd = new IntPtr(app.IFrameObject().GetHWnd());
 
-            //open 'Model Items' property manager page
+            //打开“模型项”属性管理器页面
             SendMessage(hWnd, WM_COMMAND, MODEL_ITEMS_CMD, 0);
 
             var modelItemPageWnd = FindPropertyPageByName(hWnd, "Model Items");
 
-            //Find the check box 'Include items from hidden features'
+            //查找复选框“包括隐藏特征中的项”
             var includeHiddenItemsWnd = FindWindows(modelItemPageWnd, "Include items from &hidden features", "Button").First();
 
-            //check the found checkbox
+            //选中找到的复选框
             SetCheckBox(includeHiddenItemsWnd, true);
 
-            //Find the source ComboBox (this is a first ComboBox in the page)
+            //查找源ComboBox（这是页面上的第一个ComboBox）
             var srcComboBox = FindWindows(modelItemPageWnd, "", "ComboBox").First();
 
-            //Set the ComboBox selection to the first item (Entire Model)
+            //将ComboBox选择设置为第一个项目（整个模型）
             SetComboBox(srcComboBox, 0);
 
             const int swCommands_PmOK = -2;
 
-            //Click OK on the PMPage to complete the operation
+            //点击PMPage上的OK按钮完成操作
             app.RunCommand(swCommands_PmOK, "");
 
             doc.Save3((int)swSaveAsOptions_e.swSaveAsOptions_Silent, ref errs, ref warns);
@@ -199,4 +199,3 @@ namespace InsertModelItemsWinAPI
     }
 }
 ~~~
-
