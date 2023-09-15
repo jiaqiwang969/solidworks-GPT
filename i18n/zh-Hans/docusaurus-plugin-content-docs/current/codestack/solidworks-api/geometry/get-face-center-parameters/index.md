@@ -11,7 +11,7 @@ labels: [center, uv, normal]
 
 质心是使用[SOLIDWORKS API的ISurface::Evaluate](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isurface~evaluate.html)方法，通过U和V参数的最小值和最大值的平均值来计算的。
 
-~~~ vb
+``` vb
 Dim swApp As SldWorks.SldWorks
 Dim swModel As SldWorks.ModelDoc2
 
@@ -78,4 +78,4 @@ Sub GetFaceCenterParameters(face As SldWorks.Face2, ByRef point As Variant, ByRe
     normal = dNormal
     
 End Sub
-~~~
+```
