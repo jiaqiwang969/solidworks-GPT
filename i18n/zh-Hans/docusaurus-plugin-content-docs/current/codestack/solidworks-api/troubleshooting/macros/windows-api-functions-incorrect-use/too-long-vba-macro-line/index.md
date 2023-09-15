@@ -1,38 +1,28 @@
----
-layout: sw-macro-fix
-title: Fix too long SOLIDWORKS VBA macro line error
-caption: Too Long VBA Macro Line
-description: Fixing the Compile error - Invalid outside procedure error when placing the long text into the VBA macro variable
-image: doc-mgr-key-too-long.gif
-labels: [macro, troubleshooting]
-redirect-from:
-  - /2018/04/macro-troubleshooting-too-long-vba-macro-line.html
----
-## Symptoms
+## 症状
 
-* SOLIDWORKS VBA macro is utilizing Document Manager APIs and new license was generated.
-When generated license is placed into the macro some text highlighted red and *Compile error: Invalid outside procedure error* is displayed
-* Macro is inserting static text into the note or custom properties. Text is replaced with new long text. Inserted string is highlighted and macro doesn't run
+* SOLIDWORKS VBA 宏正在使用 Document Manager API，并生成了新的许可证。
+将生成的许可证放入宏中时，一些文本会被标记为红色，并显示“编译错误：无效的外部过程错误”。
+* 宏正在将静态文本插入到注释或自定义属性中。文本被新的长文本替换。插入的字符串被标记，并且宏无法运行。
 
-![Copy-pasting the Document Manager license key into the macro constant](doc-mgr-key-too-long.gif)
+![将 Document Manager 许可证密钥复制粘贴到宏常量中](doc-mgr-key-too-long.gif)
 
-## Cause
+## 原因
 
-Maximum number of symbols in a single line of VBA code is 1023.
-It is not possible to insert more symbols without explicitly splitting the lines.
-Pasting the line longer than the limit from the buffer will cause compilation errors.  
+VBA 代码中单行的最大符号数为 1023。
+如果不显式拆分行，就无法插入更多的符号。
+从缓冲区粘贴超过限制长度的行会导致编译错误。
 
-## Resolution
+## 解决方法
 
-Split the line into multiple lines (no longer than 1023 symbols in single line) and use "string1" & _ "string2" to concatenate the lines.  
+将行拆分为多行（单行中的符号数不超过 1023），并使用 "string1" & _ "string2" 来连接这些行。
 
 ~~~ vb
 Const SW_DM_KEY As String = "MyCompany:swdocmgr_general-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000," & _
 "swdocmgr_previews-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000," & _
 "swdocmgr_dimxpert-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000," & _
-"swdocmgr_geometry-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000," & _
+"swdocmgr_geometry-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000," & _
 "swdocmgr_xml-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000," & _
-"swdocmgr_tessellation-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000"
+"swdocmgr_tessellation-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000-00000"
 
 Dim swDmClassFactory As SwDocumentMgr.swDmClassFactory
 Dim swDmApp As SwDocumentMgr.SwDMApplication
@@ -50,5 +40,3 @@ Sub main()
     
 End Sub
 ~~~
-
-
