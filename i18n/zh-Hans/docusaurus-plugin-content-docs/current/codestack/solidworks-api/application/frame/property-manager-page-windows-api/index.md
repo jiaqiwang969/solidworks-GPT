@@ -36,7 +36,7 @@ Microsoft内置在Visual Studio中的Spy++实用程序可以作为分析Windows�
 * Windows API执行低级调用，因此在处理内存、释放指针等方面需要小心，因为这可能会导致意外行为。阅读Windows API文档以获取有关特定API调用的更多信息
 * 操作的结果没有反馈（只有低级API结果），这意味着很难确定操作是否成功执行。操作还可能产生需要单独处理的模型弹出窗口。
 
-~~~ cs
+``` cs
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using System;
@@ -198,4 +198,4 @@ namespace InsertModelItemsWinAPI
         }
     }
 }
-~~~
+```
