@@ -42,7 +42,7 @@ labels: [部署, 安装, 安装程序]
 
 添加到HKEY_LOCAL_MACHINE的键是必需的，并且用于在插件列表中显示插件。添加到HKEY_CURRENT_USER的键是可选的，并表示插件的启动状态。将值设置为1以在启动时加载插件，设置为0以在启动时不加载插件。
 
-~~~ reg
+```reg
 Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\SolidWorks\Addins\{a377433e-f7cf-4a5a-9d74-b64c0c1758c2}]
@@ -52,22 +52,22 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\SolidWorks\AddInsStartup\{a377433e-f7cf-4a5a-9d74-b64c0c1758c2}]
 @=dword:00000001
-~~~
+```
 
 上面示例中使用的GUID是通过在插件类上设置[GuidAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.guidattribute?view=netframework-4.0)来设置的：
 
-~~~ cs
+```cs
 [Guid("a377433e-f7cf-4a5a-9d74-b64c0c1758c2"), ComVisible(true)]
 [SwAddin(Description = "示例插件", Title = "示例插件描述", LoadAtStartup = true)]    
 public class MyAddIn : ISwAddin
 {
     ...
 }
-~~~
+```
 
 作为替代选项，可以在将其注册为COM对象时，直接从dll中添加所需的注册表键，通过[ComRegisterFunctionAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.comregisterfunctionattribute?view=netframework-4.0)。在这种情况下，不需要上述步骤：
 
-~~~ cs
+```cs
 #region SolidWorks 注册
 
 [ComRegisterFunction]
@@ -123,7 +123,7 @@ public static void UnregisterFunction(Type t)
 }
 
 #endregion
-~~~
+```
 
 ### 取消注册插件
 
@@ -139,7 +139,7 @@ public static void UnregisterFunction(Type t)
 
 要清除注册表值（除非通过[ComUnregisterFunctionAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.comunregisterfunctionattribute?view=netframework-4.0)完成），请调用以下注册表文件：
 
-~~~ reg
+```reg
 Windows Registry Editor Version 5.00
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\SolidWorks\Addins\{a377433e-f7cf-4a5a-9d74-b64c0c1758c2}]
@@ -149,24 +149,24 @@ Windows Registry Editor Version 5.00
 
 [-HKEY_CURRENT_USER\Software\SolidWorks\AddInsStartup\{a377433e-f7cf-4a5a-9d74-b64c0c1758c2}]
 @=dword:00000001
-~~~
+```
 
 ### 最佳实践
 
 可以将注册和取消注册命令放入单个批处理文件中，以简化注册和取消注册过程：
 
 *Register.bat*
-~~~ cmd
+```cmd
 "%windir%\Microsoft.NET\Framework64\v4.0.30319\RegAsm.exe" /codebase "%~dp0CodeStack.StockFit.Sw.dll"
 regedit.exe /S %~dp0add-registry.reg
 pause
-~~~
+```
 
 *Unregister.bat*
-~~~ cmd
+```cmd
 "%windir%\Microsoft.NET\Framework64\v4.0.30319\RegAsm.exe" /codebase /u "%~dp0CodeStack.StockFit.Sw.dll"
 regedit.exe /S %~dp0remove-registry.reg
 pause
-~~~
+```
 
 更改插件的名称并将这些文件放入bin文件夹中，只需在客户机上运行此批处理文件即可。
