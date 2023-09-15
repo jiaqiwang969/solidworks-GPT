@@ -1,21 +1,21 @@
 ---
-title: Selecting SOLIDWORKS Objects for API only
-caption: Selecting Objects For API Only
-description: Example shows how to select the object for API purpose only (without graphics selection) preserving current user selections
+title: 仅用于API选择SOLIDWORKS对象
+caption: 仅用于API选择对象
+description: 示例演示了如何仅为API目的选择对象（不包括图形选择），同时保留当前用户选择。
 image: extrude-direction-up-to-surface.png
-labels: [selection, extrude]
+labels: [选择, 拉伸]
 ---
-![Extruded sketch arc up to the planar surface following the line direction](extrude-direction-up-to-surface.png){ width=500 }
+![沿着线方向将挤压的草图弧延伸到平面表面](extrude-direction-up-to-surface.png){ width=500 }
 
-This example shows how to create extrude feature in SOLIDWORKS part by selecting the inputs for API purpose only (without graphics selection) preserving current user selections.
+本示例演示了如何通过仅为API目的选择输入对象（不包括图形选择），同时保留当前用户选择，在SOLIDWORKS零件中创建挤压特征。
 
-To run the macro
+运行宏的步骤：
 
-* Download the example file and open it in SOLIDWORKS [Extrude Selection Example](extrude-selection-example.SLDPRT)
-* Select any objects (e.g. Front and Right plane)
-* Debug the macro step-by-step. The macro pre-selects the required objects for the extrude feature directly in the data base (i.e. it is not visible for the user)
+* 下载示例文件并在SOLIDWORKS中打开[挤压选择示例](extrude-selection-example.SLDPRT)
+* 选择任意对象（例如，前平面和右平面）
+* 逐步调试宏。宏会在数据库中直接预选择挤压特征所需的对象（即用户看不到）
 
-As the result the extrude is created with the specified direction up to specified surface and all the original user selections are preserved.
+结果是创建了指定方向延伸到指定表面的挤压特征，并且保留了所有原始用户选择。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -44,20 +44,20 @@ Sub main()
         Dim swDirectionSeg As SldWorks.SketchSegment
         Set swDirectionSeg = swDirectionSketch.GetSketchSegments()(0)
         
-        swSelMgr.SuspendSelectionList 'preserving current selections
+        swSelMgr.SuspendSelectionList '保留当前选择
         
-        'selecting objects for extrude features (those selections won't be visible in the graphics view)
+        '选择用于挤压特征的对象（这些选择在图形视图中不可见）
         AddToCurrentSelectionSet swProfileSketch, 0
         AddToCurrentSelectionSet swBoundarySurface, 1
         AddToCurrentSelectionSet swDirectionSeg, 16
         
         swModel.FeatureManager.FeatureExtrusion2 True, False, False, swEndConditions_e.swEndCondUpToSurface, 0, 0, 0, False, False, False, False, 0, 0, False, False, False, False, True, True, True, 0, 0, False
 
-        'resuming the original selections
+        '恢复原始选择
         swSelMgr.ResumeSelectionList
         
     Else
-        MsgBox "Please open the sample model"
+        MsgBox "请打开示例模型"
     End If
 
 End Sub
@@ -74,5 +74,3 @@ Sub AddToCurrentSelectionSet(obj As Object, selMark As Integer)
     
 End Sub
 ~~~
-
-
