@@ -1,25 +1,25 @@
 ---
-title: 'Whats New: new features and bug fixes in Geometry++'
-caption: Whats New
-description: Version history for Geometry++ add-in for SOLIDWORKS
+title: '新功能和错误修复：Geometry++ 的新功能和错误修复'
+caption: 新功能和错误修复
+description: SOLIDWORKS 的 Geometry++ 插件的版本历史记录
 toc-group-name: labs-solidworks-geometry-plus-plus
 sidebar_position: 0
 ---
-This page lists the version history of the released of Geometry++ add-in for SOLIDWORKS advanced geometry. It includes the most notable feature implemented and bugs fixed.
+本页面列出了 SOLIDWORKS 高级几何的 Geometry++ 插件的版本历史记录。其中包括实施的最显著功能和修复的错误。
 
-## v.0.1.1 (Preview 1)
-* Added the feature to convert solid bodies to surface bodies
-* Adeed the feature to trim surfaces by the sketches or regions
+## v.0.1.1 (预览版 1)
+* 添加了将实体转换为曲面的功能
+* 添加了通过草图或区域修剪曲面的功能
 
 ## v.0.2.2 (Alpha 1)
-* Added the feature to add fillets to bodies
-* Added the feature to extrude surface with caps at the ends
-* Modified the trim surfaces feature to support solid bodies. Feature is renamed to 'Crop Bodies'
-* Add a minor improvement on insertion performance as per [issue 1](https://github.com/codestackdev/geometry-plus-plus/issues/1)
-* Implemented capturing of logs for troubleshooting
+* 添加了向实体添加倒角的功能
+* 添加了在两端带有盖帽的曲面挤压功能
+* 修改了修剪曲面功能以支持实体。功能更名为“裁剪实体”
+* 根据 [问题 1](https://github.com/codestackdev/geometry-plus-plus/issues/1) 对插入性能进行了轻微改进
+* 实施了用于故障排除的日志捕获功能
 
 ## v.0.3.0 (Alpha 2)
-* Added the feature to create sheet bodies form the faces of input solid or surface body 
+* 添加了从输入的实体或曲面的面创建平面体的功能
 
 ## v.0.4.0 (Alpha 3)
-* Added the feature to suspend rebuild operations
+* 添加了暂停重建操作的功能
