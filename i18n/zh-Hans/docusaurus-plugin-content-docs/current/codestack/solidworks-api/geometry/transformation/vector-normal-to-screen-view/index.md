@@ -1,5 +1,5 @@
 ---
-title: 使用SOLIDWORKS API创建垂直于屏幕视图的矢量
+title: 创建垂直于屏幕视图的矢量
 caption: 创建垂直于屏幕视图的矢量
 description: 该示例演示了如何使用SOLIDWORKS API绘制一条垂直于当前视图方向相对于屏幕的草图线。
 image: sw-view-screen-transformation.png
