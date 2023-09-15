@@ -1,32 +1,32 @@
 ---
-title: Examples and source code for SwEx.Addin framework for SOLIDWORKS API
-caption: Examples
-description: Collection of examples using the SwEx.Addin framework for SOLIDWORKS
+title: SwEx.Addin框架的示例和源代码
+caption: 示例
+description: 使用SwEx.Addin框架开发SOLIDWORKS的现代插件应用程序的示例集合
 toc-group-name: labs-solidworks-swex
 order: 6
 ---
-This section contains code examples and projects utilizing SwEx.Addin framework for developing modern add-in applications for SOLIDWORKS.
+本节包含使用SwEx.Addin框架开发SOLIDWORKS的代码示例和项目。
 
-## Dummy add-in used to debug main framework functionality (C#)
+## 用于调试主要框架功能的虚拟插件（C#）
 
-[Source Code](https://github.com/codestackdev/swex-addin/tree/master/AddInExample)
+[源代码](https://github.com/codestackdev/swex-addin/tree/master/AddInExample)
 
-Draft add-in which uses all functions of SwEx.Framework for demonstration purposes
+用于演示SwEx.Framework所有功能的草稿插件
 
-## Collection of Examples in C# and VB.NET
+## C#和VB.NET示例集合
 
-[Source Code](https://github.com/codestackdev/swex-examples/tree/master/add-in)
+[源代码](https://github.com/codestackdev/swex-examples/tree/master/add-in)
 
-Various C# and VB.NET examples which utilizing SwEx.AddIn framework
+使用SwEx.AddIn框架的各种C#和VB.NET示例
 
 ## Stock Master
 
-[Source Code](https://github.com/codestackdev/stock-fit-geometry)
+[源代码](https://github.com/codestackdev/stock-fit-geometry)
 
-Add-in to create round stock feature of solid bodies
+用于创建实体的圆形库存特征的插件
 
 ## Geometry++
 
-[Source Code](https://github.com/codestackdev/geometry-plus-plus)
+[源代码](https://github.com/codestackdev/geometry-plus-plus)
 
-Add-in which extends geometrical commands in SOLIDWORKS
+扩展SOLIDWORKS中的几何命令的插件
