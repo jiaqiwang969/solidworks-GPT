@@ -9,7 +9,7 @@ description: 该示例通过[NewSelectionNotify](https://help.solidworks.com/201
 
 *宏模块*
 
-~~~ vb
+``` vb
 Dim swApp As SldWorks.SldWorks
 Dim swEventsListener As EventsListener
 
@@ -31,13 +31,13 @@ Sub main()
         
 End Sub
 
-~~~
+```
 
 
 
 *EventsListener类*
 
-~~~ vb
+``` vb
 Dim swModel As SldWorks.ModelDoc2
 Dim WithEvents swAssy As SldWorks.AssemblyDoc
 Dim swSelMgr As SldWorks.SelectionMgr
@@ -89,4 +89,4 @@ Sub SetAssembly(assy As SldWorks.AssemblyDoc)
 End Sub
 
 
-~~~
+```
