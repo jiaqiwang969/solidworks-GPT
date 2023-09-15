@@ -1,37 +1,37 @@
 ---
 layout: sw-tool
-title: Macro to find and delete specific notes in the SOLIDWORKS drawing
-caption: Find And Delete Notes
-description: VBA macro to find and delete notes in all SOLIDWORKS drawing sheets based on the text, regular expressions or empty values
+title: 在SOLIDWORKS图纸中查找并删除特定注释的宏
+caption: 查找并删除注释
+description: VBA宏，根据文本、正则表达式或空值，在所有SOLIDWORKS图纸工作表中查找并删除注释
 image: delete-note.svg
-labels: [note, delete, regular expression, regex]
-group: Drawing
+labels: [注释, 删除, 正则表达式, regex]
+group: 图纸
 ---
-This VBA macro allows to find and delete all notes in the SOLIDWORKS drawing based on the various criteria, such as by text, expression (property linked text), regular expression or empty values.
+这个VBA宏允许根据不同的条件（如文本、表达式（属性链接文本）、正则表达式或空值）查找并删除SOLIDWORKS图纸中的所有注释。
 
-## Configuration
+## 配置
 
-Macro can be configured by modifying the constants
+可以通过修改常量来配置宏
 
 ~~~ vb
-Const FILTER As String = "" 'filter to use whe SEARCH_TYPE is set to ByText or ByExpression
-Const SEARCH_TYPE As Integer = SearchType_e.EmptyText 'Type of Search (ByText, ByExpression, EmptyText, EmptyExpression, All)
-Const USE_REGULAR_EXPRESSION As Boolean = False 'True to treat value in the FILTER constant as regular expressions
+Const FILTER As String = "" '当SEARCH_TYPE设置为ByText或ByExpression时使用的过滤器
+Const SEARCH_TYPE As Integer = SearchType_e.EmptyText '搜索类型（ByText、ByExpression、EmptyText、EmptyExpression、All）
+Const USE_REGULAR_EXPRESSION As Boolean = False '将FILTER常量中的值视为正则表达式
 ~~~
 
-### Finding All Notes
+### 查找所有注释
 
-Set the value of **SEARCH_TYPE** constant to **All** and all notes will be found and deleted
+将**SEARCH_TYPE**常量的值设置为**All**，将找到并删除所有注释。
 
-### Searching By Text
+### 按文本查找
 
-Set the value of the display text of the note to the **FILTER** constant and **SEARCH_TYPE** to **ByText** and all notes which match this value will be found and deleted.
+将注释的显示文本的值设置为**FILTER**常量，并将**SEARCH_TYPE**设置为**ByText**，将找到并删除与此值匹配的所有注释。
 
-### Searching By Expression
+### 按表达式查找
 
-Set the value of the expression (property linked text) of the note to the **FILTER** constant and **SEARCH_TYPE** to **ByExpression** and all notes which match this value will be found and deleted.
+将注释的表达式（属性链接文本）的值设置为**FILTER**常量，并将**SEARCH_TYPE**设置为**ByExpression**，将找到并删除与此值匹配的所有注释。
 
-This can be used to find the notes linked to custom properties, for example the below example will find all notes which are linked to the **Part Number** custom property of the drawing.
+这可以用于查找链接到自定义属性的注释，例如下面的示例将查找链接到图纸的**零件编号**自定义属性的所有注释。
 
 ~~~ vb
 Const FILTER As String = "$PRPSHEET:""Part Number"""
@@ -39,15 +39,15 @@ Const SEARCH_TYPE As Integer = SearchType_e.ByExpression
 Const USE_REGULAR_EXPRESSION As Boolean = False
 ~~~
 
-### Searching By Empty Text Or Expression
+### 按空文本或表达式查找
 
-Set the value of **SEARCH_TYPE** constant to **EmptyText** or **EmptyExpression** and all empty notes will be found and deleted
+将**SEARCH_TYPE**常量的值设置为**EmptyText**或**EmptyExpression**，将找到并删除所有空注释。
 
-### Regular Expressions
+### 正则表达式
 
-For more advanced searching options it is possible to use the regular expressions. To enable this option set the **USE_REGULAR_EXPRESSION** to **True**. See [Regular Expressions](https://docs.microsoft.com/en-us/dotnet/standard/base-types/the-regular-expression-object-model) for more information
+为了进行更高级的搜索选项，可以使用正则表达式。要启用此选项，请将**USE_REGULAR_EXPRESSION**设置为**True**。有关更多信息，请参见[正则表达式](https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/the-regular-expression-object-model)。
 
-Example below will find and delete all notes which contain numeric value.
+下面的示例将查找并删除所有包含数字值的注释。
 
 ~~~ vb
 Const FILTER As String = "\d+"
@@ -82,7 +82,7 @@ Sub main()
         DeleteNotes swDraw
         
     Else
-        Err.Raise vbError, "", "Only drawings are supported"
+        Err.Raise vbError, "", "仅支持图纸"
     End If
     
 End Sub
@@ -141,7 +141,7 @@ Sub DeleteNotes(draw As SldWorks.DrawingDoc)
             If False <> draw.Extension.DeleteSelection2(swDeleteSelectionOptions_e.swDelete_Absorbed) Then
                 draw.SetSaveFlag
             Else
-                Err.Raise vbError, "", "Failed to delete annotations"
+                Err.Raise vbError, "", "删除注释失败"
             End If
         End If
         
@@ -186,5 +186,3 @@ Function ShouldDeleteNote(note As SldWorks.note) As Boolean
     
 End Function
 ~~~
-
-
