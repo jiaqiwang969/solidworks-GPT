@@ -1,43 +1,44 @@
 ---
 layout: sw-tool
-title: VBA macro to export component positions to CSV via SOLIDWORKS API
-caption: Export Components Positions
-description: This macro exports positions of components to an external CSV text file using SOLIDWORKS API
+title: 使用SOLIDWORKS API将组件位置导出为CSV的VBA宏
+caption: 导出组件位置
+description: 该宏使用SOLIDWORKS API将组件的位置导出到外部CSV文本文件中
 image: components-positions-table.png
-labels: [export,csv,excel,origin]
-group: Assembly
+labels: [导出,CSV,Excel,起点]
+group: 组件装配
 ---
-![Exported positions of components in Excel](components-positions-table.png){ width=350 }
+![在Excel中导出的组件位置](components-positions-table.png){ width=350 }
 
-This macro exports the positions of components (X, Y, Z) from the active assembly to the comma separated values (CSV) file using SOLIDWORKS API. The file can be opened in Excel or any text editor.
+该宏使用SOLIDWORKS API将活动装配中的组件位置（X、Y、Z）导出到逗号分隔值（CSV）文件中。该文件可以在Excel或任何文本编辑器中打开。
 
-The component position is a coordinate of the origin point (0, 0, 0) relative to the assembly origin.
+组件位置是相对于装配起点的原点坐标（0, 0, 0）。
 
-Macro can export all components or only the instances of the selected component.
+宏可以导出所有组件或仅导出所选组件的实例。
 
-* Specify the path to output file via *OUT_FILE_PATH* constant
+* 通过*OUT_FILE_PATH*常量指定输出文件的路径
 
 ~~~ vb
 Const OUT_FILE_PATH As String = "D:\locations.csv"
 ~~~
 
-* Specify the conversion factor from meters for the coordinates
+* 指定坐标的米转换因子
 
 ~~~ vb
-Const CONV_FACTOR As Double = 1000 'meters to mm
+Const CONV_FACTOR As Double = 1000 '米转毫米
 ~~~
-* Optionally select the component to only export its instances (i.e. all of the components with the same file path and referenced configuration). Clear selection to export all components
 
-As the result the CSV file is created which contains
+* 可选择选择要仅导出其实例的组件（即具有相同文件路径和引用配置的所有组件）。清除选择以导出所有组件。
 
-* Component file full path
-* Referenced configuration
-* Component name
-* X, Y, Z coordinate of the origin in the specified units
+结果是创建了一个包含以下内容的CSV文件：
+
+* 组件文件完整路径
+* 引用配置
+* 组件名称
+* 指定单位中原点的X、Y、Z坐标
 
 ~~~ vb
 Const OUT_FILE_PATH As String = "D:\locations.csv"
-Const CONV_FACTOR As Double = 1000 'meters to mm
+Const CONV_FACTOR As Double = 1000 '米转毫米
 
 Dim swApp As SldWorks.SldWorks
 
@@ -59,7 +60,7 @@ Sub main()
         WriteTextFile OUT_FILE_PATH, table
         
     Else
-        MsgBox "Please open assembly"
+        MsgBox "请打开装配"
     End If
     
 End Sub
@@ -67,7 +68,7 @@ End Sub
 Function GetComponentsPositions(assy As SldWorks.AssemblyDoc, seedComp As SldWorks.Component2, convFactor As Double) As String
     
     Dim table As String
-    table = "Path,Configuration,Name,X,Y,Z"
+    table = "路径,配置,名称,X,Y,Z"
     
     Dim vComps As Variant
     vComps = assy.GetComponents(False)
@@ -137,5 +138,3 @@ Sub WriteTextFile(filePath As String, content As String)
     
 End Sub
 ~~~
-
-
