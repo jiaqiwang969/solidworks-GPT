@@ -18,15 +18,15 @@ group: 草图
 
 将以下代码粘贴到“切换按钮状态代码”文本框中：
 
-~~~ vb
+``` vb
 Return CType(Application, Object).Sw.GetUserPreferenceToggle(249)
-~~~
+```
 
 ![处理切换按钮状态的代码](toggle-state-code.png)
 
 下载图标[在这里](toggle-snapping.svg)
 
-~~~ vb
+``` vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -39,4 +39,4 @@ Sub main()
     swApp.SetUserPreferenceToggle swUserPreferenceToggle_e.swSketchInference, Not curVal
     
 End Sub
-~~~
+```
