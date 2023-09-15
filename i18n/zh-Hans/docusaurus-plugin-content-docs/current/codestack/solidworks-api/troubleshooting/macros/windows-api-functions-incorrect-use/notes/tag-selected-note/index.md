@@ -1,20 +1,20 @@
 ---
-title: Add Tag to selected note using SOLIDWORKS API
-caption: Add Tag To Selected Note
-description: Example demonstrates how to add text tag to the selected note in SOLIDWORKS model
+title: 使用SOLIDWORKS API向选定的注释添加标签
+caption: 向选定的注释添加标签
+description: 该示例演示了如何使用SOLIDWORKS API向SOLIDWORKS模型中的选定注释添加文本标签。
 image: drawing-note-revision.png
 labels: [note, annotation. tag, attribute]
 ---
-![Note with revision number in SOLIDWORKS drawing](drawing-note-revision.png){ width=300 }
+![SOLIDWORKS图纸中带有修订号的注释](drawing-note-revision.png){ width=300 }
 
-This example demonstrates how to add text tag (attribute) to the selected note in SOLIDWORKS model (part, assembly or drawing) using SOLIDWORKS API.
+该示例演示了如何使用SOLIDWORKS API向SOLIDWORKS模型（零件、装配或图纸）中的选定注释添加文本标签（属性）。
 
-Specify the name of the tag as the *TAG* constant in the macro.
+在宏中，将标签的名称指定为*TAG*常量。
 
-* The tag allows to track the specific note across the model sessions. This can be useful if macro needs to update the note (e.g. change the revision or linked value)
-* Tag is preserved if note changes its text or formatting
-* Tag is preserved if note moves (including moving from sheet space to sheet format)
-* Tag is not visible/changeable from the User Interface (it can only be accessed via SOLIDWORKS API)
+* 标签允许跟踪模型会话中的特定注释。如果宏需要更新注释（例如更改修订版或链接值），这将非常有用。
+* 如果注释更改其文本或格式，标签将被保留。
+* 如果注释移动（包括从工作表空间移动到工作表格式），标签将被保留。
+* 无法从用户界面中看到/更改标签（只能通过SOLIDWORKS API访问）。
 
 ~~~ vb
 Const TAG As String = "_CodeStackNote_"
@@ -32,11 +32,11 @@ Sub main()
     If Not swModel Is Nothing Then
         
         If Not TagSelectedNote(swModel, TAG) Then
-            MsgBox "Failed to add tag to the note"
+            MsgBox "向注释添加标签失败"
         End If
         
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -57,12 +57,10 @@ Function TagSelectedNote(model As SldWorks.ModelDoc2, TAG As String) As Boolean
         TagSelectedNote = True
         Exit Function
     Else
-        MsgBox "Please select note to add tag to"
+        MsgBox "请选择要添加标签的注释"
     End If
     
     TagSelectedNote = False
     
 End Function
 ~~~
-
-
