@@ -1,20 +1,20 @@
 ---
-title: Catch new feature creation event from SOLIDWORKS API notification
-caption: Catch New Feature Creation Event
-description: Example listens for feature added event of the active part document and displays the message box
-labels: [event, example, feature manager, new feature, solidworks api]
+title: 捕获SOLIDWORKS API通知中的新特征创建事件
+caption: 捕获新特征创建事件
+description: 该示例使用SOLIDWORKS API捕获活动零件文档的特征添加事件，并显示消息框。
+labels: [事件, 示例, 特征管理器, 新特征, solidworks api]
 redirect-from:
   - /2018/03/solidworks-api-features-manager-catch-adding-feat-event.html
 ---
-This example listens for feature added event of the active part document using SOLIDWORKS API.
+该示例使用SOLIDWORKS API捕获活动零件文档的特征添加事件。
 
-Once the new feature creation notification is caught, macro displays the message box to the user.
+一旦捕获到新特征创建通知，宏将向用户显示消息框。
 
-The listener is detached as soon as active part is closed.
+监听器在活动零件关闭时被解除连接。
 
-*Macro Module*
+*宏模块*
 
-~~~ vb
+```vb
 Dim swApp As SldWorks.SldWorks
 Dim swEventListener As EventListener
 
@@ -35,20 +35,17 @@ Sub main()
     Wend
     
 End Sub
+```
 
-~~~
+*EventListener类*
 
-
-
-*EventListener Class*
-
-~~~ vb
+```vb
 Dim WithEvents swPart As SldWorks.PartDoc
 
 Private Function swPart_AddItemNotify(ByVal EntityType As Long, ByVal itemName As String) As Long
 
     If EntityType = swNotifyEntityType_e.swNotifyFeature Then
-        MsgBox itemName & " feature is added"
+        MsgBox itemName & " 特征已添加"
     End If
     
 End Function
@@ -58,5 +55,4 @@ Sub SetPart(part As SldWorks.PartDoc)
     Set swPart = part
     
 End Sub
-~~~
-
+```
