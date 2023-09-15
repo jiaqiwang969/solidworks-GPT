@@ -1,26 +1,26 @@
 ---
 layout: sw-tool
-title: Macro to export selected sketch in SOLIDWORKS file to DXF/DWG file
-caption: Export Sketch To DXF/DWG
-description: VBA macro to export the selected 2D sketch in SOLIDWORKS part or assembly file to the DXF or DWG file
+title: 将SOLIDWORKS文件中的选定草图导出为DXF/DWG文件的宏
+caption: 导出草图至DXF/DWG
+description: 用于将SOLIDWORKS零件或装配文件中的选定2D草图导出为DXF或DWG文件的VBA宏
 image: dxf-sketch.svg
-labels: [sketch,export,dxf,dwg]
-group: Import/Export
+labels: [草图,导出,DXF,DWG]
+group: 导入/导出
 ---
-![DXF/DWG file created from the sketch](sketch-dwf-dwg.png){ width=350 }
+![从草图创建的DXF/DWG文件](sketch-dwf-dwg.png){ width=350 }
 
-This VBA macro exports the selected 2D sketch in part or assembly to DXF or DWG file.
+这个VBA宏将SOLIDWORKS零件或装配中的选定2D草图导出为DXF或DWG文件。
 
-## Options
+## 选项
 
-Configure the name of the output file by modifying the *EXPORT_NAME_TEMPLATE* constant as shown below using free text and placeholders.
+通过修改 *EXPORT_NAME_TEMPLATE* 常量来配置输出文件的名称，如下所示，使用自由文本和占位符。
 
-* \[title\] placeholder will be replaced with the title of the original part or assembly file (without extension)
-* \[sketch\] placeholder will be replaced with the name of the sketch DXF\DWG file created from
+* \[title\] 占位符将被替换为原始零件或装配文件的标题（不包括扩展名）
+* \[sketch\] 占位符将被替换为从中创建的草图DXF\DWG文件的名称
 
-Specify the extension (.dxf or .dwg) in the file template
+在文件模板中指定扩展名（.dxf或.dwg）
 
-File wil be saved in the same directory as original part or assembly document.
+文件将保存在与原始零件或装配文档相同的目录中。
 
 ~~~ vb
 Const EXPORT_NAME_TEMPLATE As String = "ExportFile_[title]_[sketch].dxf"
@@ -56,7 +56,7 @@ try:
         drawTemplate = swApp.GetUserPreferenceStringValue(swUserPreferenceStringValue_e.swDefaultTemplateDrawing)
         
         If drawTemplate = "" Then
-            Err.Raise vbError, "", "Failed to find the default template"
+            Err.Raise vbError, "", "未找到默认模板"
         End If
         
         Dim swDraw As SldWorks.ModelDoc2
@@ -69,13 +69,13 @@ try:
         exportFilePath = GetExportFilePath(swModel, swSketchFeat)
         
         If False = swDraw.Extension.SaveAs(exportFilePath, swSaveAsVersion_e.swSaveAsCurrentVersion, swSaveAsOptions_e.swSaveAsOptions_Silent, Nothing, errs, warns) Then
-            Err.Raise vbError, "", "Failed to export to DXF, DWG"
+            Err.Raise vbError, "", "导出DXF、DWG失败"
         End If
         
         swApp.CloseDoc swDraw.GetTitle
         
     Else
-        Err.Raise vbError, "", "Please select 2D sketch to export"
+        Err.Raise vbError, "", "请选择要导出的2D草图"
     End If
     
     GoTo finally
@@ -97,7 +97,7 @@ Function GetExportFilePath(model As SldWorks.ModelDoc2, sketch As SldWorks.Featu
     path = model.GetPathName
     
     If path = "" Then
-        Err.Raise vbError, "", "Original model is never saved"
+        Err.Raise vbError, "", "原始模型从未保存"
     End If
     
     title = Mid(path, InStrRev(path, "\") + 1, InStrRev(path, ".") - InStrRev(path, "\") - 1)
@@ -114,4 +114,3 @@ Function GetExportFilePath(model As SldWorks.ModelDoc2, sketch As SldWorks.Featu
     
 End Function
 ~~~
-
