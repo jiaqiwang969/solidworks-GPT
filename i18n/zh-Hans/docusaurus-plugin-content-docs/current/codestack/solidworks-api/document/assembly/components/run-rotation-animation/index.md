@@ -1,36 +1,36 @@
 ---
-title: Run rotation animation for the component using SOLIDWORKS API
-caption: Run Rotation Animation For The Component
-description: Example demonstrates how to run a smooth animation of components rotation around axis using the presentation transforms in SOLIDWORKS API
+title: 使用SOLIDWORKS API运行组件的旋转动画
+caption: 运行组件的旋转动画
+description: 该示例演示了如何使用SOLIDWORKS API中的演示变换来运行组件围绕轴的平滑旋转动画。
 image: component-rotation.gif
 labels: [assembly, transform, rotation, animation]
 ---
-![Component rotation animation around Y axis](component-rotation.gif)
+![组件围绕Y轴的旋转动画](component-rotation.gif)
 
-This macro demonstrates how to run a smooth animation of components rotation around Y axis of the component using the presentation transforms via [IComponent2::PresentationTransform](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.icomponent2~presentationtransform.html) SOLIDWORKS API method.
+该宏演示了如何使用演示变换通过[SOLIDWORKS API中的IComponent2::PresentationTransform](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.icomponent2~presentationtransform.html)方法来运行组件围绕Y轴的平滑旋转动画。
 
-This allows to only move the components for visual purposes without changing the geometry. Component will be moved regardless if it is fully defined in space (by mates or fix constraint). And the mates are still preserved.
+这样可以仅为了视觉效果而移动组件，而不改变几何形状。组件将被移动，无论它在空间中是否完全定义（通过约束或固定约束）。并且约束仍然保持不变。
 
-* Select any component in the assembly and run the macro
-* Component is rotated around its Y axis
-* To stop the animation clear the selection (deselect all objects)
-* To modify the speed of the rotation change the optional *speed* parameter of *RunRotationAnimation* method
+* 选择装配中的任何组件并运行宏
+* 组件围绕其Y轴旋转
+* 要停止动画，请清除选择（取消选择所有对象）
+* 要修改旋转速度，请更改*RunRotationAnimation*方法的可选*speed*参数
 
 ~~~ vb
 If Not swComp Is Nothing Then
-    RunRotationAnimation swModel, swComp, 2 'speed x2
+    RunRotationAnimation swModel, swComp, 2 '速度x2
 Else
-    MsgBox "Please select component"
+    MsgBox "请选择组件"
 End If
 ~~~
 
-### Note
+### 注意
 
-In order to enable presentation mode it is required to set the [IAssemblyDoc::EnablePresentation](https://help.solidworks.com/2012/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IAssemblyDoc~EnablePresentation.html) proeprty to True.
+为了启用演示模式，需要将[IAssemblyDoc::EnablePresentation](https://help.solidworks.com/2012/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IAssemblyDoc~EnablePresentation.html)属性设置为True。
 
-It is required to set this property to False after the animation is finished otherwise all SOLIDWORKS menues will be locked:
+在动画完成后，需要将此属性设置为False，否则所有SOLIDWORKS菜单都将被锁定：
 
-![Locked menu in the assembly presentation mode](locked-menu.png){ width=300 }
+![装配演示模式中的锁定菜单](locked-menu.png){ width=300 }
 
 ~~~ vb
 Const PI As Double = 3.14159265359
@@ -57,11 +57,11 @@ Sub main()
         If Not swComp Is Nothing Then
             RunRotationAnimation swModel, swComp
         Else
-            MsgBox "Please select component"
+            MsgBox "请选择组件"
         End If
         
     Else
-        MsgBox "Please open assembly"
+        MsgBox "请打开装配"
     End If
     
 End Sub
@@ -122,5 +122,3 @@ Function GetTransform(comp As SldWorks.Component2, angle As Double) As MathTrans
     
 End Function
 ~~~
-
-
