@@ -1,14 +1,14 @@
 ---
-title: Tab control in SOLIDWORKS property Manager Page
-caption: Tab
-description: Creating tab control in the Property Manager Page using SwEx.PMPage framework
+title: SOLIDWORKS 属性管理器页面中的选项卡控件
+caption: 选项卡
+description: 使用 SwEx.PMPage 框架在属性管理器页面中创建选项卡控件
 image: pmpage-tab.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
-![Controls grouped in Property Manager Page tabs](pmpage-tab.png)
+![属性管理器页面中的控件分组在选项卡中](pmpage-tab.png)
 
-Tab containers are created for the complex types decorated with [TabAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_TabAttribute.htm).
+使用 [TabAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_TabAttribute.htm) 对复杂类型进行装饰，可以创建选项卡容器。
 
 ~~~vb
 Imports CodeStack.SwEx.Common.Attributes
@@ -48,9 +48,9 @@ public class TabDataModel
 ~~~
 
 
-## Tab with nested groups
+## 带有嵌套分组的选项卡
 
-Controls can be added directly to tabs or can reside in the nested groups:
+控件可以直接添加到选项卡中，也可以位于嵌套分组中：
 
 ~~~vb
 Public Class TabControl2
