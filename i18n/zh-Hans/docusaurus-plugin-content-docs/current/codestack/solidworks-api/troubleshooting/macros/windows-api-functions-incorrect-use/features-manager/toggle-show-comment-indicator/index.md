@@ -1,13 +1,13 @@
 ---
-title: Toggle Show Comment Indicator option using SOLIDWORKS API
-caption: Toggle Show Comment Indicator option
-description: VBA macro to turn On and Off the Show Comment Indicator option of Feature Manager tree using SOLIDWORKS API and Windows API
+title: 使用SOLIDWORKS API切换显示注释指示器选项
+caption: 切换显示注释指示器选项
+description: 使用SOLIDWORKS API和Windows API切换特征管理器树中的“显示注释指示器”选项的VBA宏
 image: show-comment-indicator-command.png
 labels: [winapi,comments]
 ---
-![Show Comments Indicator command](show-comment-indicator-command.png){ width=350 }
+![显示注释指示器命令](show-comment-indicator-command.png){ width=350 }
 
-This VBA macro uses the combination of SOLIDWORKS API and Windows API to toggle the 'Show Comment Indicator' option in Feature Manager tree which is currently not available in SOLIDWORKS API.
+这个VBA宏使用SOLIDWORKS API和Windows API的组合来切换特征管理器树中的“显示注释指示器”选项，这个选项目前在SOLIDWORKS API中不可用。
 
 ~~~ vb
 #If VBA7 Then
@@ -33,5 +33,3 @@ Sub main()
     
 End Sub
 ~~~
-
-
