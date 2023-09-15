@@ -1,15 +1,15 @@
 ---
 layout: sw-tool
-title: Macro to copy SOLIDWORKS custom properties from cut-list to model
-caption: Copy Cut-List Custom Properties To Model
-description: VBA macro to copy SOLIDWORKS custom properties from cut-list (sheet metal or weldment) to model or configuration
+title: 将SOLIDWORKS切割清单的自定义属性复制到模型的宏
+caption: 复制切割清单自定义属性到模型
+description: VBA宏，将SOLIDWORKS切割清单（钣金或焊接）的自定义属性复制到模型或配置
 image: copy-cutlist-properties.svg
-labels: [cut-list,sheet metal,properties]
-group: Custom Properties
+labels: [切割清单,钣金,属性]
+group: 自定义属性
 ---
-This VBA macro copies the specified or all SOLIDWORKS custom properties from the sheet metal or weldment cut-list item to model or configuration.
+这个VBA宏将指定或所有SOLIDWORKS切割清单项的自定义属性复制到模型或配置。
 
-Properties from the first found cut-list will be copied.
+将复制第一个找到的切割清单的属性。
 
 ~~~ vb
 Const CONF_SPEC_PRP As Boolean = False
@@ -20,7 +20,7 @@ Dim PROPERTIES As Variant
 Dim swApp As SldWorks.SldWorks
 
 Sub Init(Optional dummy As Variant = Empty)
-    PROPERTIES = Array("Bounding Box Length", "Bounding Box Width", "Sheet Metal Thickness") 'list of custom properties to copy or Empty to copy all
+    PROPERTIES = Array("Bounding Box Length", "Bounding Box Width", "Sheet Metal Thickness") '要复制的自定义属性列表，或者为空以复制所有属性
 End Sub
 
 Sub main()
@@ -52,7 +52,7 @@ try_:
         CopyProperties swCutListPrpMgr, swTargetPrpMgr, PROPERTIES
         
     Else
-        Err.Raise vbError, "", "Cut-list is not found"
+        Err.Raise vbError, "", "未找到切割清单"
     End If
     
     GoTo finally_
@@ -108,7 +108,7 @@ Sub CopyProperties(srcPrpMgr As SldWorks.CustomPropertyManager, targPrpMgr As Sl
         Next
         
     Else
-        Err.Raise vbError, "", "No properties to copy"
+        Err.Raise vbError, "", "没有要复制的属性"
     End If
     
 End Sub
@@ -116,42 +116,42 @@ End Sub
 
 
 
-## Configuration
+## 配置
 
-Macro can be configured by changing the constants
+可以通过更改常量来配置宏
 
-### Properties Scope
+### 属性范围
 
-*CONF_SPEC_PRP* constant sets the target properties scope.
+*CONF_SPEC_PRP* 常量设置目标属性的范围。
 
-* True to copy properties to configuration specific tab
-* False to copy to Custom tab
+* True - 将属性复制到配置特定选项卡
+* False - 复制到自定义选项卡
 
-### Properties Source
+### 属性来源
 
-*COPY_RES_VAL* constant sets the property source
+*COPY_RES_VAL* 常量设置属性来源
 
-* True to copy resolved values
+* True - 复制解析值
     
-![Resolved values copied to custom properties](copied-property-values.png) { width=500 }
+![将解析值复制到自定义属性](copied-property-values.png) { width=500 }
 
-* False to copy expressions
+* False - 复制表达式
 
-![Expression are copied to custom properties](copied-expressions.png) { width=500 }
+![将表达式复制到自定义属性](copied-expressions.png) { width=500 }
 
-### Properties List
+### 属性列表
 
-*PROPERTIES* array contains list of properties to copy
+*PROPERTIES* 数组包含要复制的属性列表
     
-Copy specified properties
+复制指定的属性
 
 ~~~ vb
 Sub Init(Optional dummy As Variant = Empty)
-    PROPERTIES = Array("Prp1", "Prp2", "Prp3") 'Copy Prp1, Prp2, Prp3
+    PROPERTIES = Array("Prp1", "Prp2", "Prp3") '复制 Prp1, Prp2, Prp3
 End Sub
 ~~~
 
-Copy all properties
+复制所有属性
 
 ~~~ vb
 Sub Init(Optional dummy As Variant = Empty)
