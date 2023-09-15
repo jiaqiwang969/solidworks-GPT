@@ -1,19 +1,11 @@
----
-title: Run VBA and VSTA macros in SOLIDWORKS
-caption: Run Macros
-description: Running VBA and VSTA macros in SOLIDWORKS
-image: running-macro-menu.png
----
-The simplest way to run the macro is to call it from the *Tools->Macro->Run* menu command or toolbar.
+在SOLIDWORKS中运行宏的最简单方法是从“工具->宏->运行”菜单命令或工具栏调用它。
 
-![Running macro from menu](running-macro-menu.png)
+![从菜单中运行宏](running-macro-menu.png)
 
-Select the macro to run (either .swb or .swp for VBA macro or .dll for VSTA macro). Unless macro explicitly coded to stay active or *Stop VSTA debugger on macro exit* option in *Settings* is checked for VSTA macro, macro is unloaded from the memory once he execution is finished.
+选择要运行的宏（对于VBA宏，可以是.swb或.swp文件；对于VSTA宏，可以是.dll文件）。除非宏明确编码为保持活动状态，或者在VSTA宏的“设置”中选中了“在宏退出时停止VSTA调试器”选项，否则一旦执行完成，宏将从内存中卸载。
 
-Macro can be also run directly from the VBA Editor when [opened for editing](/docs/codestack/solidworks-api/getting-started/macros/edit/) either from the menu/toolbar or using *F10* shortcut.
+还可以直接从VBA编辑器中运行宏，方法是从菜单/工具栏或使用“F10”快捷键打开它进行编辑。
 
-![Running macro from VBA Editor](vba-editor-run-macro.png)
+![从VBA编辑器中运行宏](vba-editor-run-macro.png)
 
-Alternatively, macro can be run from the [macro button](/docs/codestack/solidworks-api/getting-started/macros/macro-buttons/) or command line [when SOLIDWORKS session starts](/docs/codestack/solidworks-api/getting-started/macros/run-macro-on-solidworks-start/)
-
-
+或者，可以从[宏按钮](/docs/codestack/solidworks-api/getting-started/macros/macro-buttons/)或[在SOLIDWORKS会话启动时](/docs/codestack/solidworks-api/getting-started/macros/run-macro-on-solidworks-start/)的命令行中运行宏。
