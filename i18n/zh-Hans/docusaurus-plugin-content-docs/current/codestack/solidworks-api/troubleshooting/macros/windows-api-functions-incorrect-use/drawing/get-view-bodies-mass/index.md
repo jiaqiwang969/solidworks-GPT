@@ -1,25 +1,26 @@
 ---
-title: Get mass of bodies in drawing view using SOLIDWORKS API
-caption: Get Mass From Drawing View
-description: C# VSTA macro example to find the total mass of all bodies in the selected drawing view using SOLIDWORKS API
+title: 使用SOLIDWORKS API获取绘图视图中的物体质量
+caption: 从绘图视图获取质量
+description: 使用SOLIDWORKS API，通过C# VSTA宏示例，找到所选绘图视图中所有物体的总质量
 image: multi-body-sheet-metal-mass-property.png
-labels: [view,mass,flat pattern]
+labels: [视图,质量,展平图案]
 ---
-It is possible to find the mass of the specific body by using the [IBody2::GetMassProperties](https://help.solidworks.com/2016/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ibody2~getmassproperties.html) SOLIDWORKS API method, but it is required to specify the density in order to calculate mass which might not be easy to extract.
 
-If it is required to find the mass of bodies in the drawing view, this method might not be applicable. The density is not available for the body if the material was applied to the body itself. It is possible to extract density form the material properties, but it will be required to [parse material XML file](http://localhost:4000/solidworks-api/document/materials/copy-custom-property/) to find the value of the node.
+可以使用[SOLIDWORKS API方法IBody2::GetMassProperties](https://help.solidworks.com/2016/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ibody2~getmassproperties.html)来找到特定物体的质量，但是需要指定密度才能计算质量，而密度可能不容易提取。
 
-![Drawing view of flat pattern](flat-pattern-drawing.png){ width=250 }
+如果需要找到绘图视图中物体的质量，这种方法可能不适用。如果将材料应用于物体本身，则无法获取物体的密度。可以从材料属性中提取密度，但需要[解析材料XML文件](http://localhost:4000/solidworks-api/document/materials/copy-custom-property/)以找到节点的值。
 
-Alternative option is to use [IMassProperty](https://help.solidworks.com/2017/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IMassProperty.html) interface.
+![展平图案的绘图视图](flat-pattern-drawing.png){ width=250 }
 
-![Body mass in part document](multi-body-sheet-metal-mass-property.png){ width=450 }
+另一种选择是使用[IMassProperty](https://help.solidworks.com/2017/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IMassProperty.html)接口。
 
-However pointers to bodies extracted at the drawing context are not applicable for the calculation. The mass value will always be equal to 0 in this case. The body pointers need to be converted to the part context in the corresponding configuration.
+![零件文档中的物体质量](multi-body-sheet-metal-mass-property.png){ width=450 }
 
-Below code of C# VSTA macro retrieves the mass of all bodies in the selected drawing view using SOLIDWORKS API and displays the result in the message box.
+但是，在绘图上下文中提取的物体指针不适用于计算。在这种情况下，质量值始终为0。需要将物体指针转换为相应配置中的零件上下文。
 
-~~~ cs
+以下是使用SOLIDWORKS API获取所选绘图视图中所有物体的质量并在消息框中显示结果的C# VSTA宏代码。
+
+```cs
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,18 +45,18 @@ namespace GetMassPropertyFromBody
                     {
                         var mass = GetViewBodiesMass(view);
 
-                        swApp.SendMsgToUser2(string.Format("Mass of body(ies) in selected view is {0:0.000} kg", mass),
+                        swApp.SendMsgToUser2(string.Format("所选视图中物体的质量为 {0:0.000} kg", mass),
                                     (int)swMessageBoxIcon_e.swMbInformation,
                                     (int)swMessageBoxBtn_e.swMbOk);
                     }
                     else
                     {
-                        throw new NullReferenceException("Please select drawing view");
+                        throw new NullReferenceException("请选择绘图视图");
                     }
                 }
                 else
                 {
-                    throw new InvalidCastException("Please open drawing document");
+                    throw new InvalidCastException("请打开绘图文档");
                 }
             }
             catch(Exception ex)
@@ -91,7 +92,7 @@ namespace GetMassPropertyFromBody
                     else
                     {
                         throw new InvalidOperationException(
-                            "Failed to add bodies to the mass properties scope");
+                            "无法将物体添加到质量属性范围");
                     }
                 }
                 catch
@@ -105,7 +106,7 @@ namespace GetMassPropertyFromBody
             }
             else
             {
-                throw new InvalidCastException("Only part views are supported");
+                throw new InvalidCastException("仅支持零件视图");
             }
         }
 
@@ -119,7 +120,7 @@ namespace GetMassPropertyFromBody
 
                 if (visComps == null || !visComps.Any())
                 {
-                    throw new NullReferenceException("No components in this view");
+                    throw new NullReferenceException("此视图中没有组件");
                 }
 
                 var faces = view.GetVisibleEntities2(visComps.First() as Component2,
@@ -149,7 +150,7 @@ namespace GetMassPropertyFromBody
 
                 if (corrBody == null)
                 {
-                    throw new NullReferenceException(string.Format("Failed to find the corresponding body of {0}", b.Name));
+                    throw new NullReferenceException(string.Format("找不到{0}的对应物体", b.Name));
                 }
 
                 return corrBody;
@@ -159,7 +160,5 @@ namespace GetMassPropertyFromBody
         public SldWorks swApp;
     }
 }
-
-
-~~~
+```
 
