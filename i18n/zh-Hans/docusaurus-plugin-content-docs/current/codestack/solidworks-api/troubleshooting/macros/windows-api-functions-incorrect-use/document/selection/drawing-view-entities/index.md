@@ -1,23 +1,23 @@
 ---
-title: Selecting entities in drawing view using SOLIDWORKS API
-caption: Selecting Entities In Drawing View
-description: Example demonstrates different approaches of selecting entities (e.g. edge, face, vertex) in the drawing views
+title: 使用SOLIDWORKS API在绘图视图中选择实体
+caption: 在绘图视图中选择实体
+description: 该示例演示了使用SOLIDWORKS API在绘图视图中选择实体（例如边、面、顶点）的不同方法。
 image: circular-edge-selected-in-views.png
 ---
-![Named edge is selected in 3 drawing views](circular-edge-selected-in-views.png){ width=300 }
+![在3个绘图视图中选择了命名边](circular-edge-selected-in-views.png){ width=300 }
 
-This example demonstrates different approaches of selecting entities (e.g. edge, face, vertex) in the drawing views using SOLIDWORKS API
+该示例演示了使用SOLIDWORKS API在绘图视图中选择实体（例如边、面、顶点）的不同方法。
 
-1. Selecting entity in the target view via direct [IView:SelectEntity](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IView~SelectEntity.html) method. This method is useful when it is required to select entity without the need of passing any additional data (such as selection mark or callout).
-1. Selecting entity by specifying the view in the selection data via [ISelectData::View](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ISelectData~View.html) SOLIDWORKS API property. This enables more flexibility compared to previous method as it is possible to provide more selection information.
-1. Selecting visual entities. This approach allows to find the entity in the context of the drawing view. The main benefit as it would only attempt to select the entity which is visible in the current view orientation while previous two approaches do not consider the case where entity is hidden behind other entities.
+1. 通过直接使用[IView:SelectEntity](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IView~SelectEntity.html)方法在目标视图中选择实体。当需要选择实体而不需要传递任何附加数据（例如选择标记或标注）时，此方法非常有用。
+2. 通过在选择数据中指定视图来选择实体，使用的是[ISelectData::View](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ISelectData~View.html) SOLIDWORKS API属性。与前一种方法相比，这种方法更加灵活，因为可以提供更多的选择信息。
+3. 选择可见实体。这种方法允许在绘图视图的上下文中查找实体。其主要优点是它只会尝试选择当前视图方向中可见的实体，而前两种方法不考虑实体被其他实体遮挡的情况。
 
-* To run the macro download the [sample model and the drawing](plate-with-hole.zip).
-* Circular edge was named *Hole* in the part document
+* 要运行宏，请下载[示例模型和绘图](plate-with-hole.zip)。
+* 在零件文档中，圆形边缘被命名为*Hole*。
 
-![Named edge in SOLIDWORKS part](named-edge.png){ width=300 }
+![在SOLIDWORKS零件中命名的边缘](named-edge.png){ width=300 }
 
-* Run the macro and this edge is selected in all 3 views with 3 different approaches described above.
+* 运行宏后，此边缘将在所有3个视图中使用上述3种不同的方法被选择。
 
 ~~~ vb
 Const ENT_NAME As String = "Hole"
@@ -92,5 +92,3 @@ Sub SelectFromVisibleEntities(view As SldWorks.view)
     
 End Sub
 ~~~
-
-
