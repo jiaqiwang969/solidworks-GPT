@@ -1,6 +1,6 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API将组件名称复制到组件引用
+title: 将组件名称复制到组件引用
 caption: 将组件名称复制到组件引用
 description: 使用SOLIDWORKS API将活动装配中的组件名称复制到组件引用的VBA宏，具有仅处理虚拟组件的选项
 image: component-reference.png
