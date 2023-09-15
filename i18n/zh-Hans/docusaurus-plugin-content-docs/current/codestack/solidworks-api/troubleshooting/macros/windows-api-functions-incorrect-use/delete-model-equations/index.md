@@ -1,28 +1,29 @@
 ---
 layout: sw-tool
-title: Delete all equations from SOLIDWORKS model using SOLIDWORKS API
-caption: Delete All Equations
-description: Macro removes all of the equations (or optionally only broken equations) in the active model (part or assembly)
+title: 使用SOLIDWORKS API从SOLIDWORKS模型中删除所有方程
+caption: 删除所有方程
+description: 该宏可以使用SOLIDWORKS API从活动模型（零件或装配）中删除所有方程（或仅删除损坏的方程）。
 image: deleted-equations.svg
-labels: [api, clean, delete equations, equation, macro, utility, vba]
-group: Model
+labels: [api, 清理, 删除方程, 方程, 宏, 实用工具, vba]
+group: 模型
 redirect-from:
   - /2018/03/delete-all-equations-from-solidworks.html
 ---
-This macro removes all of the equations (or optionally only broken equations) in the active model (part or assembly) using SOLIDWORKS API.
 
-![Equations Manager dialog](equations-manager.png){ width=640 }
+该宏可以使用SOLIDWORKS API从活动模型（零件或装配）中删除所有方程（或仅删除损坏的方程）。
 
-If active model is assembly, macro optionally allows to remove all equations from each component of the assembly. The following message will be displayed. Click **Yes** to remove equations from all components on all levels and **No** to only process equations of the top level assembly.
+![方程管理器对话框](equations-manager.png){ width=640 }
 
-![Macro option to delete equations in the assembly components](delete-comps.png){ width=320 height=120 }
+如果活动模型是装配体，则该宏可以选择从装配体的每个组件中删除所有方程。将显示以下消息。单击**是**以从所有组件的所有级别中删除方程，单击**否**以仅处理顶层装配体的方程。
 
-Set the *DELETE_BROKEN_ONLY* option to *True* in order to only remove the broken (dangling) equations.
+![删除装配体组件中的方程的宏选项](delete-comps.png){ width=320 height=120 }
 
-**IMPORTANT: Use this macro on your own risk. This macro modifies your data (deletes all equations) please backup your file before running this macro**
+将*DELETE_BROKEN_ONLY*选项设置为*True*，以仅删除损坏（悬空）的方程。
+
+**重要提示：使用此宏时请自行承担风险。此宏会修改您的数据（删除所有方程），请在运行此宏之前备份您的文件**
 
 ~~~ vb
-Const DELETE_BROKEN_ONLY As Boolean = False 'if this flag is True than only broken equations are deleted, otherwise all equations are deleted
+Const DELETE_BROKEN_ONLY As Boolean = False '如果此标志为True，则仅删除损坏的方程，否则删除所有方程
 
 Dim swApp As SldWorks.SldWorks
 Dim swModel As SldWorks.ModelDoc2
@@ -43,12 +44,12 @@ try_:
     
     If swModel.GetType = swDocumentTypes_e.swDocASSEMBLY Then
         
-        If swApp.SendMsgToUser2("Do you want to delete equations in all components of the assembly?", swMessageBoxIcon_e.swMbQuestion, swMessageBoxBtn_e.swMbYesNo) = swMessageBoxResult_e.swMbHitYes Then
+        If swApp.SendMsgToUser2("是否要删除装配体的所有组件中的方程？", swMessageBoxIcon_e.swMbQuestion, swMessageBoxBtn_e.swMbYesNo) = swMessageBoxResult_e.swMbHitYes Then
             
             Dim swAssy As SldWorks.AssemblyDoc
             Set swAssy = swModel
             
-            'component needs to be loaded in memory in order to process it's equations
+            '需要将组件加载到内存中以处理其方程
             swAssy.ResolveAllLightWeightComponents True
             
             Dim vComps As Variant
@@ -102,7 +103,7 @@ Sub DeleteEquationsFromModel(model As SldWorks.ModelDoc2, ByRef hasDeleted As Bo
     
     hasDeleted = False
     
-    'iterate in the reverse direction as the equation index will change once previous equation is deleted
+    '以相反的方向迭代，因为删除前一个方程后，方程索引会发生变化
     For i = swEqMgr.GetCount - 1 To 0 Step -1
         
         If Not DELETE_BROKEN_ONLY Or IsEquationBroken(swEqMgr, i) Then
@@ -112,7 +113,7 @@ Sub DeleteEquationsFromModel(model As SldWorks.ModelDoc2, ByRef hasDeleted As Bo
     Next
     
     If hasDeleted Then
-        'deleting equation doesn't make the model dirty
+        '删除方程不会使模型变为脏模型
         model.SetSaveFlag
     End If
     
@@ -123,12 +124,10 @@ Function IsEquationBroken(eqMgr As SldWorks.EquationMgr, index As Integer) As Bo
     Const STATUS_BROKEN As Integer = -1
     
     Dim val As String
-    val = eqMgr.Value(index) 'evaluate to get the status
+    val = eqMgr.Value(index) '求值以获取状态
     
     IsEquationBroken = (eqMgr.Status = STATUS_BROKEN)
     
 End Function
 
 ~~~
-
-
