@@ -1,14 +1,14 @@
 ---
-caption: Select All Drawing Dimensions
-title: Macro to select all dimensions from the drawing views of the active sheet of SOLIDWORKS drawing
-description: VBA macro demonstrates how to select all dimensions from the drawing views of the active sheet of SOLIDWORKS drawing using SOLIDWORKS API in a batch mode
-image: select-all-dimensions.png
----
-![All dimensions selected in the drawing views](select-all-dimensions.png){ width=400 }
+caption: 选择所有绘图尺寸
+title: 宏以批处理模式选择SOLIDWORKS绘图活动工作表中的所有绘图视图的尺寸
+description: 此VBA宏演示了如何在SOLIDWORKS绘图活动工作表中查找所有绘图视图的尺寸。
+所有尺寸都以批处理模式进行选择。
 
-This VBA macro demonstrates how to find all dimensions of all drawing views in the active sheet of the SOLIDWORKS drawing.
+![在绘图视图中选择所有尺寸](select-all-dimensions.png){ width=400 }
 
-All dimensions are selected in a batch mode.
+此VBA宏演示了如何在SOLIDWORKS绘图活动工作表中查找所有绘图视图的尺寸。
+
+所有尺寸都以批处理模式进行选择。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -67,9 +67,8 @@ Sub main()
     selCount = swModel.Extension.MultiSelect2(swDispDims, False, Nothing)
     
     If selCount <> UBound(swDispDims) + 1 Then
-        Err.Raise vbError, "", "Failed to select dimensions"
+        Err.Raise vbError, "", "无法选择尺寸"
     End If
     
 End Sub
 ~~~
-
