@@ -1,20 +1,16 @@
----
-title: 使用SOLIDWORKS API获取图纸体几何类型
-caption: 获取图纸体几何类型
-description: 该示例演示了如何使用SOLIDWORKS API来识别所选图纸体的类型（开放壳体、内部壳体、外部壳体）。
-image: face-shell-types.png
-labels: [示例, 面, 几何, 开放几何, 壳体, solidworks api, 拓扑]
-redirect-from:
-  - /2018/03/solidworks-api-geometry-get-body-geometry-type.html
----
+# 使用SOLIDWORKS API获取图纸体几何类型
+
+获取图纸体几何类型
+
+该示例演示了如何使用SOLIDWORKS API来识别所选图纸体的类型（开放壳体、内部壳体、外部壳体）。
+
+![面的壳体类型](face-shell-types.png){ width=400 height=243 }
 
 在SOLIDWORKS体中有3种类型的面：
 
-* **开放壳体**。与相连面一起的图纸体不形成封闭几何体（例如平面面，而壳体立方体或球体的面不会被视为开放）。
-* **内部壳体**。属于实体体的空腔中的面。
-* **外部壳体**。不属于前两组的任何其他面。
-
-![面的壳体类型](face-shell-types.png){ width=400 height=243 }
+- **开放壳体**。与相连面一起的图纸体不形成封闭几何体（例如平面面，而壳体立方体或球体的面不会被视为开放）。
+- **内部壳体**。属于实体体的空腔中的面。
+- **外部壳体**。不属于前两组的任何其他面。
 
 下面的示例使用SOLIDWORKS API来识别所选图纸体的类型。如果图纸体是开放几何体（包含开放壳体面）或封闭几何体（没有开放壳体面），则可以将封闭几何体图纸体转换为实体体。
 
@@ -99,4 +95,3 @@ namespace CodeStack
     }
 }
 ```
-
