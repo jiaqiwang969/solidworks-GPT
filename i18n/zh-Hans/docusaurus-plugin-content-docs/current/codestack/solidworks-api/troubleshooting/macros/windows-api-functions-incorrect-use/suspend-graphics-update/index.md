@@ -1,38 +1,39 @@
 ---
-title: Macro to suspend graphics update using SOLIDWORKS API
-caption: Suspend Graphics Update
-description: Example demonstrates how to suppress graphics update while performing the operations using SOLIDWORKS API
+title: 使用SOLIDWORKS API暂停图形更新的宏
+caption: 暂停图形更新
+description: 该示例演示了如何在使用SOLIDWORKS API执行操作时禁止图形更新。
 labels: [api, graphics, utility, suspend, performance]
 ---
-This macro demonstrates how to suspend graphics update while performing operations with feature tree and models (including opening of new documents) using SOLIDWORKS API.
 
-Macro copies the bodies from the external part into the newly created derived configuration of the active part document.
+该宏演示了如何在使用特征树和模型（包括打开新文档）进行操作时暂停图形更新，使用SOLIDWORKS API。
 
-Set the source part path (the part to copy bodies from) via *SRC_PART* constant
+该宏将外部零件中的实体复制到活动零件文档的新创建的派生配置中。
 
-~~~ vb
+通过 *SRC_PART* 常量设置源零件路径（要从中复制实体的零件）。
+
+``` vb
 Const SRC_PART As String = "C:\Sample.sldprt"
-~~~
+```
 
-Try both options to see the difference by changing the *SUPPRESS_UPDATES* constant
+通过更改 *SUPPRESS_UPDATES* 常量尝试两个选项以查看差异。
 
-~~~ vb
-Const SUPPRESS_UPDATES As Boolean = True 'True to suppress updates, False to show the updates (default behavior)
-~~~
+``` vb
+Const SUPPRESS_UPDATES As Boolean = True 'True表示禁止更新，False表示显示更新（默认行为）
+```
 
-Macro performs the following steps
+该宏执行以下步骤：
 
-* Opens the model with bodies to copy
-* Copies all the bodies into the memory
-* Closes the model
-* Creates new derived configuration in the original model
-* Inserts copied bodies
-* Suppresses the created features in all configurations except of this one
-* Activates the original configuration
+* 打开具有要复制的实体的模型
+* 将所有实体复制到内存中
+* 关闭模型
+* 在原始模型中创建新的派生配置
+* 插入复制的实体
+* 在除此配置之外的所有配置中禁止创建的特征
+* 激活原始配置
 
-If *SUPPRESS_UPDATES* option is set to true all of the operations will be hidden and only active state of the model will be shown on screen (i.e. model opening, feature insertion etc. will be invisible)
+如果将 *SUPPRESS_UPDATES* 选项设置为 true，则所有操作都将被隐藏，屏幕上只会显示模型的活动状态（即模型打开、特征插入等将不可见）。
 
-~~~ vb
+``` vb
 Const SUPPRESS_UPDATES As Boolean = True
 
 Const SRC_PART As String = "C:\Sample.sldprt"
@@ -75,14 +76,14 @@ Sub main()
         
         swModel.ShowConfiguration2 activeConfName
 
-End_: 'restore the flag otherwise all files will be opened invisible
+End_: '恢复标志，否则所有文件都将以不可见状态打开
     
         If SUPPRESS_UPDATES Then
             SuppressUpdates swModel, False
         End If
         
     Else
-        MsgBox "Please open part document"
+        MsgBox "请打开零件文档"
     End If
     
 End Sub
@@ -129,6 +130,4 @@ Function GetBodies(path As String) As Variant
     GetBodies = vBodies
     
 End Function
-~~~
-
-
+```
