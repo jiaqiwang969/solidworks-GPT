@@ -1,11 +1,11 @@
 ---
-title: Managing dimensions in the SOLIDWORKS macro feature using SwEx.MacroFeature framework
-caption: Dimensions
-description: Adding dimensions (linear and radial) to the SOLIDWORKS macro feature using SwEx.MacroFeature framework
+title: 使用SwEx.MacroFeature框架在SOLIDWORKS宏特征中管理尺寸
+caption: 尺寸
+description: 使用SwEx.MacroFeature框架将尺寸（线性和径向）添加到SOLIDWORKS宏特征中
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
-Dimensions is an additional source of input for macro feature. Dimensions can be defined in the following way:
+尺寸是宏特征的附加输入源。可以通过以下方式定义尺寸：
 
 ~~~ cs
 using CodeStack.SwEx.MacroFeature;
@@ -31,7 +31,7 @@ namespace CodeStack.SwEx
 
 
 
-It is required to arrange the dimensions after rebuild by overriding the [OnSetDimensions](https://docs.codestack.net/swex/macro-feature/html/M_CodeStack_SwEx_MacroFeature_MacroFeatureEx_1_OnSetDimensions.htm) method. Use [DimensionData::SetOrientation](https://docs.codestack.net/swex/macro-feature/html/M_CodeStack_SwEx_MacroFeature_Data_DimensionDataExtension_SetOrientation.htm) helper method to align the dimension.
+在重建后需要对尺寸进行排列，可以通过重写[OnSetDimensions](https://docs.codestack.net/swex/macro-feature/html/M_CodeStack_SwEx_MacroFeature_MacroFeatureEx_1_OnSetDimensions.htm)方法来实现。使用[DimensionData::SetOrientation](https://docs.codestack.net/swex/macro-feature/html/M_CodeStack_SwEx_MacroFeature_Data_DimensionDataExtension_SetOrientation.htm)辅助方法来对齐尺寸。
 
 ~~~ cs
 using CodeStack.SwEx.MacroFeature;
@@ -58,18 +58,18 @@ namespace CodeStack.SwEx
 
 
 
-*Origin* is a starting point of the dimension.
+*Origin*是尺寸的起点。
 
-For linear dimensions *orientation* represents the vector along the direction of the dimension (i.e. the direction of measured entity)
-For radial dimensions *orientation* represents the normal of the dimension (i.e. the vector of rotation of the dimension)
+对于线性尺寸，*orientation*表示沿尺寸方向的向量（即测量实体的方向）。
+对于径向尺寸，*orientation*表示尺寸的法线（即尺寸的旋转向量）。
 
-![Orientation of dimensions](dimensions-orientation.png){ width=350 }
+![尺寸的方向](dimensions-orientation.png){ width=350 }
 
-### Passing data from regeneration
+### 从重建中传递数据
 
-In some cases it might be required to pass the data from [OnRebuild](https://docs.codestack.net/swex/macro-feature/html/M_CodeStack_SwEx_MacroFeature_MacroFeatureEx_1_OnRebuild.htm) method to be used within the [OnSetDimensions](https://docs.codestack.net/swex/macro-feature/html/M_CodeStack_SwEx_MacroFeature_MacroFeatureEx_1_OnSetDimensions.htm). For example when the geometry is required to calculate the dimension position.
+在某些情况下，可能需要从[OnRebuild](https://docs.codestack.net/swex/macro-feature/html/M_CodeStack_SwEx_MacroFeature_MacroFeatureEx_1_OnRebuild.htm)方法中传递数据以在[OnSetDimensions](https://docs.codestack.net/swex/macro-feature/html/M_CodeStack_SwEx_MacroFeature_MacroFeatureEx_1_OnSetDimensions.htm)中使用。例如，当需要使用几何形状来计算尺寸位置时。
 
-This could be possible by creating custom rebuild result and returning from the regeneration function.
+可以通过创建自定义重建结果并从重建函数中返回来实现。
 
 ~~~ cs
 using CodeStack.SwEx.MacroFeature;
@@ -101,10 +101,10 @@ namespace CodeStack.SwEx
         {
             var featData = feature.GetDefinition() as IMacroFeatureData;
 
-            var resBodies = GetBodies(); //generating bodies
-            var customData = new MyData(); //creating custom data and assigning required values
+            var resBodies = GetBodies(); //生成几何体
+            var customData = new MyData(); //创建自定义数据并分配所需的值
 
-            return new CustomRebuildResult(featData, resBodies, customData); //returning custom rebuild result
+            return new CustomRebuildResult(featData, resBodies, customData); //返回自定义重建结果
         }
 
         protected override void OnSetDimensions(ISldWorks app, IModelDoc2 model, IFeature feature, MacroFeatureRebuildResult rebuildResult,
@@ -114,12 +114,12 @@ namespace CodeStack.SwEx
 
             var customData = rebuildRes.CustomData;
 
-            //TODO: use custom data to arrange dimensions
+            //TODO: 使用自定义数据来排列尺寸
         }
 
         private IBody2[] GetBodies()
         {
-            //TODO: create bodies for geometry
+            //TODO: 创建几何体
 
             return null;
         }
@@ -127,4 +127,3 @@ namespace CodeStack.SwEx
 }
 
 ~~~
-
