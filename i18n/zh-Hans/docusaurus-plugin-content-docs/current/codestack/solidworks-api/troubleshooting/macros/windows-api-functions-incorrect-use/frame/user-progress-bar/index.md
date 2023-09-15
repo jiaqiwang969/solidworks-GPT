@@ -30,7 +30,7 @@ SOLIDWORKS API提供了一种内置方法，可以在主线程锁定时（即在
 * 显示进度条
 * 按ESC键可以选择取消操作
 
-~~~ vb
+``` vb
 Const ITERATIONS_COUNT As Integer = 1000
 
 Dim swApp As SldWorks.SldWorks
@@ -131,4 +131,4 @@ Function GetProgressBarUpperBound(bodies As Variant) As Long
     GetProgressBarUpperBound = totalFaceCount * ITERATIONS_COUNT
     
 End Function
-~~~
+```
