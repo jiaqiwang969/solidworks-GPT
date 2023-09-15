@@ -1,11 +1,4 @@
----
-title: 使用SOLIDWORKS API获取选定的草图段信息
-caption: 获取选定的草图段信息
-description: 使用SOLIDWORKS API获取选定的草图段（线段、弧线、抛物线、样条等）的特定信息的VBA宏
-image: selected-sketch-segments.png
-labels: [草图段,选择]
----
-![在活动草图中选择的草图段](selected-sketch-segments.png){ width=450 }
+## 使用SOLIDWORKS API获取选定的草图段信息
 
 这个VBA宏演示了如何使用SOLIDWORKS API从选定的草图段中提取特定的草图段信息。
 
@@ -15,7 +8,7 @@ labels: [草图段,选择]
 
 ![草图段的特定信息被打印到VBA编辑器的即时窗口](printed-sketch-segments-info.png){ width=350 }
 
-~~~ vb
+```vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -105,4 +98,8 @@ Function PrintSketchSegmentInfo(skSeg As SldWorks.SketchSegment)
     End Select
     
 End Function
-~~~
+```
+
+[示例代码](https://github.com/solidworks-api/solidworks-api-docs/blob/main/examples/vba/selected-sketch-segments.vba)
+
+[原始链接](https://github.com/solidworks-api/solidworks-api-docs/blob/main/examples/vba/selected-sketch-segments.md)
