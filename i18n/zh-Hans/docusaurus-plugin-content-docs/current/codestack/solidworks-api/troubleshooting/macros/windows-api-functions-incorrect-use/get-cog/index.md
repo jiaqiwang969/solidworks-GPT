@@ -1,19 +1,20 @@
 ---
-title: Get center of gravity for the SOLIDWORKS component in assembly
-caption: Get Center Of Gravity
-description: VBA macro which demonstrate 2 approaches to calculate center of gravity of the component in the SOLIDWORKS assembly space
+title: 获取SOLIDWORKS组件在装配体中的重心
+caption: 获取重心
+description: 这个VBA宏演示了两种方法来计算SOLIDWORKS装配体中组件的重心（COG）
 image: mass-property.png
-labels: [assembly, component, cog, center of mass, center of gravity]
+labels: [装配体, 组件, 重心, 质心, 重力中心]
 ---
-This macro demonstrates 2 approaches to find the component's center of gravity (COG) related ot assembly coordinate system.
 
-Macro will calculate the COG for the selected component.
+这个宏演示了两种方法来找到组件相对于装配体坐标系的重心（COG）。
 
-## Transforming the coordinates
+宏将计算所选组件的重心。
 
-[IModelDocExtension::GetMassProperties2](https://help.solidworks.com/2017/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDocExtension~GetMassProperties2.html) API allows to calculate the mass properties data in the model.
+## 转换坐标
 
-When calculated on the component's model level coordinates need to be transformed into the assembly space using transforms in order to achieve the desired result.
+[IModelDocExtension::GetMassProperties2](https://help.solidworks.com/2017/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDocExtension~GetMassProperties2.html) API允许在模型中计算质量属性数据。
+
+当在组件的模型级别上计算时，需要使用变换将坐标转换为装配体空间，以达到所需的结果。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -64,15 +65,15 @@ End Sub
 
 
 
-## Using IMassProperty interface
+## 使用IMassProperty接口
 
-[IMassProperty](https://help.solidworks.com/2017/English/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IMassProperty.html) interface emulates the functionality of Mass Property feature in SOLIDWORKS
+[IMassProperty](https://help.solidworks.com/2017/English/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IMassProperty.html)接口模拟了SOLIDWORKS中的质量属性功能。
 
-![Mass properties dialog](mass-property.png){ width=400 }
+![质量属性对话框](mass-property.png){ width=400 }
 
-Similarly to the UI equivalent it is possible to assign bodies (including component bodies) for the calculation scope.
+与UI等效方法类似，可以为计算范围分配体（包括组件体）。
 
-One of the main benefits of this method compared to previous approach is that it is possible to calculate of COG for the lightweight components.
+与前一种方法相比，这种方法的主要优点之一是可以计算轻量级组件的重心。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -110,5 +111,3 @@ Sub main()
     
 End Sub
 ~~~
-
-
