@@ -1,19 +1,19 @@
 ---
 layout: sw-tool
-title: Macro to delete all empty feature folders in SOLIDWORKS files
-caption: Delete Empty Folders
-description: VBA macro deletes all empty feature folders in the SOLIDWORKS files (part or assembly)
+title: 删除SOLIDWORKS文件中的所有空特征文件夹的宏
+caption: 删除空文件夹
+description: VBA宏删除SOLIDWORKS文件（零件或装配体）中的所有空特征文件夹
 image: delete-folders.svg
-labels: [feature, empty, delete, cleanup]
-group: Model
+labels: [特征, 空, 删除, 清理]
+group: 模型
 ---
-![Delete feature manager folders](delete-folders.svg){ width=300 }
+![删除特征管理器文件夹](delete-folders.svg){ width=300 }
 
-This VBA macro will delete all empty feature folders from the active part or assembly.
+这个VBA宏将从活动零件或装配体中删除所有空的特征文件夹。
 
-> Feature folders which only contain empty folders will also be deleted.
+> 仅包含空文件夹的特征文件夹也将被删除。
 
-![Empty folders deleted from the feature manager tree](deleted-empty-folders.png)
+![从特征管理器树中删除的空文件夹](deleted-empty-folders.png)
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -105,5 +105,3 @@ Function FolderHasFeatures(folder As SldWorks.FeatureFolder) As Boolean
     
 End Function
 ~~~
-
-
