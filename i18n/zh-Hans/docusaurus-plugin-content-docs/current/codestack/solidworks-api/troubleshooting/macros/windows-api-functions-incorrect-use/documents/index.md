@@ -1,13 +1,13 @@
 ---
-title: 通过API管理SOLIDWORKS文档
-caption: 文档
-description: 使用SOLIDWORKS API关闭、打开、遍历文档的示例
+title: Managing SOLIDWORKS Documents with the API
+caption: Documents
+description: Examples of using the SOLIDWORKS API to enumerate, close, activate, open, and identify document types.
 labels: [documents]
 ---
-SOLIDWORKS文档在SOLIDWORKS API中表示为[IModelDoc2](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDoc2.html)接口。
+SOLIDWORKS documents are represented as [IModelDoc2](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDoc2.html) interfaces in the SOLIDWORKS API.
 
-SOLIDWORKS允许同时打开和保持活动多个文档。此外，文档可能包含嵌入的文档，例如装配体通常包含其他装配体或作为组件链接的零件，绘图引用底层文档以加载绘图视图，零件也可以嵌入零件。
+SOLIDWORKS allows multiple documents to be open and active at the same time. Additionally, documents can contain embedded documents, such as assemblies typically containing other assemblies or parts linked as components, drawings referencing underlying documents to load drawing views, and parts that can be embedded within other parts.
 
-请注意，文档可以是不可见的（例如在装配中加载），但仍加载到内存中，并且可以从API方法中遍历和访问。
+Note that documents can be invisible (e.g., loaded within an assembly) but still loaded into memory and can be traversed and accessed from API methods.
 
-本节包含使用SOLIDWORKS API管理文档（枚举、关闭、激活、打开、识别类型）的代码示例和宏。
+This section contains code examples and macros for managing documents with the SOLIDWORKS API (enumerating, closing, activating, opening, and identifying types).
