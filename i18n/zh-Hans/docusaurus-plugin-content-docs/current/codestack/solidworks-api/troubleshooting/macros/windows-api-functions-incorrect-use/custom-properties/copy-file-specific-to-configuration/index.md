@@ -1,18 +1,6 @@
----
-layout: sw-tool
-title: 将SOLIDWORKS文件特定的自定义属性复制到配置
-caption: 将文件特定的自定义属性复制到配置属性
-description: 该宏将所有文件特定的属性复制到活动配置的属性中，使用SOLIDWORKS API。
-image: file-specific-custom-properties.png
-labels: [configuration, copy, custom properties, utility]
-group: Custom Properties
-redirect-from:
-  - /2018/03/copy-file-specific-custom-properties-to.html
----
+## 代码说明
 
-该宏使用SOLIDWORKS API将所有文件特定的属性复制到活动配置的属性中。
-
-![文件的自定义选项卡中的属性](file-specific-custom-properties.png){ width=640 }
+此宏使用SOLIDWORKS API将所有文件特定的属性复制到活动配置的属性中。
 
 ```vb
 Dim swApp As SldWorks.SldWorks
@@ -54,5 +42,21 @@ Sub main()
     End If
    
 End Sub
-
 ```
+
+## 示例
+
+在以下示例中，我们有一个零件文件，其中包含一个文件特定的自定义属性。我们将使用上述宏将该属性复制到活动配置的属性中。
+
+![文件的自定义选项卡中的属性](file-specific-custom-properties.png){ width=640 }
+
+要运行此宏，请按照以下步骤操作：
+
+1. 打开SOLIDWORKS并打开一个零件或装配体文件。
+2. 打开Visual Basic for Applications (VBA)编辑器。
+3. 在VBA编辑器中，将上述代码粘贴到一个新的模块中。
+4. 单击运行按钮或按下F5键以运行宏。
+
+运行宏后，文件特定的自定义属性将被复制到活动配置的属性中。
+
+请注意，如果没有打开任何零件或装配体文件，将显示一个消息框提示您打开一个零件或装配体文件。
