@@ -13,11 +13,11 @@ labels: [属性,切割列表,配置]
 
 *PrintConfigurationSpecificProperties*的第二个参数允许指定是否需要从缓存中读取属性或需要解析属性。当需要解析表达式以在不同配置中得到不同的值时，这个选项非常重要，例如质量或体积属性。
 
-~~~ vb
+``` vb
 PrintConfigurationSpecificProperties swModel, False '解析配置的属性
-~~~
+```
 
-~~~
+```
 通用属性
     属性: 描述
     值/文本表达式: Test Part
@@ -37,9 +37,9 @@ PrintConfigurationSpecificProperties swModel, False '解析配置的属性
 
 切割列表属性
     -没有切割列表-
-~~~
+```
 
-~~~ vb
+``` vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -200,4 +200,4 @@ Sub PrintProperties(custPrpMgr As SldWorks.CustomPropertyManager, cached As Bool
     End If
     
 End Sub
-~~~
+```
