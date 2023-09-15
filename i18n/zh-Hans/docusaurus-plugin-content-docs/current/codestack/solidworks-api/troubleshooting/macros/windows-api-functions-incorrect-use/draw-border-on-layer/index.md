@@ -1,18 +1,18 @@
 ---
-title: Draw border of the active sheet on the specified layer
-caption: Draw Border On Layer
-description: VBA macro example demonstrates how to draw a border on the active drawing sheet on the specified layer considering the sheet scale
+title: 在指定图层上绘制活动工作表的边框
+caption: 在图层上绘制边框
+description: 此VBA宏示例演示了如何在活动绘图工作表上的指定图层上绘制边框，并考虑工作表比例。
 image: sheet-border.png
-labels: [border,layer,scale]
+labels: [边框,图层,比例]
 ---
-![Sheet border drawn on the layer](sheet-border.png){ width=350 }
+![在图层上绘制的工作表边框](sheet-border.png){ width=350 }
 
-This VBA macro draws a border around the active sheet on the specified layer.
+此VBA宏在指定图层上绘制活动工作表的边框。
 
-Macro considers sheet scale to calculate the correct coordinates of the border.
+宏会考虑工作表比例来计算边框的正确坐标。
 
-~~~ vb
-Const LAYER_NAME As String = "Border"
+``` vb
+Const LAYER_NAME As String = "边框"
 
 Dim swApp As SldWorks.SldWorks
 
@@ -60,6 +60,5 @@ Sub CreateLineOnLayer(skMgr As SldWorks.SketchManager, x1 As Double, y1 As Doubl
     swSkSeg.Layer = layerName
     
 End Sub
-~~~
-
+```
 
