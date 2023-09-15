@@ -1,12 +1,12 @@
 ---
-caption: Traverse Feature Tree Reversed
-title: Traverse SOLIDWORKS feature manager tree in the reversed order
-description: VBA macro to traverse feature manager tree in SOLIDWORKS document in the reversed order
+caption: 遍历特征树（反向）
+title: 在 SOLIDWORKS 特征管理器树中以反向顺序遍历
+description: VBA 宏以反向顺序遍历活动 SOLIDWORKS 文档的特征管理器树
 ---
 
-This VBA macro demonstrates how to traverse feature manager tree of the active SOLIDWORKS document in the reversed order.
+这个 VBA 宏演示了如何以反向顺序遍历活动 SOLIDWORKS 文档的特征管理器树。
 
-~~~ vb
+``` vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -35,5 +35,4 @@ Sub main()
     Loop While Not swFeat Is Nothing
     
 End Sub
-~~~
-
+```
