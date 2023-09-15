@@ -1,47 +1,47 @@
 ---
 layout: sw-tool
-title: Sort file and configuration specific custom properties using SOLIDWORKS API
-caption: Sort Custom Properties
-description: VBA macro to sort file and configuration specific custom properties (in ascending and descending order) using logical order via SOLIDWORKS API
+title: 使用SOLIDWORKS API对文件和配置特定的自定义属性进行排序
+caption: 排序自定义属性
+description: 使用SOLIDWORKS API按逻辑顺序对文件和所有配置的自定义属性进行排序的VBA宏（升序和降序均可）
 image: sort-custom-properties.svg
-labels: [sort, custom properties, bubble]
-group: Custom Properties
+labels: [排序, 自定义属性, 冒泡]
+group: 自定义属性
 ---
-![Sorted custom properties](sorted-custom-properties.png){ width=350 }
+![排序后的自定义属性](sorted-custom-properties.png){ width=350 }
 
-This VBA macro sorts the custom properties in a file and all configurations using the logical order with SOLIDWORKS API. Both ascending and descending order can be specified.
+这个VBA宏使用SOLIDWORKS API按逻辑顺序对文件和所有配置的自定义属性进行排序。可以指定升序和降序两种排序方式。
 
-Logical order sorts the element as follows. This is an order of files being ordered in Windows File Explorer
+逻辑顺序的排序规则如下。这是Windows文件资源管理器中文件的排序顺序：
 
-* Property1
-* Property2
-* Property3
-* Property12
-* Property20
-* Property21
-* Property30
+* 属性1
+* 属性2
+* 属性3
+* 属性12
+* 属性20
+* 属性21
+* 属性30
 
-While alphabetical sort for the above sequence would produce the following result:
+而按字母顺序排序的结果如下：
 
-* Property1
-* Property12
-* Property2
-* Property20
-* Property21
-* Property3
-* Property30
+* 属性1
+* 属性12
+* 属性2
+* 属性20
+* 属性21
+* 属性3
+* 属性30
 
-## Configuration
+## 配置
 
-Macro can be configured by changing the constant values in the macro as follows:
+可以通过更改宏中的常量值来配置宏，如下所示：
 
 ~~~ vb
-Const ASCENDING As Boolean = True 'True to sort ascending, False to sort descending
-Const REORDER_GENERAL_CUST_PRPS As Boolean = True 'True to sort file specific custom properties, False to skip
-Const REORDER_CONF_CUST_PRPS As Boolean = True 'True to sort configuration specific custom properties (for parts and assemblies), False to skip
+Const ASCENDING As Boolean = True 'True表示升序，False表示降序
+Const REORDER_GENERAL_CUST_PRPS As Boolean = True 'True表示对文件特定的自定义属性进行排序，False表示跳过
+Const REORDER_CONF_CUST_PRPS As Boolean = True 'True表示对配置特定的自定义属性进行排序（对于零件和装配体），False表示跳过
 ~~~
 
-Watch [video demonstration](https://youtu.be/jsjN8zNRTuc?t=97)
+观看[演示视频](https://youtu.be/jsjN8zNRTuc?t=97)
 
 ~~~ vb
 Declare PtrSafe Function StrCmpLogicalW Lib "shlwapi" (ByVal s1 As String, ByVal s2 As String) As Integer
@@ -90,7 +90,7 @@ Sub main()
         swModel.SetSaveFlag
         
     Else
-        MsgBox "Please open document"
+        MsgBox "请打开文档"
         
     End If
         
@@ -101,7 +101,7 @@ Sub ReorderProperties(custPrpMgr As SldWorks.CustomPropertyManager, asc As Boole
     Dim vPrpNames As Variant
     Dim vPrpTypes As Variant
     
-    'NOTE: returned properties values are resolved for both valOut and resValOut parameters
+    '注意：返回的属性值对valOut和resValOut参数都进行了解析
     custPrpMgr.GetAll2 vPrpNames, vPrpTypes, Empty, Empty
     
     If Not IsEmpty(vPrpNames) Then
@@ -124,7 +124,7 @@ Sub ReorderProperties(custPrpMgr As SldWorks.CustomPropertyManager, asc As Boole
             Dim vPrpData As Variant
             vPrpData = dict.Item(vPrpNames(i))
             If custPrpMgr.Add3(vPrpNames(i), vPrpData(0), vPrpData(1), swCustomPropertyAddOption_e.swCustomPropertyOnlyIfNew) <> swCustomInfoAddResult_e.swCustomInfoAddResult_AddedOrChanged Then
-                Err.Raise vbError, "", "Failed to add property"
+                Err.Raise vbError, "", "添加属性失败"
             End If
         Next
         
@@ -157,5 +157,3 @@ Function BubbleSort(vStrArray As Variant, asc As Boolean) As Variant
     
 End Function
 ~~~
-
-
