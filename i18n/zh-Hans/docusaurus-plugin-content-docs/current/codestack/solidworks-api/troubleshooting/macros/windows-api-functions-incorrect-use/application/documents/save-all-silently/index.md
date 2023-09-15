@@ -1,27 +1,27 @@
 ---
 layout: sw-tool
-title: Macro to save all opened documents silently using SOLIDWORKS API
-caption: Save All Documents Silently
-description: VBA macro to save all currently opened modified documents silently (without the popup messages) using SOLIDWORKS API
+title: 使用SOLIDWORKS API静默保存所有打开的文档的宏
+caption: 静默保存所有文档
+description: 使用SOLIDWORKS API，使用VBA宏静默保存当前打开的所有已修改文档
 image: save-all-documents.png
-labels: [save all,silent]
-group: Frame
+labels: [保存全部,静默]
+group: 框架
 ---
-This VBA macro allows to save all documents currently opened and modified in SOLIDWORKS silently using SOLIDWORKS API. Unlike default save as command where the various warning messages can be displayed while saving the files this macro will save documents without showing any popup messages.
+这个VBA宏允许使用SOLIDWORKS API静默保存当前打开和修改的所有文档。与默认的另存为命令不同，该宏在保存文件时不会显示各种警告消息。
 
-![Old version warning while saving file](older-version-save-warning.png){ width=350 }
+![在保存文件时显示旧版本警告](older-version-save-warning.png){ width=350 }
 
-Macro can be configured to either display the error (in case some of the files were not saved properly) or to keep it silent.
+可以配置宏以显示错误（如果某些文件未正确保存）或保持静默。
 
 ~~~ vb
-Const SHOW_ERROR As Boolean = False 'True to show message box in case of an error, False to keep it silent
+Const SHOW_ERROR As Boolean = False 'True表示在出现错误时显示消息框，False表示保持静默
 ~~~
 
-The result of the operation is displayed in the status bar.
+操作的结果将显示在状态栏中。
 
-![Result displayed in the status bar](status-bar.png)
+![在状态栏中显示结果](status-bar.png)
 
-This macro can be used as a part of background integration where modal dialogs should not be displayed.
+该宏可以作为后台集成的一部分使用，其中不应显示模态对话框。
 
 ~~~ vb
 Const SHOW_ERROR As Boolean = False
@@ -61,24 +61,23 @@ Sub main()
                 
                 If False = swModel.Save3(swSaveAsOptions_e.swSaveAsOptions_Silent, errs, warns) Then
                     failedCount = failedCount + 1
-                    Debug.Print "Failed to save " & swModel.GetTitle() & ": " & errs
+                    Debug.Print "无法保存 " & swModel.GetTitle() & ": " & errs
                 Else
                     savedCount = savedCount + 1
-                    Debug.Print "Saved " & swModel.GetTitle
+                    Debug.Print "已保存 " & swModel.GetTitle
                 End If
                 
             End If
             
         Next
         
-        swFrame.SetStatusBarText "Saved " & savedCount & " document(s). Failed: " & failedCount & " document(s)"
+        swFrame.SetStatusBarText "已保存 " & savedCount & " 个文档。失败: " & failedCount & " 个文档"
         
         If failedCount > 0 And SHOW_ERROR Then
-            swApp.SendMsgToUser2 "Some of the files failed to save automatically", swMessageBoxIcon_e.swMbWarning, swMessageBoxBtn_e.swMbOk
+            swApp.SendMsgToUser2 "一些文件未能自动保存", swMessageBoxIcon_e.swMbWarning, swMessageBoxBtn_e.swMbOk
         End If
         
     End If
     
 End Sub
 ~~~
-
