@@ -1,16 +1,17 @@
 ---
-title: Read table content into array using SOLIDWORKS API
-caption: Read Table Content Into Array
-description: Example demonstrates how to read the content of the selected table (Bill Of Materials, General Table, Cut-List Table etc.) into the 2-dimensional array
-labels: [array, bom, read, solidworks api, table]
+title: 使用SOLIDWORKS API将表格内容读入数组
+caption: 将表格内容读入数组
+description: 该示例演示了如何使用SOLIDWORKS API将选定表格（BOM、常规表格、切割清单表格等）的内容读入二维数组中。
+labels: [数组, BOM, 读取, SOLIDWORKS API, 表格]
 redirect-from:
   - /2018/03/solidworks-api-model-read-table-content-into-array.html
 ---
-This example demonstrates how to read the content of the selected table (Bill Of Materials, General Table, Cut-List Table etc.) into the 2-dimensional array using SOLIDWORKS API.
 
-[ITableAnnotation](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ITableAnnotation.html) SOLIDWORKS API interface provides an access to the data of all table types.
+该示例演示了如何使用SOLIDWORKS API将选定表格（BOM、常规表格、切割清单表格等）的内容读入二维数组中。
 
-~~~ vb
+[SOLIDWORKS API接口ITableAnnotation](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ITableAnnotation.html)提供了对所有表格类型的数据访问。
+
+```vb
 Dim swApp As SldWorks.SldWorks
 Dim swModel As SldWorks.ModelDoc2
 Dim swSelMgr As SldWorks.SelectionMgr
@@ -45,12 +46,10 @@ Sub main()
                 
             Next
         Else
-            MsgBox "Please select table"
+            MsgBox "请选中表格"
         End If
     Else
-        MsgBox "Please open model"
+        MsgBox "请打开模型"
     End If
 End Sub
-
-~~~
-
+```
