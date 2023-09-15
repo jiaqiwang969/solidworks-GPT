@@ -17,7 +17,7 @@ labels: [绘图,转换,草图]
 
 以下示例演示了如何在绘图视图中找到中心点（在图纸坐标系中），并使用SOLIDWORKS API使用变换直接在视图中绘制此点。
 
-~~~ vb
+``` vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -76,4 +76,7 @@ Sub DrawPoint(draw As SldWorks.DrawingDoc, view As SldWorks.view)
     draw.SketchManager.CreatePoint vPt(0), vPt(1), vPt(2)
     
 End Sub
-~~~
+```
+
+[//]: # (Permalink to this example)
+[//]: # (Permalink to this image)
