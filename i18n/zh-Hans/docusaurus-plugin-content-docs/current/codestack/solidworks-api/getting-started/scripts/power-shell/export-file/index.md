@@ -44,7 +44,7 @@ using System;
         {
             foreach(string lib in libs)
             {
-                Console.WriteLine(string.Format("Loading library: {0}", lib));
+                Console.WriteLine(string.Format("加载库: {0}", lib));
                 System.Reflection.Assembly assm = System.Reflection.Assembly.LoadFrom(lib);
                 Console.WriteLine(assm.GetName().ToString());
             }
@@ -67,13 +67,13 @@ using System;
         
         public static void ExportFile(string filePath, string outFilePath)
         {
-            Console.WriteLine("Connecting to SOLIDWORKS...");
+            Console.WriteLine("连接到SOLIDWORKS...");
 
             ISldWorks app = Activator.CreateInstance(Type.GetTypeFromProgID("SldWorks.Application")) as ISldWorks;
 
             if (app != null)
             {
-                Console.WriteLine(string.Format("Opening file '{0}'...", filePath));
+                Console.WriteLine(string.Format("打开文件 '{0}'...", filePath));
 
                 IDocumentSpecification docSpec = app.GetOpenDocSpec(filePath) as IDocumentSpecification;
                 docSpec.ReadOnly = true;
@@ -87,27 +87,27 @@ using System;
                     int err = -1;
                     int warn = -1;
 
-                    Console.WriteLine(string.Format("Exporting file '{0}' to '{1}'...", filePath, outFilePath));
+                    Console.WriteLine(string.Format("将文件 '{0}' 导出为 '{1}'...", filePath, outFilePath));
 
                     if (!model.Extension.SaveAs(outFilePath, swSaveAsCurrentVersion,
                         swSaveAsOptions_Silent, null, ref err, ref warn))
                     {
-                        Console.WriteLine(string.Format("Failed to export '{0}' to '{1}'. Error code: {2}", filePath, outFilePath, err));
+                        Console.WriteLine(string.Format("无法将 '{0}' 导出为 '{1}'。错误代码: {2}", filePath, outFilePath, err));
                     }
 
-                    Console.WriteLine(string.Format("Closing file '{0}'...", filePath));
+                    Console.WriteLine(string.Format("关闭文件 '{0}'...", filePath));
 
                     app.CloseDoc(model.GetTitle());
                 }
                 else
                 {
-                    Console.WriteLine(string.Format("Failed to open document: '{0}'. Error code: {1}",
+                    Console.WriteLine(string.Format("无法打开文档: '{0}'。错误代码: {1}",
                         filePath, docSpec.Error));
                 }
             }
             else
             {
-                Console.WriteLine("Failed to connect to SOLIDWORKS instance");
+                Console.WriteLine("无法连接到SOLIDWORKS实例");
             }
         }
     }
