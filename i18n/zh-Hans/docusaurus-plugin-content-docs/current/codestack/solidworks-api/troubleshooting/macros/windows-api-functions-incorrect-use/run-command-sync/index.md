@@ -1,32 +1,32 @@
 ---
-title: How to run commands synchronously using SOLIDWORKS API
-caption: Run Command Synchronously
-description: Example demonstrates how to run SOLIDWORKS commands synchronously (i.e. return the execution once command closed)
+title: 如何使用SOLIDWORKS API同步运行命令
+caption: 同步运行命令
+description: 该示例演示了如何使用SOLIDWORKS API同步运行命令（即在命令关闭后返回执行）
 image: command_open.png
 labels: [sync, command, close]
 ---
-![Opened Command (Property Manager Page)](command_open.png){ width=250 }
+![打开的命令（属性管理器页面）](command_open.png){ width=250 }
 
-[ISldWorks::RunCommand](https://help.solidworks.com/2017/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~runcommand.html) SOLIDWORKS API method allows running any command. Usually it is used to open property manager page.
+[SOLIDWORKS API方法ISldWorks::RunCommand](https://help.solidworks.com/2017/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~runcommand.html)允许运行任何命令。通常用于打开属性管理器页面。
 
-However this command runs asynchronously, which means that the control is returned to the executor once command started (e.g. Property Manager Page is opened). In some cases it is required to execute the code once this command closes (e.g. Property Manager Page is closed).
+然而，该命令是异步运行的，这意味着一旦命令开始（例如打开属性管理器页面），控制权就会返回给执行者。在某些情况下，需要在命令关闭后执行代码（例如关闭属性管理器页面）。
 
-This example demonstrates how to run command synchronously using SOLIDWORKS API, so the control is returned to the executor once the command finishes (not started).
+该示例演示了如何使用SOLIDWORKS API同步运行命令，以便在命令完成（而不是开始）后将控制权返回给执行者。
 
-## Run Instructions
+## 运行说明
 
-* Open/create part document
-* Create any sketch with rectangle (or another shape)
-* Select the sketch
-* Run the macro. As the result 'Boss-Extrude' property page is displayed
-* Modify options and click green tick (OK) or cross (Cancel)
-* Macro displays the message when property page is closed and the result (OK or Cancel) is displayed
+* 打开/创建零件文档
+* 创建任何带有矩形（或其他形状）的草图
+* 选择草图
+* 运行宏。结果将显示“Boss-Extrude”属性页面
+* 修改选项并单击绿色勾号（确定）或叉号（取消）
+* 当属性页面关闭时，宏将显示消息并显示结果（确定或取消）
 
-### VBA Macro
+### VBA宏
 
-* Create a class module and name it *CommandRunManager*. Copy the code below:
+* 创建一个类模块并将其命名为*CommandRunManager*。复制以下代码：
 
-~~~ vb
+```vb
 Dim WithEvents swApp As SldWorks.SldWorks
 
 Dim CurrentCommandId As Long
@@ -66,40 +66,34 @@ Private Function swApp_CommandCloseNotify(ByVal Command As Long, ByVal reason As
     End If
     
 End Function
-~~~
+```
 
+* 将以下代码复制到主模块（其中包含*main*函数）。根据需要修改*RunCommand*以传递任何其他命令ID。如果命令使用OK按钮关闭，则方法返回True；如果命令被取消，则返回False。
 
-
-* Copy the following code into the main module (where the *main* function is)
-* Modify the *RunCommand* to pass any other command id if needed. Method returns True if the command is closed with OK button, False is returned when command is cancelled.
-
-~~~ vb
+```vb
 Sub main()
     
     Dim cmdsMgr As CommandRunManager
     Set cmdsMgr = New CommandRunManager
     
     If cmdsMgr.RunCommand(swCommands_Extrude) Then
-        MsgBox "Command Completed"
+        MsgBox "命令已完成"
     Else
-        MsgBox "Command Cancelled"
+        MsgBox "命令已取消"
     End If
     
 End Sub
-
-~~~
-
-
+```
 
 ### C&#35;
 
-It is not recommended to use DoEvents function to emulate async operation in .NET languages (C# or VB.NET). It is better to use [Asynchronous programming with async and await](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/)
+不建议在.NET语言（C#或VB.NET）中使用DoEvents函数来模拟异步操作。最好使用[使用async和await进行异步编程](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/)。
 
-Example below demonstrates an implementation of async version of RunCommand which can be awaited without locking of the UI thread:
+下面的示例演示了RunCommand的异步版本的实现，可以在不锁定UI线程的情况下等待：
 
 **SldWorksExtension.cs**
 
-~~~ cs
+```cs
 using SolidWorks.Interop.swcommands;
 using System.Threading.Tasks;
 
@@ -136,14 +130,11 @@ namespace SolidWorks.Interop.sldworks
         }
     }
 }
+```
 
-~~~
+可以从任何异步方法调用该扩展。例如：
 
-
-
-The extension can be called from any async method. For example
-
-~~~ cs
+```cs
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swcommands;
 using System;
@@ -168,16 +159,14 @@ namespace RunCommandAsyncConsole
 
             if (res)
             {
-                app.SendMsgToUser("Command Completed");
+                app.SendMsgToUser("命令已完成");
             }
             else
             {
-                app.SendMsgToUser("Command Canceled");
+                app.SendMsgToUser("命令已取消");
             }
         }
     }
 }
-
-~~~
-
+```
 
