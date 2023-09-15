@@ -1,14 +1,14 @@
 ---
-title: 使用API为SOLIDWORKS开发C++、C#、VB.NET插件
-caption: 插件
-description: 说明如何在SOLIDWORKS中使用插件的示例和文章
+title: Developing C++, C#, VB.NET Plugins for SOLIDWORKS using the API
+caption: Plugins
+description: Examples and articles on how to use plugins in SOLIDWORKS
 ---
-插件是SOLIDWORKS的进程内扩展，可以在所有应用程序类型中提供最佳性能优势。插件是COM对象，必须在SOLIDWORKS API中实现[ISwAddin](https://help.solidworks.com/2012/english/api/swpublishedapi/solidworks.interop.swpublished~solidworks.interop.swpublished.iswaddin.html)接口。
+Plugins are in-process extensions for SOLIDWORKS that offer the best performance advantages across all application types. Plugins are COM objects that must implement the [ISwAddin](https://help.solidworks.com/2012/english/api/swpublishedapi/solidworks.interop.swpublished~solidworks.interop.swpublished.iswaddin.html) interface in the SOLIDWORKS API.
 
-插件可以使用任何兼容COM的语言进行开发：C++、C#、VB.NET、VB6、Managed C++。
+Plugins can be developed using any COM-compatible language: C++, C#, VB.NET, VB6, Managed C++.
 
-插件可以在SOLIDWORKS菜单的Tools->Add-Ins对话框中找到，并可以选择性地启用或禁用。
+Plugins can be found in the Tools->Add-Ins dialog in the SOLIDWORKS menu and can be selectively enabled or disabled.
 
-大多数SOLIDWORKS合作伙伴产品以及SOLIDWORKS标准版、专业版和高级版中的一些产品都是作为插件应用程序开发的，而不是内置应用程序。
+Most SOLIDWORKS partner products, as well as some products in the SOLIDWORKS Standard, Professional, and Premium editions, are developed as plugin applications rather than built-in applications.
 
-插件可以监视SOLIDWORKS应用程序和文档的完整生命周期。插件可以访问所有可用的SOLIDWORKS API，而宏和独立应用程序则有一些限制，因为其中一些API可能不可用。
+Plugins can monitor the complete lifecycle of SOLIDWORKS applications and documents. Plugins have access to all available SOLIDWORKS APIs, whereas macros and standalone applications have some limitations as some APIs may not be available.
