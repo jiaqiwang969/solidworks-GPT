@@ -1,70 +1,69 @@
 ---
 layout: sw-tool
-title: Macro to scale drawing views based on the geometry size using SOLIDWORKS API
-caption: Scale Views Based On Geometry Size
-description: VBA macro to scale drawing views in the current sheet based on the geometry size and specified map
+title: 使用SOLIDWORKS API根据几何尺寸缩放绘图视图的宏
+caption: 根据几何尺寸缩放视图
+description: 使用VBA宏根据几何尺寸和指定的映射自动缩放当前工作表中的绘图视图
 image: scale-view.svg
-labels: [scale,size,bounding box]
-group: Drawing
+labels: [缩放,尺寸,边界框]
+group: 绘图
 ---
-![Drawing view scale options](drawing-view-scale.png){ width=250 }
 
-This VBA macro automatically scales drawing views in the current sheet based on the geometry size and specified matching map.
+![绘图视图缩放选项](drawing-view-scale.png){ width=250 }
 
-Map is a collection of instructions which defines the
+这个VBA宏根据几何尺寸和指定的匹配映射自动缩放当前工作表中的绘图视图。
 
-* Minimum and maximum width of the geometry. Specify * to match any value
-* Minimum and maximum height of the geometry. Specify * to match any value
-* Scale nominator and denominator if matched
+映射是一组指令，定义了：
 
-Geometry size is calculated based on the bounding box of visible entities in the drawing view (this includes all the reference geometry, sketch entities, dimensions and other annotations):
+* 几何体的最小和最大宽度。使用*表示匹配任何值
+* 几何体的最小和最大高度。使用*表示匹配任何值
+* 如果匹配，则缩放的分子和分母
 
-![Drawing view geometry size parameters](drawing-view-parameters.png){ width=350 }
+几何尺寸是根据绘图视图中可见实体的边界框计算的（包括所有的参考几何体、草图实体、尺寸和其他注释）：
 
-All drawing views have an offset boundary. This boundary is deducted from the view size in order to get the actual value of the geometry. The value of the boundary is calculated dynamically (2% of the width or height of the sheet, whichever is smaller). This is not a documented value and might change in future by SOLIDWORKS which may affect the calculations in this macro.
+![绘图视图几何尺寸参数](drawing-view-parameters.png){ width=350 }
 
-![Boundary offset of drawing view](boundary-offset.png)
+所有的绘图视图都有一个偏移边界。为了得到几何体的实际值，需要从视图尺寸中减去这个边界值。边界值是动态计算的（工作表宽度或高度的2%，取较小值）。这不是一个文档化的值，可能会在未来由SOLIDWORKS更改，这可能会影响到此宏中的计算。
 
-## Configuration
+![绘图视图的边界偏移](boundary-offset.png)
 
-### Scope
+## 配置
 
-*BASE_VIEWS_ONLY* variable controls if all views should be rescaled or only base views (i.e. views which do not have parent views). If this option set to *True* all views are processed and derived views will disconnect from the original source views.
+### 范围
+
+*BASE_VIEWS_ONLY* 变量控制是否要缩放所有视图还是只缩放基本视图（即没有父视图的视图）。如果将此选项设置为 *True*，则会处理所有视图，并且派生视图将与原始源视图断开连接。
 
 ~~~
-Const BASE_VIEWS_ONLY As Boolean = False 'process all views
+Const BASE_VIEWS_ONLY As Boolean = False '处理所有视图
 ~~~
 
-### Scaling Map
+### 缩放映射
 
-Configure the scale map at the beginning of the macro. Specify as many map entries as needed.
+在宏的开头配置缩放映射。根据需要指定多个映射条目。
 
 ~~~ vba
 Dim scaleMap As Variant
-scaleMap = Array("0-0.1;*;1:1", "0.1-0.2;0.05-0.1;1:2", "another entry", ..., "last entry")
+scaleMap = Array("0-0.1;*;1:1", "0.1-0.2;0.05-0.1;1:2", "另一个条目", ..., "最后一个条目")
 ~~~
 
-Each entry must follow the predefined format:
+每个条目必须遵循预定义的格式：
 
 ~~~
-"[minWidth]-[maxWidth];[minHeight]-[maxHeight];[scaleNom]:[scaleDenom]"
+"[最小宽度]-[最大宽度];[最小高度]-[最大高度];[缩放分子]:[缩放分母]"
 ~~~
 
-* All values for width and height are in meters
-* Specify * to allow any width or height
+* 宽度和高度的所有值都以米为单位
+* 使用 * 表示允许任何宽度或高度
 
-In the example below
+在下面的示例中
 
 ~~~ vba
 Array("0-0.1;*;1:1", "0.1-0.2;0.05-0.1;1:2")
 ~~~
 
-* All drawing views with width up to 100 mm and any height will be set to 1:1 scale
-* All drawing views with width between 100 mm to 200 mm and height between 50 mm to 100 mm will be set to 1:2 scale
+* 所有宽度最多为100毫米且任何高度的绘图视图将设置为1:1比例
+* 所有宽度在100毫米到200毫米之间且高度在50毫米到100毫米之间的绘图视图将设置为1:2比例
 
-
-
-~~~ vb
+```vb
 Const BASE_VIEWS_ONLY As Boolean = True
 
 Dim swApp As SldWorks.SldWorks
@@ -89,7 +88,7 @@ try:
         RescaleViews swDraw, swDraw.GetCurrentSheet(), scaleMap
         
     Else
-        Err.Raise vbError, "", "Please open the drawing document"
+        Err.Raise vbError, "", "请打开绘图文档"
     End If
     
     GoTo finally
@@ -131,16 +130,16 @@ Sub RescaleViews(draw As SldWorks.DrawingDoc, sheet As SldWorks.sheet, scaleMap 
             ExtractParameters CStr(scaleMap(j)), minWidth, maxWidth, minHeight, maxHeight, viewScale
             
             If width >= minWidth And width <= maxWidth And height >= minHeight And height <= maxHeight Then
-                Debug.Print swView.Name & " matches " & CStr(scaleMap(j))
+                Debug.Print swView.Name & " 匹配 " & CStr(scaleMap(j))
                 If Not BASE_VIEWS_ONLY Or swView.GetBaseView() Is Nothing Then
-                    Debug.Print "Setting scale of " & swView.Name & " to " & viewScale(0) & ":" & viewScale(1)
+                    Debug.Print "将 " & swView.Name & " 的比例设置为 " & viewScale(0) & ":" & viewScale(1)
                     swView.ScaleRatio = viewScale
                 Else
-                    Debug.Print "Skipping " & swView.Name & " view as it is not a base view"
+                    Debug.Print "跳过 " & swView.Name & " 视图，因为它不是基本视图"
                 End If
                 
             Else
-                Debug.Print swView.Name & " doesn't match " & CStr(scaleMap(j))
+                Debug.Print swView.Name & " 不匹配 " & CStr(scaleMap(j))
             End If
             
         Next
@@ -260,5 +259,4 @@ Sub ExtractSizeBounds(boundParam As String, ByRef min As Double, ByRef max As Do
     End If
     
 End Sub
-~~~
-
+```
