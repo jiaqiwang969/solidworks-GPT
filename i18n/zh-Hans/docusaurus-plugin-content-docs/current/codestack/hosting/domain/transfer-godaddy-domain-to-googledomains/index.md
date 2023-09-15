@@ -1,91 +1,91 @@
 ---
-title: Transfer domain host from GoDaddy to Google Domains
-caption: Transfer GoDaddy Domain To Google Domains
-description: Detailed guide of transferring domain host from GoDaddy to Google Domains
+title: 将域名主机从GoDaddy转移到Google Domains
+caption: 将GoDaddy域名转移到Google Domains
+description: 详细指南，将域名主机从GoDaddy转移到Google Domains
 image: transfer-domain-to-google.png
 labels: [google domains,godaddy,transfer]
 ---
-This article is a detailed step-by-step guidance to transfer the domain host from GoDaddy to Google Domains. There might be multiple reasons for transferring the domains from one registrar to another. This may include pricing, security, privacy features, flexibility, special offers, hosting options etc.
+本文是将域名主机从GoDaddy转移到Google Domains的详细逐步指南。转移域名注册商的原因可能有多种，包括价格、安全性、隐私功能、灵活性、特别优惠、托管选项等。
 
-Some of the benefits of the Google Hosting over the GoDaddy hosting are:
+Google Hosting相对于GoDaddy Hosting的一些优势包括：
 
-* Free privacy protection for the host
-* E-mail encryption for the free e-mail forwarding service
+* 免费的主机隐私保护
+* 免费电子邮件转发服务的电子邮件加密
 
-## Unlock account in GoDaddy
+## 在GoDaddy中解锁账户
 
-The transfer of the account should be initiated from the GoDaddy web-site.
+账户的转移应该从GoDaddy网站开始。
 
-Login to the web-site and click on *Manage* button for the domain you want to transfer.
+登录到网站，点击要转移的域名的*管理*按钮。
 
-![Manage domain in GoDaddy](manage-domain.png)
+![在GoDaddy中管理域名](manage-domain.png)
 
-Scroll down to the *Additional Settings* section and turn off the *Domain Lock* feature
+向下滚动到*附加设置*部分，关闭*域名锁定*功能。
 
-![Remove domain lock in the domain](unlock-godaddy-domain.png)
+![在域名中移除域名锁定](unlock-godaddy-domain.png)
 
-If you have enabled the privacy protection feature with GoDaddy it must be disabled before transferring. It could be reactivated in Google Domains later.
+如果您在GoDaddy启用了隐私保护功能，则在转移之前必须将其禁用。稍后可以在Google Domains中重新激活。
 
-![Removing privacy setting on domain](remove-privacy.png)
+![移除域名上的隐私设置](remove-privacy.png)
 
-It might take several minutes for the feature to be disabled.
+该功能的禁用可能需要几分钟时间。
 
-![Pending the privacy removing](remove-privacy-pending.png)
+![等待隐私移除](remove-privacy-pending.png)
 
-> If privacy feature is not turned off, the domain transfer won't complete and the *'Transfer rejected. Check with current registrar for more info'* message will be displayed in the Google Domains page
+> 如果未关闭隐私功能，则域名转移将无法完成，并且在Google Domains页面上将显示“转移被拒绝。请与当前注册商联系以获取更多信息”的消息。
 
-![Transfer rejected due to the privacy enabled](google-domains-transfer-rejected.png)
+![由于启用了隐私而被拒绝的转移](google-domains-transfer-rejected.png)
 
-Click the *Get authorization code* button to generate temporarily token which needs to be pasted in Google Domain to authorize the transfer. Token will be e-mailed to the e-mail registered with GoDaddy.
+点击*获取授权代码*按钮以生成临时令牌，该令牌需要粘贴到Google Domains中以授权转移。令牌将通过与GoDaddy注册的电子邮件发送。
 
-![Generating authorization code to unlock domain](get-authorization-code.png){ width=250 }
+![生成解锁域名的授权代码](get-authorization-code.png){ width=250 }
 
-> It is recommended to generate this token just before the transfer as it can expire and the transfer process may fail.
+> 建议在转移之前生成此令牌，因为它可能会过期，导致转移过程失败。
 
-## Initiating transfer to Google Domains
+## 启动转移到Google Domains的转移
 
-Login to Google domains and activate the *Transfer* tab and search for the domain you want to transfer (the one you have unlocked in the previous step).
+登录到Google Domains并激活*转移*选项卡，然后搜索要转移的域名（在上一步中解锁的域名）。
 
-![Transfer domain to google](transfer-domain-to-google.png)
+![将域名转移到Google](transfer-domain-to-google.png)
 
-Hit enter on the search bar and follow the wizard to perform the transfer. Make sure that the *[domain name] is unlocked and ready to transfer* message is displayed in the first step. Paste the authorization token e-mailed from the previous step.
+在搜索栏上按Enter键，然后按照向导执行转移。确保第一步中显示了*[域名]已解锁并准备好转移*的消息。粘贴从上一步骤中通过电子邮件发送的授权令牌。
 
-![Step 1: Prepare domain](transfer-form.png)
+![第1步：准备域名](transfer-form.png)
 
-Specify the options you want to transfer from the previous settings (such as DNS records). You might want to use the default selections.
+在下一步中，指定要从以前的设置中转移的选项（例如DNS记录）。您可能希望使用默认选择。
 
-![Step 2: Import web settings](import-web-settings-records.png){ width=350 }
+![第2步：导入网页设置](import-web-settings-records.png){ width=350 }
 
-Configure the privacy and auto renew options in the next step
+在接下来的步骤中配置隐私和自动续订选项。
 
-![Step 3: Configure registration settings](config-registry-settings.png){ width=450 }
+![第3步：配置注册设置](config-registry-settings.png){ width=450 }
 
-Fill the purchase form to finalize the transfer.
+填写购买表单以完成转移。
 
-> Note it is required to pay for one year maintenance of domain ahead to perform the transfer. However the existing period of registration will be preserved. For example, if the domain was due to expire in 1 year (e.g. January 2020) transferring this to Google Domains will extended this for one more year (e.g. January 2021).
+> 请注意，需要提前支付一年的域名维护费用才能执行转移。但是，现有的注册期限将被保留。例如，如果域名在1年后到期（例如2020年1月），将其转移到Google Domains将使其延长一年（例如2021年1月）。
 
-![Complete the purchase of a domain](purchase-form.png){ width=450 }
+![完成域名的购买](purchase-form.png){ width=450 }
 
-Once purchase is approved domain will be waiting for the approval from GoDaddy to complete the transfer.
+购买获得批准后，域名将等待GoDaddy的批准以完成转移。
 
-![Pending the approval from GoDaddy](pending-domain-waiting-for-approval.png)
+![等待GoDaddy批准](pending-domain-waiting-for-approval.png)
 
-## Finalizing transfer
+## 完成转移
 
-You will receive the e-mail from GoDaddy regarding the transfer which will be automatically completed within several business days. However it is possible to speed up the process and complete the transfer immediately.
+您将收到来自GoDaddy的有关转移的电子邮件，该转移将在几个工作日内自动完成。但是，可以加快该过程并立即完成转移。
 
-To do this navigate to *View details* link in the pending out domain in the *My domains* section in GoDaddy web-site.
+要做到这一点，请在GoDaddy网站的*我的域名*部分中，找到待转移的域名的*查看详细信息*链接。
 
-![Pending transfers of GoDaddy domains](mydomains-pending-transfer.png)
+![GoDaddy域名的待转移](mydomains-pending-transfer.png)
 
-Click on *Accept or decline* link in the grid.
+在表格中点击*接受或拒绝*链接。
 
-![Domain transfer details](domain-transfer-details.png)
+![域名转移详细信息](domain-transfer-details.png)
 
-Select *Accept transfer* option and click *OK*
+选择*接受转移*选项，然后点击*确定*。
 
-![Accepting transfer of a domain](accept-transfer.png){ width=450 }
+![接受域名转移](accept-transfer.png){ width=450 }
 
-The transfer will be completed in several minutes. Once done domain will be removed from GoDaddy console and will be shown in the Google Domains console.
+转移将在几分钟内完成。完成后，域名将从GoDaddy控制台中删除，并显示在Google Domains控制台中。
 
-![Completed transfer](transfer-completed.png)
+![转移完成](transfer-completed.png)
