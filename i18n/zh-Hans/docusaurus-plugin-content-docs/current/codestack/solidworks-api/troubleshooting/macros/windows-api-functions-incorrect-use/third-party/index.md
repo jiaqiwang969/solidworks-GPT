@@ -1,72 +1,73 @@
 ---
-title: Data saving in the 3rd party storage using SOLIDWORKS API
-caption: 3rd Party Storage And Store
-description: Section explaining how to use 3rd party storage and 3rd party store in SOLIDWORKS API to serialize and deserialize the data directly in the model stream
+title: 使用 SOLIDWORKS API 在第三方存储中保存数据
+caption: 第三方存储和存储
+description: 本节介绍如何使用 SOLIDWORKS API 中的第三方存储和第三方存储来直接在模型流中序列化和反序列化数据
 image: store-diagram.svg
-labels: [store,3rd party,third party,storage,serialization]
+labels: [存储,第三方,存储,序列化]
 ---
-3rd party storage and 3rd party store are the containers for the external applications (add-ins, macros, stand alone applications) to store serialize the data directly in the model stream.
+第三方存储和第三方存储是外部应用程序（插件、宏、独立应用程序）存储数据的容器，可以直接在模型流中进行序列化。
 
-This technique allows to store the complex data and provides best performance options to read and write large amount of data.
+这种技术允许存储复杂的数据，并提供了读写大量数据的最佳性能选项。
 
-SOLIDWORKS enables to store the data in 2 different containers:
+SOLIDWORKS 可以将数据存储在两个不同的容器中：
 
-* Storage (Stream)
-* Storage Store
+* 存储（流）
+* 存储存储
 
-If File System is taken as analogue the Storage would correspond to file while Storage Store to folder. Storage Stores can have sub streams or sub stores.
+如果将文件系统作为类比，存储将对应文件，而存储存储将对应文件夹。存储存储可以有子流或子存储。
 
-The following diagram explains the structure of the SOLIDWORKS model storages. Red elements represent the containers managed directly by SOLIDWORKS while other elements represent the containers managed by 3rd parties.
+下图解释了 SOLIDWORKS 模型存储的结构。红色元素表示由 SOLIDWORKS 直接管理的容器，而其他元素表示由第三方管理的容器。
 
-![Document Store Diagram](store-diagram.svg){ width=550 }
+![文档存储图](store-diagram.svg){ width=550 }
 
-## 3rd Party Storage
+## 第三方存储
 
-This is a container which is managed via [IStream](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istream) interface. This option is used when application only needs to store the single data structure (e.g. XML tree, text, image, binary data).
+这是一个通过 [IStream](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istream) 接口管理的容器。当应用程序只需要存储单个数据结构（例如 XML 树、文本、图像、二进制数据）时，可以使用此选项。
 
-In order to get the pointer to the stream (both for reading or writing) the [IModelDoc2::IGet3rdPartyStorage](https://help.solidworks.com/2015/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IModelDoc2~IGet3rdPartyStorage.html) SOLIDWORKS API method should be called and corresponding flag is passed.
+为了获取流的指针（用于读取或写入），需要调用 [IModelDoc2::IGet3rdPartyStorage](https://help.solidworks.com/2015/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IModelDoc2~IGet3rdPartyStorage.html) SOLIDWORKS API 方法并传递相应的标志。
 
-### Notes
+### 注意事项
 
-* If stream was never written before the [IModelDoc2::IGet3rdPartyStorage](https://help.solidworks.com/2015/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IModelDoc2~IGet3rdPartyStorage.html) method returns null.
-* Stream should always be released after the get method called via [IModelDoc2::IRelease3rdPartyStorage](https://help.solidworks.com/2015/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IModelDoc2~IRelease3rdPartyStorage.html). This also applies when get method returns null (i.e. stream was not stored before)
-* [IStream::Commit](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nf-objidl-istream-commit) method should not be called when storing the data otherwise *Method Not Implemented* exception will be thrown.
+* 如果流以前从未被写入过，则 [IModelDoc2::IGet3rdPartyStorage](https://help.solidworks.com/2015/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IModelDoc2~IGet3rdPartyStorage.html) 方法返回 null。
+* 在调用获取方法后，无论获取方法是否返回 null（即流以前未存储），都应始终释放流，方法是通过 [IModelDoc2::IRelease3rdPartyStorage](https://help.solidworks.com/2015/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IModelDoc2~IRelease3rdPartyStorage.html) 进行释放。
+* 存储数据时不应调用 [IStream::Commit](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nf-objidl-istream-commit) 方法，否则将引发“方法未实现”异常。
 
-### Lifecycle
+### 生命周期
 
-Storage is available for reading between the [LoadFromStorage](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dpartdocevents_loadfromstoragenotifyeventhandler.html) notification and the destroying of the model. LoadFromStorageStore available for [part](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dpartdocevents_loadfromstoragenotifyeventhandler.html), [assembly](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dassemblydocevents_loadfromstoragenotifyeventhandler.html)  and [drawing](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ddrawingdocevents_loadfromstoragenotifyeventhandler.html) 
+存储在 [LoadFromStorage](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dpartdocevents_loadfromstoragenotifyeventhandler.html) 通知和模型销毁之间可供读取。LoadFromStorageStore 可用于 [part](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dpartdocevents_loadfromstoragenotifyeventhandler.html)、[assembly](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dassemblydocevents_loadfromstoragenotifyeventhandler.html) 和 [drawing](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ddrawingdocevents_loadfromstoragenotifyeventhandler.html)。
 
-Storage is available for writing only within the [SaveToStorage](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dpartdocevents_savetostoragenotifyeventhandler.html) notification for [part](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dpartdocevents_savetostoragenotifyeventhandler.html), [assembly](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dassemblydocevents_savetostoragenotifyeventhandler.html) and [drawing](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ddrawingdocevents_savetostoragenotifyeventhandler.html) correspondingly.
+只有在 [SaveToStorage](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dpartdocevents_savetostoragenotifyeventhandler.html) 通知中，对于 [part](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dpartdocevents_savetostoragenotifyeventhandler.html)、[assembly](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dassemblydocevents_savetostoragenotifyeventhandler.html) 和 [drawing](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ddrawingdocevents_savetostoragenotifyeventhandler.html)，才能进行写入。
 
-## 3rd Party Storage Store
+## 第三方存储存储
 
-This is a container which is managed via [IStorage](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istorage) interface. This option is used when application manages complex sets of data and access to certain portions is required at certain times. Storage container allows to create sub streams and sub storages to manage the data and only specific streams can be accessed when required avoiding the need to load the whole structure into the memory.
+这是一个通过 [IStorage](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istorage) 接口管理的容器。当应用程序管理复杂的数据集并需要在特定时间访问某些部分时，可以使用此选项。存储容器允许创建子流和子存储以管理数据，并且只有在需要时才能访问特定的流，避免了将整个结构加载到内存中的需要。
 
-To get the pointer to the storage the [IModelDocExtension::IGet3rdPartyStorageStore](https://help.solidworks.com/2015/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDocExtension~IGet3rdPartyStorageStore.html) SOLIDWORKS API method needs to be called.
+要获取存储的指针，需要调用 [IModelDocExtension::IGet3rdPartyStorageStore](https://help.solidworks.com/2015/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDocExtension~IGet3rdPartyStorageStore.html) SOLIDWORKS API 方法。
 
-### Notes
-* [IModelDocExtension::IGet3rdPartyStorageStore](https://help.solidworks.com/2015/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDocExtension~IGet3rdPartyStorageStore.html) returns null for the storage which was never written before
-* Similar to streams, store always needs to be released via [IModelDocExtension::IRelease3rdPartyStorageStore](https://help.solidworks.com/2015/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDocExtension~IRelease3rdPartyStorageStore.html) method.
-* Use methods of [IStorage](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istorage) interface to create sub streams and storages.
+### 注意事项
 
-### Lifecycle
+* 对于以前从未写入过的存储，[IModelDocExtension::IGet3rdPartyStorageStore](https://help.solidworks.com/2015/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDocExtension~IGet3rdPartyStorageStore.html) 返回 null。
+* 与流类似，存储始终需要通过 [IModelDocExtension::IRelease3rdPartyStorageStore](https://help.solidworks.com/2015/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDocExtension~IRelease3rdPartyStorageStore.html) 方法释放。
+* 使用 [IStorage](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istorage) 接口的方法创建子流和存储。
 
-Storage is available for reading between the [LoadFromStorageStore](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dpartdocevents_loadfromstoragestorenotifyeventhandler.html) notification and the destroying of the model. LoadFromStorageStore available for [part](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dpartdocevents_loadfromstoragestorenotifyeventhandler.html), [assembly](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dassemblydocevents_loadfromstoragestorenotifyeventhandler.html)  and [drawing](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ddrawingdocevents_loadfromstoragestorenotifyeventhandler.html) 
+### 生命周期
 
-Storage is available for writing only within the [SaveToStorageStore](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dpartdocevents_savetostoragestorenotifyeventhandler.html) notification for [part](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dpartdocevents_savetostoragestorenotifyeventhandler.html), [assembly](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dassemblydocevents_savetostoragestorenotifyeventhandler.html) and [drawing](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ddrawingdocevents_savetostoragestorenotifyeventhandler.html) correspondingly.
+存储在 [LoadFromStorageStore](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dpartdocevents_loadfromstoragestorenotifyeventhandler.html) 通知和模型销毁之间可供读取。LoadFromStorageStore 可用于 [part](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dpartdocevents_loadfromstoragestorenotifyeventhandler.html)、[assembly](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dassemblydocevents_loadfromstoragestorenotifyeventhandler.html) 和 [drawing](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ddrawingdocevents_loadfromstoragestorenotifyeventhandler.html)。
 
-## Usage
+只有在 [SaveToStorageStore](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dpartdocevents_savetostoragestorenotifyeventhandler.html) 通知中，对于 [part](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dpartdocevents_savetostoragestorenotifyeventhandler.html)、[assembly](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dassemblydocevents_savetostoragestorenotifyeventhandler.html) 和 [drawing](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ddrawingdocevents_savetostoragestorenotifyeventhandler.html)，才能进行写入。
 
-Usually 3rd party containers (storage and store) are used in add-ins when model is complemented with additional functionality (e.g. electrical data, PDM, security, etc.). In this case this additional information is usually displayed in the Feature Tree, Task Panes etc. and loaded when model is opened and saved together with the model making this approach a fully integrated solutions.
+## 用法
 
-*SaveToStorage* and *SaveToStorageStore* SOLIDWORKS API notifications are raised directly after the File Save Notification which means that there is no need to implement custom saving of the data as it will be automatically triggered via user saving.
+通常，在插件中使用第三方容器（存储和存储）时，模型会与其他功能（例如电气数据、PDM、安全性等）一起补充。在这种情况下，此附加信息通常显示在特征树、任务窗格等中，并在打开模型时加载，并与模型一起保存，使此方法成为完全集成的解决方案。
 
-The best place to attach save and load event would be within the [DocumentLoadNotify](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dsldworksevents_documentloadnotify2eventhandler.html) event.
+*SOLIDWORKS API* 通知 *SaveToStorage* 和 *SaveToStorageStore* 在文件保存通知之后直接触发，这意味着无需实现自定义数据保存，因为它将通过用户保存自动触发。
 
-When 3rd party data is modified (e.g. user added new node in the 3rd party tree) it is recommended to mark model as dirty via [IModelDoc2::SetSaveFlag](https://help.solidworks.com/2015/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IModelDoc2~SetSaveFlag.html) which indicates that model required to be saved by the user.
+最佳的附加保存和加载事件的位置应该在 [DocumentLoadNotify](https://help.solidworks.com/2015/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dsldworksevents_documentloadnotify2eventhandler.html) 事件中。
 
-## Storage And Streams Naming Conflicts
+当第三方数据被修改时（例如用户在第三方树中添加了新节点），建议通过 [IModelDoc2::SetSaveFlag](https://help.solidworks.com/2015/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IModelDoc2~SetSaveFlag.html) 将模型标记为脏，以指示需要用户保存模型。
 
-Storages and stores accessed by the corresponding names. It might be the cases when different developers might use the same name for storage or store. In this case conflict occurs. When using 3rd party containers it is recommended to register the storage or store name via SOLIDWORKS API Support and in this case this name will be reserved.
+## 存储和流命名冲突
 
-Refer [Storing 3rd party data in SOLIDWORKS models using SwEx.AddIn framework](/docs/codestack/labs/solidworks/swex/add-in/third-party-data-storage/) article for the information of how to access 3rd party containers using SwEx.AddIn framework.
+存储和存储通过相应的名称访问。不同的开发人员可能对存储或存储使用相同的名称，这可能会导致冲突。在使用第三方容器时，建议通过 SOLIDWORKS API Support 注册存储或存储名称，并保留此名称。
+
+有关如何使用 SwEx.AddIn 框架访问第三方容器的信息，请参阅 [在 SOLIDWORKS 模型中使用 SwEx.AddIn 框架存储第三方数据](/docs/codestack/labs/solidworks/swex/add-in/third-party-data-storage/) 文章。
