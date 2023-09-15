@@ -1,57 +1,57 @@
 ---
-title: Tracking objects by temp and persistent ids in SOLIDWORKS API
-caption: Tracking Objects
-description: This collection of articles explaining how to track different objects while geometry manipulation or across sessions
+title: 在SOLIDWORKS API中使用临时和持久ID跟踪对象
+caption: 跟踪对象
+description: 这个系列的文章解释了如何在几何操作或跨会话时跟踪不同的对象
 sidebar_position: 13
-labels: [track, id, persist, reference]
+labels: [跟踪, ID, 持久, 引用]
 ---
-When developing application which interacts with SOLIDWORKS entities in some cases it is required to reference certain objects and track them during different actions. For example it is required to find the specific feature in the template model or identify the user selected face after the face got modified (split or merged).
+在开发与SOLIDWORKS实体交互的应用程序时，有时需要引用某些对象并在不同操作中跟踪它们。例如，在模板模型中查找特定特征或在修改面（分割或合并）后识别用户选择的面。
 
-There multiple different ways described below which provides the functionality to tag and track different elements using SOLIDWORKS API.
+下面描述了多种不同的方法，使用SOLIDWORKS API可以标记和跟踪不同的元素。
 
-## Persistent Reference Ids
+## 持久引用ID
 
-Allows to retrieve the persistent id for any selectable object in SOLIDWORKS model. The element can be quickly looked up via [IModelDocExtension::GetObjectByPersistReference3](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeldocextension~getobjectbypersistreference3.html) SOLIDWORKS API method to get the pointer by the id. The main cons of this method is a size of the id which varies around 250 bytes per entity. So if it is required to track thousands of elements this might not be the ideal approach due to the memory consumption.
+允许检索SOLIDWORKS模型中任何可选择对象的持久ID。可以通过[SOLIDWORKS API方法IModelDocExtension::GetObjectByPersistReference3](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeldocextension~getobjectbypersistreference3.html)快速查找该元素的指针。该方法的主要缺点是ID的大小，每个实体大约为250字节。因此，如果需要跟踪数千个元素，由于内存消耗，这可能不是理想的方法。
 
-Refer [Persistent Reference Id](/docs/codestack/solidworks-api/document/tracking-objects/persist-references/) article for more information
+有关更多信息，请参阅[持久引用ID](/docs/codestack/solidworks-api/document/tracking-objects/persist-references/)文章。
 
-## Internal Ids
+## 内部ID
 
-Ids for various group of elements (sketch elements, features, etc.). Internal id only consumes small amount of memory (represented as 1 or 2 Integer or Long values). It is however not possible to lookup the element by its internal id, so it is not suitable for the software where it is required to have an instance access to the object by its id.
+各种元素组的ID（草图元素、特征等）。内部ID仅消耗少量内存（表示为1或2个整数或长整数值）。但是，无法通过内部ID查找元素，因此对于需要通过ID实例访问对象的软件来说，它不适用。
 
-Refer [Internal IDs](/docs/codestack/solidworks-api/document/tracking-objects/internal-ids/)  article for more information
+有关更多信息，请参阅[内部ID](/docs/codestack/solidworks-api/document/tracking-objects/internal-ids/)文章。
 
-## Tracking Ids
+## 跟踪ID
 
-Assignable by the API and used to track the entities (faces, edges and vertices) across modelling operations. For example user selects face on the input body, this body is copied and changed (e.g. split or merged). In this case tracking id will be maintained and all split entities will inherit the id of the parent face.
+由API分配并用于跟踪建模操作中的实体（面、边和顶点）。例如，用户在输入实体上选择面，复制并更改该实体（例如分割或合并）。在这种情况下，跟踪ID将保持不变，并且所有分割实体将继承父面的ID。
 
-Refer [Tracking IDs](/docs/codestack/solidworks-api/document/tracking-objects/tracking-ids/)  article for more information
+有关更多信息，请参阅[跟踪ID](/docs/codestack/solidworks-api/document/tracking-objects/tracking-ids/)文章。
 
-## Names
+## 名称
 
-Names are available for the user to view and edit via GUI. As names can be easily changed they shouldn't be used as a reliable way of tracking the entity. The names are good for use in the software which is using/modifying template models.
+名称可供用户通过GUI查看和编辑。由于名称可以轻松更改，因此不应将其用作可靠的跟踪实体的方法。名称适用于使用/修改模板模型的软件。
 
-Refer [Object Names](/docs/codestack/solidworks-api/document/tracking-objects/names/)  article for more information
+有关更多信息，请参阅[对象名称](/docs/codestack/solidworks-api/document/tracking-objects/names/)文章。
 
-## Attributes
+## 属性
 
-Attributes are specific features which can be created by API and added to the feature tree. Optionally attribute can be associated with selectable object which allows tracking. Unlike macro features, attributes are native features and will remain functional in the environments where the application which created attributes is not installed.
+属性是可以由API创建并添加到特征树中的特定特征。属性可以选择与可选择对象关联，从而实现跟踪。与宏特征不同，属性是本机特征，并且在未安装创建属性的应用程序的环境中仍然可用。
 
-Refer [Attributes](/docs/codestack/solidworks-api/data-storage/attributes/) article for more information
+有关更多信息，请参阅[属性](/docs/codestack/solidworks-api/data-storage/attributes/)文章。
 
-Refer the comparison table below which categorizes all approaches above by the following criteria:
+请参阅下面的比较表，该表根据以下标准对上述所有方法进行了分类：
 
-* *Lifetime* - how long the id is available
-* *Size* - memory consumed by id for a single element
-* *Visible* - is this id visible to the user
-* *Changeable* - can the id by changed by the user or API
-* *Searchable* - can the reference be retrieved directly from id without the need of traversing of all elements
-* *Auto Disposable* - is the id disposed automatically when the parent element is destroyed (e.g. deleted)
+* *生命周期* - ID可用的时间长度
+* *大小* - 单个元素的ID消耗的内存
+* *可见性* - 用户是否可见此ID
+* *可更改性* - 用户或API是否可以更改ID
+* *可搜索性* - 是否可以直接从ID检索引用，而无需遍历所有元素
+* *自动释放* - 当父元素被销毁（例如删除）时，ID是否会自动释放
 
-|Tracking Type|Lifetime|Size|Visible|Changeable|Searchable|Auto Disposable|
+|跟踪类型|生命周期|大小|可见性|可更改性|可搜索性|自动释放|
 |---|---|---|---|---|---|---|
-|Persistent Reference Ids|Persistent|~250 bytes|No|No|Yes|Yes|
-|Internal Ids|Persistent|2-8 bytes|No|No|No|Yes|
-|Tracking Ids|Temp until rebuild|2 bytes|No|No|No|Yes|
-|Names|Persistent|usually 10-20 bytes|Yes|Yes|Yes|Yes|
-|Attributes|Persistent unless deleted|~1 kilobyte|Can be hidden or visible|Yes|Yes|No|
+|持久引用ID|持久|~250字节|否|否|是|是|
+|内部ID|持久|2-8字节|否|否|否|是|
+|跟踪ID|重建前临时|2字节|否|否|否|是|
+|名称|持久|通常10-20字节|是|是|是|是|
+|属性|除非删除，否则持久|~1千字节|可以隐藏或可见|是|是|否|
