@@ -1,20 +1,21 @@
 ---
-title: Defeature Part (convert to dumb solid) using SOLIDWORKS API
-caption: Defeature Part
-description: Macro to convert all features in part to dumb solids (defeature part) and surfaces using SOLIDWORKS API
+title: 使用SOLIDWORKS API对零件进行简化（转换为简化实体）
+caption: 简化零件
+description: 使用SOLIDWORKS API将零件中的所有特征转换为简化实体（简化零件）和曲面的宏
 image: part-feature-tree-defeatured.png
-labels: [defeature,parasolid]
+labels: [简化,Parasolid]
 ---
-This macro emulates the functionality of [Defeature for Part](https://help.solidworks.com/2018/english/solidworks/sldworks/c_defeature_for_parts.htm) but not using it directly.
 
-Macro copies all visible solid and surface bodies, deletes all user features and imports the copied bodies using SOLIDWORKS API.
+此宏模拟了[零件简化](https://help.solidworks.com/2018/english/solidworks/sldworks/c_defeature_for_parts.htm)的功能，但不直接使用它。
 
-**Before:**
+该宏复制所有可见的实体和曲面，删除所有用户特征，并使用SOLIDWORKS API导入复制的实体。
 
-![Part with feature tree](part-feature-tree.png){ width=350 }
+**之前：**
 
-**After:**
-![Part with defeatured tree](part-feature-tree-defeatured.png){ width=350 }
+![具有特征树的零件](part-feature-tree.png){ width=350 }
+
+**之后：**
+![具有简化特征树的零件](part-feature-tree-defeatured.png){ width=350 }
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -37,7 +38,7 @@ Sub main()
         CreateFeaturesForBodies swPart, vBodies
         
     Else
-        MsgBox "Please open part document"
+        MsgBox "请打开零件文档"
     End If
     
 End Sub
@@ -109,5 +110,3 @@ Sub SelectAllTopLevelUserFeatures(model As SldWorks.ModelDoc2)
     
 End Sub
 ~~~
-
-
