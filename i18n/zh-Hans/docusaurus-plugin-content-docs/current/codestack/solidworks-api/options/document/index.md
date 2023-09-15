@@ -1,12 +1,12 @@
 ---
-title: Managing user preferences of the document using SOLIDWORKS API
-caption: Document Options
-description: Collection of articles and examples which demonstrate how to control document options (user preferences) using SOLIDWORKS API
+title: 使用SOLIDWORKS API管理文档的用户首选项
+caption: 文档选项
+description: 本文档集合了一些示例和文章，演示了如何使用SOLIDWORKS API来控制文档选项（用户首选项）
 labels: [document, preferences, options]
 ---
-To manage user preferences (options) of the SOLIDWORKS part, assembly or drawing it is required to use one of the following SOLIDWORKS API:
+要管理SOLIDWORKS零件、装配体或绘图的用户首选项（选项），需要使用以下SOLIDWORKS API之一：
 
-For reading the options:
+用于读取选项：
 
 * [IModelDocExtension::GetUserPreferenceDouble](https://help.solidworks.com/2018/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IModelDocExtension~GetUserPreferenceDouble.html)
 
@@ -18,7 +18,7 @@ For reading the options:
 
 * [IModelDocExtension::GetUserPreferenceToggle](https://help.solidworks.com/2018/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IModelDocExtension~GetUserPreferenceToggle.html)
 
-For writing the options:
+用于写入选项：
 
 * [IModelDocExtension::SetUserPreferenceDouble](https://help.solidworks.com/2018/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IModelDocExtension~SetUserPreferenceDouble.html)
 
@@ -30,4 +30,4 @@ For writing the options:
 
 * [IModelDocExtension::SetUserPreferenceToggle](https://help.solidworks.com/2018/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IModelDocExtension~SetUserPreferenceToggle.html)
 
-This section contains collection of examples and macros for automating document user preferences using SOLIDWORKS API.
+本节包含了使用SOLIDWORKS API自动化文档用户首选项的示例和宏。
