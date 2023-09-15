@@ -1,31 +1,32 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS Macro shows selected assembly component in the Window folder
-caption: Show Selected Assembly Component In The Window Folder
-description: Example demonstrates how to open the folder of the selected component in the assembly in the Windows File Explorer
+title: SOLIDWORKS宏在窗口文件夹中显示选定的装配组件
+caption: 在窗口文件夹中显示选定的装配组件
+description: 该示例演示了如何使用SOLIDWORKS API在Windows文件资源管理器中打开选定组件的文件夹。
 image: windows-folder-selected-component.svg
-labels: [assembly, component, explorer, frame, macro, show in folder, solidworks, solidworks api, utility, vba]
-group: Assembly
+labels: [装配, 组件, 资源管理器, 宏, 在文件夹中显示, SOLIDWORKS, SOLIDWORKS API, 实用工具, VBA]
+group: 装配
 redirect-from:
   - /2018/03/show-selected-assembly-component-in.html
   - /solidworks-api/document/assembly/show-selected-assembly-component-window-folder
 ---
-This macro demonstrates how to open the folder of the selected component in the assembly in the Windows File Explorer using SOLIDWORKS API.
 
-The component's file will be preselected in the opened window.
+该宏演示了如何使用SOLIDWORKS API在Windows文件资源管理器中打开选定组件的文件夹。
 
-This macro will produce similar results to the following manual steps:
+打开的窗口中将预先选择组件的文件。
 
-1. Open component in its own window
-1. Go to File Menu
-1. Select the file from the Open Recent
-1. Select "Show In Folder" option
+该宏将产生类似于以下手动步骤的结果：
 
-![Open Recent file menu command](open-recent.png){ width=320 height=69 }
+1. 在其自己的窗口中打开组件
+1. 转到文件菜单
+1. 从“最近打开”中选择文件
+1. 选择“在文件夹中显示”选项
 
-If none of the components selected then the path of active model will be opened.
+![最近打开文件菜单命令](open-recent.png){ width=320 height=69 }
 
-Watch [video demonstration](https://youtu.be/9uZCecGg25I?t=266)
+如果没有选择任何组件，则将打开活动模型的路径。
+
+观看[视频演示](https://youtu.be/9uZCecGg25I?t=266)
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -58,15 +59,13 @@ Sub main()
         If path <> "" Then
             Shell "explorer.exe /select, " & """" & path & """"
         Else
-            MsgBox "Model is not saved"
+            MsgBox "模型未保存"
         End If
     
     Else
-        MsgBox "Please open assembly document and select the component"
+        MsgBox "请打开装配文档并选择组件"
     End If
     
 End Sub
 
 ~~~
-
-
