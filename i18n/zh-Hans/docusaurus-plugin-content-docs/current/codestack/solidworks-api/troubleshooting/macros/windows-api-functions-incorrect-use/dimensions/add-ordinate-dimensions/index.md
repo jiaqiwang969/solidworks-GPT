@@ -1,17 +1,17 @@
 ---
-caption: Add Holes Ordinate Dimensions
-title: Macro to add horizontal and vertical ordinate dimensions for holes in SOLIDWORKS drawings view
-description: SOLIDWORKS VBA macro to add horizontal and vertical ordinate dimensions for all holes of the selected view relative to the bottom left vertex 
+caption: 添加孔的坐标尺寸
+title: 在SOLIDWORKS图纸视图中添加水平和垂直坐标尺寸的宏
+description: SOLIDWORKS VBA宏，用于为所选视图中的所有孔添加水平和垂直坐标尺寸，相对于左下顶点
 image: ordinate-dimensions.png
 ---
-![Ordinate dimensions in the drawing view](ordinate-dimensions.png)
+![图纸视图中的坐标尺寸](ordinate-dimensions.png)
 
-This SOLIDWORKS VBA macro automates adding the horizontal ordinate dimensions for all the holes in the selected drawing view.
+这个SOLIDWORKS VBA宏可以自动化添加所选图纸视图中所有孔的水平坐标尺寸。
 
-* Macro will find the ordinate dimension origin by finding the bottom left vertex in the view
-* Macro will find all holes of the view (only internal holes are included, fillets will not be considered)
-* Macro will add horizontal and vertical dimensions for the holes
-* Dimensions wil be positioned relative to the drawing view
+* 宏将通过查找视图中的左下顶点来确定坐标尺寸的原点
+* 宏将查找视图中的所有孔（仅包括内部孔，不考虑圆角）
+* 宏将为孔添加水平和垂直尺寸
+* 尺寸将相对于图纸视图进行定位
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -32,7 +32,7 @@ Sub main()
     Set swView = swModel.SelectionManager.GetSelectedObject6(1, -1)
     
     If swView Is Nothing Then
-        Err.Raise vbError, "", "Please select view"
+        Err.Raise vbError, "", "请选择视图"
     End If
     
     Dim swOrigVertex As SldWorks.vertex
@@ -42,7 +42,7 @@ Sub main()
     vHoles = FindHoles(swView)
     
     If IsEmpty(vHoles) Then
-        Err.Raise vbError, "", "No holes found"
+        Err.Raise vbError, "", "未找到孔"
     End If
     
     Dim vOutline As Variant
@@ -76,10 +76,10 @@ Sub AddOrdinateDimensions(model As SldWorks.ModelDoc2, origVertex As SldWorks.ve
         model.SetPickMode
         
         If res <> swCreateOrdDimError_e.swCreateOrdDimErr_Success Then
-            Err.Raise vbError, "", "Failed to add ordinate dimension"
+            Err.Raise vbError, "", "添加坐标尺寸失败"
         End If
     Else
-        Err.Raise vbError, "", "Failed to select entities"
+        Err.Raise vbError, "", "选择实体失败"
     End If
     
 End Sub
@@ -137,7 +137,7 @@ Function FindOriginVertex(view As SldWorks.view) As SldWorks.vertex
     End If
     
     If swOriginVertex Is Nothing Then
-        Err.Raise vbError, "", "Failed to find origin vertex"
+        Err.Raise vbError, "", "未找到原点顶点"
     End If
     
     Set FindOriginVertex = swOriginVertex
@@ -222,4 +222,3 @@ Function FindHoles(view As SldWorks.view) As Variant
 
 End Function
 ~~~
-
