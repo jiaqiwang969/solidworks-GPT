@@ -1,26 +1,26 @@
 ---
 layout: sw-tool
-title: Macro to copy SOLIDWORKS custom property from material to model
-caption: Copy Custom Property From Material To Model
-description: Macro demonstrates how to copy the specified custom property from the material database to the model custom property using SOLIDWORKS API and XML parsers
+title: 从材料复制SOLIDWORKS自定义属性到模型的宏
+caption: 从材料复制自定义属性到模型
+description: 该宏演示了如何使用SOLIDWORKS API和XML解析器将指定的自定义属性从材料数据库复制到模型的自定义属性。
 image: copy-material-custom-property.svg
-labels: [material, xml, custom property]
-group: Materials
+labels: [材料, XML, 自定义属性]
+group: 材料
 ---
-![Custom property in the material](material-custom-property.png){ width=450 }
+![材料中的自定义属性](material-custom-property.png){ width=450 }
 
-This macro demonstrates how to copy the specified custom property from the material database to the model custom property using SOLIDWORKS API and XML parsers.
+该宏演示了如何使用SOLIDWORKS API和XML解析器将指定的自定义属性从材料数据库复制到模型的自定义属性。
 
-*MSXML2.DOMDocument* object is used to read XML of the material database and select the required material node.
+使用*MSXML2.DOMDocument*对象来读取材料数据库的XML并选择所需的材料节点。
 
-* Specify the custom property name to copy via *PRP_NAME* variable
+* 通过*PRP_NAME*变量指定要复制的自定义属性名称
 
 ~~~ vb
 Const PRP_NAME As String = "MyProperty"
 ~~~
 
-* Run the macro. Macro will find the material of active part and read the property value from the material database file
-* Macro will create/update the generic custom property of the file to the corresponding value of the custom property from material
+* 运行宏。宏将查找活动零件的材料并从材料数据库文件中读取属性值
+* 宏将创建/更新文件的通用自定义属性为与材料的自定义属性相应的值
 
 ~~~ vb
 Const PRP_NAME As String = "MyProperty"
@@ -46,11 +46,11 @@ Sub main()
             prpVal = GetMaterialCustomProperty(materialName, materialDb, PRP_NAME)
             SetCustomProperty swPart, PRP_NAME, prpVal
         Else
-            MsgBox "Failed to find the material database"
+            MsgBox "无法找到材料数据库"
         End If
         
     Else
-        MsgBox "Please open part"
+        MsgBox "请打开零件"
     End If
     
 End Sub
@@ -100,7 +100,7 @@ Function GetMaterialCustomProperty(materialName As String, materialDb As String,
     If Not matNode Is Nothing Then
         GetMaterialCustomProperty = matNode.Attributes.GetNamedItem("value").Text
     Else
-        Err.Raise vbError, , "Failed to find the custom property " & prpName & " in material " & materialName & " in database " & materialDb
+        Err.Raise vbError, , "在数据库 " & materialDb & " 中的材料 " & materialName & " 中找不到自定义属性 " & prpName
     End If
     
 End Function
@@ -114,5 +114,3 @@ Sub SetCustomProperty(model As SldWorks.ModelDoc2, prpName As String, prpVal As 
     
 End Sub
 ~~~
-
-
