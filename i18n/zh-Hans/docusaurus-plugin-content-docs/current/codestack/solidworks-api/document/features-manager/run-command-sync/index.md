@@ -1,7 +1,8 @@
 ---
-title: 如何使用SOLIDWORKS API同步运行命令
+title:  如何使用SOLIDWORKS API同步运行命令
 caption: 同步运行命令
-description: 该示例演示了如何使用SOLIDWORKS API同步运行命令（即在命令关闭后返回执行）
+---
+ 该示例演示了如何使用SOLIDWORKS API同步运行命令（即在命令关闭后返回执行）
 image: command_open.png
 labels: [sync, command, close]
 ---

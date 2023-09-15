@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title:  在绘图中切换白色背景的VBA宏
+title:   在绘图中切换白色背景的VBA宏
 caption: 切换绘图背景为白色
-description: 使用系统设置，在绘图中切换白色背景和其他颜色的VBA宏
+---
+ 使用系统设置，在绘图中切换白色背景和其他颜色的VBA宏
 image: ToggleWhiteBackground-icon.svg
 labels: [绘图, 选项, 背景, 截图]
 group: 选项 

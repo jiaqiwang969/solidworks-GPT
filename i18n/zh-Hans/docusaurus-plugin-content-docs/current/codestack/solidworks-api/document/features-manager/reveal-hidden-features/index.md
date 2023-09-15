@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 显示或删除SOLIDWORKS特征管理器树中的所有隐藏特征
+title:  显示或删除SOLIDWORKS特征管理器树中的所有隐藏特征
 caption: 显示隐藏特征
-description: 该宏用于显示SOLIDWORKS模型中在特征管理器树中隐藏的所有特征，或者删除它们
+---
+ 该宏用于显示SOLIDWORKS模型中在特征管理器树中隐藏的所有特征，或者删除它们
 image: hidden-feature.svg
 labels: [defeature,parasolid]
 group: Performance

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 打开活动文档或选定组件的关联图纸
+title:  打开活动文档或选定组件的关联图纸
 caption: 打开关联图纸
-description: 这个 VBA 宏允许打开装配体中选定组件的关联图纸，或者如果没有选定任何内容，则打开活动文档的关联图纸。
+---
+ 这个 VBA 宏允许打开装配体中选定组件的关联图纸，或者如果没有选定任何内容，则打开活动文档的关联图纸。
 image: open-associated-drawing.svg
 labels: [图纸, 打开, 详图]
 group: 图纸

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API在绘图中更改所选对象的图层的SOLIDWORKS宏
+title:  使用SOLIDWORKS API在绘图中更改所选对象的图层的SOLIDWORKS宏
 caption: 更改绘图中所选对象的图层
-description: 使用SOLIDWORKS API，将绘图中的所有所选对象移动到指定的图层
+---
+ 使用SOLIDWORKS API，将绘图中的所有所选对象移动到指定的图层
 image: sw-drawing-layers.png
 labels: [绘图, 图层, solidworks api, 实用工具]
 group: 绘图

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: 将切割清单拆分为配置
-title: 将SOLIDWORKS切割清单体拆分为单独的配置的宏
-description: 用于在绘图生成过程中为活动SOLIDWORKS零件文档中的所有切割清单体（或唯一体）创建单独的配置的VBA宏
+title:  将SOLIDWORKS切割清单体拆分为单独的配置的宏
+---
+ 用于在绘图生成过程中为活动SOLIDWORKS零件文档中的所有切割清单体（或唯一体）创建单独的配置的VBA宏
 image: cut-list-to-configuration.svg
 group: 切割清单
 ---

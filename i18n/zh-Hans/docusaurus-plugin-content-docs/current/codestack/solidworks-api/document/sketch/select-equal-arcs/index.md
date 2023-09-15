@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API选择相等弧的宏
+title:  使用SOLIDWORKS API选择相等弧的宏
 caption: 选择相等弧
-description: 使用SOLIDWORKS API查找并选择所有直径与输入弧相等的弧的VBA宏
+---
+ 使用SOLIDWORKS API查找并选择所有直径与输入弧相等的弧的VBA宏
 image: selected-equal-arcs.png
 labels: [sketch,arc,circle,equal]
 group: Sketch

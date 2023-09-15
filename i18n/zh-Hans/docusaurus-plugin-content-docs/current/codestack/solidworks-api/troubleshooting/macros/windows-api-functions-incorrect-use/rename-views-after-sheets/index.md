@@ -1,7 +1,8 @@
 ---
 caption: Rename Drawing Views
-title: Rename all drawing views to the name of the sheet they are on
-description: This VBA macro allows you to rename all drawing views on all sheets in the active SOLIDWORKS drawing document to the name of the sheet followed by an index.
+title:  Rename all drawing views to the name of the sheet they are on
+---
+ This VBA macro allows you to rename all drawing views on all sheets in the active SOLIDWORKS drawing document to the name of the sheet followed by an index.
 ---
 
 This VBA macro allows you to rename all drawing views on all sheets in the active SOLIDWORKS drawing document to the name of the sheet followed by an index.

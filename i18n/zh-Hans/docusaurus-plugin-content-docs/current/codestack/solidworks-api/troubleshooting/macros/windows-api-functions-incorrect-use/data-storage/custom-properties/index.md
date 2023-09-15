@@ -1,7 +1,8 @@
 ---
-title: Managing Custom Properties using SOLIDWORKS API
+title:  Managing Custom Properties using SOLIDWORKS API
 caption: Custom Properties
-description: Managing model, configuration and feature specific custom properties using SOLIDWORKS API
+---
+ Managing model, configuration and feature specific custom properties using SOLIDWORKS API
 labels: [custom properties, configuration properties]
 ---
 This section contains macros and code examples for utilizing the custom properties in SOLIDWORKS API.

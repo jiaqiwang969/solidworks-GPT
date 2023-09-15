@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API配置文档外观
+title:  使用SOLIDWORKS API配置文档外观
 caption: 外观
-description: 包含使用SOLIDWORKS API管理文档外观（例如颜色）的示例和文章的集合
+---
+ 包含使用SOLIDWORKS API管理文档外观（例如颜色）的示例和文章的集合
 sidebar_position: 12
 labels: [颜色, 外观, 材料属性]
 ---

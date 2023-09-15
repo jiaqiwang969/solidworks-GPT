@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 在文档加载时自动运行VBA宏
+title:  在文档加载时自动运行VBA宏
 caption: 在文档加载时运行宏
-description: 使用SOLIDWORKS API在文件加载时自动运行VBA代码（或其他宏）
+---
+ 使用SOLIDWORKS API在文件加载时自动运行VBA代码（或其他宏）
 image: run-macro-on-load.svg
 labels: [自动运行,模型加载事件]
 group: 模型
@@ -20,7 +21,7 @@ group: 模型
 ## 配置
 
 * 创建新的宏
-* 将代码复制到宏的相应模块中。VBA宏树应该类似于下面的图片：
+* 将代码复制到宏的相应模块中。VBA宏树应该类似于下面的image: 
 
 ![VBA宏树](vba-macro-tree.png){ width=250 }
 

@@ -1,7 +1,8 @@
 ---
-title: SwEx框架中的日志功能
+title:  SwEx框架中的日志功能
 caption: 日志
-description: 从SwEx模块记录调试消息
+---
+ 从SwEx模块记录调试消息
 labels: [logging]
 toc-group-name: labs-solidworks-swex
 ---

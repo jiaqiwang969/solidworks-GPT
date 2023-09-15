@@ -1,7 +1,8 @@
 ---
-title: 在SOLIDWORKS API中使用持久引用ID跟踪对象
+title:  在SOLIDWORKS API中使用持久引用ID跟踪对象
 caption: 持久引用ID
-description: 本文介绍了使用持久引用ID在SOLIDWORKS会话中跟踪可选择的实体的方法
+---
+ 本文介绍了使用持久引用ID在SOLIDWORKS会话中跟踪可选择的实体的方法
 image: persist-id-array.png
 labels: [persistent, reference, tracking]
 ---

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API设置多个装配组件的求解（刚性或柔性）
+title:  使用SOLIDWORKS API设置多个装配组件的求解（刚性或柔性）
 caption: 设置组件求解（刚性或柔性）
-description: 使用SOLIDWORKS API批量设置装配中所选组件的刚性或柔性选项的VBA宏
+---
+ 使用SOLIDWORKS API批量设置装配中所选组件的刚性或柔性选项的VBA宏
 image: batch-set-solving.png
 labels: [批量,求解,刚性,柔性]
 group: 装配

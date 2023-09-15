@@ -1,7 +1,8 @@
 ---
-title: 使用 SOLIDWORKS API 和 IModeler 接口创建临时实体盒子
+title:  使用 SOLIDWORKS API 和 IModeler 接口创建临时实体盒子
 caption: 创建盒子实体
-description: 使用 SOLIDWORKS API 和 IModeler 接口，通过提供基准面中心点、方向和尺寸来创建临时实体盒子的 VBA 示例
+---
+ 使用 SOLIDWORKS API 和 IModeler 接口，通过提供基准面中心点、方向和尺寸来创建临时实体盒子的 VBA 示例
 image: box-body.png
 labels: [primitive,box,temp body,modeler]
 ---

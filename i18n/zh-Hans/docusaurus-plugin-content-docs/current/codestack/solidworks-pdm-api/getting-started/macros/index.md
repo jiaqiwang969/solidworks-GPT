@@ -1,7 +1,8 @@
 ---
-title: 在 VBA 和 VSTA 宏中使用 SOLIDWORKS PDM API
+title:  在 VBA 和 VSTA 宏中使用 SOLIDWORKS PDM API
 caption: 开发宏
-description: 了解如何编写 VBA 和 VSTA 宏以利用 SOLIDWORKS PDM API
+---
+ 了解如何编写 VBA 和 VSTA 宏以利用 SOLIDWORKS PDM API
 image: edm-type-library.png
 labels: [入门，VBA 宏，PDM API]
 ---

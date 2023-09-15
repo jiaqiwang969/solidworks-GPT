@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API自动化表格（BOM、常规、修订等）
+title:  使用SOLIDWORKS API自动化表格（BOM、常规、修订等）
 caption: 表格
-description: 本文介绍使用SOLIDWORKS API处理表格（物料清单、常规、焊接切割清单、孔洞表）的函数。
+---
+ 本文介绍使用SOLIDWORKS API处理表格（物料清单、常规、焊接切割清单、孔洞表）的函数。
 sidebar_position: 8
 ---
 通过SOLIDWORKS API可以访问所有SOLIDWORKS支持的表格类型，包括但不限于：

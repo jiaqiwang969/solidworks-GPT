@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS删除包含所有子特征的特征文件夹的宏
+title:  SOLIDWORKS删除包含所有子特征的特征文件夹的宏
 caption: 删除包含所有子特征的特征文件夹
-description: 该宏使用SOLIDWORKS API允许一键删除所选文件夹中的所有特征
+---
+ 该宏使用SOLIDWORKS API允许一键删除所选文件夹中的所有特征
 image: deleted-folder-features.svg
 labels: [删除文件夹, 特征管理器, 文件夹, solidworks api, 实用工具]
 group: 模型

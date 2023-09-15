@@ -1,7 +1,8 @@
 ---
-title: Angular package.json文件概述
+title:  Angular package.json文件概述
 caption: Package文件概述
-description: 管理Angular项目的package.json文件概述
+---
+ 管理Angular项目的package.json文件概述
 image: angular-package.png
 labels: [angular,package,json,dependencies,devDependencies,scripts]
 sidebar_position: 0

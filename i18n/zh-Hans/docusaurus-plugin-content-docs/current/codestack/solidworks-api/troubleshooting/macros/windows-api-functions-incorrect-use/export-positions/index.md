@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API将组件位置导出为CSV的VBA宏
+title:  使用SOLIDWORKS API将组件位置导出为CSV的VBA宏
 caption: 导出组件位置
-description: 该宏使用SOLIDWORKS API将组件的位置导出到外部CSV文本文件中
+---
+ 该宏使用SOLIDWORKS API将组件的位置导出到外部CSV文本文件中
 image: components-positions-table.png
 labels: [导出,CSV,Excel,起点]
 group: 组件装配

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Macro feature to configure model dimensions
+title:  Macro feature to configure model dimensions
 caption: Model Configurator
-description: VBA macro feature which allows to configure the dimensions of the model via custom user Form
+---
+ VBA macro feature which allows to configure the dimensions of the model via custom user Form
 image: part-configurator.svg
 labels: [configure, macro feature, dimensions]
 group: Model

@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS PDM API管理变量和数据卡
+title:  使用SOLIDWORKS PDM API管理变量和数据卡
 caption: 数据卡和变量
-description: 使用SOLIDWORKS PDM API管理变量和数据卡的代码示例和片段
+---
+ 使用SOLIDWORKS PDM API管理变量和数据卡的代码示例和片段
 labels: [数据卡, 变量]
 sidebar_position: 0
 ---

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Macro to export SOLIDWORKS file to multiple formats
+title:  Macro to export SOLIDWORKS file to multiple formats
 caption: Export To Multiple Formats
-description: VBA macro to export file (or optionally all configuration or drawing sheets) to multiple formats
+---
+ VBA macro to export file (or optionally all configuration or drawing sheets) to multiple formats
 image: batch-export.svg
 labels: [export]
 group: Import/Export

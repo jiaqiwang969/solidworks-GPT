@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: 切换滚动选定项到视图
-title: 在SOLIDWORKS文档中切换滚动选定项到视图的宏
-description: VBA宏用于在SOLIDWORKS FeatureManager设置中切换打开和关闭滚动选定项到视图选项
+title:  在SOLIDWORKS文档中切换滚动选定项到视图的宏
+---
+ VBA宏用于在SOLIDWORKS FeatureManager设置中切换打开和关闭滚动选定项到视图选项
 image: scroll-into-view.svg
 group: 性能
 ---

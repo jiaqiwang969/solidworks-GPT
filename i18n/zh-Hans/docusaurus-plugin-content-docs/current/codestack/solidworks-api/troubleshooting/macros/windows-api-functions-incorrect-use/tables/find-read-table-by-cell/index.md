@@ -1,7 +1,8 @@
 ---
 caption: 通过单元格的值查找和读取SOLIDWORKS图纸中的表格
-title: 通过单元格的值在SOLIDWORKS图纸中查找和读取表格
-description: VBA宏，通过指定单元格中的值在SOLIDWORKS图纸中查找表格，并将其数据读入变量中
+title:  通过单元格的值在SOLIDWORKS图纸中查找和读取表格
+---
+ VBA宏，通过指定单元格中的值在SOLIDWORKS图纸中查找表格，并将其数据读入变量中
 image: general-table.png
 ---
 这个VBA宏通过指定的值模式在指定的单元格中查找表格。

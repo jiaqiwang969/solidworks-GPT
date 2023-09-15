@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API自动化装配
+title:  使用SOLIDWORKS API自动化装配
 caption: 装配
-description: 使用SOLIDWORKS API自动化装配（组件、BOM、上下文）
+---
+ 使用SOLIDWORKS API自动化装配（组件、BOM、上下文）
 sidebar_position: 1
 labels: [assembly]
 ---

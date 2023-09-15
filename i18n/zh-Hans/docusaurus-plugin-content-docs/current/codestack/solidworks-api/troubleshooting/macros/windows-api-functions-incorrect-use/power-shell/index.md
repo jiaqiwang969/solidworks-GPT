@@ -1,7 +1,8 @@
 ---
-title: Utilizing SOLIDWORKS API methods in PowerShell scripts
+title:  Utilizing SOLIDWORKS API methods in PowerShell scripts
 caption: PowerShell
-description: Introduction to automation of SOLIDWORKS using API with PowerShell script
+---
+ Introduction to automation of SOLIDWORKS using API with PowerShell script
 ---
 [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/powershell-scripting?view=powershell-6) is a command line scripting language built on .NET. PowerShell provides more flexibility compared to other scripting languages. Code snippets in C# and VB.NET can be included into the script.
 

@@ -1,7 +1,8 @@
 ---
-title: Create and display b-spline curve using SOLIDWORKS API
+title:  Create and display b-spline curve using SOLIDWORKS API
 caption: Create B-Spline Curve
-description: VBA example demonstrates how to create and preview b-spline curve from the sample data using SOLIDWORKS API
+---
+ VBA example demonstrates how to create and preview b-spline curve from the sample data using SOLIDWORKS API
 image: bspline-curve-preview.png
 labels: [curve, bspline, modeler]
 ---

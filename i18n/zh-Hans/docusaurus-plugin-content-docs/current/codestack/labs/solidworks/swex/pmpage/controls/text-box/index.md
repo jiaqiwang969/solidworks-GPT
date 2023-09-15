@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS Property Manager 页面中的文本框控件
+title:  SOLIDWORKS Property Manager 页面中的文本框控件
 caption: 文本框
-description: 介绍应用于文本框控件的选项
+---
+ 介绍应用于文本框控件的选项
 image: text-box.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0

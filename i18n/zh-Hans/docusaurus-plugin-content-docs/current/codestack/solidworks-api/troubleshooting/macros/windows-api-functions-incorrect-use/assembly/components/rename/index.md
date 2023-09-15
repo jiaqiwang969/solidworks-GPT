@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API重命名永久和虚拟组件
+title:  使用SOLIDWORKS API重命名永久和虚拟组件
 caption: 重命名组件
-description: 本代码示例解释了更改组件名称（包括虚拟组件或子装配中的组件）的正确方法。
+---
+ 本代码示例解释了更改组件名称（包括虚拟组件或子装配中的组件）的正确方法。
 image: component-name.png
 labels: [装配, 组件, 名称]
 ---

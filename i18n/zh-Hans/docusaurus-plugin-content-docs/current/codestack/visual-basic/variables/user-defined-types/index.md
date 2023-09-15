@@ -1,7 +1,8 @@
 ---
-title: 'Visual Basic数据结构：对象、类型、枚举'
+title:  'Visual Basic数据结构：对象、类型、枚举'
 caption: 用户定义的类型
-description: Visual Basic中用户定义的类型（即对象、类型、枚举）的概述
+---
+ Visual Basic中用户定义的类型（即对象、类型、枚举）的概述
 image: class-module-class-declaration.png
 sidebar_position: 0
 ---

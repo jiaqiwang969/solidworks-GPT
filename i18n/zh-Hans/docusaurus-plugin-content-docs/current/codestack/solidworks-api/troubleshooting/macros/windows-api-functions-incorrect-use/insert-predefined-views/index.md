@@ -1,7 +1,8 @@
 ---
 caption: Insert Predefined Views
-title: Macro to insert model into the predefined views of the SOLIDWORKS drawing template
-description: VBA macro allows to insert SOLIDWORKS model into all or selected predefined views of the active drawing document
+title:  Macro to insert model into the predefined views of the SOLIDWORKS drawing template
+---
+ VBA macro allows to insert SOLIDWORKS model into all or selected predefined views of the active drawing document
 image: predefined-views.png
 ---
 ![SOLIDWORKS predefined views](predefined-views.png){ width = 400 }

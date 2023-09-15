@@ -1,8 +1,9 @@
 ---
 layout: sw-macro-fix
-title: 修复使用SOLIDWORKS API创建草图段时的错误
+title:  修复使用SOLIDWORKS API创建草图段时的错误
 caption: 创建草图段失败
-description: 修复宏中创建草图段（线段、弧线等）或草图点时的不一致性问题
+---
+ 修复宏中创建草图段（线段、弧线等）或草图点时的不一致性问题
 labels: [宏, 故障排除]
 redirect-from:
   - /2018/04/macro-troubleshooting-failed-create-sketch-segments.html

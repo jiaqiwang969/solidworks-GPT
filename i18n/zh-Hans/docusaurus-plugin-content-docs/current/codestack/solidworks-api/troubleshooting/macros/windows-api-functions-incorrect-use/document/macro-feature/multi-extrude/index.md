@@ -1,7 +1,8 @@
 ---
 caption: Create MultiBoss-Extrude Macro Feature
-title: Create MultiBoss-Extrude VBA macro feature using SOLIDWORKS API
-description: VBA example demonstrates how to create parametric macro feature to create extrude from multiple sketches with an editing and preview ability
+title:  Create MultiBoss-Extrude VBA macro feature using SOLIDWORKS API
+---
+ VBA example demonstrates how to create parametric macro feature to create extrude from multiple sketches with an editing and preview ability
 image: multiboss-extrude.png
 ---
 ![Property Manager Page and preview for MultiBoss-Extrude Macro Feature](multiboss-extrude.png) { width=500 }

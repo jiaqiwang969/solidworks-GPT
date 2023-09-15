@@ -1,7 +1,8 @@
 ---
-title: 解决SOLIDWORKS PDM插件注册问题
+title:  解决SOLIDWORKS PDM插件注册问题
 caption: 插件
-description: SOLIDWORKS PDM插件开发、调试和注册过程中最常见错误的症状和解决方法。
+---
+ SOLIDWORKS PDM插件开发、调试和注册过程中最常见错误的症状和解决方法。
 labels: [插件注册]
 styles:
   - /_assets/styles/catalogue.css

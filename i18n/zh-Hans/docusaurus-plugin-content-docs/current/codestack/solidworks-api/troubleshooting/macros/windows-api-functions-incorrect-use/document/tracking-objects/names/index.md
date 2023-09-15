@@ -1,7 +1,8 @@
 ---
-title: 使用API读取和更改SOLIDWORKS对象（特征、组件、视图）的名称
+title:  使用API读取和更改SOLIDWORKS对象（特征、组件、视图）的名称
 caption: 对象名称
-description: 本文介绍了对象名称的使用方法以及读取和更改名称的方式
+---
+ 本文介绍了对象名称的使用方法以及读取和更改名称的方式
 image: face-name.png
 labels: [id, track, name]
 ---

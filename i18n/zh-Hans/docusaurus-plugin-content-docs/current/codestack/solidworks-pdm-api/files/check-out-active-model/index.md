@@ -1,7 +1,8 @@
 ---
-title: 使用 SOLIDWORKS 和 PDM API 检出活动 SOLIDWORKS 模型
+title:  使用 SOLIDWORKS 和 PDM API 检出活动 SOLIDWORKS 模型
 caption: 检出活动模型
-description: 使用 SOLIDWORKS 和 PDM API 检出在 SOLIDWORKS 中打开的活动模型（使用释放锁）从 PDM 保险库中
+---
+ 使用 SOLIDWORKS 和 PDM API 检出在 SOLIDWORKS 中打开的活动模型（使用释放锁）从 PDM 保险库中
 image: open-read-only-warning.png
 labels: [检出,释放锁]
 ---

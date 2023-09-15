@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Identify SOLIDWORKS API feature definition and specific type
+title:  Identify SOLIDWORKS API feature definition and specific type
 caption: Identify Feature Definition And Specific Type
-description: Helper methods allowing to identify the definition and specific type of the selected feature via SOLIDWORKS API and reflection
+---
+ Helper methods allowing to identify the definition and specific type of the selected feature via SOLIDWORKS API and reflection
 image: specific-feature-types.png
 labels: [reflection, specific feature, feature definition]
 group: Developers

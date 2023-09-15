@@ -1,7 +1,8 @@
 ---
 caption: Upgrade Legacy
-title: Upgrade legacy custom properties to a new architecture
-description: VBA macro which upgrade legacy SOLIDWORKS custom properties to a new architecture in SOLIDWORKS 2022
+title:  Upgrade legacy custom properties to a new architecture
+---
+ VBA macro which upgrade legacy SOLIDWORKS custom properties to a new architecture in SOLIDWORKS 2022
 ---
 This macro upgrades the legacy custom properties to a [new architecture](https://help.solidworks.com/2022/english/solidworks/sldworks/c_custom_properties_architecture.htm) in SOLIDWORKS 2022.
 

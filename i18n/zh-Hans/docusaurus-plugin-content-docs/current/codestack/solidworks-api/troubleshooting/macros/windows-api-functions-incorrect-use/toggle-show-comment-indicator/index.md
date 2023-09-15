@@ -1,7 +1,8 @@
 ---
-title: Toggle Show Comment Indicator option using SOLIDWORKS API
+title:  Toggle Show Comment Indicator option using SOLIDWORKS API
 caption: Toggle Show Comment Indicator option
-description: VBA macro to turn On and Off the Show Comment Indicator option of Feature Manager tree using SOLIDWORKS API and Windows API
+---
+ VBA macro to turn On and Off the Show Comment Indicator option of Feature Manager tree using SOLIDWORKS API and Windows API
 image: show-comment-indicator-command.png
 labels: [winapi,comments]
 ---

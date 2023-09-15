@@ -1,7 +1,8 @@
 ---
-title: 通过API管理SOLIDWORKS文档
+title:  通过API管理SOLIDWORKS文档
 caption: 文档
-description: 使用SOLIDWORKS API关闭、打开、遍历文档的示例
+---
+ 使用SOLIDWORKS API关闭、打开、遍历文档的示例
 labels: [documents]
 ---
 SOLIDWORKS文档在SOLIDWORKS API中以[IModelDoc2](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDoc2.html)接口表示。

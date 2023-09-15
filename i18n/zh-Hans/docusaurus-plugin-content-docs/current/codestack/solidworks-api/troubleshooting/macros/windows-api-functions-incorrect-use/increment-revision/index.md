@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 通过SOLIDWORKS API递增注释中的数字值的宏特征
+title:  通过SOLIDWORKS API递增注释中的数字值的宏特征
 caption: 递增注释中的数字值
-description: 该宏通过匹配正则表达式（例如递增修订版）使用SOLIDWORKS API递增注释的数字值
+---
+ 该宏通过匹配正则表达式（例如递增修订版）使用SOLIDWORKS API递增注释的数字值
 image: drawing-revision-incremented.png
 labels: [note, revision, increment, regular expression, regex, tag]
 group: Drawing

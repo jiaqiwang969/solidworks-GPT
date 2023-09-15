@@ -1,8 +1,9 @@
 ---
 layout: sw-macro-fix
-title: 如何修复合并的SOLIDWORKS宏错误
+title:  如何修复合并的SOLIDWORKS宏错误
 caption: 合并的宏无法工作
-description: 修复独立工作正常但合并后无法工作的宏的运行时错误'424' - 对象必需
+---
+ 修复独立工作正常但合并后无法工作的宏的运行时错误'424' - 对象必需
 image: error-object-required.png
 labels: [宏, 故障排除]
 redirect-from:

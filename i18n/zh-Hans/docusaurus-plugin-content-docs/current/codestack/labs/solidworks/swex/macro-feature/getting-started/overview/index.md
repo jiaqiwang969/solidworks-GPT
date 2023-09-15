@@ -1,7 +1,8 @@
 ---
-title: SwEx.MacroFeature框架概述
+title:  SwEx.MacroFeature框架概述
 caption: 概述
-description: 宏特征和SwEx.MacroFeature框架的通用概述
+---
+ 宏特征和SwEx.MacroFeature框架的通用概述
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

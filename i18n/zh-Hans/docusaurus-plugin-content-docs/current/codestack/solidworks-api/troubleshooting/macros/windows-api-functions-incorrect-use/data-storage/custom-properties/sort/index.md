@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Sort file and configuration specific custom properties using SOLIDWORKS API
+title:  Sort file and configuration specific custom properties using SOLIDWORKS API
 caption: Sort Custom Properties
-description: VBA macro to sort file and configuration specific custom properties (in ascending and descending order) using logical order via SOLIDWORKS API
+---
+ VBA macro to sort file and configuration specific custom properties (in ascending and descending order) using logical order via SOLIDWORKS API
 image: sort-custom-properties.svg
 labels: [sort, custom properties, bubble]
 group: Custom Properties

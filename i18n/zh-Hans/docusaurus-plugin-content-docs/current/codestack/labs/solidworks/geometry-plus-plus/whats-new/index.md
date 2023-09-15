@@ -1,7 +1,8 @@
 ---
-title: '新功能和错误修复：Geometry++ 的新功能和错误修复'
+title:  '新功能和错误修复：Geometry++ 的新功能和错误修复'
 caption: 新功能和错误修复
-description: SOLIDWORKS 的 Geometry++ 插件的版本历史记录
+---
+ SOLIDWORKS 的 Geometry++ 插件的版本历史记录
 toc-group-name: labs-solidworks-geometry-plus-plus
 sidebar_position: 0
 ---

@@ -1,7 +1,8 @@
 ---
-title: 使用API创建SOLIDWORKS的VB.NET插件
+title:  使用API创建SOLIDWORKS的VB.NET插件
 caption: 创建VB.NET插件以供SOLIDWORKS使用
-description: 详细指南，从头开始使用VB.NET创建“Hello World”SOLIDWORKS插件
+---
+ 详细指南，从头开始使用VB.NET创建“Hello World”SOLIDWORKS插件
 image: new-vbnet-class-library.png
 labels: [插件, vb.net]
 ---

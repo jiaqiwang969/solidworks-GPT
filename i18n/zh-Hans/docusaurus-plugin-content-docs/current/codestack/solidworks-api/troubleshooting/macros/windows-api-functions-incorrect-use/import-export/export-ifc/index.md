@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API将装配体或零件导出为IFC 2x3或4
+title:  使用SOLIDWORKS API将装配体或零件导出为IFC 2x3或4
 caption: 导出到IFC（2x3和4）
-description: 使用SOLIDWORKS API将活动零件或装配体文档导出为IFC格式（2x3或4）的VBA示例
+---
+ 使用SOLIDWORKS API将活动零件或装配体文档导出为IFC格式（2x3或4）的VBA示例
 image: save-as-dialog-ifc.png
 labels: [ifc,ifc2x3,ifc4,export]
 ---

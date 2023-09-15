@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Remove all mates and fix components in SOLIDWORKS assembly
+title:  Remove all mates and fix components in SOLIDWORKS assembly
 caption: Remove All Mates And Fix Components
-description: VBA macro to remove all mates and fix all top level components in the active SOLIDWORKS assembly
+---
+ VBA macro to remove all mates and fix all top level components in the active SOLIDWORKS assembly
 image: remove-mates.svg
 labels: [mates, remove, components, fix]
 group: Assembly

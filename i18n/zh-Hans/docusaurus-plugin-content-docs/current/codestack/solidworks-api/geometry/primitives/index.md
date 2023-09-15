@@ -1,7 +1,8 @@
 ---
-title: Code Examples for Creating Geometric Primitives using the SOLIDWORKS API
+title:  Code Examples for Creating Geometric Primitives using the SOLIDWORKS API
 caption: Primitives
-description: Collection of code examples for creating geometric primitives (such as boxes, cylinders, planes, toruses, etc.) using the SOLIDWORKS API.
+---
+ Collection of code examples for creating geometric primitives (such as boxes, cylinders, planes, toruses, etc.) using the SOLIDWORKS API.
 sidebar_position: 1
 labels: [geometry, topology, primitives]
 ---

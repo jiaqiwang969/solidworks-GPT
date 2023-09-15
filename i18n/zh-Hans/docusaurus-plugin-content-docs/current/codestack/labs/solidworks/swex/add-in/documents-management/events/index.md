@@ -1,7 +1,8 @@
 ---
-title: 使用SwEx.AddIn框架处理SOLIDWORKS文件的常见事件
+title:  使用SwEx.AddIn框架处理SOLIDWORKS文件的常见事件
 caption: 常见事件
-description: 使用SwEx.AddIn框架中的文档管理功能处理常见事件（重建、选择、配置更改、项目修改、自定义属性修改等）
+---
+ 使用SwEx.AddIn框架中的文档管理功能处理常见事件（重建、选择、配置更改、项目修改、自定义属性修改等）
 toc-group-name: labs-solidworks-swex
 labels: [事件,重建,选择]
 ---

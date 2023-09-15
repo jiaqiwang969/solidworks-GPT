@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API根据输入参数生成模型的脚本
+title:  使用SOLIDWORKS API根据输入参数生成模型的脚本
 caption: 模型生成器
-description: 使用SOLIDWORKS API根据指定参数生成模型的脚本
+---
+ 使用SOLIDWORKS API根据指定参数生成模型的脚本
 image: model-parameters.png
 labels: [dimension, parameters, script]
 ---

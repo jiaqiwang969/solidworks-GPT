@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS 属性管理器页面中的数字框
+title:  SOLIDWORKS 属性管理器页面中的数字框
 caption: 数字框
-description: 应用于数字框控件的选项概述
+---
+ 应用于数字框控件的选项概述
 image: number-box-units-wheel.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0

@@ -1,7 +1,8 @@
 ---
-title: 使用API创建SOLIDWORKS自动化的C#插件
+title:  使用API创建SOLIDWORKS自动化的C#插件
 caption: 创建C#插件以进行SOLIDWORKS
-description: 使用C#从头开始创建SOLIDWORKS插件的详细指南
+---
+ 使用C#从头开始创建SOLIDWORKS插件的详细指南
 image: new-project-class-library.png
 labels: [插件, c#]
 ---

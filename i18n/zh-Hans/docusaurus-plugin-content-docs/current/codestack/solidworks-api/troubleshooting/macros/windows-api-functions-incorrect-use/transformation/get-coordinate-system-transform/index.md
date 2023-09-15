@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API获取坐标系的变换矩阵
+title:  使用SOLIDWORKS API获取坐标系的变换矩阵
 caption: 获取坐标系变换
-description: 使用VBA宏从选定的坐标系中提取4x4变换矩阵，并将结果输出到即时窗口中
+---
+ 使用VBA宏从选定的坐标系中提取4x4变换矩阵，并将结果输出到即时窗口中
 image: coordinate-system.png
 labels: [变换,坐标系]
 ---

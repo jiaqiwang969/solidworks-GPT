@@ -1,7 +1,8 @@
 ---
-title: 从外部进程调用 SOLIDWORKS 插件 API 的内部调用
+title:  从外部进程调用 SOLIDWORKS 插件 API 的内部调用
 caption: 从外部进程调用的内部调用
-description: 通过从独立应用程序或宏中调用插件 API 以获得最佳性能的框架
+---
+ 通过从独立应用程序或宏中调用插件 API 以获得最佳性能的框架
 image: macro-solution-tree.png
 labels: [插件 API,异步,性能,内部调用]
 sidebar_position: 4

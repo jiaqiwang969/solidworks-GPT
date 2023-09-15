@@ -1,7 +1,8 @@
 ---
-title: 编辑SOLIDWORKS宏特征定义
+title:  编辑SOLIDWORKS宏特征定义
 caption: 编辑定义
-description: 使用SwEx.MacroFeature框架编辑SOLIDWORKS宏特征的定义
+---
+ 使用SwEx.MacroFeature框架编辑SOLIDWORKS宏特征的定义
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

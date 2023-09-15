@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 将所有SOLIDWORKS文档级选项导出到Excel
+title:  将所有SOLIDWORKS文档级选项导出到Excel
 caption: 导出所有文档选项到Excel
-description: 该宏使用SOLIDWORKS API和反射将所有文档属性导出为Excel格式
+---
+ 该宏使用SOLIDWORKS API和反射将所有文档属性导出为Excel格式
 image: document-properties.png
 labels: [导出, Excel, CSV, 选项]
 group: 选项

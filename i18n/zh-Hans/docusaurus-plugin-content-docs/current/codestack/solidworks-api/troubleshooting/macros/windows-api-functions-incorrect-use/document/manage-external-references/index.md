@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS macro to break, lock or unlock all external references for files and components
+title:  SOLIDWORKS macro to break, lock or unlock all external references for files and components
 caption: Manage All External References For Components
-description: Example will break, lock or unlock all external references for the file or components in the active assembly using SOLIDWORKS API
+---
+ Example will break, lock or unlock all external references for the file or components in the active assembly using SOLIDWORKS API
 image: break-all-external-references.png
 labels: [assembly, external references, solidworks api, utility]
 group: Assembly

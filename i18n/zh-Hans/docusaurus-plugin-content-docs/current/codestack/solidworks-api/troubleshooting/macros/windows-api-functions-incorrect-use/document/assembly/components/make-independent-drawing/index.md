@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Macro to make independent copy of the SOLIDWORKS component and copy drawing
+title:  Macro to make independent copy of the SOLIDWORKS component and copy drawing
 caption: Make Independent With Drawing
-description: VBA macro allows to make an independent copy of the selected component, update reference in assembly and copy associated drawing
+---
+ VBA macro allows to make an independent copy of the selected component, update reference in assembly and copy associated drawing
 image: make-independent-drawing.svg
 labels: [make independent,drawing,component]
 group: Assembly

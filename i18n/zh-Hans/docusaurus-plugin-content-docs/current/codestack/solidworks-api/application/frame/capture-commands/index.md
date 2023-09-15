@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用API事件处理程序捕获SOLIDWORKS命令的VBA宏
+title:  使用API事件处理程序捕获SOLIDWORKS命令的VBA宏
 caption: 捕获SOLIDWORKS命令
-description: 该宏允许将SOLIDWORKS和用户命令捕获到列表框中
+---
+ 该宏允许将SOLIDWORKS和用户命令捕获到列表框中
 image: capturing-hide-command-id.png
 labels: [command, event]
 group: Developers

@@ -1,8 +1,9 @@
 ---
 layout: article
 caption: 插入位置标签
-title: 向绘图视图添加位置标签
-description: 这是一个演示如何向绘图视图添加位置标签的 VBA 宏
+title:  向绘图视图添加位置标签
+---
+ 这是一个演示如何向绘图视图添加位置标签的 VBA 宏
 image: location-label.png
 ---
 ![插入位置标签](location-label.png)

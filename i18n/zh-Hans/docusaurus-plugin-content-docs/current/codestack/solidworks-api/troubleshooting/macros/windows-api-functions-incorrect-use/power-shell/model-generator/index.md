@@ -1,7 +1,8 @@
 ---
-title: Script generates model from input parameters using SOLIDWORKS API
+title:  Script generates model from input parameters using SOLIDWORKS API
 caption: Model Generator
-description: Script generating model based on the template with specified parameters using SOLIDWORKS API
+---
+ Script generating model based on the template with specified parameters using SOLIDWORKS API
 image: model-parameters.png
 labels: [dimension, parameters, script]
 ---

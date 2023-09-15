@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS宏根据自定义属性重命名配置
+title:  SOLIDWORKS宏根据自定义属性重命名配置
 caption: 根据自定义属性重命名配置
-description: 该宏使用SOLIDWORKS API将装配体或零件的所有配置重命名为指定配置特定自定义属性的值。
+---
+ 该宏使用SOLIDWORKS API将装配体或零件的所有配置重命名为指定配置特定自定义属性的值。
 image: sw-configuration-name.png
 labels: [配置, 自定义属性, 重命名, solidworks api, 实用工具]
 group: 自定义属性

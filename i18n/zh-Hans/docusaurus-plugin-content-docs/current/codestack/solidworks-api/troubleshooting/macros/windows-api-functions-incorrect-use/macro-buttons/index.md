@@ -1,7 +1,8 @@
 ---
-title: 在SOLIDWORKS工具栏中创建宏按钮
+title:  在SOLIDWORKS工具栏中创建宏按钮
 caption: 创建宏按钮
-description: 本文介绍如何创建自定义按钮以从命令工具栏运行宏
+---
+ 本文介绍如何创建自定义按钮以从命令工具栏运行宏
 image: customize-macro-button.png
 labels: [宏, 宏按钮]
 ---

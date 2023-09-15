@@ -1,7 +1,8 @@
 ---
-title: 免费设置GoDaddy自定义域名的电子邮件转发
+title:  免费设置GoDaddy自定义域名的电子邮件转发
 caption: 设置GoDaddy电子邮件转发
-description: 使用GoDaddy设置最多100个免费自定义域名的电子邮件转发
+---
+ 使用GoDaddy设置最多100个免费自定义域名的电子邮件转发
 labels: [godaddy, 电子邮件转发]
 ---
 如果您在GoDaddy注册了域名，您可能希望设置使用自定义域名发送和接收电子邮件（例如info@domain.com）。

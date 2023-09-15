@@ -1,7 +1,8 @@
 ---
-title: 使用Visual Basic（VBA）读取文本文件内容
+title:  使用Visual Basic（VBA）读取文本文件内容
 caption: 读取文本文件
-description: 使用Visual Basic（VBA）将文本文件的内容读取到变量中
+---
+ 使用Visual Basic（VBA）将文本文件的内容读取到变量中
 labels: [read,input]
 ---
 

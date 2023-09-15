@@ -1,7 +1,8 @@
 ---
-title: 在绘图视图中使用SOLIDWORKS API对命名模型实体进行标注
+title:  在绘图视图中使用SOLIDWORKS API对命名模型实体进行标注
 caption: 标注命名模型实体
-description: 使用SOLIDWORKS API在从底层模型检索的零件图纸中的两个命名实体之间添加尺寸
+---
+ 使用SOLIDWORKS API在从底层模型检索的零件图纸中的两个命名实体之间添加尺寸
 image: drawing-view-dimension.png
 labels: [视图,尺寸,命名]
 ---

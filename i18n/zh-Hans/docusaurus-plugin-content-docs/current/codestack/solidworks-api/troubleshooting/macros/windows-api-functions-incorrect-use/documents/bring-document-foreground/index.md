@@ -1,7 +1,8 @@
 ---
-title: Bring Document to Foreground (Activate Document) Using SOLIDWORKS API
+title:  Bring Document to Foreground (Activate Document) Using SOLIDWORKS API
 caption: Bring Document to Foreground (Activate Document)
-description: This example demonstrates how to use the [ISldWorks::ActivateDoc3](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~activatedoc3.html) method of the SOLIDWORKS API to bring a document selected by path to the foreground (activate it).
+---
+ This example demonstrates how to use the [ISldWorks::ActivateDoc3](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~activatedoc3.html) method of the SOLIDWORKS API to bring a document selected by path to the foreground (activate it).
 labels: [Activate Document, Assembly, Example, Foreground, Open Document]
 redirect-from:
   - /2018/03/bring-document-foreground-activate.html

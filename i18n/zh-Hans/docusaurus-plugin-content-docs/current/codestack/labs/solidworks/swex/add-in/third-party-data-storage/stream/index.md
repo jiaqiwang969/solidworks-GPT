@@ -1,7 +1,8 @@
 ---
-title: 通过SwEx.AddIn框架将数据存储在第三方存储（流）中
+title:  通过SwEx.AddIn框架将数据存储在第三方存储（流）中
 caption: 流
-description: 使用SwEx.AddIn框架将自定义结构序列化到第三方存储（流）中
+---
+ 使用SwEx.AddIn框架将自定义结构序列化到第三方存储（流）中
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

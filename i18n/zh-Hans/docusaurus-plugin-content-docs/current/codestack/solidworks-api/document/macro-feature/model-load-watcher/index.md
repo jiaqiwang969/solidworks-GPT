@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用宏特征和SOLIDWORKS API在模型加载时运行VBA宏
+title:  使用宏特征和SOLIDWORKS API在模型加载时运行VBA宏
 caption: 在模型加载时自动运行宏
-description: 使用SOLIDWORKS API在模型加载时运行VBA代码的宏特征
+---
+ 使用SOLIDWORKS API在模型加载时运行VBA代码的宏特征
 image: load-watcher-macro-feature.png
 labels: [宏特征,加载事件,自动运行]
 group: 模型

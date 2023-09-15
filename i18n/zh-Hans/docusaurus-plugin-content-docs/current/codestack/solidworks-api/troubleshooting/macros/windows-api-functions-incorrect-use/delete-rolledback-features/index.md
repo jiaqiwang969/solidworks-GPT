@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: 删除回滚状态下的特征
-title: 在SOLIDWORKS文档中删除所有回滚状态下的特征的宏
-description: VBA宏查找并删除回滚栏下的所有特征
+title:  在SOLIDWORKS文档中删除所有回滚状态下的特征的宏
+---
+ VBA宏查找并删除回滚栏下的所有特征
 image: rollback-feature.svg
 group: Model
 ---

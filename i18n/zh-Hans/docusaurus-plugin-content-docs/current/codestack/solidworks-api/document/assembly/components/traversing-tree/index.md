@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API遍历组件树
+title:  使用SOLIDWORKS API遍历组件树
 caption: 遍历组件树
-description: 该示例演示了如何使用SOLIDWORKS API遍历组件树，并使用指定的缩进符号输出结果。
+---
+ 该示例演示了如何使用SOLIDWORKS API遍历组件树，并使用指定的缩进符号输出结果。
 image: sw-components-tree.png
 labels: [装配体, 组件树, solidworks api, 遍历]
 redirect-from:

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS宏以显示边缘的直径标注
+title:  SOLIDWORKS宏以显示边缘的直径标注
 caption: 显示所有选定圆形边缘的直径标注
-description: 该宏将使用SOLIDWORKS API方法[ISelectionMgr::CreateCallout2](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iselectionmgr~createcallout2.html)显示所有选定圆形边缘的直径标注。
+---
+ 该宏将使用SOLIDWORKS API方法[ISelectionMgr::CreateCallout2](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iselectionmgr~createcallout2.html)显示所有选定圆形边缘的直径标注。
 image: edge-callout.svg
 labels: [装饰, 标注, 直径, 边缘, 示例, 宏, solidworks api, 单位转换]
 group: 模型

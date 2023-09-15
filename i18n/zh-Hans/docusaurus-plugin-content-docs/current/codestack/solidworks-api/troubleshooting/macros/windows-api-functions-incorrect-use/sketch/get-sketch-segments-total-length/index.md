@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API获取所选草图中线段的总长度
+title:  使用SOLIDWORKS API获取所选草图中线段的总长度
 caption: 获取草图线段的总长度
-description: 使用SOLIDWORKS API计算所选草图中所有非构造几何线段的总长度的C#示例
+---
+ 使用SOLIDWORKS API计算所选草图中所有非构造几何线段的总长度的C#示例
 image: sketch-total-length.png
 labels: [sketch,length]
 ---

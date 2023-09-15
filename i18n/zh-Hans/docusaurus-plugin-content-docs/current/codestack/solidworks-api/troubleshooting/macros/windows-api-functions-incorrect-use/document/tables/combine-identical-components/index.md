@@ -1,7 +1,8 @@
 ---
 caption: Combine Identical Components
-title: Combine identical components command in SOLIDWORKS BOM table
-description: Macro to emulate combine identical components command in SOLIDWORKS BOM table
+title:  Combine identical components command in SOLIDWORKS BOM table
+---
+ Macro to emulate combine identical components command in SOLIDWORKS BOM table
 image: combine-identical-components.png
 ---
 ![Combine identical components command](combine-identical-components.png)

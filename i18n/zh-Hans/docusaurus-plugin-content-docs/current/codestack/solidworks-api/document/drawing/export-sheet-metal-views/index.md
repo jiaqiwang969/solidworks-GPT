@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用VBA宏在绘图中导出展开图视图
+title:  使用VBA宏在绘图中导出展开图视图
 caption: 导出展开图
-description: 使用SOLIDWORKS API的VBA宏，将绘图活动工作表中的展开图视图导出为DXF、DWG或其他格式，并保留弯曲注释、注释等。
+---
+ 使用SOLIDWORKS API的VBA宏，将绘图活动工作表中的展开图视图导出为DXF、DWG或其他格式，并保留弯曲注释、注释等。
 image: flat-pattern-view.png
 labels: [dxf,dwg,export,flat pattern]
 group: Drawing

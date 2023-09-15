@@ -1,7 +1,8 @@
 ---
-title: 捕获SOLIDWORKS API通知中的新特征创建事件
+title:  捕获SOLIDWORKS API通知中的新特征创建事件
 caption: 捕获新特征创建事件
-description: 该示例使用SOLIDWORKS API捕获活动零件文档的特征添加事件，并显示消息框。
+---
+ 该示例使用SOLIDWORKS API捕获活动零件文档的特征添加事件，并显示消息框。
 labels: [事件, 示例, 特征管理器, 新特征, solidworks api]
 redirect-from:
   - /2018/03/solidworks-api-features-manager-catch-adding-feat-event.html

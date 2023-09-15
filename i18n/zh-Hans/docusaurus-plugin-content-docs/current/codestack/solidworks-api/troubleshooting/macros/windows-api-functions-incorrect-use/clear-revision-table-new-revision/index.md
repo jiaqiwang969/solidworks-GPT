@@ -1,7 +1,8 @@
 ---
-title: 清除修订表并使用SOLIDWORKS API添加新的修订
+title:  清除修订表并使用SOLIDWORKS API添加新的修订
 caption: 清除修订表并添加新的修订
-description: 该示例使用SOLIDWORKS API找到修订表并删除所有修订，然后添加带有自定义数据的新行。
+---
+ 该示例使用SOLIDWORKS API找到修订表并删除所有修订，然后添加带有自定义数据的新行。
 image: sw-revision-table.png
 labels: [添加修订, 清除修订, 图纸.修订表, 示例, solidworks api]
 redirect-from:

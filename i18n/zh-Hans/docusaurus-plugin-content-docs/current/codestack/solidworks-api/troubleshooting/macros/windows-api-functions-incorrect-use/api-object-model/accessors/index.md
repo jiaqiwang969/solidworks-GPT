@@ -1,7 +1,8 @@
 ---
-title: How to Use the Accessors Section in the SOLIDWORKS API Help
+title:  How to Use the Accessors Section in the SOLIDWORKS API Help
 caption: Accessors
-description: Explains the meaning of the Accessors section in the API Help documentation, which helps find methods to access specific objects in the SOLIDWORKS API.
+---
+ Explains the meaning of the Accessors section in the API Help documentation, which helps find methods to access specific objects in the SOLIDWORKS API.
 image: accessors.png
 labels: [access, translation]
 ---

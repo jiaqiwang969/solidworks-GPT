@@ -1,7 +1,8 @@
 ---
 caption: Ray Intersection
-title: Find intersection points and topology entities by ray intersection SOLIDWORKS model
-description: VBA macro to find intersection points and the corresponding topology entities using rays in SOLIDWORKS part documents
+title:  Find intersection points and topology entities by ray intersection SOLIDWORKS model
+---
+ VBA macro to find intersection points and the corresponding topology entities using rays in SOLIDWORKS part documents
 image: ray-intersection-entities.png
 ---
 This VBA macro example demonstrates how to find the intersection points and the corresponding topology entities between all solid bodies of the active SOLIDWORKS part document and rays created from the sketch points of the selected sketch.

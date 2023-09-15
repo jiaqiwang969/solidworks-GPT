@@ -1,7 +1,8 @@
 ---
 caption: 添加孔的坐标尺寸
-title: 在SOLIDWORKS图纸视图中添加水平和垂直坐标尺寸的宏
-description: SOLIDWORKS VBA宏，用于在所选视图中为所有孔添加水平和垂直坐标尺寸，相对于左下顶点
+title:  在SOLIDWORKS图纸视图中添加水平和垂直坐标尺寸的宏
+---
+ SOLIDWORKS VBA宏，用于在所选视图中为所有孔添加水平和垂直坐标尺寸，相对于左下顶点
 image: ordinate-dimensions.png
 ---
 ![图纸视图中的坐标尺寸](ordinate-dimensions.png)

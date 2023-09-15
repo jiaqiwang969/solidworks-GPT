@@ -1,7 +1,8 @@
 ---
-title: Visual Basic 中的函数、子程序和参数
+title:  Visual Basic 中的函数、子程序和参数
 caption: 函数和子程序
-description: 有关在 Visual Basic 中使用函数、子程序（过程）以及参数的文章
+---
+ 有关在 Visual Basic 中使用函数、子程序（过程）以及参数的文章
 image: argument-not-optional.png
 sidebar_position: 0
 ---

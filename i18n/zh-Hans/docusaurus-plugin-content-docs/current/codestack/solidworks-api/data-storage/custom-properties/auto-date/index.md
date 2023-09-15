@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: 自动日期自定义属性
-title: 在SOLIDWORKS文件中创建一个动态自动更新的日期自定义属性
-description: 这个VBA宏允许将自定义属性**日期**插入到文件特定的自定义属性中。用户可以选择日期的格式。请参考[日期和时间格式字符串](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings)以获取更多关于支持的格式的信息。
+title:  在SOLIDWORKS文件中创建一个动态自动更新的日期自定义属性
+---
+ 这个VBA宏允许将自定义属性**日期**插入到文件特定的自定义属性中。用户可以选择日期的格式。请参考[日期和时间格式字符串](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings)以获取更多关于支持的格式的信息。
 
 ## CAD+
 

@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API在模型中存储数据
+title:  使用SOLIDWORKS API在模型中存储数据
 caption: 数据存储
-description: 一系列文章和代码示例，演示如何使用SOLIDWORKS API在SOLIDWORKS模型中存储不同类型的数据（第三方存储、属性、自定义属性）
+---
+ 一系列文章和代码示例，演示如何使用SOLIDWORKS API在SOLIDWORKS模型中存储不同类型的数据（第三方存储、属性、自定义属性）
 image: solidworks-model-data-storage.png
 sidebar_position: 0
 ---

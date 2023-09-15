@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: 清除图层
-title: 从SOLIDWORKS模型中删除图层中的所有项目
-description: VBA宏，用于从SOLIDWORKS文档中删除指定图层中的所有项目（注释、草图线段、块等）
+title:  从SOLIDWORKS模型中删除图层中的所有项目
+---
+ VBA宏，用于从SOLIDWORKS文档中删除指定图层中的所有项目（注释、草图线段、块等）
 image: remove-layer-items.svg
 group: Model
 ---

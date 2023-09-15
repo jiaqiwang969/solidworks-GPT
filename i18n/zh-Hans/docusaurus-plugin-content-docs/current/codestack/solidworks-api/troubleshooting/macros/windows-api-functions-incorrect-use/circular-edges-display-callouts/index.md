@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS Macro to display callouts with diameters for edges
+title:  SOLIDWORKS Macro to display callouts with diameters for edges
 caption: Display Callouts With Diameters For All Selected Circular Edges
-description: Macro will display the callouts with the diameter values of all selected circular edges in the 3D model
+---
+ Macro will display the callouts with the diameter values of all selected circular edges in the 3D model
 image: edge-callout.svg
 labels: [adornment, callout, diameter, edge, example, macro, solidworks api, unit conversion]
 group: Model

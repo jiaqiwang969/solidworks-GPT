@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API将临时实体存储和恢复到第三方存储
+title:  使用SOLIDWORKS API将临时实体存储和恢复到第三方存储
 caption: 存储和恢复实体
-description: 使用SOLIDWORKS API将临时实体存储到SOLIDWORKS文档流中的第三方存储，并在打开时恢复和显示实体
+---
+ 使用SOLIDWORKS API将临时实体存储到SOLIDWORKS文档流中的第三方存储，并在打开时恢复和显示实体
 image: restored-body.png
 labels: [第三方存储, 存储实体, 恢复实体]
 ---

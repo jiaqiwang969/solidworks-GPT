@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API选择SOLIDWORKS模型中的所有特征的宏
+title:  使用SOLIDWORKS API选择SOLIDWORKS模型中的所有特征的宏
 caption: 按类型选择特征
-description: 使用SOLIDWORKS API选择活动SOLIDWORKS模型（零件、装配或绘图）中的所有特征，通过指定其类型
+---
+ 使用SOLIDWORKS API选择活动SOLIDWORKS模型（零件、装配或绘图）中的所有特征，通过指定其类型
 image: selected-3dsketches.png
 labels: [选择,特征类型,多选,批量选择]
 group: 模型

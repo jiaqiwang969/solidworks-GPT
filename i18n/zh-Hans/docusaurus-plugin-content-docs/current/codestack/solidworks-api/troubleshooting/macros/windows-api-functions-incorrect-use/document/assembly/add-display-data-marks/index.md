@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: Add Display Data Marks
-title: Macro to add display data marks to configuration used by the main SOLIDWORKS assembly
-description: VBA macro to add display data mark for configurations used in Large assembly to be opened in Large Design Review Mode or eDrawings
+title:  Macro to add display data marks to configuration used by the main SOLIDWORKS assembly
+---
+ VBA macro to add display data mark for configurations used in Large assembly to be opened in Large Design Review Mode or eDrawings
 image: display-data-mark.svg
 group: Assembly
 ---

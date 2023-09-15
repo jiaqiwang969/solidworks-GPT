@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 通过SOLIDWORKS API从CSV文件导入点云到草图
+title:  通过SOLIDWORKS API从CSV文件导入点云到草图
 caption: 通过SOLIDWORKS API从CSV文件导入点云到草图
-description: 该宏使用SOLIDWORKS API将从指定的CSV（逗号分隔值）文件中读取的点云导入到活动的2D或3D草图中。
+---
+ 该宏使用SOLIDWORKS API将从指定的CSV（逗号分隔值）文件中读取的点云导入到活动的2D或3D草图中。
 image: import-points.svg
 labels: [csv, 点云, 草图, 导入]
 group: 草图

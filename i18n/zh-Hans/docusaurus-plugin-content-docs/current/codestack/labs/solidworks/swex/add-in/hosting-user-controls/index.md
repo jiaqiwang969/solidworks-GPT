@@ -1,7 +1,8 @@
 ---
-title: 使用SwEx.AddIn框架在SOLIDWORKS面板中托管自定义用户控件
+title:  使用SwEx.AddIn框架在SOLIDWORKS面板中托管自定义用户控件
 caption: 托管用户控件
-description: 使用SwEx.AddIn框架在SOLIDWORKS面板（任务窗格、模型视图管理器、特征管理器、选项对话框）中托管自定义用户控件
+---
+ 使用SwEx.AddIn框架在SOLIDWORKS面板（任务窗格、模型视图管理器、特征管理器、选项对话框）中托管自定义用户控件
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

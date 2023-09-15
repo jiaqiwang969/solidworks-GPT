@@ -1,7 +1,8 @@
 ---
-title: '入门：SOLIDWORKS PDM API 开发'
+title:  '入门：SOLIDWORKS PDM API 开发'
 caption: 入门
-description: SOLIDWORKS PDM API 的介绍，解释了通过插件和独立应用程序访问 API 的不同方式，并提供了创建它们的详细指南。
+---
+ SOLIDWORKS PDM API 的介绍，解释了通过插件和独立应用程序访问 API 的不同方式，并提供了创建它们的详细指南。
 labels: [pdm api, 入门]
 sidebar_position: 0
 ---

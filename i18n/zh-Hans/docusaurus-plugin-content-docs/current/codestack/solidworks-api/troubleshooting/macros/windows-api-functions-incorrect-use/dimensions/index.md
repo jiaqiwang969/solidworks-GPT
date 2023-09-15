@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API处理尺寸
+title:  使用SOLIDWORKS API处理尺寸
 caption: 尺寸
-description: 通过SOLIDWORKS API自动化模型尺寸的文章和代码示例集合
+---
+ 通过SOLIDWORKS API自动化模型尺寸的文章和代码示例集合
 sidebar_position: 7
 image: solidworks-dimensions-api.png
 ---

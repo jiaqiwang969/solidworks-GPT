@@ -1,7 +1,8 @@
 ---
-title: Save custom properties revisions into 3rd party storage store using SOLIDWORKS API
+title:  Save custom properties revisions into 3rd party storage store using SOLIDWORKS API
 caption: Save Custom Properties Revisions
-description: Saving custom properties revisions (snapshots) into document 3rd party storage store using SOLIDWORKS API
+---
+ Saving custom properties revisions (snapshots) into document 3rd party storage store using SOLIDWORKS API
 image: properties-snapshots-data.png
 labels: [storage,3rd party,custom properties]
 ---

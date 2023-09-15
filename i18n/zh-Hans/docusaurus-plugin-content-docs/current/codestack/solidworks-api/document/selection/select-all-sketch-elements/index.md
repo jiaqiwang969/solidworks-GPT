@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API选择所有草图元素
+title:  使用SOLIDWORKS API选择所有草图元素
 caption: 选择所有草图元素
-description: 本示例演示了如何使用SOLIDWORKS API中的直接::Select方法选择活动草图中的所有草图线段和草图点。
+---
+ 本示例演示了如何使用SOLIDWORKS API中的直接::Select方法选择活动草图中的所有草图线段和草图点。
 image: select-all-sketch-elements.png
 labels: [选择, 草图线段, 草图点]
 ---

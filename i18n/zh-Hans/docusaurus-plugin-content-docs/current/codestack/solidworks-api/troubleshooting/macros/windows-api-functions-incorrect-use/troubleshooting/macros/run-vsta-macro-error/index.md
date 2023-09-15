@@ -1,8 +1,9 @@
 ---
 layout: sw-macro-fix
-title: 修复无法运行的SOLIDWORKS VSTA（C#或VB.NET）宏
+title:  修复无法运行的SOLIDWORKS VSTA（C#或VB.NET）宏
 caption: 运行VSTA（C#或VB.NET）宏时出现无法打开错误
-description: 修复运行VSTA（C#或VB.NET）宏时出现的无法打开错误
+---
+ 修复运行VSTA（C#或VB.NET）宏时出现的无法打开错误
 image: cannot-open-vsta-macro.png
 labels: [宏, 故障排除]
 redirect-from:

@@ -1,7 +1,8 @@
 ---
-title: 使用 SOLIDWORKS Document Manager API 从活动配置中提取 PNG 预览图像
+title:  使用 SOLIDWORKS Document Manager API 从活动配置中提取 PNG 预览图像
 caption: 从活动配置中提取 PNG 预览图像
-description: 该示例演示了如何使用 SOLIDWORKS Document Manager API 从 SOLIDWORKS 组件或零件的活动配置中提取 PNG 预览图像。
+---
+ 该示例演示了如何使用 SOLIDWORKS Document Manager API 从 SOLIDWORKS 组件或零件的活动配置中提取 PNG 预览图像。
 ---
 
 该示例演示了如何使用 SOLIDWORKS Document Manager API 从 SOLIDWORKS 组件或零件的活动配置中提取 PNG 预览图像。

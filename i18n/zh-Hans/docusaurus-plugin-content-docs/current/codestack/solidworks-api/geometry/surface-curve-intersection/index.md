@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS宏查找曲面和曲线之间的交点
+title:  SOLIDWORKS宏查找曲面和曲线之间的交点
 caption: 查找曲面和曲线之间的交点
-description: 该示例演示了如何使用SOLIDWORKS API查找所选曲面（平面或面）与曲线（边缘或草图段）之间的交点。
+---
+ 该示例演示了如何使用SOLIDWORKS API查找所选曲面（平面或面）与曲线（边缘或草图段）之间的交点。
 image: surface-curve-intersection.png
 labels: [曲线, 评估, 几何, 宏, 点, solidworks api, 样条, 交点, 修剪曲线, vba]
 ---

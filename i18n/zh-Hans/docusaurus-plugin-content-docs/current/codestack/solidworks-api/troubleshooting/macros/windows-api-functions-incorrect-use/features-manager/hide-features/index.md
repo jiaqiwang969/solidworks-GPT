@@ -1,7 +1,8 @@
 ---
-title: VBA宏以隐藏SOLIDWORKS文件树中的所有选定特征
+title:  VBA宏以隐藏SOLIDWORKS文件树中的所有选定特征
 caption: 在树中隐藏特征
-description: VBA宏可隐藏特征并使其在SOLIDWORKS特征管理器树中不可见
+---
+ VBA宏可隐藏特征并使其在SOLIDWORKS特征管理器树中不可见
 image: hidden-features.png
 labels: [feature,hide,invisible]
 ---

@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS eDrawings API的教程和代码示例
+title:  SOLIDWORKS eDrawings API的教程和代码示例
 caption: eDrawings API
-description: SOLIDWORKS eDrawings API的概述，示例，教程和代码片段
+---
+ SOLIDWORKS eDrawings API的概述，示例，教程和代码片段
 image: edrawings-api.svg
 labels: [edrawings]
 sidebar_position: 0

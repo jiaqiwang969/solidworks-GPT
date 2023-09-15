@@ -1,7 +1,8 @@
 ---
-title: 使用SwEx.AddIn在菜单、工具栏和上下文菜单中托管SOLIDWORKS命令
+title:  使用SwEx.AddIn在菜单、工具栏和上下文菜单中托管SOLIDWORKS命令
 caption: 托管命令
-description: 使用SwEx.AddIn（命令组、上下文菜单、工具栏和命令选项卡框）托管SOLIDWORKS命令的选项
+---
+ 使用SwEx.AddIn（命令组、上下文菜单、工具栏和命令选项卡框）托管SOLIDWORKS命令的选项
 image: commands-toolbar.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0

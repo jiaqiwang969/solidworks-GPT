@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API向尺寸添加方程
+title:  使用SOLIDWORKS API向尺寸添加方程
 caption: 向尺寸添加方程
-description: 该示例将修改所选尺寸的值，并将其值设置为等于方程
+---
+ 该示例将修改所选尺寸的值，并将其值设置为等于方程
 image: sw-dimension-equation.png
 labels: [dimension, solidworks api, equation, example]
 redirect-from:

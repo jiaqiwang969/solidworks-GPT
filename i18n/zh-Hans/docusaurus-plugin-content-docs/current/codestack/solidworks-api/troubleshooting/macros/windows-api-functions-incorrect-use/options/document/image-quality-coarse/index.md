@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API在活动文档的用户首选项中设置ShadedImageQualityCoarse
+title:  使用SOLIDWORKS API在活动文档的用户首选项中设置ShadedImageQualityCoarse
 caption: 将阴影图像质量设置为粗糙
-description: SolidWorks VBA宏，用于在零件和装配文件中将阴影图像质量设置为粗糙。如果活动文档是装配体，则还将选中“应用于所有引用的零件文档”复选框。
+---
+ SolidWorks VBA宏，用于在零件和装配文件中将阴影图像质量设置为粗糙。如果活动文档是装配体，则还将选中“应用于所有引用的零件文档”复选框。
 image: coarse-icon.svg
 labels: [document, preferences, options, imagequality, batch+]
 group: Options

@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API进行块模型编辑
+title:  使用SOLIDWORKS API进行块模型编辑
 caption: 块模型编辑
-description: 该示例演示了使用SOLIDWORKS API禁用模型编辑的不同方法。
+---
+ 该示例演示了使用SOLIDWORKS API禁用模型编辑的不同方法。
 labels: [块编辑, 块模型, 示例, 锁定, 菜单, solidworks api]
 redirect-from:
   - /2018/03/block-model-editing.html

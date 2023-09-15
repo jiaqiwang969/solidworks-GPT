@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API创建精确的零件边界框的宏
+title:  使用SOLIDWORKS API创建精确的零件边界框的宏
 caption: 创建精确边界框
-description: 使用SOLIDWORKS API在零件文档中创建精确的边界框的宏
+---
+ 使用SOLIDWORKS API在零件文档中创建精确的边界框的宏
 image: precise-bounding-box.png
 labels: [边界框, 极值点]
 ---

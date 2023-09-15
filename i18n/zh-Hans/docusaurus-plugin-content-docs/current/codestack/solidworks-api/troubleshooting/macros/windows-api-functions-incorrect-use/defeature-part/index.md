@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API对零件进行简化（转换为简化实体）
+title:  使用SOLIDWORKS API对零件进行简化（转换为简化实体）
 caption: 简化零件
-description: 使用SOLIDWORKS API将零件中的所有特征转换为简化实体（简化零件）和曲面的宏
+---
+ 使用SOLIDWORKS API将零件中的所有特征转换为简化实体（简化零件）和曲面的宏
 image: part-feature-tree-defeatured.png
 labels: [简化,Parasolid]
 ---

@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API获取图纸体几何类型
+title:  使用SOLIDWORKS API获取图纸体几何类型
 caption: 获取图纸体几何类型
-description: 该示例用于识别所选图纸体的类型（开放壳体、内部壳体、外部壳体）
+---
+ 该示例用于识别所选图纸体的类型（开放壳体、内部壳体、外部壳体）
 image: face-shell-types.png
 labels: [示例, 面, 几何, 开放几何, 壳体, solidworks api, 拓扑]
 redirect-from:

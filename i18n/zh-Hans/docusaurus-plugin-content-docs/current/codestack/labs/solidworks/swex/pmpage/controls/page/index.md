@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS Property Manager Page的选项
+title:  SOLIDWORKS Property Manager Page的选项
 caption: 页面
-description: SOLIDWORKS属性管理器页面本身的选项概述
+---
+ SOLIDWORKS属性管理器页面本身的选项概述
 image: property-manager-page.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0

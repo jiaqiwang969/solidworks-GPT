@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API在配件之间插入管道组件
+title:  使用SOLIDWORKS API在配件之间插入管道组件
 caption: 插入管道
-description: 该VBA宏基于配件的止口面在SOLIDWORKS装配中插入新的虚拟组件
+---
+ 该VBA宏基于配件的止口面在SOLIDWORKS装配中插入新的虚拟组件
 image: pipe.svg
 labels: [pipe, fitting, assembly, plumbing]
 ---

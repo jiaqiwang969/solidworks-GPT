@@ -1,7 +1,8 @@
 ---
-title: VBA宏调用SOLIDWORKS API中的显示所有组件命令
+title:  VBA宏调用SOLIDWORKS API中的显示所有组件命令
 caption: 显示所有组件（显示依赖项）
-description: 该示例演示了如何使用SOLIDWORKS API调用显示依赖项命令来一次性显示所有组件或装配体。
+---
+ 该示例演示了如何使用SOLIDWORKS API调用显示依赖项命令来一次性显示所有组件或装配体。
 image: assembly-show-with-dependents.png
 labels: [装配体, 组件, 显示]
 ---

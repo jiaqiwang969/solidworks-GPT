@@ -1,7 +1,8 @@
 ---
-title: 使用SwEx.PMPage框架开始使用SOLIDWORKS
+title:  使用SwEx.PMPage框架开始使用SOLIDWORKS
 caption: 入门指南
-description: 使用SwEx.PMPage框架开发基于数据模型的SOLIDWORKS属性管理器页面（PMP）的C#和VB.NET的入门指南
+---
+ 使用SwEx.PMPage框架开发基于数据模型的SOLIDWORKS属性管理器页面（PMP）的C#和VB.NET的入门指南
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 redirect-from:

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API锁定编辑表单格式的宏
+title:  使用SOLIDWORKS API锁定编辑表单格式的宏
 caption: 锁定表单格式
-description: 使用SOLIDWORKS API锁定（或密码保护）表单格式编辑的VBA宏
+---
+ 使用SOLIDWORKS API锁定（或密码保护）表单格式编辑的VBA宏
 image: locked-sheet-format.png
 labels: [锁定,表单格式,保护]
 group: 绘图

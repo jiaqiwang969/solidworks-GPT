@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API修改孔表中孔的位置精度
+title:  使用SOLIDWORKS API修改孔表中孔的位置精度
 caption: 修改孔表孔的位置精度
-description: 本示例演示了如何使用SOLIDWORKS API更改所选孔表中孔的位置精度。
+---
+ 本示例演示了如何使用SOLIDWORKS API更改所选孔表中孔的位置精度。
 image: sw-hole-table.png
 labels: [绘图, 示例, 孔表, 精度, solidworks api]
 redirect-from:

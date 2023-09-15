@@ -1,7 +1,8 @@
 ---
-title: Visual Basic 中的字典
+title:  Visual Basic 中的字典
 caption: 字典
-description: 在 Visual Basic 中使用字典对象存储键值对的解释
+---
+ 在 Visual Basic 中使用字典对象存储键值对的解释
 image: dictionary-key-already-associated.png
 sidebar_position: 0
 ---

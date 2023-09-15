@@ -1,8 +1,9 @@
 ---
 layout: sw-pdm-addin-fix
-title: 使用SOLIDWORKS PDM Administration注册插件时间过长
+title:  使用SOLIDWORKS PDM Administration注册插件时间过长
 caption: 注册插件太慢
-description: 解决在SOLIDWORKS PDM管理工具中注册插件时的性能问题。
+---
+ 解决在SOLIDWORKS PDM管理工具中注册插件时的性能问题。
 image: server-busy.png
 labels: [pdm插件, 错误]
 ---

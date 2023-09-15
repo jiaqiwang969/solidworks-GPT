@@ -1,7 +1,8 @@
 ---
-title: Write custom property to file, configuration and cut-list using SOLIDWORKS API
+title:  Write custom property to file, configuration and cut-list using SOLIDWORKS API
 caption: Write All Properties
-description: VBA macro example to write different types of properties (general, configuration specific and cut list) using SOLIDWORKS API
+---
+ VBA macro example to write different types of properties (general, configuration specific and cut list) using SOLIDWORKS API
 image: approved-date-custom-property.png
 labels: [set property,add property,write property,date]
 ---

@@ -1,7 +1,8 @@
 ---
-title: Traversing the components tree using SOLIDWORKS API
+title:  Traversing the components tree using SOLIDWORKS API
 caption: Traversing The Components Tree
-description: Example demonstrates how to traverse components tree in the assembly and output the result using the specified indentation symbol
+---
+ Example demonstrates how to traverse components tree in the assembly and output the result using the specified indentation symbol
 image: sw-components-tree.png
 labels: [assembly, components tree, solidworks api, traverse]
 redirect-from:

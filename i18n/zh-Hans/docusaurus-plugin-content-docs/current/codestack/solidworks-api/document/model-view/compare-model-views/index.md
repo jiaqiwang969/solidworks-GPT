@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API比较模型视图变换
+title:  使用SOLIDWORKS API比较模型视图变换
 caption: 比较模型视图
-description: 该示例演示了如何使用SOLIDWORKS API比较部件或装配中的两个模型视图（通过方向、平移和缩放）
+---
+ 该示例演示了如何使用SOLIDWORKS API比较部件或装配中的两个模型视图（通过方向、平移和缩放）
 image: view-orientation.png
 ---
 ![模型视图方向](view-orientation.png){ width=250 }

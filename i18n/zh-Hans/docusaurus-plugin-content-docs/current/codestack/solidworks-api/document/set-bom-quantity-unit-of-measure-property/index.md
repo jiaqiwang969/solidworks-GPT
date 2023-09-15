@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API设置BOM数量（单位）属性
+title:  使用SOLIDWORKS API设置BOM数量（单位）属性
 caption: 在模型中设置BOM数量（单位）属性
-description: 本示例演示了如何使用SOLIDWORKS API修改属性对话框中的BOM数量字段。
+---
+ 本示例演示了如何使用SOLIDWORKS API修改属性对话框中的BOM数量字段。
 image: bom-quantity-property.png
 labels: [BOM数量, 示例, 数量, 单位]
 redirect-from:

@@ -1,7 +1,8 @@
 ---
 caption: 使用Windows API配置属性管理器页面
-title: 使用Windows API运行和配置SOLIDWORKS命令
-description: 示例演示如何使用Windows API调用和配置SOLIDWORKS绘图中的插入模型项命令
+title:  使用Windows API运行和配置SOLIDWORKS命令
+---
+ 示例演示如何使用Windows API调用和配置SOLIDWORKS绘图中的插入模型项命令
 image: insert-model-items-property-manager-page.png
 ---
 在某些情况下，某些SOLIDWORKS功能或选项可能在SOLIDWORKS API命令中不可用或工作不正确。

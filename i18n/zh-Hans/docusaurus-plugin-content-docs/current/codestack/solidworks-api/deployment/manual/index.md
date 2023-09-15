@@ -1,7 +1,8 @@
 ---
-title: 手动注册安装SOLIDWORKS插件
+title:  手动注册安装SOLIDWORKS插件
 caption: 手动
-description: 本文介绍如何手动部署和注册SOLIDWORKS插件
+---
+ 本文介绍如何手动部署和注册SOLIDWORKS插件
 image: types-registered-successfully.png
 labels: [部署, 安装, 安装程序]
 ---

@@ -1,7 +1,8 @@
 ---
-title: 仅用于API选择SOLIDWORKS对象
+title:  仅用于API选择SOLIDWORKS对象
 caption: 仅用于API选择对象
-description: 示例展示了如何仅用于API目的选择对象（不包括图形选择），并保留当前用户选择。
+---
+ 示例展示了如何仅用于API目的选择对象（不包括图形选择），并保留当前用户选择。
 image: extrude-direction-up-to-surface.png
 labels: [选择, 拉伸]
 ---

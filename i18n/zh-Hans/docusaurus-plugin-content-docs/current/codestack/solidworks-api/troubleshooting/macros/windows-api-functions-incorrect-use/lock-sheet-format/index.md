@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API锁定工作表格式的宏
+title:  使用SOLIDWORKS API锁定工作表格式的宏
 caption: 锁定工作表格式
-description: 使用SOLIDWORKS API锁定（或密码保护）工作表格式编辑的VBA宏
+---
+ 使用SOLIDWORKS API锁定（或密码保护）工作表格式编辑的VBA宏
 image: locked-sheet-format.png
 labels: [锁定,工作表格式,保护]
 group: 绘图

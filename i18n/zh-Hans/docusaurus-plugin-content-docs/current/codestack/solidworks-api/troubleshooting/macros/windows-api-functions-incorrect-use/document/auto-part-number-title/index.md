@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API将标题设置为零件编号
+title:  使用SOLIDWORKS API将标题设置为零件编号
 caption: 将标题设置为下一个零件编号
-description: 使用SOLIDWORKS API从共享文件中自动递增的编号设置标题的VBA宏，用于新建文件
+---
+ 使用SOLIDWORKS API从共享文件中自动递增的编号设置标题的VBA宏，用于新建文件
 image: automatic-model-title.png
 labels: [零件编号,标题]
 group: 模型

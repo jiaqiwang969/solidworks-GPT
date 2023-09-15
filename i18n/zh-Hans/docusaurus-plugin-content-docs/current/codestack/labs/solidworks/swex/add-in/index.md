@@ -1,7 +1,8 @@
 ---
-title: SwEx.AddIn框架可轻松且稳健地使用SOLIDWORKS API开发插件
+title:  SwEx.AddIn框架可轻松且稳健地使用SOLIDWORKS API开发插件
 caption: SwEx.AddIn
-description: 使用.NET（C＃和VB.NET）中的SOLIDWORKS API开发强大的SOLIDWORKS插件的高级工具。该框架简化了命令和UI元素的创建和维护。
+---
+ 使用.NET（C＃和VB.NET）中的SOLIDWORKS API开发强大的SOLIDWORKS插件的高级工具。该框架简化了命令和UI元素的创建和维护。
 image: logo.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0

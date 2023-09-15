@@ -1,7 +1,8 @@
 ---
-title: 在 SOLIDWORKS 启动时自动运行宏
+title:  在 SOLIDWORKS 启动时自动运行宏
 caption: 在 SOLIDWORKS 启动时运行宏
-description: 设置在 SOLIDWORKS 应用程序加载时自动运行宏
+---
+ 设置在 SOLIDWORKS 应用程序加载时自动运行宏
 image: shortcut-with-macro-run.png
 labels: [宏,自动运行]
 ---

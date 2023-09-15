@@ -1,7 +1,8 @@
 ---
-title: 使用 SOLIDWORKS API 在第三方存储中保存数据
+title:  使用 SOLIDWORKS API 在第三方存储中保存数据
 caption: 第三方存储和存储
-description: 本节介绍如何使用 SOLIDWORKS API 中的第三方存储和第三方存储来直接在模型流中序列化和反序列化数据
+---
+ 本节介绍如何使用 SOLIDWORKS API 中的第三方存储和第三方存储来直接在模型流中序列化和反序列化数据
 image: store-diagram.svg
 labels: [存储,第三方,存储,序列化]
 ---

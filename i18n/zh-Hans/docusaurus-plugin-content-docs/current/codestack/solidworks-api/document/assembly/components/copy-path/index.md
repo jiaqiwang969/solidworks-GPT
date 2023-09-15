@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 将SOLIDWORKS组件的路径复制到剪贴板的宏
+title:  将SOLIDWORKS组件的路径复制到剪贴板的宏
 caption: 复制组件路径
-description: 使用SOLIDWORKS API将选定组件的路径复制到剪贴板的宏
+---
+ 使用SOLIDWORKS API将选定组件的路径复制到剪贴板的宏
 image: copy-component-path.png
 labels: [路径, 剪贴板, 组件]
 group: 组件装配

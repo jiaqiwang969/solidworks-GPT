@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API在绘图工作表上绘制草图线段
+title:  使用SOLIDWORKS API在绘图工作表上绘制草图线段
 caption: 在绘图工作表的上下文中绘制草图线段
-description: 使用SOLIDWORKS API在绘图工作表的上下文中绘制底层模型边界框的草图线段
+---
+ 使用SOLIDWORKS API在绘图工作表的上下文中绘制底层模型边界框的草图线段
 image: drawing-view-line.png
 labels: [草图,尺寸,边缘,边界框]
 ---

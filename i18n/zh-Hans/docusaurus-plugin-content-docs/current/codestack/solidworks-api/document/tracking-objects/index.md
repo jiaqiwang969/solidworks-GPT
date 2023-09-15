@@ -1,7 +1,8 @@
 ---
-title: 在SOLIDWORKS API中使用临时和持久ID跟踪对象
+title:  在SOLIDWORKS API中使用临时和持久ID跟踪对象
 caption: 跟踪对象
-description: 这个系列的文章解释了如何在几何操作或跨会话时跟踪不同的对象
+---
+ 这个系列的文章解释了如何在几何操作或跨会话时跟踪不同的对象
 sidebar_position: 13
 labels: [跟踪, ID, 持久, 引用]
 ---

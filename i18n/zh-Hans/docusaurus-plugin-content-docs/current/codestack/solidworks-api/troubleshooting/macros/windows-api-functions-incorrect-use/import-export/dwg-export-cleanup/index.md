@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API将展开图案导出为DXF/DWG并进行清理页面
+title:  使用SOLIDWORKS API将展开图案导出为DXF/DWG并进行清理页面
 caption: 带清理的展开图案导出
-description: VBA示例演示了如何将指定的展开图案导出为DXF/DWG并显示清理对话框
+---
+ VBA示例演示了如何将指定的展开图案导出为DXF/DWG并显示清理对话框
 image: cleanup-page.png
 labels: [dxf,dwg,cleanup,flat pattern,export]
 ---

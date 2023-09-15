@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API从轻量级组件获取模型文档
+title:  使用SOLIDWORKS API从轻量级组件获取模型文档
 caption: 从轻量级组件获取模型文档
-description: 该示例演示了如何使用SOLIDWORKS API从组件中获取指向IModelDoc2接口的指针（即使组件处于抑制或轻量级状态）
+---
+ 该示例演示了如何使用SOLIDWORKS API从组件中获取指向IModelDoc2接口的指针（即使组件处于抑制或轻量级状态）
 image: lightweight-component.png
 labels: [装配体, 组件, 示例, 轻量级, 模型文档, 内存, solidworks api]
 ---

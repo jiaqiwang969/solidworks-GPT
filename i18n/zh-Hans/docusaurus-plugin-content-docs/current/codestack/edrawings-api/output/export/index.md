@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 通过 eDrawings API 批量将文件导出为外部格式（无需 SOLIDWORKS）
+title:  通过 eDrawings API 批量将文件导出为外部格式（无需 SOLIDWORKS）
 caption: 批量导出为外部格式
-description: 此控制台应用程序使用 eDrawings API 将 SOLIDWORKS、DXF、DWG 和 eDrawings 文件导出为外部格式（例如 eDrawings、html、stl、jpeg 等），无需安装 SOLIDWORKS 或使用 SOLIDWORKS 许可证。
+---
+ 此控制台应用程序使用 eDrawings API 将 SOLIDWORKS、DXF、DWG 和 eDrawings 文件导出为外部格式（例如 eDrawings、html、stl、jpeg 等），无需安装 SOLIDWORKS 或使用 SOLIDWORKS 许可证。
 image: export-edrawings.svg
 labels: [导出, 批量, eDrawings]
 

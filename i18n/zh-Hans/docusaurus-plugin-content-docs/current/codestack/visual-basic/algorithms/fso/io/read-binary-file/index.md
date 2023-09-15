@@ -1,7 +1,8 @@
 ---
-title: 使用Visual Basic（VBA）读取二进制文件内容
+title:  使用Visual Basic（VBA）读取二进制文件内容
 caption: 读取二进制文件
-description: 使用Visual Basic（VBA）将二进制文件内容读取到字节数组中
+---
+ 使用Visual Basic（VBA）将二进制文件内容读取到字节数组中
 labels: [读取,输入,二进制]
 ---
 

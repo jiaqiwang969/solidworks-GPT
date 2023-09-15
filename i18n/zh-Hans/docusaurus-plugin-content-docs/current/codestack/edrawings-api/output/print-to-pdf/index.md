@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 通过eDrawings API批量将SOLIDWORKS文件导出为PDF（无需SOLIDWORKS）
+title:  通过eDrawings API批量将SOLIDWORKS文件导出为PDF（无需SOLIDWORKS）
 caption: 批量导出为PDF
-description: 此控制台应用程序使用eDrawings API将指定文件夹中的所有文件导出为PDF格式，无需安装SOLIDWORKS或使用SOLIDWORKS许可证
+---
+ 此控制台应用程序使用eDrawings API将指定文件夹中的所有文件导出为PDF格式，无需安装SOLIDWORKS或使用SOLIDWORKS许可证
 image: print-to-pdf.svg
 labels: [导出, PDF, 批处理, eDrawings, 打印]
 group: 导入/导出

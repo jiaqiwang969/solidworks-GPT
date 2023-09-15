@@ -1,7 +1,8 @@
 ---
-title: 在 JavaScript 中使用 SOLIDWORKS API 方法
+title:  在 JavaScript 中使用 SOLIDWORKS API 方法
 caption: JavaScript
-description: 示例演示如何通过 ActiveXObject 在互联网浏览器中从 JavaScript 调用 SOLIDWORKS API
+---
+ 示例演示如何通过 ActiveXObject 在互联网浏览器中从 JavaScript 调用 SOLIDWORKS API
 labels: [JavaScript, ActiveX]
 ---
 

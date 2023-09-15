@@ -1,8 +1,8 @@
 ---
-标题：使用SOLIDWORKS API修改组件的配置参数
-说明：示例演示了如何使用SOLIDWORKS API修改指定配置（例如抑制状态）中多个组件的参数
-图片：modify-configurations.png
-标签：[参数，设计表，组件，配置]
+title: 使用SOLIDWORKS API修改组件的配置参数
+description: 示例演示了如何使用SOLIDWORKS API修改指定配置（例如抑制状态）中多个组件的参数
+image: modify-configurations.png
+labels: [参数，设计表，组件，配置]
 ---
 
 ![在配置中修改组件参数](modify-configurations.png){ width=350 }

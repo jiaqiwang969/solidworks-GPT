@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS宏按顺序重命名模型中的所有特征
+title:  SOLIDWORKS宏按顺序重命名模型中的所有特征
 caption: 按顺序重命名所有特征
-description: 使用SOLIDWORKS API按顺序重命名活动模型中的所有特征，保留基本名称。
+---
+ 使用SOLIDWORKS API按顺序重命名活动模型中的所有特征，保留基本名称。
 image: sequntial-features.svg
 labels: [feature, rename]
 group: Model

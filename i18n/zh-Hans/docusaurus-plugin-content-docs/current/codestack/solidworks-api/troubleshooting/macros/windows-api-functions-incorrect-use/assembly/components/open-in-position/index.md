@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 在新窗口中打开所有选定的组件位置
+title:  在新窗口中打开所有选定的组件位置
 caption: 在位置中打开组件
-description: VBA宏，将装配体中的每个选定组件在单独的窗口中以与其在当前装配体视图中出现的位置相同的方式打开
+---
+ VBA宏，将装配体中的每个选定组件在单独的窗口中以与其在当前装配体视图中出现的位置相同的方式打开
 image: open-in-position.svg
 labels: [位置,组件]
 group: 装配体

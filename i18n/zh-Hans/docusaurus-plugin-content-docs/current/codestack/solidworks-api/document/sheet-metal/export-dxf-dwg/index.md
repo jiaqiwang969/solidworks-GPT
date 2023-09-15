@@ -1,7 +1,8 @@
 ---
-title: 从零件SOLIDWORKS API导出平板图案到DXF/DWG
+title:  从零件SOLIDWORKS API导出平板图案到DXF/DWG
 caption: 从零件导出平板图案
-description: 从钣金零件文档导出平板图案到DXF或DWG
+---
+ 从钣金零件文档导出平板图案到DXF或DWG
 image: export-dxf-dwg.png
 labels: [钣金, dxf, dwg, 平板图案]
 ---

@@ -1,8 +1,9 @@
 ---
 layout: sw-macro-fix
-title: 修复在SOLIDWORKS宏中错误使用32位版本的Windows API函数
+title:  修复在SOLIDWORKS宏中错误使用32位版本的Windows API函数
 caption: 错误使用32位版本的Windows API函数
-description: 修复编译错误 - 当宏使用Windows API函数时，必须更新此项目的代码以在64位系统上使用
+---
+ 修复编译错误 - 当宏使用Windows API函数时，必须更新此项目的代码以在64位系统上使用
 image: declare-function-win-api.png
 labels: [宏, 故障排除]
 redirect-from:

@@ -1,7 +1,8 @@
 ---
 caption: Format Text Of The Note
-title: Example to format portions of the note text with different formats
-description: VBA example to apply font effects and styles for different portions of the note in SOLIDWORKS document
+title:  Example to format portions of the note text with different formats
+---
+ VBA example to apply font effects and styles for different portions of the note in SOLIDWORKS document
 image: note-text.png
 ---
 This VBA example demonstrates how to insert note into SOLIDWORKS document and format individual lines with different font effects and styles.

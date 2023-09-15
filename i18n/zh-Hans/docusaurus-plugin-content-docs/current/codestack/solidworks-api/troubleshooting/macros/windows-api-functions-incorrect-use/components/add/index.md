@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API向装配体添加组件
+title:  使用SOLIDWORKS API向装配体添加组件
 caption: 添加组件到装配体
-description: 该示例演示了使用SOLIDWORKS API向装配体树中添加组件的两种不同方式（单个组件添加或批量添加）
+---
+ 该示例演示了使用SOLIDWORKS API向装配体树中添加组件的两种不同方式（单个组件添加或批量添加）
 labels: [添加组件, 装配体, 示例, solidworks api]
 redirect-from:
   - /2018/03/solidworks-api-assembly-add-components.html

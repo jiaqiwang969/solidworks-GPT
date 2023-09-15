@@ -1,8 +1,9 @@
 ---
 layout: article
 caption: Find Specific Edge In Drawing View
-title: Find and select specific edge in the drawing view using SOLIDWORKS API
-description: VBA macro to find and select specific edge from the underlying model in the drawing view using SOLIDWORKS API
+title:  Find and select specific edge in the drawing view using SOLIDWORKS API
+---
+ VBA macro to find and select specific edge from the underlying model in the drawing view using SOLIDWORKS API
 image: selected-edge.png
 ---
 This VBA macro demonstrates how to find the specific named edge from the underlying 3D document and select it in the drawing view.

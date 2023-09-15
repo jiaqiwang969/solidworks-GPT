@@ -1,7 +1,8 @@
 ---
-title: 使用Geometry++按面分割SOLIDWORKS实体
+title:  使用Geometry++按面分割SOLIDWORKS实体
 caption: 按面分割实体
-description: 此功能允许通过面从所选实体中创建表面（片）实体。
+---
+ 此功能允许通过面从所选实体中创建表面（片）实体。
 image: icon.png
 toc-group-name: labs-solidworks-geometry-plus-plus
 ---

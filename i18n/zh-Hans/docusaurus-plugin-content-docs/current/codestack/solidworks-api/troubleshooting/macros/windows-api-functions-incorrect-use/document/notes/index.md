@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API处理注释
+title:  使用SOLIDWORKS API处理注释
 caption: 注释
-description: 关于自动化SOLIDWORKS注释的文章和代码示例的集合
+---
+ 关于自动化SOLIDWORKS注释的文章和代码示例的集合
 sidebar_position: 9
 ---
 [INote](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.INote.html)接口是SOLIDWORKS API中注释注解的表示。此接口可与装配、零件和绘图环境中的注释一起使用。

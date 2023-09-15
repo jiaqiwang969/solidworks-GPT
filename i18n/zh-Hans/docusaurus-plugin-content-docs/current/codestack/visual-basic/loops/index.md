@@ -1,7 +1,8 @@
 ---
 caption: 循环
-title: 在Visual Basic中使用for、while、for each、do循环的用法
-description: 解释循环（while-wend、for-next、for each-next、do-while）和遍历技术的文章
+title:  在Visual Basic中使用for、while、for each、do循环的用法
+---
+ 解释循环（while-wend、for-next、for each-next、do-while）和遍历技术的文章
 sidebar_position: 0
 ---
 编程中的循环是一种迭代遍历[集合](/docs/codestack/visual-basic/data-sets/collection/)、[数组](/docs/codestack/visual-basic/data-sets/array/)和其他数据集的技术。

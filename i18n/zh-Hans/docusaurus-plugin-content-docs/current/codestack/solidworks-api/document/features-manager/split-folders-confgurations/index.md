@@ -1,7 +1,8 @@
 ---
 caption: 将SOLIDWORKS文件的特征文件夹拆分为单独的配置
-title: 将SOLIDWORKS文件的特征文件夹拆分为单独的配置
-description: VBA宏为活动的SOLIDWORKS零件或装配创建每个顶级特征文件夹的配置
+title:  将SOLIDWORKS文件的特征文件夹拆分为单独的配置
+---
+ VBA宏为活动的SOLIDWORKS零件或装配创建每个顶级特征文件夹的配置
 ---
 
 这个VBA宏为活动的SOLIDWORKS零件或装配中的每个顶级特征文件夹创建配置。

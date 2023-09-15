@@ -1,7 +1,8 @@
 ---
 caption: Insert Revision Table
-title: Macro to insert SOLIDWORKS Revision table and attach to the anchor point
-description: SOLIDWORKS VBA macro to insert Revision table into active or all sheets with the specified parameters and attach to the anchor point
+title:  Macro to insert SOLIDWORKS Revision table and attach to the anchor point
+---
+ SOLIDWORKS VBA macro to insert Revision table into active or all sheets with the specified parameters and attach to the anchor point
 image: revision-table-anchor.png
 ---
 ![Revision table attached to anchor point](revision-table-anchor.png){ width=600 }

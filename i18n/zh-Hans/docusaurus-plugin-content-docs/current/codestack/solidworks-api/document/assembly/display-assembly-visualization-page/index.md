@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API显示装配体可视化页面
+title:  使用SOLIDWORKS API显示装配体可视化页面
 caption: 显示装配体可视化页面
-description: 该示例显示使用SOLIDWORKS API的装配体可视化页面。
+---
+ 该示例显示使用SOLIDWORKS API的装配体可视化页面。
 image: sw-assembly-visualization.png
 labels: [装配体, 示例, solidworks api, 可视化]
 redirect-from:

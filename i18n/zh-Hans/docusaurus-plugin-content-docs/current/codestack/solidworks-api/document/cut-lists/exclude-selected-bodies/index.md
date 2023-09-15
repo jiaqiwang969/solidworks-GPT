@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS宏以从切割清单中排除所选实体
+title:  SOLIDWORKS宏以从切割清单中排除所选实体
 caption: 从切割清单中排除所选实体
-description: 使用SOLIDWORKS API，宏可将从图形区域或特征树中选择的实体从焊接件或钣金切割清单中排除
+---
+ 使用SOLIDWORKS API，宏可将从图形区域或特征树中选择的实体从焊接件或钣金切割清单中排除
 image: excluded-cut-list-item.svg
 labels: [api, cut-list, exclude, utility, vba]
 group: Cut-List

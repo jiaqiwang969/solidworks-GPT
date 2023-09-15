@@ -1,7 +1,8 @@
 ---
 caption: 选择所有绘图尺寸
-title: 宏以批处理模式选择SOLIDWORKS绘图活动工作表的绘图视图中的所有尺寸
-description: VBA宏演示了如何使用SOLIDWORKS API在批处理模式下选择SOLIDWORKS绘图活动工作表的绘图视图中的所有尺寸
+title:  宏以批处理模式选择SOLIDWORKS绘图活动工作表的绘图视图中的所有尺寸
+---
+ VBA宏演示了如何使用SOLIDWORKS API在批处理模式下选择SOLIDWORKS绘图活动工作表的绘图视图中的所有尺寸
 image: select-all-dimensions.png
 ---
 ![在绘图视图中选择所有尺寸](select-all-dimensions.png){ width=400 }

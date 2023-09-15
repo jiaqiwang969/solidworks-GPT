@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API读取和显示文件中的实体
+title:  使用SOLIDWORKS API读取和显示文件中的实体
 caption: 从文件中读取实体
-description: VBA示例，使用SOLIDWORKS API将外部二进制文件中的实体几何数据反序列化为临时实体并显示出来
+---
+ VBA示例，使用SOLIDWORKS API将外部二进制文件中的实体几何数据反序列化为临时实体并显示出来
 labels: [反序列化, COM流, 临时实体]
 ---
 

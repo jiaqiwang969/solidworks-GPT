@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Run VBA macro automatically on document load using SOLIDWORKS API
+title:  Run VBA macro automatically on document load using SOLIDWORKS API
 caption: Run Macro On Document Load
-description: Macro runs VBA code (or another macro) automatically on file load using SOLIDWORKS API
+---
+ Macro runs VBA code (or another macro) automatically on file load using SOLIDWORKS API
 image: run-macro-on-load.svg
 labels: [auto run,model load event]
 group: Model

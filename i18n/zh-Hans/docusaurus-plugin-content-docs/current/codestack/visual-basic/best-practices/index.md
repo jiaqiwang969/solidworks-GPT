@@ -1,7 +1,8 @@
 ---
-title: 开发VBA应用的最佳实践
+title:  开发VBA应用的最佳实践
 caption: 最佳实践
-description: 解释了使VBA应用程序可靠、可维护和稳定的最佳实践方法
+---
+ 解释了使VBA应用程序可靠、可维护和稳定的最佳实践方法
 sidebar_position: 0
 image: git-extensions-vba-macro.png
 ---

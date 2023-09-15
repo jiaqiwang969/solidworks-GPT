@@ -1,7 +1,8 @@
 ---
 caption: Toggle Drawing Detailing Mode On Save
-title: Save SOLIDWORKS drawing with detailing mode on and off
-description: VBA Macro to toggle detailing mode on and off while saving
+title:  Save SOLIDWORKS drawing with detailing mode on and off
+---
+ VBA Macro to toggle detailing mode on and off while saving
 ---
 When working with large drawings it may be beneficial to employ the detailing mode. In order to properly utilize the detailing mode it is required to save the data within the document itself.
 

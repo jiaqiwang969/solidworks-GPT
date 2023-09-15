@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS VBA宏复制预选面
+title:  SOLIDWORKS VBA宏复制预选面
 caption: 复制曲面
-description: SOLIDWORKS VBA宏通过调用“曲面偏移”功能并设置距离为0来复制所选面
+---
+ SOLIDWORKS VBA宏通过调用“曲面偏移”功能并设置距离为0来复制所选面
 image: surface-offset-equal.svg
 labels: [曲面, 几何, 宏, 面, solidworks api, vba]
 group: 几何

@@ -1,7 +1,8 @@
 ---
-title: Get the transformation matrix of coordinate system using SOLIDWORKS API
+title:  Get the transformation matrix of coordinate system using SOLIDWORKS API
 caption: Get Coordinate System Transformation
-description: VBA macro to get the 4x4 transformation matrix from the selected coordinate systems and output the result in the immediate window
+---
+ VBA macro to get the 4x4 transformation matrix from the selected coordinate systems and output the result in the immediate window
 image: coordinate-system.png
 labels: [transform,coordinate system]
 ---

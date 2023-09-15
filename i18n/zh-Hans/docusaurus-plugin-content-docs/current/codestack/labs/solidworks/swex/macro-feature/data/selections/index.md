@@ -1,7 +1,8 @@
 ---
-title: 管理SOLIDWORKS宏特征的选择
+title:  管理SOLIDWORKS宏特征的选择
 caption: 选择
-description: 使用SwEx.MacroFeature框架管理SOLIDWORKS宏特征的选择
+---
+ 使用SwEx.MacroFeature框架管理SOLIDWORKS宏特征的选择
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

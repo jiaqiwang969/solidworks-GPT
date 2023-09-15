@@ -1,7 +1,8 @@
 ---
-title: Create sketch segments in drawing view sketch using SOLIDWORKS API
+title:  Create sketch segments in drawing view sketch using SOLIDWORKS API
 caption: Create Sketch Segments In Drawing View
-description: Creating sketch points and sketch segments directly in the drawing view sketch area using SOLIDWORKS API
+---
+ Creating sketch points and sketch segments directly in the drawing view sketch area using SOLIDWORKS API
 image: point-in-drawing-view-sketch.png
 labels: [drawing,transform,sketch]
 ---

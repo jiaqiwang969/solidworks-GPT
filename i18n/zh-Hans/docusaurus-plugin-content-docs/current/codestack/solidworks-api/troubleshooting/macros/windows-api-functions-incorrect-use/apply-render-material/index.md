@@ -1,7 +1,8 @@
 ---
-标题：使用SOLIDWORKS API生成材料变体配置
-描述：使用VBA宏生成一系列具有自定义外观的配置
-图片：configurations.png
+title: 使用SOLIDWORKS API生成材料变体配置
+---
+ 使用VBA宏生成一系列具有自定义外观的配置
+image: configurations.png
 ---
 
 ![生成的配置](configurations.png)

@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API将实体切片成多个截面
+title:  使用SOLIDWORKS API将实体切片成多个截面
 caption: 切片截面
-description: 该示例演示了如何使用SOLIDWORKS API将实体切片，并提取切片的截面数据。
+---
+ 该示例演示了如何使用SOLIDWORKS API将实体切片，并提取切片的截面数据。
 image: sliced-sections.png
 labels: [切片, 投影, 相交, 建模, 临时实体]
 ---

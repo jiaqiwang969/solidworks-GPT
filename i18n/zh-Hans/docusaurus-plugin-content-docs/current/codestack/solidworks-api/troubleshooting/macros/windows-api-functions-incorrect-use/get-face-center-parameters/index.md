@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API获取面的中心参数
+title:  使用SOLIDWORKS API获取面的中心参数
 caption: 获取面中心参数
-description: 该示例演示了如何使用SOLIDWORKS API在面的中心找到参数（坐标和法线）
+---
+ 该示例演示了如何使用SOLIDWORKS API在面的中心找到参数（坐标和法线）
 image: face-center.png
 labels: [center, uv, normal]
 ---

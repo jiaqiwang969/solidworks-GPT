@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API处理自定义属性修改事件（添加、删除、更改）
+title:  使用SOLIDWORKS API处理自定义属性修改事件（添加、删除、更改）
 caption: 处理修改事件
-description: 使用SOLIDWORKS API处理与修改通用或配置特定自定义属性相关的所有事件。当不会引发AddCustomPropertyNotify、DeleteCustomPropertyNotify、ChangeCustomPropertyNotify事件时的问题的解决方法
+---
+ 使用SOLIDWORKS API处理与修改通用或配置特定自定义属性相关的所有事件。当不会引发AddCustomPropertyNotify、DeleteCustomPropertyNotify、ChangeCustomPropertyNotify事件时的问题的解决方法
 image: custom-properties-events-console.png
 labels: [自定义属性,通知]
 ---

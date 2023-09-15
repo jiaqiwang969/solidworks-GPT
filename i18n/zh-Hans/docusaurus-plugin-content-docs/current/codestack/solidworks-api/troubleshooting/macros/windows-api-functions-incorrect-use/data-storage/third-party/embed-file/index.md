@@ -1,7 +1,8 @@
 ---
-title: Serialize file content in model 3rd party storage using SOLIDWORKS API
+title:  Serialize file content in model 3rd party storage using SOLIDWORKS API
 caption: Embed File In Third Party Store
-description: VB.NET example of usage of 3rd Party Storage (stream) to embed and retrieve file content using SOLIDWORKS API and XmlSerializers within the model document
+---
+ VB.NET example of usage of 3rd Party Storage (stream) to embed and retrieve file content using SOLIDWORKS API and XmlSerializers within the model document
 image: embed-file-menu.png
 labels: [serialization,third party store,file]
 ---

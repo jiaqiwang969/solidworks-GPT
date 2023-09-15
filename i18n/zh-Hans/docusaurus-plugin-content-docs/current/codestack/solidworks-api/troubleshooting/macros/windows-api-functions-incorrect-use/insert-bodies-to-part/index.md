@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: 将实体保存为零件
-title: 将实体保存为单独的SOLIDWORKS零件文档的宏
-description: VBA宏，将SOLIDWORKS零件文档中的所有实体（或选定的实体）保存为单独的文件
+title:  将实体保存为单独的SOLIDWORKS零件文档的宏
+---
+ VBA宏，将SOLIDWORKS零件文档中的所有实体（或选定的实体）保存为单独的文件
 image: insert-into-new-part-pmpage.png
 group: 导入/导出
 ---

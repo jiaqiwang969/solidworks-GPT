@@ -1,7 +1,8 @@
 ---
-title: 在 SOLIDWORKS 宏特征中存储数据（参数、实体、选择集）
+title:  在 SOLIDWORKS 宏特征中存储数据（参数、实体、选择集）
 caption: 数据
-description: 使用 SwEx.MacroFeature 框架在 SOLIDWORKS 宏特征中存储参数、元数据、尺寸和选择集
+---
+ 使用 SwEx.MacroFeature 框架在 SOLIDWORKS 宏特征中存储参数、元数据、尺寸和选择集
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

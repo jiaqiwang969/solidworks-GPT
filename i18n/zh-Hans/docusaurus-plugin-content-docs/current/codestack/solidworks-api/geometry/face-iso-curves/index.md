@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API创建面的ISO曲线的宏
+title:  使用SOLIDWORKS API创建面的ISO曲线的宏
 caption: 创建面的ISO曲线
-description: 该示例演示了如何使用SOLIDWORKS API在所选面的u和v边界中找到指定数量的ISO曲线。
+---
+ 该示例演示了如何使用SOLIDWORKS API在所选面的u和v边界中找到指定数量的ISO曲线。
 image: iso-curves-wire-body.png
 labels: [curve, evaluate, geometry, macro, iso, uv, trimmed curve, vba]
 ---

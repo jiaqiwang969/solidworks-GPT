@@ -1,7 +1,8 @@
 ---
-title: Macro to suspend graphics update using SOLIDWORKS API
+title:  Macro to suspend graphics update using SOLIDWORKS API
 caption: Suspend Graphics Update
-description: Example demonstrates how to suppress graphics update while performing the operations using SOLIDWORKS API
+---
+ Example demonstrates how to suppress graphics update while performing the operations using SOLIDWORKS API
 labels: [api, graphics, utility, suspend, performance]
 ---
 This macro demonstrates how to suspend graphics update while performing operations with feature tree and models (including opening of new documents) using SOLIDWORKS API.

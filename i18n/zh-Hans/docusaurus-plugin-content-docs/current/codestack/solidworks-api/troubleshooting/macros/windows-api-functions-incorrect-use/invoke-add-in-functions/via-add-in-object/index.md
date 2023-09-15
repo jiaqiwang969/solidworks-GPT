@@ -1,7 +1,8 @@
 ---
-title: 从独立应用程序或宏调用SOLIDWORKS插件对象的函数
+title:  从独立应用程序或宏调用SOLIDWORKS插件对象的函数
 caption: 通过插件对象
-description: 通过使用SOLIDWORKS API检索插件对象来从独立应用程序或宏调用SOLIDWORKS插件的函数（启用插件自定义API）
+---
+ 通过使用SOLIDWORKS API检索插件对象来从独立应用程序或宏调用SOLIDWORKS插件的函数（启用插件自定义API）
 image: object-browser-interface.png
 labels: [add-in api,addin object,invoke]
 sidebar_position: 1

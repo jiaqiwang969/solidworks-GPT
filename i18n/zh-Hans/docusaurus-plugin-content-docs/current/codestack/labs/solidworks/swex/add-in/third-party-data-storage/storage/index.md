@@ -1,7 +1,8 @@
 ---
-title: 通过SwEx.AddIn框架将数据存储在第三方存储中
+title:  通过SwEx.AddIn框架将数据存储在第三方存储中
 caption: 存储
-description: 使用SwEx.AddIn框架将自定义结构序列化到第三方存储中
+---
+ 使用SwEx.AddIn框架将自定义结构序列化到第三方存储中
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

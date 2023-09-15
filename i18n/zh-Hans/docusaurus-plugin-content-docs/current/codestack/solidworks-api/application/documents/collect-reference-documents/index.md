@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: Collect Reference Documents
-title: Macro to Collect Reference Documents of All Assemblies into One Folder
-description: VBA macro that collects the output files (e.g., DXF, PDF) of all referenced parts and sub-assemblies documents from all folders and copies them into a specified folder
+title:  Macro to Collect Reference Documents of All Assemblies into One Folder
+---
+ VBA macro that collects the output files (e.g., DXF, PDF) of all referenced parts and sub-assemblies documents from all folders and copies them into a specified folder
 image: collect-reference-documents.svg
 group: Assembly
 ---

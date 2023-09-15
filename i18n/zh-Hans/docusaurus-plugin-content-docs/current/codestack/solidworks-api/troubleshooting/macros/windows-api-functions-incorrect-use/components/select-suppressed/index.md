@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API选择所有被压制的装配体组件
+title:  使用SOLIDWORKS API选择所有被压制的装配体组件
 caption: 选择所有被压制的组件
-description: 使用VBA宏在装配体文档中批量运行“组件选择-选择被压制”命令以选择所有装配体组件
+---
+ 使用VBA宏在装配体文档中批量运行“组件选择-选择被压制”命令以选择所有装配体组件
 image: select-suppressed-components.png
 labels: [命令, 被压制, 组件]
 ---

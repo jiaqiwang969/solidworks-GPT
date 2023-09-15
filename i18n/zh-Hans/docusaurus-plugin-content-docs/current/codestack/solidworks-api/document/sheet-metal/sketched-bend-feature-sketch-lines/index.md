@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API获取钣金弯曲的草图线
+title:  使用SOLIDWORKS API获取钣金弯曲的草图线
 caption: 获取钣金弯曲特征的草图线
-description: 使用SOLIDWORKS API查找钣金弯曲特征的所有直线（弯曲线）并选择所有线段
+---
+ 使用SOLIDWORKS API查找钣金弯曲特征的所有直线（弯曲线）并选择所有线段
 image: sheet-metal-sketched-bend.png
 labels: [示例, 钣金, 弯曲, solidworks api]
 redirect-from:

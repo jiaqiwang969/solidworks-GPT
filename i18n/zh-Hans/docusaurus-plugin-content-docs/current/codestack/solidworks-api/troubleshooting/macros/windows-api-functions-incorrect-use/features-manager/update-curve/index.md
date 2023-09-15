@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API从链接文件更新XYZ曲线的宏
+title:  使用SOLIDWORKS API从链接文件更新XYZ曲线的宏
 caption: 从文件更新XYZ曲线
-description: 使用VBA宏从链接的外部文本文件更新自由形式（通过XYZ点）曲线的坐标
+---
+ 使用VBA宏从链接的外部文本文件更新自由形式（通过XYZ点）曲线的坐标
 image: curve.svg
 labels: [曲线,链接,xyz,自由形式曲线]
 group: 模型

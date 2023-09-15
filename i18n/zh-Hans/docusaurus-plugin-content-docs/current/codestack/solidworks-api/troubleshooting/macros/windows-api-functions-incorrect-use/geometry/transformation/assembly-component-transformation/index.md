@@ -1,7 +1,8 @@
 ---
-title: Usage of assembly component transformation in SOLIDWORKS API
+title:  Usage of assembly component transformation in SOLIDWORKS API
 caption: Component Transformation In The Assembly
-description: Example explains transformation of rotation and translation for components in the assembly
+---
+ Example explains transformation of rotation and translation for components in the assembly
 image: comp-translation.png
 labels: [acos, angle, component, example, orientation, point, position, rotation, solidworks api, transform, translation, vector]
 redirect-from:

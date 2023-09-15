@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 将SOLIDWORKS文件中选定的草图导出为DXF/DWG文件的宏
+title:  将SOLIDWORKS文件中选定的草图导出为DXF/DWG文件的宏
 caption: 导出草图为DXF/DWG
-description: VBA宏，将SOLIDWORKS零件或装配文件中选定的2D草图导出为DXF或DWG文件
+---
+ VBA宏，将SOLIDWORKS零件或装配文件中选定的2D草图导出为DXF或DWG文件
 image: dxf-sketch.svg
 labels: [草图,导出,DXF,DWG]
 group: 导入/导出

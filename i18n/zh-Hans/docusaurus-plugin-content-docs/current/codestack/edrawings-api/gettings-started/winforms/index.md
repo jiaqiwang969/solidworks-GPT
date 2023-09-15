@@ -1,7 +1,8 @@
 ---
-title: 在Windows Forms中托管eDrawings控件
+title:  在Windows Forms中托管eDrawings控件
 caption: 在WinForms中托管控件
-description: 使用C#在Windows Forms中托管eDrawings控件的指南
+---
+ 使用C#在Windows Forms中托管eDrawings控件的指南
 image: edrawings-winform.png
 labels: [edrawings,host,winforms]
 ---

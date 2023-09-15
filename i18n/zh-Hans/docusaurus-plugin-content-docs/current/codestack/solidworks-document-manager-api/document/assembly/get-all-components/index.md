@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS文档管理器API获取所有装配件组件
+title:  使用SOLIDWORKS文档管理器API获取所有装配件组件
 caption: 获取所有组件
-description: 该示例演示了如何使用SOLIDWORKS文档管理器API从文档中获取所有层级的组件。
+---
+ 该示例演示了如何使用SOLIDWORKS文档管理器API从文档中获取所有层级的组件。
 image: components-tree.png
 ---
 ![SOLIDWORKS装配树](components-tree.png){ width=200 }

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 删除SOLIDWORKS文件中的所有空特征文件夹的宏
+title:  删除SOLIDWORKS文件中的所有空特征文件夹的宏
 caption: 删除空文件夹
-description: VBA宏删除SOLIDWORKS文件（零件或装配体）中的所有空特征文件夹
+---
+ VBA宏删除SOLIDWORKS文件（零件或装配体）中的所有空特征文件夹
 image: delete-folders.svg
 labels: [特征, 空, 删除, 清理]
 group: 模型

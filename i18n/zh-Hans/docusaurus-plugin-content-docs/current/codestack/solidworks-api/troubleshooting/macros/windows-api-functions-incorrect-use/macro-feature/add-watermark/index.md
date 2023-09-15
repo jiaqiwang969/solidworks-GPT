@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 将水印添加到SOLIDWORKS模型的宏特征
+title:  将水印添加到SOLIDWORKS模型的宏特征
 caption: 添加水印特征
-description: 使用SOLIDWORKS API在任何模型中嵌入水印特征（许可证），并附带自定义消息和名称，无法删除或编辑
+---
+ 使用SOLIDWORKS API在任何模型中嵌入水印特征（许可证），并附带自定义消息和名称，无法删除或编辑
 image: model-watermark.png
 labels: [安全, 宏特征, 锁定]
 group: 安全

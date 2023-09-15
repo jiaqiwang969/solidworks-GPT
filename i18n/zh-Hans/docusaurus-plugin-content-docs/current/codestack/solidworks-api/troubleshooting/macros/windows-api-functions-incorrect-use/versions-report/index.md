@@ -1,7 +1,8 @@
 ---
 caption: File Versions Report
-title: Generate SOLIDWORKS File Versions (Created and Last Saved) Report for all files in a folder
-description: VBA macro that generates a CSV report containing the creation and last saved versions of SOLIDWORKS files in a specified folder
+title:  Generate SOLIDWORKS File Versions (Created and Last Saved) Report for all files in a folder
+---
+ VBA macro that generates a CSV report containing the creation and last saved versions of SOLIDWORKS files in a specified folder
 image: solidworks-file-versions-report.png
 ---
 ![SOLIDWORKS File Versions Report](solidworks-file-versions-report.png) { width=500 }

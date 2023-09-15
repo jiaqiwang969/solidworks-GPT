@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API在文档中等待用户选择
+title:  使用SOLIDWORKS API在文档中等待用户选择
 caption: 等待用户选择
-description: 使用SOLIDWORKS API在VBA宏中等待用户选择对象的两种方法
+---
+ 使用SOLIDWORKS API在VBA宏中等待用户选择对象的两种方法
 image: selected-edge.png
 labels: [selection,event,notification]
 ---

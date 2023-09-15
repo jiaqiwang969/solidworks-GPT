@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API自动化绘图
+title:  使用SOLIDWORKS API自动化绘图
 caption: 绘图
-description: 使用SOLIDWORKS API中的IDrawingDoc接口自动化绘图文档
+---
+ 使用SOLIDWORKS API中的IDrawingDoc接口自动化绘图文档
 sidebar_position: 2
 labels: [绘图]
 ---

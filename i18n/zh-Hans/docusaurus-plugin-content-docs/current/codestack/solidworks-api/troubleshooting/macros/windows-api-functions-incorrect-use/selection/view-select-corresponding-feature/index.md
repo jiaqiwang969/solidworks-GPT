@@ -1,7 +1,8 @@
 ---
 caption: Select Feature In All Drawing Views
-title: Select corresponding features in all drawing views
-description: VBA macro which selects the corresponding features of the feature in the model in all drawing views
+title:  Select corresponding features in all drawing views
+---
+ VBA macro which selects the corresponding features of the feature in the model in all drawing views
 image: selected-feature.png
 ---
 ![Feature selected in the drawing view](selected-feature.png){ width=250 }

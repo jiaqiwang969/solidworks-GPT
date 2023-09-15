@@ -1,7 +1,8 @@
 ---
-title: 运行Xpress产品
+title:  运行Xpress产品
 caption: 运行Xpress产品
-description: 该示例演示了如何使用SOLIDWORKS API运行Xpress产品（DriveWorks、DFM、Simulation、Flo），相当于点击菜单命令。
+---
+ 该示例演示了如何使用SOLIDWORKS API运行Xpress产品（DriveWorks、DFM、Simulation、Flo），相当于点击菜单命令。
 image: solidworks-xpress-products.png
 labels: [frame, xpress, driveworks, dfm, flo, simulation]
 ---

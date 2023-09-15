@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API切换显示注释指示器选项
+title:  使用SOLIDWORKS API切换显示注释指示器选项
 caption: 切换显示注释指示器选项
-description: 使用SOLIDWORKS API和Windows API切换特征管理器树中的“显示注释指示器”选项的VBA宏
+---
+ 使用SOLIDWORKS API和Windows API切换特征管理器树中的“显示注释指示器”选项的VBA宏
 image: show-comment-indicator-command.png
 labels: [winapi,comments]
 ---

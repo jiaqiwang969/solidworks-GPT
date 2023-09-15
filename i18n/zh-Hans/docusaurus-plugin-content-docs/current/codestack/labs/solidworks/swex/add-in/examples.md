@@ -1,7 +1,8 @@
 ---
-title: SwEx.Addin框架的示例和源代码
+title:  SwEx.Addin框架的示例和源代码
 caption: 示例
-description: 使用SwEx.Addin框架开发SOLIDWORKS的现代插件应用程序的示例集合
+---
+ 使用SwEx.Addin框架开发SOLIDWORKS的现代插件应用程序的示例集合
 toc-group-name: labs-solidworks-swex
 order: 6
 ---

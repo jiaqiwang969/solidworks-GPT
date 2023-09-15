@@ -1,7 +1,8 @@
 ---
-title: Automating assemblies using SOLIDWORKS API
+title:  Automating assemblies using SOLIDWORKS API
 caption: Assembly
-description: Assemblies automation (components, BOM, contexts) using SOLIDWORKS API
+---
+ Assemblies automation (components, BOM, contexts) using SOLIDWORKS API
 sidebar_position: 1
 labels: [assembly]
 ---

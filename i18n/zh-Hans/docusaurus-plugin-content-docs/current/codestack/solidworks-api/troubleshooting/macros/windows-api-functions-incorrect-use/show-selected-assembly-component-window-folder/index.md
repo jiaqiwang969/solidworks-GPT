@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS宏在窗口文件夹中显示所选装配组件
+title:  SOLIDWORKS宏在窗口文件夹中显示所选装配组件
 caption: 在窗口文件夹中显示所选装配组件
-description: 该示例演示了如何使用SOLIDWORKS API在Windows文件资源管理器中打开所选组件的文件夹。
+---
+ 该示例演示了如何使用SOLIDWORKS API在Windows文件资源管理器中打开所选组件的文件夹。
 image: windows-folder-selected-component.svg
 labels: [装配, 组件, 资源管理器, 宏, 在文件夹中显示, SOLIDWORKS, SOLIDWORKS API, 实用工具, VBA]
 group: 装配

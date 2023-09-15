@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS模型API创建挤出槽临时体
+title:  使用SOLIDWORKS模型API创建挤出槽临时体
 caption: 创建挤出槽临时体
-description: 该示例演示了如何使用SOLIDWORKS API和IModeler接口挤出槽剖面以创建临时体。
+---
+ 该示例演示了如何使用SOLIDWORKS API和IModeler接口挤出槽剖面以创建临时体。
 image: extruded-slot.png
 labels: [拓扑结构, 几何, 挤出, 槽]
 ---

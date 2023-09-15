@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API确定活动文档的类型
+title:  使用SOLIDWORKS API确定活动文档的类型
 caption: 确定活动文档的类型
-description: 该示例显示当前在SOLIDWORKS中活动文档的类型的消息框。
+---
+ 该示例显示当前在SOLIDWORKS中活动文档的类型的消息框。
 labels: [装配, 文档, 绘图, 示例, 零件, 类型]
 redirect-from:
   - /2018/03/determine-type-of-active-document.html

@@ -1,7 +1,8 @@
 ---
-title: Using SOLIDWORKS API Methods in JavaScript
+title:  Using SOLIDWORKS API Methods in JavaScript
 caption: JavaScript
-description: This example demonstrates how to call SOLIDWORKS API from JavaScript in an internet browser using ActiveXObject.
+---
+ This example demonstrates how to call SOLIDWORKS API from JavaScript in an internet browser using ActiveXObject.
 labels: [JavaScript, ActiveX]
 ---
 

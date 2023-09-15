@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用API在SOLIDWORKS模型中暂停重建操作的宏
+title:  使用API在SOLIDWORKS模型中暂停重建操作的宏
 caption: 暂停重建操作
-description: 该宏使用SOLIDWORKS API来暂停零件、装配体和图纸的重建操作，以提高性能。
+---
+ 该宏使用SOLIDWORKS API来暂停零件、装配体和图纸的重建操作，以提高性能。
 image: suspended-rebuild.svg
 labels: [api, rebuild, utility, suspend, performance]
 group: Performance

@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API获取绘图视图中的物体质量
+title:  使用SOLIDWORKS API获取绘图视图中的物体质量
 caption: 从绘图视图获取质量
-description: 使用SOLIDWORKS API，通过C# VSTA宏示例，找到所选绘图视图中所有物体的总质量
+---
+ 使用SOLIDWORKS API，通过C# VSTA宏示例，找到所选绘图视图中所有物体的总质量
 image: multi-body-sheet-metal-mass-property.png
 labels: [视图,质量,展平图案]
 ---

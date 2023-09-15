@@ -1,7 +1,8 @@
 ---
-title: 通过SwEx.AddIn框架管理SOLIDWORKS文档生命周期
+title:  通过SwEx.AddIn框架管理SOLIDWORKS文档生命周期
 caption: 文档管理
-description: 使用SwEx.AddIn框架管理SOLIDWORKS文档的生命周期（打开、关闭、激活）及其事件
+---
+ 使用SwEx.AddIn框架管理SOLIDWORKS文档的生命周期（打开、关闭、激活）及其事件
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

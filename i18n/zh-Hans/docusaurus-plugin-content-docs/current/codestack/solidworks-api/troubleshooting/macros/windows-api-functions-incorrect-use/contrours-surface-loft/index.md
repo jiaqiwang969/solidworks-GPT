@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API通过轮廓创建曲面放样特征
+title:  使用SOLIDWORKS API通过轮廓创建曲面放样特征
 caption: 通过轮廓创建曲面放样特征
-description: 该示例演示了如何使用SOLIDWORKS API通过轮廓作为剖面创建曲面放样特征。
+---
+ 该示例演示了如何使用SOLIDWORKS API通过轮廓作为剖面创建曲面放样特征。
 image: lofted-surface-sketch-contours.png
 labels: [曲面, 放样, 轮廓]
 ---

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS宏以打破、锁定或解锁文件和组件的所有外部引用
+title:  SOLIDWORKS宏以打破、锁定或解锁文件和组件的所有外部引用
 caption: 管理所有组件的外部引用
-description: 该示例将使用SOLIDWORKS API打破、锁定或解锁活动装配中的文件或组件的所有外部引用。
+---
+ 该示例将使用SOLIDWORKS API打破、锁定或解锁活动装配中的文件或组件的所有外部引用。
 image: break-all-external-references.png
 labels: [装配, 外部引用, solidworks api, 实用工具]
 group: 装配

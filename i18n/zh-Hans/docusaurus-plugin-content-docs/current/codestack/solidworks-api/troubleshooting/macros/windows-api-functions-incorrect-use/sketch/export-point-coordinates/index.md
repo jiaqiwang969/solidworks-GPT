@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 将草图点坐标导出为CSV文件的VBA宏
+title:  将草图点坐标导出为CSV文件的VBA宏
 caption: 导出草图坐标
-description: VBA宏，用于将选定草图中的草图点坐标导出到CSV文件中，并能够将坐标转换为用户单位和模型空间
+---
+ VBA宏，用于将选定草图中的草图点坐标导出到CSV文件中，并能够将坐标转换为用户单位和模型空间
 image: export-coordinates.svg
 labels: [sketch,export,points,coordinates,csv]
 group: Sketch

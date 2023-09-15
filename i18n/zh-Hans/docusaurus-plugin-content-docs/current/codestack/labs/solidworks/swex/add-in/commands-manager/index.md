@@ -1,7 +1,8 @@
 ---
-title: 使用SwEx.AddIn框架的SOLIDWORKS命令管理器
+title:  使用SwEx.AddIn框架的SOLIDWORKS命令管理器
 caption: 命令管理器
-description: 使用SwEx.AddIn框架在C#和VB.NET中开发SOLIDWORKS插件时，添加命令（菜单、工具栏和上下文菜单）的说明
+---
+ 使用SwEx.AddIn框架在C#和VB.NET中开发SOLIDWORKS插件时，添加命令（菜单、工具栏和上下文菜单）的说明
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

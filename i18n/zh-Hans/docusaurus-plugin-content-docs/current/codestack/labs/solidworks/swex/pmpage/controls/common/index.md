@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS 属性管理器页面中所有控件的常见选项
+title:  SOLIDWORKS 属性管理器页面中所有控件的常见选项
 caption: 常见选项
-description: SOLIDWORKS 属性管理器页面中所有控件的选项概述
+---
+ SOLIDWORKS 属性管理器页面中所有控件的选项概述
 image: property-manager-page-control.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0

@@ -1,7 +1,8 @@
 ---
-title: SwEx.AddIn框架的入口点
+title:  SwEx.AddIn框架的入口点
 caption: 入口点
-description: 使用SwEx.AddIn框架开始SOLIDWORKS编码的说明
+---
+ 使用SwEx.AddIn框架开始SOLIDWORKS编码的说明
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

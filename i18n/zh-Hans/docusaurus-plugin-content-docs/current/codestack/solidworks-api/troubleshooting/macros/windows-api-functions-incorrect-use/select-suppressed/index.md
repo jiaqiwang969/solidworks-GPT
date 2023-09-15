@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API选择所有抑制的组件
+title:  使用SOLIDWORKS API选择所有抑制的组件
 caption: 选择所有抑制的组件
-description: 使用SOLIDWORKS和Windows API，在装配体文档中批量选择所有抑制的组件的VBA宏
+---
+ 使用SOLIDWORKS和Windows API，在装配体文档中批量选择所有抑制的组件的VBA宏
 image: select-suppressed-components.png
 labels: [命令, 抑制, 组件]
 ---

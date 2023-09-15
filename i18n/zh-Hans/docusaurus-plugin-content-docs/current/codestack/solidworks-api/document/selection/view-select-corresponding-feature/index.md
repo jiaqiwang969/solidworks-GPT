@@ -1,7 +1,8 @@
 ---
 caption: 在所有绘图视图中选择特征
-title: 在所有绘图视图中选择相应的特征
-description: 这个 VBA 宏演示了如何在绘图中的每个视图中找到模型空间中输入特征的指针并选择它。
+title:  在所有绘图视图中选择相应的特征
+---
+ 这个 VBA 宏演示了如何在绘图中的每个视图中找到模型空间中输入特征的指针并选择它。
 image: selected-feature.png
 ---
 ![在绘图视图中选择的特征](selected-feature.png){ width=250 }

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: Import/Export Layers
-title: Macro to import and export all layers from SOLIDWORKS drawings into a text file
-description: VBA macro imports and exports information about layers (description, color, style, thickness, visibility and will print) in the SOLIDWORKS drawings
+title:  Macro to import and export all layers from SOLIDWORKS drawings into a text file
+---
+ VBA macro imports and exports information about layers (description, color, style, thickness, visibility and will print) in the SOLIDWORKS drawings
 image: import-export-drawing-layers.svg
 group: Drawing
 ---

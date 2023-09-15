@@ -1,7 +1,8 @@
 ---
-title: 计算旋转变换以使组件与方向对齐
+title:  计算旋转变换以使组件与方向对齐
 caption: 用旋转变换对齐组件
-description: 这个 VBA 示例演示了如何使用 [IMathUtility::CreateTransformRotateAxis](https://help.solidworks.com/2017/English/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IMathUtility~CreateTransformRotateAxis.html) SOLIDWORKS API 来旋转组件并将其面的法线与线性边的方向对齐。
+---
+ 这个 VBA 示例演示了如何使用 [IMathUtility::CreateTransformRotateAxis](https://help.solidworks.com/2017/English/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IMathUtility~CreateTransformRotateAxis.html) SOLIDWORKS API 来旋转组件并将其面的法线与线性边的方向对齐。
 image: rotation-transform.png
 labels: [transform,rotation,align]
 ---

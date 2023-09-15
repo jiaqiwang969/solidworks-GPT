@@ -1,7 +1,8 @@
 ---
-title: Load components presentation transforms from CSV file using SOLIDWORKS API
+title:  Load components presentation transforms from CSV file using SOLIDWORKS API
 caption: Load Components Presentation Transforms From CSV File
-description: Example demonstrates how to load the transformation matrix for the components from the CSV file and apply it as a presentation transform
+---
+ Example demonstrates how to load the transformation matrix for the components from the CSV file and apply it as a presentation transform
 image: original-component-position.png
 labels: [assembly, transform, csv]
 ---

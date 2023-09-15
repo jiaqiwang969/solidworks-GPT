@@ -1,7 +1,8 @@
 ---
-title: 在Gmail中设置自定义域名的电子邮件别名
+title:  在Gmail中设置自定义域名的电子邮件别名
 caption: 在Gmail中设置电子邮件别名
-description: 在Gmail中发送电子邮件时设置自定义域名的电子邮件别名的指南
+---
+ 在Gmail中发送电子邮件时设置自定义域名的电子邮件别名的指南
 image: smtp-server-details.png
 labels: [别名, 电子邮件, Gmail, 以...的身份发送]
 ---

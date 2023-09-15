@@ -1,7 +1,8 @@
 ---
-title: Method and Property Naming in SOLIDWORKS API
+title:  Method and Property Naming in SOLIDWORKS API
 caption: Naming Conventions
-description: Explains the naming conventions for methods, properties, and interfaces in the SOLIDWORKS API object model (i.e., OpenDoc6 vs OpenDoc5)
+---
+ Explains the naming conventions for methods, properties, and interfaces in the SOLIDWORKS API object model (i.e., OpenDoc6 vs OpenDoc5)
 image: obsolete-api-interface.png
 labels: [obsolete, version, numbering]
 ---

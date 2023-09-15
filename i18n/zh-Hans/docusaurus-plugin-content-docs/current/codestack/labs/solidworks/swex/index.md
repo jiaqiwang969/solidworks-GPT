@@ -1,7 +1,8 @@
 ---
-title: SwEx - 简化使用SOLIDWORKS API的开发框架
+title:  SwEx - 简化使用SOLIDWORKS API的开发框架
 caption: SwEx
-description: 用于扩展SOLIDWORKS功能和利用API的库
+---
+ 用于扩展SOLIDWORKS功能和利用API的库
 image: logo.png
 categories: sw-labs
 group: For Developers

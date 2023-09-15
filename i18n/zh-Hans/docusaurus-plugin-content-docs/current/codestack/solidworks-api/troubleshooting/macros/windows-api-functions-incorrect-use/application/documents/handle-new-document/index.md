@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API在新文档创建时运行宏
+title:  使用SOLIDWORKS API在新文档创建时运行宏
 caption: 在新文档创建时运行宏
-description: 使用SOLIDWORKS API在每次新文档创建时运行其他宏或代码的VBA宏
+---
+ 使用SOLIDWORKS API在每次新文档创建时运行其他宏或代码的VBA宏
 image: new-document.png
 labels: [新文档]
 group: 模型
@@ -14,7 +15,7 @@ group: 模型
 ## 配置
 
 * 创建新的宏（例如*RunOnNewDocCreated.swp*）
-* 将代码复制到宏的相应模块中。VBA宏树应该类似于下面的图片：
+* 将代码复制到宏的相应模块中。VBA宏树应该类似于下面的image: 
 
 ![宏文件树](macro-tree.png){ width=250 }
 

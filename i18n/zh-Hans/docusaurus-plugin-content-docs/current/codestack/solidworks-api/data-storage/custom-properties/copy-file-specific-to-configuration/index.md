@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 将SOLIDWORKS文件特定的自定义属性复制到配置
+title:  将SOLIDWORKS文件特定的自定义属性复制到配置
 caption: 将文件特定的自定义属性复制到活动配置的属性中
-description: 该宏使用SOLIDWORKS API将所有文件特定的自定义属性复制到活动配置的属性中。
+---
+ 该宏使用SOLIDWORKS API将所有文件特定的自定义属性复制到活动配置的属性中。
 image: file-specific-custom-properties.png
 labels: [配置, 复制, 自定义属性, 实用工具]
 group: 自定义属性

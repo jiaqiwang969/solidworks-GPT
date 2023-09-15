@@ -1,7 +1,8 @@
 ---
-title: 使用 SOLIDWORKS eDrawings API 将 SOLIDWORKS 文件输出为不同格式
+title:  使用 SOLIDWORKS eDrawings API 将 SOLIDWORKS 文件输出为不同格式
 caption: 输出
-description: 通过 eDrawings API 导出和打印 SOLIDWORKS 文件的选项解释
+---
+ 通过 eDrawings API 导出和打印 SOLIDWORKS 文件的选项解释
 image: edrawings-export-types.png
 labels: [打印,导出,edrawings]
 ---

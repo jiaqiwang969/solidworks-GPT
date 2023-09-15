@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API创建垂直于屏幕视图的向量
+title:  使用SOLIDWORKS API创建垂直于屏幕视图的向量
 caption: 创建垂直于屏幕视图的向量
-description: 该示例演示了如何使用SOLIDWORKS API绘制一条垂直于当前视图方向相对于屏幕的草图线。
+---
+ 该示例演示了如何使用SOLIDWORKS API绘制一条垂直于当前视图方向相对于屏幕的草图线。
 image: sw-view-screen-transformation.png
 labels: [示例, 垂直, 屏幕, solidworks api, 变换, 视图]
 redirect-from:

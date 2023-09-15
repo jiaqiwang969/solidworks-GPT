@@ -1,7 +1,8 @@
 ---
-title: 获取SOLIDWORKS组件在装配体中的重心
+title:  获取SOLIDWORKS组件在装配体中的重心
 caption: 获取重心
-description: 这个VBA宏演示了两种方法来计算SOLIDWORKS装配体中组件的重心（COG）
+---
+ 这个VBA宏演示了两种方法来计算SOLIDWORKS装配体中组件的重心（COG）
 image: mass-property.png
 labels: [装配体, 组件, 重心, 质心, 重力中心]
 ---

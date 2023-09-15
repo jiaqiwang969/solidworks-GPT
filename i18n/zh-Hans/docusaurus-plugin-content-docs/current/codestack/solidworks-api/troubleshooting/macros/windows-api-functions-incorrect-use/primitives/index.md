@@ -1,7 +1,8 @@
 ---
-title: 使用 SOLIDWORKS 模型 API 创建几何原语的代码示例
+title:  使用 SOLIDWORKS 模型 API 创建几何原语的代码示例
 caption: 原语
-description: 通过 SOLIDWORKS API 创建几何原语（例如盒子、圆柱体、平面、环等）的代码示例集合。
+---
+ 通过 SOLIDWORKS API 创建几何原语（例如盒子、圆柱体、平面、环等）的代码示例集合。
 sidebar_position: 1
 labels: [几何、拓扑、原语]
 ---

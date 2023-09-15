@@ -1,7 +1,8 @@
 ---
-title: Geometry++ - SOLIDWORKS几何命令的补充插件
+title:  Geometry++ - SOLIDWORKS几何命令的补充插件
 caption: Geometry++
-description: SOLIDWORKS插件，提供与几何修改和创建相关的额外命令集
+---
+ SOLIDWORKS插件，提供与几何修改和创建相关的额外命令集
 image: logo.png
 categories: sw-labs
 group: Geometry

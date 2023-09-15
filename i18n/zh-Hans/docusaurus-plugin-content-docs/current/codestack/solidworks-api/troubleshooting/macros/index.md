@@ -1,7 +1,8 @@
 ---
-title: 'SOLIDWORKS Macro Troubleshooting: Issues and Resolutions'
+title:  'SOLIDWORKS Macro Troubleshooting: Issues and Resolutions'
 caption: 'Macro Troubleshooting: Issues and Resolutions'
-description: An overview of common errors and solutions when running macros in SOLIDWORKS
+---
+ An overview of common errors and solutions when running macros in SOLIDWORKS
 labels: [macro, not working, issues, solidworks api, troubleshooting, vba]
 styles:
   - /_assets/styles/catalogue.css

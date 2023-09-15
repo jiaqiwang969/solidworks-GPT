@@ -1,7 +1,8 @@
 ---
-title: Stock Master - SOLIDWORKS几何库存管理插件
+title:  Stock Master - SOLIDWORKS几何库存管理插件
 caption: Stock Master
-description: SOLIDWORKS插件，用于在输入的实体周围生成圆形库存特征
+---
+ SOLIDWORKS插件，用于在输入的实体周围生成圆形库存特征
 image: round-stock-icon.png
 categories: sw-labs
 group: Geometry

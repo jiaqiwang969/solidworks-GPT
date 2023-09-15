@@ -1,7 +1,8 @@
 ---
-title: 在SOLIDWORKS Property Page中使用SwEx.PMPage框架的选择框控件
+title:  在SOLIDWORKS Property Page中使用SwEx.PMPage框架的选择框控件
 caption: 选择框
-description: 选择框控件的选项概述
+---
+ 选择框控件的选项概述
 image: selection-box.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0

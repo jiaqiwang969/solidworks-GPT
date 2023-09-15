@@ -1,8 +1,9 @@
 ---
 layout: sw-macro-fix
-title: 修复使用未来版本API的SOLIDWORKS宏
+title:  修复使用未来版本API的SOLIDWORKS宏
 caption: 宏使用未来版本API
-description: 修复在旧版本（非最新版本）SOLIDWORKS上运行时失败的宏，并显示运行时错误'438' - 对象不支持此属性或方法或运行时错误'445' - 对象不支持此操作错误
+---
+ 修复在旧版本（非最新版本）SOLIDWORKS上运行时失败的宏，并显示运行时错误'438' - 对象不支持此属性或方法或运行时错误'445' - 对象不支持此操作错误
 image: object-doesnt-support-this-action.png
 labels: [宏, 故障排除]
 redirect-from:

@@ -1,7 +1,8 @@
 ---
-title: Automating Mating Relationships in Assemblies with SOLIDWORKS API
+title:  Automating Mating Relationships in Assemblies with SOLIDWORKS API
 caption: Mating Relationships
-description: A collection of combinations and code examples for mating relationships
+---
+ A collection of combinations and code examples for mating relationships
 image: assembly-mating.png
 labels: [Assembly, Mating Relationships]
 sidebar_position: 1

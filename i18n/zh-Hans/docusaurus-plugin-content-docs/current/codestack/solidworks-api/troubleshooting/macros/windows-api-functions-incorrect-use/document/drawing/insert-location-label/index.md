@@ -1,8 +1,9 @@
 ---
 layout: article
 caption: Insert Location Label
-title: Add location label to a drawing view
-description: VBA macro which demonstrates how to add location label to a drawing view
+title:  Add location label to a drawing view
+---
+ VBA macro which demonstrates how to add location label to a drawing view
 image: location-label.png
 ---
 ![Inserting location label](location-label.png)

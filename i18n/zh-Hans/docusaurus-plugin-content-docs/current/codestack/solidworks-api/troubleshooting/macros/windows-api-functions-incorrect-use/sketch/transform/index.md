@@ -1,7 +1,8 @@
 ---
-title: Understanding Sketch Transformations in SOLIDWORKS API
+title:  Understanding Sketch Transformations in SOLIDWORKS API
 caption: Understanding Sketch Transformations
-description: Explains the concepts of model-to-sketch and sketch-to-model transformations in SOLIDWORKS API to correctly calculate the coordinates of sketch entities
+---
+ Explains the concepts of model-to-sketch and sketch-to-model transformations in SOLIDWORKS API to correctly calculate the coordinates of sketch entities
 image: sketch-coordinate-systems.png
 labels: [transformations, sketch]
 ---

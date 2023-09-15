@@ -1,7 +1,8 @@
 ---
-title: Wait for user selection in document using SOLIDWORKS API
+title:  Wait for user selection in document using SOLIDWORKS API
 caption: Wait For User Selection
-description: 2 approaches to wait for the object selected by the user in VBA macro using SOLIDWORKS API
+---
+ 2 approaches to wait for the object selected by the user in VBA macro using SOLIDWORKS API
 image: selected-edge.png
 labels: [selection,event,notification]
 ---

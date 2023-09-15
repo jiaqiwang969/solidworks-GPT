@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS PDM Professional API
+title:  SOLIDWORKS PDM Professional API
 caption: PDM Professional (EPDM) API
-description: SOLIDWORKS PDM Professional（以前称为SOLIDWORKS EPDM）API的概述，示例，教程和代码片段
+---
+ SOLIDWORKS PDM Professional（以前称为SOLIDWORKS EPDM）API的概述，示例，教程和代码片段
 image: solidworks-pdm-api.svg
 labels: [epdm]
 sidebar_position: 0

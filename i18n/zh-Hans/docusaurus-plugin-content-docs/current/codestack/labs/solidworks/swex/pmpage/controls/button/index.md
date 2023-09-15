@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS 属性管理器页面中的按钮控件
+title:  SOLIDWORKS 属性管理器页面中的按钮控件
 caption: 按钮
-description: 使用 SwEx.PMPage 框架在属性管理器页面中创建按钮控件
+---
+ 使用 SwEx.PMPage 框架在属性管理器页面中创建按钮控件
 image: button.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0

@@ -1,7 +1,8 @@
 ---
-title: 安装 Geometry++ SOLIDWORKS 插件
+title:  安装 Geometry++ SOLIDWORKS 插件
 caption: 安装指南
-description: Geometry++ 插件的安装说明
+---
+ Geometry++ 插件的安装说明
 toc-group-name: labs-solidworks-geometry-plus-plus
 sidebar_position: 0
 ---

@@ -1,7 +1,8 @@
 ---
-title: Modify the definition of axis feature using SOLIDWORKS API
+title:  Modify the definition of axis feature using SOLIDWORKS API
 caption: Modify Axis Definition
-description: VBA macro example to change the selection of the axis feature using SOLIDWORKS API
+---
+ VBA macro example to change the selection of the axis feature using SOLIDWORKS API
 image: axis-definition.png
 labels: [axis,definition]
 ---

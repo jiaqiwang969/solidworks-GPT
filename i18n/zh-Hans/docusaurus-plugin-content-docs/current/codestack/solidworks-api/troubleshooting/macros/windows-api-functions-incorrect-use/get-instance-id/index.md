@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API获取装配件组件的实例ID
+title:  使用SOLIDWORKS API获取装配件组件的实例ID
 caption: 获取组件的实例ID
-description: 该示例使用SOLIDWORKS API从组件的名称中提取组件实例索引。
+---
+ 该示例使用SOLIDWORKS API从组件的名称中提取组件实例索引。
 image: sw-component-properties.png
 labels: [装配, 组件, 示例, 实例ID, solidworks api]
 redirect-from:

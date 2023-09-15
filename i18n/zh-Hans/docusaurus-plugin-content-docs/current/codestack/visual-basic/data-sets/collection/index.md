@@ -1,7 +1,8 @@
 ---
-title: 在 Visual Basic 中管理集合
+title:  在 Visual Basic 中管理集合
 caption: 集合
-description: 描述了在 Visual Basic 中使用集合（动态列表）存储数据数组的好处的文章
+---
+ 描述了在 Visual Basic 中使用集合（动态列表）存储数据数组的好处的文章
 image: collection-key-already-associated.png
 sidebar_position: 0
 ---

@@ -1,7 +1,8 @@
 ---
-title: 在SOLIDWORKS中创建和运行VSTA宏（C#和VB.NET）
+title:  在SOLIDWORKS中创建和运行VSTA宏（C#和VB.NET）
 caption: 创建和运行VSTA宏
-description: 本文介绍如何从现有代码创建和运行VSTA宏（C#或VB.NET）
+---
+ 本文介绍如何从现有代码创建和运行VSTA宏（C#或VB.NET）
 image: new-macro-vsta-filter.png
 labels: [vsta, macro, run]
 ---

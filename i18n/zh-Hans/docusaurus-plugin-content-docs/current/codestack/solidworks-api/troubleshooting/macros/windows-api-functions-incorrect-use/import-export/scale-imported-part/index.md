@@ -1,7 +1,8 @@
 ---
 caption: 缩放导入几何体
-title: 使用SOLIDWORKS API缩放导入特征的VBA宏
-description: VBA宏使用指定的缩放因子缩放外部格式（例如STEP、IGES）的导入特征的实体
+title:  使用SOLIDWORKS API缩放导入特征的VBA宏
+---
+ VBA宏使用指定的缩放因子缩放外部格式（例如STEP、IGES）的导入特征的实体
 image: imported-feature.png
 ---
 ![导入的几何特征](imported-feature.png){ width=250 }

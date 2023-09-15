@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS 属性管理器页面中的选项卡控件
+title:  SOLIDWORKS 属性管理器页面中的选项卡控件
 caption: 选项卡
-description: 使用 SwEx.PMPage 框架在属性管理器页面中创建选项卡控件
+---
+ 使用 SwEx.PMPage 框架在属性管理器页面中创建选项卡控件
 image: pmpage-tab.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0

@@ -1,8 +1,9 @@
 ---
-title: 使用SOLIDWORKS文档管理器API入门
+title:  使用SOLIDWORKS文档管理器API入门
 caption: 入门指南
 sidebar_position: 0
-description: SOLIDWORKS文档管理器API库的概述
+---
+ SOLIDWORKS文档管理器API库的概述
 labels: [文档管理器, 入门指南]
 ---
 要开始使用SOLIDWORKS文档管理器API开发应用程序，需要执行以下步骤：

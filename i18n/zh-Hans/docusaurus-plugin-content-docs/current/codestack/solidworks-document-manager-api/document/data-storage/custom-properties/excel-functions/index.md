@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 用于管理SOLIDWORKS文件中自定义属性的Excel宏
+title:  用于管理SOLIDWORKS文件中自定义属性的Excel宏
 caption: 在Excel中管理属性
-description: 这个Excel VBA宏为Excel调色板添加了额外的功能，允许从SOLIDWORKS文件中读取和写入自定义属性。
+---
+ 这个Excel VBA宏为Excel调色板添加了额外的功能，允许从SOLIDWORKS文件中读取和写入自定义属性。
 image: excel-custom-properties.svg
 labels: [dm, excel, custom properties]
 group: Custom Properties

@@ -1,8 +1,9 @@
 ---
 layout: sw-macro-fix
-title: 修复SOLIDWORKS宏中的选择不一致问题
+title:  修复SOLIDWORKS宏中的选择不一致问题
 caption: 宏中的选择不一致
-description: 修复宏中选择不一致的错误
+---
+ 修复宏中选择不一致的错误
 image: recorded-macro-extrude.png
 labels: [宏, 故障排除]
 ---

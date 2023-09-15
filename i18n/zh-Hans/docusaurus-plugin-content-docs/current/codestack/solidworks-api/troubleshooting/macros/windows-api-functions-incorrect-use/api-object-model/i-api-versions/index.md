@@ -1,7 +1,8 @@
 ---
-title: Difference between SOLIDWORKS API Methods with and without "I"
+title:  Difference between SOLIDWORKS API Methods with and without "I"
 caption: I-Version Methods and Interfaces
-description: Explains the difference between method and interface names starting with "I" (e.g. IModelDoc2 vs ModelDoc2)
+---
+ Explains the difference between method and interface names starting with "I" (e.g. IModelDoc2 vs ModelDoc2)
 image: intellisense-events.png
 labels: [events, I methods, I interfaces]
 ---

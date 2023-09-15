@@ -1,7 +1,8 @@
 ---
-title: 在SOLIDWORKS宏特征中存储参数
+title:  在SOLIDWORKS宏特征中存储参数
 caption: 参数
-description: 使用SwEx.MacroFeature框架在SOLIDWORKS宏特征中存储参数结构
+---
+ 使用SwEx.MacroFeature框架在SOLIDWORKS宏特征中存储参数结构
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

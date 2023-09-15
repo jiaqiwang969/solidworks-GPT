@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API批量添加组件并将其定位在网格中
+title:  使用SOLIDWORKS API批量添加组件并将其定位在网格中
 caption: 在网格中插入和定位组件
-description: VBA示例演示了如何使用SOLIDWORKS API批量插入组件并将它们自动定位在3D网格中的方法，通过提供行数、列数和组件之间的距离
+---
+ VBA示例演示了如何使用SOLIDWORKS API批量插入组件并将它们自动定位在3D网格中的方法，通过提供行数、列数和组件之间的距离
 image: positioned-components.png
 labels: [components,positions]
 ---

@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS组件上下文的概述和API的使用方法
+title:  SOLIDWORKS组件上下文的概述和API的使用方法
 caption: 组件上下文
-description: 解释组件上下文以及使用SOLIDWORKS API将指针从组件上下文转换为模型上下文，反之亦然的方法
+---
+ 解释组件上下文以及使用SOLIDWORKS API将指针从组件上下文转换为模型上下文，反之亦然的方法
 image: assembly-model-context.png
 labels: [context, 对应, 组件]
 ---

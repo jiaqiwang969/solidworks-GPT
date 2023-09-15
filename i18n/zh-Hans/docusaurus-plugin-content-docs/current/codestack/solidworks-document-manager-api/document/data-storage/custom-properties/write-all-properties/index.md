@@ -1,7 +1,8 @@
 ---
-title: 使用文档管理器 API 将自定义属性写入所有来源
+title:  使用文档管理器 API 将自定义属性写入所有来源
 caption: 写入所有属性
-description: 使用文档管理器 API 将自定义属性写入所有来源（文件、配置、切割列表项）的 VBA 宏示例
+---
+ 使用文档管理器 API 将自定义属性写入所有来源（文件、配置、切割列表项）的 VBA 宏示例
 image: added-custom-property.png
 labels: [写入属性]
 ---

@@ -1,7 +1,8 @@
 ---
-title: Fill hole with temp body using SOLIDWORKS API
+title:  Fill hole with temp body using SOLIDWORKS API
 caption: Fill Hole
-description: VBA example demonstrates how to use SOLIDWORKS modeler and create temp body to fill hole in the geometry
+---
+ VBA example demonstrates how to use SOLIDWORKS modeler and create temp body to fill hole in the geometry
 image: filled-hole.png
 labels: [fill,modeler,hole,temp geometry]
 ---

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用相同名称的子文件夹导入STEP文件并保存为SOLIDWORKS文件的宏
+title:  使用相同名称的子文件夹导入STEP文件并保存为SOLIDWORKS文件的宏
 caption: 导入STEP文件
-description: 使用VBA宏将STEP文件导入并保存为SOLIDWORKS文件，使用与文件名相同的子文件夹。
+---
+ 使用VBA宏将STEP文件导入并保存为SOLIDWORKS文件，使用与文件名相同的子文件夹。
 image: import-step-icon.svg
 labels: [STEP, 导入, 批处理+]
 group: 导入/导出

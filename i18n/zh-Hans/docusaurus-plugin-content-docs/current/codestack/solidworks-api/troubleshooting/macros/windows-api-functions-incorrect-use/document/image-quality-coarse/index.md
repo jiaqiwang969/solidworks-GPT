@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Setting ShadedImageQualityCoarse in user preferences of the active document using SOLIDWORKS API
+title:  Setting ShadedImageQualityCoarse in user preferences of the active document using SOLIDWORKS API
 caption: Set Shaded Image quality to coarse
-description: SolidWorks VBA Macro to set the Shaded Image quality to coarse in Part and Assembly files. Also the checkmark "Apply to all referenced part documents" is set to ON if the active document is an assembly.
+---
+ SolidWorks VBA Macro to set the Shaded Image quality to coarse in Part and Assembly files. Also the checkmark "Apply to all referenced part documents" is set to ON if the active document is an assembly.
 image: coarse-icon.svg
 labels: [document, preferences, options, imagequality, batch+]
 group: Options

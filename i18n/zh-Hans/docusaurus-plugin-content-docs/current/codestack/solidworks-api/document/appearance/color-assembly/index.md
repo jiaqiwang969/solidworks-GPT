@@ -1,7 +1,8 @@
 ---
 caption: 应用随机颜色到组件
-title: 在SOLIDWORKS装配中应用随机颜色的宏
-description: VBA宏，将随机颜色应用于SOLIDWORKS装配中的所有组件，并提供按自定义属性值分组的选项
+title:  在SOLIDWORKS装配中应用随机颜色的宏
+---
+ VBA宏，将随机颜色应用于SOLIDWORKS装配中的所有组件，并提供按自定义属性值分组的选项
 ---
 
 这个VBA宏将在活动装配的所有组件上应用随机颜色。

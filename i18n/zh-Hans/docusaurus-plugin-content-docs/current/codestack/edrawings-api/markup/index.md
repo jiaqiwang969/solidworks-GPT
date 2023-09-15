@@ -1,7 +1,8 @@
 ---
-title: 使用 SOLIDWORKS eDrawings API 利用标记功能
+title:  使用 SOLIDWORKS eDrawings API 利用标记功能
 caption: 标记
-description: 使用 eDrawings API 使用标记功能（测量、图章、注释）的指南
+---
+ 使用 eDrawings API 使用标记功能（测量、图章、注释）的指南
 labels: [edrawings,markup,getting started]
 ---
 eDrawings 标记 API（如注释、图章、测量）可以通过 [IEModelMarkupControl](https://help.solidworks.com/2016/english/api/emodelapi/eDrawings.Interop.EModelMarkupControl~eDrawings.Interop.EModelMarkupControl.IEModelMarkupControl.html) 接口访问。

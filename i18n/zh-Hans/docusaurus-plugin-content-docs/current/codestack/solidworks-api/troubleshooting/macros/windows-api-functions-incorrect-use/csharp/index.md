@@ -1,7 +1,8 @@
 ---
-title: Creating C# add-in for SOLIDWORKS automation using API
+title:  Creating C# add-in for SOLIDWORKS automation using API
 caption: Creating C# Add-In For SOLIDWORKS
-description: Detailed guide of creating SOLIDWORKS add-in from scratch using C#
+---
+ Detailed guide of creating SOLIDWORKS add-in from scratch using C#
 image: new-project-class-library.png
 labels: [add-in, c#]
 ---

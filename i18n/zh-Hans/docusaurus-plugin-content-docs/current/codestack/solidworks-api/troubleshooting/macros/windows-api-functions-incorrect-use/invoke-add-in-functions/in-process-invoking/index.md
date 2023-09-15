@@ -1,7 +1,8 @@
 ---
-title: In-process Calling of SOLIDWORKS Add-in API from External Process Application
+title:  In-process Calling of SOLIDWORKS Add-in API from External Process Application
 caption: In-process Calling from External Process Application
-description: Framework for calling Add-in API in-process for maximum performance from standalone applications or macros
+---
+ Framework for calling Add-in API in-process for maximum performance from standalone applications or macros
 image: macro-solution-tree.png
 labels: [Add-in API, Asynchronous, Performance, In-process]
 sidebar_position: 4

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API根据几何尺寸缩放绘图视图的宏
+title:  使用SOLIDWORKS API根据几何尺寸缩放绘图视图的宏
 caption: 根据几何尺寸缩放视图
-description: 使用VBA宏根据几何尺寸和指定的映射自动缩放当前工作表中的绘图视图
+---
+ 使用VBA宏根据几何尺寸和指定的映射自动缩放当前工作表中的绘图视图
 image: scale-view.svg
 labels: [缩放,尺寸,边界框]
 group: 绘图

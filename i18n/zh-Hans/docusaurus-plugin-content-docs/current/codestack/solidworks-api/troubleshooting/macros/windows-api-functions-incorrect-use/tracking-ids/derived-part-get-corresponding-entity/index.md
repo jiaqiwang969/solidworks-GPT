@@ -1,7 +1,8 @@
 ---
 caption: 获取派生零件中的对应实体
-title: 使用SOLIDWORKS API获取派生零件中的对应实体（面、边和顶点）
-description: VBA宏演示了如何使用SOLIDWORKS API在派生零件中查找输入零件的对应实体
+title:  使用SOLIDWORKS API获取派生零件中的对应实体（面、边和顶点）
+---
+ VBA宏演示了如何使用SOLIDWORKS API在派生零件中查找输入零件的对应实体
 ---
 
 [IPartDoc::InsertPart3](https://help.solidworks.com/2019/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IPartDoc~InsertPart3.html) API允许将派生零件插入到另一个零件中。然而，与[组件](/docs/codestack/solidworks-api/document/assembly/context#converting-the-pointers)类似，用于查找输入零件的对应实体的API是不可用的。

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: Replace Sheet Format
-title: Macro to replace sheet formats in SOLIDWORKS drawings
-description: VBA macro to replace sheet formats in the drawing sheets based on the specified map
+title:  Macro to replace sheet formats in SOLIDWORKS drawings
+---
+ VBA macro to replace sheet formats in the drawing sheets based on the specified map
 image: replace-sheet-format.svg
 group: Drawing
 ---

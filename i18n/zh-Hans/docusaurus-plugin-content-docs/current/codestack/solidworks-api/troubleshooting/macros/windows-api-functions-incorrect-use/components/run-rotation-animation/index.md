@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API运行组件的旋转动画
+title:  使用SOLIDWORKS API运行组件的旋转动画
 caption: 运行组件的旋转动画
-description: 该示例演示了如何使用SOLIDWORKS API中的演示变换来运行组件围绕轴的平滑旋转动画。
+---
+ 该示例演示了如何使用SOLIDWORKS API中的演示变换来运行组件围绕轴的平滑旋转动画。
 image: component-rotation.gif
 labels: [assembly, transform, rotation, animation]
 ---

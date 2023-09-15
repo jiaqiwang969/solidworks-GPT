@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS 属性管理器页面中的组合框控件
+title:  SOLIDWORKS 属性管理器页面中的组合框控件
 caption: 组合框
-description: 组合框控件的选项概述
+---
+ 组合框控件的选项概述
 image: combobox.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0

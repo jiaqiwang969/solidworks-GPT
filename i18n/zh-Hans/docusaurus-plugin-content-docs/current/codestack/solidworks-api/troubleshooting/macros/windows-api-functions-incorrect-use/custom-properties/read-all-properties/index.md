@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API从文件、配置和切割列表元素中读取自定义属性
+title:  使用SOLIDWORKS API从文件、配置和切割列表元素中读取自定义属性
 caption: 读取所有属性
-description: 使用SOLIDWORKS API从活动文档的各种来源（通用、配置特定和切割列表）提取所有自定义属性的VBA示例
+---
+ 使用SOLIDWORKS API从活动文档的各种来源（通用、配置特定和切割列表）提取所有自定义属性的VBA示例
 image: custom-properties.png
 labels: [属性,切割列表,配置]
 ---

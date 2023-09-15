@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: VBA macro to open referenced document of the drawing view
+title:  VBA macro to open referenced document of the drawing view
 caption: Open Drawing View Referenced Document
-description: VBA macro opens the document referenced by the selected drawing view in the referenced configuration and display state
+---
+ VBA macro opens the document referenced by the selected drawing view in the referenced configuration and display state
 image: ref-doc-display-state.svg
 labels: [drawing,reference,display state]
 group: Drawing

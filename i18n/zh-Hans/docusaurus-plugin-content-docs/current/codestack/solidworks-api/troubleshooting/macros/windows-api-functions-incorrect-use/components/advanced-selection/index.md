@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API进行扩展高级选择的宏
+title:  使用SOLIDWORKS API进行扩展高级选择的宏
 caption: 高级选择
-description: 该宏使用SOLIDWORKS API来扩展SOLIDWORKS装配中“高级选择”工具中可用的选择条件列表。
+---
+ 该宏使用SOLIDWORKS API来扩展SOLIDWORKS装配中“高级选择”工具中可用的选择条件列表。
 image: filtered-components-selection.png
 labels: [选择, 固定, 包络]
 ---

@@ -1,7 +1,8 @@
 ---
-title: 在SOLIDWORKS PDM vault中签入所有已签出的文件
+title:  在SOLIDWORKS PDM vault中签入所有已签出的文件
 caption: 签入所有已签出的文件
-description: 用于在SOLIDWORKS PDM vault中签入所有已签出的文件的命令行实用程序
+---
+ 用于在SOLIDWORKS PDM vault中签入所有已签出的文件的命令行实用程序
 image: console-output.png
 labels: [签入,签出,pdm]
 ---

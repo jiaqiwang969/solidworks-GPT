@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: 导入/导出图层
-title: 将SOLIDWORKS图纸中的所有图层导入和导出到文本文件的宏
-description: VBA宏导入和导出SOLIDWORKS图纸中的图层信息（描述、颜色、样式、厚度、可见性和打印设置）
+title:  将SOLIDWORKS图纸中的所有图层导入和导出到文本文件的宏
+---
+ VBA宏导入和导出SOLIDWORKS图纸中的图层信息（描述、颜色、样式、厚度、可见性和打印设置）
 image: import-export-drawing-layers.svg
 group: 绘图
 ---

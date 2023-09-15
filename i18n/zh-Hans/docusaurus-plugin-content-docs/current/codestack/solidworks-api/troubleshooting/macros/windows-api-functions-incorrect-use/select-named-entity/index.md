@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API选择命名实体（面、边或顶点）
+title:  使用SOLIDWORKS API选择命名实体（面、边或顶点）
 caption: 选择命名实体
-description: 使用SOLIDWORKS API在零件、装配体（从组件）或绘图（从视图）中选择命名实体（面、边或顶点）
+---
+ 使用SOLIDWORKS API在零件、装配体（从组件）或绘图（从视图）中选择命名实体（面、边或顶点）
 image: face-name.png
 labels: [面,边,顶点,名称,选择]
 ---

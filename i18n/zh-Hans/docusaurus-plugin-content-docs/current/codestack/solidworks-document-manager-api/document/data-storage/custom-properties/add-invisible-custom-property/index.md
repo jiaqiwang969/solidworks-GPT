@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS Document Manager API向模型添加不可见的自定义属性
+title:  使用SOLIDWORKS Document Manager API向模型添加不可见的自定义属性
 caption: 添加不可见的自定义属性
-description: 使用SOLIDWORKS Document Manager API向模型添加不可见的自定义属性的VBA宏
+---
+ 使用SOLIDWORKS Document Manager API向模型添加不可见的自定义属性的VBA宏
 labels: [不可见, 自定义属性]
 ---
 SOLIDWORKS模型包含多个不可见的自定义属性，例如$PRP:"SW-File Name"，$PRP:"SW-Title"。这些属性是只读的，无法从用户界面进行修改。但是，可以使用Document Manager API添加新的自定义属性。此属性在自定义属性管理器页面中不可用，用户或SOLIDWORKS API无法修改。

@@ -1,7 +1,8 @@
 ---
-title: 使用宏在SOLIDWORKS中使用API更改系统页面设置选项
+title:  使用宏在SOLIDWORKS中使用API更改系统页面设置选项
 caption: 更改系统页面设置
-description: 使用SOLIDWORKS API更改系统级别（应用程序）页面设置选项（打印机纸张大小、比例等）以进行打印
+---
+ 使用SOLIDWORKS API更改系统级别（应用程序）页面设置选项（打印机纸张大小、比例等）以进行打印
 image: page-setup.png
 labels: [打印,页面设置,首选项]
 ---

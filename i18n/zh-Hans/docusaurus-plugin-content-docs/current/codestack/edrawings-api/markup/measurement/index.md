@@ -1,7 +1,8 @@
 ---
-title: 使用 eDrawings 标记 API 捕获 SOLIDWORKS 实体的测量
+title:  使用 eDrawings 标记 API 捕获 SOLIDWORKS 实体的测量
 caption: 捕获测量
-description: 使用 eDrawings 标记 API 将 SOLIDWORKS 模型中的实体测量结果捕获到文本框中
+---
+ 使用 eDrawings 标记 API 将 SOLIDWORKS 模型中的实体测量结果捕获到文本框中
 image: surveying-form.png
 labels: [edrawings,markup,measurement]
 ---

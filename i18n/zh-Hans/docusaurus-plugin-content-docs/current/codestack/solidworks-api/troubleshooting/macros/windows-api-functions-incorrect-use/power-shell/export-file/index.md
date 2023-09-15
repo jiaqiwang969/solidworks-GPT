@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Export SOLIDWORKS files using SOLIDWORKS API in shell script
+title:  Export SOLIDWORKS files using SOLIDWORKS API in shell script
 caption: Export Files
-description: Script allows exporting of the SOLIDWORKS file into the foreign format using command line
+---
+ Script allows exporting of the SOLIDWORKS file into the foreign format using command line
 image: power-shell-export.svg
 labels: [export, script]
 group: Import/Export

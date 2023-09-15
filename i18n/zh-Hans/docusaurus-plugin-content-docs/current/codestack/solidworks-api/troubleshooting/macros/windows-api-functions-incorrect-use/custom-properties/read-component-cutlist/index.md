@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API从所选组件中读取配置特定的切割列表属性
+title:  使用SOLIDWORKS API从所选组件中读取配置特定的切割列表属性
 caption: 读取组件切割列表属性
-description: 使用SOLIDWORKS API从装配体中所选组件的切割列表中读取所有属性的VBA宏示例
+---
+ 使用SOLIDWORKS API从装配体中所选组件的切割列表中读取所有属性的VBA宏示例
 image: cut-list-properties.png
 labels: [切割列表属性,组件]
 ---

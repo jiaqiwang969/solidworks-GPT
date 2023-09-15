@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API从绘图视图获取实体和材料
+title:  使用SOLIDWORKS API从绘图视图获取实体和材料
 caption: 获取绘图视图中的实体和材料
-description: 使用SOLIDWORKS API查找所选绘图视图（包括钣金展开图）的所有实体及其材料的VBA宏
+---
+ 使用SOLIDWORKS API查找所选绘图视图（包括钣金展开图）的所有实体及其材料的VBA宏
 image: sheet-metal-views.png
 labels: [视图实体,展开图]
 ---

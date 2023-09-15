@@ -1,7 +1,8 @@
 ---
-title: 获取SOLIDWORKS PDM vault中文件的超链接（conisio url）
+title:  获取SOLIDWORKS PDM vault中文件的超链接（conisio url）
 caption: 获取文件超链接
-description: 使用PDM Professional API，这些PowerShell脚本允许获取指定文件的一致超链接（conisio url）
+---
+ 使用PDM Professional API，这些PowerShell脚本允许获取指定文件的一致超链接（conisio url）
 image: hyperlink-email.png
 labels: [conisio, hyperlink]
 ---

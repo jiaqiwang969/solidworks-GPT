@@ -1,7 +1,8 @@
 ---
-title: Sketch++ - SOLIDWORKS插件，增强草图功能
+title:  Sketch++ - SOLIDWORKS插件，增强草图功能
 caption: Sketch++
-description: 用于增强SOLIDWORKS草图功能的实用工具
+---
+ 用于增强SOLIDWORKS草图功能的实用工具
 categories: sw-labs
 group: Model
 toc-group-name: labs-solidworks-sketch-plus-plus

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Export flat pattern view in the drawing using VBA macro
+title:  Export flat pattern view in the drawing using VBA macro
 caption: Export Flat Patterns
-description: VBA macro to export flat pattern views in the drawing active sheet to DXF or DWG or other format preserving the bend notes, annotations etc. using SOLIDWORKS API
+---
+ VBA macro to export flat pattern views in the drawing active sheet to DXF or DWG or other format preserving the bend notes, annotations etc. using SOLIDWORKS API
 image: flat-pattern-view.png
 labels: [dxf,dwg,export,flat pattern]
 group: Drawing

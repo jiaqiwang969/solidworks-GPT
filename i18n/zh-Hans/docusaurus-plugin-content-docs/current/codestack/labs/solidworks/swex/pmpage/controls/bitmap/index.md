@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS 属性管理器页面中的位图控件
+title:  SOLIDWORKS 属性管理器页面中的位图控件
 caption: 位图
-description: 使用 SwEx.PMPage 框架在属性管理器页面中创建位图控件
+---
+ 使用 SwEx.PMPage 框架在属性管理器页面中创建位图控件
 image: bitmap.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0

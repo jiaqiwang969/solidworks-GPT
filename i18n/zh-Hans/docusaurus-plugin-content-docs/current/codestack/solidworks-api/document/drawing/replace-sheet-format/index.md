@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: 替换图纸格式
-title: 在SOLIDWORKS图纸中替换图纸格式的宏
-description: 根据指定的映射规则，使用VBA宏在图纸的所有图纸页中替换图纸格式（*.slddrt文件）。
+title:  在SOLIDWORKS图纸中替换图纸格式的宏
+---
+ 根据指定的映射规则，使用VBA宏在图纸的所有图纸页中替换图纸格式（*.slddrt文件）。
 image: replace-sheet-format.svg
 group: Drawing
 ---

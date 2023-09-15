@@ -1,7 +1,8 @@
 ---
-title: 使用SwEx.MacroFeature框架在SOLIDWORKS宏特征中管理尺寸
+title:  使用SwEx.MacroFeature框架在SOLIDWORKS宏特征中管理尺寸
 caption: 尺寸
-description: 使用SwEx.MacroFeature框架将尺寸（线性和径向）添加到SOLIDWORKS宏特征中
+---
+ 使用SwEx.MacroFeature框架将尺寸（线性和径向）添加到SOLIDWORKS宏特征中
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

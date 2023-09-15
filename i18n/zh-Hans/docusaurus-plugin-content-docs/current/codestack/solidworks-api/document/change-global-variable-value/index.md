@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API更改模型中的全局变量值
+title:  使用SOLIDWORKS API更改模型中的全局变量值
 caption: 更改全局变量的值
-description: 该示例演示了如何使用SOLIDWORKS API在方程管理器中按名称修改全局变量的值。
+---
+ 该示例演示了如何使用SOLIDWORKS API在方程管理器中按名称修改全局变量的值。
 image: equation-manager-global-variable.png
 labels: [equation, variable]
 ---

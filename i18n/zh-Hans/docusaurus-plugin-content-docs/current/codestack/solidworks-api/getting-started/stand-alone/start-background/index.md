@@ -1,7 +1,8 @@
 ---
-title: 在后台启动SOLIDWORKS应用程序（隐藏）
+title:  在后台启动SOLIDWORKS应用程序（隐藏）
 caption: 后台启动
-description: 如何在后台（隐藏）启动SOLIDWORKS应用程序以供独立自动化工具使用的说明
+---
+ 如何在后台（隐藏）启动SOLIDWORKS应用程序以供独立自动化工具使用的说明
 image: invisible-app.png
 labels: [background,invisible]
 ---

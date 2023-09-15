@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS文档管理器API读取所有自定义属性
+title:  使用SOLIDWORKS文档管理器API读取所有自定义属性
 caption: 读取所有属性
-description: 使用SOLIDWORKS文档管理器API从所有来源（文件、配置、切割列表）读取所有自定义属性的VBA宏
+---
+ 使用SOLIDWORKS文档管理器API从所有来源（文件、配置、切割列表）读取所有自定义属性的VBA宏
 image: properties-list.png
 labels: [读取属性,自定义属性]
 ---

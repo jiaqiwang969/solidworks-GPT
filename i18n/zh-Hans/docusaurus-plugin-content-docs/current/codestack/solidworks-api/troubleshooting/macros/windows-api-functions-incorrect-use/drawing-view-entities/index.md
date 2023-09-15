@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API在绘图视图中选择实体
+title:  使用SOLIDWORKS API在绘图视图中选择实体
 caption: 在绘图视图中选择实体
-description: 该示例演示了使用SOLIDWORKS API在绘图视图中选择实体（例如边、面、顶点）的不同方法。
+---
+ 该示例演示了使用SOLIDWORKS API在绘图视图中选择实体（例如边、面、顶点）的不同方法。
 image: circular-edge-selected-in-views.png
 ---
 ![在3个绘图视图中选择了命名边](circular-edge-selected-in-views.png){ width=300 }

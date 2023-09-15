@@ -1,7 +1,8 @@
 ---
-title: 在SOLIDWORKS中编辑VBA和VSTA宏
+title:  在SOLIDWORKS中编辑VBA和VSTA宏
 caption: 编辑宏
-description: 在SOLIDWORKS中编辑现有的VBA和VSTA宏
+---
+ 在SOLIDWORKS中编辑现有的VBA和VSTA宏
 image: edit-macro.png
 ---
 VBA宏（*.swb和*.swp）以及VSTA宏（*.csproj和*.vbproj）的源代码可以直接在SOLIDWORKS中进行编辑。

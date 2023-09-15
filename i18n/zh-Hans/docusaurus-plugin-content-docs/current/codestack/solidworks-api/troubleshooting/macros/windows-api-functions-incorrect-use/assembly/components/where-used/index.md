@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API查找所选组件的使用组件
+title:  使用SOLIDWORKS API查找所选组件的使用组件
 caption: 查找使用位置
-description: 使用SOLIDWORKS API查找活动装配中使用所选组件的组件的VBA宏
+---
+ 使用SOLIDWORKS API查找活动装配中使用所选组件的组件的VBA宏
 image: where-used-form.png
 labels: [使用位置,父级,组件]
 group: 装配

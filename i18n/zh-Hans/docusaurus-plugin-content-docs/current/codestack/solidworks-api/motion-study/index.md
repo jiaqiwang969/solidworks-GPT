@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API自动化运动研究
+title:  使用SOLIDWORKS API自动化运动研究
 caption: 运动研究
-description: 与SOLIDWORKS运动研究API相关的文章和示例集合
+---
+ 与SOLIDWORKS运动研究API相关的文章和示例集合
 image: motion-study.svg
 sidebar_position: 0
 ---

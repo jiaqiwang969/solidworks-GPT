@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API从CSV文件加载组件演示变换
+title:  使用SOLIDWORKS API从CSV文件加载组件演示变换
 caption: 从CSV文件加载组件演示变换
-description: 该示例演示了如何从CSV文件加载组件的变换矩阵，并将其应用为演示变换
+---
+ 该示例演示了如何从CSV文件加载组件的变换矩阵，并将其应用为演示变换
 image: original-component-position.png
 labels: [assembly, transform, csv]
 ---

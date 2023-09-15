@@ -1,7 +1,8 @@
 ---
 caption: 插入修订表
-title: 插入SOLIDWORKS修订表并附加到锚点的宏
-description: SOLIDWORKS VBA宏，用于在活动或所有工作表中插入修订表，并附加到锚点
+title:  插入SOLIDWORKS修订表并附加到锚点的宏
+---
+ SOLIDWORKS VBA宏，用于在活动或所有工作表中插入修订表，并附加到锚点
 image: revision-table-anchor.png
 ---
 ![附加到锚点的修订表](revision-table-anchor.png){ width=600 }

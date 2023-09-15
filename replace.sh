@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Define source and target strings
-SRC_STR="](visual-basic/"
-TRG_STR="](/docs/codestack/visual-basic/"
+SRC_STR="图片："
+TRG_STR="image: "
 
 # Define search directory, use '.' for current directory
-DIR='docs'
+DIR='i18n'
 
 # loop through all files recursively
 find "$DIR" -type f -name "*" | while read -r FILE

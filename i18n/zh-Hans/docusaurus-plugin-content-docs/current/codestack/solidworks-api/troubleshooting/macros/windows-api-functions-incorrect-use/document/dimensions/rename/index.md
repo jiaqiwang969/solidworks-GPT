@@ -1,7 +1,8 @@
 ---
 caption: 重命名尺寸
-title: 在SOLIDWORKS绘图视图中重命名尺寸的宏
-description: VBA宏，允许为SOLIDWORKS绘图视图中无法在用户界面中重命名的尺寸分配自定义名称
+title:  在SOLIDWORKS绘图视图中重命名尺寸的宏
+---
+ VBA宏，允许为SOLIDWORKS绘图视图中无法在用户界面中重命名的尺寸分配自定义名称
 image: read-only-dimension-name.png
 ---
 SOLIDWORKS允许在3D文档（零件和装配体）中分配自定义尺寸名称。

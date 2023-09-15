@@ -1,7 +1,8 @@
 ---
 caption: Batch Export Models
-title: Batch export SOLIDWORKS models via vbScript
-description: Example of batch exporting SOLIDWORKS documents from the vbScript
+title:  Batch export SOLIDWORKS models via vbScript
+---
+ Example of batch exporting SOLIDWORKS documents from the vbScript
 ---
 This example of vbScript which demonstrates how to batch export SOLIDWORKS documents using vbScript
 

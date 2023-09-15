@@ -1,7 +1,8 @@
 ---
-title: 创建VB.NET独立应用程序（exe）用于SOLIDWORKS
+title:  创建VB.NET独立应用程序（exe）用于SOLIDWORKS
 caption: 创建VB.NET独立应用程序用于SOLIDWORKS
-description: 通过VB.NET和Microsoft Visual Studio，连接到SOLIDWORKS应用程序的外部进程（即独立应用程序，如Windows窗体、Windows控制台）的指南
+---
+ 通过VB.NET和Microsoft Visual Studio，连接到SOLIDWORKS应用程序的外部进程（即独立应用程序，如Windows窗体、Windows控制台）的指南
 sidebar_position: 2
 image: proj-template.png
 labels: [activator, create instance, example, getobject, rot, sdk, solidworks api, vb.net]

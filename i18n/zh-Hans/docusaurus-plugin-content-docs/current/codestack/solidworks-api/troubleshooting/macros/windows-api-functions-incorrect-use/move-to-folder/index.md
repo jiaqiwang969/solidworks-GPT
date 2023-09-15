@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API将选定的组件移动到特征文件夹
+title:  使用SOLIDWORKS API将选定的组件移动到特征文件夹
 caption: 移动到文件夹
-description: 该宏将选定的组件移动到特征管理器树中的新文件夹中
+---
+ 该宏将选定的组件移动到特征管理器树中的新文件夹中
 image: move-components-to-folder.png
 labels: [组件, 移动到文件夹]
 group: 组件装配

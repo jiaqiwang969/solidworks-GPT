@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API中的属性存储数据和选择
+title:  使用SOLIDWORKS API中的属性存储数据和选择
 caption: 属性
-description: 本文介绍了使用属性（添加参数，与对象关联）的示例
+---
+ 本文介绍了使用属性（添加参数，与对象关联）的示例
 image: attributes.png
 labels: [跟踪, 属性, 选择, 参数]
 ---

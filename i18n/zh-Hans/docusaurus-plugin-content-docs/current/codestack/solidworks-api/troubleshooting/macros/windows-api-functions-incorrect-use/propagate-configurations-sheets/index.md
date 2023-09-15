@@ -1,7 +1,8 @@
 ---
 caption: Propagate Configurations To Sheets
-title: Macro propagates configurations of the referenced document to sheets in the SOLIDWORKS drawings
-description: VBA macro copies the input sheet and sets the referenced configuration sof the referenced document
+title:  Macro propagates configurations of the referenced document to sheets in the SOLIDWORKS drawings
+---
+ VBA macro copies the input sheet and sets the referenced configuration sof the referenced document
 image: sheets.png
 ---
 

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS VBA macro to copy preselected faces
+title:  SOLIDWORKS VBA macro to copy preselected faces
 caption: Copy Surfaces
-description: SOLIDWORKS VBA macro to copy selected faces by calling the "Surface Offset" feature with distance 0
+---
+ SOLIDWORKS VBA macro to copy selected faces by calling the "Surface Offset" feature with distance 0
 image: surface-offset-equal.svg
 labels: [surface, geometry, macro, face, solidworks api, vba]
 group: Geometry

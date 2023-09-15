@@ -1,7 +1,8 @@
 ---
-title: 在SOLIDWORKS Professional PDM API中管理权限
+title:  在SOLIDWORKS Professional PDM API中管理权限
 caption: 权限
-description: 使用SOLIDWORKS PDM API在SOLIDWORKS PDM Professional中管理用户、组和文件夹的权限
+---
+ 使用SOLIDWORKS PDM API在SOLIDWORKS PDM Professional中管理用户、组和文件夹的权限
 labels: [权限, 权限管理]
 sidebar_position: 0
 ---

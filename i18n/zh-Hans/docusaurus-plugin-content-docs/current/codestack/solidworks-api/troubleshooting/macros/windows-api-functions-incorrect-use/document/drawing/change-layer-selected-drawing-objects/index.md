@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS macro to change layer of selected objects in drawing using SOLIDWORKS API
+title:  SOLIDWORKS macro to change layer of selected objects in drawing using SOLIDWORKS API
 caption: Change Layer For Selected Objects In Drawing
-description: Macro will move all selected objects in the drawing sheet to specified layer using SOLIDWORKS API
+---
+ Macro will move all selected objects in the drawing sheet to specified layer using SOLIDWORKS API
 image: sw-drawing-layers.png
 labels: [drawing, layer, solidworks api, utility]
 group: Drawing

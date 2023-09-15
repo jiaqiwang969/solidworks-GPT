@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API更改材料中的应用外观选项
+title:  使用SOLIDWORKS API更改材料中的应用外观选项
 caption: 更改材料中的应用外观选项
-description: 该示例演示了如何使用SOLIDWORKS API更改材料选项中的应用外观选项。
+---
+ 该示例演示了如何使用SOLIDWORKS API更改材料选项中的应用外观选项。
 image: material-apply-appearance.png
 labels: [part, solidworks api, material, appearance, example]
 ---

@@ -1,7 +1,8 @@
 ---
-title: 在Visual Basic 6 (VBA)中将数据编码和解码为Base64字符串格式
+title:  在Visual Basic 6 (VBA)中将数据编码和解码为Base64字符串格式
 caption: Base64字符串
-description: 在Visual Basic 6 (VBA)中将字节数组编码和解码为Base64字符串格式
+---
+ 在Visual Basic 6 (VBA)中将字节数组编码和解码为Base64字符串格式
 labels: [base64,编码,解码]
 ---
 Base64字符串允许以字符串格式保存字节数组数据。

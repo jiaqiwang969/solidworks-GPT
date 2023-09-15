@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS API Object Model Class Hierarchy Diagram
+title:  SOLIDWORKS API Object Model Class Hierarchy Diagram
 caption: Class Diagram Relationships
-description: Detailed explanation of the relationships between classes and interfaces in the SOLIDWORKS API object model (class diagram)
+---
+ Detailed explanation of the relationships between classes and interfaces in the SOLIDWORKS API object model (class diagram)
 image: class-diagram.png
 labels: [Hierarchy, Classes, Model]
 sidebar_position: 1

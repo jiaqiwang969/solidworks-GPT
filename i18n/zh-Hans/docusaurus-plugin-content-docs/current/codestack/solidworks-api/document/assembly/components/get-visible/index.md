@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API获取并选择装配中的所有可见部件
+title:  使用SOLIDWORKS API获取并选择装配中的所有可见部件
 caption: 仅获取和选择可见部件
-description: 使用SOLIDWORKS API获取并选择所有可见部件（未抑制和未隐藏）的VBA宏示例
+---
+ 使用SOLIDWORKS API获取并选择所有可见部件（未抑制和未隐藏）的VBA宏示例
 image: components-tree.png
 labels: [components,suppressed,hidden,select]
 ---

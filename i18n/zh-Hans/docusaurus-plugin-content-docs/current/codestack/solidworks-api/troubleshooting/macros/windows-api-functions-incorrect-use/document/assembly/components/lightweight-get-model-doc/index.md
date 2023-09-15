@@ -1,7 +1,8 @@
 ---
-title: Get Model Doc from lightweight component using SOLIDWORKS API
+title:  Get Model Doc from lightweight component using SOLIDWORKS API
 caption: Get Model Doc From Lightweight Component
-description: Example demonstrates how to get the pointer to IModelDoc2 from the component (even if it is in the suppressed or lightweight state)
+---
+ Example demonstrates how to get the pointer to IModelDoc2 from the component (even if it is in the suppressed or lightweight state)
 image: lightweight-component.png
 labels: [assembly, component, example, lightweight, modeldoc, memory, solidworks api]
 ---

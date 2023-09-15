@@ -1,7 +1,8 @@
 ---
-title: 使用Angular框架开发丰富的Web应用程序
+title:  使用Angular框架开发丰富的Web应用程序
 caption: Angular
-description: 使用现代Angular框架开发Web应用程序的文章和教程
+---
+ 使用现代Angular框架开发Web应用程序的文章和教程
 image: angular.png
 sidebar_position: 0
 ---
@@ -13,7 +14,7 @@ sidebar_position: 0
 
 这些组件是使用MVC模式构建的。Angular使用TypeScript。
 
-下面是一个展示Angular组件的图片：
+下面是一个展示Angular组件的image: 
 
 * 视图是一个由HTML和CSS文件组成的UI组件
 * 控制器是一个中介组件，将视图连接到模型

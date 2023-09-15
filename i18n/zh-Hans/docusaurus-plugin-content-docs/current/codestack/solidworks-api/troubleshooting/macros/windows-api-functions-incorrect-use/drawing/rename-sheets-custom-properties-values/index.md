@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用自定义属性值重命名SOLIDWORKS图纸工作表
+title:  使用自定义属性值重命名SOLIDWORKS图纸工作表
 caption: 使用自定义属性值重命名图纸工作表
-description: 该宏将使用SOLIDWORKS API根据指定自定义属性的值重命名所有图纸工作表。
+---
+ 该宏将使用SOLIDWORKS API根据指定自定义属性的值重命名所有图纸工作表。
 image: drw-sheets.png
 labels: [自定义属性, 图纸, 示例, 宏, 属性, 重命名, 工作表, solidworks api, vba]
 group: 图纸

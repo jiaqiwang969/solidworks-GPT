@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用切割清单名称重命名展开图视图的VBA宏
+title:  使用切割清单名称重命名展开图视图的VBA宏
 caption: 使用切割清单名称重命名展开图视图
-description: 使用SOLIDWORKS API，将活动工作表中的所有展开图视图重命名为相应的切割清单名称的VBA宏
+---
+ 使用SOLIDWORKS API，将活动工作表中的所有展开图视图重命名为相应的切割清单名称的VBA宏
 image: renamed-flat-pattern-drawing-view.png
 labels: [重命名视图,切割清单,展开图]
 group: 图纸

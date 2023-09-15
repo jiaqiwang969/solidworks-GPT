@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 在大型设计审查（LDR）模式下打开选定的组件
+title:  在大型设计审查（LDR）模式下打开选定的组件
 caption: 在LDR模式下打开组件
-description: VBA宏，以大型设计审查（LDR）模式和仅查看模式分别打开所有选定的子装配和零件组件
+---
+ VBA宏，以大型设计审查（LDR）模式和仅查看模式分别打开所有选定的子装配和零件组件
 image: ldr-sub-assembly.svg
 labels: [性能，ldr，仅查看，大型设计审查，打开]
 group: 装配体

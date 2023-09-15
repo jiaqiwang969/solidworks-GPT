@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS VBA macro to compose flat BOM table using API
+title:  SOLIDWORKS VBA macro to compose flat BOM table using API
 caption: Compose Flat Bill Of Materials (BOM)
-description: Example demonstrates how to compose bill of materials from the assembly tree using SOLIDWORKS API
+---
+ Example demonstrates how to compose bill of materials from the assembly tree using SOLIDWORKS API
 image: bill-of-materials.png
 labels: [bom, flat, top level]
 ---

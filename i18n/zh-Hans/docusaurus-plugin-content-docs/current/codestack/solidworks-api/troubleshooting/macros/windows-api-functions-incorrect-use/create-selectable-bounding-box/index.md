@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Create selectable 3D bounding box sketch using SOLIDWORKS API
+title:  Create selectable 3D bounding box sketch using SOLIDWORKS API
 caption: Create Selectable Bounding Box
-description: VBA macro which creates 3D bounding box sketch based on the SOLIDWORKS bounding box with an ability to select sketch segments
+---
+ VBA macro which creates 3D bounding box sketch based on the SOLIDWORKS bounding box with an ability to select sketch segments
 image: bounding-box.svg
 labels: [bounding box]
 group: Geometry

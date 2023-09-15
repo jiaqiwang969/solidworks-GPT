@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 打开绘图视图引用文档的VBA宏
+title:  打开绘图视图引用文档的VBA宏
 caption: 打开绘图视图引用文档
-description: 这个VBA宏打开所选SOLIDWORKS绘图视图引用的文档，并显示引用的配置和显示状态
+---
+ 这个VBA宏打开所选SOLIDWORKS绘图视图引用的文档，并显示引用的配置和显示状态
 image: ref-doc-display-state.svg
 labels: [绘图,引用,显示状态]
 group: 绘图

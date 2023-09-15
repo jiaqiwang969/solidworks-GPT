@@ -1,7 +1,8 @@
 ---
-title: 在SOLIDWORKS中记录和编辑宏
+title:  在SOLIDWORKS中记录和编辑宏
 caption: 记录宏
-description: 本文介绍如何记录宏命令
+---
+ 本文介绍如何记录宏命令
 image: macros-save-filter.png
 labels: [宏, 记录]
 sidebar_position: 2

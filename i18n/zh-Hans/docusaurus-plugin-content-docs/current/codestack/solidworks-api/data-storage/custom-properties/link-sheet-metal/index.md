@@ -1,7 +1,8 @@
 ---
 caption: 链接到钣金切割清单属性
-title: 将钣金切割清单属性链接到SOLIDWORKS零件自定义属性的宏
-description: VBA宏，用于在SOLIDWORKS文件的自定义属性和指定的钣金切割清单属性之间添加永久链接（表达式），可选的回退值
+title:  将钣金切割清单属性链接到SOLIDWORKS零件自定义属性的宏
+---
+ VBA宏，用于在SOLIDWORKS文件的自定义属性和指定的钣金切割清单属性之间添加永久链接（表达式），可选的回退值
 image: linked-sheet-metal-cut-list-properties.png
 ---
 ![链接的钣金切割清单自定义属性](linked-sheet-metal-cut-list-properties.png){ width=800 }

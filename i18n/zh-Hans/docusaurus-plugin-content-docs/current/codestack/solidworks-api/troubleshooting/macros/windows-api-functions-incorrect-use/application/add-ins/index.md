@@ -1,7 +1,8 @@
 ---
-title: 使用API为SOLIDWORKS开发C++、C#、VB.NET插件
+title:  使用API为SOLIDWORKS开发C++、C#、VB.NET插件
 caption: 插件
-description: 介绍如何在SOLIDWORKS中使用插件的示例和文章
+---
+ 介绍如何在SOLIDWORKS中使用插件的示例和文章
 ---
 插件是SOLIDWORKS的进程内扩展，它在所有应用程序类型中提供最佳性能优势。插件是COM对象，必须在SOLIDWORKS API中实现[ISwAddin](https://help.solidworks.com/2012/english/api/swpublishedapi/solidworks.interop.swpublished~solidworks.interop.swpublished.iswaddin.html)接口。
 

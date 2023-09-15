@@ -1,7 +1,8 @@
 ---
-title: 在SOLIDWORKS Property Page中使用SwEx.PMPage框架创建选项框控件
+title:  在SOLIDWORKS Property Page中使用SwEx.PMPage框架创建选项框控件
 caption: 选项框
-description: 使用SwEx.PMPage框架创建和自定义SOLIDWORKS Property Manager Page选项框控件的概述
+---
+ 使用SwEx.PMPage框架创建和自定义SOLIDWORKS Property Manager Page选项框控件的概述
 image: options-box.png
 toc-group-name: labs-solidworks-swex
 labels: [选项, pmpage]

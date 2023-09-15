@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: 链接自定义属性到文件
-title: 从文本文件链接SOLIDWORKS自定义属性
-description: VBA宏将外部CSV/文本文件中的多个SOLIDWORKS自定义属性链接和自动更新到配置或文件中
+title:  从文本文件链接SOLIDWORKS自定义属性
+---
+ VBA宏将外部CSV/文本文件中的多个SOLIDWORKS自定义属性链接和自动更新到配置或文件中
 image: link-custom-property-file.svg
 group: Custom Properties
 ---

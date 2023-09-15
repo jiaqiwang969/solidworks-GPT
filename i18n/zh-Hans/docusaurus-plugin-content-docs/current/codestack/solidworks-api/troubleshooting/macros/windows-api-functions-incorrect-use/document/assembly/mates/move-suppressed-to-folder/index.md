@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Macro to move suppressed mates into feature folder using SOLIDWORKS API
+title:  Macro to move suppressed mates into feature folder using SOLIDWORKS API
 caption: Move Suppressed Mates Into A Folder
-description: VBA macro to move suppressed mates in assembly into feature folder using SOLIDWORKS API
+---
+ VBA macro to move suppressed mates in assembly into feature folder using SOLIDWORKS API
 image: move-mates-to-folder.png
 labels: [mates,suppressed,move,folder]
 group: Assembly

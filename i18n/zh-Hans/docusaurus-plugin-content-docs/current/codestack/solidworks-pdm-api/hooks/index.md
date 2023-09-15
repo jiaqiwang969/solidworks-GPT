@@ -1,7 +1,8 @@
 ---
-title: 在SOLIDWORKS PDM API中挂钩通知
+title:  在SOLIDWORKS PDM API中挂钩通知
 caption: 挂钩
-description: 解释如何使用SOLIDWORKS PDM API中的事件挂钩的文章和示例
+---
+ 解释如何使用SOLIDWORKS PDM API中的事件挂钩的文章和示例
 labels: [挂钩, 插件]
 sidebar_position: 0
 ---

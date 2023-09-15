@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API确定所选面是孔还是凸台
+title:  使用SOLIDWORKS API确定所选面是孔还是凸台
 caption: 确定所选面是孔还是凸台
-description: 该示例演示了如何使用SOLIDWORKS API根据面的法线来确定所选SOLIDWORKS零件或装配中的圆柱面是内部（即孔）还是外部（即凸台）。
+---
+ 该示例演示了如何使用SOLIDWORKS API根据面的法线来确定所选SOLIDWORKS零件或装配中的圆柱面是内部（即孔）还是外部（即凸台）。
 image: boss-hole.png
 labels: [几何, 孔, 凸台]
 ---

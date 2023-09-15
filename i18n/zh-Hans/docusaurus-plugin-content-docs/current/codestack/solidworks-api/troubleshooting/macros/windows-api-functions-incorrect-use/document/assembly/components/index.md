@@ -1,7 +1,8 @@
 ---
-title: Assembly components automation using SOLIDWORKS API
+title:  Assembly components automation using SOLIDWORKS API
 caption: Components
-description: Collection of articles and code examples for working with components in SOLIDWORKS assembly
+---
+ Collection of articles and code examples for working with components in SOLIDWORKS assembly
 labels: [assembly, components]
 sidebar_position: 1
 ---

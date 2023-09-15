@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS文档管理器API将水印添加到模型的第三方存储
+title:  使用SOLIDWORKS文档管理器API将水印添加到模型的第三方存储
 caption: 添加水印到模型
-description: 使用SOLIDWORKS文档管理器API将数字水印添加到第三方存储（流）中的SOLIDWORKS模型（零件、装配或绘图）。
+---
+ 使用SOLIDWORKS文档管理器API将数字水印添加到第三方存储（流）中的SOLIDWORKS模型（零件、装配或绘图）。
 image: add-watermark-console-output.png
 labels: [水印, 存储]
 ---

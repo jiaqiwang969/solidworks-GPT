@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API隐藏模型中的所有草图的VBA宏
+title:  使用SOLIDWORKS API隐藏模型中的所有草图的VBA宏
 caption: 隐藏所有草图
-description: 使用SOLIDWORKS API，此宏将隐藏（空白）或显示（取消空白）活动文档中的所有草图（2D和3D）。
+---
+ 使用SOLIDWORKS API，此宏将隐藏（空白）或显示（取消空白）活动文档中的所有草图（2D和3D）。
 image: hidden-sketches.svg
 labels: [空白草图, 隐藏草图, solidworks api, 实用工具]
 group: 草图

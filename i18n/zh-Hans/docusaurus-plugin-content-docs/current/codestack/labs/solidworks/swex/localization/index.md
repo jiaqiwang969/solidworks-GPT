@@ -1,7 +1,8 @@
 ---
-title: 使用SwEx框架本地化SOLIDWORKS插件
+title:  使用SwEx框架本地化SOLIDWORKS插件
 caption: 本地化
-description: 如何通过使用SwEx框架中的本地化资源来支持多语言的SOLIDWORKS插件
+---
+ 如何通过使用SwEx框架中的本地化资源来支持多语言的SOLIDWORKS插件
 image: menu-localized.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0

@@ -1,8 +1,9 @@
 ---
 layout: article
 caption: 在绘图视图中查找特定边
-title: 使用SOLIDWORKS API在绘图视图中查找和选择特定边
-description: 使用SOLIDWORKS API在绘图视图中查找和选择来自底层模型的特定边的VBA宏
+title:  使用SOLIDWORKS API在绘图视图中查找和选择特定边
+---
+ 使用SOLIDWORKS API在绘图视图中查找和选择来自底层模型的特定边的VBA宏
 image: selected-edge.png
 ---
 此VBA宏演示了如何从底层3D文档中查找特定命名的边，并在绘图视图中选择它。

@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API查找体的包围圆柱体
+title:  使用SOLIDWORKS API查找体的包围圆柱体
 caption: 获取体的包围圆柱体
-description: 本示例演示如何使用SOLIDWORKS API获取实体的包围圆柱体。
+---
+ 本示例演示如何使用SOLIDWORKS API获取实体的包围圆柱体。
 image: cylindrical-bounding-box.png
 ---
 ![Cylindrical bounding box is created around the body](cylindrical-bounding-box.png){ width=400 }

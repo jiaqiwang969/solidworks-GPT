@@ -1,7 +1,8 @@
 ---
-title: Editing VBA and VSTA Macros in SOLIDWORKS
+title:  Editing VBA and VSTA Macros in SOLIDWORKS
 caption: Edit Macros
-description: Editing existing VBA and VSTA macros in SOLIDWORKS
+---
+ Editing existing VBA and VSTA macros in SOLIDWORKS
 image: edit-macro.png
 ---
 The source code for VBA macros (*.swb and *.swp) as well as VSTA macros (*.csproj and *.vbproj) can be edited directly in SOLIDWORKS.

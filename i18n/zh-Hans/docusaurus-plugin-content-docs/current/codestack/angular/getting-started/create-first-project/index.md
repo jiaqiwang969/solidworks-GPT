@@ -1,7 +1,8 @@
 ---
-title: 设置开发环境并创建第一个 Angular 8 项目
+title:  设置开发环境并创建第一个 Angular 8 项目
 caption: 创建第一个项目
-description: 使用 Node.js 设置开发环境，并在 Visual Studio Code 中使用 Angular 8 框架和 Angular CLI 创建第一个项目
+---
+ 使用 Node.js 设置开发环境，并在 Visual Studio Code 中使用 Angular 8 框架和 Angular CLI 创建第一个项目
 image: angular-start-page.png
 labels: [nodejs,visual studio code,angular cli,angular project]
 sidebar_position: 0

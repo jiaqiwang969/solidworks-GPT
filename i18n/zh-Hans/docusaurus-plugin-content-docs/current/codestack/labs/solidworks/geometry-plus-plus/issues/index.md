@@ -1,7 +1,8 @@
 ---
-title: Geometry++插件的问题报告页面
+title:  Geometry++插件的问题报告页面
 caption: 问题
-description: 用于报告和审查SOLIDWORKS的Geometry++插件的问题状态
+---
+ 用于报告和审查SOLIDWORKS的Geometry++插件的问题状态
 toc-group-name: labs-solidworks-geometry-plus-plus
 sidebar_position: 0
 ---

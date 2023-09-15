@@ -1,7 +1,8 @@
 ---
-title: Insert BOM balloons into drawing view using SOLIDWORKS API
+title:  Insert BOM balloons into drawing view using SOLIDWORKS API
 caption: Insert BOM Balloons
-description: VBA macro to automatically insert BOM balloons into an existing drawing view of the current sheet using SOLIDWORKS API
+---
+ VBA macro to automatically insert BOM balloons into an existing drawing view of the current sheet using SOLIDWORKS API
 image: bom-balloons.png
 labels: [BOM, balloon]
 ---

@@ -1,7 +1,8 @@
 ---
-title: Automating drawings using SOLIDWORKS API
+title:  Automating drawings using SOLIDWORKS API
 caption: Drawing
-description: Automating drawing document with IDrawingDoc interface in SOLIDWORKS API
+---
+ Automating drawing document with IDrawingDoc interface in SOLIDWORKS API
 sidebar_position: 2
 labels: [drawing]
 ---

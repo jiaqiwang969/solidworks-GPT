@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS宏特征的生命周期
+title:  SOLIDWORKS宏特征的生命周期
 caption: 生命周期
-description: 解释SOLIDWORKS宏特征的行为和生命周期
+---
+ 解释SOLIDWORKS宏特征的行为和生命周期
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

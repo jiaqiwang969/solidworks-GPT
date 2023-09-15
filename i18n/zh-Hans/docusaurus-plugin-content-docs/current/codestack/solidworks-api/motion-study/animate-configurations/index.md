@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API制作配置切换动画的宏
+title:  使用SOLIDWORKS API制作配置切换动画的宏
 caption: 动画配置
-description: 该宏演示了如何使用SOLIDWORKS API从配置中创建动画，以表示模型历史或折叠的钣金
+---
+ 该宏演示了如何使用SOLIDWORKS API从配置中创建动画，以表示模型历史或折叠的钣金
 image: animate-configurations.svg
 labels: [运动, 动画, 钣金, 弯曲]
 group: 运动研究

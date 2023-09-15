@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 用于给SOLIDWORKS钣金和焊接切割清单项上色的宏
+title:  用于给SOLIDWORKS钣金和焊接切割清单项上色的宏
 caption: 上色切割清单
-description: SOLIDWORKS VBA宏，根据自定义属性的值为每个切割清单项（钣金和焊接）分配唯一颜色
+---
+ SOLIDWORKS VBA宏，根据自定义属性的值为每个切割清单项（钣金和焊接）分配唯一颜色
 image: color-cut-list.svg
 labels: [切割清单,钣金,焊接,上色]
 group: 切割清单

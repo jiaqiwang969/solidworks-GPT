@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Export individual sheets from SOLIDWORKS drawing to PDF
+title:  Export individual sheets from SOLIDWORKS drawing to PDF
 caption: Export Sheets To PDF
-description: VBA macro to export all sheets (or selected sheets) from multi-sheets drawing to individual PDF files
+---
+ VBA macro to export all sheets (or selected sheets) from multi-sheets drawing to individual PDF files
 image: exports-sheets-pdf.svg
 labels: [sheet,pdf,drawing,export]
 group: Import/Export

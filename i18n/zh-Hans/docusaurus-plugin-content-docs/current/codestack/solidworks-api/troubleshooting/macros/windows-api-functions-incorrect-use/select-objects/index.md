@@ -1,7 +1,8 @@
 ---
-title: 使用API批量选择任意SOLIDWORKS对象
+title:  使用API批量选择任意SOLIDWORKS对象
 caption: 批量选择任意对象
-description: 该示例演示了如何以批量模式选择任意SOLIDWORKS对象（实体、特征、注释等）。
+---
+ 该示例演示了如何以批量模式选择任意SOLIDWORKS对象（实体、特征、注释等）。
 image: select-objects.png
 labels: [选择, 批量选择, 调度]
 ---

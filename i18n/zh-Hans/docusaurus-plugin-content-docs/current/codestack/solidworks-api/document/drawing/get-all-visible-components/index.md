@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API获取绘图视图中的所有可见组件
+title:  使用SOLIDWORKS API获取绘图视图中的所有可见组件
 caption: 获取所有可见组件
-description: 使用SOLIDWORKS API获取绘图视图中的所有可见组件（包括子装配件）的VBA宏
+---
+ 使用SOLIDWORKS API获取绘图视图中的所有可见组件（包括子装配件）的VBA宏
 image: drawing-view-feature-tree.png
 labels: [可见组件, 绘图视图]
 ---

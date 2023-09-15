@@ -1,7 +1,8 @@
 ---
 caption: 在GitHub上创建项目
-title: 在GitHub上创建项目并邀请协作者
-description: 逐步说明在GitHub上创建新项目并邀请协作者的步骤
+title:  在GitHub上创建项目并邀请协作者
+---
+ 逐步说明在GitHub上创建新项目并邀请协作者的步骤
 image: github-new-repository.png
 ---
 以下是在[GitHub](https://github.com/)上设置存储库并向第三方开发人员提供访问权限的步骤：

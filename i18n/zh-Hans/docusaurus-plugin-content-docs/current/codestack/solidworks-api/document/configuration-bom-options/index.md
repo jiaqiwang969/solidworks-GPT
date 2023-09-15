@@ -1,7 +1,8 @@
 ---
 caption: 设置配置BOM选项
-title: 更改SOLIDWORKS配置的BOM选项的宏（零件编号来源和子组件可见性）
-description: VBA宏，用于更改SOLIDWORKS文档中所有或活动配置的BOM零件编号来源（配置名称、文档名称、父级名称）和子组件显示（显示、隐藏、提升）选项
+title:  更改SOLIDWORKS配置的BOM选项的宏（零件编号来源和子组件可见性）
+---
+ VBA宏，用于更改SOLIDWORKS文档中所有或活动配置的BOM零件编号来源（配置名称、文档名称、父级名称）和子组件显示（显示、隐藏、提升）选项
 image: configuration-options.png
 ---
 这个VBA宏允许更改配置在BOM中的处理选项

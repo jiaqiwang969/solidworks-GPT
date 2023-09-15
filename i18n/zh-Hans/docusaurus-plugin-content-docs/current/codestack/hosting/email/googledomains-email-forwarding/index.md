@@ -1,7 +1,8 @@
 ---
-title: 免费设置Google Domains自定义域名的电子邮件转发
+title:  免费设置Google Domains自定义域名的电子邮件转发
 caption: 设置Google Domains电子邮件转发
-description: 使用Google Domains设置最多100个免费的自定义域名电子邮件转发
+---
+ 使用Google Domains设置最多100个免费的自定义域名电子邮件转发
 labels: [google domains,电子邮件转发]
 ---
 Google Domains注册商提供了一个免费服务，可以将最多100封电子邮件从自定义域名转发。要启用此服务，请在Google Domains控制台中导航到*Email*选项卡。

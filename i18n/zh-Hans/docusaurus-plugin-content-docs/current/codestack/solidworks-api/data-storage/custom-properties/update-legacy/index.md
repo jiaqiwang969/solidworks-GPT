@@ -1,6 +1,7 @@
 ---
-标题：升级传统自定义属性
-描述：VBA宏，将传统的SOLIDWORKS自定义属性升级到SOLIDWORKS 2022的新架构中
+title:  升级传统自定义属性
+---
+ VBA宏，将传统的SOLIDWORKS自定义属性升级到SOLIDWORKS 2022的新架构中
 ---
 
 该宏将传统的自定义属性升级到[SOLIDWORKS 2022](https://help.solidworks.com/2022/english/solidworks/sldworks/c_custom_properties_architecture.htm)中的新架构。

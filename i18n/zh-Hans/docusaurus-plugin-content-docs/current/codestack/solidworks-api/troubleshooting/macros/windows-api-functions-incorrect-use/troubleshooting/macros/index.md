@@ -1,7 +1,8 @@
 ---
-title: 'SOLIDWORKS宏故障排除：问题和解决方案'
+title:  'SOLIDWORKS宏故障排除：问题和解决方案'
 caption: '宏故障排除：问题和解决方案'
-description: SOLIDWORKS中运行宏时常见错误的概述和解决方案
+---
+ SOLIDWORKS中运行宏时常见错误的概述和解决方案
 labels: [宏, 不工作, 问题, solidworks api, 故障排除, vba]
 styles:
   - /_assets/styles/catalogue.css

@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS宏特征参数的向后兼容支持
+title:  SOLIDWORKS宏特征参数的向后兼容支持
 caption: 向后兼容性
-description: 解释了在SOLIDWORKS宏特征中实现参数的向后兼容性的方法
+---
+ 解释了在SOLIDWORKS宏特征中实现参数的向后兼容性的方法
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Macro to lock sheet format for editing using SOLIDWORKS API
+title:  Macro to lock sheet format for editing using SOLIDWORKS API
 caption: Lock Sheet Format
-description: VBA macro which locks (or password protects) the sheet format editing using SOLIDWORKS API
+---
+ VBA macro which locks (or password protects) the sheet format editing using SOLIDWORKS API
 image: locked-sheet-format.png
 labels: [lock,sheet format,protect]
 group: Drawing

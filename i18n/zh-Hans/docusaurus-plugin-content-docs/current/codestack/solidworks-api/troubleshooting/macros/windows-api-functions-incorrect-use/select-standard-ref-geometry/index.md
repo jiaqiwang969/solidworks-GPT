@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API按类型选择标准参考几何图形（例如前平面或原点）
+title:  使用SOLIDWORKS API按类型选择标准参考几何图形（例如前平面或原点）
 caption: 按类型选择标准平面或原点
-description: 该示例演示了如何使用SOLIDWORKS API按照指定的类型选择标准平面（顶部、前面或右侧）和原点，以便无论平面名称如何，选择都是一致的，因为不建议按照名称选择标准平面，因为名称不一致并且可能在模板中更改（例如不同的本地化或标准）。
+---
+ 该示例演示了如何使用SOLIDWORKS API按照指定的类型选择标准平面（顶部、前面或右侧）和原点，以便无论平面名称如何，选择都是一致的，因为不建议按照名称选择标准平面，因为名称不一致并且可能在模板中更改（例如不同的本地化或标准）。
 image: plane.svg
 labels: [selection, plane, origin]
 group: Model

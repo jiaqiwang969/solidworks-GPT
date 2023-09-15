@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS文档管理器API替换组件或绘图视图中的引用
+title:  使用SOLIDWORKS文档管理器API替换组件或绘图视图中的引用
 caption: 替换引用
-description: 本示例演示了如何使用SOLIDWORKS文档管理器API在SOLIDWORKS文件（装配体或绘图）中替换引用（组件或绘图视图）。
+---
+ 本示例演示了如何使用SOLIDWORKS文档管理器API在SOLIDWORKS文件（装配体或绘图）中替换引用（组件或绘图视图）。
 labels: [document manager, references, replace, components, drawing views]
 ---
 

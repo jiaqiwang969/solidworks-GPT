@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS文档管理器API复制文档树
+title:  使用SOLIDWORKS文档管理器API复制文档树
 caption: 复制文档树
-description: 该示例演示了如何使用SOLIDWORKS文档管理器API将装配体或图纸树复制到新位置，并通过为每个文件添加后缀来保留引用。
+---
+ 该示例演示了如何使用SOLIDWORKS文档管理器API将装配体或图纸树复制到新位置，并通过为每个文件添加后缀来保留引用。
 image: copy-tree.png
 labels: [复制树, 复制文档]
 ---

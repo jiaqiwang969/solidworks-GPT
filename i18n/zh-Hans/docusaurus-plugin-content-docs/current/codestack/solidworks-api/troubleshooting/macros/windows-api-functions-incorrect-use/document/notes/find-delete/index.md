@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 用于在SOLIDWORKS绘图中查找和删除特定注释的宏
+title:  用于在SOLIDWORKS绘图中查找和删除特定注释的宏
 caption: 查找和删除注释
-description: VBA宏，根据文本、正则表达式或空值，在所有SOLIDWORKS绘图工作表中查找和删除注释
+---
+ VBA宏，根据文本、正则表达式或空值，在所有SOLIDWORKS绘图工作表中查找和删除注释
 image: delete-note.svg
 labels: [note, delete, regular expression, regex]
 group: Drawing

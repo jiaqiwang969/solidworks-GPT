@@ -1,7 +1,8 @@
 ---
-title: 添加和自定义属性管理器页面的控件
+title:  添加和自定义属性管理器页面的控件
 caption: 控件
-description: SwEx.PMPage框架支持的控件概述以及自定义和装饰选项
+---
+ SwEx.PMPage框架支持的控件概述以及自定义和装饰选项
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

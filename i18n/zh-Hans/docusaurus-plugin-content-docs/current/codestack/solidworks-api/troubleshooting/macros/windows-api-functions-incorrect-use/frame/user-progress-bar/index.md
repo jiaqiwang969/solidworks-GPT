@@ -1,7 +1,8 @@
 ---
-title: 在SOLIDWORKS API中使用进度条处理长时间操作进度
+title:  在SOLIDWORKS API中使用进度条处理长时间操作进度
 caption: 用户进度条
-description: 在SOLIDWORKS API中使用用户进度条显示长时间操作进度
+---
+ 在SOLIDWORKS API中使用用户进度条显示长时间操作进度
 image: taskbar-progress.png
 labels: [progress,user progress bar,background]
 ---

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Macro to delete all empty feature folders in SOLIDWORKS files
+title:  Macro to delete all empty feature folders in SOLIDWORKS files
 caption: Delete Empty Folders
-description: VBA macro deletes all empty feature folders in the SOLIDWORKS files (part or assembly)
+---
+ VBA macro deletes all empty feature folders in the SOLIDWORKS files (part or assembly)
 image: delete-folders.svg
 labels: [feature, empty, delete, cleanup]
 group: Model

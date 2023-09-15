@@ -1,7 +1,8 @@
 ---
-title: 创建SOLIDWORKS应用程序的Visual Studio安装程序（VSI）
+title:  创建SOLIDWORKS应用程序的Visual Studio安装程序（VSI）
 caption: Visual Studio安装程序（VSI）
-description: 本文介绍了创建用于部署SOLIDWORKS插件的安装程序包的步骤
+---
+ 本文介绍了创建用于部署SOLIDWORKS插件的安装程序包的步骤
 image: installation-process.png
 labels: [installer, setup, deployment, msi, vsi]
 ---

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API通知长时间运行的SOLIDWORKS命令的完成
+title:  使用SOLIDWORKS API通知长时间运行的SOLIDWORKS命令的完成
 caption: 通知长时间运行命令的完成
-description: 使用SOLIDWORKS API处理SOLIDWORKS中的长时间运行命令（打开、重建、抑制等），并发出蜂鸣声以通知其完成
+---
+ 使用SOLIDWORKS API处理SOLIDWORKS中的长时间运行命令（打开、重建、抑制等），并发出蜂鸣声以通知其完成
 image: command-progress.svg
 labels: [事件,性能,通知,命令]
 group: 性能

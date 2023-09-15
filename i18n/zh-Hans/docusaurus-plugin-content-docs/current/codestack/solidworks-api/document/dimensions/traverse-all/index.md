@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API遍历组件或模型的所有尺寸
+title:  使用SOLIDWORKS API遍历组件或模型的所有尺寸
 caption: 遍历所有尺寸
-description: 使用SOLIDWORKS API，通过VBA宏遍历所选组件或活动文档中的所有特征的所有尺寸，并将尺寸名称和值输出到输出窗口。
+---
+ 使用SOLIDWORKS API，通过VBA宏遍历所选组件或活动文档中的所有特征的所有尺寸，并将尺寸名称和值输出到输出窗口。
 image: dimensions.png
 labels: [dimension,display dimension,traverse]
 ---

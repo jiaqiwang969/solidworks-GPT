@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API在模型的第三方存储中进行树结构序列化
+title:  使用SOLIDWORKS API在模型的第三方存储中进行树结构序列化
 caption: 第三方存储树结构序列化
-description: 使用SOLIDWORKS API和模型文档中的XmlSerializers示例，演示了如何使用SOLIDWORKS API中的第三方存储（流）来序列化和反序列化树结构
+---
+ 使用SOLIDWORKS API和模型文档中的XmlSerializers示例，演示了如何使用SOLIDWORKS API中的第三方存储（流）来序列化和反序列化树结构
 image: read-data-result.png
 labels: [序列化,第三方存储]
 ---

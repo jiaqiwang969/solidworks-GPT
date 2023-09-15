@@ -1,7 +1,8 @@
 ---
-title: SwEx.PMPage框架的示例和源代码
+title:  SwEx.PMPage框架的示例和源代码
 caption: 示例
-description: 使用SwEx.PMPage框架和SOLIDWORKS API开发高级属性管理器页面的示例集合
+---
+ 使用SwEx.PMPage框架和SOLIDWORKS API开发高级属性管理器页面的示例集合
 toc-group-name: labs-solidworks-swex
 order: 4
 ---

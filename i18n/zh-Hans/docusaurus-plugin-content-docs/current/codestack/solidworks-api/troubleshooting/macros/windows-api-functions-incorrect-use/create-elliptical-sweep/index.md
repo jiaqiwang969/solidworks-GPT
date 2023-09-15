@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS模型API创建椭圆扫描临时体
+title:  使用SOLIDWORKS模型API创建椭圆扫描临时体
 caption: 创建椭圆扫描临时体
-description: 该示例演示了如何使用SOLIDWORKS API将圆形剖面沿椭圆路径扫描以创建临时体。
+---
+ 该示例演示了如何使用SOLIDWORKS API将圆形剖面沿椭圆路径扫描以创建临时体。
 image: elliptical-sweep.png
 labels: [拓扑结构, 几何, 平面, 模型, 球体]
 ---

@@ -1,7 +1,8 @@
 ---
-title: Internal Calls to Invoke SOLIDWORKS Add-in API from External Process
+title:  Internal Calls to Invoke SOLIDWORKS Add-in API from External Process
 caption: Internal Calls from External Process
-description: Framework for calling the add-in API from a standalone application or macro for optimal performance
+---
+ Framework for calling the add-in API from a standalone application or macro for optimal performance
 image: macro-solution-tree.png
 labels: [Add-in API, Asynchronous, Performance, Internal Calls]
 sidebar_position: 4

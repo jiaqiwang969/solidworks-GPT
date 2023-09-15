@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS宏类型 - VBA (swp), SWBasic (swb), VSTA (dll)
+title:  SOLIDWORKS宏类型 - VBA (swp), SWBasic (swb), VSTA (dll)
 caption: 宏类型
-description: 本文介绍SOLIDWORKS支持的不同类型的宏（VBA、VSTA、SWBasic）
+---
+ 本文介绍SOLIDWORKS支持的不同类型的宏（VBA、VSTA、SWBasic）
 image: macro-edit-run-filters.png
 labels: [宏, VSTA, VBA, SWMacro, SWB, SWP]
 sidebar_position: 1

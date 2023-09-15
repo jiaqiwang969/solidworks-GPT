@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS模型API创建临时圆柱面片体
+title:  使用SOLIDWORKS模型API创建临时圆柱面片体
 caption: 创建临时圆柱面片体
-description: 该示例演示了如何使用SOLIDWORKS API从圆柱面创建片体。
+---
+ 该示例演示了如何使用SOLIDWORKS API从圆柱面创建片体。
 image: cylindrical-surface.png
 labels: [拓扑结构, 几何, 片体, 模型, 圆柱体]
 ---

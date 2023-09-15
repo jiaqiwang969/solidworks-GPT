@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Export SOLIDWORKS table to CSV using VBA macro
+title:  Export SOLIDWORKS table to CSV using VBA macro
 caption: Export Table To CSV
-description: Macro exports selected table or specified tables (BOM, General Table, Revision etc.) into CSV format allowing to export with or without header preserving the special symbols like comma (,) and new line symbol using VBA macro
+---
+ Macro exports selected table or specified tables (BOM, General Table, Revision etc.) into CSV format allowing to export with or without header preserving the special symbols like comma (,) and new line symbol using VBA macro
 image: export-table-csv.svg
 labels: [table,csv,export]
 group: Model

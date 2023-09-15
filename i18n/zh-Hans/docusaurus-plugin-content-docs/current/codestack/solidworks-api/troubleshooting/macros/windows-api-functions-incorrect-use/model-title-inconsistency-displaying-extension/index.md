@@ -1,8 +1,9 @@
 ---
 layout: sw-macro-fix
-title: 修复SOLIDWORKS API中模型标题扩展名不一致的问题
+title:  修复SOLIDWORKS API中模型标题扩展名不一致的问题
 caption: 模型标题显示扩展名不一致
-description: 修复运行宏时出现的“运行时错误'5' - 无效的过程调用或参数”错误，该宏使用模型的标题（例如插入注释、链接自定义属性值、生成导出文件的新文件名）
+---
+ 修复运行宏时出现的“运行时错误'5' - 无效的过程调用或参数”错误，该宏使用模型的标题（例如插入注释、链接自定义属性值、生成导出文件的新文件名）
 image: invalid-procedure-or-call-error.png
 labels: [宏, 故障排除]
 redirect-from:

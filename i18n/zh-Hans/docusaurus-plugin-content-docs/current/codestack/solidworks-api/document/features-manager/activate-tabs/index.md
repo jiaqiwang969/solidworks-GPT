@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API激活特征管理器选项卡的VSTA宏
+title:  使用SOLIDWORKS API激活特征管理器选项卡的VSTA宏
 caption: 激活特征管理器选项卡
-description: 该示例演示了如何使用SOLIDWORKS API在特征管理器视图中激活标准选项卡（特征管理器树、属性管理器、配置管理器、DimXpert管理器、显示管理器）。
+---
+ 该示例演示了如何使用SOLIDWORKS API在特征管理器视图中激活标准选项卡（特征管理器树、属性管理器、配置管理器、DimXpert管理器、显示管理器）。
 image: feature-manager-tabs.png
 labels: [feature manager, tab]
 ---

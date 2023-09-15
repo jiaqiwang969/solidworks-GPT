@@ -1,7 +1,8 @@
 ---
-title: 如何在脚本中使用SOLIDWORKS API方法
+title:  如何在脚本中使用SOLIDWORKS API方法
 caption: 脚本
-description: 本文提供了从不同脚本（包括vbScript、PowerShell、JavaScript）调用SOLIDWORKS API的示例和说明。
+---
+ 本文提供了从不同脚本（包括vbScript、PowerShell、JavaScript）调用SOLIDWORKS API的示例和说明。
 labels: [脚本, html, JavaScript, PowerShell, cmd]
 sidebar_position: 5
 ---

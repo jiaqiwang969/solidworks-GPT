@@ -1,7 +1,8 @@
 ---
 caption: Split Folders To Configurations
-title: Split feature folders of the SOLIDWORKS file to individual configurations
-description: VBA macro creates individual configurations for each feature folder in the active SOLIDWORKS part or assembly
+title:  Split feature folders of the SOLIDWORKS file to individual configurations
+---
+ VBA macro creates individual configurations for each feature folder in the active SOLIDWORKS part or assembly
 ---
 This VBA macro creates configuration for each top-level feature folder in the active SOLIDWORKS part or assembly.
 

@@ -1,7 +1,8 @@
 ---
-title: Read and display body from the file using SOLIDWORKS API
+title:  Read and display body from the file using SOLIDWORKS API
 caption: Read Body From File
-description: VBA example to deserialize body geometry from external binary file into temp body and display using SOLIDWORKS API
+---
+ VBA example to deserialize body geometry from external binary file into temp body and display using SOLIDWORKS API
 labels: [deserialize,com stream,temp body]
 ---
 This VBA example demonstrates how to read the body geometry data from the external binary file. Load this data into the COM Stream and restore into the temp solid body using SOLIDWORKS API.

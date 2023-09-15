@@ -1,7 +1,8 @@
 ---
-title: 创建用于 SOLIDWORKS 的 C++ 独立 (exe) 应用程序
+title:  创建用于 SOLIDWORKS 的 C++ 独立 (exe) 应用程序
 caption: 创建用于 SOLIDWORKS 的 C++ 独立应用程序
-description: 使用 C++ 和 Microsoft Visual Studio 从外部进程 (即独立应用程序，如 MFC、Win32 控制台应用程序) 连接到 SOLIDWORKS 应用程序的指南
+---
+ 使用 C++ 和 Microsoft Visual Studio 从外部进程 (即独立应用程序，如 MFC、Win32 控制台应用程序) 连接到 SOLIDWORKS 应用程序的指南
 sidebar_position: 3
 image: proj-templ.png
 labels: [c++, CoCreateInstance, create instance, example, getobject, rot, sdk, solidworks api, tlb, type library]

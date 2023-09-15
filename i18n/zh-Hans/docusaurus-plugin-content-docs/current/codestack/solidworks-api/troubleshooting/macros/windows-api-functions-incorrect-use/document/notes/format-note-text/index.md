@@ -1,7 +1,8 @@
 ---
 caption: 格式化注释文本
-title: 用不同格式格式化注释文本的示例
-description: VBA示例，将不同部分的注释文本应用于SOLIDWORKS文档中的字体效果和样式
+title:  用不同格式格式化注释文本的示例
+---
+ VBA示例，将不同部分的注释文本应用于SOLIDWORKS文档中的字体效果和样式
 image: note-text.png
 ---
 这个VBA示例演示了如何在SOLIDWORKS文档中插入注释，并使用不同的字体效果和样式格式化单独的行。

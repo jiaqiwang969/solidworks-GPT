@@ -1,7 +1,8 @@
 ---
-title: 使用 SwEx.MacroFeature 框架构建的 SOLIDWORKS API 示例源代码
+title:  使用 SwEx.MacroFeature 框架构建的 SOLIDWORKS API 示例源代码
 caption: 示例
-description: 使用 SwEx.MacroFeature 框架的 SOLIDWORKS API 示例集合
+---
+ 使用 SwEx.MacroFeature 框架的 SOLIDWORKS API 示例集合
 toc-group-name: labs-solidworks-swex
 order: 4
 ---

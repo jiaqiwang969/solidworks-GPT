@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 强制重建SOLIDWORKS文档的宏
+title:  强制重建SOLIDWORKS文档的宏
 caption: 重建模型
-description: VBA宏以强制重建、隐藏所有类型并显示SOLIDWORKS模型的等轴视图
+---
+ VBA宏以强制重建、隐藏所有类型并显示SOLIDWORKS模型的等轴视图
 image: force-rebuild.svg
 labels: [api, upgrade, performance, rebuild]
 group: Performance

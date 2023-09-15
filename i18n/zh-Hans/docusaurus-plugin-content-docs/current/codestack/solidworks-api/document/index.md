@@ -1,7 +1,8 @@
 ---
-title: 使用API自动化SOLIDWORKS零件、装配和图纸
+title:  使用API自动化SOLIDWORKS零件、装配和图纸
 caption: 文档
-description: 解释通过API自动化SOLIDWORKS文档（零件、装配和图纸）的方法的文章和示例
+---
+ 解释通过API自动化SOLIDWORKS文档（零件、装配和图纸）的方法的文章和示例
 image: solidworks-document-api.png
 sidebar_position: 0
 ---

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS宏特征API将切割清单自定义属性链接到文件
+title:  使用SOLIDWORKS宏特征API将切割清单自定义属性链接到文件
 caption: 将切割清单自定义属性链接到文件自定义属性
-description: 使用SOLIDWORKS API将指定的切割清单自定义属性动态链接到文件通用自定义属性的VBA宏特征
+---
+ 使用SOLIDWORKS API将指定的切割清单自定义属性动态链接到文件通用自定义属性的VBA宏特征
 image: link-cut-list-properties.svg
 labels: [宏特征,切割清单,链接属性]
 group: 自定义属性

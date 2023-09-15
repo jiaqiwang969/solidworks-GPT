@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS宏将数据从Excel表复制到常规表中
+title:  SOLIDWORKS宏将数据从Excel表复制到常规表中
 caption: 将Excel表中的数据写入常规表
-description: 该宏将使用SOLIDWORKS API从指定的Excel电子表格中读取所有数据，并将其导入到活动文档的新常规表中，或者使用SOLIDWORKS API更新现有表。
+---
+ 该宏将使用SOLIDWORKS API从指定的Excel电子表格中读取所有数据，并将其导入到活动文档的新常规表中，或者使用SOLIDWORKS API更新现有表。
 image: excel-to-table.svg
 labels: [表注释, Excel, 常规表, 二维数组]
 group: Model

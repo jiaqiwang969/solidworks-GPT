@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS API对象模型和对象关系的解释
+title:  SOLIDWORKS API对象模型和对象关系的解释
 caption: API对象模型
-description: 详细解释SOLIDWORKS API对象模型、类层次结构、命名约定和对象关系的文章集合
+---
+ 详细解释SOLIDWORKS API对象模型、类层次结构、命名约定和对象关系的文章集合
 labels: [对象模型, API]
 sidebar_position: 1
 ---

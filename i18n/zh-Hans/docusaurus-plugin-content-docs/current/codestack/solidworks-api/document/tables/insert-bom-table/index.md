@@ -1,7 +1,8 @@
 ---
 caption: 插入BOM表格
-title: 插入SOLIDWORKS Bill Of Materials表格并附加到锚点的宏
-description: SOLIDWORKS VBA宏，用于将Bill Of Materials（BOM）表格插入到活动或所有具有指定参数的工作表，并将其附加到锚点
+title:  插入SOLIDWORKS Bill Of Materials表格并附加到锚点的宏
+---
+ SOLIDWORKS VBA宏，用于将Bill Of Materials（BOM）表格插入到活动或所有具有指定参数的工作表，并将其附加到锚点
 image: bom-table-anchor.png
 ---
 ![附加到锚点的BOM表格](bom-table-anchor.png){ width=600 }

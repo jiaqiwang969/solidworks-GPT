@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API进行实体选择
+title:  使用SOLIDWORKS API进行实体选择
 caption: 选择
-description: 解释SOLIDWORKS API中选择技术的文章和示例
+---
+ 解释SOLIDWORKS API中选择技术的文章和示例
 sidebar_position: 5
 image: solidworks-selection.png
 ---

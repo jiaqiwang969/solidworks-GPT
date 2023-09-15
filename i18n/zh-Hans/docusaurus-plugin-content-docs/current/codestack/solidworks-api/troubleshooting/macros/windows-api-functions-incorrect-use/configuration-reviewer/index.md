@@ -1,7 +1,8 @@
 ---
-title: 用于查看SOLIDWORKS工作表和配置的VBA宏
+title:  用于查看SOLIDWORKS工作表和配置的VBA宏
 caption: 配置和工作表查看器
-description: 此VBA宏可迭代SOLIDWORKS文件中的所有工作表和配置，并逐个激活每个工作表和配置。
+---
+ 此VBA宏可迭代SOLIDWORKS文件中的所有工作表和配置，并逐个激活每个工作表和配置。
 image: configurations-reviewer.svg
 labels: [configuration,sheet,review,iterate]
 ---

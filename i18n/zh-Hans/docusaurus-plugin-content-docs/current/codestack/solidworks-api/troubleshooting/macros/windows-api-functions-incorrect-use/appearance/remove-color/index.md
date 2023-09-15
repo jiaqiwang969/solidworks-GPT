@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 从SOLIDWORKS文档中删除所有颜色的宏
+title:  从SOLIDWORKS文档中删除所有颜色的宏
 caption: 从零件中删除所有颜色
-description: 该宏演示了如何使用SOLIDWORKS API从零件或装配文档的所有级别（面、特征、实体、模型）中删除所有颜色。
+---
+ 该宏演示了如何使用SOLIDWORKS API从零件或装配文档的所有级别（面、特征、实体、模型）中删除所有颜色。
 image: remove-colors.svg
 labels: [删除颜色, 外观, 材料属性]
 group: 零件

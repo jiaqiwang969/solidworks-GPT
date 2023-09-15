@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API获取物体上的极值点的宏
+title:  使用SOLIDWORKS API获取物体上的极值点的宏
 caption: 获取物体的极值点
-description: 该示例将在所选物体中找到XYZ方向上的极值点，并创建一个草图点。
+---
+ 该示例将在所选物体中找到XYZ方向上的极值点，并创建一个草图点。
 image: body-extreme-sketch-points.png
 labels: [物体, 边界框, 方向, 示例, 极值点, solidworks api]
 redirect-from:

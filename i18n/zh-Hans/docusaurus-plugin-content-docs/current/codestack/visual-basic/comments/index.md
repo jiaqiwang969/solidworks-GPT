@@ -1,7 +1,8 @@
 ---
-title: Visual Basic 中的注释
+title:  Visual Basic 中的注释
 caption: 注释
-description: 解释了使用注释对代码进行注解的用法
+---
+ 解释了使用注释对代码进行注解的用法
 sidebar_position: 0
 ---
 注释是可以放置在代码中进行注解和参考的自由文本。编译器会忽略注释，并允许在其中添加任何文本。

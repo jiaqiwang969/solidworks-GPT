@@ -1,7 +1,8 @@
 ---
-title: 理解在使用SOLIDWORKS API时的草图变换
+title:  理解在使用SOLIDWORKS API时的草图变换
 caption: 理解草图变换
-description: 解释SOLIDWORKS API中的模型到草图和草图到模型变换，以正确计算草图段的坐标
+---
+ 解释SOLIDWORKS API中的模型到草图和草图到模型变换，以正确计算草图段的坐标
 image: sketch-coordinate-systems.png
 labels: [变换,草图]
 ---

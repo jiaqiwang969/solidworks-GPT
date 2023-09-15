@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API自动化装配中的配合关系
+title:  使用SOLIDWORKS API自动化装配中的配合关系
 caption: 配合关系
-description: 配合关系的组合和代码示例集合
+---
+ 配合关系的组合和代码示例集合
 image: assembly-mating.png
 labels: [装配, 配合关系]
 sidebar_position: 1

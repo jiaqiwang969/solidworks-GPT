@@ -1,7 +1,8 @@
 ---
 caption: Set Sequential Component Reference
-title: macro to automatically assign the SOLIDWORKS component references in a sequential order
-description: VBA macro to increment and assign the component reference in sequential order for the selected components based on the seed number
+title:  macro to automatically assign the SOLIDWORKS component references in a sequential order
+---
+ VBA macro to increment and assign the component reference in sequential order for the selected components based on the seed number
 image: component-reference.png
 ---
 ![Component Reference](component-reference.png){ width=600 }

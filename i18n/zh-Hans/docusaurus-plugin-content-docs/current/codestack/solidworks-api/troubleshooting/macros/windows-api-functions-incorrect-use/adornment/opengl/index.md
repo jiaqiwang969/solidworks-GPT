@@ -1,7 +1,8 @@
 ---
-title: 在SOLIDWORKS API中使用OpenGL渲染自定义3D图形
+title:  在SOLIDWORKS API中使用OpenGL渲染自定义3D图形
 caption: OpenGL
-description: 本节包含使用SOLIDWORKS API和OpenGL方法在模型视图中渲染3D图形的示例和代码片段
+---
+ 本节包含使用SOLIDWORKS API和OpenGL方法在模型视图中渲染3D图形的示例和代码片段
 sidebar_position: 3
 labels: [graphics, opengl, render]
 redirect-from:

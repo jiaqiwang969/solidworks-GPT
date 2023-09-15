@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 在重建时自动运行SOLIDWORKS宏的宏特征
+title:  在重建时自动运行SOLIDWORKS宏的宏特征
 caption: 在重建时自动运行宏
-description: 使用SOLIDWORKS API，宏特征和设计绑定附件可以自动运行宏来实现每次重建时自动运行宏的功能。
+---
+ 使用SOLIDWORKS API，宏特征和设计绑定附件可以自动运行宏来实现每次重建时自动运行宏的功能。
 image: design-binder-macro-attachment.png
 labels: [自动运行, 宏, 重建]
 group: 模型

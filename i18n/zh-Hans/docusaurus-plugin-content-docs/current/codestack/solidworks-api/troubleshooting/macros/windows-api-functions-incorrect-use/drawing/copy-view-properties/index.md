@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 将绘图视图的自定义属性复制到SOLIDWORKS绘图文件
+title:  将绘图视图的自定义属性复制到SOLIDWORKS绘图文件
 caption: 复制绘图视图属性
-description: VBA宏，将选定或默认绘图视图中指定的自定义属性复制到绘图属性中
+---
+ VBA宏，将选定或默认绘图视图中指定的自定义属性复制到绘图属性中
 image: drawing-custom-properties.png
 labels: [绘图,视图,自定义属性]
 group: 绘图

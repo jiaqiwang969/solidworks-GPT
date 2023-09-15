@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API按类型和/或名称模式在树中查找特征
+title:  使用SOLIDWORKS API按类型和/或名称模式在树中查找特征
 caption: 查找特征
-description: 使用SOLIDWORKS API查找与特定特征类型名称或名称模式匹配的所有或第一个特征的VBA宏
+---
+ 使用SOLIDWORKS API查找与特定特征类型名称或名称模式匹配的所有或第一个特征的VBA宏
 image: feature-manager-tree.png
 labels: [遍历特征,名称模式,类型名称]
 ---

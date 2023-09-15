@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API在绘图页上绘制草图段
+title:  使用SOLIDWORKS API在绘图页上绘制草图段
 caption: 在绘图页的上下文中绘制模型边界框草图段，使用SOLIDWORKS API
-description: 使用SOLIDWORKS API在绘图页的上下文中绘制模型边界框的对角线草图段。
+---
+ 使用SOLIDWORKS API在绘图页的上下文中绘制模型边界框的对角线草图段。
 image: drawing-view-line.png
 labels: [草图,尺寸,边缘,边界框]
 ---

@@ -1,7 +1,8 @@
 ---
 caption: 翻转最后一个装配体中插入的对齐
-title: 在SOLIDWORKS装配体中翻转最后一个插入的对齐的宏
-description: 这个VBA宏在活动的SOLIDWORKS装配体的特征管理器树中找到最后一个对齐。
+title:  在SOLIDWORKS装配体中翻转最后一个插入的对齐的宏
+---
+ 这个VBA宏在活动的SOLIDWORKS装配体的特征管理器树中找到最后一个对齐。
 
 对于这个对齐，将从反对齐切换到对齐，反之亦然。
 

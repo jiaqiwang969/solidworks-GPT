@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 从材料复制SOLIDWORKS自定义属性到模型的宏
+title:  从材料复制SOLIDWORKS自定义属性到模型的宏
 caption: 从材料复制自定义属性到模型
-description: 该宏演示了如何使用SOLIDWORKS API和XML解析器将指定的自定义属性从材料数据库复制到模型的自定义属性。
+---
+ 该宏演示了如何使用SOLIDWORKS API和XML解析器将指定的自定义属性从材料数据库复制到模型的自定义属性。
 image: copy-material-custom-property.svg
 labels: [材料, XML, 自定义属性]
 group: 材料

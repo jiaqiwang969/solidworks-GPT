@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API选择与属性关联的组件
+title:  使用SOLIDWORKS API选择与属性关联的组件
 caption: 选择与选择关联的组件上的属性
-description: 该示例通过[NewSelectionNotify](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dassemblydocevents_newselectionnotifyeventhandler.html)通知，附加到活动装配的选择SOLIDWORKS API事件。
+---
+ 该示例通过[NewSelectionNotify](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.dassemblydocevents_newselectionnotifyeventhandler.html)通知，附加到活动装配的选择SOLIDWORKS API事件。
 
 如果选择了属性并且有与该属性关联的组件 - 则在树中选择该组件。
 

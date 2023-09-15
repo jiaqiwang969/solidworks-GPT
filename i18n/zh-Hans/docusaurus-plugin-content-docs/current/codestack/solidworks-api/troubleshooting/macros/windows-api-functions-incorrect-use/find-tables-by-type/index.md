@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API按类型查找图纸中的表格
+title:  使用SOLIDWORKS API按类型查找图纸中的表格
 caption: 按类型查找表格
-description: 使用SOLIDWORKS API从图纸中查找所有表格（BOM、通用、修订）。
+---
+ 使用SOLIDWORKS API从图纸中查找所有表格（BOM、通用、修订）。
 image: drawing-view-tables.png
 labels: [表格,图纸]
 ---

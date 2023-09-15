@@ -1,7 +1,8 @@
 ---
-title: Create temp spherical sheet body using SOLIDWORKS modeler API
+title:  Create temp spherical sheet body using SOLIDWORKS modeler API
 caption: Create Temp Spherical Sheet Body
-description: Example demonstrates how to create temp body of a spherical sheet
+---
+ Example demonstrates how to create temp body of a spherical sheet
 image: spherical-surface.png
 labels: [topology, geometry, sheet, modeler, sphere]
 ---

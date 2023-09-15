@@ -1,7 +1,8 @@
 ---
 caption: Select All Drawing Dimensions
-title: Macro to select all dimensions from the drawing views of the active sheet of SOLIDWORKS drawing
-description: VBA macro demonstrates how to select all dimensions from the drawing views of the active sheet of SOLIDWORKS drawing using SOLIDWORKS API in a batch mode
+title:  Macro to select all dimensions from the drawing views of the active sheet of SOLIDWORKS drawing
+---
+ VBA macro demonstrates how to select all dimensions from the drawing views of the active sheet of SOLIDWORKS drawing using SOLIDWORKS API in a batch mode
 image: select-all-dimensions.png
 ---
 ![All dimensions selected in the drawing views](select-all-dimensions.png){ width=400 }

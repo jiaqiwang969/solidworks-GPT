@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS宏以更新BOM表中的引用配置
+title:  SOLIDWORKS宏以更新BOM表中的引用配置
 caption: 从BOM表更新引用配置
-description: 该宏将使用SOLIDWORKS API在活动绘图文档上更新所有BOM表的引用配置。
+---
+ 该宏将使用SOLIDWORKS API在活动绘图文档上更新所有BOM表的引用配置。
 image: bom-configurations-property.png
 labels: [bom, 默认视图, 引用配置, solidworks api, 实用工具, 视图]
 redirect-from:

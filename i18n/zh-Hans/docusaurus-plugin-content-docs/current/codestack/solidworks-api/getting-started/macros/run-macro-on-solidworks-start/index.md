@@ -1,7 +1,8 @@
 ---
-title: Automatically Running Macros on SOLIDWORKS Application Startup
+title:  Automatically Running Macros on SOLIDWORKS Application Startup
 caption: Running Macros on SOLIDWORKS Startup
-description: Setting up macros to run automatically when the SOLIDWORKS application loads
+---
+ Setting up macros to run automatically when the SOLIDWORKS application loads
 image: shortcut-with-macro-run.png
 labels: [macros, auto-run]
 ---

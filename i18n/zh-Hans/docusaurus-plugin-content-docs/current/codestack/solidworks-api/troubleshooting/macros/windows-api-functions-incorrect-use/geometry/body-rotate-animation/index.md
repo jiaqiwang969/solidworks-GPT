@@ -1,7 +1,8 @@
 ---
-title: Create body rotation animation using SOLIDWORKS API
+title:  Create body rotation animation using SOLIDWORKS API
 caption: Create Body Rotation Animation
-description: VBA example to create a rotation animation of a selected body around Y axis using SOLIDWORKS API and temp bodies
+---
+ VBA example to create a rotation animation of a selected body around Y axis using SOLIDWORKS API and temp bodies
 image: body-rotate.gif
 labels: [animation,rotate,temp body]
 ---

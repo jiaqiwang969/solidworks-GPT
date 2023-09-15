@@ -1,7 +1,8 @@
 ---
-title: Performing entity selection using SOLIDWORKS API
+title:  Performing entity selection using SOLIDWORKS API
 caption: Selection
-description: Articles and examples explaining the selection techniques in SOLIDWORKS API
+---
+ Articles and examples explaining the selection techniques in SOLIDWORKS API
 sidebar_position: 5
 image: solidworks-selection.png
 ---

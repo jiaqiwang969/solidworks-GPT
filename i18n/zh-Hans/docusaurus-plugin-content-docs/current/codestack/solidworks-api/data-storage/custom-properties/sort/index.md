@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API对文件和配置特定的自定义属性进行排序
+title:  使用SOLIDWORKS API对文件和配置特定的自定义属性进行排序
 caption: 排序自定义属性
-description: 使用SOLIDWORKS API通过逻辑顺序对文件和所有配置的自定义属性进行排序的VBA宏（可指定升序和降序）
+---
+ 使用SOLIDWORKS API通过逻辑顺序对文件和所有配置的自定义属性进行排序的VBA宏（可指定升序和降序）
 image: sort-custom-properties.svg
 labels: [排序, 自定义属性, 冒泡]
 group: 自定义属性

@@ -1,7 +1,8 @@
 ---
-title: Sorting data in Visual Basic 6 (VBA)
+title:  Sorting data in Visual Basic 6 (VBA)
 caption: Sorting
-description: Code example of various method of sorting data in Visual Basic 6 (VBA)
+---
+ Code example of various method of sorting data in Visual Basic 6 (VBA)
 labels: [sort,bubble,logical]
 ---
 ## Logical Bubble Sorting

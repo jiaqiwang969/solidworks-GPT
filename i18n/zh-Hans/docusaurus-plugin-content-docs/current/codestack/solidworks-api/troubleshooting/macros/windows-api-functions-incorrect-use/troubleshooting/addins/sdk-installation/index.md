@@ -1,8 +1,9 @@
 ---
 layout: sw-addin-fix
-title: 修复缺失的Visual Studio SOLIDWORKS API SDK项目模板
+title:  修复缺失的Visual Studio SOLIDWORKS API SDK项目模板
 caption: 在SDK安装后，Visual Studio中不显示项目模板
-description: 当在Visual Studio C#和VB.NET项目中不显示插件模板时，修复SOLIDWORKS API SDK的安装问题
+---
+ 当在Visual Studio C#和VB.NET项目中不显示插件模板时，修复SOLIDWORKS API SDK的安装问题
 image: solidworks-api-sdk-installation.png
 labels: [插件, 故障排除]
 ---

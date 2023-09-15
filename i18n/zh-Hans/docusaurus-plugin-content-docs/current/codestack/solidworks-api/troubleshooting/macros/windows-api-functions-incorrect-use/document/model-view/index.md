@@ -1,7 +1,8 @@
 ---
-title: Manipulating model views using SOLIDWORKS API
+title:  Manipulating model views using SOLIDWORKS API
 caption: Model Views
-description: Collection of articles and code examples for working with 3D model views using SOLIDWORKS API
+---
+ Collection of articles and code examples for working with 3D model views using SOLIDWORKS API
 sidebar_position: 3
 ---
 Model view is a 3D snapshot of SOLIDWORKS model visible to the user. SOLIDWORKS API provides the [IModelView](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelView.html) interface to perform manipulation and data extraction from views.

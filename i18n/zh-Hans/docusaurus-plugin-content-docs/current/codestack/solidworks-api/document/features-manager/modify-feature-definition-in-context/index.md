@@ -1,7 +1,8 @@
 ---
-title: 在装配上下文中使用SOLIDWORKS API编辑特征
+title:  在装配上下文中使用SOLIDWORKS API编辑特征
 caption: 在装配上下文中编辑特征
-description: 该示例演示了如何使用SOLIDWORKS API在装配上下文中修改特征定义
+---
+ 该示例演示了如何使用SOLIDWORKS API在装配上下文中修改特征定义
 image: edit-extrude-feature-in-context.png
 labels: [编辑, 特征, 上下文]
 ---

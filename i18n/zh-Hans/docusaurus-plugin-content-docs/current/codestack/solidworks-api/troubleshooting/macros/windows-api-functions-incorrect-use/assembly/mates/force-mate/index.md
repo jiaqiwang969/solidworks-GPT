@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS和Windows API运行力学配对命令
+title:  使用SOLIDWORKS和Windows API运行力学配对命令
 caption: 运行力学配对命令
-description: 该示例演示了如何使用SOLIDWORKS API和Windows API的组合来运行具有重建错误的配对的“Force Mate”命令。
+---
+ 该示例演示了如何使用SOLIDWORKS API和Windows API的组合来运行具有重建错误的配对的“Force Mate”命令。
 image: force-mate.png
 ---
 ![上下文菜单中的Force Mate命令](force-mate.png){ width=350 }

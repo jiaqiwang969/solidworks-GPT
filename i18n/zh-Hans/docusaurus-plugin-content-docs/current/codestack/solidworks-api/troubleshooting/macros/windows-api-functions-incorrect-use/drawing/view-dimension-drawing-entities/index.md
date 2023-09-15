@@ -1,7 +1,8 @@
 ---
-title: 从视图中使用SOLIDWORKS API维度可见绘图实体
+title:  从视图中使用SOLIDWORKS API维度可见绘图实体
 caption: 维度可见实体
-description: 使用SOLIDWORKS API在绘图视图中找到并维度最长的可见实体
+---
+ 使用SOLIDWORKS API在绘图视图中找到并维度最长的可见实体
 image: longest-edge-dimension.png
 labels: [绘图,维度,可见实体]
 ---

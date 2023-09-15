@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API在两个线段之间添加智能尺寸
+title:  使用SOLIDWORKS API在两个线段之间添加智能尺寸
 caption: 在两个线段之间添加智能尺寸
-description: 该示例使用SOLIDWORKS API在两个选定的草图线段之间添加尺寸。尺寸将放置在两个选定点的中间。
+---
+ 该示例使用SOLIDWORKS API在两个选定的草图线段之间添加尺寸。尺寸将放置在两个选定点的中间。
 image: dimension-name.png
 labels: [dimension, example, solidworks api]
 redirect-from:

@@ -1,7 +1,8 @@
 ---
-title: 从零件SOLIDWORKS API导出平面图到DXF/DWG
+title:  从零件SOLIDWORKS API导出平面图到DXF/DWG
 caption: 从零件导出平面图
-description: 从零件文件中导出平面图到DXF或DWG
+---
+ 从零件文件中导出平面图到DXF或DWG
 image: export-dxf-dwg.png
 labels: [钣金, dxf, dwg, 平面图]
 ---

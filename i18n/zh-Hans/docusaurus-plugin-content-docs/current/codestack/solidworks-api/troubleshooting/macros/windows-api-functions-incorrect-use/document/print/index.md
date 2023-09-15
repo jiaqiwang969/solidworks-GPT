@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: Print
-title: Macro to print SOLIDWORKS documents
-description: VBA macro to print SOLIDWORKS documents using the specified settings (printer name, printer range, orientation, paper size and scale)
+title:  Macro to print SOLIDWORKS documents
+---
+ VBA macro to print SOLIDWORKS documents using the specified settings (printer name, printer range, orientation, paper size and scale)
 image: printer.svg
 group: Model
 ---

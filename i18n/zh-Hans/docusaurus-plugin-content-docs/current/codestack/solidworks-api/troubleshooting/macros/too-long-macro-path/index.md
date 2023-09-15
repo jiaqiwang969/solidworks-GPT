@@ -1,8 +1,9 @@
 ---
 layout: sw-macro-fix
-title: 运行SOLIDWORKS宏时修复路径过长错误
+title:  运行SOLIDWORKS宏时修复路径过长错误
 caption: 过长的宏路径
-description: 修复在长项目结构下存储的宏打开或运行时出现的“无法打开”错误
+---
+ 修复在长项目结构下存储的宏打开或运行时出现的“无法打开”错误
 image: long-macro-path.png
 labels: [宏, 故障排除]
 redirect-from:

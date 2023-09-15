@@ -1,8 +1,9 @@
 ---
 layout: sw-pdm-addin-fix
-title: 修复“在注册表中找不到类ID” PDM插件错误
+title:  修复“在注册表中找不到类ID” PDM插件错误
 caption: 在注册表中找不到类ID
-description: 当注册SOLIDWORKS PDM插件时出现“...插件注册成功，但在注册表中找不到插件的类ID”错误的故障排除方法
+---
+ 当注册SOLIDWORKS PDM插件时出现“...插件注册成功，但在注册表中找不到插件的类ID”错误的故障排除方法
 image: class-id-not-found-in-registry.png
 labels: [pdm插件, 错误]
 ---

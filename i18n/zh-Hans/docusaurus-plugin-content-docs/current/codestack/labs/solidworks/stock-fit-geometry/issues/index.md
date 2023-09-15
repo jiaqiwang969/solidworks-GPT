@@ -1,7 +1,8 @@
 ---
-title: Stock Master插件的问题报告页面
+title:  Stock Master插件的问题报告页面
 caption: 问题
-description: 报告和审查Stock Master插件的问题状态
+---
+ 报告和审查Stock Master插件的问题状态
 toc-group-name: labs-solidworks-stock-master
 sidebar_position: 0
 sitemap: false

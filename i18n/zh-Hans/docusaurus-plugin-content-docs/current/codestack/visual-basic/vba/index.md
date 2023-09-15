@@ -1,6 +1,7 @@
 ---
-title: Visual Basic for Applications (VBA)
-description: Visual Basic for Applications (VBA) 简介
+title:  Visual Basic for Applications (VBA)
+---
+ Visual Basic for Applications (VBA) 简介
 sidebar_position: 0
 sitemap: false
 ---

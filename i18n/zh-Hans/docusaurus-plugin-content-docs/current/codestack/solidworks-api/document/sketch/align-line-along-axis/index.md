@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API将线与轴对齐
+title:  使用SOLIDWORKS API将线与轴对齐
 caption: 将线与轴对齐
-description: 该示例演示了如何使用SOLIDWORKS API将活动草图中的所有草图线（添加草图关系）与所选选项之一（沿X、Y或Z轴）对齐。
+---
+ 该示例演示了如何使用SOLIDWORKS API将活动草图中的所有草图线（添加草图关系）与所选选项之一（沿X、Y或Z轴）对齐。
 image: sw-sketch-line-relation.png
 labels: [示例, 水平, 关系, 草图, solidworks api, 垂直]
 redirect-from:

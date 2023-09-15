@@ -1,7 +1,8 @@
 ---
 caption: Configure Property Manager Page Using Windows API
-title: Run and configure SOLIDWORKS command using Windows API
-description: Example demonstrating how to call and configure the Insert Model Items command in SOLIDWORKS drawing using Windows API
+title:  Run and configure SOLIDWORKS command using Windows API
+---
+ Example demonstrating how to call and configure the Insert Model Items command in SOLIDWORKS drawing using Windows API
 image: insert-model-items-property-manager-page.png
 ---
 In some cases certain SOLIDWORKS functions or options may not be available within SOLIDWORKS API commands or may work incorrectly.

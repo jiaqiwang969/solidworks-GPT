@@ -1,7 +1,8 @@
 ---
-title: 使用SwEx.AddIn框架在SOLIDWORKS模型中存储第三方数据
+title:  使用SwEx.AddIn框架在SOLIDWORKS模型中存储第三方数据
 caption: 第三方数据存储
-description: 使用SwEx.AddIn框架在SOLIDWORKS模型流中存储第三方数据（结构和存储）
+---
+ 使用SwEx.AddIn框架在SOLIDWORKS模型流中存储第三方数据（结构和存储）
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

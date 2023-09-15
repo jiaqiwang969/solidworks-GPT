@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API基于类型名称重命名特征的VBA宏
+title:  使用SOLIDWORKS API基于类型名称重命名特征的VBA宏
 caption: 基于类型名称重命名特征
-description: VBA宏使用SOLIDWORKS API基于指定的规则和特征类型名称重命名（翻译）零件特征树
+---
+ VBA宏使用SOLIDWORKS API基于指定的规则和特征类型名称重命名（翻译）零件特征树
 image: renaming-feature.svg
 labels: [重命名, 翻译, 特征]
 group: 零件

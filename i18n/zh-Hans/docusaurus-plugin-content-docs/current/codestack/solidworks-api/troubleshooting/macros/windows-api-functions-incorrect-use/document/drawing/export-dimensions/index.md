@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Export dimensions information from SOLIDWORKS drawing to CSV file
+title:  Export dimensions information from SOLIDWORKS drawing to CSV file
 caption: Export Dimensions Information
-description: VBA macro to export dimensions information (name, position, location, zone, value, tolerance) from SOLIDWORKS drawing to the CSV file
+---
+ VBA macro to export dimensions information (name, position, location, zone, value, tolerance) from SOLIDWORKS drawing to the CSV file
 image: export-dimensions.svg
 labels: [dimensions,tolerance,export,csv]
 group: Drawing

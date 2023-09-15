@@ -1,7 +1,8 @@
 ---
-title: 使用Visual Basic（VBA）将文本内容写入文件
+title:  使用Visual Basic（VBA）将文本内容写入文件
 caption: 写入文本文件
-description: 使用Visual Basic（VBA）将文本内容写入文件的函数，可以选择覆盖或追加内容。
+---
+ 使用Visual Basic（VBA）将文本内容写入文件的函数，可以选择覆盖或追加内容。
 labels: [写入,文本,输出]
 ---
 此代码片段演示了如何使用Visual Basic（VBA）将文本写入指定的文件。该函数可以选择覆盖现有内容或追加内容。

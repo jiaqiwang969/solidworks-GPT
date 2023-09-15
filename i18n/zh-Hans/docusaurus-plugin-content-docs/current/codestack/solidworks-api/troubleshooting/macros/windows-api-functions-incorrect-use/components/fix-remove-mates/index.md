@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 删除SOLIDWORKS装配体中的所有约束并固定组件
+title:  删除SOLIDWORKS装配体中的所有约束并固定组件
 caption: 删除所有约束并固定组件
-description: 用于删除活动SOLIDWORKS装配体中的所有约束并固定所有顶层组件的VBA宏
+---
+ 用于删除活动SOLIDWORKS装配体中的所有约束并固定所有顶层组件的VBA宏
 image: remove-mates.svg
 labels: [约束, 删除, 组件, 固定]
 group: 装配体

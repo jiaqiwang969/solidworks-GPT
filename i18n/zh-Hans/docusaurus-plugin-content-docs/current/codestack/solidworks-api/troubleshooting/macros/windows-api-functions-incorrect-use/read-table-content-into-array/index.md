@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API将表格内容读入数组
+title:  使用SOLIDWORKS API将表格内容读入数组
 caption: 将表格内容读入数组
-description: 该示例演示了如何使用SOLIDWORKS API将选定表格（BOM、常规表格、切割清单表格等）的内容读入二维数组中。
+---
+ 该示例演示了如何使用SOLIDWORKS API将选定表格（BOM、常规表格、切割清单表格等）的内容读入二维数组中。
 labels: [数组, BOM, 读取, SOLIDWORKS API, 表格]
 redirect-from:
   - /2018/03/solidworks-api-model-read-table-content-into-array.html

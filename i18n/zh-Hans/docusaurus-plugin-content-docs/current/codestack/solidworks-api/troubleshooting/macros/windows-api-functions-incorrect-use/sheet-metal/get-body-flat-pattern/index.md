@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API从钣金展开图案中查找切割清单项
+title:  使用SOLIDWORKS API从钣金展开图案中查找切割清单项
 caption: 从展开图案中获取切割清单项
-description: 这是一个VBA宏，用于从选定的钣金展开图案特征中查找切割清单文件夹特征的指针。
+---
+ 这是一个VBA宏，用于从选定的钣金展开图案特征中查找切割清单文件夹特征的指针。
 image: cut-list-folder-flat-pattern.png
 labels: [钣金, 切割清单, 展开图案]
 ---

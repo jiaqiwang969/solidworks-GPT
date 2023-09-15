@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API管理切割清单体
+title:  使用SOLIDWORKS API管理切割清单体
 caption: 切割清单
-description: 使用SOLIDWORKS API自动化切割清单体（焊接和钣金）
+---
+ 使用SOLIDWORKS API自动化切割清单体（焊接和钣金）
 sidebar_position: 11
 labels: [切割清单, 焊接, 钣金]
 ---

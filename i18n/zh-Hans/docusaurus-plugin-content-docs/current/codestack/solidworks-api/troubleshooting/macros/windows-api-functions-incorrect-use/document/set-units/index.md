@@ -1,7 +1,8 @@
 ---
 caption: 设置文档单位
-title: 设置SOLIDWORKS文档单位的宏（长度、角度、质量、体积、时间）
-description: 用于在SOLIDWORKS文档中设置单位系统或自定义单位（长度、角度、质量、体积、时间）的VBA宏
+title:  设置SOLIDWORKS文档单位的宏（长度、角度、质量、体积、时间）
+---
+ 用于在SOLIDWORKS文档中设置单位系统或自定义单位（长度、角度、质量、体积、时间）的VBA宏
 image: document-units.png
 ---
 ![文档单位](document-units.png){ width=600 }

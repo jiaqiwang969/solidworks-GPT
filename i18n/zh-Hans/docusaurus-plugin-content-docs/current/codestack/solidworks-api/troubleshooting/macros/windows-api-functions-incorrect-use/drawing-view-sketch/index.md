@@ -1,7 +1,8 @@
 ---
-title: 在绘图视图草图中创建草图段
+title:  在绘图视图草图中创建草图段
 caption: 在绘图视图中创建草图段
-description: 使用SOLIDWORKS API在绘图视图草图区域直接创建草图点和草图段
+---
+ 使用SOLIDWORKS API在绘图视图草图区域直接创建草图点和草图段
 image: point-in-drawing-view-sketch.png
 labels: [绘图,转换,草图]
 ---

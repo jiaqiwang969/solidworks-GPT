@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API修改组件的配置参数
+title:  使用SOLIDWORKS API修改组件的配置参数
 caption: 修改多个组件的配置参数
-description: 该示例演示了如何使用SOLIDWORKS API修改指定配置（例如抑制状态）中多个组件的参数。不需要激活配置或选择任何组件即可使用宏。
+---
+ 该示例演示了如何使用SOLIDWORKS API修改指定配置（例如抑制状态）中多个组件的参数。不需要激活配置或选择任何组件即可使用宏。
 image: modify-configurations.png
 labels: [参数, 设计表, 组件, 配置]
 ---

@@ -1,7 +1,8 @@
 ---
-title: Get center of gravity for the SOLIDWORKS component in assembly
+title:  Get center of gravity for the SOLIDWORKS component in assembly
 caption: Get Center Of Gravity
-description: VBA macro which demonstrate 2 approaches to calculate center of gravity of the component in the SOLIDWORKS assembly space
+---
+ VBA macro which demonstrate 2 approaches to calculate center of gravity of the component in the SOLIDWORKS assembly space
 image: mass-property.png
 labels: [assembly, component, cog, center of mass, center of gravity]
 ---

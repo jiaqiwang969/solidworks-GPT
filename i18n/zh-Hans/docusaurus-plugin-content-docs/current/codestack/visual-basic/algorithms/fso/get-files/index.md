@@ -1,7 +1,8 @@
 ---
-title: 使用 Visual Basic 6 (VBA) 从文件夹获取文件路径
+title:  使用 Visual Basic 6 (VBA) 从文件夹获取文件路径
 caption: 从文件夹获取文件
-description: 使用 Visual Basic 6 (VBA) 编写的函数，用于获取指定文件夹中所有文件的列表，并提供遍历子目录和指定文件扩展名的选项。
+---
+ 使用 Visual Basic 6 (VBA) 编写的函数，用于获取指定文件夹中所有文件的列表，并提供遍历子目录和指定文件扩展名的选项。
 labels: [文件,扩展名,遍历,递归]
 ---
 

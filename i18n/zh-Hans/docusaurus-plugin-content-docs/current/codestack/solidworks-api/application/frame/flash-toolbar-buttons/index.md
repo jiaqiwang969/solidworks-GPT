@@ -1,7 +1,8 @@
 ---
 caption: Flash Toolbar Button
-title: Macro to Flash/Highlight Specific Button in SOLIDWORKS Toolbar
-description: This VBA macro demonstrates how to flash/highlight a specific toolbar button in SOLIDWORKS toolbar by its id.
+title:  Macro to Flash/Highlight Specific Button in SOLIDWORKS Toolbar
+---
+ This VBA macro demonstrates how to flash/highlight a specific toolbar button in SOLIDWORKS toolbar by its id.
 image: flash-buttons.gif
 ---
 This VBA macro demonstrates how to flash standard toolbar buttons in SOLIDWORKS toolbar, similar to SOLIDWORKS tutorial files.

@@ -1,7 +1,8 @@
 ---
-title: Visual Basic 中的变量作用域
+title:  Visual Basic 中的变量作用域
 caption: 变量作用域
-description: 解释了 Visual Basic 中不同变量作用域（公共和私有类级别、局部）的文章
+---
+ 解释了 Visual Basic 中不同变量作用域（公共和私有类级别、局部）的文章
 image: custom-module-named-module1.png
 sidebar_position: 0
 ---

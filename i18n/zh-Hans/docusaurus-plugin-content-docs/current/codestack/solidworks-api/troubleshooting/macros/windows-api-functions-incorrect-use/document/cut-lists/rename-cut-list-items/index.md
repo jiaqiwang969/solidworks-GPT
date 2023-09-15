@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API根据自定义属性重命名切割列表特征
+title:  使用SOLIDWORKS API根据自定义属性重命名切割列表特征
 caption: 重命名切割列表特征
-description: 使用SOLIDWORKS API根据名称模板（可以包含文件和切割列表自定义属性的值、文件名、配置名和自由文本）重命名焊接件和钣金件的所有切割列表特征的VBA宏
+---
+ 使用SOLIDWORKS API根据名称模板（可以包含文件和切割列表自定义属性的值、文件名、配置名和自由文本）重命名焊接件和钣金件的所有切割列表特征的VBA宏
 image: cut-list-table.svg
 labels: [切割列表,钣金,焊接件,重命名]
 group: 切割列表

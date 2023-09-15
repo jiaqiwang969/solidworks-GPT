@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS 属性管理器页面中的分组框
+title:  SOLIDWORKS 属性管理器页面中的分组框
 caption: 分组框
-description: 对分组控件功能的概述
+---
+ 对分组控件功能的概述
 image: group-box.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0

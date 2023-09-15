@@ -1,7 +1,8 @@
 ---
-title: 处理控件中更新的动态值
+title:  处理控件中更新的动态值
 caption: 动态值
-description: 使用SwEx.PMPage框架处理属性管理器页面中控件中更新的动态值
+---
+ 使用SwEx.PMPage框架处理属性管理器页面中控件中更新的动态值
 image: controls-dynamic-values.gif
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0

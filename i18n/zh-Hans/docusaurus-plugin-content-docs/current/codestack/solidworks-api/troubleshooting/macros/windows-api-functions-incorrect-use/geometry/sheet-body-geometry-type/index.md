@@ -1,7 +1,8 @@
 ---
-title: Get the sheet body geometry type using SOLIDWORKS API
+title:  Get the sheet body geometry type using SOLIDWORKS API
 caption: Get The Sheet Body Geometry Type
-description: Example identifies the type of the selected sheet body (open shell, internal shell, external shell)
+---
+ Example identifies the type of the selected sheet body (open shell, internal shell, external shell)
 image: face-shell-types.png
 labels: [example, face, geometry, open geometry, shell, solidworks api, topology]
 redirect-from:

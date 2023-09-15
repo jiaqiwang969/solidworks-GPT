@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS Document Manager API将数据保存到第三方存储
+title:  使用SOLIDWORKS Document Manager API将数据保存到第三方存储
 caption: 第三方存储和存储
-description: 使用SOLIDWORKS Document Manager API将数据序列化和反序列化到第三方存储和存储
+---
+ 使用SOLIDWORKS Document Manager API将数据序列化和反序列化到第三方存储和存储
 labels: [数据,存储,第三方存储]
 ---
 SOLIDWORKS Document Manager API允许应用程序将数据读取（反序列化）和写入（序列化）第三方存储和第三方存储存储。

@@ -1,7 +1,8 @@
 ---
-title: 使用VBO在OpenGL和SOLIDWORKS API中导入和渲染XAML文件
+title:  使用VBO在OpenGL和SOLIDWORKS API中导入和渲染XAML文件
 caption: 导入XAML文件并使用VBO渲染
-description: C#插件将XAML格式的几何图形导入到当前模型空间，并使用OpenGL和SOLIDWORKS API的顶点缓冲对象（VBO）高性能渲染图形
+---
+ C#插件将XAML格式的几何图形导入到当前模型空间，并使用OpenGL和SOLIDWORKS API的顶点缓冲对象（VBO）高性能渲染图形
 image: vbo-opengl.png
 labels: [opengl,vbo,performance,xaml,graphics]
 ---

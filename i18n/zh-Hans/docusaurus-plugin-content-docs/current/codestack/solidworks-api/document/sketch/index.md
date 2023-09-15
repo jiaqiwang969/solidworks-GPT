@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API处理草图
+title:  使用SOLIDWORKS API处理草图
 caption: 草图
-description: 使用SOLIDWORKS API处理2D和3D草图（添加和读取线段、变换、创建特征）
+---
+ 使用SOLIDWORKS API处理2D和3D草图（添加和读取线段、变换、创建特征）
 sidebar_position: 6
 labels: [sketch,draw]
 ---

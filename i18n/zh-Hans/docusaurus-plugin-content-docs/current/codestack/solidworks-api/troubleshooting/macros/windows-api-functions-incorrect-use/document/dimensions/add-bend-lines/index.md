@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API为弯曲线添加尺寸
+title:  使用SOLIDWORKS API为弯曲线添加尺寸
 caption: 添加弯曲线尺寸
-description: 该示例演示了如何使用SOLIDWORKS API在钣金展开图的绘图视图中为弯曲线添加尺寸。
+---
+ 该示例演示了如何使用SOLIDWORKS API在钣金展开图的绘图视图中为弯曲线添加尺寸。
 image: sw-bend-lines.png
 labels: [弯曲线, 尺寸, 示例, solidworks api]
 redirect-from:

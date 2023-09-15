@@ -1,7 +1,8 @@
 ---
-title: 通过运行对象表（ROT）调用SOLIDWORKS插件的函数
+title:  通过运行对象表（ROT）调用SOLIDWORKS插件的函数
 caption: 通过运行对象表（ROT）
-description: 通过在运行对象表（ROT）中注册API对象来调用SOLIDWORKS插件函数（插件API）
+---
+ 通过在运行对象表（ROT）中注册API对象来调用SOLIDWORKS插件函数（插件API）
 image: stand-alone-references.png
 labels: [add-in api,stand-alone,rot]
 sidebar_position: 2

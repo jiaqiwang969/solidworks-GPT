@@ -1,7 +1,8 @@
 ---
-title: 使用SwEx.AddIn开始开发SOLIDWORKS高级插件
+title:  使用SwEx.AddIn开始开发SOLIDWORKS高级插件
 caption: 入门指南
-description: 使用SwEx.AddIn框架开发SOLIDWORKS插件的C#和VB.NET入门指南
+---
+ 使用SwEx.AddIn框架开发SOLIDWORKS插件的C#和VB.NET入门指南
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

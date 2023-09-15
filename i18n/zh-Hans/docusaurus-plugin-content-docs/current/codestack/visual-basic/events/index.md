@@ -1,6 +1,7 @@
 ---
-title: 在Visual Basic 6 (VBA)中处理和声明事件
-description: 介绍在Visual Basic 6 (VBA)中处理和声明事件
+title:  在Visual Basic 6 (VBA)中处理和声明事件
+---
+ 介绍在Visual Basic 6 (VBA)中处理和声明事件
 caption: 事件
 image: events-list.png
 sidebar_position: 0

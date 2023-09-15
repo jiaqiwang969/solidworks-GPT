@@ -1,7 +1,8 @@
 ---
-title: 从API连接到SOLIDWORKS文档管理器应用程序
+title:  从API连接到SOLIDWORKS文档管理器应用程序
 caption: 连接到文档管理器应用程序
-description: 初始化与SOLIDWORKS文档管理器库的连接的详细说明
+---
+ 初始化与SOLIDWORKS文档管理器库的连接的详细说明
 image: dm-functionality.png
 labels: [dm key, document manager, getting started, license]
 ---

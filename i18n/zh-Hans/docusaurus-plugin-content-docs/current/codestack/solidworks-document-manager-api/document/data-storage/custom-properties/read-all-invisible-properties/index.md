@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS文档管理器API读取所有不可见的自定义属性
+title:  使用SOLIDWORKS文档管理器API读取所有不可见的自定义属性
 caption: 读取所有不可见的自定义属性
-description: 使用SOLIDWORKS文档管理器API从指定模型中读取并输出所有不可见的自定义属性的VBA示例
+---
+ 使用SOLIDWORKS文档管理器API从指定模型中读取并输出所有不可见的自定义属性的VBA示例
 labels: [不可见, 自定义属性]
 ---
 SOLIDWORKS模型包含多个不可见的自定义属性，例如$PRP:"SW-File Name"，$PRP:"SW-Title"。这些属性是只读的，无法修改。

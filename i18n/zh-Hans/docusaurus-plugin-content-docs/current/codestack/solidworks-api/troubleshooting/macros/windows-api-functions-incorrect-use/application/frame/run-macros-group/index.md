@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Macro to run group of macros using SOLIDWORKS API
+title:  Macro to run group of macros using SOLIDWORKS API
 caption: Run Group Of Macros
-description: Macro demonstrates how to run the group of macros within one macro using SOLIDWORKS API
+---
+ Macro demonstrates how to run the group of macros within one macro using SOLIDWORKS API
 image: macros-library.png
 labels: [macro, run group]
 group: Frame

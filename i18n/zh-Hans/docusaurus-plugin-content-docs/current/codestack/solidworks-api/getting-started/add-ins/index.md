@@ -1,7 +1,8 @@
 ---
-title: 如何通过API开发SOLIDWORKS自动化插件
+title:  如何通过API开发SOLIDWORKS自动化插件
 caption: 插件
-description: 使用SOLIDWORKS API在最流行的编程语言中创建SOLIDWORKS插件的详细指南，以扩展SOLIDWORKS功能
+---
+ 使用SOLIDWORKS API在最流行的编程语言中创建SOLIDWORKS插件的详细指南，以扩展SOLIDWORKS功能
 image: add-in-load-msgbox.png
 labels: [插件]
 sidebar_position: 3

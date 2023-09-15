@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS文档管理器API获取文档的所有外部引用
+title:  使用SOLIDWORKS文档管理器API获取文档的所有外部引用
 caption: 获取所有外部引用
-description: 该宏演示了如何使用SOLIDWORKS文档管理器API提取指定SOLIDWORKS文件（零件、装配体或图纸）的所有外部引用（包括嵌套引用、装配体组件和绘图视图）。
+---
+ 该宏演示了如何使用SOLIDWORKS文档管理器API提取指定SOLIDWORKS文件（零件、装配体或图纸）的所有外部引用（包括嵌套引用、装配体组件和绘图视图）。
 labels: [document manager, external references, components]
 ---
 

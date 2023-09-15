@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS PDM API开发插件
+title:  使用SOLIDWORKS PDM API开发插件
 caption: 开发插件
-description: 使用SOLIDWORKS PDM API开发插件的说明和代码示例
+---
+ 使用SOLIDWORKS PDM API开发插件的说明和代码示例
 labels: [插件, pdm]
 ---
 SOLIDWORKS PDM中的插件是集成到系统中的应用程序。插件安装到SOLIDWORKS PDM管理控制台，并在连接到存储库的所有客户端之间重新分发。

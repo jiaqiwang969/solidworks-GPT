@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API中的内部ID
+title:  使用SOLIDWORKS API中的内部ID
 caption: 内部ID
-description: 本文介绍了内部ID的使用以及从对象中读取ID的方法
+---
+ 本文介绍了内部ID的使用以及从对象中读取ID的方法
 image: sketch-segments-ids.png
 labels: [id, track, internal id]
 ---

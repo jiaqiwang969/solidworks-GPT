@@ -1,7 +1,8 @@
 ---
-title: 如何使用SOLIDWORKS API帮助中的访问器部分
+title:  如何使用SOLIDWORKS API帮助中的访问器部分
 caption: 访问器
-description: 解释了API帮助文档中访问器部分的含义，该部分帮助找到在SOLIDWORKS API中访问特定对象的方法
+---
+ 解释了API帮助文档中访问器部分的含义，该部分帮助找到在SOLIDWORKS API中访问特定对象的方法
 image: accessors.png
 labels: [访问,转换]
 ---

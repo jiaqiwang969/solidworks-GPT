@@ -1,7 +1,8 @@
 ---
 caption: 批量导出模型
-title: 通过vbScript批量导出SOLIDWORKS模型
-description: 使用vbScript批量导出SOLIDWORKS文档的示例
+title:  通过vbScript批量导出SOLIDWORKS模型
+---
+ 使用vbScript批量导出SOLIDWORKS文档的示例
 ---
 
 这是一个使用vbScript批量导出SOLIDWORKS文档的示例。

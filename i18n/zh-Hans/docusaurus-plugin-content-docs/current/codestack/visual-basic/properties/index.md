@@ -1,7 +1,8 @@
 ---
 caption: 属性
-title: Visual Basic 中的属性
-description: 解释了在 Visual Basic 中使用属性（声明、设置和读取值）的用法。属性和变量之间的区别
+title:  Visual Basic 中的属性
+---
+ 解释了在 Visual Basic 中使用属性（声明、设置和读取值）的用法。属性和变量之间的区别
 sidebar_position: 0
 ---
 属性在使用上与[变量](/docs/codestack/visual-basic/variables/declaration/)非常相似，特别是在使用属性时。

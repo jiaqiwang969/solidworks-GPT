@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Exclude Selected Entities from Cut List
+title:  Exclude Selected Entities from Cut List
 caption: Exclude Selected Entities from Cut List
-description: This macro uses the SOLIDWORKS API to exclude entities selected from the graphics area or feature tree from the weldment or sheet metal cut list.
+---
+ This macro uses the SOLIDWORKS API to exclude entities selected from the graphics area or feature tree from the weldment or sheet metal cut list.
 image: excluded-cut-list-item.svg
 labels: [api, cut-list, exclude, utility, vba]
 group: Cut-List

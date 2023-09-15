@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API在模型的第三方存储中序列化文件内容
+title:  使用SOLIDWORKS API在模型的第三方存储中序列化文件内容
 caption: 在第三方存储中嵌入文件
-description: 使用SOLIDWORKS API和模型文档中的XmlSerializers，VB.NET示例演示了如何使用第三方存储（流）嵌入和提取文件内容
+---
+ 使用SOLIDWORKS API和模型文档中的XmlSerializers，VB.NET示例演示了如何使用第三方存储（流）嵌入和提取文件内容
 image: embed-file-menu.png
 labels: [序列化,第三方存储,文件]
 ---

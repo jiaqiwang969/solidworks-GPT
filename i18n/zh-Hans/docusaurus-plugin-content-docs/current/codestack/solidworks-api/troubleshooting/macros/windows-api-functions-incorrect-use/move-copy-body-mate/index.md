@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API添加移动-复制体特征和共面约束
+title:  使用SOLIDWORKS API添加移动-复制体特征和共面约束
 caption: 添加移动-复制体特征和共面约束
-description: 使用SOLIDWORKS API创建移动-复制体特征，并在零件中的最大面和前平面之间添加共面约束的C# VSTA宏示例
+---
+ 使用SOLIDWORKS API创建移动-复制体特征，并在零件中的最大面和前平面之间添加共面约束的C# VSTA宏示例
 image: move-copy-body-mate-pmp.png
 labels: [移动-复制体,约束]
 ---

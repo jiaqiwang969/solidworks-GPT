@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API操作模型视图
+title:  使用SOLIDWORKS API操作模型视图
 caption: 模型视图
-description: 使用SOLIDWORKS API处理3D模型视图的文章和代码示例集合
+---
+ 使用SOLIDWORKS API处理3D模型视图的文章和代码示例集合
 sidebar_position: 3
 ---
 模型视图是用户可见的SOLIDWORKS模型的3D快照。SOLIDWORKS API提供了[IModelView](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelView.html)接口，用于执行视图的操作和数据提取。

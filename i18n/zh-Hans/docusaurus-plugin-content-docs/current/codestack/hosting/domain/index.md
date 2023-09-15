@@ -1,7 +1,8 @@
 ---
-title: 在云服务和本地主机上托管和维护域名的概述和指南
+title:  在云服务和本地主机上托管和维护域名的概述和指南
 caption: 域名
-description: 在云服务（如GoDaddy、Google domain、Hostgator等）和本地主机上维护自定义域名的指南、教程和示例
+---
+ 在云服务（如GoDaddy、Google domain、Hostgator等）和本地主机上维护自定义域名的指南、教程和示例
 labels: [域名,托管]
 ---
 域名用于在URL中标识网页的位置。域名代表IP地址。当您浏览互联网时，您将输入域名，然后被重定向到相应的网站（例如https://www.codestack.net）。

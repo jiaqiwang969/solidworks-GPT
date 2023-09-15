@@ -1,7 +1,8 @@
 ---
-title: 使用vbScript自动化SOLIDWORKS的SOLIDWORKS API
+title:  使用vbScript自动化SOLIDWORKS的SOLIDWORKS API
 caption: vbScript
-description: 介绍使用vbScript和SOLIDWORKS API进行SOLIDWORKS自动化
+---
+ 介绍使用vbScript和SOLIDWORKS API进行SOLIDWORKS自动化
 ---
 vbScript是一种基于Visual Basic的流行脚本语言。它轻量且在Windows上原生支持。代码可以在任何文本编辑器（例如记事本）中进行编辑。
 

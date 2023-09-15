@@ -1,8 +1,9 @@
 ---
 layout: sw-macro-fix
-title: 修复SOLIDWORKS宏中无法连接到数据库或Excel的问题
+title:  修复SOLIDWORKS宏中无法连接到数据库或Excel的问题
 caption: 无法连接到数据库或Excel
-description: 修复宏中连接到数据库（如SQL、MySql、Oracle、MS Access等）或任何其他数据源时无法读取/写入值或显示错误的问题
+---
+ 修复宏中连接到数据库（如SQL、MySql、Oracle、MS Access等）或任何其他数据源时无法读取/写入值或显示错误的问题
 image: odbc-drivers.png
 labels: [宏, 故障排除]
 redirect-from:

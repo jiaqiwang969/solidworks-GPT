@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API创建样条曲线CSV文件的宏
+title:  使用SOLIDWORKS API创建样条曲线CSV文件的宏
 caption: 从CSV创建样条曲线
-description: 使用SOLIDWORKS API从CSV文件中加载点数据，在活动草图中创建样条曲线的VBA宏
+---
+ 使用SOLIDWORKS API从CSV文件中加载点数据，在活动草图中创建样条曲线的VBA宏
 image: spline-pmpage.png
 labels: [csv, sketch, spline]
 ---

@@ -1,7 +1,8 @@
 ---
-title: 通过创建msi安装程序安装SOLIDWORKS插件
+title:  通过创建msi安装程序安装SOLIDWORKS插件
 caption: 安装程序
-description: 创建msi安装程序包以部署SOLIDWORKS应用程序
+---
+ 创建msi安装程序包以部署SOLIDWORKS应用程序
 ---
 安装程序包（.msi）是在部署应用程序时提供最佳用户体验的最可靠方式。安装程序可以提供友好的逐步向导，允许在安装产品时指定选项。有多种安装程序选项可供选择。
 

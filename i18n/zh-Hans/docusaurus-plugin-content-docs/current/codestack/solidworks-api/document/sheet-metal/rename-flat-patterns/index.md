@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 在切割清单特征之后重命名钣金展开特征
+title:  在切割清单特征之后重命名钣金展开特征
 caption: 重命名展开特征
-description: 使用VBA宏在对应的切割清单特征名称之后重命名所有钣金展开特征
+---
+ 使用VBA宏在对应的切割清单特征名称之后重命名所有钣金展开特征
 image: flat-pattern.svg
 labels: [切割清单,钣金,展开特征,重命名]
 group: Part

@@ -1,7 +1,8 @@
 ---
-title: Visual Basic 中的模块
+title:  Visual Basic 中的模块
 caption: 模块
-description: 本文介绍了在 Visual Basic 中使用模块来存储可共享的函数和变量的用法。
+---
+ 本文介绍了在 Visual Basic 中使用模块来存储可共享的函数和变量的用法。
 image: add-new-module.png
 sidebar_position: 0
 ---

@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API填充孔洞
+title:  使用SOLIDWORKS API填充孔洞
 caption: 填充孔洞
-description: 此VBA示例演示了如何使用SOLIDWORKS模型生成器和创建临时几何体来填充所选特征（例如切割挤压）中的孔洞。
+---
+ 此VBA示例演示了如何使用SOLIDWORKS模型生成器和创建临时几何体来填充所选特征（例如切割挤压）中的孔洞。
 image: filled-hole.png
 labels: [填充, 模型生成器, 孔洞, 临时几何体]
 ---

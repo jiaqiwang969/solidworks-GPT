@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: 添加显示数据标记
-title: 将显示数据标记添加到主SOLIDWORKS装配使用的配置的宏
-description: 用于在大型装配的大型设计审查模式或eDrawings中支持配置的VBA宏
+title:  将显示数据标记添加到主SOLIDWORKS装配使用的配置的宏
+---
+ 用于在大型装配的大型设计审查模式或eDrawings中支持配置的VBA宏
 image: display-data-mark.svg
 group: Assembly
 ---

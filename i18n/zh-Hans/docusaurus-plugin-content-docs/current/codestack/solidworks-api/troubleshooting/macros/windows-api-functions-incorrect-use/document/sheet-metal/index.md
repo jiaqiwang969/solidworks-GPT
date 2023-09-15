@@ -1,7 +1,8 @@
 ---
-title: Automation Sheet Metal parts using SOLIDWORKS API
+title:  Automation Sheet Metal parts using SOLIDWORKS API
 caption: Sheet Metal
-description: Using SOLIDWORKS API to manipulate sheet metal features
+---
+ Using SOLIDWORKS API to manipulate sheet metal features
 sidebar_position: 10
 labels: [sheet metal,bend,fold]
 ---

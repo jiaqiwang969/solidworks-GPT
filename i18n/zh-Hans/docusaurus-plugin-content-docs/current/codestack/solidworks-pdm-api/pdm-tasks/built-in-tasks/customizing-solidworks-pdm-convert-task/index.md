@@ -1,7 +1,8 @@
 ---
-title: 使用API自定义SOLIDWORKS PDM转换任务
+title:  使用API自定义SOLIDWORKS PDM转换任务
 caption: 自定义SOLIDWORKS PDM转换任务
-description: 更改标准任务的脚本指南。自定义实用程序简化PDM任务的调试
+---
+ 更改标准任务的脚本指南。自定义实用程序简化PDM任务的调试
 image: pdm-convert-task-script.png
 labels: [转换任务, 调试, solidworks pd, 任务]
 redirect-from:

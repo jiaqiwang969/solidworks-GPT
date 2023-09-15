@@ -1,7 +1,8 @@
 ---
-title: 在Geometry++中将实体转换为曲面
+title:  在Geometry++中将实体转换为曲面
 caption: 将实体转换为曲面
-description: 在SOLIDWORKS零件文档中将实体转换为曲面，保留参数化功能
+---
+ 在SOLIDWORKS零件文档中将实体转换为曲面，保留参数化功能
 image: icon.png
 toc-group-name: labs-solidworks-geometry-plus-plus
 ---

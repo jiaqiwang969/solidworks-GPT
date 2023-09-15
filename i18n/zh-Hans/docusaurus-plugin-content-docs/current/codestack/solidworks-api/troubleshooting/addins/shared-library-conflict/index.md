@@ -1,8 +1,9 @@
 ---
 layout: sw-addin-fix
-title: 如何修复SOLIDWORKS插件共享公共库的错误
+title:  如何修复SOLIDWORKS插件共享公共库的错误
 caption: 使用共享库的插件无法一起工作
-description: 通过启用绑定重定向来解决使用不同版本的共享库的问题
+---
+ 通过启用绑定重定向来解决使用不同版本的共享库的问题
 labels: [插件, 故障排除, 共享库]
 ---
 

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Delete all equations from SOLIDWORKS model using SOLIDWORKS API
+title:  Delete all equations from SOLIDWORKS model using SOLIDWORKS API
 caption: Delete All Equations
-description: Macro removes all of the equations (or optionally only broken equations) in the active model (part or assembly)
+---
+ Macro removes all of the equations (or optionally only broken equations) in the active model (part or assembly)
 image: deleted-equations.svg
 labels: [api, clean, delete equations, equation, macro, utility, vba]
 group: Model

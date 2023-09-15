@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Export flat patterns from SOLIDWORKS part or assembly components
+title:  Export flat patterns from SOLIDWORKS part or assembly components
 caption: Export Flat Patterns From Part Or Assembly Components
-description: VBA macro to export flat patterns from all components of the active assembly or active part
+---
+ VBA macro to export flat patterns from all components of the active assembly or active part
 image: assembly-flat-pattern.svg
 labels: [where used,parent,component]
 group: Import/Export

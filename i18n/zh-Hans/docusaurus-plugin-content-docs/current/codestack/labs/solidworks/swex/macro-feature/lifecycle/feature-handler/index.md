@@ -1,7 +1,8 @@
 ---
-title: 处理SOLIDWORKS宏特征的生命周期
+title:  处理SOLIDWORKS宏特征的生命周期
 caption: 特征处理器
-description: 使用SOLIDWORKS宏特征处理器来管理SwEx.MacroFeature框架中宏特征的生命周期
+---
+ 使用SOLIDWORKS宏特征处理器来管理SwEx.MacroFeature框架中宏特征的生命周期
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

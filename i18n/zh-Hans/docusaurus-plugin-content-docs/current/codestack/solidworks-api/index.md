@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS API宏和插件的代码示例
+title:  SOLIDWORKS API宏和插件的代码示例
 caption: API和宏
-description: 收集了使用VBA和VSTA宏、插件和独立应用程序自动化SOLIDWORKS的教程和示例
+---
+ 收集了使用VBA和VSTA宏、插件和独立应用程序自动化SOLIDWORKS的教程和示例
 image: solidworks-api-automation.png
 redirect-from:
   - /p/solidworks-api.html

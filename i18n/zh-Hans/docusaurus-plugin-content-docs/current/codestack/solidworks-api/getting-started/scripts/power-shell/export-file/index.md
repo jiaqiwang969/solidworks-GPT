@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API在shell脚本中导出SOLIDWORKS文件
+title:  使用SOLIDWORKS API在shell脚本中导出SOLIDWORKS文件
 caption: 导出文件
-description: 该脚本允许使用命令行使用SOLIDWORKS API将SOLIDWORKS文件导出为指定的外部格式
+---
+ 该脚本允许使用命令行使用SOLIDWORKS API将SOLIDWORKS文件导出为指定的外部格式
 image: power-shell-export.svg
 labels: [导出, 脚本]
 group: 导入/导出

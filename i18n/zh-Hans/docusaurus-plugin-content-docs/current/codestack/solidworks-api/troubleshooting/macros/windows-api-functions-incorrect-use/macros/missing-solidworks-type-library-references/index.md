@@ -1,8 +1,9 @@
 ---
 layout: sw-macro-fix
-title: 如何修复缺失的SOLIDWORKS类型库引用错误
+title:  如何修复缺失的SOLIDWORKS类型库引用错误
 caption: 缺失的SOLIDWORKS类型库引用
-description: 修复遗留宏中的找不到项目或库错误
+---
+ 修复遗留宏中的找不到项目或库错误
 image: error-cant-find-project-or-library.png
 labels: [宏, 故障排除]
 redirect-from:

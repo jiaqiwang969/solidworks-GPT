@@ -1,7 +1,8 @@
 ---
-title: How to Create Stand-Alone (exe) Applications with SOLIDWORKS API
+title:  How to Create Stand-Alone (exe) Applications with SOLIDWORKS API
 caption: Stand-Alone Applications
-description: Two methods to connect to a SOLIDWORKS instance using COM-compatible programming languages
+---
+ Two methods to connect to a SOLIDWORKS instance using COM-compatible programming languages
 image: reg-edit-clsid_prog_id.png
 labels: [article, clsid, instance, out-of-process, progid, rot, sdk, solidworks api, stand-alone]
 redirect-from:

@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS宏创建并在新配置中抑制特征
+title:  SOLIDWORKS宏创建并在新配置中抑制特征
 caption: 在新配置中抑制特征
-description: 使用SOLIDWORKS API，此宏为在特征树中选择的所有特征创建新配置，并逐个在相应配置中抑制它们。
+---
+ 使用SOLIDWORKS API，此宏为在特征树中选择的所有特征创建新配置，并逐个在相应配置中抑制它们。
 image: sheet-metal-bends-selection.png
 labels: [特征, 配置, 抑制]
 ---

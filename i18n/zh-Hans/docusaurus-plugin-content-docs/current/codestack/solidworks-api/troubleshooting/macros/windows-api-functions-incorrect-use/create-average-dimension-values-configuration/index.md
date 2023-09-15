@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS宏创建具有平均尺寸值的配置
+title:  使用SOLIDWORKS宏创建具有平均尺寸值的配置
 caption: 创建具有平均尺寸值的配置
-description: 该宏将使用SOLIDWORKS API创建子配置，其中所有尺寸将根据公差的最小值和最大值设置为平均值。
+---
+ 该宏将使用SOLIDWORKS API创建子配置，其中所有尺寸将根据公差的最小值和最大值设置为平均值。
 image: sw-dimension-tolerance.png
 labels: [平均值, 配置, 尺寸, solidworks api, 公差, 实用工具]
 group: 模型

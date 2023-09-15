@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API遍历特征管理器节点
+title:  使用SOLIDWORKS API遍历特征管理器节点
 caption: 遍历特征节点
-description: 该示例演示了如何使用SOLIDWORKS API遍历特征管理器树中的节点。节点按照它们在树中呈现的顺序进行遍历，并提取出确切的文本。
+---
+ 该示例演示了如何使用SOLIDWORKS API遍历特征管理器树中的节点。节点按照它们在树中呈现的顺序进行遍历，并提取出确切的文本。
 image: feature-manager-tree.png
 labels: [遍历, 特征, 节点]
 ---

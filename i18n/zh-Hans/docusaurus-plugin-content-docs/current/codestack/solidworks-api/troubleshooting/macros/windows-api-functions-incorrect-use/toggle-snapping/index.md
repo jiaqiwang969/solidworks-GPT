@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: 切换草图捕捉
-title: 在SOLIDWORKS文档中切换草图捕捉的宏
-description: 用于在SOLIDWORKS草图中切换启用捕捉选项的VBA宏
+title:  在SOLIDWORKS文档中切换草图捕捉的宏
+---
+ 用于在SOLIDWORKS草图中切换启用捕捉选项的VBA宏
 image: toggle-snapping.svg
 group: 草图
 ---

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: VBA macro to export component positions to CSV via SOLIDWORKS API
+title:  VBA macro to export component positions to CSV via SOLIDWORKS API
 caption: Export Components Positions
-description: This macro exports positions of components to an external CSV text file using SOLIDWORKS API
+---
+ This macro exports positions of components to an external CSV text file using SOLIDWORKS API
 image: components-positions-table.png
 labels: [export,csv,excel,origin]
 group: Assembly

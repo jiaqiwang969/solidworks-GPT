@@ -1,7 +1,8 @@
 ---
-title: Store and Restore Bodies to Third-Party Storage using SOLIDWORKS API
+title:  Store and Restore Bodies to Third-Party Storage using SOLIDWORKS API
 caption: Store and Restore Bodies
-description: Store selected bodies as copies in the stream of a new document using SOLIDWORKS API and restore and display the bodies when the model is opened
+---
+ Store selected bodies as copies in the stream of a new document using SOLIDWORKS API and restore and display the bodies when the model is opened
 image: restored-body.png
 labels: [third-party storage, store bodies, restore bodies]
 ---

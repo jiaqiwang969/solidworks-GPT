@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 从SOLIDWORKS图纸中将所有注释打印到文本文件的宏
+title:  从SOLIDWORKS图纸中将所有注释打印到文本文件的宏
 caption: 打印注释文本到文件
-description: 从SOLIDWORKS图纸文件中输出所有注释文本到文本文件的VBA宏
+---
+ 从SOLIDWORKS图纸文件中输出所有注释文本到文本文件的VBA宏
 image: print-notes.svg
 labels: [注释, 打印, 正则表达式, regex]
 group: 图纸

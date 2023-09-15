@@ -1,7 +1,8 @@
 ---
-title: 在Geometry++中添加实体倒角特征
+title:  在Geometry++中添加实体倒角特征
 caption: 实体倒角
-description: 该特征允许在SOLIDWORKS模型中对实体、面和边进行倒角，并支持多实体
+---
+ 该特征允许在SOLIDWORKS模型中对实体、面和边进行倒角，并支持多实体
 image: icon.png
 toc-group-name: labs-solidworks-geometry-plus-plus
 ---

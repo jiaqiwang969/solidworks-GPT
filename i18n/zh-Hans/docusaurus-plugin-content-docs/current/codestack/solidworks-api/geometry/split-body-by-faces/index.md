@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API拆分面的SOLIDWORKS宏
+title:  使用SOLIDWORKS API拆分面的SOLIDWORKS宏
 caption: 拆分面
-description: 该宏使用SOLIDWORKS API方法，将选定的曲面或实体体通过面拆分，为每个面创建单独的面体
+---
+ 该宏使用SOLIDWORKS API方法，将选定的曲面或实体体通过面拆分，为每个面创建单独的面体
 image: split-body-by-faces.svg
 labels: [拆分, 面, 实体]
 group: 几何

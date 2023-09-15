@@ -1,7 +1,8 @@
 ---
-title: SwEx.PMPage框架概述（用于SOLIDWORKS API）
+title:  SwEx.PMPage框架概述（用于SOLIDWORKS API）
 caption: 概述
-description: SwEx.PMPage框架用于在SOLIDWORKS API中构建属性管理器页面的一般方法概述
+---
+ SwEx.PMPage框架用于在SOLIDWORKS API中构建属性管理器页面的一般方法概述
 image: data-model-pmpage.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0

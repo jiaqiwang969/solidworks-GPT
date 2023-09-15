@@ -1,7 +1,8 @@
 ---
-title: Visual Basic 6 的辅助函数
+title:  Visual Basic 6 的辅助函数
 caption: 辅助函数
-description: 用于克服 Visual Basic 6 的限制的各种辅助函数
+---
+ 用于克服 Visual Basic 6 的限制的各种辅助函数
 labels: [辅助函数, vba, 限制]
 ---
 

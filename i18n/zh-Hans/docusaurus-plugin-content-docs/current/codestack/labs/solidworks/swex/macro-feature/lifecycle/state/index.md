@@ -1,7 +1,8 @@
 ---
-title: 在SwEx.MacroFeature框架中处理SOLIDWORKS宏特征状态更新
+title:  在SwEx.MacroFeature框架中处理SOLIDWORKS宏特征状态更新
 caption: 状态
-description: 在环境变化（选择、重建、抑制等）时更新宏特征的状态
+---
+ 在环境变化（选择、重建、抑制等）时更新宏特征的状态
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

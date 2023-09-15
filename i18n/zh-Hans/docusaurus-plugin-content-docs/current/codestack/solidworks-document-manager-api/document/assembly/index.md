@@ -1,7 +1,8 @@
 ---
-title: 使用 SOLIDWORKS Document Manager API 处理装配文档
+title:  使用 SOLIDWORKS Document Manager API 处理装配文档
 caption: 装配
-description: 使用 Document Manager API 处理装配的示例集合
+---
+ 使用 Document Manager API 处理装配的示例集合
 ---
 与常规的 SOLIDWORKS API 不同，Document Manager 并没有为装配文档提供特定的接口，而是应该由 [ISwDMDocument](https://help.solidworks.com/2016/english/api/swdocmgrapi/SolidWorks.Interop.swdocumentmgr~SolidWorks.Interop.swdocumentmgr.ISwDMDocument.html) 和 [ISwDMConfiguration2](https://help.solidworks.com/2018/english/api/swdocmgrapi/SolidWorks.Interop.swdocumentmgr~SolidWorks.Interop.swdocumentmgr.ISwDMConfiguration2.html) 接口进行管理。
 

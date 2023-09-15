@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS API中的方法和属性命名
+title:  SOLIDWORKS API中的方法和属性命名
 caption: 命名约定
-description: SOLIDWORKS API对象模型（即OpenDoc6 vs OpenDoc5）中方法、属性和接口的命名约定的解释
+---
+ SOLIDWORKS API对象模型（即OpenDoc6 vs OpenDoc5）中方法、属性和接口的命名约定的解释
 image: obsolete-api-interface.png
 labels: [过时,版本,编号]
 ---

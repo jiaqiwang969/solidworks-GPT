@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API升级活动SOLIDWORKS零件或装配中的装饰螺纹
+title:  使用SOLIDWORKS API升级活动SOLIDWORKS零件或装配中的装饰螺纹
 caption: 升级装饰螺纹
-description: VBA宏将装饰螺纹升级到新版本（SOLIDWORKS 2020），从而可以提高文档的性能
+---
+ VBA宏将装饰螺纹升级到新版本（SOLIDWORKS 2020），从而可以提高文档的性能
 image: upgrade-cosmetic-thread.png
 labels: [api, 升级, 性能, 装饰螺纹]
 group: 性能

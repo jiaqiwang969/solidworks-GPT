@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 从SOLIDWORKS图纸导出尺寸信息到CSV文件
+title:  从SOLIDWORKS图纸导出尺寸信息到CSV文件
 caption: 导出尺寸信息
-description: 通过VBA宏将SOLIDWORKS图纸中的尺寸信息（名称、位置、位置、区域、值、公差）导出到CSV文件中
+---
+ 通过VBA宏将SOLIDWORKS图纸中的尺寸信息（名称、位置、位置、区域、值、公差）导出到CSV文件中
 image: export-dimensions.svg
 labels: [尺寸,公差,导出,CSV]
 group: 图纸

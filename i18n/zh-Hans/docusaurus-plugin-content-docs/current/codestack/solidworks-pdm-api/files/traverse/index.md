@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS PDM API递归遍历文件和文件夹
+title:  使用SOLIDWORKS PDM API递归遍历文件和文件夹
 caption: 递归遍历文件夹
-description: 使用SOLIDWORKS PDM API在SOLIDWORKS PDM vault中遍历并列出所选文件夹中的所有文件和文件夹的VBA示例
+---
+ 使用SOLIDWORKS PDM API在SOLIDWORKS PDM vault中遍历并列出所选文件夹中的所有文件和文件夹的VBA示例
 image: pdm-folder-structure-output.png
 labels: [遍历, vault, 浏览文件夹]
 ---

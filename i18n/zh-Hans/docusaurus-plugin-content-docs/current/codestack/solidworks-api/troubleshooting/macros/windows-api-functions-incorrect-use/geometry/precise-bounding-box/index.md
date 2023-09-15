@@ -1,7 +1,8 @@
 ---
-title: Macro create precise part bounding box using SOLIDWORKS API
+title:  Macro create precise part bounding box using SOLIDWORKS API
 caption: Create Precise Bounding Box
-description: Macro creates a precise bounding box in the part document using SOLIDWORKS API
+---
+ Macro creates a precise bounding box in the part document using SOLIDWORKS API
 image: precise-bounding-box.png
 labels: [bonding box, extreme points]
 ---

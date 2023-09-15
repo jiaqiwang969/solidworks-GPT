@@ -1,7 +1,8 @@
 ---
-title: Overview of SOLIDWORKS Assembly context and usage from API
+title:  Overview of SOLIDWORKS Assembly context and usage from API
 caption: Assembly Context
-description: Explanation of assembly contexts and the ways to transform the pointer form assembly context to the model context and vice-versa using SOLIDWORKS API
+---
+ Explanation of assembly contexts and the ways to transform the pointer form assembly context to the model context and vice-versa using SOLIDWORKS API
 image: assembly-model-context.png
 labels: [context, corresponding, assembly]
 ---

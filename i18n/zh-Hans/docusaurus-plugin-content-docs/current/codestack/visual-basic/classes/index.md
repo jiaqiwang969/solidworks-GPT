@@ -1,6 +1,7 @@
 ---
-title: Visual Basic 6（VBA）中的类
-description: 解释了在Visual Basic中使用类的用法。介绍面向对象编程（OOP）
+title:  Visual Basic 6（VBA）中的类
+---
+ 解释了在Visual Basic中使用类的用法。介绍面向对象编程（OOP）
 caption: 类
 image: insert-class-module.png
 sidebar_position: 0

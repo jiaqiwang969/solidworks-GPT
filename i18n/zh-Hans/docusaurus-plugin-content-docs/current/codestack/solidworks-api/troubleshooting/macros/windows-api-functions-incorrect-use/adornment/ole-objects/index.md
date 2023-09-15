@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API管理模型中的OLE对象
+title:  使用SOLIDWORKS API管理模型中的OLE对象
 caption: OLE对象
-description: 这是一个包含宏和示例的集合，演示了如何使用SOLIDWORKS API处理不同的嵌入式OLE对象（设计表、附件等）
+---
+ 这是一个包含宏和示例的集合，演示了如何使用SOLIDWORKS API处理不同的嵌入式OLE对象（设计表、附件等）
 sidebar_position: 2
 labels: [ole, embeding]
 ---

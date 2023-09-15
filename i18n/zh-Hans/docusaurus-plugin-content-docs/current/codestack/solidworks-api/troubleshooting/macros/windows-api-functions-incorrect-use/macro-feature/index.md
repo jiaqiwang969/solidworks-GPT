@@ -1,7 +1,8 @@
 ---
-title: 在SOLIDWORKS API中使用宏特征
+title:  在SOLIDWORKS API中使用宏特征
 caption: 宏特征
-description: 使用SOLIDWORKS API解释和示例宏特征（自定义特征）的用法
+---
+ 使用SOLIDWORKS API解释和示例宏特征（自定义特征）的用法
 sidebar_position: 14
 ---
 {% youtube { id: tE_OVE9YTMs } %}

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API合并草图的宏
+title:  使用SOLIDWORKS API合并草图的宏
 caption: 合并草图
-description: 使用SOLIDWORKS API将选定的草图合并为一个单独的3D草图的VBA宏
+---
+ 使用SOLIDWORKS API将选定的草图合并为一个单独的3D草图的VBA宏
 image: merged-sketches.svg
 labels: [sketch,convert entities,merge]
 group: Sketch

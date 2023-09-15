@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 将SOLIDWORKS切割清单的自定义属性复制到模型的宏
+title:  将SOLIDWORKS切割清单的自定义属性复制到模型的宏
 caption: 复制切割清单自定义属性到模型
-description: VBA宏，将SOLIDWORKS切割清单（钣金或焊接）的自定义属性复制到模型或配置
+---
+ VBA宏，将SOLIDWORKS切割清单（钣金或焊接）的自定义属性复制到模型或配置
 image: copy-cutlist-properties.svg
 labels: [切割清单,钣金,属性]
 group: 自定义属性

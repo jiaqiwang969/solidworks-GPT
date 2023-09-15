@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用VBA宏将SOLIDWORKS表格导出为CSV
+title:  使用VBA宏将SOLIDWORKS表格导出为CSV
 caption: 导出表格为CSV
-description: 该宏使用SOLIDWORKS API将选定的表格（或指定类型的表格）导出为CSV（逗号分隔值）文件。此功能类似于内置的“另存为”选项，用于表格：
+---
+ 该宏使用SOLIDWORKS API将选定的表格（或指定类型的表格）导出为CSV（逗号分隔值）文件。此功能类似于内置的“另存为”选项，用于表格：
 image: export-table-csv.svg
 labels: [table,csv,export]
 group: Model

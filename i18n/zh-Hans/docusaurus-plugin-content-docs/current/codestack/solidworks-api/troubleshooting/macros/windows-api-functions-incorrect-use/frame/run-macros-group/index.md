@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API运行一组宏的宏
+title:  使用SOLIDWORKS API运行一组宏的宏
 caption: 运行一组宏
-description: 该宏演示了如何使用SOLIDWORKS API在一个宏中运行一组宏
+---
+ 该宏演示了如何使用SOLIDWORKS API在一个宏中运行一组宏
 image: macros-library.png
 labels: [宏, 运行组]
 group: Frame

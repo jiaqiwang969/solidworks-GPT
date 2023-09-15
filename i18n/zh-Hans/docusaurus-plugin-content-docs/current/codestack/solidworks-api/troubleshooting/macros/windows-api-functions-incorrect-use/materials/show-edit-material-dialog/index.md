@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API显示编辑材料对话框
+title:  使用SOLIDWORKS API显示编辑材料对话框
 caption: 显示编辑材料对话框
-description: 使用SOLIDWORKS API和Windows API打开SOLIDWORKS零件文档中的编辑材料对话框的VBA宏
+---
+ 使用SOLIDWORKS API和Windows API打开SOLIDWORKS零件文档中的编辑材料对话框的VBA宏
 image: edit-material-command.png
 labels: [编辑材料]
 ---

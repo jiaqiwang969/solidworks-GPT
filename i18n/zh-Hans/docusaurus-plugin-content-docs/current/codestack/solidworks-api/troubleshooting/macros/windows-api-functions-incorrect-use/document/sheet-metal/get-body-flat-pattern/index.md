@@ -1,7 +1,8 @@
 ---
-title: Find cut-list item from the sheet metal flat pattern using SOLIDWORKS API
+title:  Find cut-list item from the sheet metal flat pattern using SOLIDWORKS API
 caption: Get Cut List Item From Flat Pattern
-description: VBA macro which finds the pointer to the cut-list feature from the selected flat pattern feature
+---
+ VBA macro which finds the pointer to the cut-list feature from the selected flat pattern feature
 image: cut-list-folder-flat-pattern.png
 labels: [sheet metal, cut-list, flat pattern]
 ---

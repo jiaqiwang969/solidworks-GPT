@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使SOLIDWORKS组件独立并复制图纸的宏
+title:  使SOLIDWORKS组件独立并复制图纸的宏
 caption: 使图纸独立
-description: VBA宏允许复制所选组件的独立副本，更新装配中的引用并复制相关的图纸
+---
+ VBA宏允许复制所选组件的独立副本，更新装配中的引用并复制相关的图纸
 image: make-independent-drawing.svg
 labels: [使独立,图纸,组件]
 group: 装配

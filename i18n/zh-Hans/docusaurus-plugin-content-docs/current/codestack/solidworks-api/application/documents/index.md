@@ -1,7 +1,8 @@
 ---
-title: Managing SOLIDWORKS Documents with the API
+title:  Managing SOLIDWORKS Documents with the API
 caption: Documents
-description: Examples of using the SOLIDWORKS API to enumerate, close, activate, open, and identify document types.
+---
+ Examples of using the SOLIDWORKS API to enumerate, close, activate, open, and identify document types.
 labels: [documents]
 ---
 SOLIDWORKS documents are represented as [IModelDoc2](https://help.solidworks.com/2018/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IModelDoc2.html) interfaces in the SOLIDWORKS API.

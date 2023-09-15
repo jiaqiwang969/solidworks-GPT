@@ -13,14 +13,14 @@ Docusaurus为每篇博客文章创建了一个**页面**，同时还有一个**�
 ```md title="blog/2021-02-28-greetings.md"
 ---
 slug: greetings
-title: 问候！
+title:  问候！
 authors:
   - name: Joel Marcey
-    title: Docusaurus 1的共同创作者
+    title:  Docusaurus 1的共同创作者
     url: https://github.com/JoelMarcey
     image_url: https://github.com/JoelMarcey.png
   - name: Sébastien Lorber
-    title: Docusaurus维护者
+    title:  Docusaurus维护者
     url: https://sebastienlorber.com
     image_url: https://github.com/slorber.png
 tags: [greetings]

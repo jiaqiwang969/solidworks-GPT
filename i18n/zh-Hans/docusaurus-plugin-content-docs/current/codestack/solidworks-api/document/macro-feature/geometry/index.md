@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API生成盒子几何体（实体、面、线）宏特征
+title:  使用SOLIDWORKS API生成盒子几何体（实体、面、线）宏特征
 caption: 生成盒子几何体
-description: 使用SOLIDWORKS API创建生成不同类型盒子几何体（实体、面、线）的VBA宏特征的示例
+---
+ 使用SOLIDWORKS API创建生成不同类型盒子几何体（实体、面、线）的VBA宏特征的示例
 image: solid-body.png
 labels: [宏特征,几何体,盒子,实体,面,线]
 ---

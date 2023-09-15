@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS PDM API在数据卡按钮点击时连接描述变量
+title:  使用SOLIDWORKS PDM API在数据卡按钮点击时连接描述变量
 caption: 连接描述变量
-description: 本示例演示了如何使用SOLIDWORKS PDM Professional API处理数据卡上的按钮点击事件，并根据修订和编号变量的值连接描述变量。
+---
+ 本示例演示了如何使用SOLIDWORKS PDM Professional API处理数据卡上的按钮点击事件，并根据修订和编号变量的值连接描述变量。
 image: button-update-variable.gif
 labels: [hook, button click, variables]
 ---

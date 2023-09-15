@@ -1,7 +1,8 @@
 ---
-title: 使用 SOLIDWORKS PDM API 将 PDM 仓库中的文件缓存到本地
+title:  使用 SOLIDWORKS PDM API 将 PDM 仓库中的文件缓存到本地
 caption: 缓存文件到本地
-description: 该示例演示了如何将文件及其所有依赖项缓存到本地，以供桌面应用程序使用。此宏相当于以下命令：
+---
+ 该示例演示了如何将文件及其所有依赖项缓存到本地，以供桌面应用程序使用。此宏相当于以下命令：
 image: get-latest-version.png
 labels: [本地副本]
 ---

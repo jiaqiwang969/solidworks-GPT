@@ -1,7 +1,8 @@
 ---
-title: Using the Callouts Object in SOLIDWORKS API for Model Annotations
+title:  Using the Callouts Object in SOLIDWORKS API for Model Annotations
 caption: Callouts
-description: Use the Callouts object in SOLIDWORKS API to annotate models (similar to balloons), link to entities, and display custom data.
+---
+ Use the Callouts object in SOLIDWORKS API to annotate models (similar to balloons), link to entities, and display custom data.
 sidebar_position: 1
 labels: [callout, balloons]
 ---

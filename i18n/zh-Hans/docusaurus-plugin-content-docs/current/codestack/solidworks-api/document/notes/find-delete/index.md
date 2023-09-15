@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Macro to find and delete specific notes in the SOLIDWORKS drawing
+title:  Macro to find and delete specific notes in the SOLIDWORKS drawing
 caption: Find And Delete Notes
-description: VBA macro to find and delete notes in all SOLIDWORKS drawing sheets based on the text, regular expressions or empty values
+---
+ VBA macro to find and delete notes in all SOLIDWORKS drawing sheets based on the text, regular expressions or empty values
 image: delete-note.svg
 labels: [note, delete, regular expression, regex]
 group: Drawing

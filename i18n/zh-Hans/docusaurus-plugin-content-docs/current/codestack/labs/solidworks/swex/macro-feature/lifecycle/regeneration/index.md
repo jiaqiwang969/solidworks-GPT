@@ -1,7 +1,8 @@
 ---
-title: 处理SOLIDWORKS宏特征的再生成方法
+title:  处理SOLIDWORKS宏特征的再生成方法
 caption: 再生成
-description: 使用SwEx.MacroFeature框架处理SOLIDWORKS宏特征的再生成事件，并返回实体或错误以驱动行为
+---
+ 使用SwEx.MacroFeature框架处理SOLIDWORKS宏特征的再生成事件，并返回实体或错误以驱动行为
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

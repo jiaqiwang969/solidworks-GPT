@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Macro feature to increment the numeric value in the note via SOLIDWORKS API
+title:  Macro feature to increment the numeric value in the note via SOLIDWORKS API
 caption: Increment The Numeric Value In The Note
-description: This macro increments the numeric value of the notes by matching regular expression (e.g. incrementing the revision) using SOLIDWORKS API
+---
+ This macro increments the numeric value of the notes by matching regular expression (e.g. incrementing the revision) using SOLIDWORKS API
 image: drawing-revision-incremented.png
 labels: [note, revision, increment, regular expression, regex, tag]
 group: Drawing

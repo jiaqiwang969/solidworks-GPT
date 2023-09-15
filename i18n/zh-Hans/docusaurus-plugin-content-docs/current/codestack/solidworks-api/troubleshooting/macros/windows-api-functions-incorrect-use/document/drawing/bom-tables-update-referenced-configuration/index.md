@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS macro to update referenced configuration from BOM tables
+title:  SOLIDWORKS macro to update referenced configuration from BOM tables
 caption: Update Referenced Configuration From BOM Tables
-description: Macro will update the referenced configurations for all Bill of Materials (BOM) tables on the active drawing document using SOLIDWORKS API
+---
+ Macro will update the referenced configurations for all Bill of Materials (BOM) tables on the active drawing document using SOLIDWORKS API
 image: bom-configurations-property.png
 labels: [bom, default view, referenced configuration, solidworks api, utility, view]
 redirect-from:

@@ -1,7 +1,8 @@
 ---
-title: Macro to reconstruct spherical surface using SOLIDWORKS modeler API
+title:  Macro to reconstruct spherical surface using SOLIDWORKS modeler API
 caption: Reconstruct Spherical Surface
-description: Example demonstrates how to create spherical surface from the selected spherical face using SOLIDWORKS API in C#
+---
+ Example demonstrates how to create spherical surface from the selected spherical face using SOLIDWORKS API in C#
 image: reconstructed-sphere.png
 labels: [curve, sphere, c#]
 ---

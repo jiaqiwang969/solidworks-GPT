@@ -1,7 +1,8 @@
 ---
-title: 使用OpenGL渲染四面体并使用SOLIDWORKS API处理视图显示模式
+title:  使用OpenGL渲染四面体并使用SOLIDWORKS API处理视图显示模式
 caption: 渲染四面体并处理视图显示模式
-description: SOLIDWORKS的VB.NET插件，用于以不同的显示模式（填充、填充加边、隐藏线、隐藏线视图、线框）渲染四面体的图形。
+---
+ SOLIDWORKS的VB.NET插件，用于以不同的显示模式（填充、填充加边、隐藏线、隐藏线视图、线框）渲染四面体的图形。
 image: shaded-with-edges.png
 labels: [opengl,显示模式,填充,隐藏线,线框]
 ---

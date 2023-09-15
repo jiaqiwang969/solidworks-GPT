@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS PDM API列出所有存储库视图
+title:  使用SOLIDWORKS PDM API列出所有存储库视图
 caption: 列出所有视图
-description: 该示例演示了如何使用SOLIDWORKS PDM API列出所有可用的存储库视图及其路径。
+---
+ 该示例演示了如何使用SOLIDWORKS PDM API列出所有可用的存储库视图及其路径。
 image: pdm-vaults-list.png
 labels: [vault, view]
 ---

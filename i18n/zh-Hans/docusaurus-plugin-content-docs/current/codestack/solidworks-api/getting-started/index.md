@@ -1,7 +1,8 @@
 ---
-title: '入门：使用SOLIDWORKS API开发应用程序'
+title:  '入门：使用SOLIDWORKS API开发应用程序'
 caption: 入门
-description: 通过API详细指南开始开发SOLIDWORKS应用程序的指南
+---
+ 通过API详细指南开始开发SOLIDWORKS应用程序的指南
 image: solidworks-api-getting-started.png
 sidebar_position: 0
 ---

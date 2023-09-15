@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API在HTML页面中渲染特征树
+title:  使用SOLIDWORKS API在HTML页面中渲染特征树
 caption: 在HTML页面中渲染特征树
-description: 该示例演示了如何使用SOLIDWORKS API和JavaScript以及Internet Explorer中的ActiveX控件将SOLIDWORKS零件文档的特征树提取并渲染到HTML页面中。
+---
+ 该示例演示了如何使用SOLIDWORKS API和JavaScript以及Internet Explorer中的ActiveX控件将SOLIDWORKS零件文档的特征树提取并渲染到HTML页面中。
 image: html-feature-tree-rendered.png
 labels: [JavaScript, 特征管理器]
 ---

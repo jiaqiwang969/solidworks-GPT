@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS Document Manager API简介
+title:  SOLIDWORKS Document Manager API简介
 caption: Document Manager API
-description: 包含使用SOLIDWORKS Document Manager库的示例和文章的集合
+---
+ 包含使用SOLIDWORKS Document Manager库的示例和文章的集合
 image: document-manager-api.svg
 labels: [document manager]
 redirect-from:

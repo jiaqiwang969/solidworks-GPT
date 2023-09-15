@@ -1,7 +1,8 @@
 ---
-title: 使用Geometry++暂停SOLIDWORKS重建操作
+title:  使用Geometry++暂停SOLIDWORKS重建操作
 caption: 暂停重建
-description: 使用Geometry++插件暂停SOLIDWORKS零件、装配和绘图中的重建操作，以批量重建以提高性能
+---
+ 使用Geometry++插件暂停SOLIDWORKS零件、装配和绘图中的重建操作，以批量重建以提高性能
 image: icon.png
 toc-group-name: labs-solidworks-geometry-plus-plus
 ---

@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS插件、宏和独立应用的安装
+title:  SOLIDWORKS插件、宏和独立应用的安装
 caption: 部署
-description: SOLIDWORKS插件、宏和独立应用的部署指南和示例
+---
+ SOLIDWORKS插件、宏和独立应用的部署指南和示例
 image: solidworks-application-deployment.png
 sidebar_position: 0
 ---

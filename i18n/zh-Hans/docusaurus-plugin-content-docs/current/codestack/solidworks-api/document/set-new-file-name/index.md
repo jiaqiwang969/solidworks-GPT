@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 自动为SOLIDWORKS文件分配新文件名
+title:  自动为SOLIDWORKS文件分配新文件名
 caption: 分配新文件名
-description: 使用SOLIDWORKS API，基于引用的绘图视图或自定义属性自动为文档分配新文件名的VBA宏
+---
+ 使用SOLIDWORKS API，基于引用的绘图视图或自定义属性自动为文档分配新文件名的VBA宏
 image: save-as-dialog.png
 labels: [新文件名,自动命名]
 group: Model

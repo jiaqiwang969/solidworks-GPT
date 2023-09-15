@@ -1,7 +1,8 @@
 ---
-title: 使用 SwEx.AddIn 向 SOLIDWORKS 命令管理器添加子菜单和间隔符
+title:  使用 SwEx.AddIn 向 SOLIDWORKS 命令管理器添加子菜单和间隔符
 caption: 子菜单和间隔符
-description: 使用 SwEx.AddIn 框架向 SOLIDWORKS 命令管理器添加子菜单、间隔符或命令选项卡框
+---
+ 使用 SwEx.AddIn 框架向 SOLIDWORKS 命令管理器添加子菜单、间隔符或命令选项卡框
 image: sub-menu-and-spacer.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0

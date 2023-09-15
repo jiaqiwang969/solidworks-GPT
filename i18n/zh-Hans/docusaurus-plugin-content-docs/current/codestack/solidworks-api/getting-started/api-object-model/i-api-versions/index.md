@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS API方法及接口中带有和不带有I的区别
+title:  SOLIDWORKS API方法及接口中带有和不带有I的区别
 caption: 方法和接口的I版本
-description: 解释了方法名和接口名中带有I开头（例如IModelDoc2 vs ModelDoc2）的区别
+---
+ 解释了方法名和接口名中带有I开头（例如IModelDoc2 vs ModelDoc2）的区别
 image: intellisense-events.png
 labels: [事件,I方法,I接口]
 ---

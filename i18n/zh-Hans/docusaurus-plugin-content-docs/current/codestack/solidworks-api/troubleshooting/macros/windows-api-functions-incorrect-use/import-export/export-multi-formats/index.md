@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 将SOLIDWORKS文件导出为多种格式的宏
+title:  将SOLIDWORKS文件导出为多种格式的宏
 caption: 导出到多种格式
-description: 将文件（或可选的所有配置或绘图页）导出为SOLIDWORKS支持的多种格式的VBA宏
+---
+ 将文件（或可选的所有配置或绘图页）导出为SOLIDWORKS支持的多种格式的VBA宏
 image: batch-export.svg
 labels: [导出]
 group: 导入/导出

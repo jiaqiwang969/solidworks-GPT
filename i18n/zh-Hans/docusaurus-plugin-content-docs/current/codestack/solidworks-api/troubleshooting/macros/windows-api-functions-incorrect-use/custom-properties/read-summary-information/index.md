@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API从文件中读取摘要信息
+title:  使用SOLIDWORKS API从文件中读取摘要信息
 caption: 读取摘要信息
-description: 使用SOLIDWORKS API从活动SOLIDWORKS文件中提取摘要信息（例如作者、关键字、注释、标题、创建信息等）的VBA宏
+---
+ 使用SOLIDWORKS API从活动SOLIDWORKS文件中提取摘要信息（例如作者、关键字、注释、标题、创建信息等）的VBA宏
 image: summary.png
 labels: [摘要信息,作者,注释,标题]
 ---

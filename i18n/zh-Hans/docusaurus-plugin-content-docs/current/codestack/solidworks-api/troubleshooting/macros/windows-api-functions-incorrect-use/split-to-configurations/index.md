@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: Splitting Cut List Bodies into Configurations
-title: Macro to Split SOLIDWORKS Cut List Bodies into Separate Configurations
-description: VBA macro to create separate configurations for all cut list bodies (or unique bodies) in the active SOLIDWORKS part document for generating drawings
+title:  Macro to Split SOLIDWORKS Cut List Bodies into Separate Configurations
+---
+ VBA macro to create separate configurations for all cut list bodies (or unique bodies) in the active SOLIDWORKS part document for generating drawings
 image: cut-list-to-configuration.svg
 group: Cut List
 ---

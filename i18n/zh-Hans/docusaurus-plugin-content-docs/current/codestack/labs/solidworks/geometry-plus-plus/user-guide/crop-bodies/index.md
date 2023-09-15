@@ -1,7 +1,8 @@
 ---
-title: 在Geometry++中的裁剪实体功能
+title:  在Geometry++中的裁剪实体功能
 caption: 裁剪实体
-description: 该功能允许使用草图或草图轮廓来裁剪SOLIDWORKS零件文档中的表面或实体或多个表面或实体
+---
+ 该功能允许使用草图或草图轮廓来裁剪SOLIDWORKS零件文档中的表面或实体或多个表面或实体
 image: icon.png
 toc-group-name: labs-solidworks-geometry-plus-plus
 redirect-from:

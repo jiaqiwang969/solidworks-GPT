@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 关闭除活动文档外的所有SOLIDWORKS文档
+title:  关闭除活动文档外的所有SOLIDWORKS文档
 caption: 关闭除活动文档外的所有文档
-description: 使用SOLIDWORKS API关闭除活动文档外的所有已打开文档
+---
+ 使用SOLIDWORKS API关闭除活动文档外的所有已打开文档
 image: close-all-but-active.svg
 labels: [关闭, 窗口]
 group: 框架

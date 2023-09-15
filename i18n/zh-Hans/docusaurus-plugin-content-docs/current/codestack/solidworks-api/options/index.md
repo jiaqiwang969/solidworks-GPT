@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API管理系统选项和用户首选项
+title:  使用SOLIDWORKS API管理系统选项和用户首选项
 caption: 选项
-description: 使用SOLIDWORKS API控制文档和应用程序级别的用户首选项和系统选项的文章和示例
+---
+ 使用SOLIDWORKS API控制文档和应用程序级别的用户首选项和系统选项的文章和示例
 image: solidworks-options.svg
 labels: [preferences, options]
 sidebar_position: 8

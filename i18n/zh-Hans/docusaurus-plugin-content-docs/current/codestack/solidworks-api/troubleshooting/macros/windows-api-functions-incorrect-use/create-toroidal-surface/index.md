@@ -1,7 +1,8 @@
 ---
-title: Creating a Temporary Sheet Body from a Toroidal Surface Using the SOLIDWORKS API
+title:  Creating a Temporary Sheet Body from a Toroidal Surface Using the SOLIDWORKS API
 caption: Creating a Temporary Sheet Body
-description: This example demonstrates how to create a sheet body from a toroidal surface using the SOLIDWORKS API.
+---
+ This example demonstrates how to create a sheet body from a toroidal surface using the SOLIDWORKS API.
 image: toroidal-surface.png
 labels: [Topology, Geometry, Body, Model, Cylinder]
 ---

@@ -1,7 +1,8 @@
 ---
-title: SwEx.AddIn Framework的安装和更新
+title:  SwEx.AddIn Framework的安装和更新
 caption: 安装和更新
-description: 有关在C#和VB.NET中开发SOLIDWORKS插件的SwEx.AddIn框架的安装和更新说明
+---
+ 有关在C#和VB.NET中开发SOLIDWORKS插件的SwEx.AddIn框架的安装和更新说明
 image: swex-nuget-package.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0

@@ -1,7 +1,8 @@
 ---
-title: 从独立应用程序或宏调用SOLIDWORKS插件的函数
+title:  从独立应用程序或宏调用SOLIDWORKS插件的函数
 caption: 调用插件函数
-description: 从独立应用程序或宏（启用插件自定义API）调用SOLIDWORKS插件的函数的示例和说明
+---
+ 从独立应用程序或宏（启用插件自定义API）调用SOLIDWORKS插件的函数的示例和说明
 labels: [插件API,调用]
 ---
 本节包含示例和说明如何为SOLIDWORKS插件创建API，以便可以从[宏](/docs/codestack/solidworks-api/getting-started/macros/)、[独立应用程序](/docs/codestack/solidworks-api/getting-started/stand-alone/)、[脚本](/docs/codestack/solidworks-api/getting-started/scripts/)或其他[插件](/docs/codestack/solidworks-api/getting-started/add-ins/)中调用其函数。

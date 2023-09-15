@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 宏以及复制SOLIDWORKS组件和复制图纸
+title:  宏以及复制SOLIDWORKS组件和复制图纸
 caption: 复制图纸
-description: VBA宏允许复制所选组件的独立副本，更新装配中的引用并复制相关图纸
+---
+ VBA宏允许复制所选组件的独立副本，更新装配中的引用并复制相关图纸
 image: make-independent-drawing.svg
 labels: [make independent,drawing,component]
 group: Assembly

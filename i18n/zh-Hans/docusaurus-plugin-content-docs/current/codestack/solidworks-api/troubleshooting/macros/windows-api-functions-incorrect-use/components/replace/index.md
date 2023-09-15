@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API替换组件并保留选择
+title:  使用SOLIDWORKS API替换组件并保留选择
 caption: 替换组件
-description: 该宏演示了如何使用SOLIDWORKS API替换批量选择的组件，并保留原始选择。
+---
+ 该宏演示了如何使用SOLIDWORKS API替换批量选择的组件，并保留原始选择。
 image: replace_components.png
 labels: [component, replace, selection]
 group: Assembly

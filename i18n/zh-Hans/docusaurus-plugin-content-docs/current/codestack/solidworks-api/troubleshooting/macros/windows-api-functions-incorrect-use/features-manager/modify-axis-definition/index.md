@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API修改轴特征的定义
+title:  使用SOLIDWORKS API修改轴特征的定义
 caption: 修改轴定义
-description: 使用SOLIDWORKS API更改轴特征选择的VBA宏示例
+---
+ 使用SOLIDWORKS API更改轴特征选择的VBA宏示例
 image: axis-definition.png
 labels: [axis,definition]
 ---

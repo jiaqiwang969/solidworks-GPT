@@ -1,7 +1,8 @@
 ---
 caption: 添加孔位标注
-title: 用于在SOLIDWORKS图纸视图中为孔添加水平和垂直的孔位标注的宏
-description: SOLIDWORKS VBA宏，用于为所选视图中的所有孔添加相对于左下顶点的水平和垂直孔位标注
+title:  用于在SOLIDWORKS图纸视图中为孔添加水平和垂直的孔位标注的宏
+---
+ SOLIDWORKS VBA宏，用于为所选视图中的所有孔添加相对于左下顶点的水平和垂直孔位标注
 image: ordinate-dimensions.png
 ---
 ![图纸视图中的孔位标注](ordinate-dimensions.png)

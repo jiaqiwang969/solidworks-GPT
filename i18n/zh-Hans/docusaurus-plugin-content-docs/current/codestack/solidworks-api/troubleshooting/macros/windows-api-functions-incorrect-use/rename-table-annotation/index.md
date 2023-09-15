@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API重命名表格注释的宏
+title:  使用SOLIDWORKS API重命名表格注释的宏
 caption: 重命名表格注释
-description: 该示例演示了如何使用SOLIDWORKS API通过[ITableAnnotation](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ITableAnnotation.html)接口重命名选定的表格。表格应该在图形区域中被选中（而不是在特征树中）。
+---
+ 该示例演示了如何使用SOLIDWORKS API通过[ITableAnnotation](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ITableAnnotation.html)接口重命名选定的表格。表格应该在图形区域中被选中（而不是在特征树中）。
 image: rename-table-annotation.png
 labels: [table, rename]
 ---

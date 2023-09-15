@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API显示活动模型中所有注释的文本
+title:  使用SOLIDWORKS API显示活动模型中所有注释的文本
 caption: 显示所有注释文本
-description: 使用SOLIDWORKS API显示活动文档中注释的VBA宏
+---
+ 使用SOLIDWORKS API显示活动文档中注释的VBA宏
 image: comments.png
 labels: [comment]
 group: Model

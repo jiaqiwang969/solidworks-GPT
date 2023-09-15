@@ -1,7 +1,8 @@
 ---
-title: How to Use SOLIDWORKS API Methods in Scripts
+title:  How to Use SOLIDWORKS API Methods in Scripts
 caption: Scripts
-description: This article provides examples and explanations for calling SOLIDWORKS API from different scripts, including vbScript, PowerShell, and JavaScript.
+---
+ This article provides examples and explanations for calling SOLIDWORKS API from different scripts, including vbScript, PowerShell, and JavaScript.
 labels: [scripts, html, JavaScript, PowerShell, cmd]
 sidebar_position: 5
 ---

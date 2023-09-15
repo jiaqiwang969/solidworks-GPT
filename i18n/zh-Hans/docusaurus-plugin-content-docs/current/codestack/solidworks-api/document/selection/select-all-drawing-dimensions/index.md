@@ -1,7 +1,9 @@
 ---
 caption: 选择所有绘图尺寸
-title: 宏以批处理模式选择SOLIDWORKS绘图活动工作表中的所有绘图视图的尺寸
-description: 此VBA宏演示了如何在SOLIDWORKS绘图活动工作表中查找所有绘图视图的尺寸。
+title:  宏以批处理模式选择SOLIDWORKS绘图活动工作表中的所有绘图视图的尺寸
+---
+
+此VBA宏演示了如何在SOLIDWORKS绘图活动工作表中查找所有绘图视图的尺寸。
 所有尺寸都以批处理模式进行选择。
 
 ![在绘图视图中选择所有尺寸](select-all-dimensions.png){ width=400 }

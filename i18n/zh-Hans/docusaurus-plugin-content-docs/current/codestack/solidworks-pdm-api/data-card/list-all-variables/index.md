@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS PDM API列出存储库中的所有变量
+title:  使用SOLIDWORKS PDM API列出存储库中的所有变量
 caption: 列出所有变量
-description: 使用SOLIDWORKS PDM API列出指定存储库中的所有变量的VBA宏
+---
+ 使用SOLIDWORKS PDM API列出指定存储库中的所有变量的VBA宏
 image: pdm-variables.png
 labels: [变量, 列表]
 ---

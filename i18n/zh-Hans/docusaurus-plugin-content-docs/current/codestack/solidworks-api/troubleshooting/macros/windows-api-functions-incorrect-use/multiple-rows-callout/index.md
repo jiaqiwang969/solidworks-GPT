@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API创建多行标注
+title:  使用SOLIDWORKS API创建多行标注
 caption: 创建多行标注
-description: 该示例演示了如何使用SOLIDWORKS API在选择对象时创建多行标注。
+---
+ 该示例演示了如何使用SOLIDWORKS API在选择对象时创建多行标注。
 image: sw-callout-spec.png
 labels: [装饰, 标注, 示例, 注意, solidworks api]
 redirect-from:

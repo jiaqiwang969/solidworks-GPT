@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: 收集参考文档
-title: 将所有装配体的参考文档收集到一个文件夹中的宏
-description: VBA宏，将所有参考输出文件（例如DXF、PDF）从所有文件夹中收集到一个文件夹中
+title:  将所有装配体的参考文档收集到一个文件夹中的宏
+---
+ VBA宏，将所有参考输出文件（例如DXF、PDF）从所有文件夹中收集到一个文件夹中
 image: collect-reference-documents.svg
 group: Assembly
 ---

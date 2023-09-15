@@ -1,7 +1,8 @@
 ---
-title: Visual Basic 算法集合
+title:  Visual Basic 算法集合
 caption: 算法
-description: 包含在 Visual Basic 中编写代码时常用的算法和函数的集合
+---
+ 包含在 Visual Basic 中编写代码时常用的算法和函数的集合
 sidebar_position: 0
 sitemap: true
 ---

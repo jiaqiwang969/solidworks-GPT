@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS宏以查找零件之间的几何差异
+title:  SOLIDWORKS宏以查找零件之间的几何差异
 caption: 零件几何差异
-description: 使用SOLIDWORKS API查找多体零件之间的几何差异的差异工具
+---
+ 使用SOLIDWORKS API查找多体零件之间的几何差异的差异工具
 image: part-bodies-diff.png
 labels: [geometry, transform, diff, compare]
 ---

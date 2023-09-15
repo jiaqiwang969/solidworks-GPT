@@ -1,7 +1,8 @@
 ---
-title: 如何创建SOLIDWORKS PDM Professional (EPDM)插件
+title:  如何创建SOLIDWORKS PDM Professional (EPDM)插件
 caption: 如何创建SOLIDWORKS PDM Professional插件
-description: 创建SOLIDWORKS PDM Professional（以前称为EPDM）的插件的详细指南
+---
+ 创建SOLIDWORKS PDM Professional（以前称为EPDM）的插件的详细指南
 image: new-addin.png
 labels: [article, com, epdm, example, IEdmAddIn5, pdm add-in, solidworks pdm api]
 redirect-from:

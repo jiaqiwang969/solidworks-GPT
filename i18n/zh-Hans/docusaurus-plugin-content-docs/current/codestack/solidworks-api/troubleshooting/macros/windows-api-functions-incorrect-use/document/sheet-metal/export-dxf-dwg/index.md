@@ -1,7 +1,8 @@
 ---
-title: Export flat pattern to DXF/DWG from part SOLIDWORKS API
+title:  Export flat pattern to DXF/DWG from part SOLIDWORKS API
 caption: Export Flat Pattern From Part
-description: Exports flat pattern to DXF or DWG from the sheet metal part document
+---
+ Exports flat pattern to DXF or DWG from the sheet metal part document
 image: export-dxf-dwg.png
 labels: [sheet metal, dxf, dwg, flat pattern]
 ---

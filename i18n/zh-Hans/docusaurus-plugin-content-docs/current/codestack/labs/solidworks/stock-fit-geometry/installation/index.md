@@ -1,7 +1,8 @@
 ---
-title: Stock Master插件的安装指南
+title:  Stock Master插件的安装指南
 caption: 安装指南
-description: Stock Master插件的安装指南，为SOLIDWORKS提供了额外的包装和库存功能
+---
+ Stock Master插件的安装指南，为SOLIDWORKS提供了额外的包装和库存功能
 toc-group-name: labs-solidworks-stock-master
 sidebar_position: 0
 ---

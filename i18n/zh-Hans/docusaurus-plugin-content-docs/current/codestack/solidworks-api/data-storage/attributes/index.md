@@ -1,7 +1,8 @@
 ---
-title: Using Attributes to Store Data and Make Selections in the SOLIDWORKS API
+title:  Using Attributes to Store Data and Make Selections in the SOLIDWORKS API
 caption: Attributes
-description: This article provides examples of using attributes (adding parameters, associating with objects)
+---
+ This article provides examples of using attributes (adding parameters, associating with objects)
 image: attributes.png
 labels: [tracking, attributes, selection, parameters]
 ---

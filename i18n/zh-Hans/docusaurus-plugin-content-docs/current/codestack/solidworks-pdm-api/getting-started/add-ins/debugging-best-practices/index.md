@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS PDM Add-In 调试 - 最佳实践
+title:  SOLIDWORKS PDM Add-In 调试 - 最佳实践
 caption: SOLIDWORKS PDM Add-In 调试 - 最佳实践
-description: SOLIDWORKS PDM Add-In 调试的详细指南。使用 Vault Browser 工具简化调试过程
+---
+ SOLIDWORKS PDM Add-In 调试的详细指南。使用 Vault Browser 工具简化调试过程
 image: debug-addin.png
 labels: [add-in, api, attach to process, debugging, epdm, example, notepad, pdm, solidworks pdm, visual studio]
 redirect-from:

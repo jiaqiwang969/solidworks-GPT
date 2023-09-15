@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API在绘图视图中插入BOM气球
+title:  使用SOLIDWORKS API在绘图视图中插入BOM气球
 caption: 插入BOM气球
-description: 使用SOLIDWORKS API在当前工作表的现有绘图视图中自动插入BOM气球的VBA宏
+---
+ 使用SOLIDWORKS API在当前工作表的现有绘图视图中自动插入BOM气球的VBA宏
 image: bom-balloons.png
 labels: [BOM, 气球]
 ---

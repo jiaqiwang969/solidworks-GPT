@@ -1,7 +1,8 @@
 ---
 caption: 条件
-title: Visual Basic 中的条件（if、select case、逻辑运算）
-description: 解释逻辑条件、if-else、select case 语句和布尔运算的文章
+title:  Visual Basic 中的条件（if、select case、逻辑运算）
+---
+ 解释逻辑条件、if-else、select case 语句和布尔运算的文章
 sidebar_position: 0
 ---
 条件是任何应用程序的重要部分，通常是驱动应用程序逻辑的部分。

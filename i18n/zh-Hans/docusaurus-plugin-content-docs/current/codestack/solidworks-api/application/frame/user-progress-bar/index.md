@@ -1,7 +1,8 @@
 ---
-title: Using Progress Bar to Handle Long Operations in SOLIDWORKS API
+title:  Using Progress Bar to Handle Long Operations in SOLIDWORKS API
 caption: User Progress Bar
-description: Using a user progress bar to display the progress of long operations in SOLIDWORKS API
+---
+ Using a user progress bar to display the progress of long operations in SOLIDWORKS API
 image: taskbar-progress.png
 labels: [progress,user progress bar,background]
 ---

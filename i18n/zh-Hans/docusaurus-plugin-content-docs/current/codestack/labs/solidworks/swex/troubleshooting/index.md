@@ -1,7 +1,8 @@
 ---
-title: 使用 SwEx 框架开发的 SOLIDWORKS 插件故障排除
+title:  使用 SwEx 框架开发的 SOLIDWORKS 插件故障排除
 caption: 故障排除
-description: SwEx 框架应用程序的故障排除技术
+---
+ SwEx 框架应用程序的故障排除技术
 image: debug-view-output.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0

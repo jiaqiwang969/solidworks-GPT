@@ -1,7 +1,8 @@
 ---
-title: 开发和自定义SOLIDWORKS PDM任务
+title:  开发和自定义SOLIDWORKS PDM任务
 caption: PDM任务
-description: 开发新的SOLIDWORKS PDM任务和自定义内置任务的示例和指南
+---
+ 开发新的SOLIDWORKS PDM任务和自定义内置任务的示例和指南
 labels: [任务,插件,PDM]
 sidebar_position: 0
 ---

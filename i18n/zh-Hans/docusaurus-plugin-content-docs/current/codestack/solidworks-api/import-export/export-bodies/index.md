@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 将选定的实体导出为外部格式的宏
+title:  将选定的实体导出为外部格式的宏
 caption: 导出选定的实体
-description: VBA宏，仅将选定的实体导出为外部格式（例如3D xml、xaml、amf、3mf）
+---
+ VBA宏，仅将选定的实体导出为外部格式（例如3D xml、xaml、amf、3mf）
 image: export-bodies.svg
 labels: [导出, 实体]
 group: 导入/导出

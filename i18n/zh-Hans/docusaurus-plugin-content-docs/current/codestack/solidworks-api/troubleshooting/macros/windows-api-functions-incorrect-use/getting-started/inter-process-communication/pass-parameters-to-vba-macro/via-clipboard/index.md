@@ -1,7 +1,8 @@
 ---
-title: 通过剪贴板将参数传递给SOLIDWORKS VBA宏
+title:  通过剪贴板将参数传递给SOLIDWORKS VBA宏
 caption: 通过剪贴板
-description: 从.NET应用程序或另一个宏通过剪贴板将自定义字符串参数传递给VBA宏
+---
+ 从.NET应用程序或另一个宏通过剪贴板将自定义字符串参数传递给VBA宏
 image: msg-box-macro-argument.png
 labels: [参数, 剪贴板, 示例, solidworks api]
 redirect-from:

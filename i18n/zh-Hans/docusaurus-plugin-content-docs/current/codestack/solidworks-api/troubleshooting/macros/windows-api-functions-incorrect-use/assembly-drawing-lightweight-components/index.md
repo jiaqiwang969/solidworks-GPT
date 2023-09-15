@@ -1,8 +1,9 @@
 ---
 layout: sw-macro-fix
-title: 修复在装配或绘图中使用轻量级组件的SOLIDWORKS宏问题
+title:  修复在装配或绘图中使用轻量级组件的SOLIDWORKS宏问题
 caption: 装配或绘图中的轻量级组件
-description: 修复宏在处理装配中的组件时出现的运行时错误'91' - 对象变量或With块变量未设置
+---
+ 修复宏在处理装配中的组件时出现的运行时错误'91' - 对象变量或With块变量未设置
 image: lightweight-component.png
 labels: [宏, 故障排除]
 redirect-from:

@@ -1,7 +1,8 @@
 ---
-title: 通过SOLIDWORKS API创建圆形模式的旋转变换
+title:  通过SOLIDWORKS API创建圆形模式的旋转变换
 caption: 根据圆形模式数据创建旋转变换
-description: 该示例通过读取所选圆形模式的变换，并通过应用与圆形模式中相同的变换来创建指定种子体的模式的临时预览。
+---
+ 该示例通过读取所选圆形模式的变换，并通过应用与圆形模式中相同的变换来创建指定种子体的模式的临时预览。
 image: circ-pattern-emulator.png
 labels: [角度, 轴, 圆形模式, 示例, 几何, 实例, 旋转, 变换]
 redirect-from:

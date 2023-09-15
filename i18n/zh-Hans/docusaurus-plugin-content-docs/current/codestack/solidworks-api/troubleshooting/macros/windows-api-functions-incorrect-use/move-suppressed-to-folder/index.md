@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API将被压制的约束移动到特征文件夹的宏
+title:  使用SOLIDWORKS API将被压制的约束移动到特征文件夹的宏
 caption: 将被压制的约束移动到文件夹
-description: 使用SOLIDWORKS API将装配中的被压制的约束移动到指定的特征管理器文件夹的VBA宏
+---
+ 使用SOLIDWORKS API将装配中的被压制的约束移动到指定的特征管理器文件夹的VBA宏
 image: move-mates-to-folder.png
 labels: [约束,被压制,移动,文件夹]
 group: 装配

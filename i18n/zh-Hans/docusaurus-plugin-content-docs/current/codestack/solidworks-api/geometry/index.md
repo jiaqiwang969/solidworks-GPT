@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API处理几何图形（IModeler）
+title:  使用SOLIDWORKS API处理几何图形（IModeler）
 caption: 几何图形
-description: 包含与SOLIDWORKS模型几何拓扑相关的示例和文章的集合。
+---
+ 包含与SOLIDWORKS模型几何拓扑相关的示例和文章的集合。
 image: solidworks-geometry-api.png
 sidebar_position: 0
 ---

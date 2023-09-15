@@ -1,6 +1,7 @@
 ---
-title: 射线交点
-description: 在SOLIDWORKS模型中使用射线找到交点和拓扑实体的VBA宏示例
+title:  射线交点
+---
+ 在SOLIDWORKS模型中使用射线找到交点和拓扑实体的VBA宏示例
 image: ray-intersection-entities.png
 ---
 

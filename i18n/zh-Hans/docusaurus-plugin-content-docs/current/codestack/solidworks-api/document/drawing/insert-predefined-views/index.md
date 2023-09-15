@@ -1,7 +1,8 @@
 ---
-标题：插入预定义视图
-描述：VBA宏允许将SOLIDWORKS模型插入活动绘图文档的所有或选定的预定义视图中
-图片：predefined-views.png
+title: 插入预定义视图
+---
+ VBA宏允许将SOLIDWORKS模型插入活动绘图文档的所有或选定的预定义视图中
+image: predefined-views.png
 ---
 
 ![SOLIDWORKS预定义视图](predefined-views.png){ width = 400 }

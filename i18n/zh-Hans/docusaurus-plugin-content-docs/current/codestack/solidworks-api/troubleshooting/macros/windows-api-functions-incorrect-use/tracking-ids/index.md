@@ -1,7 +1,8 @@
 ---
-title: 在SOLIDWORKS API中使用跟踪ID跟踪实体
+title:  在SOLIDWORKS API中使用跟踪ID跟踪实体
 caption: 跟踪ID
-description: 本示例演示了在运行合并实体操作时使用跟踪ID在面上的使用。
+---
+ 本示例演示了在运行合并实体操作时使用跟踪ID在面上的使用。
 image: select-bodies-faces.png
 labels: [tracking id, merge]
 ---

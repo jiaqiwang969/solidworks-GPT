@@ -1,7 +1,8 @@
 ---
-title: 如何使用SOLIDWORKS API创建独立的（exe）应用程序
+title:  如何使用SOLIDWORKS API创建独立的（exe）应用程序
 caption: 独立应用程序
-description: 使用COM兼容的编程语言连接到SOLIDWORKS实例的两种方法
+---
+ 使用COM兼容的编程语言连接到SOLIDWORKS实例的两种方法
 image: reg-edit-clsid_prog_id.png
 labels: [article, clsid, instance, out-of-process, progid, rot, sdk, solidworks api, stand-alone]
 redirect-from:

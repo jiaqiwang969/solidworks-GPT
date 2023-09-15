@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API向模型图形视图添加图形元素
+title:  使用SOLIDWORKS API向模型图形视图添加图形元素
 caption: 装饰
-description: 一系列文章和代码示例，解释了使用API自定义SOLIDWORKS模型和应用程序框架视图的不同方法（标注、OpenGL图形等）
+---
+ 一系列文章和代码示例，解释了使用API自定义SOLIDWORKS模型和应用程序框架视图的不同方法（标注、OpenGL图形等）
 image: adornment-api.png
 sidebar_position: 6
 ---

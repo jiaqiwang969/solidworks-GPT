@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API将自定义属性修订保存到第三方存储库
+title:  使用SOLIDWORKS API将自定义属性修订保存到第三方存储库
 caption: 保存自定义属性修订
-description: 使用SOLIDWORKS API将自定义属性修订（快照）保存到文档的第三方存储库
+---
+ 使用SOLIDWORKS API将自定义属性修订（快照）保存到文档的第三方存储库
 image: properties-snapshots-data.png
 labels: [存储,第三方,自定义属性]
 ---

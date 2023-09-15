@@ -1,7 +1,8 @@
 ---
-title: VBA macro to review SOLIDWORKS sheets and configurations
+title:  VBA macro to review SOLIDWORKS sheets and configurations
 caption: Configurations And Sheets Reviewer
-description: VBA macro which iterates all sheets and configurations of SOLIDWORKS file and activates each one by one
+---
+ VBA macro which iterates all sheets and configurations of SOLIDWORKS file and activates each one by one
 image: configurations-reviewer.svg
 labels: [configuration,sheet,review,iterate]
 ---

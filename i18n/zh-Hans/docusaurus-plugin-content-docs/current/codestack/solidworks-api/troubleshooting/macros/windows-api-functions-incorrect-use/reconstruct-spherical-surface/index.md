@@ -1,7 +1,8 @@
 ---
-title: 使用 SOLIDWORKS 模型 API 重建球面的宏
+title:  使用 SOLIDWORKS 模型 API 重建球面的宏
 caption: 重建球面
-description: 该示例演示了如何使用 SOLIDWORKS API 在 C# 中从选择的球面创建球面（360度）。
+---
+ 该示例演示了如何使用 SOLIDWORKS API 在 C# 中从选择的球面创建球面（360度）。
 image: reconstructed-sphere.png
 labels: [curve, sphere, c#]
 ---

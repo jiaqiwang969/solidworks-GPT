@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: Delete rolled back features
-title: Macro to delete all features which are in the rolled back state in SOLIDWORKS document
-description: VBA macro finds and deletes all features below the rollback bar
+title:  Macro to delete all features which are in the rolled back state in SOLIDWORKS document
+---
+ VBA macro finds and deletes all features below the rollback bar
 image: rollback-feature.svg
 group: Model
 ---

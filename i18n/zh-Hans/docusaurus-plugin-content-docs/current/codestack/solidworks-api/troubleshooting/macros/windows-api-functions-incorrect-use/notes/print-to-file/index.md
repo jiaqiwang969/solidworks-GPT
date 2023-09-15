@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Macro to print all notes to the text file from SOLIDWORKS drawing
+title:  Macro to print all notes to the text file from SOLIDWORKS drawing
 caption: Print Notes Text To File
-description: VBA macro to output all notes text to the text file from the SOLIDWORKS drawing file
+---
+ VBA macro to output all notes text to the text file from the SOLIDWORKS drawing file
 image: print-notes.svg
 labels: [note, print, regular expression, regex]
 group: Drawing

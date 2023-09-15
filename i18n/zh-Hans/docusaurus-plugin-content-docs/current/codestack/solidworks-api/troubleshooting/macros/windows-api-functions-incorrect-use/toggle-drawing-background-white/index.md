@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title:  VBA macro to toggle white background in drawings
+title:   VBA macro to toggle white background in drawings
 caption: Toggle white drawing background
-description: VBA macro to toggle a white background with another color of your choice in drawings using system settings
+---
+ VBA macro to toggle a white background with another color of your choice in drawings using system settings
 image: ToggleWhiteBackground-icon.svg
 labels: [Drawings, options, background, capture]
 group: Options 

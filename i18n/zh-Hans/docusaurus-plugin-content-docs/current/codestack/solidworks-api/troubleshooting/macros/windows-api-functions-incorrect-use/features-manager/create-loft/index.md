@@ -1,7 +1,8 @@
 ---
-标题：通过 SOLIDWORKS API 创建通过选定的草图或曲线创建放样特征
-描述：使用 SOLIDWORKS API 创建通过选定的草图或曲线特征创建实体放样特征的 VBA 宏
-图片：loft-feature-through-curves.png
+title: 通过 SOLIDWORKS API 创建通过选定的草图或曲线创建放样特征
+---
+ 使用 SOLIDWORKS API 创建通过选定的草图或曲线特征创建实体放样特征的 VBA 宏
+image: loft-feature-through-curves.png
 ---
 
 ![通过曲线创建放样特征](loft-feature-through-curves.png){ width=400 }

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 用于配置模型尺寸的宏特征
+title:  用于配置模型尺寸的宏特征
 caption: 模型配置器
-description: 使用自定义用户表单通过VBA宏特征配置模型尺寸的VBA宏
+---
+ 使用自定义用户表单通过VBA宏特征配置模型尺寸的VBA宏
 image: part-configurator.svg
 labels: [配置, 宏特征, 尺寸]
 group: 模型

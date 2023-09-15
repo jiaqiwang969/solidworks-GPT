@@ -1,7 +1,8 @@
 ---
-title: Interprocess Communication Between SOLIDWORKS Applications
+title:  Interprocess Communication Between SOLIDWORKS Applications
 caption: Interprocess Communication
-description: Methods for performing interprocess communication between SOLIDWORKS applications (macros, add-ins, standalone applications)
+---
+ Methods for performing interprocess communication between SOLIDWORKS applications (macros, add-ins, standalone applications)
 labels: [communication, parameters]
 ---
 This section describes methods for performing interprocess communication between applications developed for SOLIDWORKS. Communication involves passing custom parameters or signals between different modules, namely macros, add-ins, and standalone applications.

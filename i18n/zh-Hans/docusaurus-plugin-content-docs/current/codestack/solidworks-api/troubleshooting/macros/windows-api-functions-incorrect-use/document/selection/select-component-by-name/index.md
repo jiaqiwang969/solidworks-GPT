@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API通过名称在特征树中选择组件
+title:  使用SOLIDWORKS API通过名称在特征树中选择组件
 caption: 按名称选择组件
-description: 该示例演示了如何使用SOLIDWORKS API通过组件的完整名称在装配体的特征管理器树中选择组件。
+---
+ 该示例演示了如何使用SOLIDWORKS API通过组件的完整名称在装配体的特征管理器树中选择组件。
 image: components-tree.png
 labels: [select, component]
 ---

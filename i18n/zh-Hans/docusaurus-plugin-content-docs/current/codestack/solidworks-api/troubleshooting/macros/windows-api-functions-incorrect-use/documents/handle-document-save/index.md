@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API在文档保存时自动运行VBA宏
+title:  使用SOLIDWORKS API在文档保存时自动运行VBA宏
 caption: 在文档保存时运行宏
-description: 使用SOLIDWORKS API，在文件保存时自动运行VBA代码（或其他宏）
+---
+ 使用SOLIDWORKS API，在文件保存时自动运行VBA代码（或其他宏）
 image: run-macro-on-save.svg
 labels: [自动运行,模型保存事件]
 group: 模型

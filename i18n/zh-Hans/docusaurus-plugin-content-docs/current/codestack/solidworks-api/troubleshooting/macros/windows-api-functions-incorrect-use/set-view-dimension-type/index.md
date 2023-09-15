@@ -1,7 +1,8 @@
 ---
-标题：设置视图尺寸类型
-描述：用于在活动SOLIDWORKS绘图中设置所有视图的尺寸类型（投影或真实）的VBA宏
-图片：view-dimension-type.png
+title: 设置视图尺寸类型
+---
+ 用于在活动SOLIDWORKS绘图中设置所有视图的尺寸类型（投影或真实）的VBA宏
+image: view-dimension-type.png
 ---
 
 ![视图尺寸类型](view-dimension-type.png)

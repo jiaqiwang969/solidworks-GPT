@@ -1,7 +1,8 @@
 ---
 caption: Insert BOM Table
-title: Macro to insert SOLIDWORKS Bill Of Materials table and attach to the anchor point
-description: SOLIDWORKS VBA macro to insert Bill Of Materials (BOM) table into active or all sheets with the specified parameters and attach to the anchor point
+title:  Macro to insert SOLIDWORKS Bill Of Materials table and attach to the anchor point
+---
+ SOLIDWORKS VBA macro to insert Bill Of Materials (BOM) table into active or all sheets with the specified parameters and attach to the anchor point
 image: bom-table-anchor.png
 ---
 ![BOM table attached to anchor point](bom-table-anchor.png){ width=600 }

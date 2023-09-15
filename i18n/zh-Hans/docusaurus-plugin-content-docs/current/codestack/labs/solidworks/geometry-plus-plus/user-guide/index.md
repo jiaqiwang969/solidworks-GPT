@@ -1,7 +1,8 @@
 ---
-title: '用户指南：SOLIDWORKS的Geometry++插件'
+title:  '用户指南：SOLIDWORKS的Geometry++插件'
 caption: 用户指南
-description: SOLIDWORKS的Geometry++插件的附加几何命令的使用说明
+---
+ SOLIDWORKS的Geometry++插件的附加几何命令的使用说明
 toc-group-name: labs-solidworks-geometry-plus-plus
 sidebar_position: 0
 ---

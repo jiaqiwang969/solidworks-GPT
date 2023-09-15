@@ -1,7 +1,8 @@
 ---
-title: 使用 SOLIDWORKS PDM API 在文档库中处理文件
+title:  使用 SOLIDWORKS PDM API 在文档库中处理文件
 caption: 文件
-description: 收集有关使用 PDM Professional API 在文档库中处理文件的示例和文章
+---
+ 收集有关使用 PDM Professional API 在文档库中处理文件的示例和文章
 labels: [pdm, file]
 sidebar_position: 0
 ---

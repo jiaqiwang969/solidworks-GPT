@@ -1,7 +1,8 @@
 ---
-title: 使用SwEx框架针对多个SOLIDWORKS版本
+title:  使用SwEx框架针对多个SOLIDWORKS版本
 caption: 针对多个版本
-description: 如何使用SwEx框架在同一代码库中针对多个SOLIDWORKS版本
+---
+ 如何使用SwEx框架在同一代码库中针对多个SOLIDWORKS版本
 image: get6-api-availability.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0

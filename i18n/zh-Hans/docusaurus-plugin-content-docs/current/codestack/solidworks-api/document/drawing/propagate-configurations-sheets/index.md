@@ -1,7 +1,8 @@
 ---
-标题：将配置传播到SOLIDWORKS图纸中的工作表
-描述：VBA宏将复制活动工作表并将引用文档的配置设置到每个副本上
-图片：sheets.png
+title: 将配置传播到SOLIDWORKS图纸中的工作表
+---
+ VBA宏将复制活动工作表并将引用文档的配置设置到每个副本上
+image: sheets.png
 ---
 
 ![具有多个工作表的图纸](sheets.png){ width=800 }

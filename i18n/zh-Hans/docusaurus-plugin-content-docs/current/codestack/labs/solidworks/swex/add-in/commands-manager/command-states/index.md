@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS命令的自定义启用状态
+title:  SOLIDWORKS命令的自定义启用状态
 caption: 自定义启用命令状态
-description: 使用SwEx框架解释了如何使用SOLIDWORKS命令的自定义启用状态
+---
+ 使用SwEx框架解释了如何使用SOLIDWORKS命令的自定义启用状态
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

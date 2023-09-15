@@ -1,7 +1,8 @@
 ---
-title: Writing Summary Information to Active Files Using the SOLIDWORKS API
+title:  Writing Summary Information to Active Files Using the SOLIDWORKS API
 caption: Writing Summary Information
-description: Use a VBA macro with the SOLIDWORKS API to populate summary information (Author, Keywords, Comments, Title, Subject) for active SOLIDWORKS files.
+---
+ Use a VBA macro with the SOLIDWORKS API to populate summary information (Author, Keywords, Comments, Title, Subject) for active SOLIDWORKS files.
 image: summary.png
 labels: [Summary Information, Writing Summary]
 ---

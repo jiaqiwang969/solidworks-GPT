@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API将米转换为分数英寸
+title:  使用SOLIDWORKS API将米转换为分数英寸
 caption: 将米转换为分数英寸
-description: 使用SOLIDWORKS API将系统单位（米）中的值转换为指定分母的分数英寸的VBA宏
+---
+ 使用SOLIDWORKS API将系统单位（米）中的值转换为指定分母的分数英寸的VBA宏
 image: dimension-fractions.png
 labels: [英寸, 分数, 转换, 单位]
 ---

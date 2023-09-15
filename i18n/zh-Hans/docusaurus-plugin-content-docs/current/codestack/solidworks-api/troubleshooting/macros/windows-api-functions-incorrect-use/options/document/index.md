@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API管理文档的用户首选项
+title:  使用SOLIDWORKS API管理文档的用户首选项
 caption: 文档选项
-description: 本文档集合了一些示例和文章，演示了如何使用SOLIDWORKS API来控制文档选项（用户首选项）
+---
+ 本文档集合了一些示例和文章，演示了如何使用SOLIDWORKS API来控制文档选项（用户首选项）
 labels: [document, preferences, options]
 ---
 要管理SOLIDWORKS零件、装配体或绘图的用户首选项（选项），需要使用以下SOLIDWORKS API之一：

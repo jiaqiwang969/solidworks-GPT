@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 从SOLIDWORKS图纸中导出单独的工作表到PDF
+title:  从SOLIDWORKS图纸中导出单独的工作表到PDF
 caption: 导出工作表到PDF
-description: 用于将多工作表图纸中的所有工作表（或选定的工作表）导出为单独的PDF文件的VBA宏
+---
+ 用于将多工作表图纸中的所有工作表（或选定的工作表）导出为单独的PDF文件的VBA宏
 image: exports-sheets-pdf.svg
 labels: [工作表, PDF, 图纸, 导出]
 group: 导入/导出

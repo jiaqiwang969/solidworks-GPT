@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API将零件或选定的组件导出为STL
+title:  使用SOLIDWORKS API将零件或选定的组件导出为STL
 caption: 导出零件或组件为STL
-description: 该宏使用SOLIDWORKS API将活动零件或选定的组件导出为STL格式。该宏还适用于加载轻量级组件。
+---
+ 该宏使用SOLIDWORKS API将活动零件或选定的组件导出为STL格式。该宏还适用于加载轻量级组件。
 image: stl-component.svg
 labels: [组件, 导出, stl]
 group: 导入/导出

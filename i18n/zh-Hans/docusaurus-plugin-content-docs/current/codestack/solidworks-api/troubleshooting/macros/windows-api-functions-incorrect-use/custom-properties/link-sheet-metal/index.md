@@ -1,7 +1,8 @@
 ---
 caption: Link to Sheet Metal Cut-List Properties
-title: Macro to Link Sheet Metal Cut-List Properties to SOLIDWORKS Part Custom Properties
-description: VBA macro to add a permanent link (expression) between specified cut-list custom properties of a sheet metal part and custom properties of a SOLIDWORKS file. Optional fallback value is available.
+title:  Macro to Link Sheet Metal Cut-List Properties to SOLIDWORKS Part Custom Properties
+---
+ VBA macro to add a permanent link (expression) between specified cut-list custom properties of a sheet metal part and custom properties of a SOLIDWORKS file. Optional fallback value is available.
 image: linked-sheet-metal-cut-list-properties.png
 ---
 ![Linked Sheet Metal Cut-List Properties](linked-sheet-metal-cut-list-properties.png){ width=800 }

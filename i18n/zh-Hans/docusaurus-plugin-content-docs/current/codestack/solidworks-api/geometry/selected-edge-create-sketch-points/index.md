@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API在选定边上创建草图点
+title:  使用SOLIDWORKS API在选定边上创建草图点
 caption: 在选定边上创建草图点
-description: 该宏使用SOLIDWORKS API在3D草图中的选定边上创建指定数量的草图点。
+---
+ 该宏使用SOLIDWORKS API在3D草图中的选定边上创建指定数量的草图点。
 image: sketch-points-edge.png
 labels: [曲线, 评估, 几何, 宏, 点, SOLIDWORKS API, 样条曲线, 实用工具, VBA]
 redirect-from:

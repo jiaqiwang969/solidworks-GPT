@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API在坐标系之间添加约束
+title:  使用SOLIDWORKS API在坐标系之间添加约束
 caption: 在坐标系之间添加约束
-description: 该宏在两个选定组件的两个坐标系之间添加了一个重合约束
+---
+ 该宏在两个选定组件的两个坐标系之间添加了一个重合约束
 image: sw-mate-coincident.png
 labels: [装配体, 零件, 坐标系, 示例, 约束, solidworks api]
 redirect-from:

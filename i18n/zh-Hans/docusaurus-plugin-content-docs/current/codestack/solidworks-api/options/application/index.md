@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API管理系统选项（应用程序级别）
+title:  使用SOLIDWORKS API管理系统选项（应用程序级别）
 caption: 应用程序选项
-description: 本文档包含一系列文章和示例，演示如何使用SOLIDWORKS API控制应用程序（系统）选项（用户首选项）
+---
+ 本文档包含一系列文章和示例，演示如何使用SOLIDWORKS API控制应用程序（系统）选项（用户首选项）
 labels: [文档, 首选项, 选项]
 ---
 系统或应用程序级别选项是在SOLIDWORKS选项对话框中可用的设置。可以使用以下SOLIDWORKS API来控制这些值：

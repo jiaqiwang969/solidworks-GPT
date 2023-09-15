@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Find the where used assemblies of the selected component using SOLIDWORKS API
+title:  Find the where used assemblies of the selected component using SOLIDWORKS API
 caption: Find Where Used
-description: VBA macro to find the assemblies within active assembly which are using the selected component using SOLIDWORKS API
+---
+ VBA macro to find the assemblies within active assembly which are using the selected component using SOLIDWORKS API
 image: where-used-form.png
 labels: [where used,parent,component]
 group: Assembly

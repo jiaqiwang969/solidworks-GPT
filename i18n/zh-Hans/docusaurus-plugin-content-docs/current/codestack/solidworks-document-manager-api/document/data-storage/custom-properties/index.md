@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS文档管理器API管理文件的自定义属性
+title:  使用SOLIDWORKS文档管理器API管理文件的自定义属性
 caption: 自定义属性
-description: 使用SOLIDWORKS文档管理器API添加、删除、修改和读取文件的自定义属性（可见和不可见）
+---
+ 使用SOLIDWORKS文档管理器API添加、删除、修改和读取文件的自定义属性（可见和不可见）
 labels: [自定义属性]
 ---
 SOLIDWORKS文档管理器API提供了一套全面的函数来管理（添加、删除、修改和读取）SOLIDWORKS文件中的自定义属性。

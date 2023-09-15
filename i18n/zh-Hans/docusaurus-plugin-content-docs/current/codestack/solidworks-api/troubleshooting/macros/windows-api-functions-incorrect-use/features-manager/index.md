@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API自动化特征管理树
+title:  使用SOLIDWORKS API自动化特征管理树
 caption: 特征管理器
-description: 通过SOLIDWORKS API自动化特征创建的指南集合
+---
+ 通过SOLIDWORKS API自动化特征创建的指南集合
 sidebar_position: 4
 image: feature-manager-api.png
 ---

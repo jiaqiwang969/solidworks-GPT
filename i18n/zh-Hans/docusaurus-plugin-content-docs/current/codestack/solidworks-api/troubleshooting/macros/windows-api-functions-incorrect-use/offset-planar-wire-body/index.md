@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API偏移平面曲线（线体）
+title:  使用SOLIDWORKS API偏移平面曲线（线体）
 caption: 偏移平面线体
-description: 使用SOLIDWORKS API偏移平面曲线（线体）并显示偏移预览的VBA宏示例
+---
+ 使用SOLIDWORKS API偏移平面曲线（线体）并显示偏移预览的VBA宏示例
 image: offset-wire-body.png
 labels: [body,wire,offset]
 ---

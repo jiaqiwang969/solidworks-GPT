@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 从SOLIDWORKS零件或装配组件导出展开图案
+title:  从SOLIDWORKS零件或装配组件导出展开图案
 caption: 从零件或装配组件导出展开图案
-description: 从活动装配或活动零件中导出所有组件的展开图案的VBA宏
+---
+ 从活动装配或活动零件中导出所有组件的展开图案的VBA宏
 image: assembly-flat-pattern.svg
 labels: [用途,父级,组件]
 group: 导入/导出

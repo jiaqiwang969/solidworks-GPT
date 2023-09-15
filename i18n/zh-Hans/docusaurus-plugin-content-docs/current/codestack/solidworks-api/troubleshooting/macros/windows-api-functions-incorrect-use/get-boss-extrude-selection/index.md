@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API从Boss-Extrude特征中提取选择
+title:  使用SOLIDWORKS API从Boss-Extrude特征中提取选择
 caption: 从Boss-Extrude特征中提取选择
-description: 使用SOLIDWORKS API，这是一个C# VSTA宏，用于从所选的Boss-Extrude特征中提取有关From Entity、End Condition和Direction选择框中指定的选择实体的信息。
+---
+ 使用SOLIDWORKS API，这是一个C# VSTA宏，用于从所选的Boss-Extrude特征中提取有关From Entity、End Condition和Direction选择框中指定的选择实体的信息。
 image: boss-extrude-property-page.png
 labels: [selection,boss-extrude]
 ---

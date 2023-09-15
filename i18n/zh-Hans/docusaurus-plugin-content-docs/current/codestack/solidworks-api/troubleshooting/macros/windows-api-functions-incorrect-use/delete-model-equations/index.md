@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API从SOLIDWORKS模型中删除所有方程
+title:  使用SOLIDWORKS API从SOLIDWORKS模型中删除所有方程
 caption: 删除所有方程
-description: 该宏可使用SOLIDWORKS API从活动模型（零件或装配）中删除所有方程（或仅删除破损的方程）。
+---
+ 该宏可使用SOLIDWORKS API从活动模型（零件或装配）中删除所有方程（或仅删除破损的方程）。
 image: deleted-equations.svg
 labels: [api, 清理, 删除方程, 方程, 宏, 实用工具, vba]
 group: 模型

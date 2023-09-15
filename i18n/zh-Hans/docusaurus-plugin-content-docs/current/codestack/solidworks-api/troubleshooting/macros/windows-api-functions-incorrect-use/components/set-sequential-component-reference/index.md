@@ -1,7 +1,8 @@
 ---
 caption: 设置顺序组件引用
-title: 自动按顺序为SOLIDWORKS组件引用分配编号的宏
-description: VBA宏根据种子编号自动递增并按顺序为选定的组件分配组件引用
+title:  自动按顺序为SOLIDWORKS组件引用分配编号的宏
+---
+ VBA宏根据种子编号自动递增并按顺序为选定的组件分配组件引用
 image: component-reference.png
 ---
 ![组件引用](component-reference.png){ width=600 }

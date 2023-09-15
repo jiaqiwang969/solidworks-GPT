@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Replace components preserving selection using SOLIDWORKS API
+title:  Replace components preserving selection using SOLIDWORKS API
 caption: Replace Components
-description: Macro demonstrates how to replace selected components in the batch preserving original selections using SOLIDWORKS API
+---
+ Macro demonstrates how to replace selected components in the batch preserving original selections using SOLIDWORKS API
 image: replace_components.png
 labels: [component, replace, selection]
 group: Assembly

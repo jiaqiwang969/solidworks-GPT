@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API暂停图形更新的宏
+title:  使用SOLIDWORKS API暂停图形更新的宏
 caption: 暂停图形更新
-description: 该示例演示了如何在使用SOLIDWORKS API执行操作时禁止图形更新。
+---
+ 该示例演示了如何在使用SOLIDWORKS API执行操作时禁止图形更新。
 labels: [api, graphics, utility, suspend, performance]
 ---
 

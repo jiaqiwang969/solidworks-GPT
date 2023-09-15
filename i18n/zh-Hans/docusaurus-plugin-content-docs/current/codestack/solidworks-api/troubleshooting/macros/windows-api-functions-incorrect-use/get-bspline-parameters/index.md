@@ -1,7 +1,8 @@
 ---
-title: 使用 SOLIDWORKS API 从选定的边获取 B-Spline 参数
+title:  使用 SOLIDWORKS API 从选定的边获取 B-Spline 参数
 caption: 获取 B-Spline 参数
-description: 使用 SOLIDWORKS API 从图形视图中选定的边获取 B-Spline 曲线的参数（维度、阶数、周期性、控制点和节点）。
+---
+ 使用 SOLIDWORKS API 从图形视图中选定的边获取 B-Spline 曲线的参数（维度、阶数、周期性、控制点和节点）。
 image: selected-bspline-edge.png
 labels: [bspline, parameters, modeler, edge]
 ---

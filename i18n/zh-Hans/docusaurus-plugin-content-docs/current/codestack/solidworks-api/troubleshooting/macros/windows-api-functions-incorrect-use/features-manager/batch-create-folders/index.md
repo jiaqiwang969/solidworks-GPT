@@ -1,7 +1,8 @@
 ---
 caption: 批量创建文件夹
-title: 在活动的SOLIDWORKS文档中批量创建特征文件夹
-description: VBA宏在活动的SOLIDWORKS零件或装配中创建指定数量的带有指定前缀名称的特征文件夹
+title:  在活动的SOLIDWORKS文档中批量创建特征文件夹
+---
+ VBA宏在活动的SOLIDWORKS零件或装配中创建指定数量的带有指定前缀名称的特征文件夹
 ---
 
 这个VBA宏允许在活动的SOLIDWORKS装配或零件文档中批量创建特征文件夹。

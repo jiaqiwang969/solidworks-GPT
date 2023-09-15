@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: 打印
-title: 用于打印SOLIDWORKS文档的宏
-description: 使用指定的设置（打印机名称、打印范围、方向、纸张大小和比例）打印SOLIDWORKS文档的VBA宏
+title:  用于打印SOLIDWORKS文档的宏
+---
+ 使用指定的设置（打印机名称、打印范围、方向、纸张大小和比例）打印SOLIDWORKS文档的VBA宏
 image: printer.svg
 group: Model
 ---

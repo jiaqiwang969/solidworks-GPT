@@ -1,7 +1,8 @@
 ---
-title: Visual Basic (VBA) 中的枚举
+title:  Visual Basic (VBA) 中的枚举
 caption: 枚举
-description: Visual Basic 中枚举数据类型（预定义长整型常量的集合）的介绍
+---
+ Visual Basic 中枚举数据类型（预定义长整型常量的集合）的介绍
 image: enum-icon-intellisense.png
 ---
 ![IntelliSense 中的枚举类型](enum-icon-intellisense.png){ width=350 }

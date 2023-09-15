@@ -1,7 +1,8 @@
 ---
-title: Visual Basic（VBA）编程
+title:  Visual Basic（VBA）编程
 caption: Visual Basic
-description: 包含使用Visual Basic编程语言的教程和示例的集合
+---
+ 包含使用Visual Basic编程语言的教程和示例的集合
 image: visual-basic.png
 sidebar_position: 0
 ---

@@ -1,8 +1,9 @@
 ---
 layout: sw-pdm-addin-fix
-title: 修复“请选择至少一个实现IEdmAddIn5接口的DLL”错误
+title:  修复“请选择至少一个实现IEdmAddIn5接口的DLL”错误
 caption: 请选择至少一个实现IEdmAddIn5接口的DLL
-description: 当注册SOLIDWORKS PDM插件时出现“请选择至少一个实现IEdmAddIn5接口的DLL”错误的故障排除方法
+---
+ 当注册SOLIDWORKS PDM插件时出现“请选择至少一个实现IEdmAddIn5接口的DLL”错误的故障排除方法
 image: no-addin-dll.png
 labels: [pdm插件, 错误]
 ---

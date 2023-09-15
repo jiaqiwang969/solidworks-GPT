@@ -1,7 +1,8 @@
 ---
-title: 装配中的组件变换
+title:  装配中的组件变换
 caption: SOLIDWORKS API中的装配组件变换用法
-description: 本示例说明了装配中组件的旋转和平移变换
+---
+ 本示例说明了装配中组件的旋转和平移变换
 image: comp-translation.png
 labels: [acos, 角度, 组件, 示例, 方向, 点, 位置, 旋转, solidworks api, 变换, 平移, 向量]
 redirect-from:

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API将文件路径复制到装配组件的所有图纸的宏
+title:  使用SOLIDWORKS API将文件路径复制到装配组件的所有图纸的宏
 caption: 复制所有装配组件图纸的文件路径
-description: 使用SOLIDWORKS API，这个VBA宏可以找到活动装配的所有组件的引用图纸路径，并将其复制到剪贴板中。
+---
+ 使用SOLIDWORKS API，这个VBA宏可以找到活动装配的所有组件的引用图纸路径，并将其复制到剪贴板中。
 image: assembly-drawings.png
 labels: [图纸,复制路径,引用]
 group: 图纸

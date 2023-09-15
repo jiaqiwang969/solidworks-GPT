@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API创建可选择的3D边界框草图
+title:  使用SOLIDWORKS API创建可选择的3D边界框草图
 caption: 创建可选择的边界框
-description: 使用VBA宏基于SOLIDWORKS边界框创建3D边界框草图，并能够选择草图线段
+---
+ 使用VBA宏基于SOLIDWORKS边界框创建3D边界框草图，并能够选择草图线段
 image: bounding-box.svg
 labels: [边界框]
 group: 几何

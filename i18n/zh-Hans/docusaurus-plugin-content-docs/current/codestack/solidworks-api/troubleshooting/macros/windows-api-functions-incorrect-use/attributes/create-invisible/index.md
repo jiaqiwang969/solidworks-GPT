@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API创建不可见属性
+title:  使用SOLIDWORKS API创建不可见属性
 caption: 创建不可见属性
-description: 该示例创建一个不可见属性并将其附加到所选对象（实体或组件）。
+---
+ 该示例创建一个不可见属性并将其附加到所选对象（实体或组件）。
 image: sw-attribute-features-tree.png
 labels: [属性, 数据, 示例]
 redirect-from:

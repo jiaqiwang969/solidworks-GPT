@@ -1,7 +1,8 @@
 ---
-title: Display assembly visualization page using SOLIDWORKS API
+title:  Display assembly visualization page using SOLIDWORKS API
 caption: Display Assembly Visualization Page
-description: Example displays the page for Assembly Visualization page
+---
+ Example displays the page for Assembly Visualization page
 image: sw-assembly-visualization.png
 labels: [assembly, example, solidworks api, visualization]
 redirect-from:

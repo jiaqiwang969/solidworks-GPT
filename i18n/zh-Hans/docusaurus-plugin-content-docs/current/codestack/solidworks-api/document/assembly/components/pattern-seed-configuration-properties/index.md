@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS宏以更改模式中组件的配置特定属性
+title:  SOLIDWORKS宏以更改模式中组件的配置特定属性
 caption: 更改模式中组件的配置特定属性
-description: 示例演示了如何使用SOLIDWORKS API更改模式中组件的配置特定属性（使用与模式种子组件相同的配置或使用命名配置）
+---
+ 示例演示了如何使用SOLIDWORKS API更改模式中组件的配置特定属性（使用与模式种子组件相同的配置或使用命名配置）
 image: component-config-specific-properties.png
 labels: [assembly, spattern, configuration, seed]
 ---

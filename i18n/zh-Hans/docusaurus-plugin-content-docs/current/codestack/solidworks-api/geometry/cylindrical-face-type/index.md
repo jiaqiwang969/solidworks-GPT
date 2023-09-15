@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API获取圆柱面的类型
+title:  使用SOLIDWORKS API获取圆柱面的类型
 caption: 获取圆柱面的类型
-description: 该宏基于循环类型使用SOLIDWORKS API来识别所选简单圆柱面的类型（通过所有孔、盲孔或外孔）
+---
+ 该宏基于循环类型使用SOLIDWORKS API来识别所选简单圆柱面的类型（通过所有孔、盲孔或外孔）
 image: cylindrical-faces-types.png
 labels: [geometry, face, hole, outer, inner]
 ---

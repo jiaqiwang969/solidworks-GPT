@@ -1,6 +1,7 @@
 ---
-title: Visual Basic 6（VBA）中的用户窗体和控件
-description: 本文介绍在Visual Basic 6（VBA）中使用用户界面元素（文本框、组合框、列表等）和窗体的方法。
+title:  Visual Basic 6（VBA）中的用户窗体和控件
+---
+ 本文介绍在Visual Basic 6（VBA）中使用用户界面元素（文本框、组合框、列表等）和窗体的方法。
 caption: 用户窗体和控件
 image: user-form-shown.png
 sidebar_position: 0

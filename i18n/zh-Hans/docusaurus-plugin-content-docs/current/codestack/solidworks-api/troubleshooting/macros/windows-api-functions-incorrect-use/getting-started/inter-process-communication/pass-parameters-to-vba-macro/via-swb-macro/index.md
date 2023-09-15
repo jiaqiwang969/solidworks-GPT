@@ -1,7 +1,8 @@
 ---
-title: Passing Parameters to SOLIDWORKS Macros through SWBasic Macros
+title:  Passing Parameters to SOLIDWORKS Macros through SWBasic Macros
 caption: Using SWBasic Macros
-description: Solution for passing parameters to SOLIDWORKS macros by replacing text in SWBasic macros
+---
+ Solution for passing parameters to SOLIDWORKS macros by replacing text in SWBasic macros
 labels: [parameters, swb]
 ---
 [SWBasic (*.swb) macros](/docs/codestack/solidworks-api/getting-started/macros/types#swbasic-macros.swb) are a type of traditional macros that are still supported in the SOLIDWORKS application.

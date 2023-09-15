@@ -1,7 +1,8 @@
 ---
-title: Writing Custom Properties to Files, Configurations, and Cut Lists Using the SOLIDWORKS API
+title:  Writing Custom Properties to Files, Configurations, and Cut Lists Using the SOLIDWORKS API
 caption: Writing All Properties
-description: VBA macro example that demonstrates how to add (create new or modify existing) custom properties to various custom property sources using the SOLIDWORKS API. This includes file (general) custom properties, configuration-specific custom properties, and cut list item (weldment or sheet metal) custom properties.
+---
+ VBA macro example that demonstrates how to add (create new or modify existing) custom properties to various custom property sources using the SOLIDWORKS API. This includes file (general) custom properties, configuration-specific custom properties, and cut list item (weldment or sheet metal) custom properties.
 image: approved-date-custom-property.png
 labels: [set properties, add properties, write properties, date]
 ---

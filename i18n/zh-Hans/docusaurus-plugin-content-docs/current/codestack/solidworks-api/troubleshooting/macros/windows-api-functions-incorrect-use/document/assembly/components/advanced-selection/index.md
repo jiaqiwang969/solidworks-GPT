@@ -1,7 +1,8 @@
 ---
-title: Macro for extended advanced selections using SOLIDWORKS API
+title:  Macro for extended advanced selections using SOLIDWORKS API
 caption: Advanced Selections
-description: Macro adds additional selection criteria to the advanced selection tool allowing to select components which are excluded from bom, envelope, float etc.
+---
+ Macro adds additional selection criteria to the advanced selection tool allowing to select components which are excluded from bom, envelope, float etc.
 image: filtered-components-selection.png
 labels: [selection, fixed, envelope]
 ---

@@ -1,7 +1,8 @@
 ---
-title: 使用SwEx.MacroFeature框架开始开发SOLIDWORKS宏特征
+title:  使用SwEx.MacroFeature框架开始开发SOLIDWORKS宏特征
 caption: 入门指南
-description: 使用SwEx.MacroFeature框架在C#和VB.NET中开发SOLIDWORKS宏特征的入门指南
+---
+ 使用SwEx.MacroFeature框架在C#和VB.NET中开发SOLIDWORKS宏特征的入门指南
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 redirect-from:

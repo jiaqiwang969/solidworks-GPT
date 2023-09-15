@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API编程VBA和VSTA宏
+title:  使用SOLIDWORKS API编程VBA和VSTA宏
 caption: 宏
-description: 介绍使用SOLIDWORKS API开发VBA和VSTA SOLIDWORKS宏的SOLIDWORKS自动化
+---
+ 介绍使用SOLIDWORKS API开发VBA和VSTA SOLIDWORKS宏的SOLIDWORKS自动化
 image: macro-toolbar.png
 labels: [宏, VBA]
 sidebar_position: 2

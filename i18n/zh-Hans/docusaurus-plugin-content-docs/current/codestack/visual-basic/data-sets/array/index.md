@@ -1,7 +1,8 @@
 ---
-title: Visual Basic 中的数组
+title:  Visual Basic 中的数组
 caption: 数组
-description: 解释了 Visual Basic 中的数组 - 一组存储在单个变量中并可以通过索引访问的元素
+---
+ 解释了 Visual Basic 中的数组 - 一组存储在单个变量中并可以通过索引访问的元素
 image: two-dimensional-array.png
 sidebar_position: 0
 ---

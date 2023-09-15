@@ -1,7 +1,8 @@
 ---
-title: 使用API按名称和坐标选择SOLIDWORKS对象
+title:  使用API按名称和坐标选择SOLIDWORKS对象
 caption: 按名称和坐标选择对象
-description: 本文介绍了使用[IModelDocExtension::SelectByID2](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeldocextension~selectbyid2.html) SOLIDWORKS API方法的优缺点。该方法是选择SOLIDWORKS中的元素的最常用方式之一，可以通过名称或坐标进行选择。
+---
+ 本文介绍了使用[IModelDocExtension::SelectByID2](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeldocextension~selectbyid2.html) SOLIDWORKS API方法的优缺点。该方法是选择SOLIDWORKS中的元素的最常用方式之一，可以通过名称或坐标进行选择。
 
 这是在[录制宏](https://help.solidworks.com/2016/english/solidworks/sldworks/t_record_pause_macro.htm)时表示用户选择的主要方法。
 

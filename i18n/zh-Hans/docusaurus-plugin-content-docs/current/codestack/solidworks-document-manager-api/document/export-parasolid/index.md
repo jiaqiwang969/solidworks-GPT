@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 通过文档管理器 API（无需 SOLIDWORKS）将零件导出为 Parasolid
+title:  通过文档管理器 API（无需 SOLIDWORKS）将零件导出为 Parasolid
 caption: 导出零件文件到 Parasolid
-description: 使用 SOLIDWORKS 文档管理器 API 通过命令行将零件文件导出为 Parasolid 格式（.xmp_bin）的 PowerShell 脚本
+---
+ 使用 SOLIDWORKS 文档管理器 API 通过命令行将零件文件导出为 Parasolid 格式（.xmp_bin）的 PowerShell 脚本
 image: export-parasolid.svg
 labels: [export,parasolid]
 group: Import/Export

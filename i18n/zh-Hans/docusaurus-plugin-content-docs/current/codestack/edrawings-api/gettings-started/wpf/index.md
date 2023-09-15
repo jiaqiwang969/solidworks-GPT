@@ -1,7 +1,8 @@
 ---
-title: 在Windows Presentation Foundation (WPF)中托管SOLIDWORKS eDrawings控件
+title:  在Windows Presentation Foundation (WPF)中托管SOLIDWORKS eDrawings控件
 caption: 在WPF中托管控件
-description: 详细指南，介绍如何在Windows Presentation Foundation (WPF)中将SOLIDWORKS eDrawings控件托管为WPF用户控件
+---
+ 详细指南，介绍如何在Windows Presentation Foundation (WPF)中将SOLIDWORKS eDrawings控件托管为WPF用户控件
 image: edrawings-wpf-window.png
 labels: [edrawings,host,wpf]
 ---

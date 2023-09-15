@@ -1,7 +1,8 @@
 ---
-title: 在 Visual Basic 6 (VBA) 代码中嵌入数组
+title:  在 Visual Basic 6 (VBA) 代码中嵌入数组
 caption: 嵌入数组
-description: 在 Visual Basic 6 (VBA) 项目中嵌入文件或数据的解决方法
+---
+ 在 Visual Basic 6 (VBA) 项目中嵌入文件或数据的解决方法
 image: array-text-declaration.png
 labels: [嵌入数组,声明数组]
 ---

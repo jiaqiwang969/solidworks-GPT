@@ -1,7 +1,8 @@
 ---
-title: 使用 SOLIDWORKS eDrawings API 入门
+title:  使用 SOLIDWORKS eDrawings API 入门
 caption: 入门指南
-description: 开发使用 eDrawings API 的应用程序的入门指南
+---
+ 开发使用 eDrawings API 的应用程序的入门指南
 image: edrawings.png
 labels: [edrawings, 入门]
 sidebar_position: 0

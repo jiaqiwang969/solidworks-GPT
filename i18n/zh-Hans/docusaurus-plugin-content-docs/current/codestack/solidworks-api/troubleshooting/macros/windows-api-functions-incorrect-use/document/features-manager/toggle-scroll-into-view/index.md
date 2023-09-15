@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: Toggle Scroll Item Into View
-title: Macro to toggle the scroll item into view option in SOLIDWORKS documents
-description: VBA macro to toggle on and off the scroll selected item into view option in SOLIDWORKS FeatureManager settings
+title:  Macro to toggle the scroll item into view option in SOLIDWORKS documents
+---
+ VBA macro to toggle on and off the scroll selected item into view option in SOLIDWORKS FeatureManager settings
 image: scroll-into-view.svg
 group: Performance
 ---

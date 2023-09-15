@@ -1,7 +1,8 @@
 ---
-title: Insert pipe component between fittings using SOLIDWORKS API
+title:  Insert pipe component between fittings using SOLIDWORKS API
 caption: Insert Pipe
-description: VBA macro for plumbing automation which inserts pipe component based on the stop faces of the fitting
+---
+ VBA macro for plumbing automation which inserts pipe component based on the stop faces of the fitting
 image: pipe.svg
 labels: [pipe, fitting, assembly, plumbing]
 ---

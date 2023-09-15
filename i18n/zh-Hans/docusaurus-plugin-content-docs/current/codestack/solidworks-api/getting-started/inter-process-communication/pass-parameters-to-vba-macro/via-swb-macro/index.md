@@ -1,7 +1,8 @@
 ---
-title: 通过SWBasic宏将参数传递给SOLIDWORKS宏
+title:  通过SWBasic宏将参数传递给SOLIDWORKS宏
 caption: 通过SWBasic宏
-description: 通过替换SWBasic宏中的文本来传递参数给SOLIDWORKS宏的解决方法
+---
+ 通过替换SWBasic宏中的文本来传递参数给SOLIDWORKS宏的解决方法
 labels: [参数, swb]
 ---
 [SWBasic (*.swb)宏](/docs/codestack/solidworks-api/getting-started/macros/types#swbasic-macros.swb)是一种仍然在SOLIDWORKS应用程序中支持的传统宏类型。

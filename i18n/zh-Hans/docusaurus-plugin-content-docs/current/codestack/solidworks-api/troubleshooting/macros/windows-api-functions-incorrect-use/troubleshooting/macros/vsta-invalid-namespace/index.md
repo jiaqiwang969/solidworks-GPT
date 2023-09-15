@@ -1,8 +1,9 @@
 ---
 layout: sw-macro-fix
-title: 修复 VSTA（C# 或 VB.NET）SOLIDWORKS 宏中的无效命名空间
+title:  修复 VSTA（C# 或 VB.NET）SOLIDWORKS 宏中的无效命名空间
 caption: VSTA（C# 或 VB.NET）宏中的无效命名空间
-description: 修复从示例中复制代码时 VSTA 宏的编译错误
+---
+ 修复从示例中复制代码时 VSTA 宏的编译错误
 image: vsta-copy-example-compile-error.png
 labels: [宏, 故障排除, vsta]
 ---

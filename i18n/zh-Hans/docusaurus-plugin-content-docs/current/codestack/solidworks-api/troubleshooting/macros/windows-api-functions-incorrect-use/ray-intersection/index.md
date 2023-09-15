@@ -1,7 +1,8 @@
 ---
-标题：射线交点
-描述：在SOLIDWORKS模型中使用射线找到交点和拓扑实体的VBA宏示例
-图片：ray-intersection-entities.png
+title: 射线交点
+---
+ 在SOLIDWORKS模型中使用射线找到交点和拓扑实体的VBA宏示例
+image: ray-intersection-entities.png
 ---
 
 这个VBA宏示例演示了如何在活动的SOLIDWORKS零件文档中的所有实体之间以及从所选草图的草图点创建的射线之间找到交点和相应的拓扑实体。

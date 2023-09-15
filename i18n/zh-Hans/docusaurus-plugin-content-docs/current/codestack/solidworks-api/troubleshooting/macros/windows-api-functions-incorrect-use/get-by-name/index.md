@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API根据名称获取组件指针
+title:  使用SOLIDWORKS API根据名称获取组件指针
 caption: 通过名称获取组件
-description: 该示例演示了如何从完整的名称层次结构中获取装配体中任意级别的组件的指针
+---
+ 该示例演示了如何从完整的名称层次结构中获取装配体中任意级别的组件的指针
 image: components-tree.png
 labels: [select, component]
 ---

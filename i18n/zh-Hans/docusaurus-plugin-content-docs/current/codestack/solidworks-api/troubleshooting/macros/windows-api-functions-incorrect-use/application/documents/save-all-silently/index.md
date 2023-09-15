@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API静默保存所有打开的文档的宏
+title:  使用SOLIDWORKS API静默保存所有打开的文档的宏
 caption: 静默保存所有文档
-description: 使用SOLIDWORKS API，使用VBA宏静默保存当前打开的所有已修改文档
+---
+ 使用SOLIDWORKS API，使用VBA宏静默保存当前打开的所有已修改文档
 image: save-all-documents.png
 labels: [保存全部,静默]
 group: 框架

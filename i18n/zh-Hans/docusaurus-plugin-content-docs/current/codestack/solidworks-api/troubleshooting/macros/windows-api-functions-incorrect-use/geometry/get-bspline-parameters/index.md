@@ -1,7 +1,8 @@
 ---
-title: Get b-spline parameters from the selected edge using SOLIDWORKS API
+title:  Get b-spline parameters from the selected edge using SOLIDWORKS API
 caption: Get B-Spline Parameters
-description: Get parameters of b-spline curve (dimension, order, periodicity, control and knot points) from the edge selected in the graphics view using SOLIDWORKS API
+---
+ Get parameters of b-spline curve (dimension, order, periodicity, control and knot points) from the edge selected in the graphics view using SOLIDWORKS API
 image: selected-bspline-edge.png
 labels: [bspline, parameters, modeler, edge]
 ---

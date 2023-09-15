@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API配置内置任务
+title:  使用SOLIDWORKS API配置内置任务
 caption: 内置任务
-description: 使用SOLIDWORKS PDM API配置内置任务（转换和打印）的指南
+---
+ 使用SOLIDWORKS PDM API配置内置任务（转换和打印）的指南
 labels: [任务,转换任务,打印任务]
 ---
 SOLIDWORKS PDM的默认安装包含了几个有用的任务：

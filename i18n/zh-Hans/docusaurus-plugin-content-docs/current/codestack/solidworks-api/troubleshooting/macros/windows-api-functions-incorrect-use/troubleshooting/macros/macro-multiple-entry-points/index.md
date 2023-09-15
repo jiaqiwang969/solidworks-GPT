@@ -1,8 +1,9 @@
 ---
 layout: sw-macro-fix
-title: 运行包含多个入口点的SOLIDWORKS宏失败
+title:  运行包含多个入口点的SOLIDWORKS宏失败
 caption: 宏中的多个入口点
-description: 修复在SOLIDWORKS的工具->宏->运行菜单中无法正常运行的宏，但在VBA编辑器中打开并通过F5或点击绿色箭头执行时可以正常工作
+---
+ 修复在SOLIDWORKS的工具->宏->运行菜单中无法正常运行的宏，但在VBA编辑器中打开并通过F5或点击绿色箭头执行时可以正常工作
 image: error-object-variable-or-with-block-variable-not-set.png
 labels: [宏, 故障排除]
 redirect-from:

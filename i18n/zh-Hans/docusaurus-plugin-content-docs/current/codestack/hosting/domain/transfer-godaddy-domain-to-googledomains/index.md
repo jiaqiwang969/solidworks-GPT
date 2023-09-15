@@ -1,7 +1,8 @@
 ---
-title: 将域名主机从GoDaddy转移到Google Domains
+title:  将域名主机从GoDaddy转移到Google Domains
 caption: 将GoDaddy域名转移到Google Domains
-description: 详细指南，将域名主机从GoDaddy转移到Google Domains
+---
+ 详细指南，将域名主机从GoDaddy转移到Google Domains
 image: transfer-domain-to-google.png
 labels: [google domains,godaddy,transfer]
 ---

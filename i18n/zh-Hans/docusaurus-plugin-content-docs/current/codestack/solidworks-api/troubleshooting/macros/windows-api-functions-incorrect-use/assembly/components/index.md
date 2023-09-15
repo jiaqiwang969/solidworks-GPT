@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API自动化装配组件
+title:  使用SOLIDWORKS API自动化装配组件
 caption: 组件
-description: 用于在SOLIDWORKS装配中处理组件的文章和代码示例集合
+---
+ 用于在SOLIDWORKS装配中处理组件的文章和代码示例集合
 labels: [装配, 组件]
 sidebar_position: 1
 ---

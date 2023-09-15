@@ -1,7 +1,8 @@
 ---
-title: 使用SwEx.AddIn框架在SOLIDWORKS工具栏中定义命令按钮
+title:  使用SwEx.AddIn框架在SOLIDWORKS工具栏中定义命令按钮
 caption: 定义命令
-description: 介绍使用SwEx框架在C#和VB.NET中定义SOLIDWORKS插件中命令组的方法
+---
+ 介绍使用SwEx框架在C#和VB.NET中定义SOLIDWORKS插件中命令组的方法
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

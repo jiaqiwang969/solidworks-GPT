@@ -1,7 +1,8 @@
 ---
-title: 使用SwEx.AddIn框架在SOLIDWORKS任务窗格中托管用户控件
+title:  使用SwEx.AddIn框架在SOLIDWORKS任务窗格中托管用户控件
 caption: 任务窗格
-description: 使用SwEx.AddIn框架在SOLIDWORKS任务窗格面板中托管WinForms用户控件
+---
+ 使用SwEx.AddIn框架在SOLIDWORKS任务窗格面板中托管WinForms用户控件
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

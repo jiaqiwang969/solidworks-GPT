@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 将SOLIDWORKS装配中的组件数量写入自定义属性
+title:  将SOLIDWORKS装配中的组件数量写入自定义属性
 caption: 将组件数量写入自定义属性
-description: 这是一个VBA宏，用于计算SOLIDWORKS装配中每个组件的总数量，并将其写入自定义属性中。
+---
+ 这是一个VBA宏，用于计算SOLIDWORKS装配中每个组件的总数量，并将其写入自定义属性中。
 image: bom-quantity.svg
 labels: [数量,组件]
 group: 装配

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API加载和卸载加载项的宏
+title:  使用SOLIDWORKS API加载和卸载加载项的宏
 caption: 加载/卸载加载项
-description: 使用SOLIDWORKS API触发（加载/卸载）指定的加载项的宏
+---
+ 使用SOLIDWORKS API触发（加载/卸载）指定的加载项的宏
 image: toggle-addins.svg
 labels: [加载项, 加载]
 group: 框架

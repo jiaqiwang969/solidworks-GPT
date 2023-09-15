@@ -1,7 +1,8 @@
 ---
-title: Developing C++, C#, VB.NET Plugins for SOLIDWORKS using the API
+title:  Developing C++, C#, VB.NET Plugins for SOLIDWORKS using the API
 caption: Plugins
-description: Examples and articles on how to use plugins in SOLIDWORKS
+---
+ Examples and articles on how to use plugins in SOLIDWORKS
 ---
 Plugins are in-process extensions for SOLIDWORKS that offer the best performance advantages across all application types. Plugins are COM objects that must implement the [ISwAddin](https://help.solidworks.com/2012/english/api/swpublishedapi/solidworks.interop.swpublished~solidworks.interop.swpublished.iswaddin.html) interface in the SOLIDWORKS API.
 

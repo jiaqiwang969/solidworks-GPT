@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 识别SOLIDWORKS API特征定义和特定类型
+title:  识别SOLIDWORKS API特征定义和特定类型
 caption: 识别特定特征和特征定义
-description: 通过SOLIDWORKS API和反射，提供帮助方法来识别所选特征的定义和特定类型
+---
+ 通过SOLIDWORKS API和反射，提供帮助方法来识别所选特征的定义和特定类型
 image: specific-feature-types.png
 labels: [reflection, specific feature, feature definition]
 group: Developers

@@ -1,7 +1,8 @@
 ---
 caption: Create Loft Feature
-title: Create loft feature through selected sketches or curves feature using SOLIDWORKS API
-description: VBA macro to create solid loft feature from selected sketch or curve features using SOLIDWORKS API
+title:  Create loft feature through selected sketches or curves feature using SOLIDWORKS API
+---
+ VBA macro to create solid loft feature from selected sketch or curve features using SOLIDWORKS API
 image: loft-feature-through-curves.png
 ---
 ![Loft feature through curves](loft-feature-through-curves.png){ width=400 }

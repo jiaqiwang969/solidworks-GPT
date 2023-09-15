@@ -1,6 +1,7 @@
 ---
-标题：升级遗留自定义属性
-描述：这个 VBA 宏用于在 SOLIDWORKS 2022 中将遗留的自定义属性升级到新的架构。
+title: 升级遗留自定义属性
+---
+ 这个 VBA 宏用于在 SOLIDWORKS 2022 中将遗留的自定义属性升级到新的架构。
 
 该宏将遗留的自定义属性升级到 SOLIDWORKS 2022 中的[新架构](https://help.solidworks.com/2022/english/solidworks/sldworks/c_custom_properties_architecture.htm)。
 

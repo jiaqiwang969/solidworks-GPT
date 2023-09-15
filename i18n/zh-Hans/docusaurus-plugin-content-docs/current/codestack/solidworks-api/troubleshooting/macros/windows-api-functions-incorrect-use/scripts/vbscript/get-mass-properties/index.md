@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API脚本提取文件的质量属性
+title:  使用SOLIDWORKS API脚本提取文件的质量属性
 caption: 获取质量属性
-description: 该示例演示了如何使用vbScript和SOLIDWORKS API从指定的文件中提取质量属性。
+---
+ 该示例演示了如何使用vbScript和SOLIDWORKS API从指定的文件中提取质量属性。
 image: msgbox-mass-properties.png
 labels: [质量属性, vbScript]
 ---

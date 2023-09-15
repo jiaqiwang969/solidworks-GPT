@@ -1,7 +1,8 @@
 ---
 caption: Assign Random Colors to Sketches
-title: Macro to Assign Random Colors to Sketches in a Document
-description: This VBA macro assigns random colors to all sketches in a SOLIDWORKS part or assembly, with options to skip sketches that already have assigned colors and to select only unabsorbed sketches.
+title:  Macro to Assign Random Colors to Sketches in a Document
+---
+ This VBA macro assigns random colors to all sketches in a SOLIDWORKS part or assembly, with options to skip sketches that already have assigned colors and to select only unabsorbed sketches.
 ---
 
 This VBA macro assigns random colors to all sketches in the active part or assembly.

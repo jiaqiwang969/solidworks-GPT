@@ -1,7 +1,8 @@
 ---
-title: SwEx.PMPage - SOLIDWORKS属性管理器页面的高级框架
+title:  SwEx.PMPage - SOLIDWORKS属性管理器页面的高级框架
 caption: SwEx.PMPage
-description: 用于高级开发SOLIDWORKS属性管理器页面的实用工具，实现了数据驱动开发和数据绑定
+---
+ 用于高级开发SOLIDWORKS属性管理器页面的实用工具，实现了数据驱动开发和数据绑定
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 redirect-from:

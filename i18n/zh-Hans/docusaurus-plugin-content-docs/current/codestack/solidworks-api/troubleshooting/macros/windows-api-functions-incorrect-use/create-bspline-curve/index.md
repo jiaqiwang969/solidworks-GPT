@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API创建和显示B样条曲线
+title:  使用SOLIDWORKS API创建和显示B样条曲线
 caption: 创建B样条曲线
-description: 此VBA示例演示了如何使用SOLIDWORKS API从示例数据创建和预览B样条曲线。
+---
+ 此VBA示例演示了如何使用SOLIDWORKS API从示例数据创建和预览B样条曲线。
 image: bspline-curve-preview.png
 labels: [curve, bspline, modeler]
 ---

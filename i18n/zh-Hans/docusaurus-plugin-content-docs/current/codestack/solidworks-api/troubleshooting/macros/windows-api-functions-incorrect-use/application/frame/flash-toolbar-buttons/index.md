@@ -1,7 +1,8 @@
 ---
 caption: 闪烁工具栏按钮
-title: 在SOLIDWORKS工具栏中突出显示/闪烁特定按钮的宏
-description: 该VBA宏演示了如何在SOLIDWORKS工具栏中通过id突出显示/闪烁特定的工具栏按钮
+title:  在SOLIDWORKS工具栏中突出显示/闪烁特定按钮的宏
+---
+ 该VBA宏演示了如何在SOLIDWORKS工具栏中通过id突出显示/闪烁特定的工具栏按钮
 image: flash-buttons.gif
 ---
 这个VBA宏演示了如何在SOLIDWORKS工具栏中类似于SOLIDWORKS教程文件一样闪烁标准工具栏按钮。

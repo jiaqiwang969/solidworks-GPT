@@ -1,7 +1,8 @@
 ---
-title: Explanation of SOLIDWORKS API Object Model and Object Relationships
+title:  Explanation of SOLIDWORKS API Object Model and Object Relationships
 caption: API Object Model
-description: A collection of articles that provide detailed explanations of the SOLIDWORKS API object model, class hierarchy, naming conventions, and object relationships.
+---
+ A collection of articles that provide detailed explanations of the SOLIDWORKS API object model, class hierarchy, naming conventions, and object relationships.
 labels: [Object Model, API]
 sidebar_position: 1
 ---

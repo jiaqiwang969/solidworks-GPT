@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS和Windows API运行力学约束命令
+title:  使用SOLIDWORKS和Windows API运行力学约束命令
 caption: 运行力学约束命令
-description: 该示例演示了如何使用SOLIDWORKS API和Windows API的组合来运行具有重建错误的约束的“力学约束”命令。
+---
+ 该示例演示了如何使用SOLIDWORKS API和Windows API的组合来运行具有重建错误的约束的“力学约束”命令。
 image: force-mate.png
 ---
 ![上下文菜单中的力学约束命令](force-mate.png){ width=350 }

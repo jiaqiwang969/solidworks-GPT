@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Open associated drawings of active document or selected components
+title:  Open associated drawings of active document or selected components
 caption: Open Associated Drawings
-description: VBA macro to open the drawings associated to the component in its own window regardless of naming (with an option to open the drawing in detailing mode)
+---
+ VBA macro to open the drawings associated to the component in its own window regardless of naming (with an option to open the drawing in detailing mode)
 image: open-associated-drawing.svg
 labels: [drawing, open, detailing]
 group: Drawing

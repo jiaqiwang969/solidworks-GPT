@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Macro feature to automatically run SOLIDWORKS macro on rebuild
+title:  Macro feature to automatically run SOLIDWORKS macro on rebuild
 caption: Automatically Run Macro On Rebuild
-description: Macro allows to automatically run macros on every rebuild using the macro feature and designed binder attachment with SOLIDWORKS API
+---
+ Macro allows to automatically run macros on every rebuild using the macro feature and designed binder attachment with SOLIDWORKS API
 image: design-binder-macro-attachment.png
 labels: [auto run, macro, rebuild]
 group: Model

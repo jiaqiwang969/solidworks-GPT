@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API获取选定的草图段信息
+title:  使用SOLIDWORKS API获取选定的草图段信息
 caption: 获取选定的草图段信息
-description: 使用SOLIDWORKS API获取选定的草图段（线段、弧线、抛物线、样条等）的特定信息的VBA宏
+---
+ 使用SOLIDWORKS API获取选定的草图段（线段、弧线、抛物线、样条等）的特定信息的VBA宏
 image: selected-sketch-segments.png
 labels: [草图段,选择]
 ---

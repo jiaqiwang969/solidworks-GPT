@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API取消修剪面或曲面
+title:  使用SOLIDWORKS API取消修剪面或曲面
 caption: 创建未修剪的曲面
-description: 使用SOLIDWORKS API使用临时几何图形从所选面创建未修剪（恢复）曲面的VBA示例
+---
+ 使用SOLIDWORKS API使用临时几何图形从所选面创建未修剪（恢复）曲面的VBA示例
 image: untrimmed-surface.png
 labels: [trim,curve,untrim]
 ---

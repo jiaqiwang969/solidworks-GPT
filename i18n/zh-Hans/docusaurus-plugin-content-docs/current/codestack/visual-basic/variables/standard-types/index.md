@@ -1,7 +1,8 @@
 ---
-title: Visual Basic 中的标准类型
+title:  Visual Basic 中的标准类型
 caption: 标准类型
-description: Visual Basic 中标准类型（例如 Integer、String、Double、Object 等）的概述
+---
+ Visual Basic 中标准类型（例如 Integer、String、Double、Object 等）的概述
 image: vba-integer-overflow.png
 sidebar_position: 0
 ---

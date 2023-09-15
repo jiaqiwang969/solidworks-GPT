@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: Automatic Date Custom Property
-title: Creating a Dynamic Automatically Updating Date Custom Property in a SOLIDWORKS File
-description: This VBA macro allows you to insert a custom property **Date** into a specific custom property in the file. Users can choose the format of the date. Refer to the [Date and Time Format Strings](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings) for more information on the supported formats.
+title:  Creating a Dynamic Automatically Updating Date Custom Property in a SOLIDWORKS File
+---
+ This VBA macro allows you to insert a custom property **Date** into a specific custom property in the file. Users can choose the format of the date. Refer to the [Date and Time Format Strings](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings) for more information on the supported formats.
 
 ## CAD+
 

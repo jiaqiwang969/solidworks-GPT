@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API获取特征类型名称的VBA宏
+title:  使用SOLIDWORKS API获取特征类型名称的VBA宏
 caption: 获取特征类型名称
-description: 这个VBA宏使用SOLIDWORKS API读取特征管理器树中所选特征的类型名称，并在消息框中显示结果。
+---
+ 这个VBA宏使用SOLIDWORKS API读取特征管理器树中所选特征的类型名称，并在消息框中显示结果。
 image: type-names-msg-box.png
 labels: [类型名称,特征,种类]
 ---

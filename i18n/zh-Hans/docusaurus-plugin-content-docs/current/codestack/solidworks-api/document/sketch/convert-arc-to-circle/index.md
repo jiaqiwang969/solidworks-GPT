@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API将弧线转换为圆
+title:  使用SOLIDWORKS API将弧线转换为圆
 caption: 将弧线转换为圆
-description: 使用SOLIDWORKS API，在选定的草图弧线的起点和终点之间添加合并关系，将其转换为草图圆的VBA宏示例
+---
+ 使用SOLIDWORKS API，在选定的草图弧线的起点和终点之间添加合并关系，将其转换为草图圆的VBA宏示例
 image: sketch-arc.png
 labels: [草图,弧线,圆,合并,关系]
 ---

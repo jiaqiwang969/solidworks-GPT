@@ -1,8 +1,9 @@
 ---
 layout: sw-macro-fix
-title: 修复运行旧版 SWBasic (*.swb) SOLIDWORKS 宏时的错误
+title:  修复运行旧版 SWBasic (*.swb) SOLIDWORKS 宏时的错误
 caption: SWBasic (*.swb) 宏错误
-description: 修复在 swb 格式中运行或编辑旧版宏时的错误
+---
+ 修复在 swb 格式中运行或编辑旧版宏时的错误
 image: swbasic-swb-macro-filter.png
 labels: [宏, 故障排除]
 ---

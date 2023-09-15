@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API进行组件配置排列的宏
+title:  使用SOLIDWORKS API进行组件配置排列的宏
 caption: 组件配置排列
-description: 该宏使用SOLIDWORKS API对装配体中根级别的每个组件进行排列，并将结果保存为单独的文件
+---
+ 该宏使用SOLIDWORKS API对装配体中根级别的每个组件进行排列，并将结果保存为单独的文件
 image: component-configurations.png
 labels: [排列,组件,生成,配置]
 group: 装配体

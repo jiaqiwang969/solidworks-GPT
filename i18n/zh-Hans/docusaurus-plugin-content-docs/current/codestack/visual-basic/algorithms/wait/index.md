@@ -1,7 +1,8 @@
 ---
-title: Visual Basic 中的阻塞和非阻塞等待函数
+title:  Visual Basic 中的阻塞和非阻塞等待函数
 caption: 等待
-description: Visual Basic 中用于等待指定时间的阻塞或非阻塞函数
+---
+ Visual Basic 中用于等待指定时间的阻塞或非阻塞函数
 ---
 这段代码演示了如何暂停执行指定的时间（以毫秒为单位）。
 

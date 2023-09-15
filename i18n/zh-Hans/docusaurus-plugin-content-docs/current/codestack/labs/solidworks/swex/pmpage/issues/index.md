@@ -1,7 +1,8 @@
 ---
-title: SwEx.PMPage for SOLIDWORKS的问题报告页面
+title:  SwEx.PMPage for SOLIDWORKS的问题报告页面
 caption: 问题
-description: 用于高级开发SOLIDWORKS属性管理器页面的SwEx.PMPage框架的问题报告和功能请求
+---
+ 用于高级开发SOLIDWORKS属性管理器页面的SwEx.PMPage框架的问题报告和功能请求
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

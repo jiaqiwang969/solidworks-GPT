@@ -1,7 +1,8 @@
 ---
 caption: Find And Read Table By Cell
-title: Find and read the table in the SOLIDWORKS drawing by the value of the cell
-description: VBA macro to find the table in the SOLIDWORKS drawing by the value in the specified cell and reading its data into the variable
+title:  Find and read the table in the SOLIDWORKS drawing by the value of the cell
+---
+ VBA macro to find the table in the SOLIDWORKS drawing by the value in the specified cell and reading its data into the variable
 image: general-table.png
 ---
 This VBA macro finds the table by the specified value pattern in the specified cell.

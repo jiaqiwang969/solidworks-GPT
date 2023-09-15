@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 使用SOLIDWORKS API在尺寸名称中查找和替换文本
+title:  使用SOLIDWORKS API在尺寸名称中查找和替换文本
 caption: 在尺寸名称中查找和替换文本
-description: 该宏在所选特征的尺寸名称中查找和替换文本（类似于文本编辑器中的查找和替换功能）。
+---
+ 该宏在所选特征的尺寸名称中查找和替换文本（类似于文本编辑器中的查找和替换功能）。
 image: rename-dims.png
 labels: [dimension, example, find, model, rename, replace, solidworks, solidworks api]
 group: Model

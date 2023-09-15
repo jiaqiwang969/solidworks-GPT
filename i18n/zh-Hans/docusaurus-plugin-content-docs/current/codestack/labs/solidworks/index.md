@@ -1,9 +1,10 @@
 ---
 layout: default
-title: SOLIDWORKS的生产力工具和插件
+title:  SOLIDWORKS的生产力工具和插件
 caption: SOLIDWORKS
 menu: LABS
-description: SOLIDWORKS的工具和插件集合
+---
+ SOLIDWORKS的工具和插件集合
 image: solidworks-labs.svg
 sidebar_position: 0
 search: false

@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API创建物体旋转动画
+title:  使用SOLIDWORKS API创建物体旋转动画
 caption: 创建物体旋转动画
-description: 使用SOLIDWORKS API和临时物体创建一个围绕Y轴旋转的选定物体的旋转动画的VBA示例
+---
+ 使用SOLIDWORKS API和临时物体创建一个围绕Y轴旋转的选定物体的旋转动画的VBA示例
 image: body-rotate.gif
 labels: [动画, 旋转, 临时物体]
 ---

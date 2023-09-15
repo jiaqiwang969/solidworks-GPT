@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 从Windows文件资源管理器中以快速查看模式打开SOLIDWORKS装配体
+title:  从Windows文件资源管理器中以快速查看模式打开SOLIDWORKS装配体
 caption: 从文件资源管理器中以快速查看模式打开文档
-description: 通过在Windows文件资源管理器的上下文菜单中添加选项，以快速查看（大型设计审查）模式打开SOLIDWORKS装配体或图纸
+---
+ 通过在Windows文件资源管理器的上下文菜单中添加选项，以快速查看（大型设计审查）模式打开SOLIDWORKS装配体或图纸
 image: open-in-quick-view.svg
 labels: [快速查看,大型设计审查,性能,外壳,上下文菜单]
 group: 性能

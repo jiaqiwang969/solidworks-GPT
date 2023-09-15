@@ -1,7 +1,8 @@
 ---
-title: 使用Visual Basic（VBA）将二进制内容写入文件
+title:  使用Visual Basic（VBA）将二进制内容写入文件
 caption: 写入二进制文件
-description: 使用Visual Basic（VBA）将字节数组的二进制内容写入文件的函数
+---
+ 使用Visual Basic（VBA）将字节数组的二进制内容写入文件的函数
 labels: [write,text,output]
 ---
 这段代码演示了如何使用Visual Basic（VBA）将类型为*Byte()*的变量中的二进制数据写入指定的文件。

@@ -1,8 +1,9 @@
 ---
 layout: article
 caption: 导入到活动零件
-title: 使用SOLIDWORKS API将外部文件导入到活动零件的宏
-description: 使用SOLIDWORKS API将外部文件（parasolid、step、iges等）直接导入到活动零件文档的VBA宏
+title:  使用SOLIDWORKS API将外部文件导入到活动零件的宏
+---
+ 使用SOLIDWORKS API将外部文件（parasolid、step、iges等）直接导入到活动零件文档的VBA宏
 image: imported-file.png
 ---
 ![导入到活动零件文档的文件](imported-file.png)

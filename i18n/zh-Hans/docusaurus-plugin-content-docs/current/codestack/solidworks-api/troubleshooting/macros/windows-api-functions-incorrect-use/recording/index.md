@@ -1,7 +1,8 @@
 ---
-title: Recording and Editing Macros in SOLIDWORKS
+title:  Recording and Editing Macros in SOLIDWORKS
 caption: Recording Macros
-description: This article explains how to record macro commands in SOLIDWORKS.
+---
+ This article explains how to record macro commands in SOLIDWORKS.
 image: macros-save-filter.png
 labels: [macros, recording]
 sidebar_position: 2

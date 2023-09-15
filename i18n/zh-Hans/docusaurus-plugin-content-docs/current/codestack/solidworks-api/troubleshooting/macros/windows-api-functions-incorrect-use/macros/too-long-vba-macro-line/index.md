@@ -1,8 +1,9 @@
 ---
 layout: sw-macro-fix
-title: Fix too long SOLIDWORKS VBA macro line error
+title:  Fix too long SOLIDWORKS VBA macro line error
 caption: Too Long VBA Macro Line
-description: Fixing the Compile error - Invalid outside procedure error when placing the long text into the VBA macro variable
+---
+ Fixing the Compile error - Invalid outside procedure error when placing the long text into the VBA macro variable
 image: doc-mgr-key-too-long.gif
 labels: [macro, troubleshooting]
 redirect-from:

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Rename sheet metal flat patterns features after the cut-list features
+title:  Rename sheet metal flat patterns features after the cut-list features
 caption: Rename Flat Pattern After Cut-Lists
-description: VBA macro to rename sheet metal flat patterns after the corresponding cut-list feature names
+---
+ VBA macro to rename sheet metal flat patterns after the corresponding cut-list feature names
 image: flat-pattern.svg
 labels: [cut-list,sheet metal,flat-pattern,rename]
 group: Part

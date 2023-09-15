@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: 重命名切割列表体
-title: 使用预定义模板重命名SOLIDWORKS切割列表项的宏
-description: 使用VBA宏根据预定义模板（例如自定义属性值）重命名SOLIDWORKS切割列表体文件夹（钣金或焊接）中的体
+title:  使用预定义模板重命名SOLIDWORKS切割列表项的宏
+---
+ 使用VBA宏根据预定义模板（例如自定义属性值）重命名SOLIDWORKS切割列表体文件夹（钣金或焊接）中的体
 image: renamed-cut-list-bodies.png
 group: 切割列表
 ---

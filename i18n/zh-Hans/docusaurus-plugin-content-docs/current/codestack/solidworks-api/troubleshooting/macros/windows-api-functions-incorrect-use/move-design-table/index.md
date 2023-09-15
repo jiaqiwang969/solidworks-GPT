@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API移动设计表对象
+title:  使用SOLIDWORKS API移动设计表对象
 caption: 移动设计表OLE对象
-description: 该示例演示了如何调整和移动模型图形区域中的设计表OLE对象
+---
+ 该示例演示了如何调整和移动模型图形区域中的设计表OLE对象
 image: design-table-ole-object.png
 labels: [装饰, 边界, 设计表, 示例, 移动, OLE对象, solidworks api]
 redirect-from:

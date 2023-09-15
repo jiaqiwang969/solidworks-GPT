@@ -1,8 +1,9 @@
 ---
 layout: sw-macro-fix
-title: SOLIDWORKS宏在不满足前提条件时出现错误
+title:  SOLIDWORKS宏在不满足前提条件时出现错误
 caption: 宏前提条件未满足
-description: 修复运行宏时出现的“运行时错误'91'”或“运行时错误'13'”
+---
+ 修复运行宏时出现的“运行时错误'91'”或“运行时错误'13'”
 image: vba-error-type-mismatch.png
 labels: [宏, 故障排除]
 redirect-from:

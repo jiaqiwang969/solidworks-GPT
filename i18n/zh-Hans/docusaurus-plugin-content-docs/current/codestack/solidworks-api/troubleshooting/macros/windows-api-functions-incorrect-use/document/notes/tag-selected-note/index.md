@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API向选定的注释添加标签
+title:  使用SOLIDWORKS API向选定的注释添加标签
 caption: 添加标签到选定的注释
-description: 该示例演示了如何使用SOLIDWORKS API向SOLIDWORKS模型中的选定注释添加文本标签（属性）。
+---
+ 该示例演示了如何使用SOLIDWORKS API向SOLIDWORKS模型中的选定注释添加文本标签（属性）。
 image: drawing-note-revision.png
 labels: [note, annotation, tag, attribute]
 ---

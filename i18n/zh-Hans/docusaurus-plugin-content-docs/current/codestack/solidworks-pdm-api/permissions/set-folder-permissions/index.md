@@ -1,7 +1,8 @@
 ---
-title: 使用 SOLIDWORKS PDM API 设置文件夹权限的 Power Shell 脚本
+title:  使用 SOLIDWORKS PDM API 设置文件夹权限的 Power Shell 脚本
 caption: 设置文件夹权限
-description: 使用 SOLIDWORKS PDM API 为指定用户设置指定文件夹的权限的 Vb.NET Power Shell 脚本
+---
+ 使用 SOLIDWORKS PDM API 为指定用户设置指定文件夹的权限的 Vb.NET Power Shell 脚本
 image: folder-permissions.png
 labels: [permissions,folder]
 ---

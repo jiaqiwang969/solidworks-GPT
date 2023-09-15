@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS Property Manager Page关闭事件处理
+title:  SOLIDWORKS Property Manager Page关闭事件处理
 caption: 关闭
-description: 介绍在SwEx.PMPage框架中处理SOLIDWORKS属性管理器页面关闭的事件概述
+---
+ 介绍在SwEx.PMPage框架中处理SOLIDWORKS属性管理器页面关闭的事件概述
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

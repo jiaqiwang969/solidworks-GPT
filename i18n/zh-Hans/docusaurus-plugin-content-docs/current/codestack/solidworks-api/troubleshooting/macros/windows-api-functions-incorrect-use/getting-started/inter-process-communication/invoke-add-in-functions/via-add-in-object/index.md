@@ -1,7 +1,8 @@
 ---
-title: Calling Functions of a SOLIDWORKS Add-in Object from a Standalone Application or Macro
+title:  Calling Functions of a SOLIDWORKS Add-in Object from a Standalone Application or Macro
 caption: Via Add-in Object
-description: Call functions of a SOLIDWORKS add-in from a standalone application or macro by retrieving the add-in object using the SOLIDWORKS API (enabling add-in custom API)
+---
+ Call functions of a SOLIDWORKS add-in from a standalone application or macro by retrieving the add-in object using the SOLIDWORKS API (enabling add-in custom API)
 image: object-browser-interface.png
 labels: [add-in api,addin object,invoke]
 sidebar_position: 1

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Write component quantity in the SOLIDWORKS assembly to custom property
+title:  Write component quantity in the SOLIDWORKS assembly to custom property
 caption: Write Component Quantity To Custom Property
-description: VBA macro which writes the total quantities of components in SOLIDWORKS assembly into custom property
+---
+ VBA macro which writes the total quantities of components in SOLIDWORKS assembly into custom property
 image: bom-quantity.svg
 labels: [quantity,component]
 group: Assembly

@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Open selected components in the Large Design Review (LDR) mode
+title:  Open selected components in the Large Design Review (LDR) mode
 caption: Open components in LDR mode
-description: VBA macro to open all selected sub-assemblies and part components in the Large Design Review (LDR) mode and view only mode correspondingly
+---
+ VBA macro to open all selected sub-assemblies and part components in the Large Design Review (LDR) mode and view only mode correspondingly
 image: ldr-sub-assembly.svg
 labels: [performance, ldr, view only, large design review, open]
 group: Assembly

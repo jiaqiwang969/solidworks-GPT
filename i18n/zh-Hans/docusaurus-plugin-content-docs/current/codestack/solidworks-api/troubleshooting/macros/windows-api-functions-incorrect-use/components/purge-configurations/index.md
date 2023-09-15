@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: 清除SOLIDWORKS装配体中的组件配置（删除所有未使用的配置）
+title:  清除SOLIDWORKS装配体中的组件配置（删除所有未使用的配置）
 caption: 清除组件配置
-description: VBA宏，用于在装配体中创建所有选定组件的副本并清除其中的配置
+---
+ VBA宏，用于在装配体中创建所有选定组件的副本并清除其中的配置
 image: purged-components-result1.png
 labels: [组件, 替换, 清除]
 group: 装配体

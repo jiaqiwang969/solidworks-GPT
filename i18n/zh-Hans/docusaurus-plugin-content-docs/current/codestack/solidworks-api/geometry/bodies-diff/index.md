@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS宏比较零件的几何差异
+title:  使用SOLIDWORKS宏比较零件的几何差异
 caption: 零件几何差异
-description: 使用SOLIDWORKS API比较多体零件之间的几何差异
+---
+ 使用SOLIDWORKS API比较多体零件之间的几何差异
 image: part-bodies-diff.png
 labels: [geometry, transform, diff, compare]
 ---

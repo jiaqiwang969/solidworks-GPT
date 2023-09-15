@@ -1,7 +1,8 @@
 ---
-标题：插入孔表
-描述：VBA宏演示了如何使用SOLIDWORKS API插入指定实体的孔表
-图片：holes-table.png
+title: 插入孔表
+---
+ VBA宏演示了如何使用SOLIDWORKS API插入指定实体的孔表
+image: holes-table.png
 ---
 ![孔表](holes-table.png){ width=300 }
 

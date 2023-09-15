@@ -1,7 +1,8 @@
 ---
 caption: 遍历特征树（反向）
-title: 在 SOLIDWORKS 特征管理器树中以反向顺序遍历
-description: 一个 VBA 宏，用于在 SOLIDWORKS 文档中以反向顺序遍历特征管理器树
+title:  在 SOLIDWORKS 特征管理器树中以反向顺序遍历
+---
+ 一个 VBA 宏，用于在 SOLIDWORKS 文档中以反向顺序遍历特征管理器树
 ---
 
 这个 VBA 宏演示了如何在活动的 SOLIDWORKS 文档中以反向顺序遍历特征管理器树。

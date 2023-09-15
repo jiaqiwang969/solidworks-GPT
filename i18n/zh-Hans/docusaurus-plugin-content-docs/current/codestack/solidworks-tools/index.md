@@ -1,8 +1,9 @@
 ---
 layout: default
-title: SOLIDWORKS自动化的宏和脚本库
+title:  SOLIDWORKS自动化的宏和脚本库
 caption: "'好东西'"
-description: 有用的自动化宏和脚本，可提高您在SOLIDWORKS中工作时的生产力
+---
+ 有用的自动化宏和脚本，可提高您在SOLIDWORKS中工作时的生产力
 image: macros-library.svg
 labels: [工具, solidworks, 宏]
 search: false

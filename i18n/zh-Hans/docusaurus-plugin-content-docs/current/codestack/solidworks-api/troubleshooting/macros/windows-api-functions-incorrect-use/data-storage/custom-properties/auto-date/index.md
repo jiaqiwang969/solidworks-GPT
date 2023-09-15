@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
 caption: Auto Date Custom Property
-title: Create a dynamic auto updatable date custom property in SOLIDWORKS file
-description: VBA macro which creates a date custom property in SOLIDWORKS file in the specified format with an option to automatically update
+title:  Create a dynamic auto updatable date custom property in SOLIDWORKS file
+---
+ VBA macro which creates a date custom property in SOLIDWORKS file in the specified format with an option to automatically update
 image: auto-date-custom-property.svg
 group: Custom Properties
 ---

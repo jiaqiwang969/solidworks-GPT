@@ -1,7 +1,8 @@
 ---
-title: 分配标签和管理属性管理器页面控件依赖关系
+title:  分配标签和管理属性管理器页面控件依赖关系
 caption: 标签和依赖关系
-description: 使用SwEx.PMPage框架分配自定义标签和管理SOLIDWORKS属性管理器页面控件依赖关系（可见性、启用状态等）
+---
+ 使用SwEx.PMPage框架分配自定义标签和管理SOLIDWORKS属性管理器页面控件依赖关系（可见性、启用状态等）
 image: cascading-controls.gif
 labels: [级联,依赖关系,标签]
 toc-group-name: labs-solidworks-swex

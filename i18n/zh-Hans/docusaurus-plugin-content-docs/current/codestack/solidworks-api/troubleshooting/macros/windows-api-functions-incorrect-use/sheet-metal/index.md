@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API自动化处理钣金零件
+title:  使用SOLIDWORKS API自动化处理钣金零件
 caption: 钣金
-description: 使用SOLIDWORKS API来操作钣金特征
+---
+ 使用SOLIDWORKS API来操作钣金特征
 sidebar_position: 10
 labels: [钣金, 弯曲, 折叠]
 ---

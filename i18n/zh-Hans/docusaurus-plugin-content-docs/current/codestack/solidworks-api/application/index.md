@@ -1,7 +1,8 @@
 ---
-title: 使用API自动化SOLIDWORKS应用程序框架、菜单和工具栏
+title:  使用API自动化SOLIDWORKS应用程序框架、菜单和工具栏
 caption: 应用程序
-description: 收集有关自定义SOLIDWORKS应用程序框架、菜单和工具栏以及管理文档的文章和代码示例。
+---
+ 收集有关自定义SOLIDWORKS应用程序框架、菜单和工具栏以及管理文档的文章和代码示例。
 image: solidworks-application-api.png
 sidebar_position: 0
 ---

@@ -1,7 +1,8 @@
 ---
-title: 在Visual Basic中声明和赋值变量和常量
+title:  在Visual Basic中声明和赋值变量和常量
 caption: 变量和常量
-description: 在Visual Basic中声明变量和常量以及赋值的概述
+---
+ 在Visual Basic中声明变量和常量以及赋值的概述
 image: option-explicit-variable-not-defined.png
 sidebar_position: 0
 ---

@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API为组件添加和读取带参数的属性
+title:  使用SOLIDWORKS API为组件添加和读取带参数的属性
 caption: 为组件添加带参数的属性并读取值
-description: 该示例使用[SOLIDWORKS API接口](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iattributedef.html)为选定的组件添加带有字符串值的属性作为参数。通过使用[IComponent2::FindAttribute](https://help.solidworks.com/2018/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IComponent2~FindAttribute.html)方法，重建模型并读取属性。
+---
+该示例使用[SOLIDWORKS API接口](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iattributedef.html)为选定的组件添加带有字符串值的属性作为参数。通过使用[IComponent2::FindAttribute](https://help.solidworks.com/2018/english/api/sldworksapi/SOLIDWORKS.Interop.sldworks~SOLIDWORKS.Interop.sldworks.IComponent2~FindAttribute.html)方法，重建模型并读取属性。
 
 属性是可以附加到SOLIDWORKS实体并存储自定义数据的轻量级特征。
 

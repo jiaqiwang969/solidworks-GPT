@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API导入和导出文件
+title:  使用SOLIDWORKS API导入和导出文件
 caption: 导入/导出
-description: 收集了与使用SOLIDWORKS API导入和导出文件相关的示例和文章
+---
+ 收集了与使用SOLIDWORKS API导入和导出文件相关的示例和文章
 image: import-export.svg
 sidebar_position: 0
 ---

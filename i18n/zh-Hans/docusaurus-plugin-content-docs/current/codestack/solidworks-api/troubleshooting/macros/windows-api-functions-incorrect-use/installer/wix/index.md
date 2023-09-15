@@ -1,7 +1,8 @@
 ---
-title: 使用Windows Installer XML（WiX）创建SOLIDWORKS插件安装程序
+title:  使用Windows Installer XML（WiX）创建SOLIDWORKS插件安装程序
 caption: Windows Installer XML（WiX）
-description: 使用Windows Installer XML（WiX）创建SOLIDWORKS插件的安装程序包
+---
+ 使用Windows Installer XML（WiX）创建SOLIDWORKS插件的安装程序包
 image: wix-installation-dialog.png
 labels: [installer, wix, deployment]
 ---

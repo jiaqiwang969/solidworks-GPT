@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS API对象模型类层次结构图
+title:  SOLIDWORKS API对象模型类层次结构图
 caption: 类图关系
-description: SOLIDWORKS API对象模型中类和接口之间关系的详细解释（类图）
+---
+ SOLIDWORKS API对象模型中类和接口之间关系的详细解释（类图）
 image: class-diagram.png
 labels: [层次结构, 类, 模型]
 sidebar_position: 1

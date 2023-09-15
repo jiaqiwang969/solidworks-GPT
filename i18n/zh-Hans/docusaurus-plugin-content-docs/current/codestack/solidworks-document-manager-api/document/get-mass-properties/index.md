@@ -1,7 +1,8 @@
 ---
 caption: 提取质量属性
-title: 使用SOLIDWORKS文档管理器API从所有配置中提取质量属性
-description: 代码示例，从指定输入目录中的所有文件配置中提取质量属性
+title:  使用SOLIDWORKS文档管理器API从所有配置中提取质量属性
+---
+ 代码示例，从指定输入目录中的所有文件配置中提取质量属性
 image: mass-properties-table.png
 ---
 这个C#代码示例演示了如何使用SOLIDWORKS文档管理器API从输入目录中的所有文件配置中提取质量属性。

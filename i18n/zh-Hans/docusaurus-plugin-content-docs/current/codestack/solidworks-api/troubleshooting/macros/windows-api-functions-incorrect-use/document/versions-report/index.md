@@ -1,7 +1,8 @@
 ---
 caption: 报告文件版本
-title: 为文件夹中的所有文件生成SOLIDWORKS文件版本（创建和最后保存）报告
-description: 这是一个VBA宏，用于生成指定文件夹中SOLIDWORKS文件的创建和最后保存版本的CSV报告（可在Excel中打开）。
+title:  为文件夹中的所有文件生成SOLIDWORKS文件版本（创建和最后保存）报告
+---
+ 这是一个VBA宏，用于生成指定文件夹中SOLIDWORKS文件的创建和最后保存版本的CSV报告（可在Excel中打开）。
 image: solidworks-file-versions-report.png
 ---
 ![SOLIDWORKS文件版本报告](solidworks-file-versions-report.png) { width=500 }

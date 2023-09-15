@@ -1,7 +1,7 @@
 ---
-标题：使用SOLIDWORKS API在屏幕像素上平移模型视图
-说明：示例演示了如何通过提供屏幕像素的偏移量来平移模型视图
-图片：pan-view.png
+title: 使用SOLIDWORKS API在屏幕像素上平移模型视图
+description: 示例演示了如何通过提供屏幕像素的偏移量来平移模型视图
+image: pan-view.png
 ---
 
 ![模型视图平移](pan-view.png){ width=350 }

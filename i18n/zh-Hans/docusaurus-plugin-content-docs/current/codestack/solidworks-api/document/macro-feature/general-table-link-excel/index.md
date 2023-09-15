@@ -1,7 +1,8 @@
 ---
-title: SOLIDWORKS宏功能以将通用表格链接并自动更新到Excel
+title:  SOLIDWORKS宏功能以将通用表格链接并自动更新到Excel
 caption: 链接并自动更新通用表格到Excel
-description: 使用SOLIDWORKS API，宏允许将通用表格链接到外部Excel或文本/CSV文件，并自动更新。
+---
+ 使用SOLIDWORKS API，宏允许将通用表格链接到外部Excel或文本/CSV文件，并自动更新。
 image: linked-excel-table.png
 labels: [general table, excel, link, macro feature]
 ---

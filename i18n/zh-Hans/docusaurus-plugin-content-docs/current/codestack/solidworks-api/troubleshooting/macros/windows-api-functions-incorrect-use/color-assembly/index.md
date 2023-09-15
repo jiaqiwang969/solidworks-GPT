@@ -1,7 +1,8 @@
 ---
 caption: Apply Random Colors To Components
-title: Macro to apply random colors to components in SOLIDWORKS assembly
-description: VBA macro to apply random color to all components in the SOLIDWORKS assembly with an option to apply on a component or model level and group by custom property value
+title:  Macro to apply random colors to components in SOLIDWORKS assembly
+---
+ VBA macro to apply random color to all components in the SOLIDWORKS assembly with an option to apply on a component or model level and group by custom property value
 ---
 This VBA macro applies a random color on all components of the active assembly.
 

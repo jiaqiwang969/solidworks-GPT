@@ -1,7 +1,8 @@
 ---
-title: 在SOLIDWORKS宏特征中管理编辑体
+title:  在SOLIDWORKS宏特征中管理编辑体
 caption: 编辑体
-description: 使用SwEx.MacroFeature框架在SOLIDWORKS宏特征中管理编辑体
+---
+ 使用SwEx.MacroFeature框架在SOLIDWORKS宏特征中管理编辑体
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---

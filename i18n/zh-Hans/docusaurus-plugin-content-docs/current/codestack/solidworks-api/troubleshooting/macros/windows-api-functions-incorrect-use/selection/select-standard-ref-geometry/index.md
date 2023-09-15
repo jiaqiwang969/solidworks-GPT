@@ -1,8 +1,9 @@
 ---
 layout: sw-tool
-title: Select standard reference geometry (e.g. Front plane or origin) by type using SOLIDWORKS API
+title:  Select standard reference geometry (e.g. Front plane or origin) by type using SOLIDWORKS API
 caption: Select Standard Plane Or Origin By Type
-description: Example demonstrates how to select standard plane (Top, Front or Right) and origin by specifying its type
+---
+ Example demonstrates how to select standard plane (Top, Front or Right) and origin by specifying its type
 image: plane.svg
 labels: [selection, plane, origin]
 group: Model

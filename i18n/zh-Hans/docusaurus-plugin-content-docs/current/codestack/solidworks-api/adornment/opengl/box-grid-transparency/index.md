@@ -1,7 +1,8 @@
 ---
-title: 使用OpenGL和SOLIDWORKS API渲染具有透明度的盒子网格
+title:  使用OpenGL和SOLIDWORKS API渲染具有透明度的盒子网格
 caption: 使用透明度渲染盒子网格
-description: 使用OpenGL和SOLIDWORKS API渲染具有透明度的盒子网格
+---
+ 使用OpenGL和SOLIDWORKS API渲染具有透明度的盒子网格
 image: opengl-cubes.png
 labels: [opengl,render,transparency]
 ---

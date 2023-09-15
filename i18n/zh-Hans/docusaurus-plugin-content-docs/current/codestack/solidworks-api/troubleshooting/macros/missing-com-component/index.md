@@ -1,8 +1,9 @@
 ---
 layout: sw-macro-fix
-title: 如何修复缺失的COM（ActiveX）组件错误
+title:  如何修复缺失的COM（ActiveX）组件错误
 caption: 缺失的COM组件
-description: 如何修复VBA宏中的运行时错误429
+---
+ 如何修复VBA宏中的运行时错误429
 image: runtime-error-429.png
 labels: [宏, 故障排除]
 ---

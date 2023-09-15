@@ -1,7 +1,8 @@
 ---
-title: 在Visual Basic 6 (VBA)中显示文件浏览对话框以保存或打开文件
+title:  在Visual Basic 6 (VBA)中显示文件浏览对话框以保存或打开文件
 caption: 浏览文件以保存或打开
-description: 在Visual Basic 6 (VBA)中显示文件浏览对话框以选择保存文件路径或打开文件路径
+---
+ 在Visual Basic 6 (VBA)中显示文件浏览对话框以选择保存文件路径或打开文件路径
 labels: [文件,浏览,保存]
 ---
 

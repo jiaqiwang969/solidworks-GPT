@@ -1,7 +1,8 @@
 ---
 caption: Insert Holes Table
-title: Macro to insert holes table to SOLIDWORKS drawing
-description: VBA macro demonstrates how to insert hole table for the specified entities using SOLIDWORKS API
+title:  Macro to insert holes table to SOLIDWORKS drawing
+---
+ VBA macro demonstrates how to insert hole table for the specified entities using SOLIDWORKS API
 image: holes-table.png
 ---
 ![Holes table](holes-table.png){ width=300 }

@@ -1,7 +1,8 @@
 ---
-title: Managing OLE Objects in Models with SOLIDWORKS API
+title:  Managing OLE Objects in Models with SOLIDWORKS API
 caption: OLE Objects
-description: A set of macros and examples demonstrating how to work with different embedded OLE objects (design tables, attachments, etc.) using the SOLIDWORKS API.
+---
+ A set of macros and examples demonstrating how to work with different embedded OLE objects (design tables, attachments, etc.) using the SOLIDWORKS API.
 sidebar_position: 2
 labels: [ole, embedding]
 ---

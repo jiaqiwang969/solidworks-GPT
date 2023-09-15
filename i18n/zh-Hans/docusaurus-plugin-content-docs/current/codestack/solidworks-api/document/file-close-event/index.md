@@ -1,7 +1,8 @@
 ---
-title: 使用SOLIDWORKS API处理预关闭和后关闭通知
+title:  使用SOLIDWORKS API处理预关闭和后关闭通知
 caption: 处理预关闭和后关闭通知
-description: 该示例演示了如何使用SOLIDWORKS API处理文件关闭的预关闭和后关闭通知。
+---
+ 该示例演示了如何使用SOLIDWORKS API处理文件关闭的预关闭和后关闭通知。
 image: file-lock-output.png
 labels: [event, close, pdm]
 ---

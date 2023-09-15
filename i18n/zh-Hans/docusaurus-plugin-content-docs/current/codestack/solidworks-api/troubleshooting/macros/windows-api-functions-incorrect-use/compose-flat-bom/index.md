@@ -1,7 +1,8 @@
 ---
-title: 使用API编写的SOLIDWORKS VBA宏来生成平面BOM表
+title:  使用API编写的SOLIDWORKS VBA宏来生成平面BOM表
 caption: 生成平面BOM
-description: 该示例演示了如何使用SOLIDWORKS API从装配树中生成平面（仅顶层）BOM表。
+---
+ 该示例演示了如何使用SOLIDWORKS API从装配树中生成平面（仅顶层）BOM表。
 image: bill-of-materials.png
 labels: [bom, flat, top level]
 ---

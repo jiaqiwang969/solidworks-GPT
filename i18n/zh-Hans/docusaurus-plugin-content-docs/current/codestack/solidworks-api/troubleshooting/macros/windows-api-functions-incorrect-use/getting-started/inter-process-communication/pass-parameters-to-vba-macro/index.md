@@ -1,7 +1,8 @@
 ---
-title: 将参数传递给SOLIDWORKS VBA宏
+title:  将参数传递给SOLIDWORKS VBA宏
 caption: 将参数传递给VBA宏
-description: 从外部应用程序向SOLIDWORKS VBA宏传递参数的解决方法
+---
+ 从外部应用程序向SOLIDWORKS VBA宏传递参数的解决方法
 labels: [参数, 互操作性]
 ---
 SOLIDWORKS VBA宏不接受自定义参数作为输入，因此无法将用户参数传递给[ISldWorks::RunMacro2](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~runmacro2.html)方法。这个限制可能是使用API进行SOLIDWORKS自动化的主要障碍。
