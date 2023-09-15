@@ -1,31 +1,31 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS Macro to display callouts with diameters for edges
-caption: Display Callouts With Diameters For All Selected Circular Edges
-description: Macro will display the callouts with the diameter values of all selected circular edges in the 3D model
+title: SOLIDWORKS宏以显示边缘的直径标注
+caption: 显示所有选定圆形边缘的直径标注
+description: 该宏将使用SOLIDWORKS API方法[ISelectionMgr::CreateCallout2](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iselectionmgr~createcallout2.html)显示所有选定圆形边缘的直径标注。
 image: edge-callout.svg
-labels: [adornment, callout, diameter, edge, example, macro, solidworks api, unit conversion]
-group: Model
+labels: [装饰, 标注, 直径, 边缘, 示例, 宏, solidworks api, 单位转换]
+group: 模型
 redirect-from:
   - /2018/03/display-callouts-with-diameters-for-all.html
 ---
-This macro will display the callouts with the diameter values of all selected circular edges in the 3D model using [ISelectionMgr::CreateCallout2](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iselectionmgr~createcallout2.html) SOLIDWORKS API method.
+该宏将使用[SOLIDWORKS API](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iselectionmgr~createcallout2.html)中的[ISelectionMgr::CreateCallout2](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iselectionmgr~createcallout2.html)方法，在3D模型中显示所有选定圆形边缘的直径标注。
 
-This can be useful while inspecting the model and it is required to see multiple diameters at the same time.
+在检查模型时，同时查看多个直径值非常有用。
 
-![Diameters displayed in the callout for selected holes](hole-diams.png){ width=400 height=290 }
+![在选定孔中显示的直径标注](hole-diams.png){ width=400 height=290 }
 
-The callout is a visual element in SOLIDWORKS which displays data organized in key-value pairs (single or multiple rows). The callout elements are used in some standard SOLIDWORKS tools such as [Measure tool](https://help.solidworks.com/2017/english/solidworks/sldworks/t_using_the_measure_tool.htm). Usually callouts are attached to the selection and destroyed once the object is deselected.
+标注是SOLIDWORKS中的一种可视元素，用于以键值对（单行或多行）的形式显示数据。标注元素在一些标准SOLIDWORKS工具（如[测量工具](https://help.solidworks.com/2017/english/solidworks/sldworks/t_using_the_measure_tool.htm)）中使用。通常，标注附加到选择对象上，并在取消选择对象后销毁。
 
-To run the macro:
+运行该宏的步骤如下：
 
-1. Select circular edges and run the macro
-1. Callouts with the diameter value in the model's units are displayed for all circular edges
-1. Clear the selection to remove the callouts
+1. 选择圆形边缘并运行宏
+2. 在模型中为所有圆形边缘显示带有直径值的标注
+3. 清除选择以删除标注
 
-Create new macro and copy the following code into the macro's module:
+创建新的宏并将以下代码复制到宏的模块中：
 
-![Macro module in VBA editor](macro-module.png){ width=640 height=230 }
+![VBA编辑器中的宏模块](macro-module.png){ width=640 height=230 }
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -95,7 +95,7 @@ Sub main()
         Wend
     
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -103,11 +103,11 @@ End Sub
 
 
 
-Create new class module and name it *HoleDiamCalloutHandler.*  
+创建新的类模块并将其命名为*HoleDiamCalloutHandler*。
 
-![Adding class module to VBA macro](insert-class-module.png){ width=320 height=220 }
+![向VBA宏中添加类模块](insert-class-module.png){ width=320 height=220 }
 
-Copy the following code in there:
+将以下代码复制到其中：
 
 ~~~ vb
 Implements swCalloutHandler
@@ -117,5 +117,3 @@ Private Function swCalloutHandler_OnStringValueChanged(ByVal pManipulator As Obj
 End Function
 
 ~~~
-
-
