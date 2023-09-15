@@ -1,35 +1,34 @@
 ---
-title: 使用SOLIDWORKS API在模型的第三方存储中序列化文件内容
-caption: 在第三方存储中嵌入文件
-description: 使用SOLIDWORKS API和模型文档中的XmlSerializers，VB.NET示例演示了如何使用第三方存储（流）嵌入和提取文件内容
+title: Serialize File Content in Third-Party Storage using SOLIDWORKS API
+caption: Embedding Files in Third-Party Storage
+description: This VB.NET example demonstrates how to use third-party storage (stream) to embed and extract file content in a SOLIDWORKS model document using SOLIDWORKS API and XmlSerializers.
 image: embed-file-menu.png
-labels: [序列化,第三方存储,文件]
+labels: [serialization, third-party storage, file]
 ---
 
-此示例演示了如何使用SOLIDWORKS API中的第三方存储来直接将文件内容嵌入和提取到模型流中。
+This example demonstrates how to use third-party storage in the SOLIDWORKS API to directly embed and extract file content into a model stream.
 
-示例SOLIDWORKS插件使用[SwEx.AddIn](/docs/codestack/labs/solidworks/swex/add-in/)框架构建，但也可以与其他创建插件的方法一起使用。
+The example SOLIDWORKS add-in is built using the [SwEx.AddIn](/docs/codestack/labs/solidworks/swex/add-in/) framework, but it can also be used with other methods of creating add-ins.
 
-插件在菜单和工具栏中添加了两个按钮，并相应地提供了两个处理程序：
+The add-in adds two buttons in the menu and toolbar and provides two corresponding handlers:
 
-![插件菜单](embed-file-menu.png){ width=400 }
+![Add-in Menu](embed-file-menu.png){ width=400 }
 
-* AddFile - 用于将嵌入文件数据存储到流中的异步方法。此方法要求用户选择文件，读取其内容并将其序列化为文件流。
-* LoadFile - 从流中加载嵌入的文件，并提示用户选择文件路径以存储内容。文件名根据嵌入的文件名预填充。
+* AddFile - An asynchronous method for storing embedded file data into a stream. This method prompts the user to select a file, reads its content, and serializes it into a file stream.
+* LoadFile - Loads the embedded file from the stream and prompts the user to select a file path to store the content. The file name is pre-filled based on the embedded file name.
 
-![浏览保存文件路径](select-save-path.png){ width=550 }
+![Browse Save File Path](select-save-path.png){ width=550 }
 
-## 使用说明
+## Instructions
 
-* 打开任何模型（模型必须保存到磁盘）
-* 单击“AddFile”按钮。将显示文件浏览对话框。选择任何文件。文件数据将序列化到模型中，并显示消息框。
-* 您可以关闭模型和SOLIDWORKS
-* 重新打开模型并单击“LoadFile”。将从模型中反序列化文件数据，并显示“文件另存为”对话框（根据嵌入的文件名填充）。文件将保存到所选位置
+* Open any model (the model must be saved to disk).
+* Click the "AddFile" button. A file browse dialog will appear. Select any file. The file data will be serialized into the model and a message box will be displayed.
+* You can close the model and SOLIDWORKS.
+* Reopen the model and click "LoadFile". The file data will be deserialized from the model and a "Save As" dialog will be displayed (pre-filled based on the embedded file name). The file will be saved to the selected location.
 
 **EmbedFileAddIn.vb**
 
-~~~ vb
-
+```vb
 Imports System.IO
 Imports System.Runtime.InteropServices
 Imports System.Windows.Forms
@@ -126,29 +125,29 @@ Partial Public Class EmbedFile
 
 End Class
 
-~~~
+```
 
 
 
-用于序列化的结构包含文件的内容和文件名
+The structure used for serialization contains the content and file name of the file.
 
 **EmbedFileData.vb**
 
-~~~ vb
+```vb
 Public Class EmbedFileData
     Public Property FileName As String
     Public Property Content As Byte()
 End Class
 
-~~~
+```
 
 
 
-为了简化操作，将[ComStream](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istream) COM流封装到[System.IO.Stream](https://docs.microsoft.com/en-us/dotnet/api/system.io.stream?view=netframework-4.7.2)类型中。
+To simplify the operation, the [ComStream](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/nn-objidl-istream) COM stream is wrapped into the [System.IO.Stream](https://docs.microsoft.com/en-us/dotnet/api/system.io.stream?view=netframework-4.7.2) type.
 
 **ComStream.vb**
 
-~~~ vb
+```vb
 Imports System.IO
 Imports System.Runtime.InteropServices
 Imports System.Runtime.InteropServices.ComTypes
@@ -300,15 +299,15 @@ Public Class ComStream
 
 End Class
 
-~~~
+```
 
 
 
-使用[XmlSerializer](https://docs.microsoft.com/en-us/dotnet/api/system.xml.serialization.xmlserializer?view=netframework-4.7.2)类进行序列化和反序列化，但也可以使用其他序列化方法。
+Serialization and deserialization are performed using the [XmlSerializer](https://docs.microsoft.com/en-us/dotnet/api/system.xml.serialization.xmlserializer?view=netframework-4.7.2) class, but other serialization methods can also be used.
 
 **EmbedFile.vb**
 
-~~~ vb
+```vb
 Imports System.Runtime.InteropServices.ComTypes
 Imports System.Xml.Serialization
 Imports SolidWorks.Interop.sldworks
@@ -415,4 +414,4 @@ Partial Public Class EmbedFile
 
 End Class
 
-~~~
+```
