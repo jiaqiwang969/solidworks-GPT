@@ -5,6 +5,7 @@ caption: 使用共享库的插件无法一起工作
 description: 通过启用绑定重定向来解决使用不同版本的共享库的问题
 labels: [插件, 故障排除, 共享库]
 ---
+
 ## 症状
 
 有几个SOLIDWORKS插件（通常来自同一供应商）无法一起工作。SOLIDWORKS可能会崩溃或表现异常。如果单独加载插件，则插件可以正常工作。
@@ -25,7 +26,7 @@ labels: [插件, 故障排除, 共享库]
 
 将以下代码段添加到**app.config**文件中：
 
-~~~ xml
+``` xml
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration>
 	<runtime>
@@ -37,19 +38,19 @@ labels: [插件, 故障排除, 共享库]
 		</assemblyBinding>
 	</runtime>
 </configuration>
-~~~
+```
 
 您可以使用以下代码段从共享库中查找所需的标识信息（即程序集名称、版本、公钥令牌和区域设置）。
 
-~~~ cs
+``` cs
 System.Diagnostics.Debug.Print(typeof([共享程序集中的任何类型]).Assembly.FullName);
-~~~
+```
 
 这将打印为
 
-~~~
+```
 [程序集名称]，Version=[版本]，Culture=[区域设置]，PublicKeyToken=[公钥令牌]
-~~~
+```
 
 视频演示：
 
