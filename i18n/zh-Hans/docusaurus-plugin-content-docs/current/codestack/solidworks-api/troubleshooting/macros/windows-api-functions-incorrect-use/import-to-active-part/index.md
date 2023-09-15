@@ -1,17 +1,17 @@
 ---
 layout: article
-caption: Import To Active Part
-title: Macro to import foreign file into active part using SOLIDWORKS API
-description: VBA macro to import foreign file (parasolid, step, iges, etc.) directly into the active part document using SOLIDWORKS API
+caption: 导入到活动零件
+title: 使用SOLIDWORKS API将外部文件导入到活动零件的宏
+description: 使用SOLIDWORKS API将外部文件（parasolid、step、iges等）直接导入到活动零件文档的VBA宏
 image: imported-file.png
 ---
-![File imported to an active part document](imported-file.png)
+![导入到活动零件文档的文件](imported-file.png)
 
-This VBA macro demonstrates how to import foreign file with bodies (e.g. parasolid, step, iges, etc.) directly into the active part document.
+这个VBA宏演示了如何将带有实体的外部文件（例如parasolid、step、iges等）直接导入到活动零件文档中。
 
-Change the path to the import file in the **INPUT_FILE** constant
+在**INPUT_FILE**常量中更改导入文件的路径。
 
-This macro only supports foreign files which are imported as part document.
+此宏仅支持作为零件文档导入的外部文件。
 
 ~~~ vb
 Const INPUT_FILE As String = "D:\Model.x_t"
@@ -52,7 +52,7 @@ try_:
         Set swFeat = swModel.CreateFeatureFromBody3(swBody, False, swCreateFeatureBodyOpts_e.swCreateFeatureBodySimplify)
         
         If swFeat Is Nothing Then
-            Err.Raise vbError, "", "Failed to create feature from body"
+            Err.Raise vbError, "", "无法从实体创建特征"
         End If
         
     Next
@@ -62,7 +62,7 @@ try_:
     GoTo finally_
     
 catch_:
-    Debug.Print "Error: " & Err.Number & ":" & Err.Source & ":" & Err.Description
+    Debug.Print "错误：" & Err.Number & "：" & Err.Source & "：" & Err.Description
     GoTo finally_
     
 finally_:
@@ -71,4 +71,3 @@ finally_:
     
 End Sub
 ~~~
-
