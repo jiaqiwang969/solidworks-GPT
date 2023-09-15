@@ -1,18 +1,19 @@
 ---
-title: Add mate between coordinate systems using SOLIDWORKS API
-caption: Add Mate Between Coordinate Systems
-description: Macro adds coincident mate between 2 coordinate systems of 2 selected components
+title: 使用SOLIDWORKS API在坐标系之间添加配合关系
+caption: 在坐标系之间添加配合关系
+description: 该宏在两个选定组件的两个坐标系之间添加了一个重合的配合关系
 image: sw-mate-coincident.png
-labels: [assembly, component, coordinate system, example, mate, solidworks api]
+labels: [装配体, 零件, 坐标系, 示例, 配合关系, solidworks api]
 redirect-from:
   - /2018/03/solidworks-api-assembly-add-mate-between-coord-sys.html
   - /solidworks-api/document/assembly/add-mate-between-coordinate-systems
 ---
-Adds coincident mate between 2 coordinate systems of 2 selected components using SOLIDWORKS API. The components must contain the coordinate system features named *Coordinate System1*
 
-![Coincident mate property manager page](sw-mate-coincident.png){ width=640 }
+使用SOLIDWORKS API在两个选定组件的两个坐标系之间添加了一个重合的配合关系。这些组件必须包含名为*Coordinate System1*的坐标系特征。
 
-[IAssemblyDoc::AddMate3](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iassemblydoc~addmate3.html) SOLIDWORKS API is used to insert mate feature.
+![重合配合关系属性管理器页面](sw-mate-coincident.png){ width=640 }
+
+使用[IAssemblyDoc::AddMate3](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iassemblydoc~addmate3.html) SOLIDWORKS API来插入配合关系特征。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -44,7 +45,7 @@ Sub main()
     
     Else
         
-        MsgBox "Please open assembly"
+        MsgBox "请打开装配体"
     
     End If
     
@@ -62,13 +63,13 @@ Function GetCoordinateSystemFromSelection(index As Integer, name As String) As S
         Set swCoordSys = swComp.FeatureByName(name)
         
         If swCoordSys Is Nothing Then
-            MsgBox "Component " & swComp.Name2 & " doesn't contain the feature " & name
+            MsgBox "组件 " & swComp.Name2 & " 不包含特征 " & name
             End
         End If
     
     Else
         
-        MsgBox "Please select 2 components"
+        MsgBox "请选择2个组件"
         End
         
     End If
@@ -79,5 +80,3 @@ End Function
 
 
 ~~~
-
-
