@@ -1,13 +1,14 @@
 ---
-caption: Rename Drawings Views After Sheets
-title: Macro to rename all drawing views after the sheet name
-description: VBA macro renames all SOLIDWORKS drawings views after the sheet name the drawing view is on
+caption: 重命名图纸视图为图纸页名称
+title: 宏以图纸页名称重命名所有图纸视图
+description: VBA宏将活动SOLIDWORKS图纸文档中的所有图纸视图重命名为图纸页名称后跟索引。
 ---
-This VBA macro allows to rename all drawing views from all sheets in the active SOLIDWORKS drawing document after the sheet name followed by index.
 
-Detailing and section views will be excluded from the renaming process.
+此VBA宏允许将活动SOLIDWORKS图纸文档中所有图纸视图重命名为图纸页名称后跟索引。
 
-~~~ vb
+详细和剖视图将被排除在重命名过程之外。
+
+``` vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -61,7 +62,7 @@ Sub main()
                         newViewName = swSheetView.Name & "(" & nextViewIndex & ")"
                         
                         If False = swView.SetName2(newViewName) Then
-                            Err.Raise vbError, "", "Failed to rename " & swView.Name & " to " & ""
+                            Err.Raise vbError, "", "无法将 " & swView.Name & " 重命名为 " & ""
                         End If
                     End If
                     
@@ -70,12 +71,11 @@ Sub main()
             Next
             
         Else
-            Err.Raise vbError, "", "Active document is not a drawing"
+            Err.Raise vbError, "", "活动文档不是图纸"
         End If
     Else
-        Err.Raise vbError, "", "Please open the drawing"
+        Err.Raise vbError, "", "请打开图纸"
     End If
     
 End Sub
-~~~
-
+```
