@@ -1,27 +1,28 @@
 ---
-title: Using persistent reference id in SOLIDWORKS API to track objects
-caption: Persistent Reference Id
-description: This article explains the use of persistent reference ids to track any selectable entity across SOLIDWORKS sessions
+title: 在SOLIDWORKS API中使用持久引用ID跟踪对象
+caption: 持久引用ID
+description: 本文介绍了使用持久引用ID在SOLIDWORKS会话中跟踪可选择的实体的方法
 image: persist-id-array.png
 labels: [persistent, reference, tracking]
 ---
-Persistent reference ids available in SOLIDWORKS API allow to retrieve the persistent link to any selectable object in SOLIDWORKS. The main benefit of persistent reference is its life cycle as the reference remains valid across rebuild operations, SOLIDWORKS sessions or even SOLIDWORKS releases.
 
-Persistent reference id is an array of bytes. This array may change for the same reference so it is not possible to compare two arrays to identify if the references are the same. Use [IModelDocExtension::IsSamePersistentID method](https://help.solidworks.com/2017/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeldocextension~issamepersistentid.html) to identify if two persist references are the same.
+SOLIDWORKS API中提供的持久引用ID允许检索SOLIDWORKS中任何可选择对象的持久链接。持久引用的主要优点是其生命周期，因为引用在重建操作、SOLIDWORKS会话甚至SOLIDWORKS版本之间仍然有效。
 
-![Array of bytes of persist reference displayed in the watch window of VBA Editor](persist-id-array.png){ width=350 }
+持久引用ID是一个字节数组。对于相同的引用，该数组可能会发生变化，因此无法通过比较两个数组来确定引用是否相同。使用[IModelDocExtension::IsSamePersistentID方法](https://help.solidworks.com/2017/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeldocextension~issamepersistentid.html)来确定两个持久引用是否相同。
 
-Even if array may change for the same entity it is still possible to retrieve the valid pointer to the entity via [IModelDocExtension::GetPersistReference3](https://help.solidworks.com/2017/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeldocextension~getpersistreference3.html) SOLIDWORKS API method.
+![在VBA编辑器的监视窗口中显示的持久引用的字节数组](persist-id-array.png){ width=350 }
 
-The following example outputs the persist id of any selected entity into immediate window in the format of base64 string
+即使对于相同的实体，数组可能会发生变化，仍然可以通过[SOLIDWORKS API方法IModelDocExtension::GetPersistReference3](https://help.solidworks.com/2017/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeldocextension~getpersistreference3.html)检索到实体的有效指针。
 
-![Persist reference id converted to base64 string displayed in the immediate window of VBA Editor](immediate-window-persist-id.png)
+以下示例将任何选定实体的持久ID以base64字符串的格式输出到即时窗口中：
 
-Use this example to read the id of the entity.
+![持久引用ID转换为base64字符串在VBA编辑器的即时窗口中显示](immediate-window-persist-id.png)
 
-> The id output to immediate Window might contain line break. It should be removed from the id and should be considered as single line string
+使用此示例来读取实体的ID。
 
-~~~ vb
+> 输出到即时窗口的ID可能包含换行符。应该从ID中删除换行符，并将其视为单行字符串。
+
+```vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -69,19 +70,19 @@ Function ConvertToBase64String(vArr As Variant) As String
     ConvertToBase64String = xmlNode.Text
     
 End Function
-~~~
+```
 
 
 
-The following example allows to select the object by retrieving its pointer from persist id.
+以下示例允许通过从持久ID中检索其指针来选择对象。
 
-* Copy the id from the previous macro
-* Close the sample model
-* Reopen the model and run the example.
-* Enter the copied id into the box
-* The entities selected in previous example is re-selected
+* 复制前一个宏中的ID
+* 关闭示例模型
+* 重新打开模型并运行示例。
+* 将复制的ID输入到框中
+* 重新选择前一个示例中选择的实体
 
-~~~ vb
+```vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -137,6 +138,4 @@ Private Function Base64ToArray(base64 As String) As Variant
     Base64ToArray = xmlNode.nodeTypedValue
   
 End Function
-~~~
-
-
+```
