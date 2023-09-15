@@ -1,43 +1,43 @@
 ---
-title: 记录和编辑SOLIDWORKS宏
-caption: 记录宏
-description: 本文介绍如何记录宏命令
+title: Recording and Editing SOLIDWORKS Macros
+caption: Recording Macros
+description: This article explains how to record macro commands.
 image: macros-save-filter.png
-labels: [宏, 记录]
+labels: [macros, recording]
 sidebar_position: 2
 ---
-SOLIDWORKS提供了一个很好的功能，可以记录用户的操作并将其转换为宏代码。
+SOLIDWORKS provides a great feature to record user actions and convert them into macro code.
 
-这是学习SOLIDWORKS API和查找所需方法的非常方便的功能。
+This is a very convenient feature for learning SOLIDWORKS API and finding the desired methods.
 
-可以通过单击宏工具栏上的**记录**按钮来开始录制：
+You can start recording by clicking the **Record** button on the macro toolbar:
 
-![工具栏中的宏记录命令](macro-toolbar.png)
+![Macro Record Command in the Toolbar](macro-toolbar.png)
 
-在录制模式下，将记录大多数用户操作
+In recording mode, most user actions will be recorded.
 
-> 注意：并非所有命令都可以通过宏记录来记录。如果命令未被记录到，这并不意味着该特定命令的API不可用。
+> Note: Not all commands can be recorded using macro recording. If a command is not recorded, it does not mean that the API for that particular command is unavailable.
 
-为了增强宏记录体验，请尽量减少模型视图方向的更改和选择，因为这些命令将被记录下来，并且会使宏代码由于大量行数而难以阅读。
+To enhance the macro recording experience, try to minimize changes in the model view orientation and selections, as these commands will be recorded and can make the macro code difficult to read due to a large number of lines.
 
-使用**暂停**按钮跳过不必要的操作记录。
+Use the **Pause** button to skip unnecessary action recordings.
 
-录制完成后，单击**停止**按钮并选择要保存的录制宏的文件。
+Once the recording is complete, click the **Stop** button and choose the file to save the recorded macro.
 
-![保存录制宏](macros-save-filter.png){ width=400 }
+![Save Recorded Macro](macros-save-filter.png){ width=400 }
 
-请注意，可以将宏保存为VBA和VSTA格式。请参阅[宏类型](/docs/codestack/solidworks-api/getting-started/macros/types)文章，了解这些宏类型之间的区别。
+Note that macros can be saved in both VBA and VSTA formats. Refer to the [Macro Types](/docs/codestack/solidworks-api/getting-started/macros/types) article to understand the differences between these macro types.
 
-如果经常记录宏，建议启用*录制后自动编辑宏*选项。
+If you frequently record macros, it is recommended to enable the *Edit macro after recording* option.
 
-![自动编辑宏的选项](option-edit-macro-after-recording.png){ width=350 }
+![Option to Automatically Edit Macro](option-edit-macro-after-recording.png){ width=350 }
 
-这样，在宏录制完成后会自动打开编辑器，因此不需要显式调用*工具->宏->编辑*菜单命令来编辑源代码。
+This way, the editor will automatically open after macro recording is finished, eliminating the need to explicitly call the *Tools->Macro->Edit* menu command to edit the source code.
 
-以下是使用VBA、C#和VB.NET语言记录的示例宏：
+Here are example macros recorded using VBA, C#, and VB.NET languages:
 
-![VBA中记录的宏示例](sample-vba-recorded-macro.png){ width=350 }
+![Example Macro Recorded in VBA](sample-vba-recorded-macro.png){ width=350 }
 
-![C# VSTA中记录的宏示例](sample-vsta-csharp-recorded-macro.png){ width=350 }
+![Example Macro Recorded in C# VSTA](sample-vsta-csharp-recorded-macro.png){ width=350 }
 
-![VB.NET VSTA中记录的宏示例](sample-vsta-vb.net-recorded-macro.png){ width=350 }
+![Example Macro Recorded in VB.NET VSTA](sample-vsta-vb.net-recorded-macro.png){ width=350 }
