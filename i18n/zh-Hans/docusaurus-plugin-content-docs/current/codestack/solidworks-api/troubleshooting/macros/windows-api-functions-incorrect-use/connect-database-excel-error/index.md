@@ -1,27 +1,27 @@
 ---
 layout: sw-macro-fix
-title: Fix issues with failed to connect to database or Excel in SOLIDWORKS macro
-caption: Failed to Connect To Database or Excel
-description: Fixing the error in the macro which connects to database (e.g. SQL, MySql, Oracle, MS Access etc.) or any other data source and doesn't read/write values or displays error
+title: 修复SOLIDWORKS宏中连接数据库或Excel失败的问题
+caption: 无法连接到数据库或Excel
+description: 修复连接到数据库（如SQL、MySql、Oracle、MS Access等）或任何其他数据源的宏中的错误，无法读取/写入值或显示错误
 image: odbc-drivers.png
-labels: [macro, troubleshooting]
+labels: [宏, 故障排除]
 redirect-from:
   - /2018/04/macro-troubleshooting-failed-to-connect-to-database-or-excel.html
 ---
-## Symptoms
+## 症状
 
-SOLIDWORKS macro should connect to database (e.g. SQL, MySql, Oracle, MS Access etc.) or any other data source (e.g. MS Excel).
-Macro doesn't read/write values or displays error.
+SOLIDWORKS宏应该连接到数据库（如SQL、MySql、Oracle、MS Access等）或任何其他数据源（如MS Excel）。
+宏无法读取/写入值或显示错误。
 
-## Cause
+## 原因
 
-The most common way to connect to database or Excel in VBA macros would be via abstraction layer such as ADODB, ODBC, OLEDB.
-In order to connect to database the corresponding driver must be installed into the system and the valid connection string must be provided.
-The drivers are also OS-architecture specific (x32/x64)
+在VBA宏中，连接到数据库或Excel的最常见方法是通过抽象层，如ADODB、ODBC、OLEDB。
+为了连接到数据库，必须安装相应的驱动程序并提供有效的连接字符串。
+驱动程序也是操作系统架构特定的（x32/x64）。
 
-## Resolution
+## 解决方法
 
-* Find what abstraction layer is used. Usually there will be lines of code similar to the following.
+* 查找使用的抽象层。通常会有类似以下代码的行。
 
 ~~~ vb
 Set conn = CreateObject("ADODB.Connection")
@@ -35,11 +35,9 @@ conn.Open "Provider=Microsoft.ACE.OLEDB.12.0;" & _
             ";Extended Properties=""Excel 8.0;HDR=Yes;"";"
 ~~~
 
+* 确保安装了适当的驱动程序。对于SOLIDWORKS 2013及更高版本（检查x64系统的驱动程序）。
+对于较旧的SOLIDWORKS版本，请检查x32版本）。通常可以从数据库供应商的网站或数据库安装包免费下载驱动程序。
 
+![ODBC驱动程序列表](odbc-drivers.png){ width=320 height=245 }
 
-* Make sure that the appropriate driver is installed. For SOLIDWORKS 2013 onwards (check the drivers for x64 system).
-For older SOLIDWORKS version check x32 versions). Usually the drivers can be downloaded for free from the database supplier web-site or database installation package.
-
-![List of ODBC drivers](odbc-drivers.png){ width=320 height=245 }
-
-* Modify the connection string as required
+* 根据需要修改连接字符串
