@@ -1,22 +1,22 @@
 ---
 layout: sw-tool
-title: Macro to select equal arcs in the sketch using SOLIDWORKS API
-caption: Select Equal Arcs
-description: VBA macro to find and select all arcs with diameter equal to the input arc using SOLIDWORKS API
+title: 使用SOLIDWORKS API选择相等弧的宏
+caption: 选择相等弧
+description: 使用SOLIDWORKS API查找并选择所有直径与输入弧相等的弧的VBA宏
 image: selected-equal-arcs.png
 labels: [sketch,arc,circle,equal]
 group: Sketch
 ---
-![Equal arcs selected in the sketch](selected-equal-arcs.png){ width=350 }
+![在草图中选择相等弧](selected-equal-arcs.png){ width=350 }
 
-This VBA macro selects equal size sketch arcs to the pre-selected input sketch arc. Only arcs in the sketch of the original input arc are selected. Macro works both for active and inactive sketch.
+这个VBA宏选择与预选输入草图弧相等大小的草图弧。只有原始输入弧所在草图中的弧才会被选择。该宏适用于活动和非活动草图。
 
-## Options
+## 选项
 
-Macro can be configured by changing the values of the constant at the beginning of the macro
+可以通过更改宏开头的常量的值来配置宏。
 
 ~~~ vb
-Const EPS As Double = 0.0000000001 'arcs radius comparison tolerance
+Const EPS As Double = 0.0000000001 '弧半径比较容差
 ~~~
 
 ~~~ vb
@@ -75,11 +75,11 @@ try:
             Next
             
         Else
-            Err.Raise vbError, "", "Please select sketch arc"
+            Err.Raise vbError, "", "请选择草图弧"
         End If
         
     Else
-        Err.Raise vbError, "", "Open model"
+        Err.Raise vbError, "", "打开模型"
     End If
     
     GoTo finally
@@ -90,4 +90,3 @@ finally:
 End Sub
 
 ~~~
-
