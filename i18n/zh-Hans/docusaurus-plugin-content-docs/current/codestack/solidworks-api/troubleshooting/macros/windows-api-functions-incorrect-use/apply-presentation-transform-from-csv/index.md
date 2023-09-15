@@ -1,26 +1,26 @@
 ---
-title: Load components presentation transforms from CSV file using SOLIDWORKS API
-caption: Load Components Presentation Transforms From CSV File
-description: Example demonstrates how to load the transformation matrix for the components from the CSV file and apply it as a presentation transform
+title: 使用SOLIDWORKS API从CSV文件加载组件展示变换
+caption: 从CSV文件加载组件展示变换
+description: 该示例演示了如何从CSV文件加载组件的变换矩阵，并将其应用为展示变换
 image: original-component-position.png
 labels: [assembly, transform, csv]
 ---
-![Components in the original positions](original-component-position.png){ width=250 }
+![原始位置的组件](original-component-position.png){ width=250 }
 
-This example demonstrates how to load the transformation matrix for the components from the CSV file and apply it as a presentation transform using SOLIDWORKS API
+该示例演示了如何使用SOLIDWORKS API从CSV文件加载组件的变换矩阵，并将其应用为展示变换。
 
-* Download and open the [Example SOLIDWORKS Files](presentation-transform-example.zip)
-* Download [CSV File](transforms.csv) and save to disc
-* Modify the path to the CSV file in the macro constant
-* Run the macro. Macro stops the execution and the components are transformed as shown below
+* 下载并打开[示例SOLIDWORKS文件](presentation-transform-example.zip)
+* 下载[CSV文件](transforms.csv)并保存到磁盘
+* 修改宏常量中的CSV文件路径
+* 运行宏。宏停止执行，组件将按照下图所示进行变换
 
-![Components in the transformed position](trasnsformed-component-position.png){ width=250 }
+![变换后的位置的组件](trasnsformed-component-position.png){ width=250 }
 
-Red component is translated in XYZ space and green component is rotated 90 degrees around global Y axis (Axis 1).
+红色组件在XYZ空间中平移，绿色组件绕全局Y轴（轴1）旋转90度。
 
-Please note that the components are moved regardless the fact that both of them are fully defined in space (by mates or fix constraint). And the mates are still preserved. The reason is that the presentation transform was applied instead of the permanent one. This allows to only move the components for visual purposes without changing the geometry.
+请注意，这些组件被移动，而不考虑它们是否在空间中完全定义（通过配合或固定约束）。并且配合仍然保留。原因是应用了展示变换而不是永久变换。这允许仅为了视觉目的移动组件，而不改变几何形状。
 
-Continue the macro with F5 or Play button to remove the presentation transformation. Use [IComponent2::Transform2](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IComponent2~Transform2.html) SOLIDWORKS API property instead of [IComponent2::PresentationTransform](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.icomponent2~presentationtransform.html) to apply the permanent transform if needed (in this case it is required to remove any mates which will not fit this transformation).
+按F5或播放按钮继续执行宏以移除展示变换。如果需要，可以使用[IComponent2::Transform2](https://help.solidworks.com/2012/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IComponent2~Transform2.html) SOLIDWORKS API属性而不是[IComponent2::PresentationTransform](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.icomponent2~presentationtransform.html)应用永久变换（在这种情况下，需要删除任何不适合此变换的配合）。
 
 ~~~ vb
 Const INPUT_FILE_PATH = "D:\transforms.csv"
@@ -211,5 +211,3 @@ Function GetComponent(compPath As String) As Component2
 End Function
 
 ~~~
-
-
