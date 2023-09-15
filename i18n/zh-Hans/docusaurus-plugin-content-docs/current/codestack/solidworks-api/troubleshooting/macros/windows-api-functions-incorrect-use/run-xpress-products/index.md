@@ -1,15 +1,16 @@
 ---
-title: Run Xpress products (e.g. DriveWorks) using SOLIDWORKS API
-caption: Run Xpress Products
-description: Example demonstrates how to run the xpress products (DriveWorks, DFM, Simulation, Flo)
+title: 使用SOLIDWORKS API运行Xpress产品（例如DriveWorks）
+caption: 运行Xpress产品
+description: 该示例演示了如何使用SOLIDWORKS API运行Xpress产品（DriveWorks、DFM、Simulation、Flo），相当于点击菜单命令。
 image: solidworks-xpress-products.png
 labels: [frame, xpress, driveworks, dfm, flo, simulation]
 ---
-![Menu for Xpress products](solidworks-xpress-products.png)
 
-This example demonstrates how to run the xpress products (DriveWorks, DFM, Simulation, Flo) using SOLIDWORKS API. This is equivalent to clicking the menu command.
+![Xpress产品菜单](solidworks-xpress-products.png)
 
-~~~ vb
+该示例演示了如何使用SOLIDWORKS API运行Xpress产品（DriveWorks、DFM、Simulation、Flo）。这相当于点击菜单命令。
+
+```vb
 #If VBA7 Then
      Private Declare PtrSafe Function SendMessage Lib "User32" Alias "SendMessageA" (ByVal hWnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
 #Else
@@ -68,19 +69,19 @@ Function SupportsEnvironment(swApp As SldWorks.SldWorks, product As XpressProduc
     Select Case product
         Case XpressProducts_e.DFMXpress
             If swDocType <> swDocPART Then
-                MsgBox "DFMXpress can only run in parts"
+                MsgBox "DFMXpress只能在零件中运行"
                 SupportsEnvironment = False
                 Exit Function
             End If
         Case XpressProducts_e.SimulationXpress
             If swDocType <> swDocPART And swDocType <> swDocASSEMBLY Then
-                MsgBox "SimulationXpress can only run in parts or assemblies"
+                MsgBox "SimulationXpress只能在零件或装配体中运行"
                 SupportsEnvironment = False
                 Exit Function
             End If
         Case XpressProducts_e.FloXpress
             If swDocType <> swDocPART And swDocType <> swDocASSEMBLY Then
-                MsgBox "FloXpress can only run in parts or assemblies"
+                MsgBox "FloXpress只能在零件或装配体中运行"
                 SupportsEnvironment = False
                 Exit Function
             End If
@@ -89,6 +90,4 @@ Function SupportsEnvironment(swApp As SldWorks.SldWorks, product As XpressProduc
     SupportsEnvironment = True
     
 End Function
-~~~
-
-
+```
