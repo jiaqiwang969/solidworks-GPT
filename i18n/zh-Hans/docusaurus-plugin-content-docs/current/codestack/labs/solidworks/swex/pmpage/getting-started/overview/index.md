@@ -1,16 +1,16 @@
 ---
-title: Overview of SwEx.PMPage framework for SOLIDWORKS API
-caption: Overview
-description: General overview of the approach used by SwEx.PMPage framework for building property manager pages in SOLIDWORKS API
+title: SwEx.PMPage框架概述（用于SOLIDWORKS API）
+caption: 概述
+description: SwEx.PMPage框架用于在SOLIDWORKS API中构建属性管理器页面的一般方法概述
 image: data-model-pmpage.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
-![Property Manager Page driven by data model](data-model-pmpage.png){ width=250 }
+![由数据模型驱动的属性管理器页面](data-model-pmpage.png){ width=250 }
 
-## Data model
+## 数据模型
 
-Start by defining the data model required to be filled by property manager page.
+首先定义属性管理器页面需要填充的数据模型。
 
 ~~~vb
 Public Class DataModelSimple
@@ -29,21 +29,19 @@ public class DataModelSimple
 }
 ~~~
 
+使用具有公共的getter和setter的属性。
 
-Use properties with public getters and setters
+## 事件处理程序
 
-## Events handler
+通过从[PropertyManagerPageHandlerEx](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_PropertyManagerPageHandlerEx.htm)类继承，创建属性管理器页面的处理程序。
 
-Create handler for property manager page by inheriting the public class from 	
-[PropertyManagerPageHandlerEx](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_PropertyManagerPageHandlerEx.htm) class.
-
-This class will be instantiated by the framework and will allow handling the property manager specific events from the add-in.
+该类将由框架实例化，并允许处理插件中的属性管理器特定事件。
 
 ~~~vb
 <ComVisible(True)>
-      Public Class MyPMPageHandler
-          Inherits PropertyManagerPageHandlerEx
-      End Class
+Public Class MyPMPageHandler
+    Inherits PropertyManagerPageHandlerEx
+End Class
 ~~~
 
 ~~~cs
@@ -53,22 +51,20 @@ public class MyPMPageHandler : PropertyManagerPageHandlerEx
 }
 ~~~
 
-> Class must be com visible and have public parameterless constructor.
+> 类必须是com可见的，并且必须具有公共的无参数构造函数。
 
-## Ignoring members
+## 忽略成员
 
-If it is required to exclude the members in the data model from control generation such members should be decorated with [IgnoreBindingAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_IgnoreBindingAttribute.htm)
+如果需要从控件生成中排除数据模型中的成员，则应该使用[IgnoreBindingAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_IgnoreBindingAttribute.htm)对这些成员进行修饰。
 
 ~~~vb
 Public Class DataModelIgnore
 	Public Property Text As String
 
 	<IgnoreBinding>
-	Public Property CalculatedField As Integer 'control will not be generated for this field
+	Public Property CalculatedField As Integer '不会为此字段生成控件
 End Class
 ~~~
-
-
 
 ~~~cs
 public class DataModelIgnore
@@ -76,22 +72,15 @@ public class DataModelIgnore
     public string Text { get; set; }
 
     [IgnoreBinding]
-    public int CalculatedField { get; set; } //control will not be generated for this field
+    public int CalculatedField { get; set; } //不会为此字段生成控件
 }
 ~~~
 
+## 创建实例
 
+通过将处理程序的类型和数据模型实例传递给泛型参数来创建属性管理器页面的实例。
 
-
-
-
-
-
-## Creating instance
-
-Create instance of the property manager page by passing the type of the handler and data model instance into the generic arguments
-
-> Data model can contain predefined (default) values. Framework will automatically use this values in the corresponding controls.
+> 数据模型可以包含预定义（默认）值。框架将自动在相应的控件中使用这些值。
 
 ~~~vb
 Private m_Page As PropertyManagerPageEx(Of MyPMPageHandler, DataModel)
@@ -118,7 +107,6 @@ Private Sub OnPageClosed(ByVal reason As swPropertyManagerPageCloseReasons_e)
 	Debug.Print($"Number: {m_Data.Simple.Number}")
 End Sub
 ~~~
-
 
 ~~~cs
 private PropertyManagerPageEx<MyPMPageHandler, DataModel> m_Page;
@@ -150,4 +138,4 @@ private void OnPageClosed(swPropertyManagerPageCloseReasons_e reason)
 }
 ~~~
 
-> Store instance of the data model and the property page in the class variables. This will allow to reuse the data model in the different page instances.
+> 将数据模型和属性页面的实例存储在类变量中。这将允许在不同的页面实例中重用数据模型。
