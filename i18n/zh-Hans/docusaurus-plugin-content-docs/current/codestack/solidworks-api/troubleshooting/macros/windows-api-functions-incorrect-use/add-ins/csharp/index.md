@@ -1,25 +1,25 @@
 ---
-title: Creating C# add-in for SOLIDWORKS automation using API
-caption: Creating C# Add-In For SOLIDWORKS
-description: Detailed guide of creating SOLIDWORKS add-in from scratch using C#
+title: 使用API创建SOLIDWORKS自动化的C#插件
+caption: 创建C#插件以用于SOLIDWORKS
+description: 使用C#从头开始创建SOLIDWORKS插件的详细指南
 image: new-project-class-library.png
-labels: [add-in, c#]
+labels: [插件, c#]
 ---
-* Create new project in Microsoft Visual Studio
-* Select *Class Library* template under the *Visual C#* templates. Specify the location and the name of the project
+* 在Microsoft Visual Studio中创建新项目
+* 在*Visual C#*模板下选择*类库*模板。指定项目的位置和名称
 
-![Creating new type library project in Visual Studio](new-project-class-library.png){ width=450 }
+![在Visual Studio中创建新的类型库项目](new-project-class-library.png){ width=450 }
 
-* Add reference to SolidWorks Interop libraries: SolidWorks.Interop.sldworks.dll, SolidWorks.Interop.swconst.dll, SolidWorks.Interop.swpublished.dll. Interop libraries are located at **SOLIDWORKS Installation Folder**\api\redist for projects targeting Framework 4.0 onwards and **SOLIDWORKS Installation Folder**\api\redist\CLR2 for projects targeting Framework 2.0 and 3.5.
+* 添加对SolidWorks Interop库的引用：SolidWorks.Interop.sldworks.dll、SolidWorks.Interop.swconst.dll、SolidWorks.Interop.swpublished.dll。Interop库位于**SOLIDWORKS安装文件夹**\api\redist，用于针对Framework 4.0及更高版本的项目，位于**SOLIDWORKS安装文件夹**\api\redist\CLR2，用于针对Framework 2.0和3.5的项目。
 
-For projects targeting Framework 4.0 I recommend to set the **[Embed Interop Types](https://docs.microsoft.com/en-us/dotnet/framework/interop/type-equivalence-and-embedded-interop-types)** option to false.
-Otherwise it is possible to have unpredictable behaviour of the application when calling the SOLIDWORKS API due to a type cast issue.  
+对于针对Framework 4.0的项目，建议将**[嵌入互操作类型](https://docs.microsoft.com/en-us/dotnet/framework/interop/type-equivalence-and-embedded-interop-types)**选项设置为false。
+否则，在调用SOLIDWORKS API时可能会出现类型转换问题，导致应用程序行为不可预测。
 
-![Embedding SOLIDWORKS interops](embed-interops-false.png){ width=350 }
+![嵌入SOLIDWORKS互操作](embed-interops-false.png){ width=350 }
 
-> In some tutorials reference to solidworkstools.dll library is added. This library is optional and it won't be used in this tutorial
+> 在一些教程中，添加了对solidworkstools.dll库的引用。这个库是可选的，在本教程中不会使用到。
 
-* Add a public class with a user friendly name. This will be a main class of the add-in. This class must be public and COM-visible. I would recommend to use [ComVisibleAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.comvisibleattribute?view=netframework-4.7.2) to mark the class as COM visible object and [GuidAttribute](https://docs.microsoft.com/en-gb/dotnet/api/system.runtime.interopservices.guidattribute?view=netframework-4.7.2) to explicitly assign COM GUID for the add-in class:
+* 添加一个具有用户友好名称的公共类。这将是插件的主类。该类必须是公共的和COM可见的。我建议使用[ComVisibleAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.comvisibleattribute?view=netframework-4.7.2)将类标记为COM可见对象，并使用[GuidAttribute](https://docs.microsoft.com/en-gb/dotnet/api/system.runtime.interopservices.guidattribute?view=netframework-4.7.2)为插件类显式分配COM GUID：
 
 ~~~ cs
 [ComVisible(true)]
@@ -30,29 +30,29 @@ public class MySampleAddin : ISwAddin
 }
 ~~~
 
-I would recommend to not select *Make assembly COM-Visible* option in the project settings but only mark required classes as COM visible as described above.
+我建议在项目设置中不选择*使程序集COM可见*选项，而只将所需的类标记为COM可见，如上所述。
 
-![Make assembly com visible flag](make-assembly-com-visible.png){ width=400 }
+![使程序集COM可见标志](make-assembly-com-visible.png){ width=400 }
 
-* Add-in dll must be registered with /codebase flag. *Register for COM interop* options available in the project setting doesn't use this option while registering and not suitable in this case. Instead add the post build action as follows:
+* 插件dll必须使用/codebase标志进行注册。项目设置中的*注册COM互操作*选项在注册时不使用此选项，因此不适用于此情况。而是添加以下后期构建操作：
 
 ~~~ bat
 "%windir%\Microsoft.NET\Framework64\v4.0.30319\regasm" /codebase "$(TargetPath)"
 ~~~
 
-![Post build event to register dll as a COM object](post-build-event.png){ width=400 }
+![后期构建事件将dll注册为COM对象](post-build-event.png){ width=400 }
 
-This would ensure the proper registration on each build of the add-in project.
+这将确保在每次构建插件项目时进行正确的注册。
 
-* For the enhanced debugging experience I would recommend to setup the full path to SOLIDWORKS as an external application in project settings.
+* 为了获得更好的调试体验，我建议在项目设置中设置SOLIDWORKS的完整路径作为外部应用程序。
 
-![Starting SOLIDWORKS as an external program while debugging the add-in](start-external-program.png){ width=400 }
+![在调试插件时将SOLIDWORKS作为外部程序启动](start-external-program.png){ width=400 }
 
-This would allow to start SOLIDWORKS and automatically attach the debugger from the Visual Studio by pressing green run button or F5 key.
+这将允许通过按下绿色运行按钮或F5键从Visual Studio启动SOLIDWORKS并自动附加调试器。
 
-* Registry information needs to be added to SOLIDWORKS registry branch to make it visible for the application. To simplify the process this information can be automatically added and removed when dll is registered and unregistered as COM object by defining the functions and decorating them with [ComRegisterFunctionAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.comregisterfunctionattribute?view=netframework-4.7.2) and [ComUnregisterFunctionAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.comunregisterfunctionattribute?view=netframework-4.7.2) attributes.
+* 需要将注册信息添加到SOLIDWORKS注册表分支中，以使其对应用程序可见。为了简化这个过程，可以通过定义函数并使用[ComRegisterFunctionAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.comregisterfunctionattribute?view=netframework-4.7.2)和[ComUnregisterFunctionAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.comunregisterfunctionattribute?view=netframework-4.7.2)属性对它们进行装饰，当dll作为COM对象注册和取消注册时，可以自动添加和删除这些信息。
 
-* Copy paste the code for the add-in as shown below and compile the project
+* 复制并粘贴如下所示的插件代码，并编译项目
 
 ~~~ cs
 using SolidWorks.Interop.sldworks;
@@ -170,15 +170,15 @@ namespace SampleAddIn
 
 
 
-* When compiled the following warning can be displayed.
+* 编译时可能会显示以下警告。
 
-![Unsigned assembly compile warning](compile-warning-unsigned.png){ width=450 }
+![未签名程序集编译警告](compile-warning-unsigned.png){ width=450 }
 
-This warning can be ignored.
+可以忽略此警告。
 
-* Run SOLIDWORKS and the *Hello World* message box is displayed on start.
+* 运行SOLIDWORKS，将显示*Hello World*消息框。
 
-The above code can be simplified as shown below with a help of [xCAD.NET Framework](https://xcad.net/) framework:
+上述代码可以使用[xCAD.NET Framework](https://xcad.net/)框架简化如下：
 
 ~~~ cs
 [Title("Sample Add-In")]
