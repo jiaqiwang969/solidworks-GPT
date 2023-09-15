@@ -1,15 +1,15 @@
 ---
-title: Create temp solid body box using SOLIDWORKS API and IModeler interface
-caption: Create Box Body
-description: VBA example to create a temp body by center point, direction and size using SOLIDWORKS API and IModeler interface
+title: 使用 SOLIDWORKS API 和 IModeler 接口创建临时实体盒子
+caption: 创建盒子实体
+description: 使用 SOLIDWORKS API 和 IModeler 接口，通过提供基准面中心点、方向和尺寸创建临时实体的 VBA 示例
 image: box-body.png
 labels: [primitive,box,temp body,modeler]
 ---
-![Box body](box-body.png){ width=250 }
+![盒子实体](box-body.png){ width=250 }
 
-This VBA example demonstrates how to create and display temp body by providing the coordinate of center of base face, direction, width, length and height using SOLIDWORKS API.
+这个 VBA 示例演示了如何使用 SOLIDWORKS API 创建并显示临时实体。通过提供基准面中心点的坐标、方向、宽度、长度和高度来创建盒子实体。
 
-Macro stops the execution and displays the body. Continue macro execution to destroy the temp body.
+宏停止执行并显示实体。继续执行宏以销毁临时实体。
 
 ~~~ vb
 Const WIDTH As Double = 0.01
@@ -48,14 +48,12 @@ Sub main()
         
         swBody.Display3 swPart, RGB(255, 255, 0), swTempBodySelectOptions_e.swTempBodySelectable
         
-        Stop 'continue to hide the body
+        Stop '继续隐藏实体
         
         Set swBody = Nothing
     Else
-        MsgBox "Please open part document"
+        MsgBox "请打开零件文档"
     End If
     
 End Sub
 ~~~
-
-
