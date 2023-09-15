@@ -1,27 +1,26 @@
 ---
-caption: Insert Holes Table
-title: Macro to insert holes table to SOLIDWORKS drawing
-description: VBA macro demonstrates how to insert hole table for the specified entities using SOLIDWORKS API
-image: holes-table.png
+标题：插入孔表
+描述：VBA宏演示了如何使用SOLIDWORKS API插入指定实体的孔表
+图片：holes-table.png
 ---
-![Holes table](holes-table.png){ width=300 }
+![孔表](holes-table.png){ width=300 }
 
-This macro demonstrates how to insert holes table into the existing drawing.
+此宏演示了如何将孔表插入到现有图纸中。
 
-Before running the macro it is required to preselect input objects in the following order.
+在运行宏之前，需要按照以下顺序预先选择输入对象。
 
-1. Vertex which corresponds to an origin
-1. Edge which corresponds to X axis
-1. Edge which corresponds to Y axis
-1. Face which contains holes
+1. 对应于原点的顶点
+2. 对应于X轴的边
+3. 对应于Y轴的边
+4. 包含孔的面
 
-Macro will clear the selection and reselect entities.
+宏将清除选择并重新选择实体。
 
-Table is inserted using default template into 0,0 coordinate.
+表格将使用默认模板插入到0,0坐标处。
 
- > Note, in your case you might be using different approach of retrieving the pointers to entities. 
+> 注意，在您的情况下，您可能会使用不同的方法来检索实体的指针。
 
- ~~~ vb
+```vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -60,5 +59,4 @@ Sub main()
     Set swHoleTable = swView.InsertHoleTable2(False, 0, 0, 1, "", "")
     
 End Sub
-~~~
-
+```
