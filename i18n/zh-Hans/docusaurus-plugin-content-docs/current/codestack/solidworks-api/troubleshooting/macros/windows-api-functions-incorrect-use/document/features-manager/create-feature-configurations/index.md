@@ -1,39 +1,40 @@
 ---
-title: SOLIDWORKS macro to create and suppress features in new configurations
-caption: Suppress Features In New Configurations
-description: Macro create new configurations for all features  selected in the feature tree and suppresses them one by one in the respective configuration using SOLIDWORKS API
+title: SOLIDWORKS宏以在新配置中创建和抑制特征
+caption: 抑制新配置中的特征
+description: 该宏使用SOLIDWORKS API为在特征树中选择的所有特征创建新配置，并逐个在相应的配置中抑制它们。
 image: sheet-metal-bends-selection.png
-labels: [feature, configuration, suppress]
+labels: [特征, 配置, 抑制]
 ---
-This macro create new configurations for all features selected in the feature tree and suppresses them one by one in the respective configuration using SOLIDWORKS API.
 
-This macro can be useful if it is needed to represents some historical data of the model in the configurations.
+该宏使用SOLIDWORKS API为在特征树中选择的所有特征创建新配置，并逐个在相应的配置中抑制它们。
 
-## Notes
+如果需要在配置中表示模型的某些历史数据，该宏可能非常有用。
 
-* Configurations created as derived configurations of the active configuration
-* Each configuration named after the feature name
-* Features are processed in the order they have been selected
-* Each feature and all previous features will be suppressed in the respective configuration
+## 注意事项
 
-## Use cases
+* 配置作为活动配置的派生配置创建
+* 每个配置以特征名称命名
+* 特征按照选择的顺序进行处理
+* 在相应的配置中，每个特征及其之前的所有特征都将被抑制
 
-### Sheet Metal Bending
+## 使用案例
 
-This macro can be used to represent the steps of bending of the sheet metal. In this case each configuration will represent the bending step.
+### 钣金弯曲
 
-* Set the sheet metal part to the flattened state
-* Select flatten bends in the order under the *Flat-Pattern* feature
+该宏可用于表示钣金弯曲的步骤。在这种情况下，每个配置将表示弯曲步骤。
 
-![Sheet metal flatten bends](sheet-metal-bends-selection.png){ width=350 }
+* 将钣金零件设置为展开状态
+* 按照 *Flat-Pattern* 特征下的顺序选择展平弯曲
 
-* Run the macro
+![钣金展平弯曲](sheet-metal-bends-selection.png){ width=350 }
 
-As the result sub configurations for each bend are created representing the bending step:
+* 运行宏
 
-![Sheet metal bending steps in the configurations](sheet-metal-bending.gif)
+结果将创建每个弯曲的子配置，表示弯曲步骤：
 
-Refer the [Animate Configurations](/docs/codestack/solidworks-api/motion-study/animate-configurations/) for example macro to animate the configurations using SOLIDWORKS API.
+![配置中的钣金弯曲步骤](sheet-metal-bending.gif)
+
+请参阅[SOLIDWORKS API动画配置](/docs/codestack/solidworks-api/motion-study/animate-configurations/)的示例宏，以使用SOLIDWORKS API对配置进行动画处理。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -146,5 +147,3 @@ Function SuppressFeaturesInNewConfiguration(model As SldWorks.ModelDoc2, feats A
     
 End Function
 ~~~
-
-
