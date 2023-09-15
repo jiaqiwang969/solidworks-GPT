@@ -1,27 +1,28 @@
 ---
 layout: sw-tool
-title: Macro to colorize SOLIDWORKS sheet metal and weldment cut-list items
-caption: Colorize Cut Lists
-description: SOLIDWORKS VBA macro to colorize all the cut-list item bodies (sheet metal and weldments) based on the value of the custom property
+title: 将SOLIDWORKS钣金和焊接切割清单项着色的宏
+caption: 着色切割清单
+description: SOLIDWORKS VBA宏，根据自定义属性的值为所有切割清单项（钣金和焊接）分配唯一颜色
 image: color-cut-list.svg
-labels: [cut-list,sheet metal,weldment,color]
-group: Cut-List
+labels: [切割清单,钣金,焊接,颜色]
+group: 切割清单
 ---
-This VBA macro allows to assign a unique color for each group of cut-list items (sheet metal or weldment) based on the value of the custom property.
 
-The most common use of this macro will be to differentiate different type of weldment items based on the profile size.
+这个VBA宏允许根据自定义属性的值为每个切割清单项（钣金或焊接）分配唯一的颜色。
 
-Macro will automatically assign random color to the specific group. It is possible to specify the constant colors to use for the specific group instead of random colors.
+这个宏最常见的用途是根据型材尺寸区分不同类型的焊接件。
 
-## Configuration
+宏将自动为特定的组分配随机颜色。也可以指定用于特定组的固定颜色。
 
-In order to specify the name of the custom property to read the value from and group cut-list items, change the value of the **PRP_NAME** constant
+## 配置
+
+为了指定要读取值并对切割清单项进行分组的自定义属性的名称，请更改**PRP_NAME**常量的值。
 
 ~~~ vb
-Const PRP_NAME As String = "Description" 'Change the value of Description to select different custom property
+Const PRP_NAME As String = "Description" '将Description的值更改为选择不同的自定义属性
 ~~~
 
-In order to specify colors it is required to modify the values within the **InitColors** method.
+为了指定颜色，需要修改**InitColors**方法中的值。
 
 ~~~ vb
 Sub InitColors(Optional dummy As Variant = Empty)
@@ -32,13 +33,13 @@ Sub InitColors(Optional dummy As Variant = Empty)
 End Sub
 ~~~
 
-To add new color to the map add the following line
+要将新颜色添加到映射中，请添加以下行
 
 ~~~ vb
-ColorsMap.Add "[PROPERTY VALUE]", RGB([Red], [Green], [Blue])
+ColorsMap.Add "[属性值]", RGB([红色], [绿色], [蓝色])
 ~~~
 
-For example to add the blue (RGB = 0, 0, 255) color to the weldment profile "50 X 50", it is required to add the following line
+例如，要将蓝色（RGB = 0, 0, 255）添加到焊接型材“50 X 50”，需要添加以下行
 
 ~~~ vb
 ColorsMap.Add "50 X 50", RGB(0, 0, 255)
@@ -75,10 +76,10 @@ try_:
             ColorizeCutLists vCutLists
             swModel.GraphicsRedraw2
         Else
-            Err.Raise vbError, "", "Only part document is supported"
+            Err.Raise vbError, "", "仅支持零件文档"
         End If
     Else
-        Err.Raise vbError, "", "Open part document"
+        Err.Raise vbError, "", "打开零件文档"
     End If
     
     GoTo finally_
@@ -235,5 +236,3 @@ Function Contains(arr As Variant, item As Object) As Boolean
 End Function
 
 ~~~
-
-
