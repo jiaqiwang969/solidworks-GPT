@@ -1,32 +1,33 @@
 ---
-title: Wait for user selection in document using SOLIDWORKS API
-caption: Wait For User Selection
-description: 2 approaches to wait for the object selected by the user in VBA macro using SOLIDWORKS API
+title: 使用SOLIDWORKS API在文档中等待用户选择
+caption: 等待用户选择
+description: 使用SOLIDWORKS API在VBA宏中等待用户选择对象的两种方法
 image: selected-edge.png
 labels: [selection,event,notification]
 ---
-This article describes two approaches of waiting for the object selection in SOLIDWORKS document using SOLIDWORKS API in VBA macro.
 
-For both approaches specify the filter to wait selection for at the beginning of the macro. Available filter values defined in the [swSelectType_e](https://help.solidworks.com/2014/english/api/swconst/SolidWorks.Interop.swconst~SolidWorks.Interop.swconst.swSelectType_e.html) enumeration
+本文介绍了使用SOLIDWORKS API在SOLIDWORKS文档中等待对象选择的两种方法，这些方法可以在VBA宏中使用。
 
-~~~ vb
+对于这两种方法，在宏的开头指定要等待选择的过滤器。可用的过滤器值在[swSelectType_e](https://help.solidworks.com/2014/english/api/swconst/SolidWorks.Interop.swconst~SolidWorks.Interop.swconst.swSelectType_e.html)枚举中定义。
+
+``` vb
 Const FILTER As Integer = swSelectType_e.swSelEDGES
-~~~
+```
 
-## Block the thread waiting for selection
+## 阻塞线程等待选择
 
-This approach loops the selected objects and blocks the current thread until the required selection is done. *DoEvents* function is called in each iteration to continue message queue so SOLIDWORKS window is not locked
+这种方法循环遍历所选对象，并阻塞当前线程，直到完成所需的选择。在每次迭代中调用*DoEvents*函数以继续消息队列，以便SOLIDWORKS窗口不会被锁定。
 
-* Run the macro
-* Select edge (or the object specified in the filter)
+- 运行宏
+- 选择边缘（或在过滤器中指定的对象）
 
 ![Selected edge](selected-edge.png){ width=250 }
 
-* Macro stops execution and the reference of *swObject* is set to the selected element
+- 宏停止执行，并将*swObject*的引用设置为所选元素
 
-![VBA macro stops once specified object is selected](selection-stop-execution.png){ width=550 }
+![一旦选择了指定的对象，VBA宏就会停止执行](selection-stop-execution.png){ width=550 }
 
-~~~ vb
+``` vb
 Const FILTER As Integer = swSelectType_e.swSelEDGES
 
 Dim swApp As SldWorks.SldWorks
@@ -64,30 +65,30 @@ Sub main()
         Stop
         
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
-~~~
+```
 
 
 
-## Handling the selection event
+## 处理选择事件
 
-This approach uses the SOLIDWORKS notifications to handle the selection. This is more preferable option as it doesn't block the main thread, however this option requires adding of class module and additional synchronization (depending on the requirements) as events are handled asynchronously.
+这种方法使用SOLIDWORKS通知来处理选择。这是更可取的选项，因为它不会阻塞主线程，但是这个选项需要添加类模块和额外的同步（根据要求），因为事件是异步处理的。
 
-* Create macro module and class module as shown below
+- 创建宏模块和类模块，如下所示
 
-![Macro solution tree](macro-solution-tree.png)
+![宏解决方案树](macro-solution-tree.png)
 
-* Run macro and select edge (or the object specified in the filter)
-* Similar to the previous approach code stops after the selection and the reference of *swObject* is set to the selected element
+- 运行宏并选择边缘（或在过滤器中指定的对象）
+- 与前一种方法类似，代码在选择后停止，并将*swObject*的引用设置为所选元素
 
-![VBA macro stops once specified object is selected via notification](selection-event-stop-execution.png){ width=550 }
+![一旦通过通知选择了指定的对象，VBA宏就会停止执行](selection-event-stop-execution.png){ width=550 }
 
-### Macro Module
+### 宏模块
 
-~~~ vb
+``` vb
 Const FILTER As Integer = swSelectType_e.swSelEDGES
 
 Dim swApp As SldWorks.SldWorks
@@ -107,16 +108,16 @@ Sub main()
         swEventsListener.WaitForSelection swModel, FILTER
         
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
 End Sub
-~~~
+```
 
 
 
-### EventsListener Class Module
+### EventsListener 类模块
 
-~~~ vb
+``` vb
 Dim WithEvents swPart As SldWorks.PartDoc
 Dim WithEvents swAssy As SldWorks.AssemblyDoc
 Dim WithEvents swDraw As SldWorks.DrawingDoc
@@ -168,6 +169,4 @@ Sub HandleSelection()
         End If
     End If
 End Sub
-~~~
-
-
+```
