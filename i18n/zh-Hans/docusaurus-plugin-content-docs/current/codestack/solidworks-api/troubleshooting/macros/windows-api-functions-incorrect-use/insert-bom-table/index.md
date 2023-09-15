@@ -1,26 +1,26 @@
 ---
-caption: Insert BOM Table
-title: Macro to insert SOLIDWORKS Bill Of Materials table and attach to the anchor point
-description: SOLIDWORKS VBA macro to insert Bill Of Materials (BOM) table into active or all sheets with the specified parameters and attach to the anchor point
+caption: 插入BOM表格
+title: 插入SOLIDWORKS Bill Of Materials表格并附加到锚点的宏
+description: SOLIDWORKS VBA宏，用于将Bill Of Materials（BOM）表格插入到活动或所有具有指定参数的工作表，并将其附加到锚点
 image: bom-table-anchor.png
 ---
-![BOM table attached to anchor point](bom-table-anchor.png){ width=600 }
+![附加到锚点的BOM表格](bom-table-anchor.png){ width=600 }
 
-This VBA macro inserts Bill Of Materials (BOM) table into all or active sheet of the active SOLIDWORKS drawing. First drawing view of the sheet is used as the source
+这个VBA宏将Bill Of Materials（BOM）表格插入到活动的SOLIDWORKS图纸的所有或活动工作表中。工作表的第一个视图被用作源视图。
 
-BOM table is attached to the BOM anchor point
+BOM表格附加到BOM锚点。
 
-Modify the constants in the macro to configure the BOM table options
+修改宏中的常量以配置BOM表格选项。
 
 ~~~ vb
-Const ANCHOR_TYPE As Integer = swBOMConfigurationAnchorType_e.swBOMConfigurationAnchor_TopLeft 'anchor type: swBOMConfigurationAnchor_BottomLeft, swBOMConfigurationAnchor_BottomRight, swBOMConfigurationAnchor_TopLeft, swBOMConfigurationAnchor_TopRight
-Const BOM_TYPE As Integer = swBomType_e.swBomType_PartsOnly 'bom type: swBomType_Indented, swBomType_PartsOnly, swBomType_TopLevelOnly
-Const TABLE_TEMPLATE As String = "" 'full path to BOM template *.sldbomtbt or empty string for the default template
-Const INDENTED_NUMBERING_TYPE As Integer = swNumberingType_e.swNumberingType_Flat 'numbering type (if BOM_TYPE is swBomType_Indented): swIndentedBOMNotSet, swNumberingType_Detailed, swNumberingType_Flat, swNumberingType_None
-Const DETAILED_CUT_LIST As Boolean = False 'detailed cut-list (if BOM_TYPE is swBomType_Indented)
-Const FOLLOW_ASSEMBLY_ORDER As Boolean = True 'true to check the Follow Assembly Order option
+Const ANCHOR_TYPE As Integer = swBOMConfigurationAnchorType_e.swBOMConfigurationAnchor_TopLeft '锚点类型：swBOMConfigurationAnchor_BottomLeft、swBOMConfigurationAnchor_BottomRight、swBOMConfigurationAnchor_TopLeft、swBOMConfigurationAnchor_TopRight
+Const BOM_TYPE As Integer = swBomType_e.swBomType_PartsOnly 'BOM类型：swBomType_Indented、swBomType_PartsOnly、swBomType_TopLevelOnly
+Const TABLE_TEMPLATE As String = "" 'BOM模板的完整路径*.sldbomtbt，或者为空字符串使用默认模板
+Const INDENTED_NUMBERING_TYPE As Integer = swNumberingType_e.swNumberingType_Flat '编号类型（如果BOM_TYPE是swBomType_Indented）：swIndentedBOMNotSet、swNumberingType_Detailed、swNumberingType_Flat、swNumberingType_None
+Const DETAILED_CUT_LIST As Boolean = False '详细切割清单（如果BOM_TYPE是swBomType_Indented）
+Const FOLLOW_ASSEMBLY_ORDER As Boolean = True 'true表示选中“按装配顺序”选项
 
-Const ALL_SHEETS As Boolean = True 'True to process all sheets, False to process active sheet only
+Const ALL_SHEETS As Boolean = True 'True表示处理所有工作表，False表示仅处理活动工作表
 ~~~
 
 ~~~ vb
@@ -70,7 +70,7 @@ End Sub
 Sub InsertBomTable(draw As SldWorks.DrawingDoc, sheet As SldWorks.sheet)
     
     If False = draw.ActivateSheet(sheet.GetName()) Then
-        Err.Raise vbError, "", "Failed to activate sheet " & sheet.GetName
+        Err.Raise vbError, "", "激活工作表" & sheet.GetName & "失败"
     End If
     
     Dim vViews As Variant
@@ -87,9 +87,8 @@ Sub InsertBomTable(draw As SldWorks.DrawingDoc, sheet As SldWorks.sheet)
     If Not swBomTableAnn Is Nothing Then
         swBomTableAnn.BomFeature.FollowAssemblyOrder2 = FOLLOW_ASSEMBLY_ORDER
     Else
-        Err.Raise vbError, "", "Failed to insert BOM table into " & swView.Name
+        Err.Raise vbError, "", "在" & swView.Name & "中插入BOM表格失败"
     End If
     
 End Sub
 ~~~
-
