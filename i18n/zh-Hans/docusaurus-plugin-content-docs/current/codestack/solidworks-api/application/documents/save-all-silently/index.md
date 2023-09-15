@@ -13,9 +13,9 @@ group: 框架
 
 该宏可以配置为显示错误（如果某些文件保存不正确）或保持静默。
 
-~~~ vb
+``` vb
 Const SHOW_ERROR As Boolean = False 'True表示显示错误消息框，False表示保持静默
-~~~
+```
 
 操作的结果将显示在状态栏中。
 
@@ -23,7 +23,7 @@ Const SHOW_ERROR As Boolean = False 'True表示显示错误消息框，False表�
 
 该宏可以作为后台集成的一部分使用，其中不应显示模态对话框。
 
-~~~ vb
+``` vb
 Const SHOW_ERROR As Boolean = False
 
 Dim swApp As SldWorks.SldWorks
@@ -80,4 +80,4 @@ Sub main()
     End If
     
 End Sub
-~~~
+```
