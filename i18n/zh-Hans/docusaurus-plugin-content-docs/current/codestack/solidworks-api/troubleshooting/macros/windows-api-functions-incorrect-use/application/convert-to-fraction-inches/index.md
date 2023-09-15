@@ -1,24 +1,24 @@
 ---
-title: Convert meters to fraction inches using SOLIDWORKS API
-caption: Convert Meters To Fraction Inches
-description: VBA macro to convert value in system units (meters) to the fraction inches using SOLIDWORKS API
+title: 使用SOLIDWORKS API将米转换为分数英寸
+caption: 将米转换为分数英寸
+description: 使用SOLIDWORKS API将系统单位（米）中的值转换为指定分母的分数英寸的VBA宏
 image: dimension-fractions.png
-labels: [inches,fraction,conversion,unit]
+labels: [英寸, 分数, 转换, 单位]
 ---
-This VBA macro converts the value specified in system units (meters) into the fraction inches with specified denominator.
+此VBA宏将以系统单位（米）指定的值转换为指定分母的分数英寸。
 
-For example the value of 0.112713 with denominator 16 would be converted to 4 7/16"
+例如，分母为16的值0.112713将转换为4 7/16英寸。
 
-Configure the parameters as per the settings below:
+根据以下设置配置参数：
 
 ~~~ vb
-Const DENOMINATOR As Integer = 16 'denominator value
-Const ROUND_TO_NEAREST_FRACTION As Boolean = True 'True to round to nearest fraction, False to not
+Const DENOMINATOR As Integer = 16 '分母值
+Const ROUND_TO_NEAREST_FRACTION As Boolean = True 'True表示四舍五入到最近的分数，False表示不进行四舍五入
 ~~~
 
-The result and available options are equal to the dimension property manager page in SOLIDWORKS
+结果和SOLIDWORKS中的尺寸属性管理器页面的可用选项相同。
 
-![Override units option in the Dimension proeprty manager page](dimension-fractions.png)
+![尺寸属性管理器页面中的单位覆盖选项](dimension-fractions.png)
 
 ~~~ vb
 Const DENOMINATOR As Integer = 16
@@ -49,5 +49,3 @@ Function ConvertMetersToFractionInches(value As Double, denom As Integer, round 
     
 End Function
 ~~~
-
-
