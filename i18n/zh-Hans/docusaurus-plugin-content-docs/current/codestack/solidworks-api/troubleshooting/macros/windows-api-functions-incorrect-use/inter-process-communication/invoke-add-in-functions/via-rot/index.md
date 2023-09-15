@@ -1,40 +1,40 @@
 ---
-title: Call functions of SOLIDWORKS add-in via Running Objects Table (ROT)
-caption: Via Running Objects Table (ROT)
-description: Calling SOLIDWORKS add-in functions (add-in API) by registering an API object in the Running Object Table (ROT)
+title: 通过运行对象表（ROT）调用SOLIDWORKS插件的函数
+caption: 通过运行对象表（ROT）
+description: 通过在运行对象表（ROT）中注册API对象来调用SOLIDWORKS插件函数（插件API）
 image: stand-alone-references.png
 labels: [add-in api,stand-alone,rot]
 sidebar_position: 2
 ---
-This articles provides detailed step-by-step instructions of how to call the functions of the SOLIDWORKS add-in from stand-alone applications or scripts via Running Object Table (ROT). This could be considered as enabling the Application Programming Interface (API) in the add-in itself.
+本文提供了详细的逐步说明，介绍了如何通过运行对象表（ROT）从独立应用程序或脚本中调用SOLIDWORKS插件的函数。这可以被视为在插件本身中启用应用程序编程接口（API）。
 
-This approach allows to connect to API Object by extracting it from the Running Object Table (ROT) by process id. One of the main benefits of this approach is an ability to control add-in API without directly using any SOLIDWORKS API commands or even adding SOLIDWORKS type libraries or interops.
+这种方法允许通过从进程ID提取它来连接到API对象。这种方法的主要好处之一是能够在不直接使用任何SOLIDWORKS API命令甚至添加SOLIDWORKS类型库或互操作的情况下控制插件API。
 
-In this example SOLIDWORKS add-in allows to count faces of the selected body. It provides a menu for user to click.
+在此示例中，SOLIDWORKS插件允许计算所选实体的面数。它提供了一个菜单供用户点击。
 
-![Add-in menu with commands](add-in-menu-command.png){ width=350 }
+![带有命令的插件菜单](add-in-menu-command.png){ width=350 }
 
-The result is displayed in the message box.
+结果显示在消息框中。
 
-![Add-in command result displayed in the message box](add-in-command-result-message.png){ width=450 }
+![插件命令结果显示在消息框中](add-in-command-result-message.png){ width=450 }
 
-Add-in also provides an API object for 3rd parties to call. API extends the functionality of the UI and allows to pass the parameter to filter the minimum area of the faces.
+插件还提供了一个API对象，供第三方调用。API扩展了UI的功能，并允许传递参数以过滤面的最小面积。
 
-Both API method and User Interface command handler are calling the same function.
+API方法和用户界面命令处理程序都调用相同的函数。
 
-This is a solution tree of the add-in and API object. The GeometryHelperApiObject compiles to dll and contains the definitions of add-in interfaces. It doesn't contain any implementation and is not referencing any SOLIDWORKS interops. This dll is referenced in the SOLIDWORKS add-in project which implements the API object and will be also referenced by all third party applications to access the API. So none of the third party applications need to reference the main add-in dll which enables the level of abstractions.
+这是插件和API对象的解决方案树。GeometryHelperApiObject编译为dll，并包含插件接口的定义。它不包含任何实现，并且不引用任何SOLIDWORKS互操作。此dll在实现API对象的SOLIDWORKS插件项目中被引用，并且还将被所有第三方应用程序引用以访问API。因此，没有第三方应用程序需要引用启用抽象级别的主插件dll。
 
-![Visual Studio Solution tree for project](solution-tree.png){ width=450 }
+![项目的Visual Studio解决方案树](solution-tree.png){ width=450 }
 
-Explore the source code and explanation below for more details of how to implement this framework.
+请查看下面的源代码和解释，以了解如何实现此框架的更多详细信息。
 
-## GeometryHelperApiObject Project
+## GeometryHelperApiObject项目
 
-This project contains the definitions (signatures) of API methods and interfaces which should be exposed by the add-in.
+该项目包含应该由插件公开的API方法和接口的定义（签名）。
 
 ### GeometryHelperApiObjectFactory.cs
 
-This is a helper COM object which will simplify the access to the instance of the add-in API object. It is responsible for retrieving the instance of API object from the process by its ID.
+这是一个帮助COM对象，它将简化从进程中检索API对象实例的访问。它负责通过其ID从进程中检索API对象的实例。
 
 ~~~ cs
 using System;
@@ -140,7 +140,7 @@ namespace CodeStack.GeometryHelper
 
 ### IGeometryHelperApiObject.cs
 
-This is an interface of the API exposed to 3rd party applications. In this example the function will return the number of faces based on the area filter.
+这是向第三方应用程序公开的API的接口。在此示例中，该函数将根据面积过滤器返回面的数量。
 
 ~~~ cs
 using System.Runtime.InteropServices;
@@ -158,13 +158,13 @@ namespace CodeStack.GeometryHelper
 
 
 
-## GeometryHelperAddIn Project
+## GeometryHelperAddIn项目
 
-This project is a SOLIDWORKS add-in. In this example it is developed using the [SwEx.AddIn Framework](/docs/codestack/labs/solidworks/swex/add-in/), but any other frameworks or SDK would be supported.
+该项目是一个SOLIDWORKS插件。在此示例中，它使用[SwEx.AddIn Framework](/docs/codestack/labs/solidworks/swex/add-in/)进行开发，但任何其他框架或SDK都将受到支持。
 
 ### GeometryHelperService.cs
 
-Helper class within add-in which is invoking SOLIDWORKS API for calculating the number of faces from the selected body based on the minimum area.
+插件内的辅助类，用于调用SOLIDWORKS API以计算所选实体的面数，基于最小面积。
 
 ~~~ cs
 using SolidWorks.Interop.sldworks;
@@ -220,13 +220,13 @@ namespace CodeStack.GeometryHelper
 
 
 
-Add-in must implement the functionality of API object. There are 2 general approaches for this.
+插件必须实现API对象的功能。有两种常见的方法。
 
-* By directly implementing the functionality in the inherited class as shown below
+* 通过直接在继承类中实现功能，如下所示
 
 ### GeometryHelperApiObject.cs
 
-API object implementation is using the SOLIDWORKS API directly within its class to handle the request and provide response to API call.
+API对象实现在其类中直接使用SOLIDWORKS API来处理请求并提供API调用的响应。
 
 ~~~ cs
 using System.Runtime.InteropServices;
@@ -256,7 +256,7 @@ namespace CodeStack.GeometryHelper
 
 ### MainAddIn.cs
 
-This is the implementation of main SOLIDWORKS add-in class. The service to handle the functionality is passed directly to API object implementation and called from there to handle the API call.
+这是主SOLIDWORKS插件类的实现。处理功能的服务直接传递给API对象实现，并从那里调用以处理API调用。
 
 ~~~ cs
 using CodeStack.SwEx.AddIn;
@@ -327,11 +327,11 @@ namespace CodeStack.GeometryHelper
 
 
 
-* By implementing the proxy API object. This approach may be considered more beneficial and secure as it doesn't expose any internal objects in its structure. All of the requests are handled outside of the proxy class.
+* 通过实现代理API对象。这种方法可能被认为更有益和安全，因为它不会在其结构中公开任何内部对象。所有请求都在代理类之外处理。
 
 ### GeometryHelperApiObjectProxy.cs
 
-Proxy object doesn't contain any references to any objects of the add-in. Instead it will generate the request event, handled and processed by the add-in.
+代理对象不包含对插件的任何对象的引用。相反，它将生成请求事件，由插件处理和处理。
 
 ~~~ cs
 using System;
@@ -362,9 +362,9 @@ namespace CodeStack.GeometryHelper
 
 
 
-### MainAddIn.cs with proxy API object
+### MainAddIn.cs（使用代理API对象）
 
-Handling of the event in the add-in and providing results.
+在插件中处理事件并提供结果。
 
 ~~~ cs
 public override bool OnConnect()
@@ -394,7 +394,7 @@ private int OnGetFacesCountRequested(double minArea)
 
 ### RotHelper.cs
 
-In order for the API object to be available it is required to register it in the Running Objects Table (ROT). This helper class allows to register the object by name.
+为了使API对象可用，需要在运行对象表（ROT）中注册它。这个辅助类允许按名称注册对象。
 
 ~~~ cs
 using System.Runtime.InteropServices;
@@ -446,21 +446,21 @@ namespace CodeStack.GeometryHelper
 
 
 
-## Calling the API from stand-alone applications
+## 从独立应用程序调用API
 
-Now the add-in API can be called form any COM-compatible programming language.
+现在，可以从任何兼容COM的编程语言调用插件API。
 
-### VBA Macro
+### VBA宏
 
-Example of calling the API from the Excel VBA macro.
+从Excel VBA宏调用API的示例。
 
-![Macro to call SOLIDWORKS add-in API from Excel](excel-vba-macro.png){ width=450 }
+![从Excel调用SOLIDWORKS插件API的宏](excel-vba-macro.png){ width=450 }
 
-Add the reference to Type Library to enable [early binding](/docs/codestack/visual-basic/variables/declaration#early-binding-and-late-binding) for the calls.
+添加对类型库的引用以启用[早期绑定](/docs/codestack/visual-basic/variables/declaration#early-binding-and-late-binding)。
 
-![Browsing type library for COM applications](macro-browse-type-library.png){ width=450 }
+![浏览COM应用程序的类型库](macro-browse-type-library.png){ width=450 }
 
-Macro creates and instance of Factory object by its prog id and retrieves the instance of the API object by process id.
+宏通过其Prog ID创建工厂对象的实例，并通过其ID从进程中检索API对象的实例。
 
 ~~~ vb
 Function GetFacesCount() As Integer
@@ -477,17 +477,17 @@ End Function
 
 
 
-### C# Console Application
+### C#控制台应用程序
 
-Example of calling the API from the C# Console application.
+从C#控制台应用程序调用API的示例。
 
-As shown below it is only required to add the reference to the API Object dll which contain the definitions of interfaces. There is no need to add any other references (including add-in dll or any SOLIDWORKS interops)
+如下所示，只需添加对API对象dll的引用，其中包含接口的定义。不需要添加任何其他引用（包括插件dll或任何SOLIDWORKS互操作）。
 
-![References to stand-alone application](stand-alone-references.png){ width=450 }
+![独立应用程序的引用](stand-alone-references.png){ width=450 }
 
-The result of the API call is printed into the console window.
+API调用的结果将打印到控制台窗口中。
 
-![Command result displayed in the console](command-line-result.png){ width=450 }
+![在控制台中显示的命令结果](command-line-result.png){ width=450 }
 
 ~~~ cs
 using CodeStack.GeometryHelper;
@@ -529,6 +529,6 @@ namespace StandAlone
 
 
 
-> The most common reason of object cannot be retrieved from the Running Object Table (i.e. null is returned) is difference in accounts levels running SOLIDWORKS and the stand-alone application. For example SOLIDWORKS is run as administrator while the stand-alone is not or vice-versa. This is a Windows limitation and it is required to run both applications on the same permissions level to enable the communication.
+> 无法从运行对象表（ROT）中检索对象（即返回null）的最常见原因是运行SOLIDWORKS和独立应用程序的帐户级别之间的差异。例如，SOLIDWORKS以管理员身份运行，而独立应用程序没有，反之亦然。这是Windows的限制，需要以相同的权限级别运行两个应用程序以启用通信。
 
-Download the source code at [GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/swex/add-in/geometry-helper-api-rot)
+在[GitHub](https://github.com/codestackdev/solidworks-api-examples/tree/master/swex/add-in/geometry-helper-api-rot)上下载源代码。
