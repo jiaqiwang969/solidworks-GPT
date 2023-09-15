@@ -1,29 +1,29 @@
 ---
 layout: sw-tool
-title: Replace components preserving selection using SOLIDWORKS API
-caption: Replace Components
-description: Macro demonstrates how to replace selected components in the batch preserving original selections using SOLIDWORKS API
+title: 使用SOLIDWORKS API替换组件并保留选择
+caption: 替换组件
+description: 该宏演示了如何使用SOLIDWORKS API替换批量选择的组件，并保留原始选择。
 image: replace_components.png
 labels: [component, replace, selection]
 group: Assembly
 ---
-![Components replaced in the tree](replace_components.png){ width=350 }
+![在树中替换的组件](replace_components.png){ width=350 }
 
-This macro allows to replace the selected components in the tree with the components from the nominated folder (optionally with additional suffix in name) using SOLIDWORKS API.
+该宏允许使用SOLIDWORKS API将树中选择的组件替换为指定文件夹中的组件（可选地添加后缀到文件名）。
 
-This could be useful when managing similar types of projects where some files were copied, updated and renamed and need to be replaced in the original assembly.
+在管理类似类型的项目时，该功能非常有用，其中一些文件被复制、更新和重命名，并且需要在原始装配中进行替换。
 
-This macro is using the [API only selections](/docs/codestack/solidworks-api/document/selection/api-only-selection/) which allows to keep the original selected components and avoiding the need to use the temp collection variables to satisfy the requirement of [IAssemblyDoc::ReplaceComponents2](https://help.solidworks.com/2017/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iassemblydoc~replacecomponents2.html) SOLIDWORKS API method where each component needs to be selected for replacement.
+该宏使用了[SOLIDWORKS API中的API Only Selections](/docs/codestack/solidworks-api/document/selection/api-only-selection/)，它允许保留原始选择的组件，避免使用临时集合变量来满足[SOLIDWORKS API方法IAssemblyDoc::ReplaceComponents2](https://help.solidworks.com/2017/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.iassemblydoc~replacecomponents2.html)的要求，该方法要求为每个组件选择替换。
 
-* Modify the input parameters. Set the directory where the replacement parts are located via *REPLACEMENT_DIR* and optional *SUFFIX* for file name.
+* 修改输入参数。通过*REPLACEMENT_DIR*设置替换零件所在的目录，并可选地使用*SUFFIX*来设置文件名的后缀。
 
 ~~~ vb
 Const REPLACEMENT_DIR As String = "D:\Assembly\Replacement"
 Const SUFFIX As String = "_new"
 ~~~
 
-* Select components
-* Run macro. All components are replaced
+* 选择组件
+* 运行宏。所有组件都将被替换
 
 ~~~ vb
 Const REPLACEMENT_DIR As String = "D:\Assembly\Replacement"
@@ -68,7 +68,7 @@ Sub main()
         Next
         
     Else
-        MsgBox ("Please open assembly document")
+        MsgBox ("请打开装配文档")
     End If
     
 End Sub
@@ -106,5 +106,3 @@ Function GetReplacementPath(comp As SldWorks.Component2)
     
 End Function
 ~~~
-
-
