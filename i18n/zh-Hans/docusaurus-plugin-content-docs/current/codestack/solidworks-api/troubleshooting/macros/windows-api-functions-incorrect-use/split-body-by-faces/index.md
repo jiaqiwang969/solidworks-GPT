@@ -1,15 +1,15 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS Macro to Split Body By Faces using SOLIDWORKS API
-caption: Split Body By Faces
-description: Macro splits the selected surface or solid body by faces creating individual sheet body for each face using SOLIDWORKS API
+title: 使用SOLIDWORKS API拆分面的SOLIDWORKS宏
+caption: 拆分面
+description: 该宏使用SOLIDWORKS API将选定的曲面或实体体拆分为面，为每个面创建单独的面体
 image: split-body-by-faces.svg
-labels: [split,body,faces]
-group: Geometry
+labels: [拆分,体,面]
+group: 几何
 ---
-![Feature Manager Tree with sheet bodies for each face](feature-manager-tree-split-faces.png){ width=250 }
+![每个面的特征管理器树](feature-manager-tree-split-faces.png){ width=250 }
 
-This macro creates individual surface (sheet) body for each face of the selected solid or surface body using the [IModeler::CreateSheetFromFaces](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeler~createsheetfromfaces.html) SOLIDWORKS API method.
+该宏使用[SOLIDWORKS API的IModeler::CreateSheetFromFaces](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeler~createsheetfromfaces.html)方法，为选定的实体或曲面体的每个面创建单独的曲面（面）体。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -34,11 +34,11 @@ Sub main()
         If Not swBody Is Nothing Then
             SplitBodyFaces swModel, swBody
         Else
-            MsgBox "Please select body"
+            MsgBox "请选择体"
         End If
         
     Else
-        MsgBox "Please open part"
+        MsgBox "请打开零件"
     End If
     
 End Sub
@@ -69,4 +69,4 @@ End Sub
 
 
 
-For more advanced functionality (supporting parametric approach) refer the [Geomtery++ Split Body By Faces feature](/docs/codestack/labs/solidworks/geometry-plus-plus/user-guide/split-body-by-faces/)
+要了解更高级的功能（支持参数化方法），请参阅[Geomtery++拆分面功能](/docs/codestack/labs/solidworks/geometry-plus-plus/user-guide/split-body-by-faces/)。
