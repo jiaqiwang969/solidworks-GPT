@@ -1,110 +1,110 @@
 ---
-title: 在Visual Basic中声明和赋值变量和常量
-caption: 变量和常量
-description: 在Visual Basic中声明变量和常量以及赋值的概述
+title: Declaring and Assigning Variables and Constants in Visual Basic
+caption: Variables and Constants
+description: An overview of declaring variables and constants and assigning values in Visual Basic
 image: option-explicit-variable-not-defined.png
 sidebar_position: 0
 ---
-## 声明变量
+## Declaring Variables
 
-在Visual Basic中，变量可以显式或隐式声明。要显式声明变量，需要使用*Dim*关键字或*Public*关键字将变量声明为公共类或模块成员（有关更多信息，请参阅[变量作用域](/docs/codestack/visual-basic/variables/scope)文章）。
+In Visual Basic, variables can be declared explicitly or implicitly. To declare a variable explicitly, you need to use the *Dim* keyword or the *Public* keyword to declare the variable as a public class or module member (for more information, see the [Variable Scope](/docs/codestack/visual-basic/variables/scope) article).
 
-可以使用*As*关键字声明变量的类型。
+The type of the variable can be declared using the *As* keyword.
 
-~~~ vb
+```vb
 Dim textVal As String
-~~~
+```
 
-> 如果未明确声明变量的类型，则默认为[Variant](/docs/codestack/visual-basic/variables/standard-types#variant)
+> If the type of the variable is not explicitly declared, it defaults to [Variant](/docs/codestack/visual-basic/variables/standard-types#variant).
 
-~~~ vb
-Dim varVal '隐式声明为Variant
-~~~
+```vb
+Dim varVal 'implicitly declared as Variant
+```
 
-当变量隐式声明时，不使用*Dim*关键字。在这种情况下，变量的值直接赋值。
+When a variable is implicitly declared, the *Dim* keyword is not used. In this case, the value of the variable is assigned directly.
 
-~~~ vb
-implicitVal = 10 '隐式声明和赋值变量
-~~~
+```vb
+implicitVal = 10 'implicitly declared and assigned variable
+```
 
-这种方法不推荐使用，因为它可能会引入代码的歧义和潜在问题。
+This approach is not recommended as it can introduce ambiguity and potential issues in the code.
 
-> 为了在Visual Basic中强制使用显式变量声明，需要使用*Option Explicit*语句。在这种情况下，如果发现隐式变量，则会出现编译错误。
+> To enforce explicit variable declaration in Visual Basic, the *Option Explicit* statement needs to be used. In this case, if an implicit variable is found, a compilation error will occur.
 
-![启用显式选项并使用隐式变量赋值时的编译错误](option-explicit-variable-not-defined.png){ width=300 }
+![Compilation error when explicit option is enabled and implicit variable is assigned](option-explicit-variable-not-defined.png){ width=300 }
 
-### 声明相同类型的一组变量
+### Declaring a Group of Variables of the Same Type
 
-可以将变量声明为一组。
+Variables can be declared as a group.
 
-~~~ vb
-Dim textVar1, textVar2, textVar3 As String '将3个变量显式声明为String类型
-~~~
+```vb
+Dim textVar1, textVar2, textVar3 As String 'explicitly declare 3 variables as String type
+```
 
-这种方法可以使代码更易读和紧凑。
+This approach can make the code more readable and compact.
 
-### 声明具有不同类型的一组变量
+### Declaring a Group of Variables with Different Types
 
-可以使用每个变量的声明字符来使用短声明显式声明类型。
+The short declaration can be used to explicitly declare the type using the declaration character for each variable.
 
-~~~ vb
-Dim intVar%, doubleVar#, longVar& '使用短声明显式声明整数、双精度和长整型变量
-~~~
+```vb
+Dim intVar%, doubleVar#, longVar& 'explicitly declare integer, double, and long variables using short declaration
+```
 
-请参阅[标准类型](/docs/codestack/visual-basic/variables/standard-types)文章，了解声明字符的列表。
+Refer to the [Standard Types](/docs/codestack/visual-basic/variables/standard-types) article for a list of declaration characters.
 
-> 这是一种传统的变量声明方式。不推荐使用这种方法来声明变量。
+> This is a traditional way of declaring variables. It is not recommended to use this approach for variable declaration.
 
-## 赋值
+## Assigning Values
 
-为了给变量赋值，需要使用等号（=）符号，其中变量名出现在左边，变量值出现在右边。
+To assign a value to a variable, the equal sign (=) symbol is used, with the variable name on the left and the value on the right.
 
-~~~ vb
+```vb
 Dim varName As String
 varName = "VarValue"
-~~~
+```
 
-可以将一个变量的值复制给另一个变量
+The value of one variable can be copied to another variable.
 
-~~~ vb
+```vb
 Dim var1 As Integer
 Dim var2 As Integer
 var1 = 10
-var2 = var1 'var2的值现在等于var1的值，即10
-~~~
+var2 = var1 'var2 now has the same value as var1, which is 10
+```
 
-可以将变量的值分配为调用另一个函数的结果。有关函数的更多信息，请参阅[函数和过程](/docs/codestack/visual-basic/functions)文章。
+The value of a variable can be assigned as the result of calling another function. For more information on functions, see the [Functions and Procedures](/docs/codestack/visual-basic/functions) article.
 
-~~~ vb
+```vb
 Dim funcRes As Double
 funcRes = GetValueFunc()
-~~~
+```
 
-## 声明常量
+## Declaring Constants
 
-常量允许定义在执行过程中不会更改的值。通常用于声明数学常量（例如PI、重力常数等）、转换因子（例如小时到分钟、英寸到米等）或任何其他程序特定的值。
+Constants allow defining values that will not change during the execution of a procedure. They are typically used to declare mathematical constants (e.g., PI, gravitational constant), conversion factors (e.g., hours to minutes, inches to meters), or any other program-specific values.
 
-使用*Const*语句声明常量，并在声明时赋值。
+Constants are declared using the *Const* statement and assigned a value at the time of declaration.
 
-~~~ vb
-Const G As Double = 9.8 '重力常数
-~~~
+```vb
+Const G As Double = 9.8 'gravitational constant
+```
 
-与变量声明相同，常量类型可以显式定义（使用*As*关键字）或隐式定义。
+Similar to variable declaration, the constant type can be explicitly defined (using the *As* keyword) or implicitly defined.
 
-一旦声明，常量的值就不能更改。否则将出现编译错误。
+Once declared, the value of a constant cannot be changed. Otherwise, a compilation error will occur.
 
-![更改常量的值时不允许分配给常量的编译错误](error-changing-constant.png){ width=300 }
+![Compilation error when trying to assign a value to a constant that is not allowed](error-changing-constant.png){ width=300 }
 
-此代码示例演示了声明和赋值常量和变量的不同方式。
+The following code example demonstrates different ways of declaring and assigning constants and variables.
 
-~~~ vb
+```vb
 Sub main()
 
-    Dim i, j, k As Integer '声明3个整数类型的变量
+    Dim i, j, k As Integer 'declare 3 variables of Integer type
 
-    i = 10 '为声明的变量设置值
-    l = 20 '为隐式声明的变量设置值
+    i = 10 'set value for declared variable
+    l = 20 'set value for implicitly declared variable
     Debug.Print TypeName(l) 'Integer
     
     Dim intVar%, doubleVar#, longVar&
@@ -112,86 +112,86 @@ Sub main()
     Debug.Print TypeName(doubleVar#) 'Double
     Debug.Print TypeName(longVar&) 'Long
     
-    Const PI As Double = 3.14159265359 '声明和初始化常量
-    'PI = 0 '编译错误
+    Const PI As Double = 3.14159265359 'declare and initialize a constant
+    'PI = 0 'compilation error
     
     Dim res As Double
-    res = Sqrt(16) '返回4并将其分配给res变量
+    res = Sqrt(16) 'returns 4 and assigns it to the res variable
     Debug.Print res
     
 End Sub
-~~~
+```
 
 
 
-## 赋值引用变量
+## Assigning Reference Variables
 
-与值类型不同，[引用类型](/docs/codestack/visual-basic/variables/user-defined-types#class)在赋值时必须遵循几个额外的规则。
+Unlike value types, [reference types](/docs/codestack/visual-basic/variables/user-defined-types#class) have a few additional rules to follow when assigning values.
 
-![自定义用户定义类型](user-type-declaration.png){ width=200 }
+![Custom user-defined type](user-type-declaration.png){ width=200 }
 
-* 必须使用*new*关键字创建引用类型的新实例。否则将显示运行时错误'91'
+* The *new* keyword must be used to create a new instance of a reference type. Otherwise, a runtime error '91' will be displayed.
 
-![运行时错误'91'：未设置对象变量或With块变量在调用未初始化引用的成员时](error-91-when-calling-member-non-initialized-class.png){ width=350 }
+![Runtime error '91': Object variable or With block variable not set when calling a member of a non-initialized reference](error-91-when-calling-member-non-initialized-class.png){ width=350 }
 
-* 必须使用*Set*关键字来赋值，否则将显示运行时错误'91'
+* The *Set* keyword must be used to assign the value, otherwise a runtime error '91' will be displayed.
 
-![运行时错误'91'：未设置对象变量或With块变量在不使用Set关键字将引用分配给变量时](error-when-not-using-set-keyword.png){ width=350 }
+![Runtime error '91': Object variable or With block variable not set when assigning a reference to a variable without using the Set keyword](error-when-not-using-set-keyword.png){ width=350 }
 
-请参阅下面的代码以正确赋值引用类型变量。
+Refer to the code below to correctly assign a reference type variable.
 
-~~~ vb
+```vb
 Sub main()
 
     Dim userType As MyUserType
     Set userType = New MyUserType
     Dim obj As Object
     
-    'obj = userType '不使用Set关键字时，将显示对象变量或With块变量未设置的运行时错误
-    Set obj = userType '将指针分配给obj变量，指向MyUserType对象
+    'obj = userType 'runtime error when not using the Set keyword
+    Set obj = userType 'assigns the pointer to the obj variable, pointing to the MyUserType object
 
 End Sub
-~~~
+```
 
 
 
-> 引用变量只保存指向实际值的指针，即Set关键字将引用（而不是实际值，如值类型中的赋值）分配给变量。这意味着如果将一个变量的引用分配给另一个变量，它们都将引用相同的数据。
+> Reference variables only hold a pointer to the actual value, so the Set keyword assigns the reference (rather than the actual value, as in value types) to the variable. This means that if a reference of one variable is assigned to another variable, they both reference the same data.
 
-### 绑定
+### Binding
 
-绑定是将对象分配给变量的过程。当使用早期绑定时，特定的对象类型在预先声明，因此绑定可以在编译时发生。晚期绑定在运行时解析，事先不知道特定的对象类型。
+Binding is the process of assigning an object to a variable. When using early binding, the specific object type is declared in advance, so binding can occur at compile time. Late binding is resolved at runtime, without knowing the specific object type in advance.
 
-#### 早期绑定
+#### Early Binding
 
-~~~ vb
-Dim objLate As Object '晚期绑定的示例
-Dim objEarly as MySpecificType '早期绑定的示例
-~~~
+```vb
+Dim objLate As Object 'example of late binding
+Dim objEarly as MySpecificType 'example of early binding
+```
 
-早期绑定的对象通常使用*new*关键字初始化
+Objects for early binding are typically initialized using the *new* keyword.
 
-~~~ vb
+```vb
 Dim objEarly as MySpecificType
 Set objEarly = new MySpecificType
-~~~
+```
 
-##### 优点
+##### Advantages
 
-* 性能。编译器可以根据对象的类型和大小在编译时执行所需的优化
-* 可维护性。当声明特定类型时，代码更清晰、更易于维护和阅读
-* 对于早期绑定的对象，可以使用动态帮助和IntelliSense（代码完成）功能
+* Performance. The compiler can perform optimizations required based on the type and size of the object at compile time.
+* Maintainability. The code is clearer, more maintainable, and readable when a specific type is declared in advance.
+* For early-bound objects, dynamic help and IntelliSense (code completion) features can be used.
 
-#### 晚期绑定
+#### Late Binding
 
-虽然晚期绑定的对象通常使用[CreateObject](https://msdn.microsoft.com/en-us/vba/language-reference-vba/articles/createobject-function)或[GetObject](https://msdn.microsoft.com/en-us/vba/language-reference-vba/articles/getobject-function)函数初始化
+While late-bound objects are typically initialized using the [CreateObject](https://msdn.microsoft.com/en-us/vba/language-reference-vba/articles/createobject-function) or [GetObject](https://msdn.microsoft.com/en-us/vba/language-reference-vba/articles/getobject-function) functions,
 
-~~~ vb
+```vb
 Dim xlApp As Object
 Set xlApp = CreateObject("Excel.Application")
-~~~
+```
 
-但是，在晚期绑定中使用*new*关键字并使用CreateObject或GetObject在早期绑定中仍然是可以接受的。
+using the *new* keyword and CreateObject or GetObject in late binding is still acceptable in early binding.
 
-##### 优点
+##### Advantages
 
-* 不需要维护第三方引用，当代码移植到另一个环境或发布了第三方引用的另一个版本时，这可能是一个问题。请参阅此[引用问题示例](/docs/codestack/solidworks-api/troubleshooting/macros/missing-solidworks-type-library-references)
+* No need to maintain third-party references, which can be an issue when the code is ported to another environment or another version of the third-party reference is released. See this [reference issue example](/docs/codestack/solidworks-api/troubleshooting/macros/missing-solidworks-type-library-references)
