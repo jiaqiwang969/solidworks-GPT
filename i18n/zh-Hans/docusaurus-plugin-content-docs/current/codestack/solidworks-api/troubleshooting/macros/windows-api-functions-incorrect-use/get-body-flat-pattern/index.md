@@ -1,15 +1,15 @@
 ---
-title: Find cut-list item from the sheet metal flat pattern using SOLIDWORKS API
-caption: Get Cut List Item From Flat Pattern
-description: VBA macro which finds the pointer to the cut-list feature from the selected flat pattern feature
+title: 使用SOLIDWORKS API从钣金展开图案中查找切割清单项
+caption: 从展开图案中获取切割清单项
+description: 这是一个VBA宏，用于从选定的钣金展开图案特征中查找切割清单文件夹特征的指针。
 image: cut-list-folder-flat-pattern.png
-labels: [sheet metal, cut-list, flat pattern]
+labels: [钣金, 切割清单, 展开图案]
 ---
-![Cut-List folder and flat pattern feature](cut-list-folder-flat-pattern.png){ width=200 }
+![切割清单文件夹和展开图案特征](cut-list-folder-flat-pattern.png){ width=200 }
 
-This VBA macro demonstrates how to find the corresponding cut-list folder feature from the selected sheet metal flat pattern feature.
+这个VBA宏演示了如何从选定的钣金展开图案特征中找到相应的切割清单文件夹特征。
 
-This macro supports both flatten and unflatten state of sheet metal feature.
+该宏支持钣金特征的展开和还原状态。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -45,11 +45,11 @@ Sub main()
             Debug.Print swCutListFeat.Name
             
         Else
-            Err.Raise vbError, "", "Selected feature is not sheet metal flat pattern"
+            Err.Raise vbError, "", "所选特征不是钣金展开图案"
         End If
     
     Else
-        Err.Raise vbError, "", "Select feature"
+        Err.Raise vbError, "", "请选择特征"
     End If
     
 End Sub
@@ -95,5 +95,3 @@ Function GetCutListFromBody(model As SldWorks.ModelDoc2, body As SldWorks.Body2)
 
 End Function
 ~~~
-
-
