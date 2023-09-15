@@ -1,47 +1,43 @@
 ---
-title: How to create stand-alone (exe) applications using SOLIDWORKS API
-caption: Stand-Alone Application
-description: Two approaches to connect to SOLIDWORKS instance from the COM-compatible programming languages
+title: 如何使用SOLIDWORKS API创建独立的（exe）应用程序
+caption: 独立应用程序
+description: 使用COM兼容的编程语言连接到SOLIDWORKS实例的两种方法
 image: reg-edit-clsid_prog_id.png
 labels: [article, clsid, instance, out-of-process, progid, rot, sdk, solidworks api, stand-alone]
 redirect-from:
   - /2018/03/connect-to-solidworks-from-stand-alone.html
 sidebar_position: 4
 ---
-In this article I will discuss 2 generic approaches connecting to SOLIDWORKS instance from the COM-compatible programming languages (e.g. C#, VB.NET, C++, Visual Basic 6) in order to utilize SOLIDWORKS API.  
+在本文中，我将讨论两种通用方法，用于从COM兼容的编程语言（如C＃，VB.NET，C ++，Visual Basic 6）连接到SOLIDWORKS实例，以利用SOLIDWORKS API。
 
-This is optional detailed explanation of these approaches.
-Please follow the links below to access articles which demonstrate how to create a sample project and connect to SOLIDWORKS instance:  
+这是关于这些方法的可选详细说明。
+请点击下面的链接访问演示如何创建示例项目并连接到SOLIDWORKS实例的文章：
 
-* [Using C#](/docs/codestack/solidworks-api/getting-started/stand-alone/connect-csharp)
-* [Using VB.NET](/docs/codestack/solidworks-api/getting-started/stand-alone/connect-vbnet)
-* [Using C++](/docs/codestack/solidworks-api/getting-started/stand-alone/connect-cpp)
+* [使用C＃](/docs/codestack/solidworks-api/getting-started/stand-alone/connect-csharp)
+* [使用VB.NET](/docs/codestack/solidworks-api/getting-started/stand-alone/connect-vbnet)
+* [使用C++](/docs/codestack/solidworks-api/getting-started/stand-alone/connect-cpp)
 
-## Method A - Activator and ProgId
-### Connecting by creating an instance via **Prog**ram **Id**entified (progid) or Global Unique COM **Cl**a**s**s **Id**entifier (CLSID)
+## 方法A - Activator和ProgId
+### 通过创建一个通过**Prog**ram **Id**entified（progid）或全局唯一COM **Cl**a**s**s **Id**entifier（CLSID）的实例进行连接
 
-There are 2 type of program identifiers for SOLIDWORKS: version independent and version specific.  
+SOLIDWORKS有两种类型的程序标识符：版本无关和版本特定。
 
-Program identifiers are registered in the Windows Registry:  
+程序标识符在Windows注册表中注册：
 
-![Class Id in the Windows registry](reg-edit-clsid.png){ width=640 }
+![Windows注册表中的类标识符](reg-edit-clsid.png){ width=640 }
 
-In the example above program identifier of the **SldWorks.Application.23** corresponds to the COM class identifier **{D66FBAAE-4150-402F-8581-75D1652D696A}**  
+上面的示例中，**SldWorks.Application.23**的程序标识符对应于COM类标识符**{D66FBAAE-4150-402F-8581-75D1652D696A}**。
 
-More information about this object (like type library class identifier, COM server location [i.e. path to **sldworks.exe**]) can be found at the registry branch related to the class identifier (i.e. **HKEY_CLASSES_ROOT\CLSID\{D66FBAAE-4150-402F-8581-75D1652D696A}**)  
+关于此对象的更多信息（例如类型库类标识符，COM服务器位置[即**sldworks.exe**的路径]）可以在与类标识符相关的注册表分支（即**HKEY_CLASSES_ROOT\CLSID\{D66FBAAE-4150-402F-8581-75D1652D696A}**）中找到。
 
-![Prog Id in the Windows registry](reg-edit-clsid_prog_id.png){ width=640 }
+![Windows注册表中的Prog Id](reg-edit-clsid_prog_id.png){ width=640 }
 
-Version independent program identifier will be identical for all versions of SOLIDWORKS and equal to **"SldWorks.Application"**.
+版本无关的程序标识符对于所有版本的SOLIDWORKS都是相同的，并且等于**"SldWorks.Application"**。
 
-If you use version independent identifier this will ensure that your code will be valid for any environment where SOLIDWORKS is installed.
-This would however introduce ambiguity where multiple versions of SOLIDWORKS are installed.
-In this case your program will connect to the version last installed or modified in the computer.
+如果使用版本特定的程序标识符，需要在程序标识符之后指定修订号，即**"SldWorks.Application.RevisionNumber"**。
+请参考下表获取SOLIDWORKS版本及其修订号的列表：
 
-To use version specific program identifier it is required to specify the revision number after the program identifier, i.e. **"SldWorks.Application.RevisionNumber"**.
-Please refer the table below for the list of SOLIDWORKS versions and its revision numbers:
-
-Version|Revision
+版本|修订号
 ----|----
 SOLIDWORKS 2005|13
 SOLIDWORKS 2006|14
@@ -62,29 +58,29 @@ SOLIDWORKS 2020|28
 SOLIDWORKS 2021|29
 SOLIDWORKS 2022|30
 
-It is possible to get the revision number of SOLIDWORKS session via [ISldWorks::RevisionNumber](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~revisionnumber.html) method.
-The returned value is a string in the format: **25.1.0** where first number is a revision number.  
+可以通过[ISldWorks::RevisionNumber](https://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~revisionnumber.html)方法获取SOLIDWORKS会话的修订号。
+返回的值是一个格式为**25.1.0**的字符串，其中第一个数字是修订号。
 
-There are few limitations when using this method:  
+使用此方法时有一些限制：
 
-* It is not always predictable whether this method will connect to already running instance of SOLIDWORKS or will create new one
-* It is not possible to specify which of the running SOLIDWORKS sessions to connect to (e.g. when more than one SOLIDWORKS session is open)
-* If new session is created as the result of running this method this session will be invisible by default and started with */embed* flag.
-That means that session is started lightweight and no add-ins are loaded.
-This was designed to allow embedding OLE objects into the 3rd party applications (such as Microsoft Office).
+* 无法预测此方法是否会连接到已运行的SOLIDWORKS实例或创建新实例
+* 无法指定要连接的正在运行的SOLIDWORKS会话（例如，当打开多个SOLIDWORKS会话时）
+* 如果通过运行此方法创建了新会话，则此会话默认情况下是不可见的，并且以*/embed*标志启动。
+这意味着会话以轻量级方式启动，并且不加载任何加载项。
+这是为了允许将OLE对象嵌入第三方应用程序（如Microsoft Office）而设计的。
 
-![SOLIDWORKS Part Document OLE object in Excel](excel-ole-object.png){ width=400 }
+![Excel中的SOLIDWORKS零件文档OLE对象](excel-ole-object.png){ width=400 }
 
-* It is not possible to create more than one active sessions of SOLIDWORKS
+* 无法创建多个活动的SOLIDWORKS会话
 
-## Method B - Running Object Table (ROT)
+## 方法B - 运行对象表（ROT）
 
-### Connecting by querying the COM instance from the **R**unning **O**bject **T**able (ROT)
+### 通过从**R**unning **O**bject **T**able（ROT）查询COM实例进行连接
 
-When COM server creates an object instance it creates a moniker for this instance and registers it in the Running Objects Table (ROT).
-ROT enables interprocess communication with 3rd party applications by allowing to lookup the objects from the running processes via Windows APIs ([GetRunningObjectTable](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684004(v=vs.85).aspx))
+当COM服务器创建对象实例时，它会为该实例创建一个moniker，并将其注册到运行对象表（ROT）中。
+ROT通过允许通过Windows API（[GetRunningObjectTable](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684004(v=vs.85).aspx)）从运行的进程中查找对象，实现与第三方应用程序的进程间通信。
 
-Below is an example of Running Object Table with several registered COM objects:  
+下面是一个具有多个注册的COM对象的运行对象表示例：
 
 >!{00024505-0014-0000-C000-000000000046}
 
@@ -96,9 +92,9 @@ Below is an example of Running Object Table with several registered COM objects:
 
 >!VisualStudio.DTE.14.0:16144
 
-* Using this approach it is possible to connect to any session of SOLIDWORKS from its process id
-* It is possible to create as many sessions as needed by starting new SOLIDWORKS instance via shell or start process APIs
+* 使用此方法可以从其进程ID连接到任何SOLIDWORKS会话
+* 可以通过使用shell或启动进程API启动新的SOLIDWORKS实例来创建所需的任意数量的会话
 
-> Object might not be successfully retrieved form the ROT if the SOLIDWORKS application and the stand-alone application are run with different permission levels (e.g. one is run as administrator while other is not). Run them under the same user to enable communication.
+> 如果SOLIDWORKS应用程序和独立应用程序以不同的权限级别运行（例如，一个以管理员身份运行，而另一个不是），则可能无法成功从ROT中检索对象。请以相同的用户身份运行它们以启用通信。
 
-Please follow the links at the beginning of the articles for the detailed guides with code examples for connecting to SOLIDWORKS instance.
+请点击文章开头的链接，查看连接到SOLIDWORKS实例的详细指南和带有代码示例的文章。
