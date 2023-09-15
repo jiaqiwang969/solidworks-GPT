@@ -1,15 +1,15 @@
 ---
-title: 从独立应用程序或宏调用SOLIDWORKS插件的函数
-caption: 调用插件函数
-description: 从独立应用程序或宏（启用插件自定义API）调用SOLIDWORKS插件的函数的示例和说明
-labels: [插件API,调用]
+title: Calling Functions of a SOLIDWORKS Add-in from Standalone Applications or Macros
+caption: Calling Add-in Functions
+description: Examples and explanations on how to create an API for a SOLIDWORKS add-in so that its functions can be called from a macro or standalone application with enabled add-in custom API.
+labels: [Add-in API, Calling]
 ---
-本节包含示例和说明如何为SOLIDWORKS插件创建API，以便可以从[宏](/docs/codestack/solidworks-api/getting-started/macros/)、[独立应用程序](/docs/codestack/solidworks-api/getting-started/stand-alone/)、[脚本](/docs/codestack/solidworks-api/getting-started/scripts/)或其他[插件](/docs/codestack/solidworks-api/getting-started/add-ins/)中调用其函数。
+This section contains examples and explanations on how to create an API for a SOLIDWORKS add-in so that its functions can be called from a [macro](/docs/codestack/solidworks-api/getting-started/macros/), [standalone application](/docs/codestack/solidworks-api/getting-started/stand-alone/), [script](/docs/codestack/solidworks-api/getting-started/scripts/), or another [add-in](/docs/codestack/solidworks-api/getting-started/add-ins/).
 
-在需要自动化插件本身时，可能需要启用插件的API函数。这种方法还可以帮助提高性能。由于插件是进程内应用程序，因此它们提供了最佳的性能。在这种情况下，插件可以充当从宏或其他插件触发的功能的引擎，因此性能是最佳的。
+There may be a need to enable the API functions of the add-in when automation of the add-in itself is required. This approach can also help improve performance. Since add-ins are in-process applications, they provide the best performance. In this case, the add-in can act as an engine for functionality triggered from a macro or another add-in, resulting in optimal performance.
 
-有几种方法可以实现此功能。请查看以下选项以获取更多信息：
+There are several ways to achieve this functionality. Please refer to the following options for more information:
 
-* [通过插件对象](#通过插件对象)
-* [通过运行对象表（ROT）](#通过ROT)
-* [通过进程内从外部进程调用](#进程内调用)
+* [Via the Add-in Object](#via-the-add-in-object)
+* [Via the Running Object Table (ROT)](#via-the-rot)
+* [Via In-process Call from an External Process](#in-process-call)
