@@ -1,21 +1,21 @@
 ---
 layout: sw-tool
-title: Notify the completion of long running SOLIDWORKS command using SOLIDWORKS API
-caption: Notify Long Running Command Completion
-description: VBA macro to handle the long running commands in SOLIDWORKS (open, rebuild, suppress etc.) and beep to notify its completion
+title: 使用SOLIDWORKS API通知长时间运行的SOLIDWORKS命令的完成
+caption: 通知长时间运行命令的完成
+description: 使用SOLIDWORKS API处理SOLIDWORKS中的长时间运行命令（打开、重建、抑制等），并发出蜂鸣声以通知其完成
 image: command-progress.svg
-labels: [events,performance,notification,commands]
-group: Performance
+labels: [事件,性能,通知,命令]
+group: 性能
 ---
-![Opening large assembly document in SOLIDWORKS](opening-file-progressbar.png){ width=450 }
+![在SOLIDWORKS中打开大型装配文件](opening-file-progressbar.png){ width=450 }
 
-This VBA macro will listen for SOLIDWORKS commands (e.g. opening, rebuilding, suppressing, resolving etc.) using SOLIDWORKS API and identify the long running ones by matching the execution time to the user assigned delay period. If the command is running longer then this period, the beep signal is played notifying the user that the command is completed. If command is executed faster than no sound is played.
+这个VBA宏将使用SOLIDWORKS API监听SOLIDWORKS命令（例如打开、重建、抑制、解析等），并通过将执行时间与用户指定的延迟时间进行匹配来识别长时间运行的命令。如果命令运行时间超过此时间段，则播放蜂鸣信号，通知用户命令已完成。如果命令执行速度较快，则不会播放声音。
 
-This can be useful when working with large models as it is possible to switch the screens or perform another activity while command is being executed and be notified once the operation is completed without the need to constantly monitor the progress.
+当处理大型模型时，这可能很有用，因为在执行命令时可以切换屏幕或执行其他活动，并在操作完成后得到通知，而无需不断监视进度。
 
-## Running instructions
+## 运行说明
 
-* Create new macro and add the following code
+* 创建新的宏并添加以下代码
 
 ~~~ vb
 Const MIN_DELAY As Integer = 5
@@ -32,9 +32,9 @@ End Sub
 
 
 
-* Specify the command minimum delay in seconds by changing the value of *MIN_DELAY* constant
-* Create new class module and name it *CommandsListener*. Paste the following code into the class module:
-* Start the macro. To automatically start the macro with every SOLIDWORKS session follow the [Run SOLIDWORKS macro automatically on application start](/docs/codestack/solidworks-api/getting-started/macros/run-macro-on-solidworks-start/) article.
+* 通过更改*MIN_DELAY*常量的值来指定命令的最小延迟时间（以秒为单位）
+* 创建新的类模块并将其命名为*CommandsListener*。将以下代码粘贴到类模块中：
+* 启动宏。要在每个SOLIDWORKS会话中自动启动宏，请参阅[在SOLIDWORKS启动时自动运行SOLIDWORKS宏](/docs/codestack/solidworks-api/getting-started/macros/run-macro-on-solidworks-start/)文章。
 
 ~~~ vb
 Dim WithEvents swApp As SldWorks.SldWorks
@@ -77,5 +77,3 @@ Private Function swApp_CommandCloseNotify(ByVal Command As Long, ByVal reason As
     
 End Function
 ~~~
-
-
