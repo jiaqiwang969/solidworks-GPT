@@ -1,17 +1,17 @@
 ---
-title: Add move-copy body feature with coincident mate using SOLIDWORKS API
-caption: Add Move-Copy Body Feature With Mate
-description: C# VSTA macro example to create move-copy body feature and add coincident mate between the largest face of the body and front plane using SOLIDWORKS API
+title: 使用SOLIDWORKS API添加移动-复制体特征和重合约束
+caption: 添加移动-复制体特征和重合约束
+description: 使用SOLIDWORKS API创建移动-复制体特征，并在零件中的该体的最大面和前平面之间添加重合约束的C# VSTA宏示例
 image: move-copy-body-mate-pmp.png
-labels: [move-copy body,mates]
+labels: [移动-复制体, 约束]
 ---
-![Move-Copy Body Property Manager Page with mates added](move-copy-body-mate-pmp.png){ width=150 }
+![添加了重合约束的移动-复制体特征的属性管理器页面](move-copy-body-mate-pmp.png){ width=150 }
 
-C# VSTA macro example which finds the largest planar face of the selected body and inserts move-copy body feature in part and adds coincident mate with Front Plane using SOLIDWORKS API.
+这是一个C# VSTA宏示例，它会找到所选体的最大平面面，并在零件中插入移动-复制体特征，并使用SOLIDWORKS API在该体的最大面和前平面之间添加重合约束。
 
-* Open part document
-* Select any body which contains the planar face
-* Run the macro. As the result move-copy body feature is inserted via [IFeatureManager::InsertMoveCopyBody2](https://help.solidworks.com/2016/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ifeaturemanager~insertmovecopybody2.html) SOLIDWORKS API method. Then coincident mate is added between the largest face of the body and front plane using [IMoveCopyBodyFeatureData::AddMate](https://help.solidworks.com/2016/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IMoveCopyBodyFeatureData~AddMate.html) SOLIDWORKS API method.
+* 打开零件文档
+* 选择包含平面面的任何体
+* 运行宏。结果是通过[SOLIDWORKS API方法IFeatureManager::InsertMoveCopyBody2](https://help.solidworks.com/2016/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ifeaturemanager~insertmovecopybody2.html)插入了移动-复制体特征。然后使用[SOLIDWORKS API方法IMoveCopyBodyFeatureData::AddMate](https://help.solidworks.com/2016/english/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IMoveCopyBodyFeatureData~AddMate.html)在该体的最大面和前平面之间添加了重合约束。
 
 ~~~ cs
 using SolidWorks.Interop.sldworks;
@@ -33,7 +33,7 @@ namespace MoveBodyMate
 
                 if (body == null)
                 {
-                    throw new NullReferenceException("Select body to move");
+                    throw new NullReferenceException("选择要移动的体");
                 }
 
                 var plane = FindFrontPlane(model);
@@ -54,7 +54,7 @@ namespace MoveBodyMate
 
             if (!body.Select2(false, selData))
             {
-                throw new InvalidOperationException("Failed to select body");
+                throw new InvalidOperationException("选择体失败");
             }
 
             var moveCopyBodyFeat = model.FeatureManager.InsertMoveCopyBody2(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false, 1);
@@ -73,17 +73,17 @@ namespace MoveBodyMate
 
                 if (mate == null)
                 {
-                    throw new NullReferenceException(string.Format("Failed to add mate: {0}", (swAddMateError_e)err));
+                    throw new NullReferenceException(string.Format("添加约束失败: {0}", (swAddMateError_e)err));
                 }
 
                 if (!moveCopyBodyFeat.ModifyDefinition(featData, model, null))
                 {
-                    throw new InvalidOperationException("Failed to apply feature changes");
+                    throw new InvalidOperationException("应用特征更改失败");
                 }
             }
             else
             {
-                throw new InvalidOperationException("Failed to access the definition");
+                throw new InvalidOperationException("无法访问定义");
             }
         }
 
@@ -98,7 +98,7 @@ namespace MoveBodyMate
 
             if (feat == null)
             {
-                throw new NullReferenceException("Failed to find the front plane");
+                throw new NullReferenceException("无法找到前平面");
             }
 
             return feat;
@@ -110,7 +110,7 @@ namespace MoveBodyMate
 
             if (faces == null)
             {
-                throw new NullReferenceException("Body doesn't contain faces");
+                throw new NullReferenceException("体中不包含面");
             }
 
             var face = faces.Cast<IFace2>()
@@ -119,7 +119,7 @@ namespace MoveBodyMate
 
             if (face == null)
             {
-                throw new NullReferenceException("There are no planar faces in this body");
+                throw new NullReferenceException("该体中没有平面面");
             }
 
             return face;
@@ -131,5 +131,3 @@ namespace MoveBodyMate
 
 
 ~~~
-
-
