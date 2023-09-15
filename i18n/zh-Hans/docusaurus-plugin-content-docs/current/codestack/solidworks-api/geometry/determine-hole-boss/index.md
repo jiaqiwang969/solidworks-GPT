@@ -22,8 +22,7 @@ labels: [几何, 孔, 凸台]
 
 ![孔和凸台的法线](inner-face-outer-face.png){ width=400 }
 
-~~~vba
-
+```vba
 Const PI As Double = 3.14159265359
 
 Dim swApp As SldWorks.SldWorks
@@ -134,10 +133,9 @@ Function ACos(val As Double) As Double
     End If
     
 End Function
-~~~
+```
 
-
-~~~cs
+```cs
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using System.Runtime.InteropServices;
@@ -220,4 +218,5 @@ namespace HoleOrBoss.csproj
         public SldWorks swApp;
     }
 }
-~~~
+```
+
