@@ -1,23 +1,23 @@
 ---
-title: VBA macro to review SOLIDWORKS sheets and configurations
-caption: Configurations And Sheets Reviewer
-description: VBA macro which iterates all sheets and configurations of SOLIDWORKS file and activates each one by one
+title: 用于查看SOLIDWORKS工作表和配置的VBA宏
+caption: 配置和工作表查看器
+description: 此VBA宏可迭代SOLIDWORKS文件中的所有工作表和配置，并逐个激活每个工作表和配置。
 image: configurations-reviewer.svg
 labels: [configuration,sheet,review,iterate]
 ---
-![Configurations in SOLIDWORKS model](configurations.png)
+![SOLIDWORKS模型中的配置](configurations.png)
 
-This VBA macro allows to review all configurations in part or assembly and all sheets in the drawing document of SOLIDWORKS.
+此VBA宏允许查看零件或装配中的所有配置以及绘图文档中的所有工作表。
 
-Macro will activate each sheet or configuration one by one and wait the specified amount of seconds before activating the next configuration.
+宏将逐个激活每个工作表或配置，并在激活下一个配置之前等待指定的秒数。
 
-Specify the time in seconds to wait before activating next configuration by changing the value of *WAIT_TIME* constant
+通过更改*WAIT_TIME*常量的值来指定激活下一个配置之前等待的时间（以秒为单位）。
 
 ~~~vb
-Const WAIT_TIME As Single = 10 ' wait 10 seconds before activating next configuration or sheet
+Const WAIT_TIME As Single = 10 ' 等待10秒钟，然后激活下一个配置或工作表
 ~~~
 
-Main window will not be blocked so it is possible to manipulate the model in the graphics view.
+主窗口不会被阻塞，因此可以在图形视图中操作模型。
 
 ~~~ vb
 Const WAIT_TIME As Single = 5
@@ -40,10 +40,10 @@ Sub main()
             ReviewDrawingSheets swModel, WAIT_TIME
         End If
         
-        MsgBox "Review Completed"
+        MsgBox "查看完成"
         
     Else
-        MsgBox "Please open model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -97,5 +97,3 @@ Sub SleepAsync(sec As Single)
     
 End Sub
 ~~~
-
-
