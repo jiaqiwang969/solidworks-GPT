@@ -1,23 +1,23 @@
 ---
-caption: Set Sequential Component Reference
-title: macro to automatically assign the SOLIDWORKS component references in a sequential order
-description: VBA macro to increment and assign the component reference in sequential order for the selected components based on the seed number
+caption: 设置顺序组件引用
+title: 自动按顺序为所选组件分配 SOLIDWORKS 组件引用的宏
+description: VBA 宏根据种子数自动递增和分配所选组件的引用，按顺序进行分配
 image: component-reference.png
 ---
-![Component Reference](component-reference.png){ width=600 }
+![组件引用](component-reference.png){ width=600 }
 
-This VBA macro allows to automatically assign the numeric number to the selected components' references in the SOLIDWORKS assembly
+这个 VBA 宏允许自动为 SOLIDWORKS 组件装配中的所选组件引用分配数字编号。
 
-Number is incremented automatically based on the specified seed value
+编号根据指定的种子值自动递增。
 
-Number is assigned in the order components are selected in the assembly
+编号按照组件在装配中被选择的顺序进行分配。
 
-Component can be selected in the feature manager tree or in the graphics area (any entity of the component can be selected, e.g. face or edge)
+组件可以在特征管理器树或图形区域中选择（可以选择组件的任何实体，例如面或边）。
 
-Macro can be configured to either specify the input in the popup box (set the value of **INPUT_SEED** variable to **True**) or by providing the seed as the constant (**INPUT_SEED** equals to **False** and **SEED** equals to the seed number)
+宏可以配置为在弹出框中指定输入（将 **INPUT_SEED** 变量的值设置为 **True**），或者通过提供种子作为常量来指定输入（**INPUT_SEED** 等于 **False**，**SEED** 等于种子数）。
 
 ~~~ vb
-Const INPUT_SEED As Boolean = True 'input the seed (start) number in the input box upon running the macro
+Const INPUT_SEED As Boolean = True '在运行宏时在输入框中输入种子（起始）数
 Const SEED As Integer = 1
 ~~~
 
@@ -52,7 +52,7 @@ Sub main()
         
         If INPUT_SEED Then
             Dim seedStr As String
-            seedStr = InputBox("Specify the start seed number")
+            seedStr = InputBox("指定起始种子数")
             If seedStr <> "" Then
                 nextRef = CInt(seedStr)
             Else
@@ -73,7 +73,7 @@ Sub main()
                 Set swComp = swSelMgr.GetSelectedObjectsComponent3(i, -1)
                 
                 If swComp Is Nothing Then
-                    Err.Raise vbError, "", "Object selected at index " & i & " does not belong to component"
+                    Err.Raise vbError, "", "索引 " & i & " 处选择的对象不属于组件"
                 End If
                 
                 swComp.ComponentReference = nextRef
@@ -89,7 +89,7 @@ Sub main()
             ElseIf SCOPE = ScopeType_e.All Then
                 topelvel = False
             Else
-                Err.Raise vbError, "", "Not supported scope"
+                Err.Raise vbError, "", "不支持的范围"
             End If
             
             Dim vComps As Variant
@@ -112,9 +112,8 @@ Sub main()
         End If
         
     Else
-        Err.Raise vbError, "", "Open assembly"
+        Err.Raise vbError, "", "打开装配体"
     End If
     
 End Sub
 ~~~
-
