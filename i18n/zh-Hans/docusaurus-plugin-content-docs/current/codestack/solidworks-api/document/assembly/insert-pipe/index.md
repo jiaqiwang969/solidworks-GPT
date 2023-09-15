@@ -1,28 +1,29 @@
 ---
-title: Insert pipe component between fittings using SOLIDWORKS API
-caption: Insert Pipe
-description: VBA macro for plumbing automation which inserts pipe component based on the stop faces of the fitting
+title: 使用SOLIDWORKS API在配件之间插入管道组件
+caption: 插入管道
+description: 该VBA宏基于配件的停止面在SOLIDWORKS装配中插入新的虚拟组件
 image: pipe.svg
 labels: [pipe, fitting, assembly, plumbing]
 ---
-This VBA macro inserts new virtual component into SOLIDWORKS assembly between the selected stop faces of the 2 fittings
 
-![Stop face of the fitting](fitting-stop-face.png){ width=400 }
+这个VBA宏在两个选定的配件的停止面之间插入新的虚拟组件。
 
-Stop faces must be planar with 2 circular edges. Edges between 2 fittings must be concentric.
+![配件的停止面](fitting-stop-face.png){ width=400 }
 
-Macro will perform the following steps:
+停止面必须是平面的，具有2个圆形边缘。两个配件之间的边缘必须同心。
 
-* Create new virtual component based on the first stop face.
-* Create new sketch on the first stop face
-* Convert both edges of the stop face into the sketch
-* Extrude the sketch up to the second stop face
-* Assign the material based on the **MATERIAL_NAME** variable
-* Close virtual component
+宏将执行以下步骤：
 
-![Pipe between 2 fittings](pipe-fittings.png){ width=400 }
+* 基于第一个停止面创建新的虚拟组件。
+* 在第一个停止面上创建新的草图。
+* 将停止面的两个边缘转换为草图。
+* 将草图挤压到第二个停止面。
+* 根据**MATERIAL_NAME**变量分配材料。
+* 关闭虚拟组件。
 
-As the result pipe with adjustable inner and outer diameter and length is created. Changing the position or size of the fitting will change the geometry of the pipe automatically.
+![两个配件之间的管道](pipe-fittings.png){ width=400 }
+
+结果将创建一个具有可调节内外直径和长度的管道。更改配件的位置或尺寸将自动更改管道的几何形状。
 
 ~~~ vb
 Const MATERIAL_NAME As String = "PVC 0.007 Plasticized"
@@ -40,7 +41,7 @@ Sub main()
     If Not swModel Is Nothing Then
     
         If swModel.GetType() <> swDocumentTypes_e.swDocASSEMBLY Then
-            err.Raise vbError, "", "Only assembly documents are supported"
+            err.Raise vbError, "", "仅支持装配文档"
         End If
         
         Dim swAssy As SldWorks.AssemblyDoc
@@ -66,7 +67,7 @@ Sub main()
         insErr = swAssy.InsertNewVirtualPart(swStopFace1, swComp)
         
         If swComp Is Nothing Then
-            err.Raise vbError, "", "Failed to create virtual component. Error code: " & insErr
+            err.Raise vbError, "", "无法创建虚拟组件。错误代码：" & insErr
         End If
         
         If Not swAssy.GetEditTargetComponent() Is swComp Then
@@ -77,7 +78,7 @@ Sub main()
             swAssy.EditPart2 True, False, info
             
             If info <> swEditPartCommandStatus_e.swEditPartSuccessful Then
-                err.Raise vbError, "", "Failed to edit part. Error code: " & info
+                err.Raise vbError, "", "无法编辑零件。错误代码：" & info
             End If
             
         End If
@@ -93,11 +94,11 @@ Sub main()
             vEdges = swStopFace1.GetEdges
             
             If swModel.Extension.MultiSelect2(vEdges, False, Nothing) <> 2 Then
-                err.Raise vbError, "", "Failed to select edges to convert"
+                err.Raise vbError, "", "无法选择要转换的边缘"
             End If
             
             If False = swModel.SketchManager.SketchUseEdge2(False) Then
-                err.Raise vbError, "", "Failed to convert sketch entitites"
+                err.Raise vbError, "", "无法转换草图实体"
             End If
             
             Set swProfileSketch = swModel.SketchManager.ActiveSketch
@@ -105,7 +106,7 @@ Sub main()
             swModel.SketchManager.AddToDB = False
             swModel.SketchManager.InsertSketch True
         Else
-            err.Raise vbError, "Failed to select first stop face"
+            err.Raise vbError, "无法选择第一个停止面"
         End If
         
         swProfileSketch.Select2 False, 0
@@ -115,7 +116,7 @@ Sub main()
         Set swPipeFeat = swModel.FeatureManager.FeatureExtrusion2(True, False, False, swEndConditions_e.swEndCondUpToSurface, 0, 0, 0, False, False, False, False, 0, 0, False, False, False, False, True, True, True, 0, 0, False)
         
         If swPipeFeat Is Nothing Then
-            err.Raise vbError, "", "Failed to create extrusion"
+            err.Raise vbError, "", "无法创建挤压特征"
         End If
         
         Dim swCompPart As SldWorks.PartDoc
@@ -127,7 +128,7 @@ Sub main()
         swAssy.EditAssembly
         
     Else
-        err.Raise vbError, "", "Open assembly document"
+        err.Raise vbError, "", "打开装配文档"
     End If
     
 End Sub
@@ -140,14 +141,14 @@ Sub ValidateFace(face As SldWorks.Face2)
         Set swSurf = face.GetSurface()
         
         If False = swSurf.IsPlane() Then
-            err.Raise vbError, "", "Only planar faces are supported"
+            err.Raise vbError, "", "仅支持平面面"
         End If
         
         Dim vEdges As Variant
         vEdges = face.GetEdges
         
         If Not UBound(vEdges) = 1 Then
-            err.Raise vbError, "", "Face must contain 2 circular edges"
+            err.Raise vbError, "", "面必须包含2个圆形边缘"
         End If
         
         Dim swEdge As SldWorks.Edge
@@ -157,21 +158,19 @@ Sub ValidateFace(face As SldWorks.Face2)
         Set swCurve = swEdge.GetCurve
         
         If False = swCurve.IsCircle() Then
-            err.Raise vberr, "", "Only circular edges are supported"
+            err.Raise vberr, "", "仅支持圆形边缘"
         End If
         
         Set swEdge = vEdges(1)
         Set swCurve = swEdge.GetCurve
         
         If False = swCurve.IsCircle() Then
-            err.Raise vberr, "", "Only circular edges are supported"
+            err.Raise vberr, "", "仅支持圆形边缘"
         End If
         
     Else
-        err.Raise vbError, "", "Please select 2 stop faces"
+        err.Raise vbError, "", "请选择2个停止面"
     End If
 
 End Sub
 ~~~
-
-
