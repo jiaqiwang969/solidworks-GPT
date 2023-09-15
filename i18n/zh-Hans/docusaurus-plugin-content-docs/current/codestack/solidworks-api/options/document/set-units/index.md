@@ -1,17 +1,17 @@
 ---
-caption: Set Document Units
-title: Macro to set SOLIDWORKS document units (length, angle, mass, volume, time)
-description: VBA macro to set unit system in the SOLIDWORKS document or custom units (length, angle, mass, volume, time)
+caption: 设置文档单位
+title: 设置SOLIDWORKS文档单位的宏（长度、角度、质量、体积、时间）
+description: 用于在SOLIDWORKS文档中设置单位系统或自定义单位（长度、角度、质量、体积、时间）的VBA宏
 image: document-units.png
 ---
-![Document Units](document-units.png){ width=600 }
+![文档单位](document-units.png){ width=600 }
 
-This macro allows to change the units of the active SOLIDWORKS document (part or assembly).
+此宏允许更改活动的SOLIDWORKS文档（零件或装配）的单位。
 
-Configure the constants of the macro to specify the target unit system
+配置宏的常量以指定目标单位系统
 
 ~~~ vb
-Const UNIT_SYSTEM As Integer = swUnitSystem_e.swUnitSystem_Custom 'sets the custom units individually as per the constants below
+Const UNIT_SYSTEM As Integer = swUnitSystem_e.swUnitSystem_Custom '根据下面的常量单独设置自定义单位
 
 Const CUSTOM_LENGTH_UNIT As Integer = swLengthUnit_e.swMETER
 Const CUSTOM_ANGLE_UNIT As Integer = swAngleUnit_e.swDEGREES
@@ -20,7 +20,7 @@ Const CUSTOM_VOLUME_UNIT As Integer = swUnitsMassPropVolume_e.swUnitsMassPropVol
 Const CUSTOM_TIME_UNIT As Integer = swUnitsTimeUnit_e.swUnitsTimeUnit_Second
 ~~~
 
-If **UNIT_SYSTEM** constant is set to **swUnitSystem_e.swUnitSystem_Custom** then it is required to provide the individual units for each custom type by changing the **CUSTOM_???** constants.
+如果**UNIT_SYSTEM**常量设置为**swUnitSystem_e.swUnitSystem_Custom**，则需要通过更改**CUSTOM_???**常量为每个自定义类型提供单独的单位。
 
 ~~~ vb
 Const UNIT_SYSTEM As Integer = swUnitSystem_e.swUnitSystem_IPS
@@ -61,9 +61,8 @@ Sub main()
         End If
                 
     Else
-        Err.Raise vbError, "", "Model is not opened"
+        Err.Raise vbError, "", "未打开模型"
     End If
         
 End Sub
 ~~~
-
