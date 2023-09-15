@@ -1,33 +1,33 @@
 ---
-title: Batch add components and position them in the grid using SOLIDWORKS API
-caption: Insert And Position Components In A Grid
-description: VBA example demonstrates how to batch insert and position components in the 3D grid using SOLIDWORKS API by providing the number of rows and columns and distance between components
+title: 使用SOLIDWORKS API批量添加组件并将其定位在网格中
+caption: 在网格中插入和定位组件
+description: VBA示例演示了如何使用SOLIDWORKS API批量插入组件并将它们自动定位在3D网格中的方法，通过提供行数、列数和组件之间的距离来实现。
 image: positioned-components.png
 labels: [components,positions]
 ---
-![Components inserted into 2 x 2 x 2 grid](positioned-components.png){ width=250 }
+![插入到2 x 2 x 2网格中的组件](positioned-components.png){ width=250 }
 
-This example demonstrates the performance efficient way of inserting a batch of components into assembly and automatic positioning of them in 3D grid using SOLIDWORKS API.
+此示例演示了使用SOLIDWORKS API将一批组件高效地插入装配体并自动将它们定位在3D网格中的方法。
 
-Components are inserted using the [IAssemblyDoc::AddComponents3](https://help.solidworks.com/2011/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IAssemblyDoc~AddComponents3.html) SOLIDWORKS API method. Which allows to preassign the transformations for components to be inserted.
+组件是使用[SOLIDWORKS API的IAssemblyDoc::AddComponents3](https://help.solidworks.com/2011/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IAssemblyDoc~AddComponents3.html)方法插入的。该方法允许预先指定要插入的组件的变换。
 
-Boundaries of the grid can be specified by setting the constants in the begging of the macro.
+可以通过在宏的开头设置常量来指定网格的边界。
 
 ~~~ vb
-Const ROWS_COUNT As Integer = 2 'maximum number of components in a row (parallel to X)
-Const COLUMNS_COUNT As Integer = 2 'maximum number of components in a row (parallel to Y)
-Const DISTANCE As Double = 0.1 'distance between components in rows, columns and levels
+Const ROWS_COUNT As Integer = 2 '每行（与X轴平行）中的最大组件数
+Const COLUMNS_COUNT As Integer = 2 '每列（与Y轴平行）中的最大组件数
+Const DISTANCE As Double = 0.1 '行、列和层之间的距离
 ~~~
 
-Specify the list of components to insert by assigning the values of *compsPaths* array. Inserting the same component path in different positions is supported.
+通过为*compsPaths*数组分配值来指定要插入的组件列表。支持在不同位置插入相同的组件路径。
 
 ~~~ vb
 Dim compsPaths(N) As String
     
-compsPaths(0) = "Full path to part or assembly"
-compsPaths(1) = "Full path to part or assembly"
+compsPaths(0) = "部件或装配体的完整路径"
+compsPaths(1) = "部件或装配体的完整路径"
 ...
-compsPaths(N) = "Full path to part or assembly"
+compsPaths(N) = "部件或装配体的完整路径"
 ~~~
 
 ~~~ vb
@@ -59,7 +59,7 @@ Sub main()
     If Not swAssy Is Nothing Then
         InsertComponents swAssy, compsPaths, ROWS_COUNT, COLUMNS_COUNT, DISTANCE
     Else
-        MsgBox "Please open assembly"
+        MsgBox "请打开装配体"
     End If
     
 End Sub
@@ -121,5 +121,3 @@ Function ComposeTransform(x As Double, y As Double, z As Double) As Variant
     
 End Function
 ~~~
-
-
