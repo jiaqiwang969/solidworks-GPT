@@ -15,7 +15,7 @@ labels: [curve, sphere, c#]
 
 球面是使用 [IModeler::CreateSphericalSurface2](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeler~createsphericalsurface2.html) SOLIDWORKS API 方法创建的，该方法使用 [ISurface::CreateTrimmedSheet4](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isurface~createtrimmedsheet4.html) 进行修剪。
 
-~~~ cs
+```cs
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using System.Runtime.InteropServices;
@@ -78,4 +78,4 @@ namespace CodeStackExample
         public SldWorks swApp;
     }
 }
-~~~
+```
