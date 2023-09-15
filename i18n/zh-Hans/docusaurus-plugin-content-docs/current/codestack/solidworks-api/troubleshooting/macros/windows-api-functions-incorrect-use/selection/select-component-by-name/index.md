@@ -1,21 +1,21 @@
 ---
-title: Select component in feature tree using its name via SOLIDWORKS API
-caption: Select Component By Name
-description: Example demonstrates how to select component by full name at any level of the assembly in the feature manager tree
+title: 使用SOLIDWORKS API按名称选择特征树中的组件
+caption: 按名称选择组件
+description: 该示例演示了如何使用SOLIDWORKS API按其完整名称选择组件树中的任何级别的组件。
 image: components-tree.png
 labels: [select, component]
 ---
-![Multi-level tree of components](components-tree.png){ width=200 }
+![组件的多级树](components-tree.png){ width=200 }
 
-This example demonstrates the most performance efficient way to select a component on any level of the assembly by its full name using SOLIDWORKS API.
+该示例演示了使用SOLIDWORKS API按其完整名称选择装配体中任何级别的组件的最高性能效率方法。
 
-Name of the component is defined as a path where each level is separated by / symbol. Component instance id is specified with a - symbol (e.g. FirstLevelComp-1/SecondLevelComp-2/TargetComp-1)
+组件的名称定义为一个路径，每个级别由/符号分隔。组件实例ID使用-符号指定（例如，FirstLevelComp-1/SecondLevelComp-2/TargetComp-1）。
 
-Component name can be found in the following dialog:
+组件名称可以在以下对话框中找到：
 
-![Component name in properties dialog](component-name.png){ width=250 }
+![属性对话框中的组件名称](component-name.png){ width=250 }
 
-Refer [Get Component By Name](/docs/codestack/solidworks-api/document/assembly/components/get-by-name) example for macro to retrieve the pointer to the component without the selection.
+有关检索组件指针而不进行选择的宏，请参阅[按名称获取组件](/docs/codestack/solidworks-api/document/assembly/components/get-by-name)示例。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -81,5 +81,3 @@ Function ConvertToSelectByIDString(rootName As String, name As String) As String
     
 End Function
 ~~~
-
-
