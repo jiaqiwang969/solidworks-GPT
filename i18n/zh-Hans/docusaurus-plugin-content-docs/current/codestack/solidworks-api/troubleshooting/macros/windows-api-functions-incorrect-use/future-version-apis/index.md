@@ -1,43 +1,43 @@
 ---
 layout: sw-macro-fix
-title: Fix SOLIDWORKS macro which is using future version APIs
-caption: Macro Is Using Future Version APIs
-description: Fixing the macro which fails when run on old (not the latest) version of SOLIDWORKS and Run-time error '438' - object doesn't support this property or method or Run-time error '445' - object doesn't support this action error is displayed
+title: 修复使用未来版本API的SOLIDWORKS宏
+caption: 宏使用未来版本API
+description: 修复在旧版本（非最新版本）SOLIDWORKS上运行时失败的宏，并显示运行时错误'438' - 对象不支持此属性或方法或运行时错误'445' - 对象不支持此操作错误
 image: object-doesnt-support-this-action.png
-labels: [macro, troubleshooting]
+labels: [宏, 故障排除]
 redirect-from:
   - /2018/04/macro-troubleshooting-macro-using-future-version-apis.html
 ---
-## Symptoms
+## 症状
 
-Recently developed SOLIDWORKS macro is run on old (not the latest) version of SOLIDWORKS. When run, *Run-time error '438': object doesn't support this property or method* is displayed.
+最近开发的SOLIDWORKS宏在旧版本（非最新版本）的SOLIDWORKS上运行。运行时，会显示*运行时错误'438'：对象不支持此属性或方法*。
 
-![Run-time error '438': object doesn't support this property or method displayed when running the macro](object-doesnt-support-this-property-or-method.png){ width=400 height=151 }
+![运行宏时显示运行时错误'438'：对象不支持此属性或方法](object-doesnt-support-this-property-or-method.png){ width=400 height=151 }
 
-Alternatively *Run-time error '445': object doesn't support this action* can be displayed.
+或者可能显示*运行时错误'445'：对象不支持此操作*。
 
-![Run-time error '445': object doesn't support this action is displayed when running the macro](object-doesnt-support-this-action.png){ width=400 height=171 }
+![运行宏时显示运行时错误'445'：对象不支持此操作](object-doesnt-support-this-action.png){ width=400 height=171 }
 
-## Cause
+## 原因
 
-SOLIDWORKS is [backward compatible](https://en.wikipedia.org/wiki/Backward_compatibility) system which means that older versions of the files or APIs will be compatible with every new release. However SOLIDWORKS is not [forward compatible](https://en.wikipedia.org/wiki/Forward_compatibility) which means that new APIs cannot be used in the older versions of the software. Every release SOLIDWORKS is adding new APIs to the libraries which can be used by the developer to write macros. But those macros cannot be used in the older versions of SOLIDWORKS
+SOLIDWORKS是[向后兼容](https://en.wikipedia.org/wiki/Backward_compatibility)的系统，这意味着旧版本的文件或API将与每个新版本兼容。但是SOLIDWORKS不是[向前兼容](https://en.wikipedia.org/wiki/Forward_compatibility)，这意味着新的API不能在旧版本的软件中使用。每个SOLIDWORKS版本都会向库中添加新的API，开发人员可以使用这些API来编写宏。但是这些宏不能在旧版本的SOLIDWORKS中使用。
 
-## Resolution
+## 解决方法
 
-* Check SOLIDWORKS API help for the method accessibility which is highlighted by the error
+* 检查SOLIDWORKS API帮助文档中突出显示的方法的可访问性选项
 
-![Availability option in SOLIDWORKS API Help Documentation](comp-config-properties-availability.png){ width=400 height=216 }
+![SOLIDWORKS API帮助文档中的可用性选项](comp-config-properties-availability.png){ width=400 height=216 }
 
-* If the earliest available version is newer than it is required to replace the method with an alternative one
+* 如果最早可用版本较新，则需要使用替代方法替换该方法
 
-Usually SOLIDWORKS names the method with an index, e.g. OpenDoc4, OpenDoc5, OpenDoc6 which indicates the superseded version. If this is the case try to see if there is an older version of this method available. If so this can be used. Please note that older version might have different sets of parameters so it is not always enough just to change the version number
+通常，SOLIDWORKS会使用索引命名方法，例如OpenDoc4、OpenDoc5、OpenDoc6，表示已被取代的版本。如果是这种情况，请尝试查看是否有较旧版本的此方法可用。如果有，则可以使用。请注意，较旧版本可能具有不同的参数集，因此仅更改版本号可能不足够。
 
-![Difference between versions of the CompConfigProperties API method](comp-config-prps-vers-diff.png){ width=400 height=122 }
+![CompConfigProperties API方法的不同版本之间的差异](comp-config-prps-vers-diff.png){ width=400 height=122 }
 
-* If no older methods available it will be required to overwrite the logic of the macro using alternative methods.
-* Upgrade SOLIDWORKS software to the never minimum supported version
+* 如果没有较旧的方法可用，则需要使用替代方法重写宏的逻辑。
+* 将SOLIDWORKS软件升级到最低支持的版本
 
-Example macro which is using the API added to SOLIDWORKS 2017
+示例宏使用添加到SOLIDWORKS 2017的API
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -59,7 +59,7 @@ End Sub
 
 
 
-Modified macro which enables compatibility with SOLIDWORKS 2005 onwards
+修改后的宏，使其与SOLIDWORKS 2005及更高版本兼容
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -77,5 +77,3 @@ Sub main()
     
 End Sub
 ~~~
-
-
