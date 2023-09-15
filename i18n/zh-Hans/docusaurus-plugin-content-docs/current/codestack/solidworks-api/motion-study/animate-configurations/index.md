@@ -1,35 +1,35 @@
 ---
 layout: sw-tool
-title: Macro animates switching of configurations using SOLIDWORKS API
-caption: Animate Configurations
-description: Macro demonstrates how to create an animation from configurations to represents model history or sheet metal folding
+title: 使用SOLIDWORKS API制作配置切换动画的宏
+caption: 动画配置
+description: 该宏演示了如何使用SOLIDWORKS API从配置中创建动画，以表示模型历史或折叠的钣金
 image: animate-configurations.svg
-labels: [motion, animation, sheet metal, bending]
-group: Motion Study
+labels: [运动, 动画, 钣金, 弯曲]
+group: 运动研究
 ---
 {% youtube { id: t35Kjjq509w } %}
 
-Macro demonstrates how to create an animation from configurations using SOLIDWORKS API.
+该宏演示了如何使用SOLIDWORKS API从配置中创建动画。
 
-This could be useful when it is required to create an animation to represents model history or sheet metal folding.
+当需要创建一个动画来表示模型历史或钣金折叠时，这将非常有用。
 
-* Open part or assembly
-* Select configurations in the order they should be animated
+* 打开零件或装配体
+* 按照应该进行动画的顺序选择配置
 
-![Multiple configurations selected in the configurations tab](sheet-metal-bending-animation.png){ width=350 }
+![在配置选项卡中选择多个配置](sheet-metal-bending-animation.png){ width=350 }
 
-* Run the macro. New assembly created with configurations set as animation steps.
+* 运行宏。将创建一个新的装配体，其中的配置设置为动画步骤。
 
-![Sheet metal bending animation](motion-study-configuration-animation.png){ width=450 }
+![钣金弯曲动画](motion-study-configuration-animation.png){ width=450 }
 
-Macro parameters (time of the bend transition and pause between folding operations) can be changed by modifying the constants at the top of the macro
+宏参数（弯曲过渡时间和折叠操作之间的暂停时间）可以通过修改宏顶部的常量来更改
 
 ~~~ vb
 Const TRANSITION_TIME As Double = 0.5
 Const PAUSE_TIME As Double = 2
 ~~~
 
-Refer the [Suppress Features In New Configurations](/docs/codestack/solidworks-api/document/features-manager/create-feature-configurations/) for a macro to create configurations from features.
+参考[在新配置中禁止特征](/docs/codestack/solidworks-api/document/features-manager/create-feature-configurations/)以获取一个从特征创建配置的宏。
 
 ~~~ vb
 Const TRANSITION_TIME As Double = 0.5
@@ -223,4 +223,3 @@ Function GetSelectedConfigurations(model As SldWorks.ModelDoc2) As Variant
     
 End Function
 ~~~
-
