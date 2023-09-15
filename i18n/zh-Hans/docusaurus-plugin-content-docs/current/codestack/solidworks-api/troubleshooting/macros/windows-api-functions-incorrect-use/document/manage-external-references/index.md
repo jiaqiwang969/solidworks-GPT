@@ -1,53 +1,54 @@
 ---
 layout: sw-tool
-title: SOLIDWORKS macro to break, lock or unlock all external references for files and components
-caption: Manage All External References For Components
-description: Example will break, lock or unlock all external references for the file or components in the active assembly using SOLIDWORKS API
+title: SOLIDWORKS宏以打破、锁定或解锁所有文件和组件的外部引用
+caption: 管理所有组件的外部引用
+description: 该示例将使用SOLIDWORKS API打破、锁定或解锁活动装配中的文件或组件的所有外部引用。
 image: break-all-external-references.png
-labels: [assembly, external references, solidworks api, utility]
-group: Assembly
+labels: [装配, 外部引用, solidworks api, 实用工具]
+group: 装配
 redirect-from:
   - /2018/03/solidworks-api-assembly-break-all-external-references-for-components.html
   - /solidworks-api/document/assembly/break-components-external-references
   - /solidworks-api/document/assembly/components/break-external-references/
 ---
-This example will break, lock or unlock all external references for the active model or all or selected components in the active assembly using SOLIDWORKS API.
 
-![Command to break all external references](break-all-external-references.png){ width=640 }
+这个示例将使用SOLIDWORKS API打破、锁定或解锁活动模型或活动装配中的所有外部引用或所有或选定的组件。
 
-## Configuration
+![打破所有外部引用的命令](break-all-external-references.png){ width=640 }
 
-Macro can be configured by modifying the value of the constants
+## 配置
+
+可以通过修改常量的值来配置宏
 
 ~~~ vb
-Const MODIFY_ACTION As Integer = ModifyAction_e.UnlockAll 'Action to call on the references in the model. Supported values: BreakAll, LockAll, UnlockAll
-Const REFS_SCOPE As Integer = Scope_e.AllComponents 'Scope to run the above action. Supported values: ThisFile, TopLevelComponents, AllComponents, SelectedComponents
+Const MODIFY_ACTION As Integer = ModifyAction_e.UnlockAll '在模型中调用的引用的操作。支持的值：BreakAll、LockAll、UnlockAll
+Const REFS_SCOPE As Integer = Scope_e.AllComponents '运行上述操作的范围。支持的值：ThisFile、TopLevelComponents、AllComponents、SelectedComponents
 ~~~
 
 ## CAD+
 
-This macro is compatible with [Toolbar+](https://cadplus.xarial.com/toolbar/) and [Batch+](https://cadplus.xarial.com/batch/) tools so the buttons can be added to toolbar and assigned with shortcut for easier access or run in the batch mode.
+此宏与[Toolbar+](https://cadplus.xarial.com/toolbar/)和[Batch+](https://cadplus.xarial.com/batch/)工具兼容，因此可以将按钮添加到工具栏并分配快捷键以便更轻松地访问或批处理模式运行。
 
-In order to enable [macro arguments](https://cadplus.xarial.com/toolbar/configuration/arguments/) set the **ARGS** constant to true
+要启用[宏参数](https://cadplus.xarial.com/toolbar/configuration/arguments/)，将**ARGS**常量设置为true
 
 ~~~ vb
 #Const ARGS = True
 ~~~
 
-In this case it is not required to make copies of the macro to set individual [options for action and scope](#configuration).
+在这种情况下，不需要复制宏以设置单独的[操作和范围选项](#configuration)。
 
-Instead specify 2 arguments:
+而是指定2个参数：
 
-1. Use the **-b**, **-l**, **-u**, to set the action to **Break All**, **Lock All**, **Unlock All** respectively
-1. Use the **-f**, **-t**, **-a** to set the scope to **This File**, **Top Level Components**, **All Components** respectively
+1. 使用**-b**、**-l**、**-u**，将操作设置为**打破所有**、**锁定所有**、**解锁所有**
+1. 使用**-f**、**-t**、**-a**，将范围设置为**此文件**、**顶层组件**、**所有组件**
 
-For example the parameters below will lock all external references of the file itself
+例如，下面的参数将锁定文件本身的所有外部引用
 
 ~~~
 > -l -f
 ~~~
 
-While the following command will break all external references for all components of the assembly (including sub-components)
+而以下命令将打破装配中所有组件（包括子组件）的所有外部引用
 
 ~~~
 > -b -a
@@ -270,5 +271,3 @@ Sub ProcessReferences(model As SldWorks.ModelDoc2, action As ModifyAction_e)
     
 End Sub
 ~~~
-
-
