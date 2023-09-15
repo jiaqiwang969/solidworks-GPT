@@ -1,26 +1,27 @@
 ---
 layout: sw-macro-fix
-title: How to fix Missing COM (ActiveX) Component error
-caption: Missing COM Component
-description: How to fix Runtime error 429 in VBA macros
+title: 如何修复缺失的COM（ActiveX）组件错误
+caption: 缺失的COM组件
+description: 如何修复VBA宏中的运行时错误429
 image: runtime-error-429.png
-labels: [macro, troubleshooting]
+labels: [宏, 故障排除]
 ---
-## Symptoms
 
-*Run-time error '429': ActiveX component can't create object* error is displayed when running the macro. Usually the *CreateObject* function is highlighted:
+## 症状
 
-~~~ vb
+运行宏时显示“运行时错误'429'：无法创建对象的ActiveX组件”错误。通常会突出显示*CreateObject*函数：
+
+```vb
 Dim obj as Object
 Set obj = CreateObject("ComComponentProgId")
-~~~
+```
 
-![Run-time error '429': ActiveX component can't create object](runtime-error-429.png){ width=350 }
+![运行时错误'429'：无法创建对象的ActiveX组件](runtime-error-429.png){ width=350 }
 
-## Cause
+## 原因
 
-Required COM Component (ActiveX) is not registered on the target machine. This is usually either when target application is not installed (for example Excel, MS Access etc.) or the component is registered in the x32 system while macro is running in x64 environment (since SOLIDWORKS 2012).
+目标机器上未注册所需的COM组件（ActiveX）。这通常是因为目标应用程序未安装（例如Excel、MS Access等）或组件在x32系统中注册，而宏在x64环境中运行（自SOLIDWORKS 2012起）。
 
-## Resolution
+## 解决方法
 
-Install the required COM components into the correct environment. It might be required to contact the vendor of the component or the developer of the macro for more information about the used ActiveX Component.
+将所需的COM组件安装到正确的环境中。可能需要联系组件的供应商或宏的开发人员以获取有关所使用的ActiveX组件的更多信息。
