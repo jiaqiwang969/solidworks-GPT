@@ -1,5 +1,5 @@
 ---
-title: 使用SOLIDWORKS API将组件添加到装配体
+title: 添加组件到装配体
 caption: 添加组件到装配体
 description: 该示例演示了使用SOLIDWORKS API将组件添加到装配体树中的两种不同方法（单个组件添加或批量添加）
 labels: [添加组件, 装配体, 示例, solidworks api]
