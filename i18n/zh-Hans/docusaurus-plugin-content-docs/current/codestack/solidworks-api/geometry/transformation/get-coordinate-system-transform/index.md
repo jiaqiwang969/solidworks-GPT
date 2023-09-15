@@ -13,7 +13,7 @@ labels: [变换,坐标系]
 
 ![矩阵输出到VBA编辑器的即时窗口](maxtrix-output-immediate.png){ width=350 }
 
-~~~ vb
+``` vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -59,4 +59,4 @@ Sub main()
     End If
     
 End Sub
-~~~
+```
