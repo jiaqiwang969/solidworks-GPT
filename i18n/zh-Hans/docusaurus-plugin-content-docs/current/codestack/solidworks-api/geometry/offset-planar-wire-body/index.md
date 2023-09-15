@@ -1,27 +1,28 @@
 ---
-title: 使用SOLIDWORKS API偏移平面曲线（线体）
-caption: 偏移平面线体
-description: 使用SOLIDWORKS API偏移平面曲线（线体）并显示偏移预览的VBA宏示例
+title: Offsetting a Planar Curve (Wire Body) Using the SOLIDWORKS API
+caption: Offset Wire Body
+description: Example VBA macro that demonstrates how to offset a wire body of a SOLIDWORKS curve using the SOLIDWORKS API and display the offset preview.
 image: offset-wire-body.png
 labels: [body,wire,offset]
 ---
-这个VBA示例演示了如何使用SOLIDWORKS API偏移SOLIDWORKS曲线的线体并显示预览。
 
-线体是与边和曲线对应的一种类型的实体。
+This VBA example demonstrates how to offset the wire body of a SOLIDWORKS curve using the SOLIDWORKS API and display a preview.
 
-线体在复合曲线、通过XYZ曲线等特征中使用。这些实体也用于生成某些类型的预览，例如倒角特征的预览。
+A wire body is a type of entity that corresponds to edges and curves.
 
-![倒角预览](fillet-preview.png){ width=350 }
+Wire bodies are used in features such as composite curves, through XYZ curves, and are also used to generate previews for certain types of features, such as fillet features.
 
-要运行此示例：
+![Fillet Preview](fillet-preview.png){ width=350 }
 
-* 在前平面上创建一个复合曲线（或其他类型的曲线），即法线为{0, 0, 1}。
-* 运行宏。宏从所选曲线中提取实体。该实体将是一个线体。宏将该实体偏移10毫米并显示偏移的预览。
-* 宏停止执行。继续后，临时实体将被销毁。
+To run this example:
 
-![偏移线体](offset-wire-body.png){ width=450 }
+* Create a composite curve (or any other type of curve) on the front plane with a normal of {0, 0, 1}.
+* Run the macro. The macro extracts the entity from the selected curve. The entity will be a wire body. The macro offsets the entity by 10 millimeters and displays the offset preview.
+* The macro stops executing. Afterward, the temporary entity will be destroyed.
 
-~~~ vb
+![Offset Wire Body](offset-wire-body.png){ width=450 }
+
+```vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -61,7 +62,7 @@ Sub main()
                 Set swOffsetBody = swBody.OffsetPlanarWireBody(0.01, swNormVec, swOffsetPlanarWireBodyOptions_e.swOffsetPlanarWireBodyOptions_GapFillExtend)
                 
                 If swOffsetBody Is Nothing Then
-                    Err.Raise vbError, "", "无法创建偏移实体。请确保所选边位于与dVec变量中指定的法线相同的平面上"
+                    Err.Raise vbError, "", "Failed to create offset body. Make sure the selected edge lies on the same plane as specified in the dVec variable."
                 End If
                 
                 swOffsetBody.Display3 swModel, RGB(255, 255, 0), swTempBodySelectOptions_e.swTempBodySelectOptionNone
@@ -71,16 +72,16 @@ Sub main()
                 Set swOffsetBody = Nothing
                 
             Else
-                Err.Raise vbError, "", "所选边不是线体"
+                Err.Raise vbError, "", "The selected edge is not a wire body."
             End If
         
         Else
-            Err.Raise "未选择边"
+            Err.Raise "No edge selected."
         End If
         
     Else
-        Err.Raise "文档未打开"
+        Err.Raise "No document open."
     End If
     
 End Sub
-~~~
+```
