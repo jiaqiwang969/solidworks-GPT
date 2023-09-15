@@ -1,7 +1,7 @@
 ---
-title: 变量、常量和数据类型在Visual Basic中的使用
+title: 使用变量、常量和数据类型在Visual Basic中
 caption: 变量、常量和数据类型
-description: 解释了在Visual Basic中开发代码时变量和变量类型的使用方法
+description: 解释了在Visual Basic中开发代码时使用变量和变量类型的方法
 sidebar_position: 0
 ---
 本节将解释在Visual Basic中开发代码时使用变量和常量的方法。
