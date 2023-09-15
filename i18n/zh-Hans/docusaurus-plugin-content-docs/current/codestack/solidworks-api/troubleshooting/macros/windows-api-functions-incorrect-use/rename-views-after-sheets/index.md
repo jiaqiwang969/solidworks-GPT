@@ -1,12 +1,12 @@
 ---
-caption: 重命名图纸视图
-title: 将所有图纸视图重命名为图纸所在的图纸页名称
-description: 此 VBA 宏允许将活动 SOLIDWORKS 图纸文档中所有图纸页的所有图纸视图重命名为图纸页名称后跟索引。
+caption: Rename Drawing Views
+title: Rename all drawing views to the name of the sheet they are on
+description: This VBA macro allows you to rename all drawing views on all sheets in the active SOLIDWORKS drawing document to the name of the sheet followed by an index.
 ---
 
-此 VBA 宏允许将活动 SOLIDWORKS 图纸文档中所有图纸页的所有图纸视图重命名为图纸页名称后跟索引。
+This VBA macro allows you to rename all drawing views on all sheets in the active SOLIDWORKS drawing document to the name of the sheet followed by an index.
 
-详图和剖面视图将被排除在重命名过程之外。
+Detail and section views will be excluded from the renaming process.
 
 ``` vb
 Dim swApp As SldWorks.SldWorks
@@ -79,4 +79,3 @@ Sub main()
     
 End Sub
 ```
-
