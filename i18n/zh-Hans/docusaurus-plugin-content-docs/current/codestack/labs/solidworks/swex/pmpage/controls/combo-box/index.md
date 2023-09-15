@@ -1,14 +1,14 @@
 ---
-title: Combo Box control in SOLIDWORKS property Manager Page
-caption: Combo Box
-description: Overview of options applied to Combo Box control
+title: SOLIDWORKS 属性管理器页面中的组合框控件
+caption: 组合框
+description: 组合框控件的选项概述
 image: combobox.png
 toc-group-name: labs-solidworks-swex
 sidebar_position: 0
 ---
-![Combo Box control with 3 options](combobox.png)
+![带有3个选项的组合框控件](combobox.png)
 
-Combo box control will be automatically generated for all the properties of enumerator types. All values of enumerators will be considered as the items in the combo box:
+组合框控件将自动为枚举类型的所有属性生成。枚举器的所有值将被视为组合框中的选项：
 
 ~~~vb
 Imports CodeStack.SwEx.Common.Attributes
@@ -50,10 +50,10 @@ public class ComboBoxDataModel
 }
 ~~~
 
-Additional options and style for combo box control can be specified via [ComboBoxOptionsAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_ComboBoxOptionsAttribute.htm)
+可以通过[ComboBoxOptionsAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_ComboBoxOptionsAttribute.htm)指定组合框控件的其他选项和样式。
 
-### Item Text
-[ComboBoxItemTextAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_ComboBoxItemTextAttribute.htm) attribute can be used to specify user friendly title for the items to be shown in the combo box
+### 项目文本
+可以使用[ComboBoxItemTextAttribute](https://docs.codestack.net/swex/pmpage/html/T_CodeStack_SwEx_PMPage_Attributes_ComboBoxItemTextAttribute.htm)属性来指定在组合框中显示的项目的用户友好标题。
 
 ~~~vb
 Imports CodeStack.SwEx.Common.Attributes
@@ -75,7 +75,6 @@ Public Class ComboBoxDataModel
 End Class
 ~~~
 
-
 ~~~cs
 using CodeStack.SwEx.Common.Attributes;
 using CodeStack.SwEx.PMPage.Attributes;
@@ -86,10 +85,10 @@ public class ComboBoxDataModel
 {
     public enum OptionsCustomized_e
     {
-        [Title("First Option")] //static title
+        [Title("First Option")] //静态标题
         Option1,
 
-        [Title(typeof(Resources), nameof(Resources.Option2Title))] //title loaded from resources
+        [Title(typeof(Resources), nameof(Resources.Option2Title))] //从资源加载的标题
         Option2
     }
 
