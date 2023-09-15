@@ -19,31 +19,31 @@ labels: [访问,类型转换]
 这意味着父对象和特定对象将指向相同的内存对象。
 
 **VBA**
-~~~ vb
+``` vb
 Dim swModel As SldWorks.ModelDoc2
 ...
 Dim swPart As SldWorks.PartDoc
 Set swPart = swModel
-~~~
+```
 
 **VB.NET**
-~~~ vb
+``` vb
 Dim swModel As IModelDoc2
 ...
 Dim swPart As IPartDoc = CType(swModel, IPartDoc)
-~~~
+```
 
 **C#**
-~~~ cs
+``` cs
 IModelDoc2 model;
 ...
 IPartDoc part = model as IPartDoc;
-~~~
+```
 
 **C++**
-~~~ cpp
+``` cpp
 LPMODELDOC2 pModelDoc;
 ...
 LPPARTDOC pPartDoc = NULL;
 hres = pModelDoc->QueryInterface(IID_IPartDoc, (LPVOID*)&pPartDoc);
-~~~
+```
