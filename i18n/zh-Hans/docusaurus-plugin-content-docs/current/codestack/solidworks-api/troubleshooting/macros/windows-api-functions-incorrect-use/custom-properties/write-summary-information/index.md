@@ -1,31 +1,20 @@
----
-title: 使用SOLIDWORKS API将摘要信息写入活动文件
-caption: 写入摘要信息
-description: 使用SOLIDWORKS API的VBA宏，为活动的SOLIDWORKS文件填充摘要信息（作者、关键字、注释、标题、主题）
-image: summary.png
-labels: [摘要信息,写入摘要]
----
-![SOLIDWORKS文件的摘要信息](summary.png){ width=500 }
+## 概述
 
 这个VBA宏使用SOLIDWORKS API为活动模型的自定义属性的*摘要信息*选项卡（作者、关键字、注释、标题和主题）填充值。
 
-配置宏并指定要写入的值：
+## 配置宏并指定要写入的值
 
-~~~ vb
+```vb
 Const AUTHOR As String = "CodeStack"
 Const KEYWORDS As String = "sample,summary,api"
 Const COMMENTS As String = "Example comments"
 Const TITLE As String = "Summary API Example"
 Const SUBJECT As String = "CodeStack API Examples"
-~~~
+```
 
-~~~ vb
-Const AUTHOR As String = "CodeStack"
-Const KEYWORDS As String = "sample,summary,api"
-Const COMMENTS As String = "Example comments"
-Const TITLE As String = "Summary API Example"
-Const SUBJECT As String = "CodeStack API Examples"
+## 主程序
 
+```vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -47,4 +36,6 @@ Sub main()
     End If
     
 End Sub
-~~~
+```
+
+[![](summary.png)](summary.png)
