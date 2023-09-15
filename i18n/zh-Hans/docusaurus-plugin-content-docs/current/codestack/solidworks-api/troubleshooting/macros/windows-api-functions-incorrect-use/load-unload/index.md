@@ -1,35 +1,35 @@
 ---
 layout: sw-tool
-title: Macro to load and unload add-in using SOLIDWORKS API
-caption: Load/Unload Add-In
-description: Macro to trigger (load/unload) the specified add-in using SOLIDWORKS API
+title: 使用SOLIDWORKS API加载和卸载加载项的宏
+caption: 加载/卸载加载项
+description: 使用SOLIDWORKS API触发（加载/卸载）指定的加载项的宏
 image: toggle-addins.svg
-labels: [add-in, load]
-group: Frame
+labels: [加载项, 加载]
+group: 框架
 ---
-This macro allows to trigger the load state of the specified add-in using the [ISldWorks::LoadAddIn](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~loadaddin.html) and [ISldWorks::UnloadAddIn](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~unloadaddin.html) SOLIDWORKS API.
+此宏允许使用[SldWorks::LoadAddIn](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~loadaddin.html)和[SldWorks::UnloadAddIn](https://help.solidworks.com/2018/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.isldworks~unloadaddin.html) SOLIDWORKS API触发指定加载项的加载状态。
 
-This can be useful to provide a short-cut for loading and unloading the add-in with one button click. It is recommended to use [Macro Buttons](/docs/codestack/solidworks-api/getting-started/macros/macro-buttons/) to create a button for add-in in the toolbar.
+这对于通过单击一个按钮来加载和卸载加载项非常有用。建议使用[宏按钮](/docs/codestack/solidworks-api/getting-started/macros/macro-buttons/)在工具栏中创建加载项按钮。
 
-Macro requires the add-in Global Unique Identifier (GUID) to be specified at the beginning of the macro.
+宏要求在宏的开头指定加载项的全局唯一标识符（GUID）。
 
 ~~~ vb
 Const ADD_IN_GUID As String = "{1730410d-85ad-4be8-aa2d-ed977b93fe5d}"
 ~~~
 
-Locate the guid of the required SOLIDWORKS add-in in the registry at *HKLM\SOFTWARE\SolidWorks\AddIns*. Each sub-key of this registry key represents the add-in. Select each key to see the title and description of the add-in. Copy the name of the key which represents the add-in guid.
+在注册表的*HKLM\SOFTWARE\SolidWorks\AddIns*位置找到所需SOLIDWORKS加载项的GUID。该注册表键的每个子键都代表一个加载项。选择每个键以查看加载项的标题和描述。复制代表加载项GUID的键的名称。
 
-![Available add-ins presented in the registry](addins-registry.png){ width=450 }
+![注册表中的可用加载项](addins-registry.png){ width=450 }
 
-It is optionally required to specify the path to the add-in in the *ADD_IN_PATH* variable. In some cases macro cannot retrieve the path to the add-in from its guid and can fail. You can find the path to the add-in in the SOLIDWORKS add-ins dialog:
+可选地，可以在*ADD_IN_PATH*变量中指定加载项的路径。在某些情况下，宏无法从其GUID中检索加载项的路径，可能会失败。您可以在SOLIDWORKS加载项对话框中找到加载项的路径：
 
-![Add-ins list in SOLIWORKS menu](addins-list.png){ width=450 }
+![SOLIDWORKS菜单中的加载项列表](addins-list.png){ width=450 }
 
 ~~~ vb
 Const ADD_IN_PATH As String = "C:\Program Files\CodeStack\MyToolbar\CodeStack.Sw.MyToolbar.dll"
 ~~~
 
-If this option is not used set the value to an empty string
+如果不使用此选项，请将值设置为空字符串
 
 ~~~ vb
 Const ADD_IN_PATH As String = ""
@@ -49,7 +49,7 @@ Sub main()
     
     isLoaded = IsAddInLoaded(ADD_IN_GUID)
     
-    Debug.Print "AddIn Loaded: " & isLoaded
+    Debug.Print "加载项已加载: " & isLoaded
     
     Dim addInPath As String
     
@@ -101,5 +101,3 @@ Function UriToLocalPath(uri As String) As String
     UriToLocalPath = Replace(UriToLocalPath, "/", "\")
 End Function
 ~~~
-
-
