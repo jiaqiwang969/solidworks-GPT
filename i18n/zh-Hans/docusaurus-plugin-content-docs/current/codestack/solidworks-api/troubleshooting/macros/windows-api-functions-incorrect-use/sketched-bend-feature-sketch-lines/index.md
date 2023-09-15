@@ -1,17 +1,17 @@
 ---
-title: Get sketch lines of sheet metal sketched bend using SOLIDWORKS API
-caption: Get Sketch Lines For Sheet Metal Sketched Bend Feature
-description: Finds all straight lines (bends) of the sheet metal Sketched Bend feature and selects all segments
+title: 使用SOLIDWORKS API获取钣金弯曲的草图线
+caption: 获取钣金弯曲特征的草图线
+description: 使用SOLIDWORKS API查找钣金弯曲特征的所有直线（弯曲线）并选择所有线段
 image: sheet-metal-sketched-bend.png
-labels: [example, sheet metal, sketched bend, solidworks api]
+labels: [示例, 钣金, 弯曲, solidworks api]
 redirect-from:
   - /2018/03/solidworks-api-sheet-metal-get-sketched-bends.html
 ---
-Macro finds all straight lines (bends) of the sheet metal *Sketched Bend* feature and selects all segments using SOLIDWORKS API.
+使用SOLIDWORKS API，该宏将查找钣金*Sketched Bend*特征的所有直线（弯曲线）并选择所有线段。
 
-![Sketch of the sheet metal sketched bend feature](sheet-metal-sketched-bend.png){ width=400 }
+![钣金弯曲特征的草图](sheet-metal-sketched-bend.png){ width=400 }
 
-There is no direct SOLIDWORKS API method of getting the bends, however bends are represented as sketch segments in the sketch owned by sheet metal feature. So in order to find bends it is required to find this sketch and parse its content.
+没有直接的SOLIDWORKS API方法来获取弯曲线，但是弯曲线在由钣金特征拥有的草图中表示为草图线段。因此，为了找到弯曲线，需要找到该草图并解析其内容。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -57,11 +57,11 @@ Sub main()
             Next
             
         Else
-            MsgBox "Please select sketched bend feature"
+            MsgBox "请选择弯曲特征"
         End If
         
     Else
-        MsgBox "Please open the model"
+        MsgBox "请打开模型"
     End If
     
 End Sub
@@ -83,7 +83,7 @@ Function FindBendSketch(swFeat As SldWorks.Feature) As SldWorks.Sketch
         Set FindBendSketch = swSubFeat.GetSpecificFeature2
         
     Else
-        MsgBox "Failed to find the skecth with bends"
+        MsgBox "未找到带有弯曲的草图"
         End
     End If
     
@@ -91,5 +91,3 @@ End Function
 
 
 ~~~
-
-
