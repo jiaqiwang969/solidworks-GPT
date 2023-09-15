@@ -1,80 +1,80 @@
 ---
 layout: sw-tool
-title: Purge components configurations (remove all unused configurations) from SOLIDWORKS assembly
-caption: Purge Components Configurations
-description: VBA macro to create copies of all selected components in the assembly and purge configurations in each of them
+title: 清除SOLIDWORKS装配中的部件配置（删除所有未使用的配置）
+caption: 清除部件配置
+description: VBA宏，用于在装配中创建所有选定部件的副本并清除每个部件中的配置
 image: purged-components-result1.png
 labels: [component, replace, purge]
 group: Assembly
 ---
-In some cases it might be required to remove (purge) all unused configurations from the components in the assembly. It is in particular useful for the fastener or toolbox components as file can contains thousands of configurations but only few are used in the assembly.
+在某些情况下，可能需要从装配中删除（清除）所有未使用的部件配置。这对于紧固件或工具箱部件特别有用，因为文件中可能包含数千个配置，但在装配中只使用了少数几个。
 
-This macro allows to create a copy of all selected components, purge their configurations and replace them in the assembly.
+此宏允许创建所有选定部件的副本，清除其配置并在装配中替换它们。
 
-> It is strongly recommended to backup your assembly before using this macro
+> 强烈建议在使用此宏之前备份您的装配
 
-You can either select components manually or use [advanced component selection tool](https://help.solidworks.com/2016/English/SolidWorks/sldworks/c_Advanced_Component_Selection_SWassy.htm) to select components based on the criteria (e.g. or fasteners or toolbars):
+您可以手动选择部件，也可以使用[高级部件选择工具](https://help.solidworks.com/2016/English/SolidWorks/sldworks/c_Advanced_Component_Selection_SWassy.htm)根据条件选择部件（例如紧固件或工具栏）：
 
-![Selecting all fasteners and toolbox parts in the assembly via Advanced Components Selection tool](advanced-component-selection.png)
+![通过高级部件选择工具选择装配中的所有紧固件和工具箱部件](advanced-component-selection.png)
 
-For additional criteria use the [extended advanced selection macro](/docs/codestack/solidworks-api/document/assembly/components/advanced-selection/).
+要使用其他条件，请使用[扩展的高级选择宏](/docs/codestack/solidworks-api/document/assembly/components/advanced-selection/)。
 
-## Notes
+## 注意事项
 
-* Macro will only work with permanent components. Error will be generated for virtual components
-* Macro will only work with part based (*.sldprt) components
-* Macro will only work wil fully loaded components, suppressed or lightweight components are not supported
-* Macro doesn't save the document after processing. Use *Save All* to save all modifications
-* Macro will copy all replacement part at the same location as source part
-* Component can be selected in the Feature Manager tree or from the graphics view (it is possible to select any entity of the component as well, such as face or edge)
-* Design table will be removed if exists
-* Macro will not replace existing files and *File already exist* wil be generated if target file already created. Remove all of these files manually. If macro failed, some of the files may be loaded into the memory despite they are not used in the assembly. Use *Close All* command to release those files
-* Mates will be reattached
+* 该宏仅适用于永久部件。对于虚拟部件，将生成错误。
+* 该宏仅适用于基于零件（*.sldprt）的部件。
+* 该宏仅适用于完全加载的部件，不支持抑制或轻量级部件。
+* 宏在处理后不保存文档。使用“全部保存”保存所有修改。
+* 宏将所有替换部件复制到与源部件相同的位置。
+* 可以在特征管理器树中选择组件，也可以从图形视图中选择组件（还可以选择组件的任何实体，例如面或边）。
+* 如果存在设计表，将删除设计表。
+* 如果目标文件已创建，则宏不会替换现有文件，并生成“文件已存在”。请手动删除所有这些文件。如果宏失败，一些文件可能会加载到内存中，尽管它们在装配中未使用。使用“全部关闭”命令释放这些文件。
+* 将重新连接配合关系。
 
-## Options
+## 选项
 
-### Replacement Name
+### 替换名称
 
-Specify the name of the replacement file by changing the *REPLACEMENT_NAME* constant. Use fre text with the \[title\] and \[conf\] placeholders which will be replaced with title of the source file and the component's referenced configuration respectively. If the *GROUP_BY_CONFIGURATIONS* option is set to True, the \[conf\] placeholder will be replaced by the join of all configuration names separated by _ symbol.
+通过更改*REPLACEMENT_NAME*常量来指定替换文件的名称。使用带有\[title\]和\[conf\]占位符的自由文本，它们将分别替换为源文件的标题和组件的引用配置。如果将*GROUP_BY_CONFIGURATIONS*选项设置为True，则\[conf\]占位符将被所有配置名称的连接所替换，以_符号分隔。
 
-### Grouping Configurations
+### 配置分组
 
-*GROUP_BY_CONFIGURATIONS* option allows to specify if the components referencing the same document in different configuration should be replaced by single component or new single configuration part should be created for each component irrespectively.
+*GROUP_BY_CONFIGURATIONS*选项允许指定是否应将引用同一文档的不同配置的组件替换为单个组件，还是应为每个组件创建新的单个配置部件。
 
-### Examples
+### 示例
 
-![Unused configurations of components](components-configurations.png)
+![部件的未使用配置](components-configurations.png)
 
-There are 2 files with multiple configuration
+有2个带有多个配置的文件
 
-* Part1.sldprt contains 4 configurations: Default, 2, 3 and 4
-* Part2.sldprt contains 6 configurations driven by the design table: Default, A, B, C, D, E
-* Part1 is placed into the assembly 2 times in configurations Default and 4
-* Part2 is placed into the assembly 2 times in configurations A and B
+* Part1.sldprt包含4个配置：默认，2，3和4
+* Part2.sldprt包含由设计表驱动的6个配置：默认，A，B，C，D，E
+* Part1在装配中以默认和4两个配置中各放置了2次
+* Part2在装配中以A和B两个配置中各放置了2次
 
-User selects first 3 components and runs the macro. The following results will be produced depending on the specified settings
+用户选择前3个部件并运行宏。根据指定的设置，将产生以下结果
 
-### Option 1
+### 选项1
 
 ~~~ vb
 Const GROUP_BY_CONFIGURATIONS As Boolean = False
 Const REPLACEMENT_NAME As String = "[title]_[conf]"
 ~~~
 
-As the result 3 new files will be generated with a single configuration: Part1_Default.sldprt, Part1_4.sldprt, Part2_A.sldprt (design table is removed) and all selected component will be replaced. The 4th component will not be changed as it was not selected initially.
+结果将生成3个带有单个配置的新文件：Part1_Default.sldprt，Part1_4.sldprt，Part2_A.sldprt（设计表已删除），并替换所有选定的部件。第4个部件不会更改，因为最初未选择它。
 
-![Results of components purge](purged-components-result1.png)
+![部件清除的结果](purged-components-result1.png)
 
-### Option 2
+### 选项2
 
 ~~~ vb
 Const GROUP_BY_CONFIGURATIONS As Boolean = True
 Const REPLACEMENT_NAME As String = "[title]_[conf]_replacement"
 ~~~
 
-As the result 2 new files will be generated: Part1_Default_4_replacement.sldprt (with 2 configurations), Part2_A_replacement.sldprt (design table is removed) and all selected component will be replaced. The 4th component will not be changed as it was not selected initially.
+结果将生成2个新文件：Part1_Default_4_replacement.sldprt（带有2个配置），Part2_A_replacement.sldprt（设计表已删除），并替换所有选定的部件。第4个部件不会更改，因为最初未选择它。
 
-![Second results of components purge](purged-components-result2.png)
+![部件清除的第二个结果](purged-components-result2.png)
 
 ~~~ vb
 Const GROUP_BY_CONFIGURATIONS As Boolean = False
@@ -108,7 +108,7 @@ try:
         ReplaceComponents swAssy, vComps, replacementsMap
         
     Else
-        Err.Raise vbError, "", "Open assembly document"
+        Err.Raise vbError, "", "打开装配文档"
     End If
     
     GoTo finally
@@ -141,7 +141,7 @@ Sub ReplaceComponents(assy As SldWorks.AssemblyDoc, comps As Variant, replacemen
             fileName = replacementMap.item(srcKey)
             
             If False = assy.ReplaceComponents2(fileName, swComp.ReferencedConfiguration, False, swReplaceComponentsConfiguration_e.swReplaceComponentsConfiguration_MatchName, True) Then
-                Err.Raise vbError, "", "Failed to replace the component " & swComp.Name2
+                Err.Raise vbError, "", "无法替换组件 " & swComp.Name2
             End If
             
         Else
@@ -335,11 +335,11 @@ Function GetReplacementComponents(model As SldWorks.ModelDoc2) As Variant
             Set swCompModel = swComp.GetModelDoc2
             
             If swCompModel Is Nothing Then
-                Err.Raise vbError, "", "Failed to get document from the component: " & swComp.Name2 & ". Make sure component is fully resolved and not suppressed"
+                Err.Raise vbError, "", "无法从组件获取文档：" & swComp.Name2 & "。确保组件已完全解析且未抑制"
             End If
             
             If Not TypeOf swCompModel Is SldWorks.PartDoc Then
-                Err.Raise vbError, "", "Only part components are supported"
+                Err.Raise vbError, "", "仅支持零件组件"
             End If
             
             If isInit Then
@@ -354,7 +354,7 @@ Function GetReplacementComponents(model As SldWorks.ModelDoc2) As Variant
             End If
             
         Else
-            Err.Raise vbError, "", "Virtual components are not supported"
+            Err.Raise vbError, "", "不支持虚拟组件"
         End If
         
     Next
@@ -397,5 +397,3 @@ Function CollectionContains(coll As Collection, item As String) As Boolean
     
 End Function
 ~~~
-
-
