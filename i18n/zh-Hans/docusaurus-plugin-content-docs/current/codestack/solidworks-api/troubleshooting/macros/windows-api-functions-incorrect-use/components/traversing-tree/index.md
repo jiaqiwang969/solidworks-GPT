@@ -1,18 +1,19 @@
 ---
-title: Traversing the components tree using SOLIDWORKS API
-caption: Traversing The Components Tree
-description: Example demonstrates how to traverse components tree in the assembly and output the result using the specified indentation symbol
+title: 使用SOLIDWORKS API遍历组件树
+caption: 遍历组件树
+description: 该示例演示了如何使用SOLIDWORKS API遍历组件树，并使用指定的缩进符号输出结果。
 image: sw-components-tree.png
-labels: [assembly, components tree, solidworks api, traverse]
+labels: [装配体, 组件树, solidworks api, 遍历]
 redirect-from:
   - /2018/03/solidworks-api-assembly-traverse-comps-tree.html
   - /solidworks-api/document/assembly/traversing-components-tree
 ---
-This example demonstrates how to traverse components tree in the assembly using SOLIDWORKS API and output the result using the specified indentation symbol.
 
-![Components Tree](sw-components-tree.png){ width=150 }
+该示例演示了如何使用SOLIDWORKS API遍历装配体中的组件树，并使用指定的缩进符号输出结果。
 
-~~~ vb
+![组件树](sw-components-tree.png){ width=150 }
+
+``` vb
 Dim swApp As SldWorks.SldWorks
 Dim swModel As SldWorks.ModelDoc2
 
@@ -34,7 +35,7 @@ Sub main()
 
     Else
 
-        MsgBox "Please open assembly"
+        MsgBox "请打开装配体"
 
     End If
     
@@ -62,6 +63,4 @@ Sub TraverseComponent(comp As SldWorks.Component2, indent As String)
 End Sub
 
 
-~~~
-
-
+```
