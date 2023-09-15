@@ -1,26 +1,26 @@
 ---
 layout: sw-tool
-caption: Toggle Scroll Item Into View
-title: Macro to toggle the scroll item into view option in SOLIDWORKS documents
-description: VBA macro to toggle on and off the scroll selected item into view option in SOLIDWORKS FeatureManager settings
+caption: 切换滚动选定项到视图
+title: 在SOLIDWORKS文档中切换滚动选定项到视图的宏
+description: VBA宏用于在SOLIDWORKS FeatureManager设置中切换打开和关闭滚动选定项到视图选项
 image: scroll-into-view.svg
-group: Performance
+group: 性能
 ---
-![Scroll selected item into view option in SOLIDWORKS settings](solidworks-feature-manager-settings.png)
+![SOLIDWORKS设置中的滚动选定项到视图选项](solidworks-feature-manager-settings.png)
 
-This VBA macro allows to toggle on and off the 'Scroll selected item into view' option in FeatureManager section of SOLIDWORKS settings. This provides performance benefits when working with models with large feature tree (e.g. Large Assembly Documents). Turning off this option will significantly improve the speed of selecting items in the graphics area as Feature Tree does not need to be scrolled into the view.
+这个VBA宏允许在SOLIDWORKS设置的FeatureManager部分中切换打开和关闭“滚动选定项到视图”选项。当使用具有大型特征树的模型（例如大型装配文档）时，这将提供性能优势。关闭此选项将显著提高在图形区域选择项目的速度，因为不需要滚动特征树到视图中。
 
-## Using macro in Toolbar+
+## 在Toolbar+中使用宏
 
-This macro can be used in [Toolbar+](https://cadplus.xarial.com/toolbar/) which will improve the user experience. It is possible to enable the [toggle state](https://cadplus.xarial.com/toolbar/configuration/toggles/) for the macro button.
+此宏可以在[Toolbar+](https://cadplus.xarial.com/toolbar/)中使用，这将改善用户体验。可以为宏按钮启用[切换状态](https://cadplus.xarial.com/toolbar/configuration/toggles/)。
 
-Paste this code into the "Toggle Button State Code" text box:
+将以下代码粘贴到“切换按钮状态代码”文本框中：
 
 ~~~ vb
 Return CType(Application, Object).Sw.GetUserPreferenceToggle(64)
 ~~~
 
-![Code for handling the state of the toggle button](toggle-state-code.png)
+![处理切换按钮状态的代码](toggle-state-code.png)
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -36,4 +36,3 @@ Sub main()
     
 End Sub
 ~~~
-
