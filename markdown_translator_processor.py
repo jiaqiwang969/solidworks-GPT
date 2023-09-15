@@ -4,6 +4,8 @@ import subprocess
 import argparse
 import shutil
 import time
+import datetime
+
 
 class MarkdownProcessor:
     def __init__(self):
@@ -204,15 +206,29 @@ class MarkdownProcessor:
             print(found_number_int)
         else:
             print('No numbers found in the URL.')
+      
+        log_filename = datetime.datetime.now().strftime("%Y%m%d-%H%M%S") + "-gh-translate.log"
+        keyword = "modify-axis-definition" # set your keyword here
 
-        for i, md_file in enumerate(md_files, 1):
+        start_cmd = False
+        for i, md_file in enumerate(reversed(md_files), 1):
             relative_path = os.path.relpath(md_file, input_dir)
             input_file = os.path.join(input_dir, relative_path)
-            output_file = os.path.join(output_dir, relative_path)
-            cmd = f'gh issue comment {found_number_str} --body "/gt {input_file} {output_file} simplified-chinese"'
-            print(f"Translate {i}: {cmd}")
-            self.command(cmd)
-            time.sleep(1)
+    
+            if start_cmd:
+                output_file = os.path.join(output_dir, relative_path)
+                cmd = f'gh issue comment {found_number_str} --body "/gt {input_file} {output_file} simplified-chinese"'
+                print(f"Translate {i}: {cmd}")
+                with open(log_filename, 'a') as log_file:
+                    log_file.write(f"Translate {i}: {cmd}\n")
+                self.command(cmd)
+                time.sleep(11)
+
+            #if keyword in input_file:
+            if i == 1565: 
+                start_cmd = True
+
+     
 
     def merge_pulls(self):
         merge_cmd = 'for pr in $(gh pr list -L 30000 --json number --jq ".[].number" | head -n 30); do gh pr merge $pr -d -m; done'
