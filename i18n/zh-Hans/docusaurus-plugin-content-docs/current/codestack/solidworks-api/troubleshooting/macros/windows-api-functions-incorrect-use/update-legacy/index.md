@@ -6,15 +6,15 @@
 
 要配置该宏，请修改宏中的常量参数。
 
-~~~ vb
+```vb
 Const UPDATE_ALL_COMPS As Boolean = True
 Const REBUILD_ALL_CONFIGS As Boolean = True
-~~~
+```
 
 **UPDATE_ALL_COMPS** 设置为 True，以重建装配体的所有组件或仅顶层组件。
 **REBUILD_ALL_CONFIGS** 指定是否需要重建所有配置。
 
-~~~ vb
+```vb
 Const UPDATE_ALL_COMPS As Boolean = True
 Const REBUILD_ALL_CONFIGS As Boolean = True
 
@@ -35,4 +35,4 @@ Sub main()
     End If
     
 End Sub
-~~~
+```
