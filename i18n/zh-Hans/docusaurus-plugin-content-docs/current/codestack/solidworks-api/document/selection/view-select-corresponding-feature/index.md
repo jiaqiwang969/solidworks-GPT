@@ -1,22 +1,22 @@
 ---
-caption: Select Feature In All Drawing Views
-title: Select corresponding features in all drawing views
-description: VBA macro which selects the corresponding features of the feature in the model in all drawing views
+caption: 在所有绘图视图中选择特征
+title: 在所有绘图视图中选择相应的特征
+description: 这个 VBA 宏演示了如何在绘图中的每个视图中找到模型空间中输入特征的指针并选择它。
 image: selected-feature.png
 ---
-![Feature selected in the drawing view](selected-feature.png){ width=250 }
+![在绘图视图中选择的特征](selected-feature.png){ width=250 }
 
-This VBA macro demonstrates how to find the pointers for the input feature from the model space in each view in the drawing and select it.
+这个 VBA 宏演示了如何在绘图中的每个视图中找到模型空间中输入特征的指针并选择它。
 
-* Open the model drawing views are created from (i.e. assembly or part)
-* Select any feature
-* Run macro. Macro stops an execution
-* Activate drawing
-* Continue the macro. All corresponding features are selected in each view
+* 打开创建绘图视图的模型（例如装配或零件）
+* 选择任何特征
+* 运行宏。宏停止执行
+* 激活绘图
+* 继续运行宏。每个视图中的所有相应特征都被选择了
 
-## Using the GetCorresponding method
+## 使用 GetCorresponding 方法
 
-This approach utilizes the [IView::GetCorresponding](https://help.solidworks.com/2018/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IView~GetCorresponding.html) API methdo by converting the pointer from the assembly context into the drawing view context. This API is only available in SOLIDWORKS 2018 or newer for an alternative approach use the [Using SelectById2 method](#using-selectbyid2-method)
+这种方法利用了 [IView::GetCorresponding](https://help.solidworks.com/2018/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IView~GetCorresponding.html) API 方法，通过将指针从装配上下文转换为绘图视图上下文。此 API 仅适用于 SOLIDWORKS 2018 或更新版本，如果要使用另一种方法，请参考 [使用 SelectById2 方法](#使用-selectbyid2-方法)。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -37,7 +37,7 @@ Sub main()
     
     Set swFeat = swSelMgr.GetSelectedObject6(1, -1)
     
-    'activate drawing
+    '激活绘图
     Stop
     
     Dim swDraw As SldWorks.DrawingDoc
@@ -87,9 +87,9 @@ End Sub
 
 
 
-## Using SelectById2 method
+## 使用 SelectById2 方法
 
-This approach utilizes the [IModelDocExtension::SelectByID2](https://help.solidworks.com/2017/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeldocextension~selectbyid2.html) by composing the feature name to select.
+这种方法利用了 [IModelDocExtension::SelectByID2](https://help.solidworks.com/2017/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.imodeldocextension~selectbyid2.html) 方法，通过组合特征名称来选择特征。
 
 ~~~ vb
 Dim swApp As SldWorks.SldWorks
@@ -132,4 +132,3 @@ Sub main()
 
 End Sub
 ~~~
-
