@@ -28,7 +28,7 @@ group: 图纸
 
 输出文件保存在与原始图纸相同的文件夹中，命名为*[图纸名称]-dimensions.csv*
 
-~~~ vb
+``` vb
 Dim swApp As SldWorks.SldWorks
 
 Sub main()
@@ -279,4 +279,4 @@ Function Join(ParamArray parts() As Variant) As String
     Join = res
     
 End Function
-~~~
+```
