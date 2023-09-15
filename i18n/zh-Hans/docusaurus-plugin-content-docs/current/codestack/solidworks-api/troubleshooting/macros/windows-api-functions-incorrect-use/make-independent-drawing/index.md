@@ -1,26 +1,27 @@
 ---
 layout: sw-tool
-title: Macro to make independent copy of the SOLIDWORKS component and copy drawing
-caption: Make Independent With Drawing
-description: VBA macro allows to make an independent copy of the selected component, update reference in assembly and copy associated drawing
+title: 宏以独立副本的形式复制SOLIDWORKS组件并复制图纸
+caption: 生成独立副本并复制图纸
+description: 该VBA宏模拟了SOLIDWORKS的“生成独立副本”功能，但还会额外复制并重命名与复制的零件或装配组件相关联的文件。
 image: make-independent-drawing.svg
-labels: [make independent,drawing,component]
-group: Assembly
+labels: [生成独立,图纸,组件]
+group: 装配
 ---
-This VBA macro mimics the functionality of **Make Independent** feature of SOLIDWORKS, but will also additionally copy and rename the file associated with the copied part or assembly component.
 
-![Make Independent menu command](make-independent-menu.png)
+这个VBA宏模拟了SOLIDWORKS的**生成独立**功能，但还会额外复制并重命名与复制的零件或装配组件相关联的文件。
 
-This macro can work with a single component or multiple selected components, but all of the components must correspond to the same file.
+![生成独立菜单命令](make-independent-menu.png)
 
-Macro will copy the associated drawing and place it next to the target file with the same name.
+该宏可以处理单个组件或多个选定的组件，但所有组件必须对应于同一个文件。
 
-## Notes
+宏将复制与目标文件同名的关联图纸，并将其放置在目标文件旁边。
 
-* Macro will only copy drawing which matches the name of the source file and placed in the same folder
-* Macro will not overwrite the destination drawing file if already exists
+## 注意事项
 
-~~~ vb
+* 宏只会复制与源文件同名且位于同一文件夹中的图纸
+* 如果目标图纸文件已存在，宏不会覆盖它
+
+```vb
 Private Declare PtrSafe Function GetSaveFileName Lib "comdlg32.dll" Alias "GetSaveFileNameA" (pOpenfilename As OPENFILENAME) As Boolean
 
 Private Type OPENFILENAME
@@ -77,7 +78,7 @@ try_:
                 
                 For i = 1 To UBound(vComps)
                     If LCase(vComps(i).GetPathName()) <> LCase(path) Then
-                        Err.Raise vbError, "", "Only identical components are supported"
+                        Err.Raise vbError, "", "只支持相同的组件"
                     End If
                 Next
                 
@@ -88,36 +89,36 @@ try_:
                 Dim fileType As String
                 
                 If LCase(ext) = ".sldprt" Then
-                    fileType = "SOLIDWORKS Parts"
+                    fileType = "SOLIDWORKS零件"
                 ElseIf LCase(ext) = ".sldasm" Then
-                    fileType = "SOLIDWORKS Assemblies"
+                    fileType = "SOLIDWORKS装配"
                 Else
-                    Err.Raise vbError, "", "Unknown error"
+                    Err.Raise vbError, "", "未知错误"
                 End If
                 
-                filter = fileType & " (*" & ext & ")|*" & ext & "|All Files (*.*)|*.*"
+                filter = fileType & " (*" & ext & ")|*" & ext & "|所有文件 (*.*)|*.*"
                 
                 Dim replaceFilePath As String
-                replaceFilePath = BrowseForFileSave("Select replacement file path", filter, path)
+                replaceFilePath = BrowseForFileSave("选择替换文件路径", filter, path)
                 
                 If replaceFilePath <> "" Then
                     If False = swAssy.MakeIndependent(replaceFilePath) Then
-                        Err.Raise vbError, "", "Failed to make components independent"
+                        Err.Raise vbError, "", "无法生成独立组件"
                     End If
                     
                     MakeDrawingIndependent path, replaceFilePath
                     
                 End If
             Else
-                Err.Raise vbError, "", "Select components"
+                Err.Raise vbError, "", "请选择组件"
             End If
             
         Else
-            Err.Raise vbError, "", "Only assembly documents are supported"
+            Err.Raise vbError, "", "只支持装配文档"
         End If
         
     Else
-        Err.Raise vbError, "", "No model found"
+        Err.Raise vbError, "", "未找到模型"
     End If
     
     GoTo finally_
@@ -142,7 +143,7 @@ Sub MakeDrawingIndependent(srcFilePath As String, destFilePath As String)
     If fso.FileExists(srcDrwFilePath) Then
         
         If fso.FileExists(destDrwFilePath) Then
-            Err.Raise vbError, "", "Destination drawing already exists"
+            Err.Raise vbError, "", "目标图纸已存在"
         End If
         
         fso.CopyFile srcDrwFilePath, destDrwFilePath, False
@@ -151,12 +152,12 @@ Sub MakeDrawingIndependent(srcFilePath As String, destFilePath As String)
         destDrwFilePathAttr = GetAttr(destDrwFilePath)
         
         If destDrwFilePathAttr And vbReadOnly Then
-            Debug.Print "Removing the read-only flag from the destination drawing: " & destDrwFilePath
+            Debug.Print "从目标图纸中移除只读标志: " & destDrwFilePath
             SetAttr destDrwFilePath, destDrwFilePathAttr Xor vbReadOnly
         End If
         
         If False = swApp.ReplaceReferencedDocument(destDrwFilePath, srcFilePath, destFilePath) Then
-            Err.Raise vbError, "", "Failed to replace referenced drawing document"
+            Err.Raise vbError, "", "无法替换引用的图纸文档"
         End If
                 
     End If
@@ -260,6 +261,4 @@ Function Contains(vArr As Variant, item As Object) As Boolean
     Contains = False
     
 End Function
-~~~
-
-
+```
